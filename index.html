@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>UT Italco</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap 5 CSS -->
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'>
+<!-- Font Awesome CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'>
+<!-- Google Fonts -->
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap'>
+<!-- Additional CSS (Optional) -->
+<link rel="stylesheet" href="css/style.css">
+
+    
+    
+
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+
+    <style>
+        .mibarra {
+            
+            background-color: rgba(13, 93, 158, 0.75);
+            
+        }
+
+        .minav{
+            background-color: rgba(13, 93, 158, 0.75);
+        }
+
+        .contenedorvideo {
+            width: 100%;
+            height: 900px;
+            margin-top: -50px;
+            z-index: -9999;
+
+            background-image: url('img/cabecera.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        video {
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+
+        }
+
+        .slider{
+            width: 100%;
+        }
+
+        .valorescorp {
+            width: 75%;
+        }
+
+        @media (max-width: 768px) {
+            .valorescorp {
+                width: 100%;
+            }
+
+            .contenedorvideo {
+                width: 100%;
+                height: 500px;
+                margin-top: -50px;
+                z-index: -9999;
+            }
+
+            
+
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+     
+    <div >
+
+     
+        <nav class="navbar navbar-expand-lg   navbar-dark  shadow  fixed-top mibarra">
+            <div class="container">
+              
+              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content">
+                <div class="hamburger-toggle">
+                  <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </button>
+              <div class="collapse navbar-collapse" id="navbar-content">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                  </li>
+
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Compañía</a>
+                    <ul class="dropdown-menu shadow">
+                      <li><a class="dropdown-item" href="#somos">¿Quiénes somos?</a></li>
+                      <li><a class="dropdown-item" href="#mision">Misión</a></li>
+                      <li><a class="dropdown-item" href="#vision">Visión</a></li>
+                      <li><a class="dropdown-item" href="#valores">Valores</a></li>
+                      
+                       
+                       
+                       
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mitit" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                        aria-expanded="false">Proyectos</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                        <li><a class="dropdown-item" href="#">Barrancabermeja</a></li>
+                        <li><a class="dropdown-item" href="#">Cartagena</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mitit" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                        aria-expanded="false">Trabaja con Nosotros</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                        <li><a class="dropdown-item" href="https://utitalco.com/hv/">Registro de Hoja de
+                                Vida</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mitit" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                        aria-expanded="false">Proveedores</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                        <li><a class="dropdown-item" href="https://utitalco.com/proveedores/">Registro de
+                                Proveedores</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mitit" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside">Gestión de procesos</a>
+                    <ul class="dropdown-menu" >
+                        <li><a class="dropdown-item" href="https://utitalco.com/sig/">SIG</a></li>
+
+
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Fase 1  </a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="https://utitalco.com/fase1">Barrancabermeja</a></li>
+                                <li><a class="dropdown-item" href="https://utitalco.com/ctg/fase1">Cartagena</a></li>
+                            </ul>
+                          </li>
+                        
+
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mitit" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside">ODS</a>
+                    <ul class="dropdown-menu" >
+                         
+
+
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">ODS 031</a>
+                            <ul class="dropdown-menu shadow">
+                              
+                              <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">CALIDAD</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <li><a class="dropdown-item" href="https://utitalco.com/031/">Informe</a></li>
+                                </ul>
+                              </li>
+
+                              <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">HSE</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <li><a class="dropdown-item" href="https://utitalco.com/hse/informes/031.html">Informe</a></li>
+                                                
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/bitacora/">Bitacora HSE</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/rescatistas/">Bitacora Rescatista</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/vigias/">Bitacora Vigía</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/dashboard/">Dashboard HSE</a></li>
+                                </ul>
+                              </li>
+                               
+                            </ul>
+                        </li>
+
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">ODS 032</a>
+                            <ul class="dropdown-menu shadow">
+                              
+                              <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">HSE</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <li><a class="dropdown-item" href="https://utitalco.com/hse/hitos/032">Hitos HSE</a></li>
+                                </ul>
+                              </li>
+                               
+                            </ul>
+                        </li>
+
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">ODS 033</a>
+                            <ul class="dropdown-menu shadow">
+                              
+                              <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">CALIDAD</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <li><a class="dropdown-item" href="https://utitalco.com/calidad/033/">Informe</a></li>
+                                </ul>
+                              </li>
+
+                              <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">HSE</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <li><a class="dropdown-item" href="https://utitalco.com/hse/informes/033.html">Informe</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/hitos/033">Hitos HSE</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/bitacora/">Bitacora HSE</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/rescatistas/">Bitacora Rescatista</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/vigias/">Bitacora Vigía</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/dashboard/">Dashboard HSE</a></li>
+                                </ul>
+                              </li>
+                               
+                            </ul>
+                        </li>
+                        <li class="dropend">
+                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">ODS 034</a>
+                            <ul class="dropdown-menu shadow">
+                              
+                              <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">CALIDAD</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <li><a class="dropdown-item" href="https://utitalco.com/calidad/034/">Informe</a></li>
+                                </ul>
+                              </li>
+
+                              <li class="dropend">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">HSE</a>
+                                <ul class="dropdown-menu dropdown-submenu shadow">
+                                    <li><a class="dropdown-item" href="https://utitalco.com/hse/informes/034.html">Informe</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/hitos/034">Hitos HSE</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/bitacora/">Bitacora HSE</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/rescatistas/">Bitacora Rescatista</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/vigias/">Bitacora Vigía</a></li>
+                                                <li><a class="dropdown-item" href="https://utitalco.com/hse/dashboard/">Dashboard HSE</a></li>
+                                </ul>
+                              </li>
+                               
+                            </ul>
+                        </li>
+                        
+
+                    </ul>
+                </li>
+
+                
+
+
+
+
+                  
+
+
+                   
+                  
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+         
+        
+    </div>
+    
+
+    <main>
+
+        <div class="contenedorvideo">
+
+            <!-- <video muted autoplay loop>
+
+                <source src="img/italco2.mp4" type="video/mp4">
+            </video> -->
+
+            
+
+        </div>
+
+
+        <!-- Marketing messaging and featurettes
+  ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+
+        <div class="container marketing mt-5">
+
+
+            <!-- START THE FEATURETTES -->
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <a name="somos"></a>
+                    <h2 class="featurette-heading">Quienes Sómos</h2> <br>
+                    <p class="lead">UT ITALCO es una unión temporal conformada por tres empresas; dos de ellas
+                        colombianas y una Italiana, unidas para la prestación del servicio de Mantenimiento con parada
+                        de planta y en operación de las unidades de las refinerías de
+                        Barrancabermeja y Cartagena.
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="img/somos.jpg" width="100%" class="slider" alt="">
+
+                </div>
+            </div>
+
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <a name="mision"></a>
+                    <h2 class="featurette-heading">Misión</h2> <br>
+                    <p class="lead">
+                        Somos una empresa competitiva que presta sus servicios para el mantenimiento con parada de
+                        planta y en operación de las unidades de la refinería de Barrancabermeja y Cartagena de
+                        Ecopetrol S.A, comprometida con la búsqueda de la satisfacción nuestro clientes y partes
+                        interesadas, el cumplimiento con la legislación vigente, destinando los recursos necesarios para
+                        la mejora continua del Sistema, para esto cuenta con el personal idóneo, con maquinaria en
+                        óptimas condiciones de operación y proveedores confiables. <br><br>
+                        Generamos bienestar, desarrollo profesional y personal de las partes interesadas, comprometidos
+                        al desarrollo de la comunidad, con ética y transparencia, respetando el Medio Ambiente.
+
+                    </p>
+                </div>
+                <div class="col-md-5 order-md-1 ">
+                    <img src="img/mision-1.png" width="100%" alt="">
+
+                </div>
+            </div>
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <a name="vision"></a>
+                    <h2 class="featurette-heading">Visión</h2> <br>
+                    <p class="lead">UT ITALCO, busca ampliar su experiencia y posicionarse en la prestación de servicios
+                        de Mantenimiento con parada de planta y en operación de las Unidades de la Refinerías de
+                        Barrancabermeja y Cartagena, como una Empresa altamente competitiva, confiable, con el mejor
+                        crecimiento y ofreciendo sus servicios con los mayores estándares de calidad, seguridad y
+                        productividad, proporcionando satisfacción permanente en nuestros clientes y partes interesadas.
+
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <img src="img/vision.jpeg" width="100%" alt="">
+
+                </div>
+            </div>
+
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+
+                <div class="col-md-12 order-md-1">
+                    <a name="valores"></a>
+                    <h2 class="featurette-heading">Valores corporativos</h2> <br> <br><br>
+                    <center>
+                        <img src="img/valores.png" class="valorescorp" alt="">
+                    </center>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+
+
+            <!-- /END THE FEATURETTES -->
+
+
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="container">
+            <p>
+                Dirección Barrancabermeja: Calle 76 # 23 45 Barrio la Libertad <br> Dirección Cartagena: Zona Franca de
+                la Candelaria, Vía del Puerto Lote No. 1 <br> Dirección Bogotá: Calle 93B No 18-12 Of. 208
+            </p>
+            <p>&copy; 2020–2023 UT Italco.</p>
+        </footer>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+        </script>
+    <!-- Bootstrap 5 JS -->
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+
+document.addEventListener('click',function(e){
+  // Hamburger menu
+  if(e.target.classList.contains('hamburger-toggle')){
+    e.target.children[0].classList.toggle('active');
+  }
+}) 
+
+        
+
+
+        function ingreso() {
+            Swal.fire({
+                title: 'Ingreso',
+                html: `
+                <div class="row" style="width: 100%;">
+                    <div class="col-sm-4" style="text-align: right;">
+                        Usuario
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="useritalco" class="form-control" placeholder="Usuario">     
+                    </div>
+                    <div class="col-sm-4" style="text-align: right;">
+                        Contraseña
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="password" "claveitalco" class="form-control" placeholder="Contraseña">     
+                    </div>
+                    <div class="col-sm-4" style="text-align: right;">
+                        Proceso
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="proceso">
+                            <option value="HSE">HSE</option>
+                            <option value="PERMISOS">PERMISOS</option>
+                            <option value="CALIDAD">CALIDAD</option>
+                            <option value="LOGÍSTICA">LOGÍSTICA</option>
+                            <option value="TALENTO HUMANO">TALENTO HUMANO</option>
+                        </select>   
+                    </div>
+                </div>
+                `,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                showCancelButton: true,
+                confirmButtonText: 'Ingresar',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Aún en desarrollo!', '', 'success')
+                }
+            })
+        }
+    </script>
+
+
+</body>
+
+</html>

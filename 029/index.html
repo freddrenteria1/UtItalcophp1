@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA CENTER - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('img/fondo_b.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+        }
+        
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .mnubotones {
+            margin-top: 300px;
+           
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .cajones {
+            margin: 10px;
+        }
+        
+        .mbt {
+            height: 200px;
+        }
+        
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 100%;
+            border-radius: 15px;
+            
+        }
+        .card-title{
+            background-color: #138496;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-body{
+            
+            text-align: center;
+            padding: 10px;
+        }
+        h1{
+            font-size: 72px;
+        }
+        h2{
+            font-size: 48px;
+        }
+        .card-foot{
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-top-color: #138496;
+            text-align: center;
+            padding: 10px;
+        }
+        .mnu{
+             cursor: pointer;
+        }
+
+        .subtitle{
+            font-size: 22px;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class=" m-3">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="cajones">
+                    <center>
+                        <img src="img/logo2.png" width="90%" alt="">
+                    </center> <br>
+                    <center>
+                       <b>
+                        Centro de Datos e Información de Avance para paradas de planta ODS 029 Aromáticos
+                       </b>
+                    </center>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                 <div class="row">
+                    <div class="col-sm-3 mnu">
+                        <a href="https://utitalco.com/calidad/029/" target="_blank" rel="noopener noreferrer">
+                            <img src="img/btn_calidad.png" width="100%" alt="">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 mnu">
+                        <a href="https://utitalco.com/hse/informes/029.html" target="_blank" rel="noopener noreferrer">
+                            <img src="img/btn_hse.png" width="100%" alt="">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 mnu">
+                        <a href="prog.html">
+                            <img src="img/btn_prog.png" width="100%" alt="">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 mnu">
+                        <a href="talento.html">
+                            <img src="img/btn_talento.png" width="100%" alt="">
+                        </a>
+                    </div>
+                 </div>
+            </div>
+            
+        </div>
+       
+    
+
+       <div class=" mb-2">
+        <div class="mt-2">
+            <table class="table table-bordered bg-white">
+                <tr>
+                    <td class="text-center">
+                       <b>
+                        INFORME No.  <span id="infno">0</span>
+                       </b> 
+                    </td>
+                    <td class="text-right">
+                        <b>INFORME DEL DÍA</b>
+                    </td>
+                    <td>
+                        <span id="fechainfo">0000-00-00</span>
+                    </td>
+                    <td class="text-right">
+                        <b>FECHA DE CORTE</b>
+                    </td>
+                    <td>
+                        <span id="fechacorte">0000-00-00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-right">
+                        <b>FECHA DE INICIO PROGRAMADA</b>
+                    </td>
+                    <td>
+                        <span id="fechainicio">2023-05-15</span>
+                    </td>
+                    <td class="text-right" >
+                        <b>FECHA DE INICIO REAL</b>
+                    </td>
+                    <td>
+                        <span id="fechainicior">2023-05-15</span>
+                    </td>
+                </tr>
+    
+            </table>
+        </div>
+       </div>
+
+       
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-title">
+                        DÍA EJECUCIÓN
+                    </div>
+                    <div class="card-body">
+                        <h1 id="dias">0</h1> 
+                        <span class="subtitle">.</span>
+                    </div>
+                    <div class="card-foot">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h2 id="diasprog">6</h2>
+                                Programados
+                            </div>
+                            <div class="col-sm-4">
+                                <h2 id="diasfaltantes">4</h2>
+                                Faltantes
+                            </div>
+                            <div class="col-sm-4">
+                                <h2 id="diastrans">33%</h2>
+                                Transcurridos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-title">
+                        AVANCE DE OBRA
+                    </div>
+                    <div class="card-body">
+                       <h1 id="avance">0% </h1>  
+                       <span class="subtitle">Ejecutado</span>
+                    </div>
+                    <div class="card-foot">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2 id="avanceprog">0%</h2>
+                                Programado
+                            </div>
+                            <div class="col-sm-6">
+                                <h2 id="desv">0%</h2>
+                                Δ
+                            </div>
+                              
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-title">
+                        RUTA CRÍTICA
+                    </div>
+                    <div class="card-body">
+                        <h1 id="avanceruta">0% </h1>  
+                        <span class="subtitle">Ejecutado</span>
+                    </div>
+                    <div class="card-foot">
+                        <div class="row">
+                            <div class="col-sm-6">
+                               <h2 id="progruta"> 0% </h2>
+                               Programado
+                            </div>
+                            <div class="col-sm-6">
+                                <h2 id="desvruta"> 0% </h2>
+                                Δ
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script>
+        var odsq = null
+        var server = "https://utitalco.com/029/server/";
+
+        // crea un nuevo objeto `Date`
+        var today = new Date();
+        
+        // `getDate()` devuelve el día del mes (del 1 al 31)
+        var day = today.getDate();
+        
+        // `getMonth()` devuelve el mes (de 0 a 11)
+        var month = today.getMonth() + 1;
+        
+        // `getFullYear()` devuelve el año completo
+        var year = today.getFullYear();
+        
+        // muestra la fecha de hoy en formato `MM/DD/YYYY`
+        var fechaact = `${month}/${day}/${year}`
+
+        cargarInfo()
+
+        function cargarInfo(){
+            $.post(server+'verInfo.php',{},
+            function(resp){
+                console.log(resp)
+                
+                $('#diasprog').html(resp.dias)
+                $('#dias').html(resp.diastrans)
+                $('#diastrans').html(resp.porcdias + '%')
+                $('#diasfaltantes').html(resp.diasfaltantes)
+                $('#avanceprog').html(resp.avanceprog)
+                $('#avance').html(resp.avanceeje)
+                $('#desv').html(resp.avancedesv)
+                $('#progruta').html(resp.rutaprog)
+                $('#avanceruta').html(resp.rutaeje)
+                $('#desvruta').html(resp.rutadesv)
+
+                $('#infno').html(resp.diastrans)
+                $('#fechainfo').html(fechaact)
+                $('#fechacorte').html(fechaact)
+
+
+            })
+        }
+
+        
+
+       
+        
+        
+    </script>
+
+
+</body>
+
+</html>
