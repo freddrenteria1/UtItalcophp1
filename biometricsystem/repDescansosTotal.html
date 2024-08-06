@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporte Diario de Tiempo Consolidado</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+
+
+    <style>
+        td {
+            height: 70px;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        .cuerpo {
+            width: 1024px;
+            height: 100%;
+        }
+
+        .salto {
+            page-break-after: always;
+        }
+
+        .cab {
+            background-color: #01005e;
+            width: 100%;
+            height: 80px;
+            color: white;
+        }
+
+        .titfecha {
+            padding: 5px;
+            border-style: solid;
+            border-color: rgb(54, 54, 54);
+            border-width: 0.7px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #encabezado {
+            padding: 15px;
+            border-style: solid;
+            border-color: rgb(150, 150, 150);
+            border-width: 0.7px;
+            border-radius: 2px;
+            text-align: center;
+            width: 100%;
+            margin-top: 0px;
+        }
+
+        #contenido {
+            margin: 20px;
+        }
+
+        .firmas {
+            width: 33%;
+            float: left;
+        }
+
+        .espfirmas {
+            height: 50px;
+        }
+
+        @page {
+            size: letter landscape;
+        }
+
+        @page :left {
+            margin-left: 1cm;
+            margin-right: 1cm;
+        }
+
+        @page :right {
+            margin-left: 1cm;
+            margin-right: 1cm;
+        }
+
+        @page :first {
+            margin-top: 1cm;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="contenido">
+        <div id="listado"></div>
+
+        <table class="table" id="tblData">
+            <thead>
+                <th>ID</th>
+                <th>DOCUMENTO</th>
+                <th>NOMBRE</th>
+                <th>CARGO</th>
+                <th>INGRESO</th>
+                <th>FRENTE</th>
+                <th>DIAS ACUM</th>
+            </thead>
+            <tbody id="datosTabla">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ?
+                "" :
+                decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        document.body.style.zoom = "75%";
+
+
+        var frente = getParameterByName("frente");
+        var ods = getParameterByName("ods");
+        var turno = getParameterByName("turno");
+
+        var arrayDatos = []
+        var arrayTrab = []
+        var arrayMarca = []
+
+        var fechainicial = null
+        var fechahoy = null
+
+        var fechainicial2 = null
+        var fechahoy2 = null
+
+        // var listadoPersonal = [];
+
+        // listadoPersonal = JSON.parse(
+        //     localStorage.getItem("arrayListadoPersonal")
+        // );
+
+        var server = "https://utitalco.com/biometricsystem/server/";
+
+         
+
+
+
+
+        function sumarDias(fecha, dias) {
+            fecha.setDate(fecha.getDate() + dias);
+            return fecha;
+        }
+
+        function formatDate(date) {
+            var d = new Date(),
+                month = '' + (d.getMonth() - 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
+        function formatDate2(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
+        function cargarInfo() {
+
+            // console.log(formatDate())
+            fechainicial = new Date()
+
+            // var d = new Date()
+            //  fechainicial = sumarDias(d, -15)
+
+            // // console.log(fechainicial)
+
+            // // console.log(formatDate2(fechainicial))
+            // fechainicialf = formatDate2(fechainicial)
+
+            var html = ''
+
+            for (var i = 0; i < arrayTrab.length; i++) {
+
+                var contador = 0;
+                var idtrab = arrayTrab[i].idtrab
+                var nombre = arrayTrab[i].nombres
+                var documento = arrayTrab[i].ced
+                var cargo = arrayTrab[i].cargo
+                var fingreso = arrayTrab[i].fingreso
+                var frente = arrayTrab[i].frente
+
+                fechainicial = new Date()
+                fechainicial = sumarDias(fechainicial, -30)
+
+                var c = 30;
+
+                for (var a = 1; a <= 30; a++) {
+
+                    fechainicialf = formatDate2(fechainicial)
+                    console.log("fecha inicial "+fechainicialf)
+                    console.log("Traba "+nombre)
+
+                    enc = false
+
+                    for (var b = 0; b < arrayMarca.length; b++) {
+
+                        if (arrayMarca[b].fecha == fechainicialf && arrayMarca[b].doc == idtrab && arrayMarca[b].terminal != 'Anulada' ) {
+                            console.log('Fecha marc ' + arrayMarca[b].fecha)
+                            enc = true;
+                        }
+
+                    }
+
+                    if (enc == true) {
+                        contador++;
+                    } else {
+                        contador=1;
+                    }
+
+
+                    fechainicial = sumarDias(fechainicial, 1)
+
+
+                }
+
+                if (contador >= 6) {
+                    var color = '#F9A65C';
+                } else {
+                    var color = '#FFFF';
+                }
+
+                html += `
+                <tr  style="background-color: ${color};" >
+                    <td>${idtrab}</td>    
+                    <td>${documento}</td>    
+                    <td>${nombre}</td>    
+                    <td>${cargo}</td>    
+                    <td>${fingreso}</td>    
+                    <td>${frente}</td>    
+                    <td>${contador}</td>    
+                </tr>
+                `
+
+                var datos = "Trabajador: " + nombre + " Cant dias: " + contador;
+                console.log(datos);
+
+            }
+
+            $('#datosTabla').html(html)
+
+            $('#tblData').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ]
+            });
+
+
+
+
+        }
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando Descansos!",
+                html: "Un momento por favor...",
+                timer: 25000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    timerInterval = setInterval(() => {}, 1000);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            });
+        }
+
+        cargando();
+
+        $.post(
+            server + "repDescansosTotalOds.php", {
+                ods: ods
+            },
+            function (resp) {
+                arrayDatos = resp;
+                arrayTrab = resp.trab
+                arrayMarca = resp.marca
+
+                console.log(arrayDatos)
+
+                cargarInfo()
+
+            }
+        );
+
+        
+        
+    </script>
+</body>
+
+</html>

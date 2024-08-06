@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Diario de Tiempo Consolidado</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+        
+
+    <style>
+        td {
+            height: 30px;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            font-size: 9px;
+        }
+
+        .cuerpo {
+            width: 1024px;
+            height: 100%;
+        }
+
+        .salto {
+            PAGE-BREAK-AFTER: always;
+        }
+
+        .cab {
+            background-color: #01005e;
+            width: 100%;
+            height: 80px;
+            color: white;
+        }
+
+        .titfecha {
+            padding: 5px;
+            border-style: solid;
+            border-color: rgb(54, 54, 54);
+            border-width: 0.7px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #encabezado {
+            padding: 15px;
+            border-style: solid;
+            border-color: rgb(150, 150, 150);
+            border-width: 0.7px;
+            border-radius: 2px;
+            text-align: center;
+            width: 100%;
+            margin-top: 0px;
+        }
+
+        #contenido {
+            margin: 20px;
+        }
+
+        .firmas {
+            width: 33%;
+            float: left;
+        }
+
+        .espfirmas {
+            height: 50px;
+        }
+
+        .scaled {
+            transform: scale(0.75); /* Igual que: scaleX(0.7) scaleY(0.7) */
+        }
+
+        @media print {
+            /* Aquí irían tus reglas CSS específicas para imprimir */
+            @page {
+                size: letter landscape;
+            }
+
+            @page :left {
+                margin-left: 1cm;
+                margin-right: 1cm;
+            }
+
+            @page :right {
+                margin-left: 1cm;
+                margin-right: 1cm;
+            }
+
+            @page :first {
+                margin-top: 1cm;
+            }
+        }
+
+       
+    </style>
+</head>
+
+<body >
+    <div id="contenido" >
+
+
+        <div id="listado">
+
+
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        //document.body.style.zoom = "75%";
+
+        var fecha = getParameterByName('fecha');
+        var odsrep = getParameterByName('ods');
+        var frente = getParameterByName('frente');
+        var gruposel = getParameterByName('grupo');
+        var turno = getParameterByName('turno');
+        var clasefirma = getParameterByName('clasefirma');
+
+        var server = 'https://utitalco.com/biometricsystem/server/'
+
+        var grupo = null
+        var supervisor = ''
+
+        var arrayFrentes = []
+        var arryaDatos = []
+        var fila = 0;
+
+        var contador = 0;
+
+        var totfrentes = ''
+
+        var nombreods = sessionStorage.getItem('nombreods');
+        var voboitalco = sessionStorage.getItem('voboitalco');
+        var voboecp = sessionStorage.getItem('voboecp');
+
+        var numods = odsrep;
+
+        if (frente == 'SB-2955') {
+            voboecp = 'JUAN CARLOS HUERTAS CASTILLO';
+        }else{
+            if(numods=='025'){
+                voboecp = ''
+            }
+        }
+
+        if (frente == 'SB-2954') {
+            numods = '023'
+            voboecp = 'JUAN CARLOS HUERTAS CASTILLO';
+            voboitalco = 'VICTOR USECHE GARCIA';
+            nombreods = 'CALDERAS';
+        }
+
+
+
+        // if (frente == 'T-2874 AMINA') {
+        //     voboecp = 'BENJAMÍN QUINO';
+        //     numods = '022';
+        //     nombreods = 'PARADA TÉCNICA UOP I';
+        // }
+
+        //busca el consolidado de frentes de la ods
+
+        cargando()
+
+        $.post(server + 'consolidadoGrupoSel.php', {
+                frente: frente,
+                grupo:gruposel,
+                ods: odsrep
+            },
+            function (resp) {
+
+                arryaDatos = resp;
+                console.log('grupos');
+                console.log(arryaDatos)
+
+                for (var b = 0; b < arryaDatos.length; b++) {
+
+                    grupo = arryaDatos[b].grupo;
+                    docsup = arryaDatos[b].docsup;
+                    supervisor = arryaDatos[b].supervisor;
+
+                    //console.log('Grupo for original ' + grupo)
+
+                     
+                    console.log('Grupo ' + grupo + ' ods ' + odsrep + ' fecha ' + fecha + ' frente ' + frente + ' turno ' + turno + ' clasefirma ' + clasefirma + ' docsup ' + docsup)
+                   
+
+
+                    $.post(server + 'generarPlanillaV2.php', {
+                            ods: odsrep,
+                            fecha: fecha,
+                            grupo: grupo,
+                            frente: frente,
+                            turno: turno,
+                            clasefirma: clasefirma,
+                            docsup: docsup,
+                            supervisor: supervisor                         
+                        },
+                        function (resp) {
+                            arrayFrentes = resp
+                            
+                            var html = ''
+
+                            // console.log('trabajadores');
+                            console.log('Grupo ' +grupo )
+                            console.log(arrayFrentes)
+
+                            console.log('Supervisor: '+ arrayFrentes[0].supervisor)
+
+                            fila = 0;
+
+                            if (resp != null && resp.length != 0) {
+
+                                var tottablas = Math.ceil(arrayFrentes.length / 13)
+                                //console.log('total tablas ' + arrayFrentes.length)
+
+                                
+                             //console.log('Total tablas: ' + tottablas)
+                                 
+
+                                for (var a = 0; a < tottablas; a++) {
+
+                                    
+
+
+                                    html = `
+                                    <table class="table table-sm table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="11">
+                                                <div id="encabezado">
+                                                    <div class="row">
+                                                        <div class="col-sm-2">
+                                                            <div class="fondorojo">
+                                                                <img src="assets/images/logo_p.png" width="200px" alt="">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <h4>REPORTE DIARIO DE TIEMPO LABORADO</h4>
+                                                            <center>CONTRATO : No. 3023605 “MANTENIMIENTO CON PARADA DE PLANTA Y EN OPERACIÓN DE LAS UNIDADES <br> DE LA
+                                                                REFINERÍA DE BARRANCABERMEJA”</center>
+                                                            
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="titfecha">
+                                                                <center><b>UT-GT-F05</b></center>
+                                                                <center><b> Fecha: 09/07/2022</b></center>
+                                                                <center><b>Versión: 1</b></center>
+                                                               
+                                                            </div>  
+                                                            <center>Pág. ${a+1} de ${tottablas}</center>
+                                                        </div>
+
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                           <th colspan="2" class="text-right"> <h4>No. ODS  </h4> </th>
+                                           <th colspan="1"> <h4> ${numods} - ${nombreods} </h4> </th>
+                                           <th colspan="2" class="text-right"> <h4>FECHA REPORTE</h4> </th>
+                                           <th colspan="1"> <h4>${fecha} </h4>  </th>
+                                           <th colspan="5"><h4> SUPERVISOR:   ${arrayFrentes[0].supervisor}  </h4>
+                                            
+                                            </th>
+                                            
+                                            
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th>Código</th>
+                                            <th>Nombres</th>
+                                            <th>Cédula</th>
+                                            <th>Cargo</th>
+                                            <th>Frente trabajo</th>
+                                            <th>Hora Ingreso</th>
+                                            <th>Hora Salida</th>
+                                            <th>HT</th>
+                                            <th>Firma del Trabajador</th>
+                                            <th>Observación</th>
+                                        </tr>
+
+                                    </thead>
+                                    
+                                    <tbody id="datosTabla">
+                                    `
+
+                                    for (var i = 0; i < 13; i++) {
+
+                                         
+                                        
+                                        if(grupo == 'MECANICOS'){
+                                            console.log('Fila ' + fila)
+                                        }
+                                        
+
+                                        if (fila < arrayFrentes.length) {
+                                            contador++;
+                                            if (clasefirma == 'sinfirma') {
+                                                var horaingreso = arrayFrentes[fila].horaingreso;
+                                                var horasalida = arrayFrentes[fila].horasalida;
+                                                var horastrab = arrayFrentes[fila].horastrab;
+                                                var firma = ''
+                                            } else {
+                                                var horaingreso = arrayFrentes[fila].horaingreso;
+                                                var horasalida = arrayFrentes[fila].horasalida;
+                                                var horastrab = arrayFrentes[fila].horastrab;
+                                                var firma = arrayFrentes[fila].firma
+                                            }
+
+                                            html += `
+                                            <tr>
+                                                <td>${i+1}</td>
+                                                <td>${arrayFrentes[fila].contrato}</td>
+                                                <td>${arrayFrentes[fila].nombres}</td>
+                                                <td>${arrayFrentes[fila].cedula}</td>
+                                                <td>${arrayFrentes[fila].cargo}</td>
+                                                <td>${frente}</td>
+                                                <td>${horaingreso}</td>
+                                                <td>${horasalida}</td>
+                                                <td>${horastrab}</td>
+                                                <td>
+                                                    ${firma}
+                                                </td>
+                                                <td>${arrayFrentes[fila].observacion}</td>
+                                            </tr>
+                                            `
+                                            fila++
+
+                                        }
+                                        
+
+                                    }
+                                    
+
+                                    html += `
+                                    <tr ><td colspan="11">
+                                        <div class="espfirmas"></div>
+                                        </td>
+                                    <tr>
+                                    <tr>
+                                        <td colspan="11">
+                                            
+                                                <div class="firmas">
+                                                    <center>
+                                                       ${voboitalco} <br>
+                                                        Nombre y Apellido <br>
+                                                        VoBo UT ITALCO <br>
+                                                    </center>
+                                                </div>
+                                                <div class="firmas">
+                                                    <center>
+                                                        <br>
+                                                        Nombre y Apellido Reg. <br>
+                                                        VoBo Gestión Técnica ECP <br>
+                                                    </center>
+                                                </div>
+                                                <div class="firmas">
+                                                    <center>
+                                                        ${voboecp} <br>
+                                                        Nombre y Apellido <br>
+                                                        VoBo Líder ECP <br>
+                                                    </center>
+                                                </div>
+                                            
+                                            
+                                                </td>
+                                            </tr>
+                                            <tr  >
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <div class="salto"></div>
+                                            
+                                    `
+                                    $('#listado').append(html)
+
+                                     
+                                }
+                                
+
+                            }
+
+                        })
+
+                }
+
+            })
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando Planillas!',
+                html: 'Un momento por favor...',
+                timer: 30000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Total personal ' + contador,
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+            })
+
+        }
+
+
+         
+
+
+    </script>
+</body>
+
+</html>

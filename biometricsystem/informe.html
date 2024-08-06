@@ -1,0 +1,3190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.1/pure-min.css">
+
+    <style>
+        body {
+            background-image: url('img/fondo_.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .mn {
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .mn:hover {
+            background-color: rgb(140, 185, 252);
+        }
+        
+        .cab {
+            display: flex;
+            align-items: center;
+        }
+        
+        #menu {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 70%;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+        }
+        
+        .cuerpo {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 95%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 15px;
+        }
+        
+        .rojo {
+            color: red;
+            cursor: pointer;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="menu">
+        <div class="row cab">
+            <div class="col-sm-4 mt-2 mb-2 text-center">
+                <img src="img/biometricsystem.png" height="100px" alt="">
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom" title="Configuración">
+                <div class="dropdown">
+                    <div id="mnuempresa" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/cpanel.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnuempresa">
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('empresa')">Empresa</a>
+                            <!-- <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('frentes')">Frentes</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('grupos')">Grupos</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('areas')">Lugar de T.</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('turnos')">Turnos</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('conceptos')">Conceptos</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('cargos')">Cargos</a> -->
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('subcontratistas')">Subcontratistas</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('trabajadores')">Personal</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('firmas')">Firmas</a>
+                            <hr>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="salir()">Salir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom" title="Procesos">
+                <div class="dropdown">
+                    <div id="mnutiempo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/tiempo.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnutiempo">
+                            <!-- 
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="impAsistencias()">Importar Asistencias</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('marcmanual')">Marcación Manual</a>
+                            
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('novedades')">Novedades</a> -->
+                            <!-- <a class="dropdown-item" href="javascript:void(0)" onclick="impMarcaciones()">Importar Marcaciones</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="expMarcaciones()">Exportar Archivo Plano</a> -->
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('asistencias')">Asistencias</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="informe()">Generar Informe Diario Consolidado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom" title="Informes">
+                <div class="dropdown">
+                    <div id="mnuinformes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/informes.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnuinformes">
+                            <!-- <a class="dropdown-item" href="#" onclick="abrir('informe')">Informes Generales</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="planillas()">Planillas</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="planillas2()">Planillas x Excel</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="actividades()">Actividades</a> -->
+                            <a class="dropdown-item" href="#" onclick="abrir('informe')">Informe General</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom" title="Herramientas">
+                <div class="dropdown">
+                    <div id="mnupanel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/config.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnupanel">
+                            <!-- <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('usuarios')">Usuarios</a>
+                            <a class="dropdown-item" href="#">Dispositivos</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 mb-2 text-center">
+                <img src="img/logo_p.png" height="50px" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="empresa">
+        <h3>Datos de la empresa
+            <span class="float-right rojo" onClick="cerrar('empresa')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Nit</label>
+                    <input type="text" class="form-control" placeholder="Nit" id="nit">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Razón Social</label>
+                    <input type="text" class="form-control" placeholder="Razón Social" id="razon">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Dirección</label>
+                    <input type="text" class="form-control" placeholder="Dirección" id="dir">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input type="text" class="form-control" placeholder="Teléfono" id="tel">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Cédula</label>
+                    <input type="text" class="form-control" placeholder="Cédula" id="doc">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Representante Legal</label>
+                    <input type="text" class="form-control" placeholder="Representante legal" id="rep">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">Correo Electrónico</label>
+                    <input type="text" class="form-control" placeholder="Email" id="email">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success float-right" onclick="actEmpresa()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="frentes" style="width: 50%; ">
+        <h3>Frentes de trabajo
+            <span class="float-right rojo" onClick="cerrar('frentes')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Frente
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="Frente de trabajo" id="frentetrabg">
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="guardarFrente()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Frente</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosFrentes">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="grupos" style="width: 50%; ">
+        <h3>Grupos
+            <span class="float-right rojo" onClick="cerrar('grupos')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+
+                    <div class="col-sm-3 text-right">
+                        Frente de trabajo
+                    </div>
+                    <div class="col-sm-9">
+                        <select id="listadofrentes" class="form-control">
+                            
+                        </select>
+
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Grupo
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Grupo" id="grupo">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Supervisor
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Supervisor" id="supgrupo">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Documento
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Documento" id="docsup">
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="guardarGrupo()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Frente</th>
+                    <th>Grupo</th>
+                    <th>Supervisor</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosGrupos">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn" id="areas" style="width: 50%; ">
+        <h3>Lugar de Trabajo
+            <span class="float-right rojo" onClick="cerrar('areas')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Lugar
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" placeholder="Lugar de trabajo" id="lugar">
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="agregarLugar()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Descipción</th>
+                </thead>
+                <tbody id="lugartrabajo">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn" id="firmas" style="width: 50%; ">
+        <h3>Firmas
+            <span class="float-right rojo" onClick="cerrar('firmas')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <form name="form1" id="form1" method="post" action="server/guardarfirmas.php" enctype="multipart/form-data">
+
+                    <h4 class="text-center">Seleccionar firmas</h4>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Archivos</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" id="archivo[]" name="archivo[]" multiple="">
+                            <button type="submit" class="btn btn-primary">Cargar</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn" id="turnos" style="width: 70%; ">
+        <h3>Turnos
+            <span class="float-right rojo" onClick="cerrar('turnos')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Código
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="Código" id="codigoturno">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Hora Inicial
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="time" class="form-control" id="hinicial">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Hora Final
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="time" class="form-control" id="hfinal">
+                    </div>
+                    <div class="col-sm-12 mt-2">
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-success" onclick="agregarTurno()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Código</th>
+                    <th>Hora Inicial</th>
+                    <th>Hora Final</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosTurnos">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="conceptos" style="width: 50%; ">
+        <h3>Conceptos
+            <span class="float-right rojo" onClick="cerrar('conceptos')"><i class="fas fa-window-close"></i></span>
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Código
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="Código" id="codconcepto">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Descripción
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Descripción" id="detconcepto">
+                    </div>
+                    <div class="col-sm-12 text-center mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="agregarConcepto()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Código</th>
+                    <th>Descipción</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosConceptos">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="cargos" style="width: 50%; ">
+        <h3>Cargos
+            <span class="float-right rojo" onClick="cerrar('cargos')"><i class="fas fa-window-close"></i></span>
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+
+                    <div class="col-sm-2 text-right">
+                        Cargo
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Descripción" id="detcargo">
+                    </div>
+                    <div class="col-sm-12 text-center mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="agregarCargo()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Cargo</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosCargos">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="subcontratistas" style="width: 50%; ">
+        <h3>Subcontratistas
+            <span class="float-right rojo" onClick="cerrar('subcontratistas')"><i class="fas fa-window-close"></i></span>
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Código
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="Código" id="codsub">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Empresa
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Descripción" id="empresasub">
+                    </div>
+                    <div class="col-sm-12 text-center mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="agregarSubcontratista()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Código</th>
+                    <th>Empresa</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosSubcontratistas">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="trabajadores">
+        <h3>Personal
+
+
+            <span class="float-right rojo" onClick="cerrar('trabajadores')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+
+
+
+
+        <div class="table-responsive">
+
+            <table class="table table-striped" id="tblDataPersonal">
+                <thead class="thead-dark">
+                    <th></th>
+                    <th>Cédula</th>
+                    <th>Trabajador</th>
+                    <th>Ods</th>
+                    <th>Cargo</th>
+                    <th>Frente</th>
+                    <th>Turno</th>
+                    <th></th>
+
+                </thead>
+                <tbody id="datosTrab">
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="asistencias">
+        <h3>Asistencias
+            <span class="float-right rojo" onClick="cerrar('asistencias')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+
+
+            <!-- <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Grupo</label>
+                    <select id="grupoasis" class="form-control">
+                            <option value="UT">Administrativo</option>
+                            <option value="TS">Operativo</option>
+                            <option value="TS">Producción</option>
+                        </select>
+                </div>
+            </div> -->
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha</label>
+                    <input type="date" id="fasis" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Turno</label>
+                    <select id="turnoasist" class="form-control">
+                    </select>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">.</label> <br>
+                    <button type="button" class="btn btn-warning" onclick="buscarAsistencia()"><i class="fas fa-search"></i> Buscar</button>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped" id="tablaAsist">
+                <thead class="thead-dark">
+
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>ODS</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Marcación</th>
+                    <th>Frente</th>
+                    <th>Grupo</th>
+                    <th>Supervisor</th>
+                    <th>Novedad</th>
+                    <th></th>
+
+                </thead>
+                <tbody id="listaAsistencia">
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="informe">
+        <h3>Informe General
+            <span class="float-right rojo" onClick="cerrar('informe')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha</label>
+                    <input type="date" id="fasis2" class="form-control">
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">.</label> <br>
+                    <button type="button" class="btn btn-warning" onclick="buscarAsistenciaInforme()"><i class="fas fa-search"></i> Buscar</button>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>
+                    Total Marcaciones: <span id="totalMarca"></span><br> Total Personal en GRB: <span id="totalGRB"></span><br> Total Personal en Taller: <span id="totalTaller"></span><br> Total Oficina Italco: <span id="totalOficina"></span>
+                    <hr> Total Activos UT Italco: <span id="totalTrabUT"></span><br> Total Activos Total Service: <span id="totalTrabTS"></span><br> Total Activos: <span id="totalTrab"></span><br>
+                </h3>
+
+            </div>
+            <div class="col-sm-6">
+
+                <h3>Novedades</h3>
+                <hr>
+                <span id="noveper"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="novedades">
+        <h3>Novedades del personal
+
+            <span class="float-right rojo" onClick="cerrar('novedades')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+
+        <select id="frentetrab5"> </select>
+
+        <button type="button" class="btn btn-danger" onclick="agregarNovedadTodos()">Agregar Descansos</button>
+        <button type="button" class="btn btn-warning" onclick="quitarNovedadTodos()">Quitar Descansos Todos</button>
+
+
+        <hr>
+        <div class="row">
+
+            <div class="col-sm-3">
+                <label for="">Frente Trabajo</label>
+                <select id="frentetrab3" class="form-control" onchange="cargarListaGrupo3()">
+                
+                </select>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Grupo</label>
+                    <select id="grupotrab3" class="form-control" onchange="cargarTrabNov()">
+                             
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Trabajador</label>
+                    <select id="trabnov" class="form-control">
+                        
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Fecha</label>
+                    <input type="date" id="fechanov" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Novedad</label>
+                    <select id="novedad" class="form-control">
+                            
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">.</label><br>
+                    <button type="button" class="btn btn-success" onclick="agregarNovedad()">Agregar</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Fecha</th>
+                    <th>Código</th>
+                    <th>Cédula</th>
+                    <th>Trabajador</th>
+                    <th>Cargo</th>
+                    <th>Grupo/Frente</th>
+                    <th>Novedad</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosNovedades">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="usuarios" style="width: 90%; ">
+        <h3>Usuarios
+            <button type="button" class="btn btn-success" onclick="guardarUser()">Agregar</button>
+            <span class="float-right rojo" onClick="cerrar('usuarios')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-3 text-right">
+                        Nombres
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Nombres" id="nombreuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Email
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" placeholder="Email" id="emailuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Constraseña
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="Contraseña" id="claveuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        # ODS
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="# ODS" id="numodsuser">
+                    </div>
+
+                    <div class="col-sm-3 text-right">
+                        Orden de Servicio
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Descripción ODS" id="odsuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        VoBo Italco
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="VoBo Italco" id="voboitalco">
+                    </div>
+
+                    <div class="col-sm-3 text-right">
+                        VoBo Ecopetrol
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="VoBo Ecopetrol" id="voboecp">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th># ODS</th>
+                    <th>Descripción ODS</th>
+                    <th>VoBo Italco</th>
+                    <th>VoBo Ecopetrol</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosUser">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+
+
+
+    <script>
+        var server = 'https://utitalco.com/biometricsystem/server/'
+        var datos = []
+        var numods = ''
+        var arrayLugar = []
+        var listaLugar = ''
+        var arrayTurnos = []
+        var arrayTurnosList = []
+        var listaTurnos = ''
+        var arrayConceptos = []
+        var arrayCargos = []
+        var arrayFrentesTrab = []
+        var arrayGrupos = []
+        var listaGrupos = ''
+        var listaGruposOriginal = []
+        var listaCargos = ''
+        var listaFrentes = ''
+        var arraySubcontratistas = []
+        var listaSubcontra = ''
+        var arrayTrabajadores = []
+        var arrayNovedades = []
+
+        var fechaMarcacion = ''
+
+        var arrayConsolidado = []
+
+        var arrayFrenteGrafica = []
+        var arraryCantFrenteDir = []
+        var arraryCantFrenteIndir = []
+        var arrayCantFrenteTotal = []
+
+        var arrayAsistencia = []
+        var arrayUsers = []
+        var arrayAsistenciaTot = []
+
+        var idtmp = null
+
+        var user = null
+        var cargaTablaTrab = null
+
+        user = sessionStorage.getItem('user')
+        numods = sessionStorage.getItem('ods')
+
+        if (user == null) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Sesión no válida',
+                footer: 'Solicite una clave al administrador'
+            }).then(() => {
+                location = 'login.html'
+            })
+        }
+
+        cargarDatosEmp();
+        cargarLugar();
+        cargarFrentes();
+        cargarGrupos();
+        cargarTurnos();
+        cargarConceptos();
+        cargarCargos();
+        cargarSubcontratistas();
+        cargarTrabajadores();
+        cargarNovedades();
+        cargarUsers();
+
+        function cerrar(id) {
+            $('#' + id).addClass('oculto');
+        }
+
+        function abrir(id) {
+            $('#' + id).removeClass('oculto');
+        }
+
+        function salir() {
+            sessionStorage.clear
+            location = 'login.html'
+        }
+
+        function cargarSubcontratistas() {
+            var html = ''
+            $.post(server + 'cargarSubcontratistas.php', {},
+                function(resp) {
+                    arraySubcontratistas = resp
+                    console.log(resp)
+
+                    for (var i = 0; i < arraySubcontratistas.length; i++) {
+                        listaSubcontra += `
+                        <option value="${arraySubcontratistas[i].codigo}">${arraySubcontratistas[i].empresa}</option>
+                    `
+                        html += `
+                        <tr>
+                            <td>${arraySubcontratistas[i].codigo}</td>
+                            <td>${arraySubcontratistas[i].empresa}</td>
+                            <td><span class="float-right rojo" onClick="borrarSubcontratista(${i})"><i class="fas fa-window-close"></i></span></td>
+                        </tr>
+                        `
+                    }
+                    $('#datosSubcontratistas').html(html)
+                    $('#emptrab').html(listaSubcontra)
+                })
+        }
+
+        function guardarFrente() {
+            var frentetrabg = $('#frentetrabg').val()
+
+            $.post(server + 'guardarFrentetrab.php', {
+                    frentetrab: frentetrabg,
+                    ods: numods
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Frente',
+                            text: 'Agregado...'
+                        })
+                        cargarFrentes()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Frente no agregado'
+                        })
+                    }
+                })
+        }
+
+
+        function guardarGrupo() {
+            var ftrab = $('#listadofrentes').val()
+            var grupo = $('#grupo').val()
+            var supgrupo = $('#supgrupo').val()
+            var docsup = $('#docsup').val()
+
+            $.post(server + 'guardarGrupo.php', {
+                    frente: ftrab,
+                    grupo: grupo,
+                    supgrupo: supgrupo,
+                    docsup: docsup,
+                    ods: numods
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Grupo',
+                            text: 'Agregado...'
+                        })
+                        cargarGrupos()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Grupo no agregado'
+                        })
+                    }
+                })
+        }
+
+        function cargarFrentes() {
+            $.post(server + 'cargarFrentes.php', {
+                    ods: numods
+                },
+                function(resp) {
+                    arrayFrentesTrab = resp
+                    var html = ''
+                    listaFrentes = ''
+                    for (var i = 0; i < arrayFrentesTrab.length; i++) {
+                        listaFrentes += `<option value="${arrayFrentesTrab[i].frentetrab}">${arrayFrentesTrab[i].frentetrab}</option>`
+                        html += `
+                            <tr>
+                                <td>${arrayFrentesTrab[i].frentetrab}</td>
+                                <td><button type="button" class="btn btn-warning" onclick="editarFrente('${i}')"><i class="fas fa-edit"></i></button>
+                            </tr>
+                        `
+                    }
+                    $('#datosFrentes').html(html)
+                    $('#frentestrab').html(listaFrentes)
+                        //$('#grupoasis').html(listaGrupos)
+                    var listg = '<option value="">Seleccione un Frente</option>';
+                    var listh = listg + '<option value="Todos">Todos</option>';
+
+                    listg += listaFrentes
+
+                    listh += listaFrentes
+
+
+                    $('#listadofrentes').html(listg)
+                    $('#frentetrab').html(listg)
+                    $('#frentetrab2').html(listg)
+                    $('#frentetrab3').html(listg)
+                    $('#frentetrab4').html(listg)
+                    $('#frentetrab5').html(listh)
+                    $('#frentetrab6').html(listh)
+
+                })
+        }
+
+        function editarFrente(i) {
+            var idfrente = arrayFrentesTrab[i].id
+            var frentetrabe = arrayFrentesTrab[i].frentetrab
+
+            Swal.fire({
+                title: 'Editar Frente',
+                html: `
+                <label>Frente:</label>
+                <input type="text" id="frentetrabedit" class="form-control" value="${frentetrabe}">
+                `,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    frentetrabe = $('#frentetrabedit').val()
+
+
+                    $.post(server + 'actFrentes.php', {
+                            frente: frentetrabe,
+                            id: idfrente
+                        },
+                        function(resp) {
+
+                            cargarFrentes()
+
+                            Swal.fire(
+                                'Actualizado!',
+                                'Frente actualizado.',
+                                'success'
+                            )
+
+                        });
+
+                }
+            })
+
+        }
+
+        function editarGrupo(i) {
+            var idgrupo = arrayGrupos[i].id
+            var frentetrabe = arrayGrupos[i].frentetrab
+            var grupo = arrayGrupos[i].grupo;
+
+            Swal.fire({
+                title: 'Editar Grupo',
+                html: `
+                <label>Frente:</label>
+                <input type="text" id="frentetrabedit2" class="form-control" value="${frentetrabe}">
+                <label>Grupo:</label>
+                <input type="text" id="grupoedit" class="form-control" value="${grupo}">
+                <label>Supervisor:</label>
+                <input type="text" id="supedit" class="form-control" value="${arrayGrupos[i].supervisor}">
+                <label>Doc:</label>
+                <input type="text" id="docsupeedit" class="form-control" value="${arrayGrupos[i].doc}">
+                `,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    frentetrabe = $('#frentetrabedit2').val()
+                    grupo = $('#grupoedit').val()
+                    var supg = $('#supedit').val()
+                    var docsg = $('#docsupeedit').val()
+
+
+                    $.post(server + 'actGrupo.php', {
+                            frente: frentetrabe,
+                            grupo: grupo,
+                            supervisor: supg,
+                            doc: docsg,
+                            id: idgrupo
+                        },
+                        function(resp) {
+
+                            cargarGrupos()
+
+                            Swal.fire(
+                                'Actualizado!',
+                                'Grupo actualizado.',
+                                'success'
+                            )
+
+                        });
+
+                }
+            })
+
+        }
+
+        function cargarListaGrupo2() {
+            var frentesel = $('#frentetrab2').val()
+            $.post(server + 'cargarGruposSel.php', {
+                    frente: frentesel,
+                    ods: numods
+                },
+                function(resp) {
+                    var arrayGruposS = resp
+                    var html = ''
+                    listaGrupos = ''
+                    $('#grupotrab2').html(listaGrupos)
+                    for (var i = 0; i < arrayGruposS.length; i++) {
+                        listaGrupos += `<option value="${arrayGruposS[i].grupo}">${arrayGruposS[i].grupo} - ${arrayGruposS[i].supervisor}</option>`
+                    }
+
+                    $('#grupotrab2').html(listaGrupos)
+
+                })
+        }
+
+        function cargarListaGrupo3() {
+            var frentesel = $('#frentetrab3').val()
+            $.post(server + 'cargarGruposSel.php', {
+                    frente: frentesel,
+                    ods: numods
+                },
+                function(resp) {
+                    var arrayGruposS = resp
+                    var html = ''
+                    listaGrupos = '<option value="">Selecciones un grupo</option>'
+                    $('#grupotrab3').html(listaGrupos)
+                    for (var i = 0; i < arrayGruposS.length; i++) {
+                        listaGrupos += `<option value="${arrayGruposS[i].grupo}">${arrayGruposS[i].grupo} - ${arrayGruposS[i].supervisor}</option>`
+                    }
+
+                    $('#grupotrab3').html(listaGrupos)
+
+                })
+        }
+
+        function cargarListaGrupo() {
+            var frentesel = $('#frentetrab').val()
+            $.post(server + 'cargarGruposSel.php', {
+                    frente: frentesel,
+                    ods: numods
+                },
+                function(resp) {
+                    var arrayGruposS = resp
+                    var html = ''
+                    listaGrupos = ''
+                    $('#grupotrab').html(listaGrupos)
+                    for (var i = 0; i < arrayGruposS.length; i++) {
+                        listaGrupos += `<option value="${arrayGruposS[i].grupo}">${arrayGruposS[i].grupo} - ${arrayGruposS[i].supervisor}</option>`
+                    }
+
+                    $('#grupotrab').html(listaGrupos)
+
+                })
+        }
+
+        function cargarListaGrupoI() {
+            var frentesel = $('#frentetrab').val()
+            $.post(server + 'cargarGruposSel.php', {
+                    frente: frentesel,
+                    ods: numods
+                },
+                function(resp) {
+                    var arrayGruposS = resp
+                    var html = ''
+                    listaGrupos = ''
+                    $('#grupotrab').html(listaGrupos)
+                    for (var i = 0; i < arrayGruposS.length; i++) {
+                        listaGrupos += `<option value="${arrayGruposS[i].grupo}">${arrayGruposS[i].grupo} - ${arrayGruposS[i].supervisor}</option>`
+                    }
+
+                    $('#grupotrab').html(listaGrupos)
+
+
+                })
+        }
+
+        function cargarGrupos() {
+            $.post(server + 'cargarGrupos.php', {
+                    ods: numods
+                },
+                function(resp) {
+                    arrayGrupos = resp
+                    var html = ''
+                    listaGrupos = ''
+                    listaGruposOriginal = ''
+                    for (var i = 0; i < arrayGrupos.length; i++) {
+                        listaGrupos += `<option value="${arrayGrupos[i].grupo}">${arrayGrupos[i].grupo} - ${arrayGrupos[i].frentetrab}</option>`
+                        listaGruposOriginal += `<option value="${arrayGrupos[i].grupo}">${arrayGrupos[i].grupo} - ${arrayGrupos[i].frentetrab}</option>`
+                        html += `
+                            <tr>
+                                <td>${arrayGrupos[i].frentetrab}</td>
+                                <td>${arrayGrupos[i].grupo}</td>
+                                <td>${arrayGrupos[i].supervisor}</td>
+                                <td><button type="button" class="btn btn-warning" onclick="editarGrupo(${i})"><i class="fas fa-edit"></i></button>
+                            </tr>
+                        `
+                    }
+                    $('#datosGrupos').html(html)
+                        //$('#grupotrab').html(listaGrupos)
+                        //$('#grupoasis').html(listaGrupos)
+                    var listg = '<option value="">Seleccione un Grupo/Frente</option>';
+                    listg += listaGrupos
+                    $('#gruponov').html(listg)
+                })
+        }
+
+
+
+        function agregarSubcontratista() {
+            var codsub = $('#codsub').val()
+            var empresasub = $('#empresasub').val()
+
+
+            $.post(server + 'guardarSubcontratista.php', {
+                    codsub: codsub,
+                    empresasub: empresasub
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Subcontratistas',
+                            text: 'Subcontratista agregado...'
+                        })
+                        cargarSubcontratistas()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Subcontratista no agregado'
+                        })
+                    }
+                })
+        }
+
+        function cargarCargos() {
+            var html = ''
+            $.post(server + 'cargarCargos.php', {},
+                function(resp) {
+                    arrayCargos = resp
+                    console.log(resp)
+                    for (var i = 0; i < arrayCargos.length; i++) {
+                        listaCargos += `
+                            <option value="${arrayCargos[i].cargo}">${arrayCargos[i].cargo}</option>
+                        `
+                        html += `
+                        <tr>
+                             
+                            <td>${arrayCargos[i].cargo}</td>
+                            <td><span class="float-right rojo" onClick="borrarCargo(${i})"><i class="fas fa-window-close"></i></span></td>
+                        </tr>
+                        `
+                    }
+                    $('#datosCargos').html(html)
+                        //$('#cargotrab').html(listaCargos)
+                })
+        }
+
+        function agregarCargo() {
+            var codcargo = $('#codcargo').val()
+            var detcargo = $('#detcargo').val()
+
+
+            $.post(server + 'guardarCargo.php', {
+
+                    detcargo: detcargo
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cargos',
+                            text: 'Cargo agregado...'
+                        })
+                        cargarCargos()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Cargo no agregado'
+                        })
+                    }
+                })
+        }
+
+        function agregarConcepto() {
+            var codconcepto = $('#codconcepto').val()
+            var detconcepto = $('#detconcepto').val()
+
+
+            $.post(server + 'guardarConcepto.php', {
+                    codconcepto: codconcepto,
+                    detconcepto: detconcepto
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Concepto',
+                            text: 'Concepto agregado...'
+                        })
+                        cargarConceptos()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Concepto no agregado'
+                        })
+                    }
+                })
+        }
+
+        function cargarConceptos() {
+            var html = ''
+            $.post(server + 'cargarConceptos.php', {},
+                function(resp) {
+                    arrayConceptos = resp
+                    console.log(resp)
+                    var listanovedades = ''
+                    for (var i = 0; i < arrayConceptos.length; i++) {
+                        listanovedades += `
+                        <option value="${arrayConceptos[i].concepto}">${arrayConceptos[i].concepto}</option>
+                        `
+                        html += `
+                        <tr>
+                            <td>${arrayConceptos[i].codigo}</td>
+                            <td>${arrayConceptos[i].concepto}</td>
+                            <td><span class="float-right rojo" onClick="borrarConcepto(${i})"><i class="fas fa-window-close"></i></span></td>
+                        </tr>
+                        `
+                    }
+                    $('#datosConceptos').html(html)
+                    $('#novedad').html(listanovedades)
+                })
+        }
+
+        function cargarTurnos() {
+            var html = ''
+            var listaTurnosTod = `
+            
+            <option value="Todos">Todos</option>`;
+
+            $.post(server + 'cargarTurnos.php', {},
+                function(resp) {
+                    arrayTurnos = resp
+                    console.log(resp)
+                    arrayTurnosList = ''
+                    for (var i = 0; i < arrayTurnos.length; i++) {
+                        listaTurnos += `<option value="${arrayTurnos[i].codigo}">${arrayTurnos[i].codigo} :  ${arrayTurnos[i].hinicial} - ${arrayTurnos[i].hfinal}</option>`
+                        arrayTurnosList += `<option value="${arrayTurnos[i].codigo}">${arrayTurnos[i].codigo}</option>`
+                        html += `
+                        <tr>
+                            <td>${arrayTurnos[i].codigo}</td>
+                            <td>${arrayTurnos[i].hinicial}</td>
+                            <td>${arrayTurnos[i].hfinal}</td>
+                            <td><span class="float-right rojo" onClick="borrarTurno(${i})"><i class="fas fa-window-close"></i></span></td>
+                        </tr>
+                        `
+                        listaTurnosTod += `<option value="${arrayTurnos[i].codigo}">${arrayTurnos[i].codigo} :  ${arrayTurnos[i].hinicial} - ${arrayTurnos[i].hfinal}</option>`
+                        arrayTurnosList += `<option value="${arrayTurnos[i].codigo}">${arrayTurnos[i].codigo}</option>`
+                        html += `
+                        <tr>
+                            <td>${arrayTurnos[i].codigo}</td>
+                            <td>${arrayTurnos[i].hinicial}</td>
+                            <td>${arrayTurnos[i].hfinal}</td>
+                            <td><span class="float-right rojo" onClick="borrarTurno(${i})"><i class="fas fa-window-close"></i></span></td>
+                        </tr>
+                        `
+                    }
+                    $('#datosTurnos').html(html)
+                    $('#turnotrab').html(listaTurnos)
+                    $('#turnotrab4').html(listaTurnos)
+
+                    $('#turnoasist').html(listaTurnosTod)
+
+                })
+        }
+
+        function borrarSubcontratista(i) {
+            var cod = arraySubcontratistas[i].codigo
+            $.post(server + 'borrarSubcontratista.php', {
+                    cod: cod
+                },
+                function(resp) {
+                    cargarSubcontratistas()
+                })
+        }
+
+        function borrarCargo(i) {
+            var id = arrayCargos[i].id
+            $.post(server + 'borrarCargo.php', {
+                    id: id
+                },
+                function(resp) {
+                    cargarCargos()
+                })
+        }
+
+        function borrarConcepto(i) {
+            var cod = arrayConceptos[i].codigo
+            $.post(server + 'borrarConcepto.php', {
+                    cod: cod
+                },
+                function(resp) {
+                    cargarConceptos()
+                })
+        }
+
+        function borrarTurno(i) {
+            var turno = arrayTurnos[i].codigo
+            $.post(server + 'borrarTurno.php', {
+                    turno: turno
+                },
+                function(resp) {
+                    cargarTurnos()
+                })
+        }
+
+        function cargarLugar() {
+            var html = ''
+            $.post(server + 'cargarLugar.php', {},
+                function(resp) {
+                    arrayLugar = resp
+                    console.log(resp)
+                    for (var i = 0; i < arrayLugar.length; i++) {
+                        listaLugar += `
+                        <option value="${arrayLugar[i].lugar}">${arrayLugar[i].lugar}</option>
+                        `
+                        html += `
+                        <tr>
+                            <td>${arrayLugar[i].lugar}</td>
+                        </tr>
+                        `
+                    }
+                    $('#lugartrabajo').html(html)
+                    $('#lugartrab').html(listaLugar)
+                })
+        }
+
+        function agregarTurno() {
+            var codigoturno = $('#codigoturno').val()
+            var hinicial = $('#hinicial').val()
+            var hfinal = $('#hfinal').val()
+
+            $.post(server + 'guardarTurno.php', {
+                    codigoturno: codigoturno,
+                    hinicial: hinicial,
+                    hfinal: hfinal
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Turnos',
+                            text: 'Turno agregado...'
+                        })
+                        cargarTurnos()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Lugar no agregado'
+                        })
+                    }
+                })
+        }
+
+        function cambiarTurnos() {
+            var turno = $('#turnotrab4').val()
+            var frentetrab = $('#frentetrab4').val()
+
+            $.post(server + 'cambiarTurnos.php', {
+                    turno: turno,
+                    frente: frentetrab,
+                    ods: numods
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Turnos',
+                            text: 'Turnos cambiados en el frente ' + frentetrab
+                        })
+                        cargarTurnos()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Error al cambiar turnos'
+                        })
+                    }
+                })
+        }
+
+        function agregarLugar() {
+            var lugar = $('#lugar').val()
+            $.post(server + 'guardarLugar.php', {
+                    lugar: lugar
+                },
+                function(resp) {
+                    if (resp.msn = 'Ok') {
+                        cargarLugar()
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Lugar no agregado'
+                        })
+                    }
+                })
+        }
+
+        function actividades() {
+            Swal.fire({
+                title: 'Generar Actividades',
+                html: `<hr>
+                <div class="row" style="width: 100%;">
+               
+                   
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Fecha</label>
+                            <input type="date" id="fechaact" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Frente</label>
+                            <select id="frentetrab_act" class="form-control">
+                                ${listaFrentes}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Turno</label>
+                            <select id="turnoact" class="form-control">
+                                ${listaTurnos}
+                            </select>
+                        </div>
+                    </div>
+
+                </div><hr>
+
+                `,
+
+                showCancelButton: true,
+                confirmButtonText: 'Generar',
+                cancelButtonText: 'Cancelar',
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var fecha = $('#fechaact').val()
+                    var turnoac = $('#turnoact').val()
+                    var frentetrab = $('#frentetrab_act').val()
+                    window.open("actividades.html?fecha=" + fecha + "&ods=" + numods + "&frente=" + frentetrab + "&turno=" + turnoac, "_blank");
+                }
+            })
+        }
+
+        function planillas2() {
+            Swal.fire({
+                title: 'Generar Planillas de un Excel',
+                html: `<hr>
+                <div class="row" style="width: 100%;">
+               
+                   
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Fecha</label>
+                            <input type="date" id="fechaplanillae" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Frente</label>
+                            <select id="frentetrab_e" class="form-control">
+                                ${listaFrentes}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Turno</label>
+                            <select id="turnoplanillae" class="form-control">
+                                ${listaTurnos}
+                            </select>
+                        </div>
+                    </div>
+
+                    
+
+                </div><hr>
+
+                `,
+
+                showCancelButton: true,
+                confirmButtonText: 'Generar',
+                cancelButtonText: 'Cancelar',
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var fecha = $('#fechaplanillae').val()
+                    var frentetrab = $('#frentetrab_e').val()
+                    var turnop = $('#turnoplanillae').val()
+                    var clasefirma = 'firmado'
+                    window.open("planillase.html?fecha=" + fecha + "&ods=" + numods + "&frente=" + frentetrab + "&turno=" + turnop + "&clasefirma=" + clasefirma, "_blank");
+                }
+            })
+        }
+
+
+        function planillas() {
+            Swal.fire({
+                title: 'Generar Planillas',
+                html: `<hr>
+                <div class="row" style="width: 100%;">
+               
+                   
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Fecha</label>
+                            <input type="date" id="fechaplanilla" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Frente</label>
+                            <select id="frentetrab_" class="form-control">
+                                ${listaFrentes}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Turno</label>
+                            <select id="turnoplanilla" class="form-control">
+                                ${listaTurnos}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Clase Firma</label>
+                            <select id="clasefirma" class="form-control">
+                                <option value='firmado'>Firma digital</option>
+                                <option value='sinfirma'>Firma manual</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div><hr>
+
+                `,
+
+                showCancelButton: true,
+                confirmButtonText: 'Generar',
+                cancelButtonText: 'Cancelar',
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var fecha = $('#fechaplanilla').val()
+                    var frentetrab = $('#frentetrab_').val()
+                    var turnop = $('#turnoplanilla').val()
+                    var clasefirma = $('#clasefirma').val()
+                    window.open("planillas.html?fecha=" + fecha + "&ods=" + numods + "&frente=" + frentetrab + "&turno=" + turnop + "&clasefirma=" + clasefirma, "_blank");
+                }
+            })
+        }
+
+        function impMarcaciones() {
+            Swal.fire({
+                title: 'Importar Marcaciones',
+                html: `<hr>
+                <div class="row" style="width: 100%;">
+               
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Fecha</label>
+                            <input type="date" class="form-control" id="fechamarca" >
+                        </div>
+                        <div class="form-group">
+                            <label for="">Archivo</label>
+                            <input type="file" class="form-control" id="excelMarcaciones"  ref="excelMarcaciones" placeholder="Importar">
+                        </div>
+                    </div>
+                </div><hr>
+                `,
+
+                showCancelButton: true,
+                confirmButtonText: 'Importar',
+                cancelButtonText: 'Cancelar',
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var file = document.getElementById('excelMarcaciones').files[0]
+                    var fechamarca = $('#fechamarca').val()
+
+                    let formData = new FormData();
+                    formData.append('excel', file);
+                    formData.append('fecha', fechamarca);
+
+                    $.ajax({
+                        url: server + 'subirMarcaciones.php',
+                        type: 'post',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000
+                            });
+                            Toast.fire({
+                                icon: 'success',
+                                title: '¡Importado!',
+                                text: 'Marcaciones importadas...'
+                            })
+
+                            location.reload()
+
+                        }
+                    })
+
+                }
+            })
+        }
+
+        function impAsistencias() {
+            Swal.fire({
+                title: 'Importar Asistencias',
+                html: `<hr>
+                <div class="row" style="width: 100%;">
+               
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Fecha</label>
+                            <input type="date" class="form-control" id="fechaasistencia" >
+                        </div>
+                        <div class="form-group">
+                            <label for="">Archivo</label>
+                            <input type="file" class="form-control" id="excelAsistencias"  ref="excelAsistencias" placeholder="Importar">
+                        </div>
+                    </div>
+                </div><hr>
+                `,
+
+                showCancelButton: true,
+                confirmButtonText: 'Importar',
+                cancelButtonText: 'Cancelar',
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var file = document.getElementById('excelAsistencias').files[0]
+                    var fechamarca = $('#fechaasistencia').val()
+
+                    let formData = new FormData();
+                    formData.append('excel', file);
+                    formData.append('fecha', fechamarca);
+                    formData.append('ods', numods);
+
+                    $.ajax({
+                        url: server + 'subirAsistencias.php',
+                        type: 'post',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000
+                            });
+                            Toast.fire({
+                                icon: 'success',
+                                title: '¡Importado!',
+                                text: 'Asistencias importadas...'
+                            })
+
+                            location.reload()
+
+                        }
+                    })
+                }
+            })
+        }
+
+
+        function expMarcaciones() {
+            Swal.fire({
+                title: 'Generar archivo plano',
+                html: `<hr>
+                <h4>Exportar a Caudata</h4>
+                <div class="row" style="width: 100%;">
+               
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="finicio" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="">Fecha Fin</label>
+                            <input type="date" class="form-control" id="ffin" placeholder="">
+                        </div>
+                    </div>                   
+                </div><hr>
+
+                `,
+
+                showCancelButton: true,
+                confirmButtonText: 'Generar',
+                cancelButtonText: 'Cancelar',
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var finicio = $('#finicio').val()
+                    var ffin = $('#ffin').val()
+                    location = server + 'exportarAsistenciaCaudataCon.php?ods=' + numods + '&finicio=' + finicio + "&ffin=" + ffin
+
+                }
+            })
+        }
+
+        function cargarDatosEmp() {
+            $.post(server + 'datosEmpresa.php', {},
+                function(resp) {
+                    datos = resp
+                    $('#nit').val(resp.nit)
+                    $('#razon').val(resp.razon)
+                    $('#dir').val(resp.domicilio)
+                    $('#tel').val(resp.tel)
+                    $('#doc').val(resp.doc)
+                    $('#rep').val(resp.rep)
+                    $('#email').val(resp.email)
+                })
+        }
+
+        function actEmpresa() {
+            var nit = $('#nit').val()
+            var razon = $('#razon').val()
+            var dir = $('#dir').val()
+            var tel = $('#tel').val()
+            var ced = $('#doc').val()
+            var rep = $('#rep').val()
+            var email = $('#email').val()
+
+            $.post(server + 'actEmpresa.php', {
+                    nit: nit,
+                    razon: razon,
+                    dir: dir,
+                    tel: tel,
+                    ced: ced,
+                    rep: rep,
+                    email: email
+                },
+                function(resp) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos actualizados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+        }
+
+        function cargarTrabajadoresSel() {
+            var gruposel = $('#grupotrab2').val()
+            var frentesel = $('#frentetrab2').val()
+
+
+            $.post(server + 'cargarTrabajadoresSel.php', {
+                    frente: frentesel,
+                    grupo: gruposel,
+                    ods: numods
+                },
+                function(resp) {
+                    arrayTrabajadores = resp
+                    var html = ''
+                    $('#datosTrab').html(html)
+                    for (var i = 0; i < arrayTrabajadores.length; i++) {
+                        html += `
+                        <tr>
+                            <td><button type="button" class="btn btn-danger" onclick="editarTrab(${i})" ><i class="fas fa-edit"></i></button></td>
+                            <td>${arrayTrabajadores[i].contrato}</td>
+                            <td>${arrayTrabajadores[i].cedula}</td>
+                            <td>${arrayTrabajadores[i].nombres} ${arrayTrabajadores[i].apellidos}</td>
+                            <td>${arrayTrabajadores[i].cargo}</td>
+                            <td style = "width: 300px">
+                                <select class="form-control" id="grupo${i}" onchange="cambiarGrupo(${i})">
+                                <option value="${arrayTrabajadores[i].frente}">${arrayTrabajadores[i].frente}</option>
+                                ${listaGruposOriginal}
+                                </select>
+                            </td>
+                            <td style = "width: 300px">
+                                <select id="frenteTrabI${i}" class="form-control"  onchange="cambiarFrente(${i})">
+                                    <option value="${arrayTrabajadores[i].frentetrab}">${arrayTrabajadores[i].frentetrab}</option>
+                                    ${listaFrentes}
+                                </select>
+                            </td>
+                            <td style="width: 110px;">
+                                <select id="turnoi${i}" class="form-control" onchange="editarTurno(${i})">
+                                    
+                                    <option value="${arrayTrabajadores[i].turno}">${arrayTrabajadores[i].turno}</option>
+                                    ${arrayTurnosList}
+                                </select>
+                            </td>
+                            <td>${arrayTrabajadores[i].estado}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">`
+
+                        if (arrayTrabajadores[i].firma == '') {
+                            html += `<button type="button" class="btn btn-danger" onclick="agregarFirma(${i})"><i class="fas fa-signature"></i></button>`
+                        } else {
+                            html += `
+                            <button type="button" class="btn btn-success" onclick="verfirma(${i})"><i class="fas fa-signature"></i></button>
+                            `
+                        }
+
+                        html += `               
+                                </div>
+                            </td>
+                        </tr>
+                        `
+                    }
+                    $('#datosTrab').html(html)
+
+                    //cargarDataTable();
+                })
+        }
+
+
+        function cargarTrabajadores() {
+            $.post(server + 'cargarTrabajadoresTotales.php',
+                function(resp) {
+                    arrayTrabajadores = resp
+                    var html = ''
+                    for (var i = 0; i < arrayTrabajadores.length; i++) {
+                        if (arrayTrabajadores[i].est == 'Nuevo' || arrayTrabajadores[i].estado == 'Nuevo') {
+                            var stilo = 'background-color: rgb(250, 165, 150);'
+                        } else {
+                            var stilo = ''
+                        }
+                        html += `
+                        <tr style='${stilo}'>
+                            <td></td>
+                            <td>${arrayTrabajadores[i].cedula}</td>
+                            <td>${arrayTrabajadores[i].nombres}</td>
+                            <td>${arrayTrabajadores[i].ods}</td>
+                            <td>${arrayTrabajadores[i].cargo}</td>
+                            <td style = "width: 300px">
+                                ${arrayTrabajadores[i].frentetrab}
+                            </td>
+                            <td style="width: 110px;">
+                                ${arrayTrabajadores[i].turno}
+                            </td>
+                            
+                            
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">`
+
+                        if (arrayTrabajadores[i].firma == '') {
+                            html += `<button type="button" class="btn btn-danger" onclick="agregarFirma(${i})"><i class="fas fa-signature"></i></button>`
+                        } else {
+                            html += `
+                                    <button type="button" class="btn btn-success" onclick="verfirma(${i})"><i class="fas fa-signature"></i></button>
+                                    `
+                        }
+
+                        html += `               
+                                </div>
+                            </td>
+                        </tr>
+                        `
+                    }
+                    $('#datosTrab').html(html)
+
+                    $('#tblDataPersonal').DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                        },
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copyHtml5',
+                            'excelHtml5',
+                            'csvHtml5',
+                            'pdfHtml5'
+                        ]
+                    });
+
+                    //cargarDataTable();
+                })
+        }
+
+        function editarTrab(i) {
+
+            idtmp = arrayTrabajadores[i].id
+
+            $('#codtrab').val(arrayTrabajadores[i].contrato)
+            $('#doctrab').val(arrayTrabajadores[i].cedula)
+            $('#nombtrab').val(arrayTrabajadores[i].nombres)
+            $('#apellidostrab').val(arrayTrabajadores[i].apellidos)
+            $('#dirtrab').val(arrayTrabajadores[i].domicilio)
+            $('#teltrab').val(arrayTrabajadores[i].telefono)
+            $('#cargotrab').val(arrayTrabajadores[i].cargo)
+            $('#turnotrab').val(arrayTrabajadores[i].turno)
+            $('#emptrab').val(arrayTrabajadores[i].empresa)
+
+
+            var html = `<option value="${arrayTrabajadores[i].frente}">${arrayTrabajadores[i].frente}</option>`
+            $('#grupotrab').html(html)
+
+            $('#frentetrab').val(arrayTrabajadores[i].frentetrab)
+            $('#lugartrab').val(arrayTrabajadores[i].lugartrab)
+            $('#acargo').val(arrayTrabajadores[i].acargo)
+            $('#sistprecio').val(arrayTrabajadores[i].sistemaprecio)
+            $('#tiponomina').val(arrayTrabajadores[i].tiponomina)
+            $('#detpago').val(arrayTrabajadores[i].detpago)
+            $('#finiciolabor').val(arrayTrabajadores[i].fingreso)
+            $('#ffinallabor').val(arrayTrabajadores[i].fsalida)
+            $('#estadotrab').val(arrayTrabajadores[i].estado)
+
+            $('#btnacttrab').removeClass('oculto')
+            $('#btncancelartrab').removeClass('oculto')
+            $('#btnguardartrab').addClass('oculto')
+
+
+        }
+
+        function actTrab() {
+            var codtrab = $('#codtrab').val()
+            var doctrab = $('#doctrab').val()
+            var nombtrab = $('#nombtrab').val()
+            var apellidostrab = $('#apellidostrab').val()
+            var dirtrab = $('#dirtrab').val()
+            var teltrab = $('#teltrab').val()
+            var cargotrab = $('#cargotrab').val()
+            var turnotrab = $('#turnotrab').val()
+            var emptrab = $('#emptrab').val()
+            var grupotrab = $('#grupotrab').val()
+            var frentetrab = $('#frentetrab').val()
+            var lugartrab = $('#lugartrab').val()
+            var acargo = $('#acargo').val()
+            var sistprecio = $('#sistprecio').val()
+            var tiponomina = $('#tiponomina').val()
+            var detpago = $('#detpago').val()
+            var finiciolabor = $('#finiciolabor').val()
+            var ffinallabor = $('#ffinallabor').val()
+            var estadotrab = $('#estadotrab').val()
+
+            $.post(server + 'actTrab.php', {
+                    codigo: codtrab,
+                    doc: doctrab,
+                    nombres: nombtrab,
+                    apellidos: apellidostrab,
+                    dir: dirtrab,
+                    tel: teltrab,
+                    cargo: cargotrab,
+                    turno: turnotrab,
+                    empresa: emptrab,
+                    grupo: grupotrab,
+                    frentetrab: frentetrab,
+                    lugar: lugartrab,
+                    acargo: acargo,
+                    sistprecio: sistprecio,
+                    tiponomina: tiponomina,
+                    detpago: detpago,
+                    finicio: finiciolabor,
+                    ffinal: ffinallabor,
+                    estado: estadotrab,
+                    ods: numods,
+                    id: idtmp
+                },
+                function(resp) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos actualizados',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    cargarTrabajadores()
+                    limpiarTrab()
+                    $('#btnacttrab').addClass('oculto')
+                    $('#btncancelartrab').addClass('oculto')
+                    $('#btnguardartrab').removeClass('oculto')
+                })
+
+        }
+
+        function cancelartrab() {
+
+            $('#btnacttrab').addClass('oculto')
+            $('#btncancelartrab').addClass('oculto')
+            $('#btnguardartrab').removeClass('oculto')
+            limpiarTrab()
+        }
+
+
+        function guardarTrab() {
+            var codtrab = $('#codtrab').val()
+            var doctrab = $('#doctrab').val()
+            var nombtrab = $('#nombtrab').val()
+            var apellidostrab = $('#apellidostrab').val()
+            var dirtrab = $('#dirtrab').val()
+            var teltrab = $('#teltrab').val()
+            var cargotrab = $('#cargotrab').val()
+            var turnotrab = $('#turnotrab').val()
+            var emptrab = $('#emptrab').val()
+            var frentetrab = $('#frentetrab').val()
+            var grupotrab = $('#grupotrab').val()
+            var lugartrab = $('#lugartrab').val()
+            var acargo = $('#acargo').val()
+            var sistprecio = $('#sistprecio').val()
+            var tiponomina = $('#tiponomina').val()
+            var detpago = $('#detpago').val()
+            var finiciolabor = $('#finiciolabor').val()
+            var ffinallabor = $('#ffinallabor').val()
+            var estadotrab = $('#estadotrab').val()
+            var odstrabn = $('#odstrab').val();
+
+            $.post(server + 'guardarTrabAdmin.php', {
+                    codigo: codtrab,
+                    doc: doctrab,
+                    nombres: nombtrab,
+                    apellidos: apellidostrab,
+                    dir: dirtrab,
+                    tel: teltrab,
+                    cargo: cargotrab,
+                    turno: turnotrab,
+                    empresa: emptrab,
+                    grupo: grupotrab,
+                    frentetrab: frentetrab,
+                    lugar: lugartrab,
+                    acargo: acargo,
+                    sistprecio: sistprecio,
+                    tiponomina: tiponomina,
+                    detpago: detpago,
+                    finicio: finiciolabor,
+                    ffinal: ffinallabor,
+                    estado: estadotrab,
+                    ods: odstrabn
+                },
+                function(resp) {
+                    if (resp.msn == 'Ok') {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Datos cargados',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        cargarTrabajadores()
+                        limpiarTrab()
+
+                    } else {
+                        alert(resp.msn)
+                    }
+                })
+
+        }
+
+        function cargarDataTable() {
+
+            if (cargaTablaTrab == null) {
+
+                $('#tblData').DataTable({
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                    },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                        'csvHtml5',
+                        'pdfHtml5'
+                    ]
+                });
+
+                cargaTablaTrab = 1
+            }
+        }
+
+
+        function importarTrab() {
+            Swal.fire({
+                title: 'Subir CSV',
+                html: `
+                
+                    <input type="file" min="0" class="form-control"  id="excel" ref="excel" />
+                
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Subir',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var file = document.getElementById('excel').files[0]
+
+                    let formData = new FormData();
+                    formData.append('excel', file);
+                    formData.append('ods', numods);
+
+                    $.ajax({
+                        url: server + 'subirExcelTrab.php',
+                        type: 'post',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+
+
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000
+                            });
+                            Toast.fire({
+                                icon: 'success',
+                                title: '¡Importado!',
+                                text: 'Datos Cargados...'
+                            })
+                            cargarTrabajadores()
+                        }
+
+                    })
+
+                }
+            })
+        }
+
+        function guardarAsistencia() {
+            var fechab = $('#fasis').val()
+
+            $.post(server + 'guardarAsistencia.php', {
+                    fecha: fechab,
+                    ods: numods
+                },
+                function(resp) {
+                    console.log(resp.msn)
+                    if (resp.msn == 'Ok') {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'info',
+                            title: 'Histórico almacenado...',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    } else {
+                        if (resp.msn = 'Error') {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'danger',
+                                title: 'No se puede guardar histórico con fechas anteriores...',
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+                        } else {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: resp.msn,
+                                showConfirmButton: false,
+                                timer: 3000
+                            })
+                        }
+                    }
+                })
+        }
+
+        function cargarConsolidado() {
+            var fechab = $('#fasis2').val()
+
+            $.post(server + 'buscarAsistencia.php', {
+                    fecha: fechab,
+                    ods: numods
+                },
+                function(resp) {
+                    arrayAsistencia = resp
+                    var cantDir = 0
+                    var cantIndir = 0
+                    var totpersonal = 0
+                    var totpersonalDir = 0
+                    var totpersonalInd = 0
+                    var html = ''
+                    arrayFrenteGrafica = []
+                    arraryCantFrenteDir = []
+                    arraryCantFrenteIndir = []
+                    arrayCantFrenteTotal = []
+
+                    arrayConsolidado = []
+
+                    for (var a = 0; a < arrayFrentesTrab.length; a++) {
+
+                        var frentet = arrayFrentesTrab[a].frentetrab;
+                        cant = 0;
+                        cantDir = 0
+                        cantIndir = 0
+
+                        for (var i = 0; i < arrayAsistencia.length; i++) {
+
+
+
+                            if (arrayAsistencia[i].frentetrab == frentet && arrayAsistencia[i].tipo != 'SIN MARCACIÓN') {
+                                if (arrayAsistencia[i].tiponomina == 'Directo') {
+                                    cantDir++
+                                    totpersonalDir++
+                                } else {
+                                    cantIndir++
+                                    totpersonalInd++
+                                }
+                                totpersonal++
+                            }
+
+                        }
+
+                        var totalper = cantDir + cantIndir
+
+                        arrayConsolidado.push({
+                            "frente": frentet,
+                            'cantDir': cantDir,
+                            'cantIndir': cantIndir,
+                            'total': totalper
+                        })
+
+                    }
+
+                    html = `
+                        <h2>Total personal: ${totpersonal}</h2>
+                        `
+
+                    for (var b = 0; b < arrayConsolidado.length; b++) {
+                        arrayFrenteGrafica.push(arrayConsolidado[b].frente)
+                        arraryCantFrenteDir.push(arrayConsolidado[b].cantDir)
+                        arraryCantFrenteIndir.push(arrayConsolidado[b].cantIndir)
+                        arrayCantFrenteTotal.push(arrayConsolidado[b].total)
+                    }
+
+                    $('#consolidado').html(html)
+
+                    cargarGraficas()
+
+
+                })
+        }
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando...!',
+                html: 'Un momento por favor...',
+                timer: 15000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        function informe() {
+            Swal.fire({
+                title: 'Generar excel',
+                html: `<hr>
+                <h4>Informe General Diario</h4>
+                <div class="row" style="width: 100%;">
+               
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Fecha</label>
+                            <input type="date" class="form-control" id="fechainf" placeholder="">
+                        </div>
+                    </div>
+
+                                    
+                </div><hr>
+
+                `,
+
+                showCancelButton: true,
+                confirmButtonText: 'Generar',
+                cancelButtonText: 'Cancelar',
+                showCloseButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    var fecha = $('#fechainf').val()
+                    location = server + 'informediariorh.php?ods=' + numods + '&fecha=' + fecha;
+
+                }
+            })
+        }
+
+        function buscarAsistenciaInforme() {
+
+            cargando()
+            var fechab = $('#fasis2').val()
+            fechaMarcacion = fechab;
+
+            $.post(server + 'buscarAsistenciaInforme.php', {
+                    fecha: fechab,
+                },
+                function(resp) {
+                    arrayAsistenciaTot = resp
+
+                    $('#totalMarca').html(arrayAsistenciaTot.totalMarca)
+                    $('#totalGRB').html(arrayAsistenciaTot.totalGRB)
+                    $('#totalTaller').html(arrayAsistenciaTot.totalTaller)
+                    $('#totalOficina').html(arrayAsistenciaTot.totalOficina)
+                    $('#totalTrab').html(arrayAsistenciaTot.totalTrab)
+                    $('#totalTrabUT').html(arrayAsistenciaTot.totalUT)
+                    $('#totalTrabTS').html(arrayAsistenciaTot.totalTS)
+
+                    var arrayNovePer = arrayAsistenciaTot.novedades;
+
+                    var html = ''
+
+                    for (var i = 0; i < arrayNovePer.length; i++) {
+                        html += `
+                           <h4> ${arrayNovePer[i].novedad}: ${arrayNovePer[i].tot} </h4>
+                        `
+                    }
+
+                    $('#noveper').html(html)
+
+
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos cargados...',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                })
+        }
+
+
+        function buscarAsistencia() {
+
+            cargando()
+            var fechab = $('#fasis').val()
+            fechaMarcacion = fechab;
+            var turnoa = $('#turnoasist').val()
+
+            $.post(server + 'buscarAsistenciaT.php', {
+                    fecha: fechab,
+                    turno: turnoa
+                },
+                function(resp) {
+                    arrayAsistencia = resp
+                    var html = ''
+                    for (var i = 0; i < arrayAsistencia.length; i++) {
+                        if (arrayAsistencia[i].tipo == 'SIN MARCACIÓN') {
+                            var stilo = 'background-color: rgb(250, 165, 150);'
+                        } else {
+                            var stilo = ''
+                        }
+                        html += `
+                             
+                            <tr style="${stilo}">
+                                <td>${arrayAsistencia[i].nombres}</td>
+                                <td>${arrayAsistencia[i].cargo}</td>
+                                <td>${arrayAsistencia[i].ods}</td>
+                                <td>${arrayAsistencia[i].fecha}</td>
+                                <td>${arrayAsistencia[i].hora}</td>
+                                <td>${arrayAsistencia[i].tipo}</td>
+                                <td>${arrayAsistencia[i].frentetrab}</td>
+                                <td>${arrayAsistencia[i].grupo}</td>
+                                <td>${arrayAsistencia[i].supervisor}</td>
+                                <td>${arrayAsistencia[i].novedad}</td>
+                                <td>`
+                        if (arrayAsistencia[i].tipo == 'SIN MARCACIÓN') {
+                            html += ` <button type="button" class="btn btn-success" onclick="agregarMarca('${i}')">M</button>`
+                        } else {
+
+                        }
+
+                        html += `</td>
+                            </tr>
+                        `
+                    }
+
+                    $('#listaAsistencia').html(html)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Datos cargados...',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                    $('#tablaAsist').DataTable({
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                        },
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copyHtml5',
+                            'excelHtml5',
+                            'csvHtml5',
+                            'pdfHtml5'
+                        ]
+                    });
+                })
+        }
+
+        function cargarTrabNov() {
+            var grup = $('#grupotrab3').val()
+            $.post(server + 'buscarTrabGrupo.php', {
+                    grupo: grup,
+                    ods: numods
+                },
+                function(resp) {
+                    var html = ''
+                    $('#trabnov').html(html)
+                    for (var i = 0; i < resp.length; i++) {
+                        html += `
+                        <option value="${resp[i].cedula}">${resp[i].nombres}</option>
+                        `
+                    }
+                    $('#trabnov').html(html)
+                })
+        }
+
+        function agregarNovedadTodos() {
+            var fecha = $('#fechanov').val()
+            var novedad = $('#novedad').val()
+            var frentenovedad = $('#frentetrab5').val()
+
+            Swal.fire({
+                title: 'Agregar Novedad',
+                text: 'Desea agregar descansos al personal?',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post(server + 'guardarNovedadTodos.php', {
+                            fecha: fecha,
+                            novedad: novedad,
+                            frente: frentetrab5,
+                            ods: numods
+                        },
+                        function(resp) {
+                            cargarNovedades()
+                        })
+
+                }
+            })
+        }
+
+        function quitarNovedadTodos() {
+
+            Swal.fire({
+                title: 'Quitar Novedad',
+                text: 'Desea borrar descansos a todo el personal?',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post(server + 'quitarNovedadTodos.php', {
+                            ods: numods
+                        },
+                        function(resp) {
+                            cargarNovedades()
+                        })
+
+                }
+            })
+        }
+
+        function agregarNovedad() {
+            var doc = $('#trabnov').val()
+            var fecha = $('#fechanov').val()
+            var novedad = $('#novedad').val()
+
+            $.post(server + 'guardarNovedad.php', {
+                    doc: doc,
+                    fecha: fecha,
+                    novedad: novedad,
+                    ods: numods
+                },
+                function(resp) {
+                    cargarNovedades()
+                })
+        }
+
+        function cargarNovedades() {
+            $.post(server + 'cargarNovedades.php', {
+                    ods: numods
+                },
+                function(resp) {
+                    arrayNovedades = resp
+                    var html = ''
+                    for (var i = 0; i < arrayNovedades.length; i++) {
+                        html += `
+                        <tr>
+                            <td>${arrayNovedades[i].fecha}</td>
+                            <td>${arrayNovedades[i].codigo}</td>
+                            <td>${arrayNovedades[i].doc}</td>
+                            <td>${arrayNovedades[i].nombres}</td>
+                            <td>${arrayNovedades[i].cargo}</td>
+                            <td>${arrayNovedades[i].grupo}</td>
+                            <td>${arrayNovedades[i].novedad}</td>
+                            <td><button type="button" class="btn btn-danger" onclick="borrarNovedad(${i})">
+                                <i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    `
+                    }
+                    $('#datosNovedades').html(html)
+                })
+        }
+
+        function borrarNovedad(i) {
+            var idnov = arrayNovedades[i].id
+            $.post(server + 'borrarNovedad.php', {
+                    id: idnov
+                },
+                function(resp) {
+                    cargarNovedades()
+                })
+        }
+
+        function guardarUser() {
+            var nombreuser = $('#nombreuser').val()
+            var emailuser = $('#emailuser').val()
+            var claveuser = $('#claveuser').val()
+            var numodsuser = $('#numodsuser').val()
+            var odsuser = $('#odsuser').val()
+            var voboitalco = $('#voboitalco').val()
+            var voboecp = $('#voboecp').val()
+
+            $.post(server + 'guardarUser.php', {
+                    nombres: nombreuser,
+                    email: emailuser,
+                    clave: claveuser,
+                    numods: numodsuser,
+                    ods: odsuser,
+                    voboitalco: voboitalco,
+                    voboecp: voboecp
+                },
+                function(resp) {
+                    cargarUsers()
+                })
+
+        }
+
+        function cargarUsers() {
+            var html = ''
+            $.post(server + 'cargarUser.php', {},
+                function(resp) {
+                    arrayUsers = resp
+                    for (var i = 0; i < arrayUsers.length; i++) {
+                        html += `
+                        <tr>
+                            <td>${arrayUsers[i].nombres}</td>
+                            <td>${arrayUsers[i].email}</td>
+                            <td>${arrayUsers[i].numods}</td>
+                            <td>${arrayUsers[i].ods}</td>
+                            <td>${arrayUsers[i].voboitalco}</td>
+                            <td>${arrayUsers[i].voboecp}</td>
+                            <td><span class="float-right rojo" onClick="borrarUser(${i})"><i class="fas fa-window-close"></i></span></td>
+                        </tr>
+                    `
+                    }
+                    $('#datosUser').html(html)
+                })
+        }
+
+        function borrarUser(i) {
+            var id = arrayUsers[i].id
+            $.post(server + 'borrarUser.php', {
+                    id: id
+                },
+                function(resp) {
+                    cargarUsers()
+                })
+        }
+
+        function limpiarTrab() {
+            $('#codtrab').val('')
+            $('#doctrab').val('')
+            $('#nombtrab').val('')
+            $('#apellidostrab').val('')
+            $('#dirtrab').val('')
+            $('#teltrab').val('')
+            $('#cargotrab').val('')
+            $('#turnotrab').val('')
+            $('#emptrab').val('')
+            $('#grupotrab').val('')
+            $('#frentetrab').val('')
+            $('#lugartrab').val('')
+            $('#acargo').val('')
+            $('#sistprecio').val('')
+            $('#tiponomina').val('')
+            $('#detpago').val('')
+            $('#finiciolabor').val('')
+            $('#ffinallabor').val('')
+            $('#estadotrab').val('')
+        }
+
+        function expBio() {
+            location = server + 'exportarBioP.php'
+        }
+
+        function exportrAsistencia() {
+            var fechab = $('#fasis').val()
+            location = server + 'exportarAsistencia.php?ods=' + numods + '&fecha=' + fechab
+
+        }
+
+        function verfirma(i) {
+            window.open(arrayTrabajadores[i].firma, '_blank');
+        }
+
+        function agregarFirma(i) {
+            var ced = arrayTrabajadores[i].cedula
+            var id = arrayTrabajadores[i].id
+
+            Swal.fire({
+                title: 'Agregar Firma',
+                html: `
+                <input type="file" id="firma" class="form-control">
+                `,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Cargar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var file = $('#firma')[0].files[0];
+                    var formData = new FormData();
+
+                    formData.append('file', file);
+                    formData.append('id', id);
+                    formData.append('doc', ced);
+
+                    $.ajax({
+                        url: server + 'guardarFirma.php',
+                        type: 'post',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            }).then(() => {
+                                location.reload()
+                            })
+
+                        }
+                    })
+
+
+                }
+            })
+        }
+
+        function cargarGraficas() {
+            Highcharts.chart('grafconso', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '350'
+                },
+                title: {
+                    text: 'INFORME PERSONAL'
+                },
+
+                xAxis: {
+                    categories: arrayFrenteGrafica,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+
+
+
+                series: [{
+                    name: 'Directo',
+                    data: arraryCantFrenteDir,
+                }, {
+                    name: 'Indirecto',
+                    data: arraryCantFrenteIndir,
+                }, {
+                    name: 'Total',
+                    data: arrayCantFrenteTotal,
+                }]
+            });
+
+        }
+
+        function cambiarGrupo(i) {
+            var gruposeli = $('#grupo' + i).val()
+            var idtrab = arrayTrabajadores[i].id;
+
+            $.post(server + 'actgrupoi.php', {
+                    id: idtrab,
+                    grupo: gruposeli
+                },
+                function(resp) {
+                    if (resp.msn == 'Ok') {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Cambio realizado',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Oopss error al realizar cambio',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+                })
+
+        }
+
+        function cambiarFrente(i) {
+            var frentei = $('#frenteTrabI' + i).val()
+            var idtrab = arrayTrabajadores[i].id;
+            $.post(server + 'actfrente.php', {
+                    id: idtrab,
+                    frente: frentei
+                },
+                function(resp) {
+                    if (resp.msn == 'Ok') {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Cambio realizado',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Oopss error al realizar cambio',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+                })
+        }
+
+        function editarTurno(i) {
+            var turnoi = $('#turnoi' + i).val()
+            var idtrab = arrayTrabajadores[i].id;
+            $.post(server + 'cambiarTurno.php', {
+                    id: idtrab,
+                    turno: turnoi
+                },
+                function(resp) {
+                    if (resp.msn == 'Ok') {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Cambio realizado',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Oopss error al realizar cambio',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+                })
+
+        }
+
+        function agregarMarca(i) {
+            var id = arrayAsistencia[i].id;
+            var nombres = arrayAsistencia[i].nombres;
+
+            Swal.fire({
+                title: 'Agregar Marcación',
+                html: `
+                Desea agregar marcación a ${nombres} ?
+                `,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Agregar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post(server + 'agregarMarca.php', {
+                            id: id,
+                            fecha: fechaMarcacion,
+                            nombres: nombres
+                        },
+                        function(resp) {
+                            if (resp.msn == 'Ok') {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Marcación agregada',
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                })
+                            } else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Oopss error al agregar marcación...',
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                })
+                            }
+                        })
+                }
+            })
+
+
+        }
+
+        function verInforme() {
+            $.post(server + 'buscarAsistenciaInforme.php')
+        }
+
+        function cargarConsolidadoTiempo() {
+            var finicio = $('#finiciopago').val()
+            var ffinal = $('#ffinalpago').val()
+            window.open("https://utitalco.com/biometricsystem/server/consolidadoTiempo.php?f1=" + finicio + "&f2=" + ffinal, "_blank");
+        }
+
+        function cargarConsolidadoTiempoDpto() {
+            var finicio = $('#finiciodpto').val()
+            var ffinal = $('#ffinaldpto').val()
+            window.open("https://utitalco.com/biometricsystem/server/consolidadoHoras.php?f1=" + finicio + "&f2=" + ffinal, "_blank");
+        }
+
+        function cargarConsolidadoAusentismos() {
+            var finicio = $('#finicioa').val()
+            var ffinal = $('#ffinala').val()
+            window.open("https://utitalco.com/biometricsystem/server/consolidadoAusentismos.php?f1=" + finicio + "&f2=" + ffinal, "_blank");
+        }
+    </script>
+
+</body>
+
+</html>
