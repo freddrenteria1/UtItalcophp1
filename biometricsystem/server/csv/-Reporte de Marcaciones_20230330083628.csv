@@ -1,0 +1,29 @@
+﻿Employee ID;Nombres;Estado de empleado;Departamento;Nombre de empresa;Nombre centro de costos;Fecha;Hora;Tipo de Marcación;Temperatura;Con Tapabocas;Origen del registro
+1006;RubenGonzalez;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;17:29;Entrada;255.0;255;Dispositivo-Bio4
+976;CristoferVides;Habilitado;Departamento;Empresa;Centro de costos;2023-03-25;14:32;Salida;255.0;255;Dispositivo-Bio4
+976;CristoferVides;Habilitado;Departamento;Empresa;Centro de costos;2023-03-25;14:32;Entrada;255.0;255;Dispositivo-Bio4
+6;EDUARDO CAMILO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;14:05;Salida;255.0;255;Dispositivo-Bio4
+1135;SARA;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;13:34;Salida;255.0;255;Dispositivo-Bio7
+252;JEYSSON;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;13:34;Salida;255.0;255;Dispositivo-Bio7
+13;RUBEN DARIO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;13:17;Salida;255.0;255;Dispositivo-Bio7
+119;EDGAR JESUS;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;13:15;Salida;255.0;255;Dispositivo-Bio7
+995;TeofiloGarcia;Habilitado;Departamento;Empresa;Centro de costos;2023-03-25;10:23;Entrada;255.0;255;Dispositivo-Bio4
+991;WilsonGarcia;Habilitado;Departamento;Empresa;Centro de costos;2023-03-25;09:01;Entrada;255.0;255;Dispositivo-Bio4
+998;LUIS FERNANDO;Habilitado;Ecopetrol;Empresa;Centro de costos;2023-03-25;08:26;Entrada;255.0;255;Dispositivo-Bio4
+1006;RubenGonzalez;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;07:38;Entrada;255.0;255;Dispositivo-Bio4
+1;JAIRO.CRUZ;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;07:32;Entrada;255.0;255;Dispositivo-Bio3
+976;CristoferVides;Habilitado;Departamento;Empresa;Centro de costos;2023-03-25;06:55;Entrada;255.0;255;Dispositivo-Bio4
+33;SMITH;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:47;Entrada;255.0;255;Dispositivo-Bio3
+205;IVAN;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:47;Entrada;255.0;255;Dispositivo-Bio3
+31;JAIME ALBERTO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:47;Entrada;255.0;255;Dispositivo-Bio3
+32;ARIEL MAURICIO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:47;Entrada;255.0;255;Dispositivo-Bio3
+1135;SARA;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:47;Entrada;255.0;255;Dispositivo-Bio7
+252;JEYSSON;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:46;Entrada;255.0;255;Dispositivo-Bio7
+119;EDGAR JESUS;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:40;Entrada;255.0;255;Dispositivo-Bio7
+6;EDUARDO CAMILO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:25;Entrada;255.0;255;Dispositivo-Bio4
+443;VICENTE ANTONIO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;06:09;Entrada;255.0;255;Dispositivo-Bio4
+1;JAIRO.CRUZ;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;02:45;Entrada;255.0;255;Dispositivo-Bio3
+205;IVAN;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;02:44;Salida;255.0;255;Dispositivo-Bio3
+33;SMITH;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;02:42;Salida;255.0;255;Dispositivo-Bio3
+31;JAIME ALBERTO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;02:42;Salida;255.0;255;Dispositivo-Bio3
+32;ARIEL MAURICIO;Habilitado;Ecopetrol;Empresa;Barranca;2023-03-25;02:42;Salida;255.0;255;Dispositivo-Bio3

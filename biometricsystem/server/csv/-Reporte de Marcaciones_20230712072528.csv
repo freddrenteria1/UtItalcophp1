@@ -1,0 +1,583 @@
+﻿Employee ID;Nombres;Estado de empleado;Departamento;Nombre de empresa;Nombre centro de costos;Fecha;Hora;Tipo de Marcación;Temperatura;Con Tapabocas;Origen del registro
+993;LuzCarimeMerchan;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:22;Check In;255.0;255;Dispositivo-bio4
+998;LUIS FERNANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:16;Check In;255.0;255;Dispositivo-bio4
+1;JAIRO.CRUZ;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:15;Check In;255.0;255;Dispositivo-bio4
+1;JAIRO.CRUZ;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:15;Check In;255.0;255;Dispositivo-bio4
+999;MariaMartinez;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:12;Check In;255.0;255;Dispositivo-bio4
+979;EstefaniaMonsalve;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:12;Check In;255.0;255;Dispositivo-bio4
+1767;Heidy;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:12;Check In;255.0;255;Dispositivo-bio4
+2371;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:12;Check In;255.0;255;Dispositivo-bio6
+942;LORENA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:11;Check In;255.0;255;Dispositivo-bio4
+1;JAIRO.CRUZ;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:11;Check In;255.0;255;Dispositivo-bio6
+981;Corayma;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:10;Check In;255.0;255;Dispositivo-bio4
+2355;KIMBERLY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:09;Check In;255.0;255;Dispositivo-bio6
+156;JOSE MANUEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:09;Check In;255.0;255;Dispositivo-bio4
+156;JOSE MANUEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:09;Check In;255.0;255;Dispositivo-bio4
+1020;cIro;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:07;Check In;255.0;255;Dispositivo-bio7
+1000;YoraimaBautista;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:07;Check In;255.0;255;Dispositivo-bio4
+990;YessicaDiaz;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:07;Check In;255.0;255;Dispositivo-bio4
+1006;RubenGonzalez;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:06;Check In;255.0;255;Dispositivo-bio4
+222;HENRY ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:06;Check In;255.0;255;Dispositivo-bio7
+226;JHON ALEISER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:06;Check In;255.0;255;Dispositivo-bio1
+331;JORGE IVAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:06;Check Out;255.0;255;Dispositivo-bio1
+331;JORGE IVAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:05;Check In;255.0;255;Dispositivo-bio1
+1118;SILFREDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:05;Check In;255.0;255;Dispositivo-bio1
+989;WinnisMeza;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:05;Check In;255.0;255;Dispositivo-bio4
+259;ANDERSON FERNEY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:05;Check In;255.0;255;Dispositivo-bio1
+2357;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:04;Check In;255.0;255;Dispositivo-bio6
+1001;BeatrizCabrales;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:04;Check In;255.0;255;Dispositivo-bio4
+1774;Ruben;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:03;Check In;255.0;255;Dispositivo-bio4
+537;JHON ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:02;Check In;255.0;255;Dispositivo-bio4
+12;PABLO ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:02;Check In;255.0;255;Dispositivo-bio7
+604;OSCAR JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:02;Check In;255.0;255;Dispositivo-bio4
+982;KellyFranco;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:01;Check In;255.0;255;Dispositivo-bio4
+969;EDGAR ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:01;Check In;255.0;255;Dispositivo-bio4
+31;JAIME ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:00;Check In;255.0;255;Dispositivo-bio1
+977;JackelineGongora;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:00;Check In;255.0;255;Dispositivo-bio4
+32;ARIEL MAURICIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:00;Check In;255.0;255;Dispositivo-bio1
+907;MILTON CESAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;07:00;Check In;255.0;255;Dispositivo-bio1
+237;JORGE ELIECER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:58;Check In;255.0;255;Dispositivo-bio1
+712;ERMINSO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:58;Check In;255.0;255;Dispositivo-bio1
+747;CLARA INES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:58;Check In;255.0;255;Dispositivo-bio7
+1479;William;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:58;Check In;255.0;255;Dispositivo-bio1
+454;CARLOS ARTURO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:57;Check In;255.0;255;Dispositivo-bio4
+1904;Luis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:55;Check In;255.0;255;Dispositivo-bio4
+699;JAZMIN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:53;Check In;255.0;255;Dispositivo-bio4
+994;AngieAlmanza;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:53;Check In;255.0;255;Dispositivo-bio4
+2329;Jeanpaul;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:52;Check In;255.0;255;Dispositivo-bio6
+976;CristoferVides;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:52;Check In;255.0;255;Dispositivo-bio4
+457;CARLOS ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:51;Check In;255.0;255;Dispositivo-bio4
+2189;LONNY GISSELA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:51;Check Out;255.0;255;Dispositivo-bio1
+223;FULGENCIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:50;Check In;255.0;255;Dispositivo-bio7
+2326;VICTOR ALFONSO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:50;Check Out;255.0;255;Dispositivo-bio6
+206;EDINSON DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:50;Check In;255.0;255;Dispositivo-bio7
+2327;WILLY ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:50;Check Out;255.0;255;Dispositivo-bio6
+2080;Brayan;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:49;Check In;255.0;255;Dispositivo-bio4
+2340;YULIANA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:49;Check Out;255.0;255;Dispositivo-bio6
+2339;MASIEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:49;Check In;255.0;255;Dispositivo-bio6
+930;GERHEING;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:48;Check In;255.0;255;Dispositivo-bio4
+155;DEINER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:47;Check In;255.0;255;Dispositivo-bio1
+155;DEINER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:47;Check In;255.0;255;Dispositivo-bio1
+952;DINERIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:46;Check In;255.0;255;Dispositivo-bio7
+113;RUBEN DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:46;Check In;255.0;255;Dispositivo-bio7
+104;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:45;Check In;255.0;255;Dispositivo-bio4
+104;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:45;Check In;255.0;255;Dispositivo-bio4
+753;GUILLERMO OBDULIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:44;Check In;255.0;255;Dispositivo-bio2
+811;CEFERINO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:44;Check In;255.0;255;Dispositivo-bio4
+104;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:44;Check In;255.0;255;Dispositivo-bio4
+104;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:44;Check In;255.0;255;Dispositivo-bio4
+1712;Rodolfo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:44;Check In;255.0;255;Dispositivo-bio4
+2199;JANETH;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:43;Check In;255.0;255;Dispositivo-bio4
+1255;JuanLuis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:42;Check In;255.0;255;Dispositivo-bio7
+316;LEIDY PATRICIA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:42;Check In;255.0;255;Dispositivo-bio7
+280;GLORIA ALEXANDRA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:42;Check In;255.0;255;Dispositivo-bio7
+2210;JOSE MIGUEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check Out;255.0;255;Dispositivo-bio1
+1531;Andres;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check Out;255.0;255;Dispositivo-bio1
+1398;Victor;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+253;PEDRO NEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+526;ELENI EMIR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+33;SMITH;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+202;JULIO CESAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+105;JORGE ARMANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio4
+610;WILSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+610;WILSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+459;LUIS DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio4
+363;WILSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:41;Check In;255.0;255;Dispositivo-bio1
+1532;Henry;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+2179;JULIAN DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+1392;Orlando;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+599;JULIAN ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+755;MIGUEL ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+1746;Reyner;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+997;VicenteHerrera;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check In;255.0;255;Dispositivo-bio4
+510;ARTURO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check In;255.0;255;Dispositivo-bio4
+394;FREDY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+1497;Ruben;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+2087;EDGAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check Out;255.0;255;Dispositivo-bio1
+47;DALGY MELISSA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:40;Check In;255.0;255;Dispositivo-bio7
+1721;Jairo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:38;Check In;255.0;255;Dispositivo-bio1
+1715;Jorge;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:37;Check In;255.0;255;Dispositivo-bio4
+1351;Hugo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:34;Check In;255.0;255;Dispositivo-bio1
+732;Jaiver;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:33;Check In;255.0;255;Dispositivo-bio4
+2316;ARIDES ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:33;Check In;255.0;255;Dispositivo-bio6
+2321;FABIO ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:31;Check Out;255.0;255;Dispositivo-bio6
+2320;ROMARIO ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:31;Check Out;255.0;255;Dispositivo-bio6
+19;ALFONSO AMADOR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:31;Check In;255.0;255;Dispositivo-bio6
+2334;LUZ;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:29;Check In;255.0;255;Dispositivo-bio6
+251;JIMMER EDUARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:29;Check In;255.0;255;Dispositivo-bio6
+13;RUBEN DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:26;Check In;255.0;255;Dispositivo-bio1
+13;RUBEN DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:26;Check In;255.0;255;Dispositivo-bio1
+74;LUIS FELIPE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:26;Check In;255.0;255;Dispositivo-bio1
+205;IVAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:26;Check In;255.0;255;Dispositivo-bio1
+983;AnaMarulanda;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:24;Check In;255.0;255;Dispositivo-bio4
+2;JUAN CARLOS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:23;Check In;255.0;255;Dispositivo-bio4
+2323;YEFFREY JULIAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:21;Check In;255.0;255;Dispositivo-bio6
+154;ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:21;Check In;255.0;255;Dispositivo-bio7
+1241;KAREN ZULEIMA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:21;Check In;255.0;255;Dispositivo-bio7
+1087;HENRY FERNANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:21;Check In;255.0;255;Dispositivo-bio7
+25;RONNY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:19;Check In;255.0;255;Dispositivo-bio1
+94;Cristian;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:18;Check In;255.0;255;Dispositivo-bio1
+2322;KEVIN STEVEN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:16;Check In;255.0;255;Dispositivo-bio6
+286;CARLOS JIMENO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:16;Check In;255.0;255;Dispositivo-bio6
+6;EDUARDO CAMILO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:16;Check In;255.0;255;Dispositivo-bio4
+1290;Rosemberg;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:16;Check In;255.0;255;Dispositivo-bio6
+1468;Aogel;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:15;Check In;255.0;255;Dispositivo-bio6
+1612;Jorge;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:15;Check In;255.0;255;Dispositivo-bio6
+2214;SERGIO ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:15;Check In;255.0;255;Dispositivo-bio6
+2335;MARIANNE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:15;Check In;255.0;255;Dispositivo-bio6
+2317;ANDRES FELIPE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:15;Check In;255.0;255;Dispositivo-bio6
+2111;Alberto;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:15;Check In;255.0;255;Dispositivo-bio1
+188;JHONNY JESUS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:15;Check In;255.0;255;Dispositivo-bio1
+2057;JESSIE VALENTINA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:14;Check In;255.0;255;Dispositivo-bio7
+1441;Ruben;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:13;Check In;255.0;255;Dispositivo-bio6
+1487;Rodrigo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:11;Check In;255.0;255;Dispositivo-bio7
+2375;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:11;Check In;255.0;255;Dispositivo-bio6
+946;ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:10;Check In;255.0;255;Dispositivo-bio1
+145;EMELETH;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:10;Check In;255.0;255;Dispositivo-bio1
+183;ELKIN ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:10;Check In;255.0;255;Dispositivo-bio1
+360;WILSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:08;Check In;255.0;255;Dispositivo-bio6
+2333;MARGARET;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:08;Check In;255.0;255;Dispositivo-bio6
+2377;LUIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:08;Check In;255.0;255;Dispositivo-bio6
+83;CRISTIAN DANILO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:06;Check In;255.0;255;Dispositivo-bio1
+1487;Rodrigo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:06;Check In;255.0;255;Dispositivo-bio1
+2271;KEWIN JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:06;Check In;255.0;255;Dispositivo-bio1
+27;JOAO ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:06;Check In;255.0;255;Dispositivo-bio1
+1475;Julio;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:06;Check In;255.0;255;Dispositivo-bio1
+1359;David;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:04;Check In;255.0;255;Dispositivo-bio7
+2347;JOSÉ MANUEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:04;Check In;255.0;255;Dispositivo-bio7
+29;NELSON SAMUEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:03;Check In;255.0;255;Dispositivo-bio1
+152;LEONARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:03;Check In;255.0;255;Dispositivo-bio1
+1;JAIRO.CRUZ;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:03;Check In;255.0;255;Dispositivo-bio7
+191;JOVAN ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:03;Check In;255.0;255;Dispositivo-bio1
+698;OSCAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:01;Check In;255.0;255;Dispositivo-bio6
+478;ROBERT ELIAS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:01;Check In;255.0;255;Dispositivo-bio6
+2306;MARELVIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:01;Check In;255.0;255;Dispositivo-bio6
+2276;EDUARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:00;Check In;255.0;255;Dispositivo-bio6
+447;HEIDY MAYERLY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:00;Check Out;255.0;255;Dispositivo-bio6
+427;ALEX JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:00;Check In;255.0;255;Dispositivo-bio6
+184;JORGE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;06:00;Check In;255.0;255;Dispositivo-bio6
+2130;LUIS DAVID;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:58;Check In;255.0;255;Dispositivo-bio1
+761;CARLOS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:58;Check In;255.0;255;Dispositivo-bio1
+2254;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:57;Check Out;255.0;255;Dispositivo-bio6
+37;FRAIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:54;Check In;255.0;255;Dispositivo-bio6
+646;GUSTAVO ADOLFO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:52;Check In;255.0;255;Dispositivo-bio3
+646;GUSTAVO ADOLFO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:52;Check In;255.0;255;Dispositivo-bio3
+2383;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:52;Check In;255.0;255;Dispositivo-bio7
+1399;Ever;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:51;Check In;255.0;255;Dispositivo-bio3
+1357;Cesar;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio3
+2207;JUAN JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio6
+1794;Michel;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio3
+2362;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio7
+1578;Enzo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio3
+1578;Enzo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio3
+1578;Enzo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio3
+54;MAURICIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio4
+1676;Jeison;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio3
+1750;Carlos;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:50;Check In;255.0;255;Dispositivo-bio3
+213;YORLEY PATRICIA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:49;Check In;255.0;255;Dispositivo-bio3
+542;MAIGER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:48;Check In;255.0;255;Dispositivo-bio6
+2274;ALFREDO ANTONIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:47;Check In;255.0;255;Dispositivo-bio1
+2097;jhon;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:47;Check In;255.0;255;Dispositivo-bio3
+524;OSMAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:45;Check Out;255.0;255;Dispositivo-bio4
+9;SABRINA MILENA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:45;Check In;255.0;255;Dispositivo-bio6
+1105;EvaristoMonte;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:45;Check Out;255.0;255;Dispositivo-bio1
+1105;EvaristoMonte;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:45;Check Out;255.0;255;Dispositivo-bio1
+2223;Andres;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:43;Check In;255.0;255;Dispositivo-bio6
+2277;OSCAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:43;Check In;255.0;255;Dispositivo-bio6
+2369;Yainer;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:43;Check In;255.0;255;Dispositivo-bio6
+334;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:43;Check In;255.0;255;Dispositivo-bio3
+1442;Gerson;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:42;Check In;255.0;255;Dispositivo-bio3
+603;CARLOS EMIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:42;Check In;255.0;255;Dispositivo-bio6
+1442;Gerson;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:42;Check In;255.0;255;Dispositivo-bio3
+1597;Carlos;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:42;Check In;255.0;255;Dispositivo-bio3
+2287;SAMIR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:42;Check In;255.0;255;Dispositivo-bio3
+355;EFRAIN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:42;Check In;255.0;255;Dispositivo-bio3
+1142;EDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:41;Check In;255.0;255;Dispositivo-bio3
+95;ANDERSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:41;Check In;255.0;255;Dispositivo-bio6
+1789;JORGE ALFONSO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:41;Check In;255.0;255;Dispositivo-bio3
+542;MAIGER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:41;Check In;255.0;255;Dispositivo-bio6
+1077;JOHN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:40;Check In;255.0;255;Dispositivo-bio6
+452;JHON EDISON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:40;Check In;255.0;255;Dispositivo-bio1
+2124;HERMES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:40;Check In;255.0;255;Dispositivo-bio1
+535;JONATHAN CAMILO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:40;Check In;255.0;255;Dispositivo-bio6
+2229;DAVID ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:39;Check In;255.0;255;Dispositivo-bio1
+1421;Greis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:37;Check In;255.0;255;Dispositivo-bio7
+2085;JUAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:34;Check Out;255.0;255;Dispositivo-bio3
+45;GUILLERMO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:34;Check In;255.0;255;Dispositivo-bio3
+63;ELMON ENRRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:31;Check In;255.0;255;Dispositivo-bio1
+1147;YURLEVINSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:30;Check In;255.0;255;Dispositivo-bio1
+8;JORGE LUIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:29;Check In;255.0;255;Dispositivo-bio6
+623;LILIANA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:29;Check In;255.0;255;Dispositivo-bio1
+4;MARIA ANGELICA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:21;Check In;255.0;255;Dispositivo-bio7
+1169;Angieflorez;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:21;Check In;255.0;255;Dispositivo-bio7
+1153;Felipe;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:18;Check In;255.0;255;Dispositivo-bio1
+450;LEONARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio1
+304;JUAN ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio1
+843;RAFAEL JOSE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio7
+354;ALVARO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio1
+978;AngelLara;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio7
+1094;BLADIMIR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio1
+220;JOSE BENJAMIN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio2
+1685;Zulma;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:17;Check In;255.0;255;Dispositivo-bio1
+931;ARLEY DE JESUS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+1194;MARUL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+2055;Jesus;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+1335;Liliana;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+2183;ZULAY YESENIA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+1931;Delvin;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+451;JUAN CAMILO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+11;SAMUEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+1994;Isaac;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+53;UBALDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:16;Check In;255.0;255;Dispositivo-bio1
+798;ELIECER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+798;ELIECER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+270;ALVARO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+2226;DIANA PAOLA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+484;JAMES BENEDICTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+103;LEOVIGILDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+665;FRANKLIN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+297;NEIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+1189;NA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+39;ENMANUEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:15;Check In;255.0;255;Dispositivo-bio1
+558;DANIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:14;Check In;255.0;255;Dispositivo-bio1
+2177;JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:14;Check In;255.0;255;Dispositivo-bio1
+2123;JONATHAN DE JESUS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:14;Check In;255.0;255;Dispositivo-bio1
+21;PEDRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:14;Check In;255.0;255;Dispositivo-bio1
+1694;Jhon;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:14;Check In;255.0;255;Dispositivo-bio1
+1518;Leonardo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:14;Check In;255.0;255;Dispositivo-bio1
+399;JAIME;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:14;Check In;255.0;255;Dispositivo-bio1
+1797;Carlos;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+490;JOHN ANDERSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+1040;Jonatan;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+2096;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+1329;Ricardo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+1319;Ramon;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+677;JORDAN ALFONSO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+641;DIEGO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:13;Check In;255.0;255;Dispositivo-bio1
+483;FABIAN ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:12;Check In;255.0;255;Dispositivo-bio1
+332;ANDRES FELIPE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:12;Check In;255.0;255;Dispositivo-bio1
+1834;Eliecer;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:12;Check In;255.0;255;Dispositivo-bio1
+944;JHONNATHAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+643;BRIAN STIVEN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+654;FABIAN OLIMPO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+652;HAROLD ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+652;HAROLD ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+719;VIVIANA JANETH;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio7
+1461;Andres;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+2082;Aris;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+305;CHRISTIAN CAMILO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+1576;Hemerson;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:11;Check In;255.0;255;Dispositivo-bio1
+2192;NATHALY GISSETH;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+2161;JORGE ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+1542;Gabriel;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+289;EZEQUIEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+1991;Jose;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+1257;DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+1397;Erinson;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+271;DAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+549;CARLOS ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:10;Check In;255.0;255;Dispositivo-bio1
+2228;HERMES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:09;Check In;255.0;255;Dispositivo-bio1
+711;RODRIGO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:09;Check In;255.0;255;Dispositivo-bio1
+709;VIRGILIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:09;Check In;255.0;255;Dispositivo-bio1
+1609;Duvan;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:09;Check In;255.0;255;Dispositivo-bio1
+475;SIMON ANIBAL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:09;Check In;255.0;255;Dispositivo-bio1
+35;JUAN CARLOS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:09;Check In;255.0;255;Dispositivo-bio1
+2099;Ruben;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:08;Check In;255.0;255;Dispositivo-bio3
+246;JAIRO DANIEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:07;Check In;255.0;255;Dispositivo-bio3
+41;ANDERSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:02;Check In;255.0;255;Dispositivo-bio1
+52;RICARDO ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:02;Check In;255.0;255;Dispositivo-bio7
+1460;Oferne;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:01;Check In;255.0;255;Dispositivo-bio1
+1533;Rafael;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+2128;Dalia;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+580;JARLEN FERNEY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+729;VLADIMIR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+1326;Willian;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+258;ROGER NICOLAS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+507;CARLOS EDUARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check Out;255.0;255;Dispositivo-bio7
+1300;Yoandri;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+1822;Leonardo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;05:00;Check In;255.0;255;Dispositivo-bio1
+1097;JESUS MARIA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:59;Check In;255.0;255;Dispositivo-bio1
+1288;Will;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:59;Check In;255.0;255;Dispositivo-bio1
+1673;Bernardo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:59;Check In;255.0;255;Dispositivo-bio1
+257;OSWALDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:59;Check In;255.0;255;Dispositivo-bio1
+1339;Antonio;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:59;Check In;255.0;255;Dispositivo-bio1
+23;ABELARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:59;Check In;255.0;255;Dispositivo-bio1
+1202;MARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:58;Check In;255.0;255;Dispositivo-bio1
+1269;Sigifredo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:58;Check In;255.0;255;Dispositivo-bio1
+1473;LUIS CARLOS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:58;Check In;255.0;255;Dispositivo-bio1
+2049;HECTOR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+374;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+1286;1286;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+1995;Carlos;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+816;PEDRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+1341;JuanGallo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+2132;DAVID EDUARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+2133;ANDRÉS ELIECER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+1228;TEOBALDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+1650;Yesenia;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:57;Check In;255.0;255;Dispositivo-bio1
+458;DENGER MAYID;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:56;Check In;255.0;255;Dispositivo-bio1
+481;EDGAR FELIPE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:56;Check In;255.0;255;Dispositivo-bio1
+1172;Jaime;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:56;Check In;255.0;255;Dispositivo-bio1
+2062;jimiz;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:56;Check In;255.0;255;Dispositivo-bio1
+2236;ISMAEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:56;Check In;255.0;255;Dispositivo-bio1
+200;HEIDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:52;Check In;255.0;255;Dispositivo-bio7
+364;ALIRIO ARLEY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:52;Check In;255.0;255;Dispositivo-bio1
+2109;FABIAN ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:52;Check In;255.0;255;Dispositivo-bio1
+210;INGRID JOANA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio7
+965;DAILA ISABEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+1277;Julio;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+1534;Vladimir;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+1328;Wilian;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+372;JHON ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+546;JEFFERSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+146;DIMAS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+1478;Felix;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:45;Check In;255.0;255;Dispositivo-bio1
+311;EDGAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+1278;Rafael;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+508;JONATHAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+283;CARLOS ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+488;EDGAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+1205;JOSELITO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+1522;Delio;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+498;GABRIEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+1806;Luis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:44;Check In;255.0;255;Dispositivo-bio1
+1806;Luis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:43;Check In;255.0;255;Dispositivo-bio1
+763;HERNAN DE JESUS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:43;Check In;255.0;255;Dispositivo-bio1
+1293;Guillermo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:42;Check In;255.0;255;Dispositivo-bio1
+582;EDGARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:42;Check In;255.0;255;Dispositivo-bio1
+2191;ANDREA MARGARITA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:42;Check In;255.0;255;Dispositivo-bio1
+1292;Edinson;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:42;Check In;255.0;255;Dispositivo-bio1
+1857;Justiniano;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+2045;Saul;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+2045;Saul;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+1004;ElianaPadilla;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+269;LENIN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+1450;Jose;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+598;DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+2127;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:41;Check In;255.0;255;Dispositivo-bio1
+2190;ORLEY DE JESUS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:40;Check In;255.0;255;Dispositivo-bio1
+376;JESUS ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:40;Check In;255.0;255;Dispositivo-bio1
+204;FABIAN ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:40;Check In;255.0;255;Dispositivo-bio1
+2162;CARLOS ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:40;Check In;255.0;255;Dispositivo-bio1
+2056;Wilmer;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:40;Check In;255.0;255;Dispositivo-bio1
+856;GERMAN ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:40;Check In;255.0;255;Dispositivo-bio1
+752;ROBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:35;Check In;255.0;255;Dispositivo-bio7
+443;VICENTE ANTONIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:35;Check In;255.0;255;Dispositivo-bio7
+123;JOSE ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:35;Check In;255.0;255;Dispositivo-bio7
+1037;LUIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:21;Check Out;255.0;255;Dispositivo-bio6
+163;PEDRO ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:20;Check Out;255.0;255;Dispositivo-bio6
+20;JHONY SANTIAGO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:20;Check Out;255.0;255;Dispositivo-bio3
+2245;Gustavo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:03;Check Out;255.0;255;Dispositivo-bio3
+2312;Jainer;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:01;Check Out;255.0;255;Dispositivo-bio6
+282;MARIO ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:01;Check In;255.0;255;Dispositivo-bio4
+282;MARIO ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:01;Check In;255.0;255;Dispositivo-bio4
+282;MARIO ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;04:00;Check In;255.0;255;Dispositivo-bio4
+2237;EDWIN MAURICIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:59;Check Out;255.0;255;Dispositivo-bio3
+2242;Camilo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:59;Check Out;255.0;255;Dispositivo-bio3
+2244;jessica;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:59;Check Out;255.0;255;Dispositivo-bio3
+2022;Dayanna;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:59;Check Out;255.0;255;Dispositivo-bio3
+2185;JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:58;Check Out;255.0;255;Dispositivo-bio3
+2224;Rafael;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:53;Check Out;255.0;255;Dispositivo-bio6
+1182;NA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:51;Check Out;255.0;255;Dispositivo-bio3
+2289;JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:51;Check Out;255.0;255;Dispositivo-bio6
+2141;Abdul;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:51;Check Out;255.0;255;Dispositivo-bio3
+2294;MORRISON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:51;Check Out;255.0;255;Dispositivo-bio3
+1358;Cesar;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:51;Check Out;255.0;255;Dispositivo-bio6
+1711;YeSid;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:51;Check Out;255.0;255;Dispositivo-bio6
+1315;Alfredo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:51;Check Out;255.0;255;Dispositivo-bio3
+371;GONZALO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:50;Check Out;255.0;255;Dispositivo-bio3
+264;MARCOS ANTONIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:50;Check Out;255.0;255;Dispositivo-bio3
+2250;Hugo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:50;Check Out;255.0;255;Dispositivo-bio3
+683;YOLIMA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:49;Check Out;255.0;255;Dispositivo-bio3
+1664;Aldemar;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:49;Check Out;255.0;255;Dispositivo-bio3
+758;JOSÉ RICARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:49;Check Out;255.0;255;Dispositivo-bio6
+2291;AMADO PASCUAL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio6
+288;DANILO ANTONIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio3
+566;RUBEN DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio3
+1740;Wilfredy;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio6
+1116;DAYRON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio3
+1289;Juan;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio3
+2206;JOSE SACRAMENTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio3
+1744;Jhon;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio3
+370;MANZUR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio6
+1741;Andres;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:48;Check Out;255.0;255;Dispositivo-bio3
+619;JOHN JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:47;Check Out;255.0;255;Dispositivo-bio6
+329;CLAUDIA MARCELA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:47;Check Out;255.0;255;Dispositivo-bio6
+2270;LARRY LUIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:47;Check Out;255.0;255;Dispositivo-bio3
+2255;EMILIANO JOSÉ;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:47;Check Out;255.0;255;Dispositivo-bio6
+2297;Nerly;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:47;Check Out;255.0;255;Dispositivo-bio6
+1466;Amilcar;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:46;Check Out;255.0;255;Dispositivo-bio3
+727;ROGER EDUARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:46;Check Out;255.0;255;Dispositivo-bio3
+1028;SAUL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:46;Check Out;255.0;255;Dispositivo-bio3
+1347;Jose;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:46;Check Out;255.0;255;Dispositivo-bio6
+2331;CAMILO ERNESTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:46;Check Out;255.0;255;Dispositivo-bio6
+2309;Milton;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:46;Check Out;255.0;255;Dispositivo-bio3
+2310;Armando;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:46;Check Out;255.0;255;Dispositivo-bio6
+1491;Jenrry;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio3
+2330;JULIETH PAOLA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio6
+1642;Luis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio3
+2332;YESICA TATIANA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio6
+2005;JORGE ENRIQUE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio6
+878;JIMMY DAVID;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio3
+2275;RAUL JOSE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio6
+2292;GERSON DAVID;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio6
+1581;Joao;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check Out;255.0;255;Dispositivo-bio3
+1581;Joao;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:45;Check In;255.0;255;Dispositivo-bio3
+318;MAURICIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio3
+175;JORGE ELIECER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio3
+108;JHON HAROLD;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio6
+384;HERNANDO RAFAEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio3
+276;OSCAR ARMANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio6
+826;RUBEN DARIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio3
+515;JOSE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio6
+1529;Siza;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio3
+42;JUAN DIEGO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio6
+592;HERNANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio3
+2314;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:44;Check Out;255.0;255;Dispositivo-bio6
+256;JORGE YORDAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:43;Check Out;255.0;255;Dispositivo-bio6
+1439;SALCEDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:43;Check Out;255.0;255;Dispositivo-bio6
+107;DAVID ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:43;Check Out;255.0;255;Dispositivo-bio6
+2175;Garrido;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:43;Check Out;255.0;255;Dispositivo-bio6
+919;OSCAR ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:43;Check Out;255.0;255;Dispositivo-bio3
+919;OSCAR ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:43;Check Out;255.0;255;Dispositivo-bio3
+302;ALBEIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio6
+410;HERNANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio6
+2260;VICENCIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio6
+1060;FABIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio6
+1337;Reinaldo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio3
+70;CARLOS ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio6
+1418;Sebastian;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio3
+190;HAMMER JESUS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio6
+733;JOHN JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:42;Check Out;255.0;255;Dispositivo-bio3
+1540;Eder;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio3
+2315;Miguel;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio6
+2143;Alvaro;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio3
+2227;LAURA ALEJANDRA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio6
+568;ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio6
+40;LUIS EMEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio6
+1502;Carlos;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio6
+1541;Milton;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio3
+2208;ALFREDO ANTONIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio3
+1188;NA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:41;Check Out;255.0;255;Dispositivo-bio6
+99;MAURICIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+533;FREDDY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+1670;Edinson;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio6
+2218;IVAN JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+1586;Mauricio;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+189;DIEGO HERNAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio6
+491;JULIO CESAR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+345;ROBINSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+1123;jhonardila;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio6
+187;ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+1618;Michael;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio6
+2202;Guillermo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio3
+1069;DANIEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio6
+497;YAIR DE JESUS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:40;Check Out;255.0;255;Dispositivo-bio6
+1901;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:37;Check Out;255.0;255;Dispositivo-bio6
+1897;Heiner;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:37;Check Out;255.0;255;Dispositivo-bio6
+161;ADALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:28;Check Out;255.0;255;Dispositivo-bio7
+245;MILEIDY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:28;Check Out;255.0;255;Dispositivo-bio7
+1755;OSCAR JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:04;Check In;255.0;255;Dispositivo-bio4
+996;CarlosGarces;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:03;Check Out;255.0;255;Dispositivo-bio4
+2195;Jean;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:03;Check Out;255.0;255;Dispositivo-bio4
+278;FREDY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:03;Check Out;255.0;255;Dispositivo-bio4
+476;JOSE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:03;Check Out;255.0;255;Dispositivo-bio4
+2010;Luis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:02;Check Out;255.0;255;Dispositivo-bio4
+1501;Darian;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:02;Check Out;255.0;255;Dispositivo-bio1
+2119;Lilian;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;03:02;Check Out;255.0;255;Dispositivo-bio1
+1409;Liceth;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:53;Check Out;255.0;255;Dispositivo-bio1
+292;BONIEK;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:52;Check Out;255.0;255;Dispositivo-bio1
+1453;Liliana;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:52;Check Out;255.0;255;Dispositivo-bio1
+681;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:49;Check Out;255.0;255;Dispositivo-bio1
+681;JHON JAIRO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:49;Check Out;255.0;255;Dispositivo-bio1
+1632;Melquis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:48;Check Out;255.0;255;Dispositivo-bio1
+335;FABER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:48;Check Out;255.0;255;Dispositivo-bio1
+1310;Julio;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:48;Check Out;255.0;255;Dispositivo-bio1
+471;FREDY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:47;Check Out;255.0;255;Dispositivo-bio1
+431;EMERSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:47;Check Out;255.0;255;Dispositivo-bio1
+250;JESUS DAVID;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:47;Check Out;255.0;255;Dispositivo-bio1
+265;ABEL MAURICIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:47;Check Out;255.0;255;Dispositivo-bio1
+265;ABEL MAURICIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:47;Check In;255.0;255;Dispositivo-bio1
+352;ALEXANDER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:47;Check In;255.0;255;Dispositivo-bio1
+570;LUIS XAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+1443;Jose;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+2065;valentin;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+396;JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+1090;HERNAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+2116;;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+1038;ELIECER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+1575;Carlos;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+2166;WENDI ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+1914;JHON SMITH;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:46;Check Out;255.0;255;Dispositivo-bio1
+1602;Victor;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+730;DANIEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+1054;ROSSEMBER CARLOS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+2072;Garces;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+2122;CRISTIAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+1955;Brayan;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+2017;DEIBY YAIR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+1412;Johan;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:45;Check Out;255.0;255;Dispositivo-bio1
+2121;JOSE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:44;Check Out;255.0;255;Dispositivo-bio1
+906;JAIRO JOSE;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:44;Check Out;255.0;255;Dispositivo-bio1
+1168;Angelmena;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:44;Check Out;255.0;255;Dispositivo-bio1
+1598;Lorenzo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:44;Check Out;255.0;255;Dispositivo-bio1
+1844;Jorge;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:44;Check Out;255.0;255;Dispositivo-bio1
+2301;RICARDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:44;Check Out;255.0;255;Dispositivo-bio1
+1759;Hermides;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+1759;Hermides;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+932;ORLANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+2253;CARLOS ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+2273;JHONATHAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio7
+2201;JHON FREDY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+1895;Elvis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+2272;NORBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio7
+1184;IvanAmaya;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+1731;Marlon;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+1032;JAVIER HUMBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio7
+1640;Misael;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio1
+2165;ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:43;Check Out;255.0;255;Dispositivo-bio7
+110;JOHNY LEONEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio7
+1183;NA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+1764;Edgar;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+1226;HERNAN;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+1209;NA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+1244;Josediaz;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+1858;Cley;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+842;RAMIRO ANTONIO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio7
+1342;Edgar;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+2126;Leo_ATENCIA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio7
+9999;RICARDOCORDEROZULUAGA;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+1627;Nicole;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio7
+309;DEIVYS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check Out;255.0;255;Dispositivo-bio1
+1671;Andres;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:42;Check In;255.0;255;Dispositivo-bio1
+583;WILSON;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+1091;LUIS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio7
+748;FERNANDO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+1890;Yulian;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio7
+1646;Deivis;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+2164;ROBIN DANIEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio7
+1588;PDetro;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+760;MARIO ALBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+499;CARLOS GILBERTO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+696;PEDRO PABLO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+1192;Elkin;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:41;Check Out;255.0;255;Dispositivo-bio1
+1964;Angel;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+1302;Cristobal;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+1161;Emelospino;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+1860;Ardrubal;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+2152;Abelardo;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+1303;Enrique;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+2188;NELSON JUNIOR;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+636;JAVIER;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+2135;MARINETH;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+2092;CARLOS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+2092;CARLOS;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+482;JOSE ANGEL;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio7
+682;YAROL GUILLERMO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+2158;JOSE ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio7
+460;LUIS ABRAHAM;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:40;Check Out;255.0;255;Dispositivo-bio1
+242;JEFFERSON ANDRES;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:39;Check Out;255.0;255;Dispositivo-bio1
+813;JHONNY;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:39;Check Out;255.0;255;Dispositivo-bio1
+338;MARCELINO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:39;Check Out;255.0;255;Dispositivo-bio1
+2002;RODRIGO;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:38;Check Out;255.0;255;Dispositivo-bio1
+1881;Carlos;Habilitado;Departamento;Empresa;Centro de costos;2023-07-12;02:37;Check Out;255.0;255;Dispositivo-bio1
