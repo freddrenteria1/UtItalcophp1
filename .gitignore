@@ -1,13 +1,6 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 
-# carpetas de Documentos
-/biometricsystem/server/csv
-/biometricsystem/firmas
-/calidad/029/weldbook/server/csv
-
-/calidad/archivos026.zip
-/calidad/029/029.zip
 
 *.csv
 *.xlsx
@@ -15,6 +8,15 @@
 *.pdf
 *.db
 *.sql
+
+
+# carpetas de Documentos
+/biometricsystem/server/csv
+/biometricsystem/firmas
+/calidad/029/weldbook/server/csv
+
+/calidad/archivos026.zip
+/calidad/029/029.zip
 
 *_MACOSX
 
