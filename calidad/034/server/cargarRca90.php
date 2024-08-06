@@ -1,0 +1,50 @@
+<?php
+header('Content-type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+include("conectar.php"); 
+$conexion=conectar();
+
+date_default_timezone_set("America/Bogota");
+$fecha=date("Y-m-d");
+
+$ods = $_POST["ods"];
+$tag = $_POST["tag"];
+
+$sql="SELECT * FROM os90 WHERE ods='$ods' AND tag = '$tag'";
+$exito=mysqli_query($conexion, $sql);
+
+$obj = mysqli_fetch_object($exito);
+
+    $datos = array(
+        'id'=>$obj->id,
+        'contrato'=>$obj->contrato,
+        'unidad'=>$obj->unidad,
+        'planta'=>$obj->planta,
+        'ods'=>$obj->ods,
+        'familia'=>$obj->familia,
+        'tag'=>$obj->tag,
+        'info'=>$obj->info,
+        'termocupla'=>$obj->termocupla,
+        'termopozo'=>$obj->termopozo,
+        'tagtermo'=>$obj->tagtermo,
+        'ratingterm'=>$obj->ratingterm,
+        'longinm'=>$obj->longinm,
+        'verificado'=>$obj->verificado,
+        'prueba'=>$obj->prueba,
+        'estadoinicial'=>$obj->estadoinicial,
+        'estadofinal'=>$obj->estadofinal,
+        'observaciones'=>$obj->observaciones,
+        'doc'=>$obj->doc,
+        'infocal'=>$obj->infocal,
+        'firmadatoscal'=>$obj->firmadatoscal,
+        'itemscal'=>$obj->itemscal,
+        'datospruebalazo'=>$obj->datospruebalazo,
+        'itemspruebalazo'=>$obj->itemspruebalazo,
+        'equiposprueba'=>$obj->equiposprueba,
+        'obsprueba'=>$obj->obsprueba,
+        'docprueba'=>$obj->docprueba
+    );
+
+
+echo json_encode($datos);

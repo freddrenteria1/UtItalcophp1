@@ -1,0 +1,89 @@
+<?php
+header('Content-type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+include("conectar.php"); 
+$conexion=conectar();
+
+date_default_timezone_set("America/Bogota");
+$fecha=date("Y-m-d");
+
+$sql="SELECT * FROM curvasoldadura order by fecha";
+$exito=mysqli_query($conexion, $sql);
+
+while($obj = mysqli_fetch_object($exito)){
+
+    $soldp[] = array(
+        'id'=>$obj->id,
+        'fecha'=>$obj->fecha,
+        'progacum'=>doubleval($obj->progacum),
+        'progdia'=>doubleval($obj->progdia)
+    );
+
+}
+
+
+$sql="SELECT SUM(pulgdiam) AS totpulg FROM datoswp";
+$exito=mysqli_query($conexion, $sql);
+
+$obj = mysqli_fetch_object($exito);
+
+$totsold = $obj->totpulg;
+
+$totreg = count($soldp);
+
+
+// echo 'Total reg '. $totreg;
+
+$sql="SELECT SUM(pulgdiam) AS totpulg FROM datoswp  WHERE fecha = 'ECP'";
+$exito=mysqli_query($conexion, $sql);
+
+$obj = mysqli_fetch_object($exito);
+
+$totsoldr =  $obj->totpulg;
+
+//$totsoldr = ($totsoldr / $totsold) * 100;
+
+$ejeacum = $totsoldr;
+
+
+for($i=0; $i<$totreg; $i++){
+
+    $fechab = $soldp[$i]["fecha"];
+
+    if($fechab <= $fecha){
+
+        $fechabm = date("d/m/Y", strtotime($fechab));
+        // echo $fechab . '<br>';
+    
+        $sql2="SELECT SUM(pulgdiam) AS totpulg FROM datoswp WHERE fecha='$fechabm'";
+        $eje=mysqli_query($conexion, $sql2);
+        $obj = mysqli_fetch_object($eje);
+    
+        $porf = doubleval($obj->totpulg);
+    
+        $ejeacum+=$porf;
+    
+        $solde[] = array(
+            'fecha'=>$fechab,
+            'ejeacum'=>doubleval($ejeacum),
+            'ejedia'=>doubleval($porf)
+        );
+    }
+
+
+}
+
+// $newDate = date("d/m/Y", strtotime($fecha));
+// echo $newDate;
+
+// $sql2="SELECT * FROM datosw WHERE ";
+// $exito=mysqli_query($conexion, $sql2);
+
+$datos = array(
+    'soldp'=>$soldp,
+    'solde'=>$solde,
+    'totsold'=>$totsold
+);
+
+echo json_encode($datos);

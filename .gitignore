@@ -16,6 +16,8 @@
 *.db
 *.sql
 
+*_MACOSX
+
 
 # Compiled output
 /dist
