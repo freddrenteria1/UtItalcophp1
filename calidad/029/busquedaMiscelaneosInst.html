@@ -117,11 +117,10 @@
     </nav>
     <div class="container">
         <div class="cuerpo">
-            <h4>TAGS  # <span id="equipos"></span>  </h4>
+            <h4><span id="equipos">MISCELÁNEOS INSTRUMENTACIÓN</span> </h4>
             <hr>
             <p>
                 <div class="container" id="listaTags">
-
 
                 </div>
             </p>
@@ -144,54 +143,39 @@
 
         var server = 'https://utitalco.com/calidad/029/server/';
 
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-
-        var lazo = getParameterByName('lazo');
 
         odsq = localStorage.getItem('odsq');
 
         if (odsq == null || odsq == '') {
             location = './'
-        } else {
-            $('#odsq').html(odsq)
-            equipos = sessionStorage.getItem('equipo')
-            alcance = sessionStorage.getItem('servicio')
-            esp = sessionStorage.getItem('esp')
-            $('#equipos').html(lazo)
-            $('#serv').html(alcance)
-            cargarTags()
-        }
+        } 
+
+        cargarTags()
 
         function cargarTags() {
-            $.post(server + 'cargarTagsLazo.php', {
-                    ods: odsq,
-                    esp: esp,
-                    equipo: equipos,
-                    alcance: alcance,
-                    lazo: lazo
+
+            
+            $.post(server + 'cargarMiscInstLista.php', {
+                    ods: odsq
                 },
                 function(resp) {
                     arrayTags = resp
-                    formato = arrayTags[0].rca
+                     
                     var html = ''
                     for (var i = 0; i < arrayTags.length; i++) {
                         html += `
                             
-                            <button type="button" class="btn btn-success m-1" onclick="ver('${arrayTags[i].tag}')">${arrayTags[i].tag}</button>
+                            <button type="button" class="btn btn-success m-1" onclick="ver('${arrayTags[i].lazo}','${arrayTags[i].tag}')">${arrayTags[i].tag}</button>
                         `
                     }
                     $('#listaTags').html(html)
                 })
         }
 
-        function ver(tag) {
-            location = formato + '.html?tag=' + tag + '&ing='+lazo
+        function ver(lazo,tag) {
+            location ='OS022-31inst.html?tag=' + tag + '&ing='+lazo
         }
+
     </script>
 
 

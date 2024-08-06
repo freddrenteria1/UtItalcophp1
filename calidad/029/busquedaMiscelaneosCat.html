@@ -60,23 +60,21 @@
         }
         
         .mnubotones {
-            margin-top: 330px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative;
         }
         
         .cajones {
+            float: left;
             margin: 10px;
         }
         
         .mbt {
-            height: 200px;
+            height: 60px;
         }
         
         .card {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            width: 22rem;
+            width: 20rem;
         }
         
         .cuerpo {
@@ -115,16 +113,34 @@
             </div>
         </div>
     </nav>
+   
+
     <div class="container">
         <div class="cuerpo">
-            <h4>TAGS  # <span id="equipos"></span>  </h4>
-            <hr>
+
+
             <p>
-                <div class="container" id="listaTags">
-
-
-                </div>
+                <h4>MISCELÁNEOS - TUBERÍA</h4>
             </p>
+
+        </div>
+        <div class="mnubotones" id="familias">
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-warning mbt" onclick="selEsp('TUBERÍA')">
+                        ESPECIALIDAD  TUBERÍA
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-warning mbt" onclick="selEsp('INSTRUMENTACIÓN')">
+                        ESPECIALIDAD INSTRUMENTACIÓN
+                    </button>
+                </div>
+            </div>
 
 
         </div>
@@ -144,54 +160,24 @@
 
         var server = 'https://utitalco.com/calidad/029/server/';
 
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-
-        var lazo = getParameterByName('lazo');
 
         odsq = localStorage.getItem('odsq');
 
         if (odsq == null || odsq == '') {
             location = './'
-        } else {
-            $('#odsq').html(odsq)
-            equipos = sessionStorage.getItem('equipo')
-            alcance = sessionStorage.getItem('servicio')
-            esp = sessionStorage.getItem('esp')
-            $('#equipos').html(lazo)
-            $('#serv').html(alcance)
-            cargarTags()
-        }
+        } 
 
-        function cargarTags() {
-            $.post(server + 'cargarTagsLazo.php', {
-                    ods: odsq,
-                    esp: esp,
-                    equipo: equipos,
-                    alcance: alcance,
-                    lazo: lazo
-                },
-                function(resp) {
-                    arrayTags = resp
-                    formato = arrayTags[0].rca
-                    var html = ''
-                    for (var i = 0; i < arrayTags.length; i++) {
-                        html += `
-                            
-                            <button type="button" class="btn btn-success m-1" onclick="ver('${arrayTags[i].tag}')">${arrayTags[i].tag}</button>
-                        `
-                    }
-                    $('#listaTags').html(html)
-                })
+        function  selEsp(esp){
+            if(esp=='INSTRUMENTACIÓN'){
+                location = 'busquedaMiscelaneosInst.html'
+            }
+            if(esp=='TUBERÍA'){
+                location = 'busquedaMiscelaneosTub.html'
+            }
         }
+            
 
-        function ver(tag) {
-            location = formato + '.html?tag=' + tag + '&ing='+lazo
-        }
+        
     </script>
 
 

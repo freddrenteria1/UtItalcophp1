@@ -78,12 +78,33 @@
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             width: 22rem;
         }
+
+        .micard {
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            cursor: pointer;
+        }
         
-        .cuerpo {
-            margin-top: 20px;
+        .micard:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        
+        .tit {
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .ingreso {
+            width: 400px;
+            background-color: rgba(256, 256, 256, .75);
+            padding: 10px;
             border-radius: 10px;
-            background-color: rgb(243, 243, 243);
-            padding: 15px;
         }
         
         @media only screen and (max-width: 600px) {
@@ -111,22 +132,40 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <h4>REGISTRO CONTROL DE ACTIVIDADES | RCA | ODS <span id="odsq"></span> </h4>
+                <h4>REGISTRO CONTROL DE ACTIVIDADES | RCA </h4>
             </div>
         </div>
     </nav>
     <div class="container">
-        <div class="cuerpo">
-            <h4>TAGS  # <span id="equipos"></span>  </h4>
-            <hr>
-            <p>
-                <div class="container" id="listaTags">
-
-
+        <div class="login mt-5">
+            <div class="ingreso">
+                <h4 class="text-center mt-2">Ingresar</h4>
+                <hr>
+                <div class="form-group m-2">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" placeholder="Correo" id="usercali">
                 </div>
-            </p>
+                <div class="form-group m-2">
+                    <label for="">Contraseña</label>
+                    <input type="password" class="form-control" placeholder="Contraseña" id="claveecp">
+                </div>
+                <div class="form-group m-2">
+                    <label for="">ODS</label>
+                    <select id="odsq" class="form-control miselect" >
+                        <option value="">Seleccione...</option>
+                        <option value="021">021</option>
+                        <option value="022">022</option>
+                        <option value="023">023</option>
+                        <option value="024">024</option>
+                        <option value="025">025</option>
+                    </select>
+                </div>
+                
+                <div class="m-3">
+                    <button type="button" class="btn btn-success" onclick="selOds()">Ingresar</button>
+                </div>
 
-
+            </div>
         </div>
     </div>
 
@@ -136,61 +175,55 @@
 
     <script>
         var odsq = null
-        var arrayTags = null
-        var equipos = null
-        var alcance = null
-        var esp = null
-        var formato = null
+        var url = "https://utitalco.com/calidad/028/server/";
 
-        var server = 'https://utitalco.com/calidad/029/server/';
+        
+        function selOds() {
+            var usercali = $('#usercali').val()
+            var claveecp = $('#claveecp').val()
+            var odssel = $('#odsq').val()
 
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-
-        var lazo = getParameterByName('lazo');
-
-        odsq = localStorage.getItem('odsq');
-
-        if (odsq == null || odsq == '') {
-            location = './'
-        } else {
-            $('#odsq').html(odsq)
-            equipos = sessionStorage.getItem('equipo')
-            alcance = sessionStorage.getItem('servicio')
-            esp = sessionStorage.getItem('esp')
-            $('#equipos').html(lazo)
-            $('#serv').html(alcance)
-            cargarTags()
-        }
-
-        function cargarTags() {
-            $.post(server + 'cargarTagsLazo.php', {
-                    ods: odsq,
-                    esp: esp,
-                    equipo: equipos,
-                    alcance: alcance,
-                    lazo: lazo
+            if(odssel == ''){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Seleccione una Orden de Servicio...!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }else{
+                $.post(url + 'vingresoecp.php', {
+                    user: usercali,
+                    clave: claveecp
                 },
                 function(resp) {
-                    arrayTags = resp
-                    formato = arrayTags[0].rca
-                    var html = ''
-                    for (var i = 0; i < arrayTags.length; i++) {
-                        html += `
-                            
-                            <button type="button" class="btn btn-success m-1" onclick="ver('${arrayTags[i].tag}')">${arrayTags[i].tag}</button>
-                        `
+                    if (resp.msn == 'Ok') {
+                        sessionStorage.setItem('usercal', usercali)
+                        sessionStorage.setItem('tipouser', resp.tipo)
+                        localStorage.setItem('odsq', odssel)
+
+                        location = 'buscador.html'
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Acceso denegado...!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
-                    $('#listaTags').html(html)
                 })
+
+            }
+
+
+           
         }
 
-        function ver(tag) {
-            location = formato + '.html?tag=' + tag + '&ing='+lazo
+        function informe(){
+            location = 'informepuntos.html'
         }
     </script>
 
