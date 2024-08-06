@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        body {
+            background-image: url('img/fondo_.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .mn {
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .mn:hover {
+            background-color: rgb(140, 185, 252);
+        }
+        
+        .cab {
+            display: flex;
+            align-items: center;
+        }
+        
+        #menu {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 70%;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+        }
+        
+        #login {
+            margin: 0 auto;
+            margin-top: 60px;
+            height: auto;
+            width: 35%;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        
+        .cuerpo {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 15px;
+        }
+        
+        .rojo {
+            color: red;
+            cursor: pointer;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login">
+        <div class="text-center">
+            <img src="img/biometricsystem.png" style="padding: 10px;" height="120px" alt="">
+            <img src="img/logo_p.png" style="padding: 10px;" height="80px" alt="">
+            <hr>
+            <center>
+                <h4>Ingreso al sistema</h4>
+            </center>
+            <div class="form-group">
+                <input type="text" class="form-control" id="user" placeholder="Usuario">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="clave" placeholder="Contraseña">
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-success" onclick="ingresar()">Ingresar</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        function ingresar() {
+            var user = $('#user').val()
+            var clave = $('#clave').val()
+            var server = 'https://utitalco.com/biometricsystem/server/';
+
+            sessionStorage.setItem('user', 'jairocruzprogramador@gmail.com')
+            sessionStorage.setItem('ods', '030')
+            sessionStorage.setItem('privilegio', 'admin')
+            sessionStorage.setItem('nombreods', 'U2100')
+            sessionStorage.setItem('voboitalco', '')
+            sessionStorage.setItem('voboecp', '')
+
+            //location = 'indexadmin.html';
+
+            $.post(server + 'verificaruser.php', {
+                    user: user,
+                    clave: clave
+                },
+                function(resp) {
+                    console.log(resp)
+                    if (resp.msn == 'Ok') {
+                        // sessionStorage.setItem('user', 'jairocruzprogramador@gmail.com')
+                        // sessionStorage.setItem('ods', '030')
+                        // sessionStorage.setItem('privilegio', 'admin')
+                        // sessionStorage.setItem('nombreods', 'U2100')
+                        // sessionStorage.setItem('voboitalco', '')
+                        // sessionStorage.setItem('voboecp', '')
+                        sessionStorage.setItem('user', user)
+                        sessionStorage.setItem('ods', resp.numods)
+                        sessionStorage.setItem('privilegio', resp.privilegio)
+                        sessionStorage.setItem('nombreods', resp.ods)
+                        sessionStorage.setItem('voboitalco', resp.voboitalco)
+                        sessionStorage.setItem('voboecp', resp.voboecp)
+                        if (resp.privilegio == 'Super') {
+                            location = 'indexadmin.html';
+                        }
+                        if (resp.privilegio == 'SuperAdmin') {
+                            location = 'informe.html';
+                        }
+                        if (resp.privilegio == 'Admin') {
+                            location = 'index.html';
+                        }
+                        if (resp.privilegio == 'Admin2') {
+                            location = 'index.html';
+                        }
+
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Error en Email o Clave',
+                            footer: 'Solicite una clave al administrador'
+                        })
+                    }
+                })
+
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,435 @@
+<div class="cuerpo oculto animate__bounceIn " id="progtrab">
+    <h3>Programación de Trabajadores
+        <span class="float-right rojo" onClick="cerrar('progtrab')"><i class="fas fa-window-close"></i></span>
+
+    </h3>
+    <hr>
+    <div class="row">
+
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Grupo</label>
+                <select id="cargotrab2" class="form-control">
+                        
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Área</label>
+                <select id="cargotrab2" class="form-control">
+                        <option value="UT">Almacén</option>
+                        <option value="TS">Taller</option>
+                        <option value="TS">Planta</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Trabajador</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">ELKIN SANCHEZ GALVIS</option>
+                        <option value="TS">FREDDY ANTONIO MORENO DAGER</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Turno asignado</label>
+                <select id="turnotrab2" class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Fecha inicia</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Fecha termina</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">.</label> <br>
+                <button type="button" class="btn btn-warning"><i class="fas fa-search"></i></button>
+                <button type="button" class="btn btn-success">Programar</button>
+                <button type="button" class="btn btn-info">Importar</button>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <th>Fecha</th>
+                <th>Código</th>
+                <th>Cédula</th>
+                <th>Trabajador</th>
+                <th>Cargo</th>
+                <th>Grupo</th>
+                <th>Área</th>
+                <th>Turno</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td>2021-10-05</td>
+                    <td>370.2-BCA-4899</td>
+                    <td>1096201249</td>
+                    <td>ELKIN SANCHEZ GALVIS</td>
+                    <td>OBRERO A2</td>
+                    <td>Producción</td>
+                    <td>Planta</td>
+                    <td>E2: 07:00 - 17:00</td>
+                    <td><button type="button" class="btn btn-danger "><i class="fas fa-trash-alt"></i></button></td>
+
+                </tr>
+                <tr>
+                    <td>2021-10-05</td>
+                    <td>3370.2-BCA-4425</td>
+                    <td>73109706</td>
+                    <td>FREDDY ANTONIO MORENO DAGER</td>
+                    <td>TUBERO 1A</td>
+                    <td>Producción</td>
+                    <td>Planta</td>
+                    <td>E2: 07:00 - 17:00</td>
+                    <td><button type="button" class="btn btn-danger "><i class="fas fa-trash-alt"></i></button></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="cuerpo oculto animate__bounceIn " id="asistencias">
+    <h3>Asistencias
+        <span class="float-right rojo" onClick="cerrar('asistencias')"><i class="fas fa-window-close"></i></span>
+
+    </h3>
+    <hr>
+    <div class="row">
+
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Grupo</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">Administrativo</option>
+                        <option value="TS">Operativo</option>
+                        <option value="TS">Producción</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Área</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">Almacén</option>
+                        <option value="TS">Taller</option>
+                        <option value="TS">Planta</option>
+                    </select>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Fecha inicia</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Fecha termina</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 text-center">
+            <div class="form-group">
+
+                <button type="button" class="btn btn-warning"><i class="fas fa-search"></i>Buscar</button>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Marcación</th>
+                <th>Grupo</th>
+                <th>Área</th>
+                <th>Tipo Ingreso</th>
+                <th>Novedad</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ELKIN SANCHEZ GALVIS</td>
+                    <td>2021-10-05</td>
+                    <td>07:05:00</td>
+                    <td>Entrada</td>
+                    <td>Producción</td>
+                    <td>Planta</td>
+                    <td>Manual</td>
+                    <td></td>
+                    <td><button type="button" class="btn btn-danger "><i class="fas fa-trash-alt"></i></button></td>
+
+                </tr>
+                <tr>
+                    <td>FREDDY ANTONIO MORENO DAGER</td>
+                    <td>2021-10-05</td>
+                    <td>17:05:00</td>
+                    <td>Salida</td>
+                    <td>Producción</td>
+                    <td>Planta</td>
+                    <td>Biométrico</td>
+                    <td></td>
+                    <td><button type="button" class="btn btn-danger "><i class="fas fa-trash-alt"></i></button></td>
+                </tr>
+                <tr style="background-color: rgb(250, 165, 150);">
+                    <td>JUAN CAMILO</td>
+                    <td>2021-10-05</td>
+                    <td>00:00:00</td>
+                    <td>-</td>
+                    <td>Producción</td>
+                    <td>Planta</td>
+                    <td>-</td>
+                    <td>Permiso no remunerado</td>
+                    <td></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="cuerpo oculto animate__bounceIn " id="novedades">
+    <h3>Novedades del personal
+        <span class="float-right rojo" onClick="cerrar('novedades')"><i class="fas fa-window-close"></i></span>
+
+    </h3>
+    <hr>
+    <div class="row">
+
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Grupo</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">Administrativo</option>
+                        <option value="TS">Operativo</option>
+                        <option value="TS">Producción</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Área</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">Almacén</option>
+                        <option value="TS">Taller</option>
+                        <option value="TS">Planta</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Trabajador</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">ELKIN SANCHEZ GALVIS</option>
+                        <option value="TS">FREDDY ANTONIO MORENO DAGER</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Turno asignado</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="APR">E1: 07:00 - 17:00</option>
+                        <option value="GDOC">E2: 06:00 - 16:00</option>
+                        <option value="S1A">B1: 18:00 - 04:00</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Fecha</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Novedad</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="APR">Incapacidad</option>
+                        <option value="GDOC">Permiso no remunerado</option>
+                        <option value="S1A">Licencia Maternidad</option>
+                        <option value="S1A">Cita médica</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">.</label> <br>
+                <button type="button" class="btn btn-success">Agregar</button>
+            </div>
+        </div>
+
+
+
+    </div>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <th>Fecha</th>
+                <th>Código</th>
+                <th>Cédula</th>
+                <th>Trabajador</th>
+                <th>Cargo</th>
+                <th>Grupo</th>
+                <th>Área</th>
+                <th>Turno</th>
+                <th>Novedad</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td>2021-10-05</td>
+                    <td>370.2-BCA-4899</td>
+                    <td>1096201249</td>
+                    <td>ELKIN SANCHEZ GALVIS</td>
+                    <td>OBRERO A2</td>
+                    <td>Producción</td>
+                    <td>Planta</td>
+                    <td>E2: 07:00 - 17:00</td>
+                    <td>Incapacidad</td>
+                    <td><button type="button" class="btn btn-danger "><i class="fas fa-trash-alt"></i></button></td>
+
+                </tr>
+                <tr>
+                    <td>2021-10-05</td>
+                    <td>3370.2-BCA-4425</td>
+                    <td>73109706</td>
+                    <td>FREDDY ANTONIO MORENO DAGER</td>
+                    <td>TUBERO 1A</td>
+                    <td>Producción</td>
+                    <td>Planta</td>
+                    <td>E2: 07:00 - 17:00</td>
+                    <td>Permiso no remunerado</td>
+                    <td><button type="button" class="btn btn-danger "><i class="fas fa-trash-alt"></i></button></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="cuerpo oculto animate__bounceIn " id="marcmanual">
+    <h3>Marcación Manual
+        <span class="float-right rojo" onClick="cerrar('marcmanual')"><i class="fas fa-window-close"></i></span>
+
+    </h3>
+    <hr>
+    <div class="row">
+
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Grupo</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">Administrativo</option>
+                        <option value="TS">Operativo</option>
+                        <option value="TS">Producción</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Área</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">Almacén</option>
+                        <option value="TS">Taller</option>
+                        <option value="TS">Planta</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="">Trabajador</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="UT">ELKIN SANCHEZ GALVIS</option>
+                        <option value="TS">FREDDY ANTONIO MORENO DAGER</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">Turno asignado</label>
+                <select id="cargotrab" class="form-control">
+                        <option value="APR">E1: 07:00 - 17:00</option>
+                        <option value="GDOC">E2: 06:00 - 16:00</option>
+                        <option value="S1A">B1: 18:00 - 04:00</option>
+                    </select>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label for="">Fecha</label>
+                <input type="date" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label for="">Hora</label>
+                <input type="time" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label for="">.</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="optentrada" value="option1">
+                    <label class="form-check-label" for="optentrada">Entrada</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="optsalida" value="option2">
+                    <label class="form-check-label" for="optsalida">Salida</label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="">.</label> <br>
+                <button type="button" class="btn btn-success">Agregar</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+
+</div>

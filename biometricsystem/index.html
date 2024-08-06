@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.1/pure-min.css">
+
+
+
+    <style>
+        body {
+            background-image: url('img/fondo_.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .mn {
+            cursor: pointer;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .mn:hover {
+            background-color: rgb(140, 185, 252);
+        }
+
+        .cab {
+            display: flex;
+            align-items: center;
+        }
+
+        #menu {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 70%;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+        }
+
+        .cuerpo {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 95%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 15px;
+        }
+
+        .rojo {
+            color: red;
+            cursor: pointer;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        .visible {
+            display: contents;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="menu">
+        <div class="row cab">
+            <div class="col-sm-4 mt-2 mb-2 text-center">
+                <img src="img/biometricsystem.png" height="100px" alt="">
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom"
+                title="Configuración">
+                <div class="dropdown">
+                    <div id="mnuempresa" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/cpanel.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnuempresa">
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('empresa')">Empresa</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('frentes')">Frentes</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('grupos')">Grupos</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('areas')">Lugar de T.</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('turnos')">Turnos</a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="abrir('conceptos')">Conceptos</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('cargos')">Cargos</a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="abrir('subcontratistas')">Subcontratistas</a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="abrir('trabajadores')">Personal</a>
+                            <hr>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="salir()">Salir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom" title="Procesos">
+                <div class="dropdown">
+                    <div id="mnutiempo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/tiempo.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnutiempo">
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="impMarcaciones()">Importar
+                                Marcaciones</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="impAsistencias()">Importar
+                                Asistencias</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('marcmanual')">Marcación
+                                Manual</a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="abrir('asistencias')">Asistencias</a>
+                            <a class="dropdown-item" href="javascript:void(0)"
+                                onclick="abrir('novedades')">Novedades</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="expMarcaciones()">Exportar
+                                Archivo Plano</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="informe()">Generar Informe
+                                Diario Consolidado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom" title="Informes">
+                <div class="dropdown">
+                    <div id="mnuinformes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/informes.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnuinformes">
+                            <a class="dropdown-item" href="#" onclick="abrir('informe')">Informes Generales</a>
+                            <a class="dropdown-item" href="#" onclick="abrir('informe')">Informes Personal</a>
+                            <a class="dropdown-item" href="#" onclick="repdescansos()">Informes Descansos</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="planillas()">Planillas</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="planillas2()">Planillas x
+                                Excel</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="planillas3()">Planillas
+                                Histórico</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="correccion()">Corrección
+                                Planilla</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 mt-1 text-center mn" data-toggle="tooltip" data-placement="bottom"
+                title="Herramientas">
+                <div class="dropdown">
+                    <div id="mnupanel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="img/config.png" height="60px" alt="">
+                        <div class="dropdown-menu" aria-labelledby="mnupanel">
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="abrir('usuarios')">Usuarios</a>
+                            <a class="dropdown-item" href="#">Dispositivos</a>
+                            <a class="dropdown-item" href="javascript:void(0)" onclick="impMarcaciones2()">Importar
+                                Marcaciones Caudata</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mt-2 mb-2 text-center">
+                <img src="img/logo_p.png" height="50px" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="empresa">
+        <h3>Datos de la empresa
+            <span class="float-right rojo" onClick="cerrar('empresa')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Nit</label>
+                    <input type="text" class="form-control" placeholder="Nit" id="nit">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Razón Social</label>
+                    <input type="text" class="form-control" placeholder="Razón Social" id="razon">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Dirección</label>
+                    <input type="text" class="form-control" placeholder="Dirección" id="dir">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input type="text" class="form-control" placeholder="Teléfono" id="tel">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Cédula</label>
+                    <input type="text" class="form-control" placeholder="Cédula" id="doc">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Representante Legal</label>
+                    <input type="text" class="form-control" placeholder="Representante legal" id="rep">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">Correo Electrónico</label>
+                    <input type="text" class="form-control" placeholder="Email" id="email">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success float-right" onclick="actEmpresa()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="frentes" style="width: 50%; ">
+        <h3>Frentes de trabajo
+            <span class="float-right rojo" onClick="cerrar('frentes')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Frente
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Frente de trabajo" id="frentetrabg">
+                    </div>
+
+                    <div class="col-sm-2 mt-2 text-right ">
+                        Líder ECP
+                    </div>
+                    <div class="col-sm-7 mt-2">
+                        <input type="text" class="form-control" placeholder="Líder Ecopetrol" id="liderecp">
+                    </div>
+
+
+                    <div class="col-sm-2 mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="guardarFrente()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Frente</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosFrentes">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="grupos" style="width: 50%; ">
+        <h3>Grupos
+            <span class="float-right rojo" onClick="cerrar('grupos')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+
+                    <div class="col-sm-3 text-right">
+                        Frente de trabajo
+                    </div>
+                    <div class="col-sm-9">
+                        <select id="listadofrentes" class="form-control">
+
+                        </select>
+
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Grupo
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Grupo" id="grupo">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Supervisor
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Supervisor" id="supgrupo">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Documento
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Documento" id="docsup">
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="guardarGrupo()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Frente</th>
+                    <th>Grupo</th>
+                    <th>Supervisor</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosGrupos">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn" id="areas" style="width: 50%; ">
+        <h3>Lugar de Trabajo
+            <span class="float-right rojo" onClick="cerrar('areas')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Lugar
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" placeholder="Lugar de trabajo" id="lugar">
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="agregarLugar()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Descipción</th>
+                </thead>
+                <tbody id="lugartrabajo">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn" id="turnos" style="width: 70%; ">
+        <h3>Turnos
+            <span class="float-right rojo" onClick="cerrar('turnos')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Código
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="Código" id="codigoturno">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Hora Inicial
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="time" class="form-control" id="hinicial">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Hora Final
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="time" class="form-control" id="hfinal">
+                    </div>
+                    <div class="col-sm-12 mt-2">
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-success" onclick="agregarTurno()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Código</th>
+                    <th>Hora Inicial</th>
+                    <th>Hora Final</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosTurnos">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="conceptos" style="width: 50%; ">
+        <h3>Conceptos
+            <span class="float-right rojo" onClick="cerrar('conceptos')"><i class="fas fa-window-close"></i></span>
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Código
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="Código" id="codconcepto">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Descripción
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Descripción" id="detconcepto">
+                    </div>
+                    <div class="col-sm-12 text-center mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="agregarConcepto()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Código</th>
+                    <th>Descipción</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosConceptos">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="cargos" style="width: 50%; ">
+        <h3>Cargos
+            <span class="float-right rojo" onClick="cerrar('cargos')"><i class="fas fa-window-close"></i></span>
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+
+                    <div class="col-sm-2 text-right">
+                        Cargo
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Descripción" id="detcargo">
+                    </div>
+                    <div class="col-sm-12 text-center mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="agregarCargo()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Cargo</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosCargos">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="subcontratistas" style="width: 50%; ">
+        <h3>Subcontratistas
+            <span class="float-right rojo" onClick="cerrar('subcontratistas')"><i
+                    class="fas fa-window-close"></i></span>
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        Código
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" placeholder="Código" id="codsub">
+                    </div>
+                    <div class="col-sm-2 text-right">
+                        Empresa
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Descripción" id="empresasub">
+                    </div>
+                    <div class="col-sm-12 text-center mt-2">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success"
+                                onclick="agregarSubcontratista()">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Código</th>
+                    <th>Empresa</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosSubcontratistas">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="trabajadores">
+        <h3>Datos del trabajador
+            <button type="button" class="btn btn-success" onclick="busarTrab()">Buscar</button>
+            <button type="button" class="btn btn-success oculto" onclick="actTrab()" id="btnacttrab">Actualizar</button>
+            <button type="button" class="btn btn-danger oculto" onclick="cancelartrab()"
+                id="btncancelartrab">Cancelar</button>
+
+
+            <span class="float-right rojo" onClick="cerrar('trabajadores')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Código</label>
+                    <input type="text" class="form-control" placeholder="Código" id="codtrab">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Documento</label>
+                    <input type="text" class="form-control" placeholder="Documento" id="doctrab">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Nombres</label>
+                    <input type="text" class="form-control" placeholder="Nombres" id="nombtrab">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Apellidos</label>
+                    <input type="text" class="form-control" placeholder="Apellidos" id="apellidostrab">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Dirección</label>
+                    <input type="text" class="form-control" placeholder="Dirección" id="dirtrab">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input type="text" class="form-control" placeholder="Teléfono" id="teltrab">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Cargo</label>
+                    <input type="text" class="form-control" placeholder="Cargo" id="cargotrab">
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Turno asignado</label>
+                    <select id="turnotrab" class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Subcontratista/Directo</label>
+                    <select id="emptrab" class="form-control">
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Frente Trabajo</label>
+                    <select id="frentetrab" class="form-control" onchange="cargarListaGrupo()">
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Grupo</label>
+                    <select id="grupotrab" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Lugar de trabajo</label>
+                    <select id="lugartrab" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">A Cargo</label>
+                    <select id="acargo" class="form-control">
+                        <option value="Ecopetrol">Ecopetrol</option>
+                        <option value="Italco">Italco</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Sistema Precio</label>
+                    <select id="sistprecio" class="form-control">
+                        <option value="PXQ">PXQ</option>
+                        <option value="Global">Global</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Tipo Nómina</label>
+                    <select id="tiponomina" class="form-control">
+                        <option value="Directo">Directo</option>
+                        <option value="Indirecto">Indirecto</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Detalle Pago</label>
+                    <select id="detpago" class="form-control">
+                        <option value="ECPXPLANTILLA">ECPXPLANTILLA</option>
+                        <option value="ECPXTARIFA">ECPXTARIFA</option>
+                        <option value="ECPXSERVICIOS">ECPXSERVICIOS</option>
+                        <option value="ECPXHSE">ECPXHSE</option>
+                        <option value="ECPXLOGISTICO">ECPXLOGISTICO</option>
+                        <option value="ECPXFCIN">ECPXFCIN</option>
+                        <option value="ECPXTIE">ECPXTIE</option>
+                        <option value="TRANSVERSAL">TRANSVERSAL</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha inicia</label>
+                    <input type="date" id="finiciolabor" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha termina</label>
+                    <input type="date" id="ffinallabor" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Estado</label>
+                    <select id="estadotrab" class="form-control">
+                        <option value="Activo">Activo</option>
+                        <option value="Retirado">Retirado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+
+                    <button type="button" class="btn btn-success" id="btnguardartrab"
+                        onclick="guardarTrab()">Guardar</button>
+                    <button type="button" class="btn btn-info" onclick="importarTrab()">Importar</button>
+                    <button type="button" class="btn btn-warning" onclick="expBio()">Exportar a Biométrico</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="">Frente Trabajo</label>
+            </div>
+            <div class="col-sm-3">
+                <select id="frentetrab2" class="form-control" onchange="cargarListaGrupo2()">
+
+                </select>
+            </div>
+
+            <div class="col-sm-2">
+                <label for="">Grupo</label>
+            </div>
+            <div class="col-sm-3">
+                <select id="grupotrab2" class="form-control">
+
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-warning" onclick="cargarTrabajadoresSel()">Filtrar</button>
+                <button type="button" class="btn btn-info" onclick="cargarTrabajadores()">Todos</button>
+            </div>
+
+
+        </div>
+        <hr>
+        <h2 style="text-align: center;">CAMBIAR TURNOS POR FRENTES</h2>
+
+        <div class="row">
+            <div class="col-sm-1">
+                <label for="">Frente Trabajo</label>
+            </div>
+            <div class="col-sm-2">
+                <select id="frentetrab4" class="form-control" onchange="cargarGrupoT(this)">
+
+                </select>
+            </div>
+
+            <div class="col-sm-1">
+                <label for="">Grupo</label>
+            </div>
+            <div class="col-sm-2">
+                <select id="grupo_t" class="form-control">
+
+                </select>
+            </div>
+
+            <div class="col-sm-1">
+                <label for="">Turno</label>
+            </div>
+            <div class="col-sm-3">
+
+
+                </select><select id="turnotrab4" class="form-control">
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-danger" onclick="cambiarTurnos()">Cambiar Turnos</button>
+            </div>
+
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+
+
+
+
+
+            <table class="table table-striped" id="tblData">
+                <thead class="thead-dark">
+                    <th></th>
+                    <th>ID</th>
+                    <th>Código</th>
+                    <th>Cédula</th>
+                    <th>Trabajador</th>
+                    <th>Cargo</th>
+                    <th>Grupo</th>
+                    <th>Frente</th>
+                    <th>Turno</th>
+                    <th></th>
+                    <th></th>
+                </thead>
+                <tbody id="datosTrab">
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="asistencias">
+        <h3>Asistencias
+            <span class="float-right rojo" onClick="cerrar('asistencias')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+
+
+            <!-- <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Grupo</label>
+                    <select id="grupoasis" class="form-control">
+                            <option value="UT">Administrativo</option>
+                            <option value="TS">Operativo</option>
+                            <option value="TS">Producción</option>
+                        </select>
+                </div>
+            </div> -->
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha</label>
+                    <input type="date" id="fasis" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Turno</label>
+                    <select id="turnoasist" class="form-control">
+                    </select>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">.</label> <br>
+                    <button type="button" class="btn btn-warning" onclick="buscarAsistencia()"><i
+                            class="fas fa-search"></i> Buscar</button>
+                    <button type="button" class="btn btn-info" onclick="guardarAsistencia()"><i class="fas fa-save"></i>
+                        Guardar Histórico</button>
+                    <button type="button" class="btn btn-success" onclick="exportrAsistencia()"><i
+                            class="fas fa-file"></i> Exportar Excel</button>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Marcación</th>
+                    <th>Frente</th>
+                    <th>Grupo</th>
+                    <th>Supervisor</th>
+                    <th>Novedad</th>
+                    <th></th>
+
+                </thead>
+                <tbody id="listaAsistencia">
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="informe">
+        <h3>Informe General
+            <span class="float-right rojo" onClick="cerrar('informe')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+
+
+            <!-- <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Grupo</label>
+                    <select id="grupoasis" class="form-control">
+                            <option value="UT">Administrativo</option>
+                            <option value="TS">Operativo</option>
+                            <option value="TS">Producción</option>
+                        </select>
+                </div>
+            </div> -->
+            <div class="col-sm-12">
+                <h4>Informe Directos e Indirectos con Marcación</h4>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha</label>
+                    <input type="date" id="fechadirectos" class="form-control">
+                </div>
+            </div>
+
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">.</label> <br>
+                    <button type="button" class="btn btn-warning" onclick="cargarDirectos()"><i
+                            class="fas fa-search"></i> Buscar</button>
+
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <hr>
+                <h4>Informe de tiempo consolidado por Detalle de Pago</h4>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha Inicio</label>
+                    <input type="date" id="finiciopago" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha Final</label>
+                    <input type="date" id="ffinalpago" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">.</label> <br>
+                    <button type="button" class="btn btn-warning" onclick="cargarConsolidadoTiempo()"><i
+                            class="fas fa-search"></i> Cargar</button>
+
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-12">
+                <hr>
+                <h4>Informe de tiempo consolidado por Departamento</h4>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha Inicio</label>
+                    <input type="date" id="finiciodpto" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha Final</label>
+                    <input type="date" id="ffinaldpto" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">.</label> <br>
+                    <button type="button" class="btn btn-warning" onclick="cargarConsolidadoTiempoDpto()"><i
+                            class="fas fa-search"></i> Cargar</button>
+
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <hr>
+                <h4>Informe Ausentismos</h4>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha Inicio</label>
+                    <input type="date" id="finicioa" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Fecha Final</label>
+                    <input type="date" id="ffinala" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="">.</label> <br>
+                    <button type="button" class="btn btn-warning" onclick="cargarConsolidadoAusentismos()"><i
+                            class="fas fa-search"></i> Cargar</button>
+
+                </div>
+            </div>
+
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <div id="consolidado">
+
+            </div>
+            <div id="grafconso">
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="novedades">
+        <h3>Novedades del personal
+
+            <span class="float-right rojo" onClick="cerrar('novedades')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="date" id="fechanovtodos" class="form-control">
+            </div>
+            <div class="col-sm-4">
+                <select id="frentetrab5" class="form-control"></select>
+
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-danger" onclick="agregarNovedadTodos()">Agregar Descansos</button>
+                <button type="button" class="btn btn-warning" onclick="quitarNovedadTodos()">Quitar Descansos</button>
+
+            </div>
+        </div>
+
+
+
+
+        <hr>
+        <div class="row">
+
+            <div class="col-sm-3">
+                <label for="">Frente Trabajo</label>
+                <select id="frentetrab3" class="form-control" onchange="cargarListaGrupo3()">
+
+                </select>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Grupo</label>
+                    <select id="grupotrab3" class="form-control" onchange="cargarTrabNov()">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="">Trabajador</label>
+                    <select id="trabnov" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="">Fecha</label>
+                    <input type="date" id="fechanov" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">Novedad</label>
+                    <select id="novedad" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="">.</label><br>
+                    <button type="button" class="btn btn-success" onclick="agregarNovedad()">Agregar</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Fecha</th>
+                    <th>Código</th>
+                    <th>Cédula</th>
+                    <th>Trabajador</th>
+                    <th>Cargo</th>
+                    <th>Grupo/Frente</th>
+                    <th>Novedad</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosNovedades">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="cuerpo oculto animate__bounceIn " id="usuarios" style="width: 90%; ">
+        <h3>Usuarios
+            <button type="button" class="btn btn-success" onclick="guardarUser()">Agregar</button>
+            <span class="float-right rojo" onClick="cerrar('usuarios')"><i class="fas fa-window-close"></i></span>
+
+        </h3>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-3 text-right">
+                        Nombres
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Nombres" id="nombreuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Email
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" placeholder="Email" id="emailuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        Constraseña
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="Contraseña" id="claveuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        # ODS
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="# ODS" id="numodsuser">
+                    </div>
+
+                    <div class="col-sm-3 text-right">
+                        Orden de Servicio
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Descripción ODS" id="odsuser">
+                    </div>
+                    <div class="col-sm-3 text-right">
+                        VoBo Italco
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="VoBo Italco" id="voboitalco">
+                    </div>
+
+                    <div class="col-sm-3 text-right">
+                        VoBo Ecopetrol
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="VoBo Ecopetrol" id="voboecp">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th># ODS</th>
+                    <th>Descripción ODS</th>
+                    <th>VoBo Italco</th>
+                    <th>VoBo Ecopetrol</th>
+                    <th></th>
+                </thead>
+                <tbody id="datosUser">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+        </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <script src="index_v1.js"></script>
+
+</body>
+
+</html>
