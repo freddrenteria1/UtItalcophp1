@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Bitacora HSE - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <style>
+        .fondo {
+            background-image: url("img/sup.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: center;
+        }
+
+        .cab {
+            background-color: rgb(4, 37, 107);
+            color: white;
+            height: 400px;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        .visible {
+            display: contents;
+        }
+
+        .milabel {
+            background-color: rgb(4, 37, 107);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .cab {
+                background-color: rgb(4, 37, 107);
+                color: white;
+                height: 200px;
+            }
+        }
+    </style>
+    <style>
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+
+        .nota {
+            font-size: 11px;
+        }
+
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        /* Create a custom checkbox */
+
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+
+        .minput {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+
+        .container input:checked~.checkmark {
+            background-color: #2196f3;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .fotos {
+            width: 300px;
+            float: left;
+            padding: 10px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -205px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .piefoto {
+            background-color: #0772ff;
+            color: white;
+            padding: 10px;
+            height: 70px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btnedit {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 25px;
+            background-color: rgb(255, 190, 13);
+            border-radius: 3px;
+            padding: 5px;
+            color: rgb(17, 17, 17);
+            cursor: pointer;
+        }
+
+        .piefotoods {
+            background-color: yellow;
+            color: black;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron cab fondo">
+            <hr />
+            <br /><br />
+
+            <p id="bv"></p>
+        </div>
+        <h4 class="text-center pt-3">BITACORA SUPERVISORES</h4>
+
+        <hr />
+
+        <div id="cuerpo">
+            <div class="form-group">
+                <label for="" class="milabel"> Nombres y apellidos </label>
+                <input type="text" id="nombres" class="form-control" placeholder="Nombre Completo" readonly/>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel"> Documento </label>
+                <input type="number" id="doc" class="form-control" placeholder="CC sin puntos" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel"> Frente de trabajo </label>
+                <input type="text" id="frente" class="form-control" readonly/>
+            </div>
+            
+            
+
+            <div class="form-group">
+                <label for="" class="milabel"> Información OP </label>
+               <div id="datosOP">
+
+               </div>
+                
+            </div>
+
+           
+
+
+
+            <div class="form-group">
+                <label for="" class="milabel"> Fecha del Turno </label>
+                <input type="date" id="fecha" class="form-control" readonly/>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel"> Turno </label>
+                <input type="text" id="turno" class="form-control" readonly/>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel"> Personal </label>
+               
+                        Número de trabajadores a cargo durante el turno
+                        <input type="number" id="personas" class="form-control" placeholder="#" readonly />
+                    
+            </div>
+
+             
+
+            <div class="form-group">
+                <label for="" class="milabel"> Documentación </label>
+                1. Confirme si la(s) actividad(es) cuenta(n) con toda la documentación
+                necesaria para ser ejecutada(s) de forma sana, limpia y segura.
+                <p class="nota">
+                    Si el frente de trabajo tiene más de una actividad asignada,
+                    asegúrese de que cada una de ellas cuente con los respectivos
+                    documentos, si cumple parcialmente, responder :"NO".
+                </p>
+
+                <table class="table table-striped">
+                    <thead>
+                        <th></th>
+                        <th></th>
+                        
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Permiso de trabajo</td>
+                            <td style="text-align: center">
+                                <input type="radio" name="permisot" id="permisot1" value="option1"  checked/> <span id="permiso">-</span>
+                            </td>
+                             
+                        </tr>
+
+                        <tr>
+                            <td>Análisis de riesgos</td>
+                            <td style="text-align: center">
+                                <input type="radio" name="ariesgos" id="ariesgos1" value="option1" checked /> <span id="analisisr">-</span>
+                            </td>
+                             
+                        </tr>
+
+                        <tr>
+                            <td>Procedimientos específicos</td>
+                            <td style="text-align: center">
+                                <input type="radio" name="procesp" id="procesp1" value="option1" checked/> <span id="procesp">-</span>
+                            </td>
+                             
+                        </tr>
+
+                        <tr>
+                            <td>Procedimientos de rescate</td>
+                            <td style="text-align: center">
+                                <input type="radio" name="procresc" id="procresc1" value="option1" checked/> <span id="procresc">-</span>
+                            </td>
+                             
+                        </tr>
+
+                        <tr>
+                            <td>Certificados de apoyo</td>
+                            <td style="text-align: center">
+                                <input type="radio" name="certapoyo" id="certapoyo1" value="option1" checked/> <span id="certapoy">-</span>
+                            </td>
+                            
+                        </tr>
+
+                        <tr>
+                            <td>Preoperacionales</td>
+                            <td style="text-align: center">
+                                <input type="radio" name="preop" id="preop1" value="option1" checked/> <span id="preope">-</span>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <hr />
+            </div>
+
+            <div class="form-group">
+                2. ¿Declara que la documentación anteriormente relacionada está
+                completa y cumple con la rigurosidad necesaria para la identificación
+                y control de los riesgos de todas las actividades que desarrollaran
+                las personas a su cargo? <br />
+                <br />
+                <div class="form-check">
+                    <span id="pg2"></span>
+                </div>
+                
+
+                <hr />
+                Si la respuesta es "No": Especifique que documentos no cumplen y para
+                qué actividad, indicando las acciones que se tomarán y detallando si
+                se ejecutarán o no en el turno. <br />
+                <br />
+
+                <span id="docnocumple">
+
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel"> ASPECTOS HSE </label>
+
+                3. ¿Se presentaron eventos o aspectos RELEVANTES HSE en su turno?.
+                <p class="nota">
+                    <b>Aspecto positivo: </b> conexión por la vida, direccionamiento en
+                    HSE, divulgación lecciones aprendidas, conversaciones, reflexiones,
+                    etc. <br />
+                    <b>Eventos no deseados: </b> casi accidente, condición insegura,
+                    acto inseguro, incidente, accidente, etc.
+                </p>
+
+                <div class="form-check">
+                    <span id="aspectoshse"></span>
+                </div>
+                 
+
+                
+            </div>
+
+            <div class="form-group oculto" id="eventopos">
+                Describa el detalle del aspecto <b>positivo</b> que ha reportado:
+                <p class="nota">
+                    Relate a continuación el/los eventos/novedades HSE positivos que se
+                    presentaron en el turno; detalle el/los frentes de trabajo donde se
+                    presentaron:
+                </p>
+                <p id="asphsepositivo">
+
+                </p>
+            </div>
+
+            <div class="form-group oculto" id="notaeventonod">
+                Clasifique el <b>evento NO deseado</b> reportado: <br /><br />
+
+                <div class="form-check">
+                    <span id="evento"></span>
+                </div>
+
+               
+
+                <br />
+                Describa el <b>evento NO deseado</b> que ha reportado:
+                <p class="nota">
+                    Relate a continuación la/las novedades/eventos HSE no deseados que
+                    se presentaron en el turno, detalle el/los frentes de trabajo, donde
+                    se presentaron
+                </p>
+               <p id="eventohsedetalle">
+
+               </p>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel"> INTERRUPCIÓN TRABAJO </label>
+
+                4. ¿Hubo una interrupción de trabajo en el frente?.
+
+                <div class="form-check">
+                   <span id="interrupcion"></span>
+                </div>
+
+                
+            </div>
+
+            <div class="form-group oculto" id="causaint">
+                La interrupción de trabajo en el frente fue causada por:
+
+                <div class="form-check">
+                    <span id="interrupcioncausa"></span>
+                </div>
+
+             
+                <hr>
+                Duración de la interrupción en horas: <span id="tiempoint"></span>
+
+                 
+
+                
+
+                 <hr>
+
+                Relate los detalles de la(s) interrupción(es) en elfrente de trabajo:
+
+                <p class="nota">Estrablezca las causas y las consecuencias de la interrupción</p>
+
+                <p id="causasint"></p>
+
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="" class="milabel"> REPROCESOS / DESVIACIONES </label>
+
+                5. ¿Se presentaron reprocesos o desviaciones durante el turno?.
+
+                <p class="nota">
+                    Entiéndase por <b>reprocesos:</b> La repetición de un trabajo por no conformidad o incumplimiento de parámetros. <br>
+                    Entiéndase por <b>desviaciones:</b> La ejecución de trabajos con desviaciones en la calidad, desperdicio/pérdida de material, daño de equipo/herramientas, documentación incompleta o inexistente,etc.
+                </p>
+
+                <div class="form-check">
+                    <p id="reproceso"></p>
+                </div>
+ 
+            </div>
+
+            <div class="form-group oculto" id="causades">
+                Clasifique la desviación y/o el reproceso: <br>
+
+                <div class="form-check">
+                    <p id="reprocesoclase"></p>
+                </div>
+
+                
+
+                
+                <hr>
+                
+               Describa los <b>reprocesos </b>o <b>desviaciones</b> que se presentaron en el frente de trabajo durante el turno:
+                <p class="nota">Si la desviación a reportar es por la ejecución de actividades no programadas en el turno o no incluidas dentro del alcance, describa que actividad se ejecutó, por qué se realizó y quién lo autorizó</p>
+
+                <p id="detareproceso">
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="" class="milabel"> FOTOS </label>
+                
+               
+
+            
+
+            <div id="galeria"></div>
+
+        </div>
+        <hr>
+
+
+
+
+
+            <div style="clear: both"></div>
+
+            <hr />
+            
+                
+            </div>
+        </div>
+
+        <hr />
+        <center>UT Italco Barrancabermeja</center>
+        <hr />
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/bitacoraresp_v4.js"></script>
+</body>
+
+</html>
