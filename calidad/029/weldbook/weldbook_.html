@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/tremes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css" />
+    <!-- datatables -->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css" />
+
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>REGISTRO WELDBOOK</h4>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+                <div class="col-sm-6">
+                    Cargar Weldbook formato .csv <br />
+                    <input type="file" id="excel" class="form-control" />
+                </div>
+                <div class="col-sm-6">
+                    <br />
+                    <button class="btn btn-success" onclick="cargar()">
+                        Cargar Archivo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+            <table id="grid1b"></table>
+
+            <!-- <div class="table-responsive">
+                <table class="table table-bordered" id="tblData">
+                    <thead class="bg-info">
+                        <tr style="text-align: center; vertical-align: middle;">
+                            <td rowspan="2">ID</td>
+                            <td rowspan="2">ODS</td>
+                            <td rowspan="2">PLANTA/UNIDAD</td>
+                            <td rowspan="2">ESPECIALIDAD</td>
+                            <td rowspan="2">INGENIERÍA / LÍNEA / EQUIPO</td>
+                            <td rowspan="2">DESCRIPCIÓN DE LÍNEA / LAZOS DE CORROSIÓN</td>
+                            <td rowspan="2">PLANO / ISOMÉTRICO</td>
+                            <td rowspan="2">SK UT ITALCO</td>
+                            <td rowspan="2">REV.</td>
+                            <td rowspan="2">MATERIAL BASE 1</td>
+                            <td rowspan="2">MATERIAL BASE 2</td>
+                            <td rowspan="2">CLASIFICACIÓN METALURGÍA</td>
+                            <td rowspan="2">SPOOL</td>
+                            <td rowspan="2">DESCRIPCIÓN JUNTA 1</td>
+                            <td rowspan="2">DESCRIPCIÓN JUNTA 2</td>
+                            <td rowspan="2">#  DE JUNTA</td>
+                            <td rowspan="2">TALLER (T) CAMPO (C)</td>
+                            <td rowspan="2">Φ inch</td>
+                            <td rowspan="2">SCH / trK</td>
+                            <td rowspan="2">PROCESO SOLDADURA</td>
+                            <td rowspan="2">TIPO JUNTA</td>
+                            <td rowspan="2">MAT. DE APORTE</td>
+                            <td rowspan="2">WPS</td>
+                            <td rowspan="2">FECHA EJECUTADA</td>
+                            <td colspan="4">ESTAMPE SOLDADOR</td>
+                            <td colspan="4">Cantidad junta soldada X SOLDADOR</td>
+                            <td colspan="4">cantidad Pulg. Diam X SOLDADOR</td>
+                            <td rowspan="2">VT</td>
+                            <td colspan="2">PLP</td>
+                            <td colspan="3">RX PRE PWHTX</td>
+                            <td colspan="3">UT PRE PWHT</td>
+                            <td colspan="3">PWHT</td>
+                            <td colspan="3">DUREZA</td>
+                            <td colspan="3">RX POST PWHT</td>
+                            <td colspan="3">UT POST PWHT</td>
+                            <td rowspan="2">OBSERVACIONES</td>
+                             
+                        </tr>
+                        <tr>
+                            
+                            <td>W1</td>
+                            <td>W2</td>
+                            <td>W3</td>
+                            <td>W4</td>
+                            
+                            <td>W1</td>
+                            <td>W2</td>
+                            <td>W3</td>
+                            <td>W4</td>
+
+                            <td>W1</td>
+                            <td>W2</td>
+                            <td>W3</td>
+                            <td>W4</td>
+
+                            <td>RESULTADO</td>
+                            <td>N° INFORME</td>
+
+                            <td>RESULTADO</td>
+                            <td>FECHA</td>
+                            <td>N° INFORME</td>
+                            <td>RESULTADO</td>
+                            <td>FECHA</td>
+                            <td>N° INFORME</td>
+                            <td>RESULTADO</td>
+                            <td>FECHA</td>
+                            <td>N° INFORME</td>
+                            <td>RESULTADO</td>
+                            <td>FECHA</td>
+                            <td>N° INFORME</td>
+                            <td>RESULTADO</td>
+                            <td>FECHA</td>
+                            <td>N° INFORME</td>
+                            <td>RESULTADO</td>
+                            <td>FECHA</td>
+                            <td>N° INFORME</td>
+
+
+                        </tr>
+                         
+
+
+                    </thead>
+                    <tbody id="datosTabla">
+
+                    </tbody>
+                </table>
+            </div> -->
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        if (user == null) {
+            location = "index.html";
+        }
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+
+            $.ajax({
+                url: url + "guardarExcelWeldbook.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            $("#excel").val("");
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+            cargandoPag();
+            $.post(url + "cargarDatos.php", function (resp) {
+                datos = resp;
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    showConfirmButton: false,
+                    width: 150,
+                    timer: 1500,
+                });
+
+                ("use strict");
+                $("#grid1b").jqGrid({
+                    colModel: [
+                        {name: "item", label: "ID", width: 50}, 
+                        {name: "planta", label: "Planta", width: 100,}, 
+                    
+                    ],
+                    data: datos,
+                    guiStyle: "bootstrap",
+                    iconSet: "fontAwesome",
+                    idPrefix: "gb1_",
+                    sortname: "invdate",
+                    // sortorder: "desc",
+                });
+
+                var html = "";
+                // for(var i=0; i<datos.length; i++){
+                //     html += `
+                //         <tr>
+                //             <td>${datos[i].item}</td>
+                //             <td>${datos[i].ods}</td>
+                //             <td>${datos[i].planta}</td>
+                //             <td>${datos[i].especialidad}</td>
+                //             <td>${datos[i].equipo}</td>
+                //             <td>${datos[i].descripcion}</td>
+                //             <td>${datos[i].plano}</td>
+                //             <td>${datos[i].sk}</td>
+                //             <td>${datos[i].rev}</td>
+                //             <td>${datos[i].materialb1}</td>
+                //             <td>${datos[i].materialb2}</td>
+                //             <td>${datos[i].clasemetal}</td>
+                //             <td>${datos[i].spool}</td>
+                //             <td>${datos[i].descjunta1}</td>
+                //             <td>${datos[i].descjunta2}</td>
+                //             <td>${datos[i].numjunta}</td>
+                //             <td>${datos[i].lugar}</td>
+                //             <td>${datos[i].pulgadas}</td>
+                //             <td>${datos[i].schthk}</td>
+                //             <td>${datos[i].proceso}</td>
+                //             <td>${datos[i].tipojunta}</td>
+                //             <td>${datos[i].mataporte}</td>
+                //             <td>${datos[i].wps}</td>
+                //             <td>`
+
+                //                 if(datos[i].fecha!='0000-00-00'){
+                //                     html += `${datos[i].fecha}`
+                //                 }
+
+                //             html += `</td>
+
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+                //             <td></td>
+
+                //             <td>${datos[i].vt}</td>
+                //             <td>${datos[i].plpresultado}</td>
+                //             <td>${datos[i].plpinforme}</td>
+                //             <td>${datos[i].rxpreresultado}</td>
+                //             <td>${datos[i].rxprefecha}</td>
+                //             <td>${datos[i].rxpreinforme}</td>
+                //             <td>${datos[i].utpreresultado}</td>
+                //             <td>${datos[i].utprefecha}</td>
+                //             <td>${datos[i].utpreinforme}</td>
+                //             <td>${datos[i].pwhtresultado}</td>
+                //             <td>${datos[i].pwhtfecha}</td>
+                //             <td>${datos[i].pwhtinforme}</td>
+                //             <td>${datos[i].durezaresultado}</td>
+                //             <td>${datos[i].durezafecha}</td>
+                //             <td>${datos[i].durezainforme}</td>
+                //             <td>${datos[i].rxpostresultado}</td>
+                //             <td>${datos[i].rxpostfecha}</td>
+                //             <td>${datos[i].rxpostinforme}</td>
+                //             <td>${datos[i].utpostresultado}</td>
+                //             <td>${datos[i].utpostfecha}</td>
+                //             <td>${datos[i].utpostinforme}</td>
+                //             <td>${datos[i].observaciones}</td>
+
+                //         </tr>
+                //     `
+                // }
+                // $('#datosTabla').html(html)
+
+                // $('#tblData').DataTable({
+                //         "language": {
+                //             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                //         },
+                //         dom: 'Bfrtip',
+                //         buttons: [
+                //             'copyHtml5',
+                //             'excelHtml5',
+                //             'csvHtml5',
+                //             'pdfHtml5'
+                //         ]
+                //     });
+            
+            });
+        }
+    </script>
+</body>
+
+</html>
