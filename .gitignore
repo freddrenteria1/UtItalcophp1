@@ -10,6 +10,8 @@ calidad/029/029.zip
 *.xlsx
 *.zip
 *.pdf
+*.db
+*.sql
 
 
 # Compiled output
