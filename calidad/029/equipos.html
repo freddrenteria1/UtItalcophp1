@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOLOS QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('img/fondo_b.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+        }
+        
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .mnubotones {
+            position: relative;
+        }
+        
+        .cajones {
+            float: left;
+            margin: 10px;
+            background-color: #138496;
+        }
+        
+        .mbt {
+            height: 60px;
+            background-color: #138496;
+        }
+        
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 20rem;
+        }
+        
+        .cuerpo {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>REGISTRO CONTROL DE ACTIVIDADES | PROTOCOLOS | ODS <span id="odsq"></span> AROMÁTICOS
+                 </h4>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="cuerpo">
+
+
+            <p>
+                <h4>Lista de equipos especialidad <span id="esp"></span>. Seleccione una familia de equipos</h4>
+            </p>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="mnubotones" id="familias">
+
+
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script>
+        var odsq = null
+        var arrayEquipos = null
+        var equipo = null
+
+
+        odsq = localStorage.getItem('odsq');
+
+        if (odsq == null || odsq == '') {
+            location = './'
+        } else {
+            $('#odsq').html(odsq)
+            especialidad = sessionStorage.getItem('esp')
+            $('#esp').html(especialidad)
+        }
+
+        if (especialidad == 'INSTRUMENTACIÓN') {
+            var html = ''
+            html += `
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('CAJAS DE CONEXIONADO')">
+                        CAJAS DE CONEXIONADO
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('TRANSMISORES DE PRESIÓN')">
+                        TRANSMISORES DE PRESIÓN
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('TRANSMISORES DE FLUJO')">
+                        TRANSMISORES DE FLUJO
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('TRANSMISORES DE NIVEL')">
+                        TRANSMISORES DE NIVEL
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('TRANSMISORES DE TEMPERATURA')">
+                        TRANSMISORES DE TEMPERATURA
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('TERMOCUPLAS TIPO TERMOPOZO')">
+                        TERMOCUPLAS TIPO TERMOPOZO
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('TERMOCUPLAS TIPO PIEL DE PARED')">
+                        TERMOCUPLAS TIPO PIEL DE PARED
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('VÁLVULAS DE CONTROL')">
+                        VÁLVULAS DE CONTROL
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('DAMPER')">
+                        DAMPER
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('VÁLVULAS SOLENOIDE')">
+                        VÁLVULAS SOLENOIDE
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('PLATINAS DE ORIFICIO')">
+                        PLATINAS DE ORIFICIO
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('SWITCHES')">
+                        SWITCHES
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('ING EMERGENTE')">
+                        ING EMERGENTE E-2761
+                    </button>
+                </div>
+            </div>
+            `
+        }
+
+        if (especialidad == 'ESTÁTICO') {
+            var html = `
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('INTERCAMBIADORES')">
+                        INTERCAMBIADORES
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('TORRES')">
+                        TORRES
+                    </button>
+                </div>
+            </div>
+           
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="selEquipo('LGS')">
+                        LGS
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('VÁLVULAS DE SEGURIDAD')">
+                        VÁLVULAS DE SEGURIDAD
+                    </button>
+                </div>
+            </div>
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('VÁLVULAS')">
+                        VÁLVULAS 
+                    </button>
+                </div>
+            </div>
+           
+            `
+        }
+
+        if (especialidad == 'TUBERÍA') {
+            var html = `
+            
+
+            
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('INGENIERÍAS')">
+                        INGENIERÍAS
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('LAZOS DE CORROSIÓN')">
+                        LAZOS DE CORROSIÓN
+                    </button>
+                </div>
+            </div>
+
+            
+            
+            `
+        }
+
+        if (especialidad == 'ELÉCTRICO') {
+            var html = `
+            
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('DESMANTELAMIENTO SISTEMA ELÉCTRICO')">
+                        DESMANTELAMIENTO SISTEMA ELÉCTRICO
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('INSTALACIÓN DE BANDEJAS PROTACABLES')">
+                        INSTALACIÓN DE BANDEJAS PROTACABLES
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('INSTALACIÓN DE TUBERÍA ELÉCTRICO')">
+                        INSTALACIÓN DE TUBERÍA ELÉCTRICO
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('INSTALACIÓN DE CABLE ELÉCTRICO')">
+                        INSTALACIÓN DE CABLE ELÉCTRICO
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('INSTALACIÓN LUMINARIAS')">
+                        INSTALACIÓN LUMINARIAS
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('PROVISIONALES MTTO TABLEROS U2700')">
+                        PROVISIONALES MTTO TABLEROS U2700
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('SISTEMA DE IGNICIÓN')">
+                        SISTEMA DE IGNICIÓN
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('TABLEROS DISTRIBUCIÓN')">
+                        TABLEROS DISTRIBUCIÓN
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('SWICHTGEAR')">
+                        SWICHTGEAR
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('CENTRO DE CONTROL DE MOTORES  Y CENTRO DE POTENCIA (CCM-PC)')">
+                        CENTRO DE CONTROL DE MOTORES  Y CENTRO DE POTENCIA (CCM-PC)
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('TRANSFORMADORES SECOS')">
+                        TRANSFORMADORES SECOS
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('MOTORES BEC')">
+                        MOTORES BEC
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('PRESERVACIÓN DE MOTORES')">
+                        PRESERVACIÓN DE MOTORES
+                    </button>
+                </div>
+            </div>
+            
+            `
+        }
+
+        if (especialidad == 'ROTATIVO') {
+            var html = `
+            
+
+           
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('PRESERVACION DE EQUIPOS BEC')">
+                        PRESERVACION DE EQUIPOS BEC
+                    </button>
+                </div>
+            </div>
+
+
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt"  onclick="selEquipo('PRESERVACION DE EQUIPO BEC, Trabajos en líneas')">
+                        PRESERVACION DE EQUIPO BEC, Trabajos en líneas
+                    </button>
+                </div>
+            </div>
+            
+            `
+        }
+
+
+
+
+        $('#familias').html(html)
+
+        function selEquipo(eqp) {
+            if (especialidad == 'INSTRUMENTACIÓN') {
+                sessionStorage.setItem('equipo', eqp)
+                location = 'busquedaServicioTags.html'
+            }
+
+
+            if (especialidad == 'TUBERÍA') {
+
+                if(eqp == 'PUNTOS DE INSPECCIÓN'){
+                    sessionStorage.setItem('servicio', "EJECUCIÓN")
+                    sessionStorage.setItem('equipo', eqp)
+                    location = 'busquedaLazo.html';
+                }
+
+                if(eqp == 'INGENIERÍAS'){
+                    sessionStorage.setItem('servicio', "EJECUCIÓN")
+                    sessionStorage.setItem('equipo', eqp)
+                    location = 'busquedaLazo.html';
+                }
+
+                if(eqp == 'LAZOS DE CORROSIÓN'){
+                    sessionStorage.setItem('servicio', "EJECUCIÓN")
+                    sessionStorage.setItem('equipo', eqp)
+                    location = 'busquedaLazoC.html';
+                }
+
+                if(eqp == 'MISCELANEOS'){
+                    sessionStorage.setItem('servicio', "EJECUCIÓN")
+                     sessionStorage.setItem('equipo', eqp)
+                     location = 'busquedaMiscelaneosCat.html';
+                }
+            }
+
+
+
+
+            if (especialidad == 'ESTÁTICO' || especialidad == 'ELÉCTRICO') {
+                sessionStorage.setItem('equipo', eqp)
+                location = 'busquedaTagsEquipos.html'
+            }
+            if (especialidad == 'ROTATIVO') {
+                sessionStorage.setItem('servicio', "EJECUCIÓN")
+                sessionStorage.setItem('equipo', eqp)
+                location = 'busquedaTagsFamilia.html';
+            }
+        }
+
+
+        function buscarTag() {
+            location = "busquedaRca.html"
+        }
+
+        function buscar() {
+            location = busqueda = "busquedaTags.html"
+        }
+    </script>
+
+
+</body>
+
+</html>
