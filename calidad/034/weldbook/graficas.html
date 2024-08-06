@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <!-- <script src="jquery.jqGrid.min.js"></script>
+    <script src="grid.locale-en.js"></script> -->
+    <link rel="stylesheet" href="jquery-ui.css">
+    <link rel="stylesheet" href="ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+        <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+        <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+        <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+    
+        <style>
+            .highcharts-color-0 {
+              fill: #7cb5ec;
+               
+            }
+        
+            .highcharts-color-2 {
+              fill: #9a9a9c;
+               
+            }
+        
+            .highcharts-color-1 {
+              fill: #90ed7d;
+               
+            }
+        
+            .highcharts-color-3 {
+              fill: #f7a35c;
+               
+            }
+        
+            .highcharts-color-4 {
+              fill: #8085e9;
+              
+            }
+        
+            .highcharts-color-5 {
+              fill: #f15c80;
+               
+            }
+          </style>
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+
+    <style>
+        #list_jpt {
+            background-color: green;
+            color: white;
+        }
+
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+
+        }
+
+
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+        }
+
+        th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>GRAFICAS WELDBOOK
+                    <!-- <button id="export" onclick="exportar()" class="btn btn-success">Exportar a Excel</button> -->
+                </h4>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <div class="row">
+
+                <div class="col-sm-6 mt-3">
+                    <div id="figTallerJ">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div id="figTallerP">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 mt-3">
+                    <div id="figCampoJ">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 mt-3">
+                    <div id="figCampoP">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 mt-3">
+                    <div id="figTotalJ">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 mt-3">
+                    <div id="figTotalP">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/034/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        var arrayEquipos = []
+
+        var arrayJprogT = []
+        var arrayJejeT = []
+        var arrayJpdtesT = []
+        var arrayPprogT = []
+        var arrayPejeT = []
+        var arrayPpdtesT = []
+
+        var arrayJprogC = []
+        var arrayJejeC = []
+        var arrayJpdtesC = []
+        var arrayPprogC = []
+        var arrayPejeC = []
+        var arrayPpdtesC = []
+
+        var arrayJprogTotal = []
+        var arrayJejeTotal = []
+        var arrayJpdtesTotal = []
+        var arrayPprogTotal = []
+        var arrayPejeTotal = []
+        var arrayPpdtesTotal = []
+
+
+        cargarDatos()
+
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cJuntasEquiposGra.php", function (resp) {
+                datos = resp;
+
+                for (var i = 0; i < datos.length; i++) {
+                    arrayEquipos.push(datos[i].especialidad)
+
+                    arrayJprogT.push(datos[i].jpt)
+                    arrayJejeT.push(datos[i].jet)
+                    arrayJpdtesT.push(datos[i].jpdt)
+                    arrayPprogT.push(datos[i].ppt)
+                    arrayPejeT.push(datos[i].pet)
+                    arrayPpdtesT.push(datos[i].ppdt)
+
+                    arrayJprogC.push(datos[i].jpc)
+                    arrayJejeC.push(datos[i].jec)
+                    arrayJpdtesC.push(datos[i].jpdc)
+                    arrayPprogC.push(datos[i].ppc)
+                    arrayPejeC.push(datos[i].pec)
+                    arrayPpdtesC.push(datos[i].ppdc)
+
+                    arrayJprogTotal.push(datos[i].jptot)
+                    arrayJejeTotal.push(datos[i].jetot)
+                    arrayJpdtesTotal.push(datos[i].jtpdc)
+                    arrayPprogTotal.push(datos[i].pptot)
+                    arrayPejeTotal.push(datos[i].petot)
+                    arrayPpdtesTotal.push(datos[i].ptpdc)
+                }
+
+                Swal.close();
+                cargarGraficas();
+
+            })
+        }
+
+        function cargarGraficas() {
+
+            Highcharts.chart('figTallerJ', {
+                 
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    
+                    // options3d: {
+                    //     enabled: true,
+                    //     alpha: 15,
+                    //     beta: 15,
+                    //     viewDistance: 25,
+                    //     depth: 40
+                    // }
+                },
+                title: {
+                    text: '<b>JUNTAS SOLDADAS POR ESPECIALIDAD TALLER</b>'
+                },
+
+                xAxis: {
+                    categories: arrayEquipos,
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [
+                {
+                    name: 'JUNTAS PROG',
+                    data: arrayJprogT
+                }, {
+                    name: 'JUNTAS EJE',
+                    data: arrayJejeT
+                }, {
+                    name: 'JUNTAS PDTES',
+                    data: arrayJpdtesT
+                } 
+            ]
+            });
+
+            Highcharts.chart('figTallerP', {
+                 
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    
+                    // options3d: {
+                    //     enabled: true,
+                    //     alpha: 15,
+                    //     beta: 15,
+                    //     viewDistance: 25,
+                    //     depth: 40
+                    // }
+                },
+                title: {
+                    text: '<b>PULGADAS DIAMETRALES POR ESPECIALIDAD TALLER</b>'
+                },
+
+                xAxis: {
+                    categories: arrayEquipos,
+                    crosshair: true
+                },
+                
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [
+                 
+                    {
+                        name: 'PULG PROG',
+                        data: arrayPprogT,
+                    }, {
+                        name: 'PULG EJE',
+                        data: arrayPejeT,
+                        stack: 'PRO'
+                    }, {
+                        name: 'PULG PDTES',
+                        data: arrayPpdtesT,
+                        stack: 'PRO'
+                    },
+                ]
+            });
+
+
+            Highcharts.chart('figCampoJ', {
+                 
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    
+                },
+                title: {
+                    text: '<b>JUNTAS SOLDADAS POR ESPECIALIDAD CAMPO</b>'
+                },
+
+                xAxis: {
+                    categories: arrayEquipos,
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [
+                {
+                    name: 'JUNTAS PROG',
+                    data: arrayJprogC
+                }, {
+                    name: 'JUNTAS EJE',
+                    data: arrayJejeC
+                }, {
+                    name: 'JUNTAS PDTES',
+                    data: arrayJpdtesC
+                } 
+            ]
+            });
+
+            Highcharts.chart('figCampoP', {
+                 
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    
+                },
+                title: {
+                    text: '<b>PULGADAS DIAMETRALES POR ESPECIALIDAD CAMPO</b>'
+                },
+
+                xAxis: {
+                    categories: arrayEquipos,
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [
+                 
+                {
+                    name: 'PULG PROG',
+                    data: arrayPprogC
+                }, {
+                    name: 'PULG EJE',
+                    data: arrayPejeC,
+                    stack: 'PRO'
+                }, {
+                    name: 'PULG PDTES',
+                    data: arrayPpdtesC,
+                    stack: 'PRO'
+                },
+            ]
+            });
+
+            Highcharts.chart('figTotalJ', {
+                 
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    
+                },
+                title: {
+                    text: '<b>JUNTAS SOLDADAS POR ESPECIALIDAD TOTAL</b>'
+                },
+
+                xAxis: {
+                    categories: arrayEquipos,
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [
+                {
+                    name: 'JUNTAS PROG',
+                    data: arrayJprogTotal
+                }, {
+                    name: 'JUNTAS EJE',
+                    data: arrayJejeTotal
+                }, {
+                    name: 'JUNTAS PDTES',
+                    data: arrayJpdtesTotal
+                } 
+            ]
+            });
+
+            Highcharts.chart('figTotalP', {
+                 
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    
+                },
+                title: {
+                    text: '<b>PULGADAS DIAMETRALES POR ESPECIALIDAD TOTAL</b>'
+                },
+
+                xAxis: {
+                    categories: arrayEquipos,
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [
+                 
+                {
+                    name: 'PULG PROG',
+                    data: arrayPprogTotal
+                }, {
+                    name: 'PULG EJE',
+                    data: arrayPejeTotal,
+                    stack: 'PRO'
+                }, {
+                    name: 'PULG PDTES',
+                    data: arrayPpdtesTotal,
+                    stack: 'PRO'
+                },
+            ]
+            });
+
+        }
+    </script>
+</body>
+
+</html>
