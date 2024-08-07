@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="weldbook/jquery.min.js"></script>
+    <script src="weldbook/jquery-ui.min.js"></script>
+    <script src="weldbook/jquery.jqGrid.min.js"></script>
+    <script src="weldbook/grid.locale-en.js"></script>
+    <link rel="stylesheet" href="weldbook/jquery-ui.css" />
+    <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+        <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+        <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+      
+    
+        <style>
+            .highcharts-color-0 {
+                fill: #7cb5ec;
+                
+            }
+    
+            .highcharts-color-2 {
+                fill: #9a9a9c;
+                 
+            }
+    
+            .highcharts-color-1 {
+                fill: #90ed7d;
+                
+            }
+    
+            .highcharts-color-3 {
+                fill: #f7a35c;
+                
+            }
+    
+            .highcharts-color-4 {
+                fill: #8085e9;
+                 
+            }
+    
+            .highcharts-color-5 {
+                fill: #f15c80;
+                
+            }
+    
+            /* Series options */
+    
+            #container {
+                height: 400px;
+            }
+    
+            .highcharts-figure,
+            .highcharts-data-table table {
+                min-width: 310px;
+                max-width: 800px;
+                margin: 1em auto;
+            }
+    
+            .highcharts-data-table table {
+                font-family: Verdana, sans-serif;
+                border-collapse: collapse;
+                border: 1px solid #ebebeb;
+                margin: 10px auto;
+                text-align: center;
+                width: 100%;
+                max-width: 500px;
+            }
+    
+            .highcharts-data-table caption {
+                padding: 1em 0;
+                font-size: 1.2em;
+                color: #555;
+            }
+    
+            .highcharts-data-table th {
+                font-weight: 600;
+                padding: 0.5em;
+            }
+    
+            .highcharts-data-table td,
+            .highcharts-data-table th,
+            .highcharts-data-table caption {
+                padding: 0.5em;
+            }
+    
+            .highcharts-data-table thead tr,
+            .highcharts-data-table tr:nth-child(even) {
+                background: #f8f8f8;
+            }
+    
+            .highcharts-data-table tr:hover {
+                background: #f1f7ff;
+            }
+        </style>
+
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+
+ 
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h5>CUADRO DE CONTROL LAZOS DE CORROSIÓN ODS 032 U2100</h5>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+                <div class="col-sm-4">
+                    Última modificación: <span id="fecha"> </span> <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+            <table class="table table-striped" id="grid1b"></table>
+            <div class="mt-3">
+                <table class="table table-striped" id="grid1b2"></table>
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-12">
+                    <div id="fig1"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/032/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 100;
+        ventana_alto = ventana_alto - 220;
+
+        if (ventana_ancho > 1300) {
+            ventana_alto = ventana_alto - 220;
+        } else {
+            ventana_alto = 330;
+        }
+
+        if (user == null) {
+            location = "index.html";
+        }
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+            formData.append("user", user);
+
+            $.ajax({
+                url: url + "guardarExcelCCLazos.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+            cargandoPag();
+
+            $.post(url + "cargarDatosCCLazos.php", function (resp) {
+                datos = resp;
+
+                console.log(datos);
+
+                $("#grid1b").jqGrid({
+                    datatype: "local",
+                    regional: "es", // this is default
+                    data: datos,
+                    colModel: [{
+                            name: "iditem",
+                            label: "ID",
+                            width: 30,
+                            frozen: true
+                        },
+                        {
+                            name: "lazo",
+                            label: "LAZO CORROSIÓN",
+                            width: 120,
+                            frozen: true,
+                        },
+                        {
+                            name: "sk",
+                            label: "SK",
+                            width: 60,
+                            frozen: true
+                        },
+                        {
+                            name: "isometrico",
+                            label: "ISOMETRICO",
+                            width: 80,
+                            frozen: true,
+                        },
+                        {
+                            name: "item",
+                            label: "ITEM",
+                            width: 40,
+                            align: "center",
+                            frozen: true,
+                        },
+                        {
+                            name: "alcance",
+                            label: "ALCANCE",
+                            width: 220,
+                            frozen: true
+                        },
+                        {
+                            name: "cml",
+                            label: "CML",
+                            width: 130,
+                            align: "center",
+                            frozen: true,
+                        },
+                        {
+                            name: "clase",
+                            label: "CLASE",
+                            width: 120
+                        },
+                        {
+                            name: "actividad",
+                            label: "ACTIVIDAD",
+                            width: 160,
+                            align: "center",
+                        },
+                        {
+                            name: "materiales",
+                            label: "MATERIALES <br> ENTREGADOS",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "inspcie",
+                            label: "INSP CIE",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "ejecucion",
+                            label: "EJECUCIÓN <br> ACTIVIDAD",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "soporteria",
+                            label: "SOPORTERÍA",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "plp",
+                            label: "PLP",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "rx",
+                            label: "RX",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "phwt",
+                            label: "PHWT",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "durezas",
+                            label: "DUREZAS",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "rxphwt",
+                            label: "RX-PHWT",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "ph",
+                            label: "PH",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "verificacion",
+                            label: "VERIFICACIÓN <br>QA-QC",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "torque",
+                            label: "TORQUE",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "pintura",
+                            label: "PINTURA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "aislamiento",
+                            label: "AISLAMIENTO",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "vobo",
+                            label: "VoBo <br> GESTORÍA",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "paquete",
+                            label: "PAQUETE <br>DE TRABAJO",
+                            width: 80,
+                            align: "center",
+                        },
+                        {
+                            name: "rca",
+                            label: "RCA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "observaciones",
+                            label: "OBSERVACIONES",
+                            width: 300
+                        },
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager",
+                });
+
+                $("#grid1b").jqGrid("filterToolbar", {
+                    autoSearch: true,
+                    searchOnEnter: false,
+                });
+
+                $("#grid1b").jqGrid("setGroupHeaders", {
+                    useColSpanStyle: true,
+                    groupHeaders: [{
+                        startColumnName: "plp",
+                        numberOfColumns: 6,
+                        titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                            '<tr><td id="h0" style="color: #000;"><center>ENSAYOS</center></td></tr>' +
+                            "</table>",
+                    }, ],
+                });
+
+                $("#grid1b").jqGrid("setFrozenColumns");
+
+                cargarBitacora();
+            });
+        }
+
+        function cargarBitacora() {
+            $.post(url + "cargarBitacoraCCLazos.php", function (resp) {
+                datos = resp;
+                $("#fecha").html(datos.fecha);
+
+                $.post(url + "repCCLazos.php", function (resp) {
+                    datos = resp;
+
+                    $("#grid1b2").jqGrid({
+                        datatype: "local",
+                        regional: "es", // this is default
+                        data: datos,
+                        colModel: [{
+                                name: "lazo",
+                                label: "LAZO CORROSIÓN",
+                                width: 120,
+                                frozen: true
+                            },
+                            {
+                                name: "isometrico",
+                                label: "ISOMÉTRICO",
+                                width: 90,
+                                frozen: true
+                            },
+
+                            {
+                                name: "act1p",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "act1e",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avact1",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["act1p"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "act1p"]);
+                                    }
+                                    if (record["act1e"]) {
+                                        value.totalTax += parseFloat(record["act1e"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+
+
+                            {
+                                name: "act2p",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "act2e",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avact2",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["act2p"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "act2p"]);
+                                    }
+                                    if (record["act2e"]) {
+                                        value.totalTax += parseFloat(record["act2e"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+
+
+                            {
+                                name: "act3p",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "act3e",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avact3",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["act3p"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "act3p"]);
+                                    }
+                                    if (record["act3e"]) {
+                                        value.totalTax += parseFloat(record["act3e"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+
+
+                            {
+                                name: "act4p",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "act4e",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avact4",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["act4p"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "act4p"]);
+                                    }
+                                    if (record["act4e"]) {
+                                        value.totalTax += parseFloat(record["act4e"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+
+
+                            {
+                                name: "act5p",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "act5e",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avact5",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["act5p"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "act5p"]);
+                                    }
+                                    if (record["act5e"]) {
+                                        value.totalTax += parseFloat(record["act5e"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+
+
+                            {
+                                name: "act6p",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "act6e",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avact6",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["act6p"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "act6p"]);
+                                    }
+                                    if (record["act6e"]) {
+                                        value.totalTax += parseFloat(record["act6e"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+
+
+                            {
+                                name: "act7p",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "act7e",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avact7",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["act7p"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "act7p"]);
+                                    }
+                                    if (record["act7e"]) {
+                                        value.totalTax += parseFloat(record["act7e"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+
+
+                            {
+                                name: "sprog",
+                                label: "PLAN",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "seje",
+                                label: "EJE",
+                                width: 50,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avtot",
+                                label: "AVANCE",
+                                width: 50,
+                                align: "center",
+                                formatoptions: {
+                                    suffix: " %",
+                                },
+                                summaryTpl: "", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                    // initialize the value object
+                                    if (typeof value === "string") {
+                                        value = {
+                                            totalAmount: 0,
+                                            totalTax: 0,
+                                        };
+                                    }
+                                    // perform summary
+                                    if (record["sprog"]) {
+                                        value.totalAmount += parseFloat(record[
+                                            "sprog"]);
+                                    }
+                                    if (record["seje"]) {
+                                        value.totalTax += parseFloat(record["seje"]);
+                                    }
+                                    return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                    // get the regional options and pass it to the custom formatter
+                                    opts = $.extend({},
+                                        $.jgrid.getRegional(this, "formatter"),
+                                        opts
+                                    );
+                                    // determine if we are in summary row to put the value
+                                    if (opts.rowId === "") {
+                                        if (cellval.totalAmount !== 0) {
+                                            var val =
+                                                (cellval.totalTax / cellval
+                                                    .totalAmount) * 100;
+                                            return $.fn.fmatter("number", val, opts,
+                                                rwdat, act);
+                                        } else {
+                                            return "0";
+                                        }
+                                    } else {
+                                        return $.fn.fmatter("number", cellval, opts,
+                                            rwdat, act);
+                                    }
+                                },
+                            },
+                        ],
+                        loadonce: true,
+                        shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                        width: ventana_ancho,
+                        height: 300,
+                        rowNum: 1000,
+                        pager: "#jqGridPager",
+
+                        grouping: true,
+                        groupingView: {
+                            groupField: ["lazo"],
+                            groupColumnShow: [true],
+                            groupText: ["<b>{0}</b>"],
+                            groupOrder: ["asc"],
+                            groupSummary: [true],
+                            groupSummaryPos: ["header"],
+                            groupCollapse: false,
+                        },
+                    });
+
+                    $("#grid1b2").jqGrid("setGroupHeaders", {
+                        useColSpanStyle: true,
+                        groupHeaders: [{
+                                startColumnName: "act1p",
+                                numberOfColumns: 3,
+                                titleText: "CAMBIAR TRACING",
+                            },
+                            {
+                                startColumnName: "act2p",
+                                numberOfColumns: 3,
+                                titleText: "CAMBIAR VALVULA <br> BRIDADA",
+                            },
+                            {
+                                startColumnName: "act3p",
+                                numberOfColumns: 3,
+                                titleText: "CAMBIAR VENTEO",
+                            },
+                            {
+                                startColumnName: "act4p",
+                                numberOfColumns: 3,
+                                titleText: "CAMBIO DE LINEA",
+                            },
+                            {
+                                startColumnName: "act5p",
+                                numberOfColumns: 3,
+                                titleText: "ELIMINACION DE <br> VENTEO",
+                            },
+                            {
+                                startColumnName: "act6p",
+                                numberOfColumns: 3,
+                                titleText: "MANTENIMIENTO DE <br> VALVULA BRIDADA",
+                            },
+                            {
+                                startColumnName: "act7p",
+                                numberOfColumns: 3,
+                                titleText: "SOLDADURA DE SELLO",
+                            },
+                            {
+                                startColumnName: "sprog",
+                                numberOfColumns: 3,
+                                titleText: "AVANCE GENERAL",
+                            },
+
+
+                        ],
+                    });
+
+                    // $("#grid1b2").jqGrid('filterToolbar',
+                    // {autoSearch: true, searchOnEnter: false,});
+
+                    $("#grid1b2").jqGrid('setFrozenColumns');
+
+                    cargarGraficas()
+
+                    Swal.close();
+
+                    
+                });
+            });
+        }
+
+        function cargarGraficas() {
+
+            act1p = 0;
+            act2p = 0;
+            act3p = 0;
+            act4p = 0;
+            act5p = 0;
+            act6p = 0;
+            act7p = 0;
+            sprog = 0;
+
+            act1e = 0;
+            act2e = 0;
+            act3e = 0;
+            act4e = 0;
+            act5e = 0;
+            act6e = 0;
+            act7e = 0;
+            seje = 0;
+
+
+            for (var i = 0; i < datos.length; i++) {
+
+                act1p += datos[i].act1p;
+                act1e += datos[i].act1e;
+                act2p += datos[i].act2p;
+                act2e += datos[i].act2e;
+                act3p += datos[i].act3p;
+                act3e += datos[i].act3e;
+                act4p += datos[i].act4p;
+                act4e += datos[i].act4e;
+                act5p += datos[i].act5p;
+                act5e += datos[i].act5e;
+                act6p += datos[i].act6p;
+                act6e += datos[i].act6e;
+                act7p += datos[i].act7p;
+                act7e += datos[i].act7e;
+                sprog += datos[i].sprog;
+                seje += datos[i].seje;
+
+
+            }
+
+            Highcharts.chart("fig1", {
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                    
+                    // options3d: {
+                    //     enabled: true,
+                    //     alpha: 15,
+                    //     beta: 15,
+                    //     viewDistance: 25,
+                    //     depth: 40
+                    // }
+                },
+                title: {
+                    text: "<b>AVANCE LAZOS DE CORROSIÓN</b>",
+                },
+
+                xAxis: {
+                    categories: ["CAMBIAR TRACING", "CAMBIAR VALVULA BRIDADA", "CAMBIAR VENTEO", "CAMBIO DE LINEA",
+                        "ELIMINACION DE VENTEO", "MANTENIMIENTO DE VALVULA BRIDADA", "SOLDADURA DE SELLO",'AVANCE GENERAL'
+                    ],
+                    crosshair: true,
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                        name: "PROG",
+                        data: [act1p, act2p, act3p, act4p, act5p,
+                        act6p, act7p, sprog
+                        ],
+                    },
+                    {
+                        name: "EJECUTADAS",
+                        data: [act1e, act2e, act3e, act4e, act5e,
+                        act6e, act7e, seje
+                        ],
+                    }
+                ],
+            });
+
+
+        }
+    
+    </script>
+</body>
+
+</html>

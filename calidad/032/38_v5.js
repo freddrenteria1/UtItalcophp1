@@ -1,0 +1,1907 @@
+
+			// var anchoTblCuerpo = $('#tblcuerpo').width();
+			// $('#tblpie').width(anchoTblCuerpo)
+			// $('#tblobs').width(anchoTblCuerpo)
+
+			// if (screen.width <= 1366) {
+			//     document.body.style.zoom = "80%";
+			// } else {
+			//     document.body.style.zoom = "100%";
+			// }
+
+
+			function agregarObs() {
+				$('#tblobs').removeClass("oculto")
+				$('#btnagregarObs').addClass("oculto")
+			}
+
+			var imagencargada = null
+			var idImagen = null
+
+			var user = sessionStorage.getItem('usercal')
+
+			var verifuser = sessionStorage.getItem('datosuserqaqc')
+
+			if (verifuser != null) {
+				var datosuserqaqc = JSON.parse(sessionStorage.getItem('datosuserqaqc'))
+			} else {
+				location = 'index.php'
+			}
+			var tipouser = sessionStorage.getItem('tipouser')
+
+			if (tipouser == 'ecopetrol') {
+				$("input, select,  textarea").prop('disabled', true);
+				$('.ecp').prop('disabled', false)
+				$('.ut').prop('disabled', true)
+				$("input, select,  textarea").prop('disabled', false);
+				//$("#info input").prop("disabled", true);
+			}
+
+			if (tipouser == 'italco') {
+				// $("input, select,  textarea").prop('disabled', false);
+				$('.ecp').prop('disabled', true)
+				// $('.ut').prop('disabled', true)
+				//$("#info input").prop("disabled", true);
+			}
+
+			$('.activo').prop('disabled', false)
+
+			var items = []
+			var listaArchivos = []
+
+
+
+			// Set up the canvas
+			var canvas = document.querySelector("#canvas");
+			var ctx = canvas.getContext("2d");
+			ctx.strokeStyle = "#222222";
+			ctx.lineWidth = 2;
+
+
+			$btnDescargar = document.querySelector("#btnDescargar")
+			$btnLimpiar = document.querySelector("#btnLimpiar")
+			$btnGenerarDocumento = document.querySelector("#btnGenerarDocumento");
+
+
+
+			// Get a regular interval for drawing to the screen
+			window.requestAnimFrame = (function (callback) {
+				return window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					window.oRequestAnimationFrame ||
+					window.msRequestAnimaitonFrame ||
+					function (callback) {
+						window.setTimeout(callback, 1000 / 60);
+					};
+			})();
+
+
+			const limpiarCanvas = () => {
+				// Colocar color blanco en fondo de canvas
+				clearCanvas();
+			};
+			limpiarCanvas();
+			$btnLimpiar.onclick = limpiarCanvas;
+			// Escuchar clic del botón para descargar el canvas
+
+
+
+			window.obtenerImagen = () => {
+				return $canvas.toDataURL();
+			};
+
+
+			// Set up mouse events for drawing
+			var drawing = false;
+			var mousePos = {
+				x: 0,
+				y: 0
+			};
+			var lastPos = mousePos;
+			canvas.addEventListener("mousedown", function (e) {
+				drawing = true;
+				lastPos = getMousePos(canvas, e);
+			}, false);
+			canvas.addEventListener("mouseup", function (e) {
+				drawing = false;
+			}, false);
+			canvas.addEventListener("mousemove", function (e) {
+				mousePos = getMousePos(canvas, e);
+			}, false);
+
+			// Set up touch events for mobile, etc
+			canvas.addEventListener("touchstart", function (e) {
+				mousePos = getTouchPos(canvas, e);
+				var touch = e.touches[0];
+				var mouseEvent = new MouseEvent("mousedown", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+			canvas.addEventListener("touchend", function (e) {
+				var mouseEvent = new MouseEvent("mouseup", {});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+			canvas.addEventListener("touchmove", function (e) {
+				var touch = e.touches[0];
+				var mouseEvent = new MouseEvent("mousemove", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+
+
+			// Prevent scrolling when touching the canvas
+			document.body.addEventListener("touchstart", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, {
+				passive: false
+			});
+			document.body.addEventListener("touchend", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+			document.body.addEventListener("touchmove", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+
+			// Get the position of the mouse relative to the canvas
+			function getMousePos(canvasDom, mouseEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: mouseEvent.clientX - rect.left,
+					y: mouseEvent.clientY - rect.top
+				};
+			}
+
+			// Get the position of a touch relative to the canvas
+			function getTouchPos(canvasDom, touchEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: touchEvent.touches[0].clientX - rect.left,
+					y: touchEvent.touches[0].clientY - rect.top
+				};
+			}
+
+			// Draw to the canvas
+			function renderCanvas() {
+				if (drawing) {
+					ctx.moveTo(lastPos.x, lastPos.y);
+					ctx.lineTo(mousePos.x, mousePos.y);
+					ctx.lineWidth = 5;
+					ctx.stroke();
+					lastPos = mousePos;
+				}
+			}
+
+			// Clear the canvas
+			function clearCanvas() {
+				canvas.width = canvas.width;
+			}
+
+			// Allow for animation
+			(function drawLoop() {
+				requestAnimFrame(drawLoop);
+				renderCanvas();
+			})();
+
+
+			function abrirFirma(id) {
+
+				if (id == 100) {
+					if ($('#obs100').val() == '') {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'info',
+							title: 'Por favor registre primero la observación, nombre y registro...',
+							showConfirmButton: false,
+							timer: 2500
+						})
+					} else {
+						idImagen = id;
+						pasarFirma()
+					}
+				} else {
+
+					if ($('#fecha' + id).val() == "" || $('#hora' + id).val() == "") {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'info',
+							title: 'Por favor registre primero fecha y hora...',
+							showConfirmButton: false,
+							timer: 2500
+						})
+					} else {
+
+
+						idImagen = id;
+						pasarFirma()
+
+
+					}
+
+				}
+
+
+			}
+
+
+
+			function pasarFirma() {
+				if ($('#poldatos').prop('checked')) {
+
+					document.querySelector("#firma" + idImagen).src = datosuserqaqc.firma;
+
+					$('#firma' + idImagen).removeClass('oculto')
+					$('#btnFirmar' + idImagen).hide()
+
+					$('#nombre' + idImagen).val(datosuserqaqc.nombres)
+					$('#registro' + idImagen).val(datosuserqaqc.documento)
+
+					$('#firma' + idImagen).removeClass('oculto')
+					$('#btnFirmar' + idImagen).hide()
+
+					//SE GUARADAN LOS DATOS DE LA FIRMA
+					if (idImagen == 1 || idImagen == 2) {
+						actPermiso()
+					}
+					if (idImagen == 3) {
+						actLimpPartes()
+					}
+					if (idImagen == 4) {
+						actListaChequeo()
+					}
+
+					if (idImagen == 5) {
+						actInspPartes()
+					}
+
+					if (idImagen == 6) {
+						actListaChequeoInspHaz()
+					}
+
+					if (idImagen == 7 || idImagen == 8 || idImagen == 9) {
+						actLiberacion()
+					}
+
+					if (idImagen == 10 || idImagen == 11 || idImagen == 12) {
+						actlibhaztubos()
+					}
+
+					if (idImagen == 13 || idImagen == 14) {
+						$('#nombre' + idImagen + 'b').val(datosuserqaqc.nombres)
+						actPHidro()
+					}
+
+					if (idImagen == 15 || idImagen == 16) {
+						actTMec()
+					}
+
+					if (idImagen == 17 || idImagen == 18) {
+						actPintura()
+					}
+
+					if (idImagen == 19 || idImagen == 20) {
+						actEntrega()
+					}
+
+					if (idImagen == 21) {
+						guardarObs()
+					}
+
+
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'info',
+						title: 'Debe aceptar las políticas de protección de datos perasonales',
+						showConfirmButton: false,
+						timer: 1500
+					})
+				}
+
+
+				//document.querySelector("#btnfirmar").style.display = 'none';
+
+			}
+
+			function getParameterByName(name) {
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+					results = regex.exec(location.search);
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}
+
+			var tag = getParameterByName('tag');
+			var arrayDatos = []
+			var firmasItems = []
+			var cmls = []
+
+			odsq = localStorage.getItem('odsq');
+			equipos = sessionStorage.getItem('equipo')
+			alcance = sessionStorage.getItem('servicio')
+			esp = sessionStorage.getItem('esp')
+
+			var server = 'https://utitalco.com/calidad/032/server/';
+
+			cargando()
+			$.post(server + 'cargarRca38.php', {
+				ods: odsq,
+				tag: tag
+			},
+				function (resp) {
+					arrayDatos = resp
+					console.log(arrayDatos)
+
+					cargarDatos()
+
+
+				})
+
+			function actEquipo() {
+				var eqaso = $('#eqp_asociado').val()
+				$.post(server + 'actOs114EqAsoc.php', {
+					ods: odsq,
+					tag: tag,
+					equipo: eqaso
+				},
+					function (res) {
+						console.log(res)
+					})
+			}
+
+			function cargarDatos() {
+				$('#unidad').html(arrayDatos.unidad)
+				$('#planta').html(arrayDatos.planta)
+
+				$('#ods').html(arrayDatos.ods)
+				$('#tipo').html(arrayDatos.tipo)
+				$('#tag').html(arrayDatos.tag)
+				$('#etipo').val(arrayDatos.etipo)
+				$('#servicio').val(arrayDatos.servicio)
+				$('#numtubos').val(arrayDatos.num_tubos)
+				$('#dimtubo').val(arrayDatos.dimen_tubos)
+
+				$('#caltubo').val(arrayDatos.calibre)
+				$('#mattubo').val(arrayDatos.material_tubos)
+
+				if (arrayDatos.permiso != "") {
+
+					var arrayPermiso = JSON.parse(arrayDatos.permiso)
+
+					$('#rt_verplat').val(arrayPermiso[0].rt_verplat)
+					$('#rt_inpvis').val(arrayPermiso[0].rt_inpvis)
+					$('#rt_verval').val(arrayPermiso[0].rt_verval)
+					$('#rt_autact').val(arrayPermiso[0].rt_autact)
+
+					$('#fecha2').val(arrayPermiso[0].fechaut)
+					$('#hora2').val(arrayPermiso[0].horaut)
+					$('#nombre2').val(arrayPermiso[0].nombreut)
+
+					document.querySelector("#firma2").src = arrayPermiso[0].firmaut;
+
+					if (arrayPermiso[0].fechaut != "") {
+						$('#firma2').removeClass('oculto')
+						$('#btnFirmar2').hide()
+					}
+					$('#registro2').val(arrayPermiso[0].registrout)
+
+					$('#fecha1').val(arrayPermiso[0].fechaec)
+					$('#hora1').val(arrayPermiso[0].horaec)
+					$('#nombre1').val(arrayPermiso[0].nombreec)
+
+					document.querySelector("#firma1").src = arrayPermiso[0].firmaec;
+
+					$('#registro1').val(arrayPermiso[0].registroec)
+
+					if (arrayPermiso[0].fechaec != "") {
+						$('#firma1').removeClass('oculto')
+						$('#btnFirmar1').hide()
+					}
+				}
+
+				//cargue de datos de limpieza de partes
+
+				if (arrayDatos.limp_partes != "") {
+					var arrayLimpPartes = JSON.parse(arrayDatos.limp_partes)
+
+					$('#laviterno').val(arrayLimpPartes[0].laviterno)
+					$('#limpmecanica').val(arrayLimpPartes[0].limpmecanica)
+					$('#limpmecanica').val(arrayLimpPartes[0].limpmecanica)
+					$('#compcanal').val(arrayLimpPartes[0].compcanal)
+					$('#comptapcanal').val(arrayLimpPartes[0].comptapcanal)
+					$('#comptapcab').val(arrayLimpPartes[0].comptapcab)
+					$('#compmedluna').val(arrayLimpPartes[0].compmedluna)
+					$('#comptapacasco').val(arrayLimpPartes[0].comptapacasco)
+					$('#compcasco').val(arrayLimpPartes[0].compcasco)
+					$('#otrocomp').val(arrayLimpPartes[0].otrocomp)
+
+
+					$('#fecha3').val(arrayLimpPartes[0].fechaut)
+					$('#hora3').val(arrayLimpPartes[0].horaut)
+					$('#nombre3').val(arrayLimpPartes[0].nombreut)
+
+					document.querySelector("#firma3").src = arrayLimpPartes[0].firmaut;
+					if (arrayLimpPartes[0].fechaut != "") {
+						$('#firma3').removeClass('oculto')
+						$('#btnFirmar3').hide()
+					}
+
+					$('#registro3').val(arrayLimpPartes[0].registrout)
+
+
+				}
+
+
+				//cargue de datos de limpieza de partes haz de tubos
+
+				if (arrayDatos.limp_haz_tubos != "") {
+					var arrayLimpHaz = JSON.parse(arrayDatos.limp_haz_tubos)
+
+					$('#listachequeo').val(arrayLimpHaz[0].listachequeo)
+
+					$('#fecha4').val(arrayLimpHaz[0].fechaut)
+					$('#hora4').val(arrayLimpHaz[0].horaut)
+					$('#nombre4').val(arrayLimpHaz[0].nombreut)
+
+					document.querySelector("#firma4").src = arrayLimpHaz[0].firmaut;
+
+					if (arrayLimpHaz[0].fechaut != "") {
+						$('#firma4').removeClass('oculto')
+						$('#btnFirmar4').hide()
+					}
+
+					$('#registro4').val(arrayLimpHaz[0].registrout)
+
+
+				}
+
+				//cargue de datos de inspección de partes
+
+				if (arrayDatos.insp_partes != "") {
+					var arrayInspPartes = JSON.parse(arrayDatos.insp_partes)
+
+					$('#insppartsupextint').val(arrayInspPartes[0].insppartsupextint)
+					$('#inspcanal').val(arrayInspPartes[0].inspcanal)
+					$('#insptapacanal').val(arrayInspPartes[0].insptapacanal)
+					$('#insptapacab').val(arrayInspPartes[0].insptapacab)
+					$('#inspmedlunas').val(arrayInspPartes[0].inspmedlunas)
+					$('#insptapacasco').val(arrayInspPartes[0].insptapacasco)
+					$('#inspcasco').val(arrayInspPartes[0].inspcasco)
+					$('#otroinsp').val(arrayInspPartes[0].otroinsp)
+
+
+
+					$('#fecha5').val(arrayInspPartes[0].fechaec)
+					$('#hora5').val(arrayInspPartes[0].horaec)
+					$('#nombre5').val(arrayInspPartes[0].nombreec)
+
+					document.querySelector("#firma5").src = arrayInspPartes[0].firmaec;
+					if (arrayInspPartes[0].fechaec != "") {
+						$('#firma5').removeClass('oculto')
+						$('#btnFirmar5').hide()
+					}
+
+					$('#registro5').val(arrayInspPartes[0].registroec)
+
+				}
+
+				//cargue de datos de inspección de partes haz de tubos
+
+				if (arrayDatos.insp_haz_tubos != "") {
+					var arrayInspPartesHaz = JSON.parse(arrayDatos.insp_haz_tubos)
+
+					$('#inspvishaztub').val(arrayInspPartesHaz[0].inspvishaztub)
+					$('#inspcorrindu').val(arrayInspPartesHaz[0].inspcorrindu)
+					$('#numtublistachinsphaztub').val(arrayInspPartesHaz[0].numtublistachinsphaztub)
+
+					$('#fecha6').val(arrayInspPartesHaz[0].fechaec)
+					$('#hora6').val(arrayInspPartesHaz[0].horaec)
+					$('#nombre6').val(arrayInspPartesHaz[0].nombreec)
+
+					document.querySelector("#firma6").src = arrayInspPartesHaz[0].firmaec;
+					if (arrayInspPartesHaz[0].fechaec != "") {
+						$('#firma6').removeClass('oculto')
+						$('#btnFirmar6').hide()
+					}
+
+					$('#registro6').val(arrayInspPartesHaz[0].registroec)
+
+				}
+
+				//cargue de datos de liberación de partes
+
+				if (arrayDatos.lib_partes != "") {
+
+					var arrayLibPartes = JSON.parse(arrayDatos.lib_partes)
+
+					$('#ejetrab').val(arrayLibPartes[0].ejetrab)
+					$('#ejerecom').val(arrayLibPartes[0].ejerecom)
+					$('#libcanal').val(arrayLibPartes[0].libcanal)
+					$('#libtapacanal').val(arrayLibPartes[0].libtapacanal)
+					$('#libtapcabfl').val(arrayLibPartes[0].libtapcabfl)
+					$('#libmedialuna').val(arrayLibPartes[0].libmedialuna)
+					$('#libtapacasco').val(arrayLibPartes[0].libtapacasco)
+					$('#libcasco').val(arrayLibPartes[0].libcasco)
+					$('#otrolib').val(arrayLibPartes[0].otrolib)
+
+
+					$('#fecha7').val(arrayLibPartes[0].fechautsup)
+					$('#hora7').val(arrayLibPartes[0].horautsup)
+					$('#nombre7').val(arrayLibPartes[0].nombreutsup)
+
+					document.querySelector("#firma7").src = arrayLibPartes[0].firmautsup;
+
+					if (arrayLibPartes[0].fechautsup != "") {
+						$('#firma7').removeClass('oculto')
+						$('#btnFirmar7').hide()
+					}
+
+					$('#registro7').val(arrayLibPartes[0].registroutsup)
+
+					$('#fecha8').val(arrayLibPartes[0].fechautqaqc)
+					$('#hora8').val(arrayLibPartes[0].horautqaqc)
+					$('#nombre8').val(arrayLibPartes[0].nombreutqaqc)
+
+					document.querySelector("#firma8").src = arrayLibPartes[0].firmautqaqc;
+
+					if (arrayLibPartes[0].fechautqaqc != "") {
+						$('#firma8').removeClass('oculto')
+						$('#btnFirmar8').hide()
+					}
+
+					$('#registro8').val(arrayLibPartes[0].registroutqaqc)
+
+
+					$('#fecha9').val(arrayLibPartes[0].fechaec)
+					$('#hora9').val(arrayLibPartes[0].horaec)
+					$('#nombre9').val(arrayLibPartes[0].nombreec)
+
+					document.querySelector("#firma9").src = arrayLibPartes[0].firmaec;
+					if (arrayLibPartes[0].fechaec != "") {
+						$('#firma9').removeClass('oculto')
+						$('#btnFirmar9').hide()
+					}
+
+					$('#registro9').val(arrayLibPartes[0].registroec)
+
+				}
+
+				//cargue de datos de liberación de haz de tubos
+
+				if (arrayDatos.lib_haz_tubos != "") {
+
+					var arrayLibHazTubos = JSON.parse(arrayDatos.lib_haz_tubos)
+
+					$('#haztubovobotrab').val(arrayLibHazTubos[0].haztubovobotrab)
+					$('#haztuboentcañ').val(arrayLibHazTubos[0].haztuboentcañ)
+
+
+					$('#fecha10').val(arrayLibHazTubos[0].fechautsup)
+					$('#hora10').val(arrayLibHazTubos[0].horautsup)
+					$('#nombre10').val(arrayLibHazTubos[0].nombreutsup)
+
+					document.querySelector("#firma10").src = arrayLibHazTubos[0].firmautsup;
+
+					if (arrayLibHazTubos[0].fechautsup != "") {
+						$('#firma10').removeClass('oculto')
+						$('#btnFirmar10').hide()
+					}
+
+					$('#registro10').val(arrayLibHazTubos[0].registroutsup)
+
+					$('#fecha11').val(arrayLibHazTubos[0].fechautqaqc)
+					$('#hora11').val(arrayLibHazTubos[0].horautqaqc)
+					$('#nombre11').val(arrayLibHazTubos[0].nombreutqaqc)
+
+					document.querySelector("#firma11").src = arrayLibHazTubos[0].firmautqaqc;
+
+					if (arrayLibHazTubos[0].fechautqaqc != "") {
+						$('#firma11').removeClass('oculto')
+						$('#btnFirmar11').hide()
+					}
+
+					$('#registro11').val(arrayLibHazTubos[0].registroutqaqc)
+
+
+					$('#fecha12').val(arrayLibHazTubos[0].fechaec)
+					$('#hora12').val(arrayLibHazTubos[0].horaec)
+					$('#nombre12').val(arrayLibHazTubos[0].nombreec)
+
+					document.querySelector("#firma12").src = arrayLibHazTubos[0].firmaec;
+					if (arrayLibHazTubos[0].fechaec != "") {
+						$('#firma12').removeClass('oculto')
+						$('#btnFirmar12').hide()
+					}
+
+					$('#registro12').val(arrayLibHazTubos[0].registroec)
+
+				}
+
+
+				//cargue de datos de prueba hidro
+
+				if (arrayDatos.prueba != "") {
+
+					var arrayPrueba = JSON.parse(arrayDatos.prueba)
+
+					$('#verinstcal').val(arrayPrueba[0].verinstcal)
+					$('#verhermub').val(arrayPrueba[0].verhermub)
+					$('#vernumtubtap').val(arrayPrueba[0].vernumtubtap)
+					$('#verinstfac').val(arrayPrueba[0].verinstfac)
+					$('#verhermlg').val(arrayPrueba[0].verhermlg)
+					$('#numtubtap').val(arrayPrueba[0].numtubtap)
+
+					//lado tubo
+
+					$('#phpresiontubos').val(arrayPrueba[0].phpresiontubos)
+					$('#phtiempotubos').val(arrayPrueba[0].phtiempotubos)
+
+					$('#fecha13').val(arrayPrueba[0].fechatubosup)
+					$('#hora13').val(arrayPrueba[0].horatubosup)
+					$('#nombre13a').val(arrayPrueba[0].nombreutsuptubo)
+					$('#nombre13b').val(arrayPrueba[0].nombreectubo)
+
+					document.querySelector("#firma13").src = arrayPrueba[0].firmaecptubo;
+
+					if (arrayPrueba[0].nombreectubo != "") {
+						$('#firma13').removeClass('oculto')
+						$('#btnFirmar13').hide()
+					}
+
+					$('#registro13').val(arrayPrueba[0].registroectubo)
+
+					//lado casco
+
+					$('#phpresioncasco').val(arrayPrueba[0].phpresioncasco)
+					$('#phtiempocasco').val(arrayPrueba[0].phtiempocasco)
+
+					$('#fecha14').val(arrayPrueba[0].fechacascosup)
+					$('#hora14').val(arrayPrueba[0].horacascosup)
+					$('#nombre14a').val(arrayPrueba[0].nombreutsupcasco)
+					$('#nombre14b').val(arrayPrueba[0].nombreeccasco)
+
+					document.querySelector("#firma14").src = arrayPrueba[0].firmaecpcasco;
+
+					if (arrayPrueba[0].nombreeccasco != "") {
+						$('#firma14').removeClass('oculto')
+						$('#btnFirmar14').hide()
+					}
+
+					$('#registro14').val(arrayPrueba[0].registroeccasco)
+
+
+				}
+
+
+				//cargue de datos de terminación mecánica
+
+				if (arrayDatos.terminacion != "") {
+
+					var arrayTerminacion = JSON.parse(arrayDatos.terminacion)
+
+					$('#tmInstTapones').val(arrayTerminacion[0].tmInstTapones)
+					$('#tmInstAjInst').val(arrayTerminacion[0].tmInstAjInst)
+					$('#tmInstDrenajes').val(arrayTerminacion[0].tmInstDrenajes)
+					$('#tmVerPuestaTierra').val(arrayTerminacion[0].tmVerPuestaTierra)
+					$('#tmVerEmpUb').val(arrayTerminacion[0].tmVerEmpUb)
+
+
+					$('#fecha15').val(arrayTerminacion[0].fechaut)
+					$('#hora15').val(arrayTerminacion[0].horaut)
+					$('#nombre15').val(arrayTerminacion[0].nombreut)
+
+					document.querySelector("#firma15").src = arrayTerminacion[0].firmaut;
+
+					if (arrayTerminacion[0].fechaut != "") {
+						$('#firma15').removeClass('oculto')
+						$('#btnFirmar15').hide()
+					}
+
+					$('#registro15').val(arrayTerminacion[0].registrout)
+
+
+					$('#fecha16').val(arrayTerminacion[0].fechaec)
+					$('#hora16').val(arrayTerminacion[0].horaec)
+					$('#nombre16').val(arrayTerminacion[0].nombreec)
+
+					document.querySelector("#firma16").src = arrayTerminacion[0].firmaec;
+
+					if (arrayTerminacion[0].fechaec != "") {
+						$('#firma16').removeClass('oculto')
+						$('#btnFirmar16').hide()
+					}
+
+					$('#registro16').val(arrayTerminacion[0].registroec)
+
+
+				}
+
+				//cargue de datos de pintura
+
+				if (arrayDatos.pintura != "") {
+
+					var arrayPintura = JSON.parse(arrayDatos.pintura)
+
+					$('#pyaprepsup').val(arrayPintura[0].pyaprepsup)
+					$('#ptlchgradosspc').val(arrayPintura[0].ptlchgradosspc)
+					$('#pyainstaisla').val(arrayPintura[0].pyainstaisla)
+					$('#pyarugosidad').val(arrayPintura[0].pyarugosidad)
+					$('#pyainsfoil').val(arrayPintura[0].pyainsfoil)
+
+					$('#pyapadhe').val(arrayPintura[0].pyapadhe)
+					$('#pyaaplsellante').val(arrayPintura[0].pyaaplsellante)
+					$('#pyamedespesor').val(arrayPintura[0].pyamedespesor)
+					$('#pyaveracabado').val(arrayPintura[0].pyaveracabado)
+					$('#pyaaplrecub').val(arrayPintura[0].pyaaplrecub)
+					$('#mils').val(arrayPintura[0].mils)
+
+
+					$('#fecha17').val(arrayPintura[0].fechaut)
+					$('#hora17').val(arrayPintura[0].horaut)
+					$('#nombre17').val(arrayPintura[0].nombreut)
+
+					document.querySelector("#firma17").src = arrayPintura[0].firmaut;
+
+					if (arrayPintura[0].fechaut != "") {
+						$('#firma17').removeClass('oculto')
+						$('#btnFirmar17').hide()
+					}
+
+					$('#registro17').val(arrayPintura[0].registrout)
+
+
+					$('#fecha18').val(arrayPintura[0].fechaec)
+					$('#hora18').val(arrayPintura[0].horaec)
+					$('#nombre18').val(arrayPintura[0].nombreec)
+
+					document.querySelector("#firma18").src = arrayPintura[0].firmaec;
+
+					if (arrayPintura[0].fechaec != "") {
+						$('#firma18').removeClass('oculto')
+						$('#btnFirmar18').hide()
+					}
+
+					$('#registro18').val(arrayPintura[0].registroec)
+
+
+				}
+
+				//cargue de datos de entrega
+
+				if (arrayDatos.entrega != "") {
+
+					var arrayEntrega = JSON.parse(arrayDatos.entrega)
+
+					$('#retirosas').val(arrayEntrega[0].retirosas)
+					$('#inspvisualentrega').val(arrayEntrega[0].inspvisualentrega)
+
+					$('#fecha19').val(arrayEntrega[0].fechaut)
+					$('#hora19').val(arrayEntrega[0].horaut)
+					$('#nombre19').val(arrayEntrega[0].nombreut)
+
+					document.querySelector("#firma19").src = arrayEntrega[0].firmaut;
+
+					if (arrayEntrega[0].fechaut != "") {
+						$('#firma19').removeClass('oculto')
+						$('#btnFirmar19').hide()
+					}
+
+					$('#registro19').val(arrayEntrega[0].registrout)
+
+
+					$('#fecha20').val(arrayEntrega[0].fechaec)
+					$('#hora20').val(arrayEntrega[0].horaec)
+					$('#nombre20').val(arrayEntrega[0].nombreec)
+
+					document.querySelector("#firma20").src = arrayEntrega[0].firmaec;
+
+					if (arrayEntrega[0].fechaec != "") {
+						$('#firma20').removeClass('oculto')
+						$('#btnFirmar20').hide()
+					}
+
+					$('#registro20').val(arrayEntrega[0].registroec)
+
+
+				}
+
+
+
+
+				//CARGUE DE OBSERVACIONES
+
+				if (arrayDatos.observaciones != "") {
+					var arrayObs = JSON.parse(arrayDatos.observaciones)
+					var html = ''
+					for (var i = 0; i < arrayObs.length; i++) {
+						html = `<b>Nota ${i + 1}: </b>
+                    ${arrayObs[i].obs} | ${arrayObs[i].nombre} | Registro: ${arrayObs[i].registro} | Fecha: ${arrayObs[i].fecha} | Firma: <span id="firm${i}" style="width: 60px;"></span> <br>--------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+                    `
+						$('#observaciones').append(html)
+						const imagef = document.createElement('img')
+						imagef.src = arrayObs[i].firma
+						imagef.height = "60"
+						document.querySelector('#firm' + i).appendChild(imagef)
+
+					}
+				}
+
+				if (arrayDatos.doc != "") {
+					listaArchivos = JSON.parse(arrayDatos.doc)
+
+				}
+
+				Swal.close()
+
+
+			}
+
+			function actInfo() {
+
+				var etipo = $('#etipo').val()
+				var servicio = $('#servicio').val()
+				var numtubos = $('#numtubos').val()
+				var dimtubo = $('#dimtubo').val()
+				var caltubo = $('#caltubo').val()
+				var mattubo = $('#mattubo').val()
+
+				$.post(server + 'actOs38Info.php', {
+					ods: odsq,
+					tag: tag,
+					etipo: etipo,
+					servicio: servicio,
+					numtubos: numtubos,
+					dimtubo: dimtubo,
+					caltubo: caltubo,
+					mattubo: mattubo
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+
+
+			}
+
+			function actPermiso() {
+
+				var arrayCmls = []
+
+
+				var rt_verplat = $('#rt_verplat').val()
+				var rt_inpvis = $('#rt_inpvis').val()
+				var rt_verval = $('#rt_verval').val()
+				var rt_autact = $('#rt_autact').val()
+
+				var fechapermut = $('#fecha2').val()
+				var horapermut = $('#hora2').val()
+				var nombrepermut = $('#nombre2').val()
+
+				var img = document.getElementById("firma2");
+				var firmapermut = img.src
+
+				if (fechapermut == '') {
+					firmapermut = ''
+				}
+
+				var registropermut = $('#registro2').val()
+
+				var fechapermec = $('#fecha1').val()
+				var horapermec = $('#hora1').val()
+				var nombrepermec = $('#nombre1').val()
+
+				var img = document.getElementById("firma1");
+				var firmapermec = img.src
+
+				if (fechapermec == '') {
+					firmapermec = ''
+				}
+				var registropermec = $('#registro1').val()
+
+				var arrayPerm = []
+
+				arrayPerm.push({
+					"rt_verplat": rt_verplat,
+					"rt_inpvis": rt_inpvis,
+					"rt_verval": rt_verval,
+					"rt_autact": rt_autact,
+					"fechaut": fechapermut,
+					"horaut": horapermut,
+					"nombreut": nombrepermut,
+					"firmaut": firmapermut,
+					"registrout": registropermut,
+					"fechaec": fechapermec,
+					"horaec": horapermec,
+					"nombreec": nombrepermec,
+					"firmaec": firmapermec,
+					"registroec": registropermec
+				})
+
+				console.log(arrayPerm)
+
+				$.post(server + 'actOs38Perm.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayPerm)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actLimpPartes() {
+
+				var laviterno = $('#laviterno').val()
+				var limpmecanica = $('#limpmecanica').val()
+
+				var compcanal = $('#compcanal').val()
+				var comptapcanal = $('#comptapcanal').val()
+				var comptapcab = $('#comptapcab').val()
+				var compmedluna = $('#compmedluna').val()
+				var comptapacasco = $('#comptapacasco').val()
+				var compcasco = $('#compcasco').val()
+				var otrocomp = $('#otrocomp').val()
+
+				var fechaut = $('#fecha3').val()
+				var horaut = $('#hora3').val()
+				var nombreut = $('#nombre3').val()
+
+				var img = document.getElementById("firma3");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro3').val()
+
+				// var fechaec = $('#fecha1').val()
+				// var horaec = $('#hora1').val()
+				// var nombreec = $('#nombre1').val()
+
+				// var img = document.getElementById("firma1");
+				// var firmaec = img.src
+
+				// if (fechaec == '') {
+				//     firmaec = ''
+				// }
+				// var registroec = $('#registro1').val()
+
+				var arrayLimpPartes = []
+
+				arrayLimpPartes.push({
+					"laviterno": laviterno,
+					"limpmecanica": limpmecanica,
+					"compcanal": compcanal,
+					"comptapcanal": comptapcanal,
+					"comptapcab": comptapcab,
+					"compmedluna": compmedluna,
+					"comptapacasco": comptapacasco,
+					"compcasco": compcasco,
+					"otrocomp": otrocomp,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout
+				})
+
+				console.log(arrayLimpPartes)
+
+				$.post(server + 'actOs38LimpPartes.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLimpPartes)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actListaChequeo() {
+
+				var listachequeo = $('#listachequeo').val()
+
+				var fechaut = $('#fecha4').val()
+				var horaut = $('#hora4').val()
+				var nombreut = $('#nombre4').val()
+
+				var img = document.getElementById("firma4");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro4').val()
+
+				// var fechaec = $('#fecha1').val()
+				// var horaec = $('#hora1').val()
+				// var nombreec = $('#nombre1').val()
+
+				// var img = document.getElementById("firma1");
+				// var firmaec = img.src
+
+				// if (fechaec == '') {
+				//     firmaec = ''
+				// }
+				// var registroec = $('#registro1').val()
+
+				var arrayLimpHaz = []
+
+				arrayLimpHaz.push({
+					"listachequeo": listachequeo,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout
+				})
+
+				console.log(arrayLimpHaz)
+
+				$.post(server + 'actOs38LimpPartesHaz.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLimpHaz)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actInspPartes() {
+
+				var insppartsupextint = $('#insppartsupextint').val()
+				var inspcanal = $('#inspcanal').val()
+				var insptapacanal = $('#insptapacanal').val()
+				var insptapacab = $('#insptapacab').val()
+				var inspmedlunas = $('#inspmedlunas').val()
+				var insptapacasco = $('#insptapacasco').val()
+				var inspcasco = $('#inspcasco').val()
+				var otroinsp = $('#otroinsp').val()
+
+				var fechaec = $('#fecha5').val()
+				var horaec = $('#hora5').val()
+				var nombreec = $('#nombre5').val()
+
+				var img = document.getElementById("firma5");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+
+				var registroec = $('#registro5').val()
+
+				// var fechaec = $('#fecha1').val()
+				// var horaec = $('#hora1').val()
+				// var nombreec = $('#nombre1').val()
+
+				// var img = document.getElementById("firma1");
+				// var firmaec = img.src
+
+				// if (fechaec == '') {
+				//     firmaec = ''
+				// }
+				// var registroec = $('#registro1').val()
+
+				var arrayInspPartes = []
+
+				arrayInspPartes.push({
+					"insppartsupextint": insppartsupextint,
+					"inspcanal": inspcanal,
+					"insptapacanal": insptapacanal,
+					"insptapacab": insptapacab,
+					"inspmedlunas": inspmedlunas,
+					"insptapacasco": insptapacasco,
+					"inspcasco": inspcasco,
+					"otroinsp": otroinsp,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayInspPartes)
+
+				$.post(server + 'actOs38InspPartes.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayInspPartes)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actListaChequeoInspHaz() {
+
+				var inspvishaztub = $('#inspvishaztub').val()
+				var inspcorrindu = $('#inspcorrindu').val()
+				var numtublistachinsphaztub = $('#numtublistachinsphaztub').val()
+
+
+				var fechaec = $('#fecha6').val()
+				var horaec = $('#hora6').val()
+				var nombreec = $('#nombre6').val()
+
+				var img = document.getElementById("firma6");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+
+				var registroec = $('#registro6').val()
+
+				var arrayInspPartesHaz = []
+
+				arrayInspPartesHaz.push({
+					"inspvishaztub": inspvishaztub,
+					"inspcorrindu": inspcorrindu,
+					"numtublistachinsphaztub": numtublistachinsphaztub,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayInspPartesHaz)
+
+				$.post(server + 'actOs38InspPartesHaz.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayInspPartesHaz)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actLiberacion() {
+
+				var ejetrab = $('#ejetrab').val()
+				var ejerecom = $('#ejerecom').val()
+				var libcanal = $('#libcanal').val()
+				var libtapacanal = $('#libtapacanal').val()
+				var libtapcabfl = $('#libtapcabfl').val()
+				var libmedialuna = $('#libmedialuna').val()
+				var libtapacasco = $('#libtapacasco').val()
+				var libcasco = $('#libcasco').val()
+				var otrolib = $('#otrolib').val()
+
+
+				//supervisor
+				var fechautsup = $('#fecha7').val()
+				var horautsup = $('#hora7').val()
+				var nombreutsup = $('#nombre7').val()
+
+				var img = document.getElementById("firma7");
+				var firmautsup = img.src
+
+				if (fechautsup == '') {
+					firmautsup = ''
+				}
+
+				var registroutsup = $('#registro7').val()
+
+				//qaqc
+				var fechautqaqc = $('#fecha8').val()
+				var horautqaqc = $('#hora8').val()
+				var nombreutqaqc = $('#nombre8').val()
+
+				var img = document.getElementById("firma8");
+				var firmautqaqc = img.src
+
+				if (fechautqaqc == '') {
+					firmautqaqc = ''
+				}
+
+				var registroqaqc = $('#registro8').val()
+
+				//ecopetrol
+				var fechaec = $('#fecha9').val()
+				var horaec = $('#hora9').val()
+				var nombreec = $('#nombre9').val()
+
+				var img = document.getElementById("firma9");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro9').val()
+
+				var arrayLibPartes = []
+
+				arrayLibPartes.push({
+					"ejetrab": ejetrab,
+					"ejerecom": ejerecom,
+					"libcanal": libcanal,
+					"libtapacanal": libtapacanal,
+					"libtapcabfl": libtapcabfl,
+					"libmedialuna": libmedialuna,
+					"libtapacasco": libtapacasco,
+					'libcasco': libcasco,
+					"otrolib": otrolib,
+					"fechautsup": fechautsup,
+					"horautsup": horautsup,
+					"nombreutsup": nombreutsup,
+					"firmautsup": firmautsup,
+					"registroutsup": registroutsup,
+					"fechautqaqc": fechautqaqc,
+					"horautqaqc": horautqaqc,
+					"nombreutqaqc": nombreutqaqc,
+					"firmautqaqc": firmautqaqc,
+					"registroutqaqc": registroqaqc,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayLibPartes)
+
+				$.post(server + 'actOs38LibPartes.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLibPartes)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actlibhaztubos() {
+
+				var haztubovobotrab = $('#haztubovobotrab').val()
+				var haztuboentcañ = $('#haztuboentcañ').val()
+
+				//supervisor
+				var fechautsup = $('#fecha10').val()
+				var horautsup = $('#hora10').val()
+				var nombreutsup = $('#nombre10').val()
+
+				var img = document.getElementById("firma10");
+				var firmautsup = img.src
+
+				if (fechautsup == '') {
+					firmautsup = ''
+				}
+
+				var registroutsup = $('#registro10').val()
+
+				//qaqc
+				var fechautqaqc = $('#fecha11').val()
+				var horautqaqc = $('#hora11').val()
+				var nombreutqaqc = $('#nombre11').val()
+
+				var img = document.getElementById("firma11");
+				var firmautqaqc = img.src
+
+				if (fechautqaqc == '') {
+					firmautqaqc = ''
+				}
+
+				var registroqaqc = $('#registro11').val()
+
+				//ecopetrol
+				var fechaec = $('#fecha12').val()
+				var horaec = $('#hora12').val()
+				var nombreec = $('#nombre12').val()
+
+				var img = document.getElementById("firma12");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro12').val()
+
+				var arrayLibHazTubos = []
+
+				arrayLibHazTubos.push({
+					"haztubovobotrab": haztubovobotrab,
+					"haztuboentcañ": haztuboentcañ,
+					"fechautsup": fechautsup,
+					"horautsup": horautsup,
+					"nombreutsup": nombreutsup,
+					"firmautsup": firmautsup,
+					"registroutsup": registroutsup,
+					"fechautqaqc": fechautqaqc,
+					"horautqaqc": horautqaqc,
+					"nombreutqaqc": nombreutqaqc,
+					"firmautqaqc": firmautqaqc,
+					"registroutqaqc": registroqaqc,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayLibHazTubos)
+
+				$.post(server + 'actOs38LibHazTubos.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLibHazTubos)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actPHidro() {
+
+				var verinstcal = $('#verinstcal').val()
+				var verhermub = $('#verhermub').val()
+				var vernumtubtap = $('#vernumtubtap').val()
+				var verinstfac = $('#verinstfac').val()
+				var verhermlg = $('#verhermlg').val()
+				var numtubtap = $('#numtubtap').val()
+
+
+
+				//lado tubos
+				var phpresiontubos = $('#phpresiontubos').val()
+				var phtiempotubos = $('#phtiempotubos').val()
+				var fechatubosup = $('#fecha13').val()
+				var horatubosup = $('#hora13').val()
+				var nombreutsuptubo = $('#nombre13a').val()
+
+
+				var nombreectubo = $('#nombre13b').val()
+
+				var img = document.getElementById("firma13");
+				var firmaecptubo = img.src
+
+				if (fechatubosup == '') {
+					firmaecptubo = ''
+				}
+
+				var registroectubo = $('#registro13').val()
+
+				//lado cascos
+				var phpresioncasco = $('#phpresioncasco').val()
+				var phtiempocasco = $('#phtiempocasco').val()
+				var fechacascosup = $('#fecha14').val()
+				var horacascosup = $('#hora14').val()
+				var nombreutsupcasco = $('#nombre14a').val()
+
+
+				var nombreeccasco = $('#nombre14b').val()
+
+				var img = document.getElementById("firma14");
+				var firmaecpcasco = img.src
+
+				if (fechacascosup == '') {
+					firmaecpcasco = ''
+				}
+
+				var registroeccasco = $('#registro14').val()
+
+				var arrayPrueba = []
+
+				arrayPrueba.push({
+					"verinstcal": verinstcal,
+					"verhermub": verhermub,
+					"vernumtubtap": vernumtubtap,
+					"verinstfac": verinstfac,
+					"verhermlg": verhermlg,
+					"numtubtap": numtubtap,
+					"phpresiontubos": phpresiontubos,
+					"phtiempotubos": phtiempotubos,
+					"fechatubosup": fechatubosup,
+					"horatubosup": horatubosup,
+					"nombreutsuptubo": nombreutsuptubo,
+					"nombreectubo": nombreectubo,
+					"firmaecptubo": firmaecptubo,
+					"registroectubo": registroectubo,
+					"phpresioncasco": phpresioncasco,
+					"phtiempocasco": phtiempocasco,
+					"fechacascosup": fechacascosup,
+					"horacascosup": horacascosup,
+					"nombreutsupcasco": nombreutsupcasco,
+					"nombreeccasco": nombreeccasco,
+					"firmaecpcasco": firmaecpcasco,
+					"registroeccasco": registroeccasco
+				})
+
+				console.log(arrayPrueba)
+
+				$.post(server + 'actOs38Prueba.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayPrueba)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actTMec() {
+
+				var tmInstTapones = $('#tmInstTapones').val()
+				var tmInstAjInst = $('#tmInstAjInst').val()
+				var tmInstDrenajes = $('#tmInstDrenajes').val()
+				var tmVerPuestaTierra = $('#tmVerPuestaTierra').val()
+				var tmVerEmpUb = $('#tmVerEmpUb').val()
+
+				var fechaut = $('#fecha15').val()
+				var horaut = $('#hora15').val()
+				var nombreut = $('#nombre15').val()
+
+				var img = document.getElementById("firma15");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro15').val()
+
+				var fechaec = $('#fecha16').val()
+				var horaec = $('#hora16').val()
+				var nombreec = $('#nombre16').val()
+
+				var img = document.getElementById("firma16");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro16').val()
+
+				var arrayTerm = []
+
+				arrayTerm.push({
+					"tmInstTapones": tmInstTapones,
+					"tmInstAjInst": tmInstAjInst,
+					"tmInstDrenajes": tmInstDrenajes,
+					"tmVerPuestaTierra": tmVerPuestaTierra,
+					"tmVerEmpUb": tmVerEmpUb,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayTerm)
+
+				$.post(server + 'actOs38Terminacion.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayTerm)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actPintura() {
+
+				var pyaprepsup = $('#pyaprepsup').val()
+				var ptlchgradosspc = $('#ptlchgradosspc').val()
+				var pyainstaisla = $('#pyainstaisla').val()
+				var pyarugosidad = $('#pyarugosidad').val()
+				var pyainsfoil = $('#pyainsfoil').val()
+				var pyapadhe = $('#pyapadhe').val()
+				var pyaaplsellante = $('#pyaaplsellante').val()
+				var pyamedespesor = $('#pyamedespesor').val()
+				var pyaveracabado = $('#pyaveracabado').val()
+				var pyaaplrecub = $('#pyaaplrecub').val()
+				var mils = $('#mils').val()
+
+
+				var fechaut = $('#fecha17').val()
+				var horaut = $('#hora17').val()
+				var nombreut = $('#nombre17').val()
+
+				var img = document.getElementById("firma17");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro17').val()
+
+				var fechaec = $('#fecha18').val()
+				var horaec = $('#hora18').val()
+				var nombreec = $('#nombre18').val()
+
+				var img = document.getElementById("firma18");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro18').val()
+
+				var arrayPintura = []
+
+				arrayPintura.push({
+					"pyaprepsup": pyaprepsup,
+					"ptlchgradosspc": ptlchgradosspc,
+					"pyainstaisla": pyainstaisla,
+					"pyarugosidad": pyarugosidad,
+					"pyainsfoil": pyainsfoil,
+					"pyapadhe": pyapadhe,
+					"pyaaplsellante": pyaaplsellante,
+					"pyamedespesor": pyamedespesor,
+					"pyaveracabado": pyaveracabado,
+					"pyaaplrecub": pyaaplrecub,
+					"mils": mils,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayPintura)
+
+				$.post(server + 'actOs38Pintura.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayPintura)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actEntrega() {
+
+				var retirosas = $('#retirosas').val()
+				var inspvisualentrega = $('#inspvisualentrega').val()
+
+				var fechaut = $('#fecha19').val()
+				var horaut = $('#hora19').val()
+				var nombreut = $('#nombre19').val()
+
+				var img = document.getElementById("firma19");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro19').val()
+
+				var fechaec = $('#fecha20').val()
+				var horaec = $('#hora20').val()
+				var nombreec = $('#nombre20').val()
+
+				var img = document.getElementById("firma20");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro20').val()
+
+				var arrayEntrega = []
+
+				arrayEntrega.push({
+					"retirosas": retirosas,
+					"inspvisualentrega": inspvisualentrega,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayEntrega)
+
+				$.post(server + 'actOs38Entrega.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayEntrega)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+
+			function guardarObs() {
+				var observacion = $('#obs21').val()
+				observacion = observacion.replace(/(\r\n|\n|\r)/gm, " ")
+				observacion = observacion.replace(/["]/gm, "``")
+				observacion = observacion.replace(/[“]/gm, "``")
+				observacion = observacion.replace(/[”]/gm, "``")
+				observacion = observacion.replace(/[']/gm, "`")
+				var nombreobs = $('#nombre21').val()
+				var registroobs = $('#registro21').val()
+				var img = document.getElementById("firma21");
+
+				// crea un nuevo objeto `Date`
+				var today = new Date();
+
+				// obtener la fecha y la hora
+				var now = today.toLocaleString();
+				var firmaobs = img.src
+
+				if (arrayDatos.observaciones != "") {
+
+					var arrayLmp = JSON.parse(arrayDatos.observaciones)
+				} else {
+					var arrayLmp = []
+				}
+
+
+
+				arrayLmp.push({
+					"obs": observacion,
+					"nombre": nombreobs,
+					"registro": registroobs,
+					"firma": firmaobs,
+					"fecha": now
+				})
+
+
+				$.post(server + 'actOs38Obs.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLmp)
+				},
+					function (res) {
+						console.log(res)
+						location.reload()
+					})
+
+			}
+
+			function mostraraviso() {
+				let timerInterval
+				Swal.fire({
+					title: 'Políticas de protección de datos personales',
+					text: 'En cumplimiento con la Ley 1581 de protección de datos personales, se le informa que los datos suministrados serán incorporados a una base de datos cuya finalidad es el registro de control de actividades RCA y las actuaciones que se deriven de dicha gestión, cuyo responsable del tratamiento es UT ITALCO. Mediante el registro de sus datos  a través de este formato usted autoriza a UT ITALCO, a tratar los datos con la finalidad descrita arriba.  Como Titular se le informa que podrá ejercer sus derechos de acceso y reclamos a través del correo de contacto pqrsbca@utitalco.com.',
+					timer: 20000,
+					timerProgressBar: true,
+					didOpen: () => {
+						Swal.showLoading()
+						const b = Swal.getHtmlContainer().querySelector('b')
+						timerInterval = setInterval(() => {
+							b.textContent = Swal.getTimerLeft()
+						}, 100)
+					},
+					willClose: () => {
+						clearInterval(timerInterval)
+					}
+				}).then((result) => {
+					/* Read more about handling dismissals below */
+					if (result.dismiss === Swal.DismissReason.timer) {
+						console.log('I was closed by the timer')
+					}
+				})
+			}
+
+			function cargando() {
+				let timerInterval
+				Swal.fire({
+					title: 'Cargando formato...!',
+					timer: 20000,
+					timerProgressBar: true,
+					didOpen: () => {
+						Swal.showLoading()
+						const b = Swal.getHtmlContainer().querySelector('b')
+						timerInterval = setInterval(() => {
+							// b.textContent = Swal.getTimerLeft()
+						}, 100)
+					},
+					willClose: () => {
+						clearInterval(timerInterval)
+					}
+				}).then((result) => {
+					/* Read more about handling dismissals below */
+					if (result.dismiss === Swal.DismissReason.timer) {
+						console.log('I was closed by the timer')
+					}
+				})
+			}
+
+			function verArchivos() {
+				var htmltexto = ''
+				for (var i = 0; i < listaArchivos.length; i++) {
+					htmltexto += `
+                    <a href='https://utitalco.com/calidad/032/server/archivos/${listaArchivos[i].archivo}' target='_blank'>${listaArchivos[i].archivo}</a> <br>
+                `
+				}
+
+				Swal.fire({
+					title: '<strong>Lista de adjuntos</strong>',
+					icon: 'info',
+					html: `
+                Pulse click sobre el archivo que desea descargar... <br>
+                ${htmltexto}
+                `
+
+				})
+			}
+
+			function adjuntar() {
+				Swal.fire({
+					title: 'Adjuntar archivo',
+					html: `
+                <input type="file" id="archivo" class="form-control" placeholder="Buscar..."> <br>
+				Según el tamaño del archivo puede tardar un tiempo... espere el aviso de archivo cagado. 
+                `,
+					showCancelButton: true,
+					confirmButtonText: 'Adjuntar'
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+
+						var formData = new FormData();
+						var files = $('#archivo')[0].files[0];
+						formData.append('archivo', files);
+						formData.append('ods', odsq);
+						formData.append('tag', tag);
+						$.ajax({
+							url: server + 'guardarArchivo38.php',
+							type: 'post',
+							data: formData,
+							contentType: false,
+							processData: false,
+							success: function (response) {
+								console.log(response)
+
+								if (response.msn == "Ok") {
+									Swal.fire({
+										position: 'top-end',
+										icon: 'success',
+										title: 'Archivo cargado correctamente...',
+										showConfirmButton: false,
+										timer: 1500
+									}).then(() => {
+
+										location.reload();
+									})
+								} else {
+									Swal.fire({
+										icon: 'error',
+										title: 'Oops...',
+										text: 'Formato de archivo incorrecto...!',
+									})
+								}
+							}
+						});
+
+					}
+				})
+			}
+
+		 

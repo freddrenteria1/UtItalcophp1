@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emails</title>
+    <script src="smtp.js"></script>
+</head>
+
+<body>
+
+    <script>
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "soporte@utitalco.com",
+            Password: "093744F53521292B911D5E5E22E6503386C6",
+            To: 'jairocruzprogramador@gmail.com',
+            From: "soporteitalco@utitalco.com",
+            Subject: "This is the subject",
+            Body: "And this is the body"
+        }).then(
+            message => alert(message)
+        );
+    </script>
+</body>
+
+</html>

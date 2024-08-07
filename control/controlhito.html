@@ -1,0 +1,2118 @@
+<!doctype html>
+<html><head>
+    <meta charset="utf-8">
+    <title>Control de Hitos - UT Italco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="JAIRO CRUZ">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/font-style.css" rel="stylesheet">
+    <link href="css/flexslider.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/magic.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" 
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+     
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- NOTY JAVASCRIPT -->
+	<!-- <script type="text/javascript" src="js/noty/jquery.noty.js"></script>
+        <script type="text/javascript" src="js/gauge.js"></script>
+	<script type="text/javascript" src="js/noty/layouts/top.js"></script>
+	<script type="text/javascript" src="js/noty/layouts/topLeft.js"></script>
+	<script type="text/javascript" src="js/noty/layouts/topRight.js"></script>
+	<script type="text/javascript" src="js/noty/layouts/topCenter.js"></script> -->
+	
+	<!-- You can add more layouts if you want -->
+    <!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
+
+	<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+	<!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+	 
+	<!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+
+	<script src="js/jquery.flexslider.js" type="text/javascript"></script>
+
+    
+
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+	<style>
+
+body {
+	background:#fff;
+    font-family: 'Open Sans', sans-serif;
+}
+#footerwrap {
+    width: 100%;
+    background:#ffffff;
+	background-image:url('../images/sep-half.png');
+    padding-top:25px;
+    padding-bottom: 40px;
+	border-top-style: solid;
+    border-top-width:0px;
+    border-top-color:#1d1d1d;
+    text-align:center
+
+}
+
+#footerwrap p {
+	color:rgb(0, 0, 0);
+	font-size:12px;
+} 
+.half-unit-t {		
+	margin-bottom: 30px;
+	padding-bottom: 4px;
+	border: 1px solid #ffffff;
+	background-image:url('../images/sep-half.png');
+	background-color: #ffffff;
+	color:rgb(0, 0, 0);
+}
+.half-unit-t dtitle {
+		font-size:13px;
+		text-transform:uppercase;
+		color:#020202;
+		margin:8px;
+		padding:0px;
+		height:inherit	
+		}
+		.pimg:hover{
+			opacity: 0.3;
+			cursor:pointer;
+		}
+
+
+
+        .groupalcance{
+            width: 250px;
+            float: right;
+        }
+        .container{
+            width: 100%;
+        }
+		.pimg:hover{
+			opacity: 0.3;
+			cursor:pointer;
+		}
+		.pimg{
+			width: 100%;
+			height: auto;
+		}
+		.fig3d{
+			width: 100%;
+			margin: auto;
+			margin-top: 10px;
+			margin-left: 5px;
+			margin-right: 5px;
+			border-style: solid;
+			border-width: 1px;
+			border-color: slategray;
+		}
+		.not{
+			padding: 10px;
+			padding-left: 25px;
+			padding-right: 25px;
+			height: 100px;
+		}
+		.piefoto{
+			padding: 5px;
+			background-color: rgba(229, 156, 0, 0.5);
+		}
+		.contenedor-div{
+			position:relative;
+		}
+		.abajo{
+			position:absolute;
+			bottom: -175px;
+			width: 100%;
+		}
+		#table{
+			margin: auto;
+			width: 100%;
+		}
+        .grafico{
+            height: auto;
+        }
+		.menuimp{
+			background-color:rgb(82, 4, 4);
+			color:rgb(255, 255, 255);
+		}
+		.milink{
+			color:rgb(255, 255, 255);
+		}
+        #parteinter{
+            height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 300px;
+			position: absolute;
+			left: 20px;
+			top: 60px;
+			z-index: 999;
+        }
+        #parteinterhaz{
+            height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 300px;
+			position: absolute;
+			left: 20px;
+			top: 60px;
+			z-index: 999;
+        }
+        #estatus{
+			height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 300px;
+			position: absolute;
+			top: 60px;
+			left: 330px;
+			z-index: 999;
+		}
+        #estatushaz{
+			height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 300px;
+			position: absolute;
+			top: 60px;
+			left: 330px;
+			z-index: 999;
+		}
+        #tags{
+			height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 200px;
+			position: absolute;
+			top: 60px;
+			left: 640px;
+			z-index: 999;
+		}
+        #kpiflotantetags{
+            height: 340px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 200px;
+			position: absolute;
+			top: 60px;
+			left: 20px;
+			z-index: 999;
+        }
+        #kpiflotantedetallesalcance{
+            height: 340px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 95%;
+			position: absolute;
+			top: 60px;
+			left: 20px;
+			z-index: 999;
+        }
+        #tagshaz{
+			height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 200px;
+			position: absolute;
+			top: 60px;
+			left: 640px;
+			z-index: 999;
+		}
+        #tag{
+			height: 270px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 450px;
+			position: absolute;
+			top: 60px;
+			left: 850px;
+			z-index: 999;
+		}
+        #taghaz{
+			height: 270px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 450px;
+			position: absolute;
+			top: 60px;
+			left: 850px;
+			z-index: 999;
+		}
+        #kpi{
+			height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 95%;
+			position: absolute;
+			bottom: 20px;
+			left: 20px;
+			z-index: 999;
+		}
+        #kpihaz{
+			height: 240px;
+			background-color: rgba(0, 0, 0, 0.5);
+			width: 95%;
+			position: absolute;
+			bottom: 20px;
+			left: 20px;
+			z-index: 999;
+		}
+
+        .titgen{
+            background-color:#89ba16;
+            color:rgba(20, 19, 19, 0.9);
+            padding: 5px;
+            height: 45px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 14px;
+        }
+        
+        .titflot{
+            background-color:rgb(255, 187, 0);
+            color:rgba(20, 19, 19, 0.9);
+            padding: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 13px;
+        }
+        .subtitflot{
+            background-color:rgb(8, 127, 143);
+            color:rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 11px;
+            height: 40px;
+        }
+		.oculto{
+			display: none;
+		}
+        .visible{
+            display:contents;
+        }
+        .crojo{
+            background-color: rgb(245, 58, 58);
+            color: white;
+        }
+        #pantalla{
+            background-color:rgba(20, 19, 19, 0.9);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 999;
+        }
+        #pantallaAlcance{
+            background-color:rgba(20, 19, 19, 0.9);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 999;
+        }
+        .cerrada{
+            display: none;
+        }
+        .abierta{
+            display:block;
+        }
+        .contfig{
+            width: 100%;
+            overflow-x: scroll;
+            white-space: nowrap;
+            
+        }
+        .fig{
+            display: inline-block;
+            border-style: solid;
+            border-width: 0.5px;
+            border-color:rgb(80, 79, 79);
+            margin-top: 5px;
+        }
+        .contfig::-webkit-scrollbar {
+            height: 8px;    /* Tamaño del scroll en horizontal */
+        }
+        .contfig::-webkit-scrollbar-thumb {
+        background: rgb(80, 79, 79);
+        border-radius: 4px;
+        }
+
+        .contfig::-webkit-scrollbar-thumb:active {
+        background-color: #161616;
+        }
+
+        .contfig::-webkit-scrollbar-thumb:hover {
+        background: #181818;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos track de scroll */
+        .contfig::-webkit-scrollbar-track {
+        background: #272727;
+        border-radius: 4px;
+        }
+
+        .contfig::-webkit-scrollbar-track:hover, 
+        .contfig::-webkit-scrollbar-track:active {
+        background: #030303;
+        }
+		@media (max-width: 600px) {
+			.not{
+				height: auto;
+			}
+            
+            #parteinter{
+                height: 240px;
+                width: 95%;
+                top: 60px;
+                left: 5px;
+            }
+            #estatus{
+                height: 240px;
+                width: 95%;
+                top: 310px;
+                left: 5px;
+            }
+            #tags{
+                height: 240px;
+                width: 95%;
+                top: 560px;
+                left: 5px;
+                z-index: 999;
+            }
+            #tag{
+                height: 240px;
+                width: 95%;
+                top: 810px;
+                left: 5px;
+                z-index: 999;
+            }
+            #kpi{
+                height: 240px;
+                background-color: rgba(20, 19, 19, 0.9);
+                width: 95%;
+                top: 1060px;
+                left: 5px;
+            }
+			
+		}
+	</style>
+      
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+	  
+	.highcharts-figure, .highcharts-data-table table {
+		min-width: 310px; 
+		max-width: 1200px;
+		margin: 1em auto;
+	}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #EBEBEB;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  font-size: 14px;
+}
+.highcharts-data-table caption {
+  padding: 1em 0;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+}
+
+.highcharts-figure title{
+	color: white;
+}
+.highcharts-data-table th {
+  padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+  padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+
+
+    </style>
+
+    
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+   
+
+  	<!-- Google Fonts call. Font Used Open Sans & Raleway -->
+	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
+  	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+
+  </head>
+  <body>
+    <div id="pantalla">
+
+    </div>
+  	<!-- NAVIGATION MENU -->
+
+    <div class="navbar-nav navbar-inverse navbar-fixed-top">
+        <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"> Control Hitos - UT Italco</a>
+        </div> 
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="index.html" style="background-color: gold; color: black"> Volver </a></li>
+                <li class="active"><a href="javascript:void(0);" onclick="cargarReporte()"><i class="icon-user icon-white"></i> Cargar Reporte Avance de Obra</a></li>
+                <li>
+                  <li >
+                      <a class="active" href="javascript:void(0);" onclick="alertas()" style="background-color: red; color:#EBEBEB"> 
+                          Alertas <span class="badge badge-light" style="background-color: gold; color:black "> 2</span>
+                      </a>
+                  </li>
+                </li>
+              </ul>
+			
+          </div><!--/.nav-collapse -->
+		 
+        </div>
+    </div>
+	
+    <div class="container">
+
+		<div class="pt-3 text-center">
+			<img src="img/logo.png" height="70px" alt="">
+		</div>
+
+		<h3 class="text-center" style="font-size: 24px;">CONTROL HITO INTERCAMBIADORES</h3>
+		<h4 class="text-center" style="color: white;" >ODS: 006 UNIDAD TOPPING U250 - FECHA INFORME: <span class="fechainforme"></span></h4>
+
+        <!-- Inicio Partes Tapa  -->
+        <div id="estatus" class="oculto">
+            <div class="titflot" id="titest">
+                TAPA CASCO | ESTATUS PROG - EJE 
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrar('estatus')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <figure class="highcharts-figure" >
+                <div id="figlimpiezapartes"></div>
+            </figure>
+            <center>
+                <span style="font-size: 16px; color: #ff0000;" onclick="cerrar('tags')">
+                    <i class="fas fa-square"></i>
+                </span>
+                <span style="color: white;">Faltante 45%</span>
+                <span style="font-size: 16px; color: #89ba16;" onclick="cerrar('tags')">
+                    <i class="fas fa-square"></i>
+                </span>
+                <span style="color: white; ">Completado 55%</span>
+            </center>
+        </div>	
+
+        <div id="parteinter" class="oculto">
+            <div class="titflot" id="titest">
+                TAPA CASCO 
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrar('parteinter')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <center>
+                <img src="img/inter1_.png" height="180px"  alt="" data-toggle="tooltip" data-placement="top" title="Tapa Casco" >
+            </center>
+        </div>	
+
+        <div id="tags" class="oculto">
+            <div class="titflot" id="tittags">
+                TAPA CASCO | TAGS EQUIPOS
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrar('tags')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div class="list-group" style="overflow-y: scroll; height: 210px;">
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white" onclick="verTag('U-250.I.E-260A')">U-250.I.E-260A</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #00ad45; color: white" onclick="verTag('U-250.I.E-260B')">U-250.I.E-260B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white" onclick="verTag('U-250.I.E-262')">U-250.I.E-262</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #f85a40; color: white"  onclick="verTag('U-250.I.E-266B')">U-250.I.E-266B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTag('U-250.I.E-250')">U-250.I.E-250</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTag('U-250.I.E-257B')">U-250.I.E-257B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-danger" onclick="verTag('U-250.I.E-261')">U-250.I.E-261</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white" onclick="verTag('U-250.I.E-267A')">U-250.I.E-267A</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white" onclick="verTag('U-250.I.E-260A')">U-250.I.E-260A</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white"  onclick="verTag('U-250.I.E-260B')">U-250.I.E-260B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-success" onclick="verTag('U-250.I.E-262')">U-250.I.E-262</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-danger" onclick="verTag('U-250.I.E-266B')">U-250.I.E-266B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTag('U-250.I.E-250')">U-250.I.E-250</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTag('U-250.I.E-257B')">U-250.I.E-257B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-danger" onclick="verTag('U-250.I.E-261')">U-250.I.E-261</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-success" onclick="verTag('U-250.I.E-267A')">U-250.I.E-267A</a>
+
+              </div>
+             
+        </div>	
+
+        <div id="tag" class="oculto">
+            <div class="titflot" id="tittags">
+                <span id="nombtag">Tag</span>
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrar('tag')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead style="background-color: lightgreen;">
+                        <th>Ubicación</th>
+                        <th>Lavado</th>
+                        <th>Prep Sub</th>
+                        <th>Inspección</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="ubi"></td>
+                            <td id="lavado"></td>
+                            <td id="prep"></td>
+                            <td id="insp"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Críterios de ubicación</h5>
+                <p style="color: white;">
+                    <span style="background-color: #f85a40; padding: 5px; margin: 5px;">Planta 1: </span> Parte retirada pero sin trasladar al patio de lavado <br>
+                </p>
+                <p style="color: white;">
+                    <span style="background-color: #ffcc2f; padding: 5px; margin: 5px; color: black">Lavado en planta: </span> Parte trasladada a sitio de lavado en planta <br>
+                </p>
+                <p style="color: white;">
+                    <span style="background-color: #a4c639; padding: 5px; margin: 5px; color: black">Planta 2: </span> Parte trasladada a planta y pendiente por instalación <br>
+                </p>
+                <p style="color: white;">
+                    <span style="background-color: #00ad45; padding: 5px; margin: 5px; color: white">Instalada: </span> Parte instalada <br>
+                </p>
+                
+            </div>
+             
+        </div>
+
+        <div id="kpi" class="oculto">
+            <div class="titflot" id="titkpi">
+                TAPA CASCO | KPIs GENERALES
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrar('kpi')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div class="contfig">
+                <div class="fig">
+                    <div class="subtitflot">
+                        LAVADO<button type="button" class="btn btn-sm btn-danger" >Detalles</button>
+                    </div>
+                    <figure class="highcharts-figure" >
+                        <div id="figinspgen"></div>
+                    </figure>
+                </div>
+
+                <div class="fig">
+                    <div class="subtitflot" style="background-color: springgreen; color: black;">
+                        PREV SUB <button type="button" class="btn btn-sm btn-danger" >Detalles</button>
+                    </div>
+                    <figure class="highcharts-figure" >
+                        <div id="figmtogen"></div>
+                    </figure>
+                </div>
+
+                <div class="fig">
+                    <div class="subtitflot" style="background-color: crimson;">
+                        INSPECCIÓN <button type="button" class="btn btn-sm btn-danger" >Detalles</button>
+                    </div>
+                    <figure class="highcharts-figure" >
+                        <div id="figreent"></div>
+                    </figure>
+                </div>
+
+                
+
+            </div>
+            
+            
+             
+        </div>	
+
+        <!-- Fin partes tapa -->
+
+        <!-- Inico Partes Haz -->
+
+        <div id="estatushaz" class="oculto">
+            <div class="titflot" id="titest">
+                HAZ DE TUBOS | ESTATUS PROG - EJE 
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrarHaz('estatus')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <figure class="highcharts-figure" >
+                <div id="figlimpiezaparteshaz"></div>
+            </figure>
+            <center>
+                <span style="font-size: 16px; color: #ff0000;" onclick="cerrar('tags')">
+                    <i class="fas fa-square"></i>
+                </span>
+                <span style="color: white;">Faltante 45%</span>
+                <span style="font-size: 16px; color: #89ba16;" onclick="cerrar('tags')">
+                    <i class="fas fa-square"></i>
+                </span>
+                <span style="color: white; ">Completado 55%</span>
+            </center>
+        </div>	
+
+        <div id="parteinterhaz" class="oculto">
+            <div class="titflot" id="titest">
+                HAZ DE TUBOS
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrarHaz('parteinter')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <center>
+                <img src="img/haz.png" width="280px" style="margin-top: 20px;" alt="" data-toggle="tooltip" data-placement="top" title="Tapa Casco" >
+            </center>
+        </div>	
+
+        <div id="tagshaz" class="oculto">
+            <div class="titflot" id="tittags">
+                HAZ DE TUBOS | TAGS 
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrarHaz('tags')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div class="list-group" style="overflow-y: scroll; height: 210px;">
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white" onclick="verTagHaz('U-250.I.E-260A')">U-250.I.E-260A</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #00ad45; color: white" onclick="verTagHaz('U-250.I.E-260B')">U-250.I.E-260B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #d74e26; color: white" onclick="verTagHaz('U-250.I.E-262')">U-250.I.E-262</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #f85a40; color: white"  onclick="verTagHaz('U-250.I.E-266B')">U-250.I.E-266B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTagHaz('U-250.I.E-250')">U-250.I.E-250</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTagHaz('U-250.I.E-257B')">U-250.I.E-257B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-danger" onclick="verTagHaz('U-250.I.E-261')">U-250.I.E-261</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white" onclick="verTagHaz('U-250.I.E-267A')">U-250.I.E-267A</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white" onclick="verTagHaz('U-250.I.E-260A')">U-250.I.E-260A</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #a4c639; color: white"  onclick="verTagHaz('U-250.I.E-260B')">U-250.I.E-260B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-success" onclick="verTagHaz('U-250.I.E-262')">U-250.I.E-262</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-danger" onclick="verTagHaz('U-250.I.E-266B')">U-250.I.E-266B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTagHaz('U-250.I.E-250')">U-250.I.E-250</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action " style="background-color: #ffcc2f; color: black" onclick="verTagHaz('U-250.I.E-257B')">U-250.I.E-257B</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-danger" onclick="verTagHaz('U-250.I.E-261')">U-250.I.E-261</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action list-group-item-success" onclick="verTagHaz('U-250.I.E-267A')">U-250.I.E-267A</a>
+
+              </div>
+             
+        </div>	
+
+        <div id="taghaz" class="oculto">
+            <div class="titflot" id="tittags">
+                <span id="nombtaghaz">Tag</span>
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrarHaz('tag')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead style="background-color: lightgreen;">
+                        <th>Ubicación</th>
+                        <th>Retiro</th>
+                        <th>Lavado</th>
+                        <th>EDDY</th>
+                        <th>Reentube</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="ubihaz"></td>
+                            <td id="rethaz"></td>
+                            <td id="lavadohaz"></td>
+                            <td id="eddy"></td>
+                            <td id="ree"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Críterios de ubicación</h5>
+                <p style="color: white;">
+                    <span style="background-color: #d74e26; padding: 5px; margin: 5px;">Trab. Mecánicos: </span> Parte ubicada en talleres externos o en taller propio para realización de trabajos<br>
+                </p>
+                <p style="color: white;">
+                    <span style="background-color: #ffcc2f; padding: 5px; margin: 5px; color: black">Lavado en planta: </span> Parte trasladada a sitio de lavado en planta <br>
+                </p>
+                <p style="color: white;">
+                    <span style="background-color: #a4c639; padding: 5px; margin: 5px; color: black">Planta 2: </span> Parte trasladada a planta y pendiente por instalación <br>
+                </p>
+                <p style="color: white;">
+                    <span style="background-color: #00ad45; padding: 5px; margin: 5px; color: white">Instalada: </span> Parte instalada <br>
+                </p>
+                
+            </div>
+             
+        </div>
+
+        <div id="kpihaz" class="oculto">
+            <div class="titflot" id="titkpi">
+                HAZ DE TUBOS | KPIs GENERALES
+                <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrarHaz('kpi')">
+                    <i class="fas fa-times-circle"></i>
+                </span>
+            </div>
+            <div class="contfig">
+                <div class="fig">
+                    <div class="subtitflot">
+                        RETIRO <button type="button" class="btn btn-sm btn-danger" >Detalles</button>
+                    </div>
+                    <figure class="highcharts-figure" >
+                        <div id="figinspgenhaz"></div>
+                    </figure>
+                </div>
+                <div class="fig">
+                    <div class="subtitflot" style="background-color: rgb(204, 27, 115); color: white;">
+                        LAVADO<button type="button" class="btn btn-sm btn-danger" >Detalles</button>
+                    </div>
+                    <figure class="highcharts-figure" >
+                        <div id="figlavadohaz"></div>
+                    </figure>
+                </div>
+
+                <div class="fig">
+                    <div class="subtitflot" style="background-color: springgreen; color: black;">
+                        EDDY <button type="button" class="btn btn-sm btn-danger" >Detalles</button>
+                    </div>
+                    <figure class="highcharts-figure" >
+                        <div id="figmtogenhaz"></div>
+                    </figure>
+                </div>
+
+                <div class="fig">
+                    <div class="subtitflot" style="background-color: crimson;">
+                        REENTUBE <button type="button" class="btn btn-sm btn-danger" >Detalles</button>
+                    </div>
+                    <figure class="highcharts-figure" >
+                        <div id="figreenthaz"></div>
+                    </figure>
+                </div>
+
+                
+
+            </div>
+            
+            
+             
+        </div>	
+
+        <!-- Fin Partes Haz -->
+	  
+      <div class="row">
+
+        <div class="col-sm-12">
+            <div class="half-unit-t">
+                <dtitle>INTERCAMBIADORES - UBICACIÓN PARTES</dtitle>
+                <hr>
+                <div class="text text-center">
+                    <table id="table" width="100%" class="animate__animated animate__backInDown" >
+                        <tr>
+                            <td>
+                                <img src="img/inter1.png" class="pimg" alt="" data-toggle="tooltip" data-placement="top" title="Tapa Casco" onclick="verParte('Tapa Casco')">
+                            </td>
+                            <td>
+                                <img src="img/inter2.png" class="pimg" alt="" data-toggle="tooltip" data-placement="top" title="Juntas" onclick="verParte('Juntas')">
+                            </td>
+                            <td>
+                                <img src="img/inter3.png" class="pimg"  alt="" data-toggle="tooltip" data-placement="top" title="Haz de Tubos" onclick="verParteHaz('Haz de Tubos')">
+                            </td>
+                            <td>
+                                <img src="img/inter4.png" class="pimg" alt="" data-toggle="tooltip" data-placement="top" title="Canal" onclick="verParte('Canal')">
+                            </td>
+                            <td>
+                                <img src="img/inter5.png" class="pimg"  alt="" data-toggle="tooltip" data-placement="top" title="Juntas" onclick="verParte('Juntas')">
+                            </td>
+                            <td>
+                                <img src="img/inter6.png" class="pimg"  alt="" data-toggle="tooltip" data-placement="top" title="Pernos" onclick="verParte('Pernos')">
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-12">
+            <!-- <div id="pantallaAlcance"></div> -->
+            <div class="half-unit-t">
+                <div class="titgen" style="background-color: #89ba16;"> 
+                    KPI'S ALCANCES ACUMULADOS <span class="fechainforme"></span> 
+                    <div class="groupalcance">
+                        <select id="detalcance" class="form-control" onchange="cargarGraficaDetalleAlcance()">
+                            
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-danger" 
+                    style="float: right; margin: 5px;"
+                    onclick="verListaTags()">
+                        LISTA TAGS
+                    </button>
+
+                </div>
+                
+                <hr>
+                <div class="text" id="kpialcances">
+
+                   <!-- aqui se cargan las grafias de todos los alcances -->
+                   <figure class="highcharts-figure">
+                        <div id="figalcances"></div>
+                    </figure>
+
+                    <!-- vista de kpis ocultos -->
+                    <div id="kpiflotantetags" class="oculto">
+
+                        <div class="titflot" id="tittags">
+                            TAGS EQUIPOS 
+                            <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrarFlotante('kpiflotantetags')">
+                                <i class="fas fa-times-circle"></i>
+                            </span>
+                        </div>
+                        <div class="list-group" id="listaTags" style="overflow-y: scroll; height: 340px;">
+                                        
+                        </div>
+                         
+                    </div>
+                    <div id="kpiflotantedetallesalcance" class="oculto">
+
+                        <div class="titflot" id="tittags">
+                            <span id="ttdetalc">DETALLES ALCANCE</span> 
+                            <span style="font-size: 16px; color: rgb(236, 8, 8); float:right;" onclick="cerrarFlotante('kpiflotantedetallesalcance')">
+                                <i class="fas fa-times-circle"></i>
+                            </span>
+                        </div>
+                        <div class="table-responsive" id="tbdetalc">
+                               <!-- tabla detalles del alcance -->
+                        </div>
+                         
+                    </div>
+
+                    <!-- vista de kpis ocultos -->
+
+                </div>
+            </div>
+
+            
+
+        </div>
+        
+        
+      </div><!-- /row -->
+	</div> <!-- /container -->
+	<div id="footerwrap">
+      	<footer class="clearfix"></footer>
+      	<div class="container">
+      		<div class="row">
+      			<div class="col-sm-12 col-lg-12">
+      			
+      			<p>Dashboard informe de ejecución - UT Italco - Todos los derechos reservados - 2021</p>
+      			</div>
+
+      		</div><!-- /row -->
+      	</div><!-- /container -->		
+	</div><!-- /footerwrap -->
+
+<script>
+
+var hoy = new Date();
+var fecha = hoy.getDate() + '/' + ( hoy.getMonth() + 1 ) + '/' + hoy.getFullYear();
+var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+var fechaYHora = fecha + ' ' + hora;
+
+$('.fechainforme').html(fecha);
+
+$('#pantalla').addClass('cerrada')
+
+var user = sessionStorage.getItem('user')
+console.log('usuario '+user)
+
+var hito = 'INTERCAMBIADOR';
+var server = 'https://utitalco.com/server/';
+var arrayCategorias = []
+var arrayProgramados = []
+var arrayEjecutados = []
+var arrayTags = []
+var arrayFechasAlcances = []
+
+
+// if(user === null){
+//     window.location = 'login.html'
+// }
+
+//cargarAlertas()
+
+cargarAlcances();
+
+function cargarAlcances(){
+    
+    //se obtienen los alcances del hito agrupados y por cantidad programados vs ejecutados
+    $.post(server+'obtenerAlcances.php', {hito},
+    function(resp){
+        console.log(resp)
+
+        var html = '';
+        var opciones = '<option value="">DETALLES POR ALCANCE</option>';
+
+        for(var i=0; i < resp.length; i++){
+           
+            arrayCategorias.push(resp[i].alcance)
+            arrayProgramados.push(resp[i].programado)
+            arrayEjecutados.push(resp[i].ejecutado)
+
+            opciones += `
+                <option value="${resp[i].alcance}">${resp[i].alcance}</option>
+            `
+        }
+        cargarGraficoAlcance()
+        $('#detalcance').html(opciones);
+
+    })
+
+    //se obtienen los tags del hito
+    $.post(server+'obtenerTags.php', {hito},
+    function(resp){
+
+        arrayTags = resp
+        var opciones = '';
+        for(var i=0; i < resp.length; i++){
+            opciones += `
+                <a href="javascript:void(0)" 
+                    class="list-group-item list-group-item-action " 
+                    style="" 
+                    >
+                    ${resp[i].tag}
+                </a>
+            `
+        }
+        $('#listaTags').html(opciones);
+        
+    })
+
+   
+}
+
+function cargarGraficoAlcance(){
+    //grafica
+    Highcharts.chart('figalcances', {
+        colors: ['#00cc00', '#ff0000', '#64E572', '#058DC7', '#50B432', '#ED561B','#FF9655', '#FFF263', '#6AF9C4'],
+        credits: {
+            enabled: false
+        },
+        chart: {
+            type: 'column',
+            backgroundColor: null,
+        },
+        title: {
+            text: null
+        },
+        xAxis: {
+            categories: arrayCategorias,
+            labels: {
+                rotation: -90,
+            
+            style: {
+                fontSize: '12px',
+                color: 'white'
+            }
+            }
+        },
+        yAxis: [{
+            min: 0,
+            title: {
+            text: 'Cant'
+            }
+        }],
+        legend: {
+            shadow: false,
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            column: {
+            grouping: false,
+            shadow: false,
+            borderWidth: 0,
+            dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.f}',
+                    
+                    style: {
+                        font: '14pt Trebuchet MS, Verdana, sans-serif',
+                        color: 'white'
+                    }
+                }
+            }
+            
+        },
+        series: [{
+            name: 'Progamados',
+            color: '#00aeef',
+            data: arrayProgramados,
+            pointPadding: 0.3,
+            pointPlacement: -0.2
+        }, {
+            name: 'Ejecutados',
+            color: '#fff000',
+            data: arrayEjecutados,
+            pointPadding: 0.4,
+            pointPlacement: -0.2
+        }]
+    });
+	 
+
+}
+
+function cargarGraficaDetalleAlcance(alcance){
+
+    var alcanceSel = $('#detalcance').val()
+
+    console.log('Hito: '+hito);
+    console.log('Alcance: '+alcanceSel);
+    
+    $.post(server+'obtenerTagsAlcance.php', {alcance:alcanceSel,hito:hito},
+    function(resp){
+        console.log(resp)
+
+        $.post(server+'obtenerTagsAlcanceGFechas.php', {alcance:alcanceSel,hito:hito},
+        function(resp){
+            console.log('fechas:')
+            console.log(resp)
+            arrayFechasAlcances = resp
+
+            cargarGraficaDetalleAlcance(alcanceSel)
+        })
+    })
+   
+
+}
+
+function cargarGraficaDetalleAlcance(alcance){
+
+    $('#kpiflotantedetallesalcance').removeClass('oculto');
+	$('#kpiflotantedetallesalcance').addClass('magictime spaceInDown');
+    $('#ttdetalc').html('alcance')
+    
+}
+
+function verListaTags(){
+    $('#kpiflotantetags').removeClass('oculto');
+	$('#kpiflotantetags').addClass('magictime spaceInDown');
+}
+
+
+
+function cargarGraficas(){
+
+    //Figura Limpieza partes
+    info = new Highcharts.Chart({
+    colors: ['#DDDF00', '#24CBE5'],
+			chart: {
+				renderTo: 'figlimpiezapartes',
+				margin: [0, 0, 0, 0],
+				backgroundColor: null,
+                plotBackgroundColor: 'none',
+                width: '300',
+            height: '150'
+			},
+
+			credits: {
+				enabled: false
+			},
+			
+			title: {
+				text: null
+			},
+
+			tooltip: {
+				formatter: function() { 
+					return this.point.name +': '+ this.y +' %';
+						
+				} 	
+			},
+            legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+		    series: [
+				{
+				borderWidth: 2,
+				borderColor: '#F1F3EB',
+				shadow: true,	
+				type: 'pie',
+				name: 'Income',
+				innerSize: '30%',
+				data: [
+					{ name: 'Avance Completado', y: 55.0, color: '#89ba16' },
+					{ name: 'Faltante', y: 45.0, color: '#ff0000' }
+				],
+				dataLabels: {
+					enabled: false,
+					color: '#000000',
+					connectorColor: '#000000'
+				}
+			}]
+		});
+
+    info = new Highcharts.Chart({
+    colors: ['#DDDF00', '#24CBE5'],
+			chart: {
+				renderTo: 'figlimpiezaparteshaz',
+				margin: [0, 0, 0, 0],
+				backgroundColor: null,
+                plotBackgroundColor: 'none',
+                width: '300',
+            height: '150'
+			},
+
+			credits: {
+				enabled: false
+			},
+			
+			title: {
+				text: null
+			},
+
+			tooltip: {
+				formatter: function() { 
+					return this.point.name +': '+ this.y +' %';
+						
+				} 	
+			},
+            legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+		    series: [
+				{
+				borderWidth: 2,
+				borderColor: '#F1F3EB',
+				shadow: true,	
+				type: 'pie',
+				name: 'Income',
+				innerSize: '30%',
+				data: [
+					{ name: 'Avance Completado', y: 55.0, color: '#89ba16' },
+					{ name: 'Faltante', y: 45.0, color: '#ff0000' }
+				],
+				dataLabels: {
+					enabled: false,
+					color: '#000000',
+					connectorColor: '#000000'
+				}
+			}]
+		});
+
+
+    //Figura Limpieza partes
+    Highcharts.chart('figinspgen', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+    Highcharts.chart('figinspgenhaz', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+    //Figura Limpieza partes
+    Highcharts.chart('figmtogen', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+    Highcharts.chart('figmtogenhaz', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+    Highcharts.chart('figreent', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+
+    Highcharts.chart('figreenthaz', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+    
+    Highcharts.chart('figlavadohaz', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+
+    Highcharts.chart('figlimphaz', {
+        colors: ['#DDDF00', '#24CBE5'],
+        chart: {
+            type: 'bar',
+            backgroundColor: null,
+            width: '300',
+            height: '150'
+        },
+        title: {
+            text: null
+        },
+        
+        xAxis: {
+            categories: [''],
+            title: {
+            text: null,
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: 'bold 14px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+            text: '',
+            align: 'high'
+            },
+            labels: {
+            overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                enabled: true,
+                text: null,
+                style: {
+                    color: 'white',
+                    font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                }
+            }
+            }
+        },
+        legend: {
+            
+            itemStyle: {
+                font: '9pt Trebuchet MS, Verdana, sans-serif',
+                color: 'white'
+            },
+            itemHoverStyle:{
+                color: 'gray'
+            }   
+        },
+        
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'PROGRAMADO',
+            data: [28]
+        }, {
+            name: 'EJECUTADO',
+            data: [26]
+        }]
+    });
+    
+
+}
+
+function verHitoFecha(actividad){
+    localStorage.setItem('actividad',actividad)
+    window.location = 'controlhitosdetalles.html'
+}
+
+function verParte(parte){
+
+$('#pantalla').removeClass('cerrada');
+$('#pantalla').addClass('abierta');
+
+$('#estatus').removeClass('oculto');
+$('#estatus').addClass('magictime spaceInDown');
+
+$('#tags').removeClass('oculto');
+$('#tags').addClass('magictime spaceInDown');
+
+$('#kpi').removeClass('oculto');
+$('#kpi').addClass('magictime spaceInDown');
+
+$('#parteinter').removeClass('oculto');
+$('#parteinter').addClass('magictime spaceInDown');
+
+$('#tag').removeClass('oculto');
+$('#tag').addClass('magictime spaceInDown');
+
+var tag = 'U-250.I.E-260A'
+
+$('#nombtag').html(tag)
+
+if(tag == 'U-250.I.E-260A'){
+    $('#ubi').html('Planta 2')
+    $("#ubi").css("background-color", "#a4c639");
+    $("#ubi").css("color", "#000");
+    $('#lavado').html('OK')
+    $('#prep').html('OK')
+    $('#insp').html('OK')
+}
+
+cargarGraficas()
+
+}
+
+function cerrar(id){
+    //$('#estatus').removeClass('oculto');
+    console.log(id)
+
+    // $('#'+id).removeClass('magictime spaceInDown');
+    // $('#'+id).addClass('oculto');
+
+    $('#pantalla').removeClass('abierta');
+    $('#pantalla').addClass('cerrada');
+
+    $('#estatus').removeClass('magictime spaceInDown');
+	$('#estatus').addClass('oculto');
+
+    $('#tags').removeClass('magictime spaceInDown');
+	$('#tags').addClass('oculto');
+
+    $('#tag').removeClass('magictime spaceInDown');
+    $('#tag').addClass('oculto');
+
+    $('#kpi').removeClass('magictime spaceInDown');
+	$('#kpi').addClass('oculto');
+
+    $('#parteinter').removeClass('magictime spaceInDown');
+	$('#parteinter').addClass('oculto');
+    
+    //$('#estatus').addClass('oculto');
+}
+
+
+function cerrarFlotante(id){
+    //$('#estatus').removeClass('oculto');
+    console.log(id)
+
+    $('#'+id).removeClass('magictime spaceInDown');
+    $('#'+id).addClass('oculto');
+   
+    
+}
+
+//verParteHazdeTubos
+function verParteHaz(parte){
+
+$('#pantalla').removeClass('cerrada');
+$('#pantalla').addClass('abierta');
+
+$('#estatushaz').removeClass('oculto');
+$('#estatushaz').addClass('magictime spaceInDown');
+
+$('#tagshaz').removeClass('oculto');
+$('#tagshaz').addClass('magictime spaceInDown');
+
+$('#kpihaz').removeClass('oculto');
+$('#kpihaz').addClass('magictime spaceInDown');
+
+$('#parteinterhaz').removeClass('oculto');
+$('#parteinterhaz').addClass('magictime spaceInDown');
+
+$('#taghaz').removeClass('oculto');
+$('#taghaz').addClass('magictime spaceInDown');
+
+var taghaz = 'U-250.I.E-260A'
+
+$('#nombtaghaz').html(taghaz)
+
+if(taghaz == 'U-250.I.E-260A'){
+    $('#ubihaz').html('Planta 2')
+    $("#ubihaz").css("background-color", "#a4c639");
+    $("#ubihaz").css("color", "#000");
+    $('#rethaz').html('OK')
+    $('#lavadohaz').html('OK')
+    $('#eddy').html('OK')
+    $('#ree').html('OK')
+}
+
+cargarGraficas()
+
+}
+
+function cerrarHaz(id){
+    //$('#estatus').removeClass('oculto');
+    console.log(id)
+
+    // $('#'+id).removeClass('magictime spaceInDown');
+    // $('#'+id).addClass('oculto');
+
+    $('#pantalla').removeClass('abierta');
+    $('#pantalla').addClass('cerrada');
+
+    $('#estatushaz').removeClass('magictime spaceInDown');
+	$('#estatushaz').addClass('oculto');
+
+    $('#tagshaz').removeClass('magictime spaceInDown');
+	$('#tagshaz').addClass('oculto');
+
+    $('#taghaz').removeClass('magictime spaceInDown');
+	$('#taghaz').addClass('oculto');
+
+    $('#kpihaz').removeClass('magictime spaceInDown');
+	$('#kpihaz').addClass('oculto');
+
+    $('#parteinterhaz').removeClass('magictime spaceInDown');
+	$('#parteinterhaz').addClass('oculto');
+    
+    //$('#estatus').addClass('oculto');
+}
+
+
+function cargarAlertas(){
+    Swal.fire({
+        position: 'top',
+        icon: 'info',
+        title: 'Tienes 2 alertas por revisar...',
+        showConfirmButton: false,
+        timer: 3000
+    });
+}
+
+
+function verTag(tag){
+    $('#tag').removeClass('oculto');
+	$('#tag').addClass('magictime spaceInDown');
+
+    $('#nombtag').html(tag)
+
+    if(tag == 'U-250.I.E-260A'){
+        $('#ubi').html('Planta 2')
+        $("#ubi").css("background-color", "#a4c639");
+        $("#ubi").css("color", "#000");
+        $('#lavado').html('OK')
+        $('#prep').html('OK')
+        $('#insp').html('OK')
+    }
+    if(tag == 'U-250.I.E-260B'){
+        $('#ubi').html('Instalada')
+        $("#ubi").css("background-color", "#00ad45");
+        $("#ubi").css("color", "#FFF");
+        $('#lavado').html('OK')
+        $('#prep').html('OK')
+        $('#insp').html('OK')
+    }
+    if(tag == 'U-250.I.E-262'){
+        $('#ubi').html('Planta 2')
+        $("#ubi").css("background-color", "#a4c639");
+        $("#ubi").css("color", "#000");
+        $('#lavado').html('OK')
+        $('#prep').html('OK')
+        $('#insp').html('OK')
+    }
+    if(tag == 'U-250.I.E-266B'){
+        $('#ubi').html('Planta 1')
+        $("#ubi").css("background-color", "#f85a40");
+        $("#ubi").css("color", "#000");
+        $('#lavado').html('X')
+        $('#prep').html('X')
+        $('#insp').html('X')
+    }
+    if(tag == 'U-250.I.E-250'){
+        $('#ubi').html('Lavado en Planta')
+        $("#ubi").css("background-color", "#ffcc2f");
+        $("#ubi").css("color", "#000");
+        $('#lavado').html('OK')
+        $('#prep').html('X')
+        $('#insp').html('X')
+    }
+    
+
+}
+
+function verTagHaz(tag){
+    $('#taghaz').removeClass('oculto');
+	$('#taghaz').addClass('magictime spaceInDown');
+
+    $('#nombtaghaz').html(tag)
+
+    if(tag == 'U-250.I.E-260A'){
+        $('#ubihaz').html('Planta 2')
+        $("#ubihaz").css("background-color", "#a4c639");
+        $("#ubihaz").css("color", "#000");
+        $('#rethaz').html('OK')
+        $('#lavadohaz').html('OK')
+        $('#eddy').html('OK')
+        $('#ree').html('OK')
+    }
+    if(tag == 'U-250.I.E-260B'){
+        $('#ubihaz').html('Instalada')
+        $("#ubihaz").css("background-color", "#00ad45");
+        $("#ubihaz").css("color", "#FFF");
+        $('#rethaz').html('OK')
+        $('#lavadohaz').html('OK')
+        $('#eddy').html('OK')
+        $('#ree').html('OK')
+    }
+    if(tag == 'U-250.I.E-262'){
+        $('#ubihaz').html('Trabajos Mecánicos')
+        $("#ubihaz").css("background-color", "#d74e26");
+        $("#ubihaz").css("color", "#FFF");
+        $('#rethaz').html('OK')
+        $('#lavadohaz').html('OK')
+        $('#eddy').html('X')
+        $('#ree').html('X')
+    }
+    if(tag == 'U-250.I.E-266B'){
+        $('#ubi').html('Planta 1')
+        $("#ubi").css("background-color", "#f85a40");
+        $("#ubi").css("color", "#000");
+        $('#lavado').html('X')
+        $('#prep').html('X')
+        $('#insp').html('X')
+    }
+    if(tag == 'U-250.I.E-250'){
+        $('#ubi').html('Lavado en Planta')
+        $("#ubi").css("background-color", "#ffcc2f");
+        $("#ubi").css("color", "#000");
+        $('#lavado').html('OK')
+        $('#prep').html('X')
+        $('#insp').html('X')
+    }
+    
+
+}
+
+function cargarReporte(){
+    Swal.fire({
+            position: 'top',
+            icon: 'info',
+            title: 'Función aún no habilitada',
+            showConfirmButton: false,
+            timer: 2000
+        })
+}
+
+function alertas(){
+    Swal.fire({
+    html: `<h4 class="text-left">Reentube parcial con atrazo del 3% <br>
+    Instalaclión de Haz atrazo del 2% <br>
+    </h4>
+    
+    `,
+    width: 600,
+    showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+    },
+    hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+    }
+    })
+}
+
+</script>
+          
+</body></html>

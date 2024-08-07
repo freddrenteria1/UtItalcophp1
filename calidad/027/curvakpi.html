@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOLOS QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        tr {
+            cursor: pointer;
+        }
+
+        .hiddenRow {
+            padding: 0 !important;
+        }
+
+        body {
+            background-image: url('img/fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            margin-top: 330px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cajones {
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 200px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 22rem;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h2>INFORME FIRMAS PROTOCOLOS ODS <span id="ods"></span>
+                    <button type="button" class="btn btn-warning" onclick="volver()">Volver</button>
+                    <button type="button" class="btn btn-info" onclick="esp()">Especialidades</button>
+                    <button type="button" class="btn btn-success" onclick="curva()">Curva </button>
+                </h2>
+            </div>
+        </div>
+    </nav>
+    <div class="m-3">
+        <div class="m-3" style="padding: 15px;">
+
+            <div class="row">
+                <div class="col-sm-12 mt-3">
+                    <div id="fig5"></div>
+                </div>
+                <div class="col-sm-12  mt-3">
+                    <!-- <button type="button" class="btn btn-danger" onclick="ocultar('fig1')">Ocultar Series</button>
+                    <button type="button" class="btn btn-success" onclick="mostrar('fig1')">Mostrar Series</button> -->
+                    <div id="fig1"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig2"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig3"></div>
+                </div>
+
+                <div class="col-sm-12 mt-3">
+                    <div id="fig4"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig6"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig7"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig8"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig9"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig10"></div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+
+
+
+    <script>
+        var series = null
+        var odsq = null
+        var url = "https://utitalco.com/calidad/027/server/";
+        var arrayInterFechas = []
+
+        var arrayInter = []
+        var firmasInterPlan = []
+        var firmasInterEje = []
+        var arrayInterPorc = []
+
+        var arrayTambores = []
+        var firmasTambPlan = []
+        var firmasTambEje = []
+        var arrayTambPorc = []
+
+        var arrayTorres = []
+        var firmasTorPlan = []
+        var firmasTorEje = []
+        var arrayTorPorc = []
+
+        var arrayValvulas = []
+        var firmasValPlan = []
+        var firmasValEje = []
+        var arrayValPorc = []
+
+        var arrayTuberia = []
+        var firmasTubPlan = []
+        var firmasTubEje = []
+        var firmasTubPorc = []
+
+        var arrayElecPlan = []
+        var arrayElecEje = []
+
+
+        var arrayEstaticos = []
+        var firmasEstPlan = []
+        var firmasEstEje = []
+        var arrayEstPorc = []
+
+
+        odsq = '027';
+        $('#ods').html(odsq)
+
+        cargarListado(odsq)
+
+
+        function cargarListado() {
+            cargando()
+            $.post(url + 'sumasInter.php', {
+                    ods: odsq
+                },
+                function (resp) {
+
+                    arrayInter = resp
+
+                    for (var i = 0; i < arrayInter.length; i++) {
+                        arrayInterFechas.push(arrayInter[i].fecha)
+
+                        firmasInterPlan.push(parseInt(arrayInter[i].firmasPlan))
+                        firmasInterEje.push(parseInt(arrayInter[i].firmasEje))
+                        arrayInterPorc.push(parseInt(arrayInter[i].porc))
+                    }
+
+                    $.post(url + 'sumasTambores.php', {
+                            ods: odsq
+                        },
+                        function (resp) {
+
+                            arrayTambores = resp
+
+                            for (var i = 0; i < arrayTambores.length; i++) {
+                                arrayInterFechas.push(arrayTambores[i].fecha)
+
+                                firmasTambPlan.push(parseInt(arrayTambores[i].firmasPlan))
+                                firmasTambEje.push(parseInt(arrayTambores[i].firmasEje))
+                                arrayTambPorc.push(parseInt(arrayTambores[i].porc))
+                            }
+
+                            $.post(url + 'sumasTorres.php', {
+                                    ods: odsq
+                                },
+                                function (resp) {
+
+                                    arrayTorres = resp
+
+                                    for (var i = 0; i < arrayTorres.length; i++) {
+                                        arrayInterFechas.push(arrayTorres[i].fecha)
+
+                                        firmasTorPlan.push(parseInt(arrayTorres[i].firmasPlan))
+                                        firmasTorEje.push(parseInt(arrayTorres[i].firmasEje))
+                                        arrayTorPorc.push(parseInt(arrayTorres[i].porc))
+                                    }
+
+                                    $.post(url + 'sumasValvulas.php', {
+                                            ods: odsq
+                                        },
+                                        function (resp) {
+
+                                            arrayValvulas = resp
+
+                                            for (var i = 0; i < arrayValvulas.length; i++) {
+                                                arrayInterFechas.push(arrayValvulas[i].fecha)
+
+                                                firmasValPlan.push(parseInt(arrayValvulas[i]
+                                                    .firmasPlan))
+                                                firmasValEje.push(parseInt(arrayValvulas[i].firmasEje))
+                                                arrayValPorc.push(parseInt(arrayValvulas[i].porc))
+                                            }
+
+                                            $.post(url + 'sumasEstaticos.php', {
+                                                    ods: odsq
+                                                },
+                                                function (resp) {
+
+                                                    arrayEstaticos = resp
+
+                                                    for (var i = 0; i < arrayEstaticos
+                                                        .length; i++) {
+                                                        arrayInterFechas.push(arrayEstaticos[i]
+                                                            .fecha)
+
+                                                        firmasEstPlan.push(parseInt(arrayEstaticos[
+                                                            i].firmasPlan))
+                                                        firmasEstEje.push(parseInt(arrayEstaticos[i]
+                                                            .firmasEje))
+                                                        arrayEstPorc.push(parseInt(arrayEstaticos[i]
+                                                            .porc))
+                                                    }
+
+                                                 
+
+
+                                                    $.post(url + 'sumasTuberias.php', {
+                                                        ods: odsq
+                                                    },
+                                                    function (resp) {
+
+                                                            arrayTuberia = resp
+
+                                                            for (var i = 0; i < arrayTuberia
+                                                            .length; i++) {
+                                                            arrayInterFechas.push(arrayTuberia[i]
+                                                                .fecha)
+
+                                                            firmasTubPlan.push(parseInt(arrayTuberia[
+                                                                i].firmasPlan))
+                                                            firmasTubEje.push(parseInt(arrayTuberia[i]
+                                                                .firmasEje))
+                                                            firmasTubPorc.push(parseInt(arrayTuberia[i]
+                                                                .porc))
+                                                        }
+
+                                                            Swal.fire({
+                                                                position: 'top-end',
+                                                                icon: 'success',
+                                                                width: 150,
+                                                                showConfirmButton: false,
+                                                                timer: 1500
+                                                            }).then(() => {
+
+                                                                cargarGraficas()
+
+                                                            })
+
+                                                        })
+
+
+                                                })
+
+
+
+                                        })
+                                })
+
+
+                        })
+
+
+                })
+        }
+
+
+        function cargarGraficas() {
+
+            Highcharts.chart('fig1', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA INTERCAMBIADORES'
+                },
+
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasInterPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasInterEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayInterPorc
+                }]
+            });
+
+            Highcharts.chart('fig2', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA TAMBORES'
+                },
+
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasTambPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasTambEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayTambPorc
+                }]
+            });
+
+            Highcharts.chart('fig3', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA TORRES'
+                },
+
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasTorPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasTorEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayTorPorc
+                }]
+            });
+
+            Highcharts.chart('fig4', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA VÁLVULAS'
+                },
+
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasValPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasValEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayValPorc
+                }]
+            });
+
+            Highcharts.chart('fig5', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA ESTÁTICOS'
+                },
+
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasEstPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasEstEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayEstPorc
+                }]
+            });
+
+
+            // Highcharts.chart('fig6', {
+            //     colors: [
+            //         "#004236",
+            //         "#00c901",
+            //         "#F8F9F9 ",
+            //         "#C51111",
+            //         "#a4c639",
+            //         "#180272",
+            //         "#537b35",
+            //         "#a4c639",
+            //         "#537b35",
+            //         "#537b35",
+            //     ],
+            //     credits: {
+            //         enabled: false,
+            //     },
+            //     chart: {
+            //         type: 'spline',
+            //         height: 400,
+            //     },
+            //     tooltip: {
+            //         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            //         pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+            //             '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+            //         footerFormat: '</table>',
+            //         shared: true,
+            //         useHTML: true
+            //     },
+            //     title: {
+            //         text: 'CURVA ELÉCTRICOS'
+            //     },
+
+            //     xAxis: {
+            //         categories: arrayInterFechas
+            //     },
+            //     yAxis: {
+            //         title: {
+            //             text: 'CANT'
+            //         }
+            //     },
+            //     plotOptions: {
+            //         line: {
+            //             dataLabels: {
+            //                 enabled: true
+            //             },
+            //             enableMouseTracking: false
+            //         }
+            //     },
+            //     series: [{
+            //         name: 'Firmas Plan',
+            //         data: [0,0,0,0,0,2,4,8,12,14,16,26,36,46,68,68,68]
+            //     }, {
+            //         name: 'Firmas Eje',
+            //         data: [0,0,0,0,0,5,5,8,9,9,11,12,12,12,12,12,12]
+            //     }]
+            // });
+
+            // Highcharts.chart('fig7', {
+            //     colors: [
+            //         "#004236",
+            //         "#00c901",
+            //         "#F8F9F9 ",
+            //         "#C51111",
+            //         "#a4c639",
+            //         "#180272",
+            //         "#537b35",
+            //         "#a4c639",
+            //         "#537b35",
+            //         "#537b35",
+            //     ],
+            //     credits: {
+            //         enabled: false,
+            //     },
+            //     chart: {
+            //         type: 'spline',
+            //         height: 400,
+            //     },
+            //     tooltip: {
+            //         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            //         pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+            //             '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+            //         footerFormat: '</table>',
+            //         shared: true,
+            //         useHTML: true
+            //     },
+            //     title: {
+            //         text: 'CURVA ROTATIVO'
+            //     },
+
+            //     xAxis: {
+            //         categories: arrayInterFechas
+            //     },
+            //     yAxis: {
+            //         title: {
+            //             text: 'CANT'
+            //         }
+            //     },
+            //     plotOptions: {
+            //         line: {
+            //             dataLabels: {
+            //                 enabled: true
+            //             },
+            //             enableMouseTracking: false
+            //         }
+            //     },
+            //     series: [{
+            //         name: 'Firmas Plan',
+            //         data: [0,0,0,42,42,42,70,70,70,70,112,112,112,154,154,154,154]
+            //     }, {
+            //         name: 'Firmas Eje',
+            //         data: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            //     }]
+            // });
+
+
+            Highcharts.chart('fig8', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA TUBERÍAS'
+                },
+
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasTubPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasTubEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: firmasTubPorc
+                }]
+            });
+
+            // Highcharts.chart('fig9', {
+            //     colors: [
+            //         "#004236",
+            //         "#00c901",
+            //         "#F8F9F9 ",
+            //         "#C51111",
+            //         "#a4c639",
+            //         "#180272",
+            //         "#537b35",
+            //         "#a4c639",
+            //         "#537b35",
+            //         "#537b35",
+            //     ],
+            //     credits: {
+            //         enabled: false,
+            //     },
+            //     chart: {
+            //         type: 'spline',
+            //         height: 400,
+            //     },
+            //     tooltip: {
+            //         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            //         pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+            //             '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+            //         footerFormat: '</table>',
+            //         shared: true,
+            //         useHTML: true
+            //     },
+            //     title: {
+            //         text: 'CURVA INSTRUMENTACIÓN'
+            //     },
+
+            //     xAxis: {
+            //         categories: arrayInterFechas
+            //     },
+            //     yAxis: {
+            //         title: {
+            //             text: 'CANT'
+            //         }
+            //     },
+            //     plotOptions: {
+            //         line: {
+            //             dataLabels: {
+            //                 enabled: true
+            //             },
+            //             enableMouseTracking: false
+            //         }
+            //     },
+            //     series: [{
+            //         name: 'Firmas Plan',
+            //         data: [0,40,87,143,193,256,321,321,360,375,411,429,462,462,462,462,462]
+            //     }, {
+            //         name: 'Firmas Eje',
+            //         data: [0,0,0,0,0,0,0,0,0,5,10,15,15,15,15,15,15]
+            //     }]
+            // });
+
+
+
+
+        }
+
+
+        function volver() {
+            location = 'buscador.html'
+        }
+
+        function esp() {
+            location = 'informerca.html'
+        }
+
+        function curva() {
+            location = 'curvakpi.html'
+        }
+
+
+        $('.collapse').on('show.bs.collapse', function () {
+            $('.collapse.in').collapse('hide');
+        });
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando datos!',
+                html: 'Un momento por favor...',
+                timer: 15000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        function cargando2() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando datos!',
+                html: 'Un momento por favor...',
+                timer: 1000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        $('.collapse').on('show.bs.collapse', function () {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                width: 150,
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
+
+        function ocultar(e) {
+            for (var i = 0; i < 20; i++) {
+                series = $('#' + e).highcharts().series[i];
+                series.update({
+                    visible: false
+                });
+            }
+        }
+
+        function mostrar(e) {
+            for (var i = 0; i < 20; i++) {
+                series = $('#' + e).highcharts().series[i];
+                series.update({
+                    visible: true
+                });
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
