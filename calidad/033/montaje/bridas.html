@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="weldbook/jquery.min.js"></script>
+    <script src="weldbook/jquery-ui.min.js"></script>
+    <script src="weldbook/jquery.jqGrid.min.js"></script>
+    <script src="weldbook/grid.locale-en.js"></script>
+    <link rel="stylesheet" href="weldbook/jquery-ui.css">
+    <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
+
+    <style>
+        .highcharts-color-0 {
+            fill: #7cb5ec;
+            stroke: #7cb5ec;
+        }
+
+        .highcharts-color-2 {
+            fill: #9a9a9c;
+            stroke: #9a9a9c;
+        }
+
+        .highcharts-color-1 {
+            fill: #90ed7d;
+            stroke: #90ed7d;
+        }
+
+        .highcharts-color-3 {
+            fill: #f7a35c;
+            stroke: #f7a35c;
+        }
+
+        .highcharts-color-4 {
+            fill: #8085e9;
+            stroke: #8085e9;
+        }
+
+        .highcharts-color-5 {
+            fill: #f15c80;
+            stroke: #f15c80;
+        }
+
+        /* Series options */
+
+        #container {
+            height: 400px;
+        }
+
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
+
+
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>REGISTRO MASTER DE BRIDAS ODS 033 SB-2405</h4>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    Última actualización: <span id="fecha"> </span> <br>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <div class="table-responsive">
+
+                <table class="table table-striped" id="grid1b"></table>
+
+                <div class="mt-2">
+                    
+                        <table class="table table-striped" id="tabla2"></table>
+                   
+                </div>
+                <div class="mt-2" id="fig1">
+                    Fig
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/033/montaje/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var titulo = []
+            var prog = []
+            var ejec = []
+            var avance = []
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        if (user == null) {
+            location = "index.html";
+        }
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+            formData.append("user", user);
+
+            $.ajax({
+                url: url + "guardarExcelBridas.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            location.reload()
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cargarDatosBridas.php", function (resp) {
+                datos = resp;
+
+                $("#grid1b").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [{
+                            name: "planta",
+                            label: "PLANTA <br>/UNIDAD",
+                            width: 80,
+                            frozen: true
+                        },
+                        {
+                            name: "especialidad",
+                            label: "ESPECIALIDAD",
+                            width: 120,
+                            frozen: true
+                        },
+                        {
+                            name: "linea",
+                            label: "INGENIERÍA <br> / LÍNEA <br> / EQUIPO",
+                            width: 180,
+                            frozen: true
+                        },
+                        {
+                            name: "tag",
+                            label: "ISOMÉTRICO <br> /TAG EQUIPO",
+                            width: 100,
+                            frozen: true,
+                            align: "center"
+                        },
+                        {
+                            name: "descripcion",
+                            label: "DECRIPCIÓN",
+                            width: 350,
+                        },
+                        {
+                            name: "numjunta",
+                            label: "# JUNTA<br>BRIDADA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "pulgadas",
+                            label: "ɸ inch",
+                            width: 35,
+                            align: "center"
+                        },
+                        {
+                            name: "material",
+                            label: "MATERIAL",
+                            width: 120,
+                            align: "center"
+                        },
+                        {
+                            name: "metal",
+                            label: "METALURGIA",
+                            width: 120,
+                            align: "center"
+                        },
+                        {
+                            name: "rating",
+                            label: "RATING",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "tipo",
+                            label: "TIPO",
+                            width: 50,
+                            align: "center"
+                        },
+                        {
+                            name: "descripcion_2",
+                            label: "DESCRIPCIÓN",
+                            width: 120,
+                            align: "center"
+                        },
+                        {
+                            name: "tipo_2",
+                            label: "TIPO",
+                            width: 120,
+                            align: "center"
+                        },
+                        {
+                            name: "material_2",
+                            label: "MATERIAL",
+                            width: 50,
+                            align: "center"
+                        },
+                        {
+                            name: "diametro",
+                            label: "DIAMÉTRO <br> (IN))",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "diametrodec",
+                            label: "Φ inch",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "longitud",
+                            label: "LONGITUD (IN)",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "cantidad",
+                            label: "CANTIDAD",
+                            width: 100,
+                            align: "center"
+                        },
+                        {
+                            name: "material_3",
+                            label: "MATERIAL",
+                            width: 100,
+                            align: "center"
+                        },
+                        {
+                            name: "cantidad_2",
+                            label: "CANTIDAD",
+                            width: 120,
+                            align: "center"
+                        },
+                        {
+                            name: "lubricante",
+                            label: "LUBRICANTE BASE",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "torquereq",
+                            label: "TORQUE <br>REQUERIDO <br>(Lb-Ft)",
+                            width: 120,
+                            align: "center"
+                        },
+                        {
+                            name: "instsas",
+                            label: "INSTALACIÓN <br>CIEGO SAS",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "retsas",
+                            label: "RETIRO <br>CIEGO SAS",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "ajustetorque",
+                            label: "AJUSTE Y TORQUE <br>A JUNTA BRIDADA",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "tarjetatorque",
+                            label: "TARJETA <br>TORQUE",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "ensamblador",
+                            label: "ENSAMBLADOR RESPONSABLE <br>AJUSTE Y TORQUE",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "supervisor",
+                            label: "SUPERVISOR RESPONSABLE <br>AJUSTE Y TORQUE",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "qaqc",
+                            label: "QAQC",
+                            width: 60,
+                            align: "center"
+                        },
+                        {
+                            name: "observaciones",
+                            label: "OBSERVACIONES",
+                            width: 600,
+                        }
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: 250,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+
+                $("#grid1b").jqGrid('filterToolbar', {
+                    autoSearch: true,
+                    searchOnEnter: false,
+                });
+
+                $("#grid1b").jqGrid('setFrozenColumns');
+
+                cargarBitacora()
+
+
+
+            });
+        }
+
+        function cargarBitacora() {
+
+            $.post(url + "cargarBitacoraBridas.php", function (resp) {
+                datos = resp;
+
+                Swal.close();
+
+
+                $('#fecha').html(datos.fecha)
+                $('#doc').html(datos.archivo)
+                $('#user').html(datos.user)
+
+                $.post(url + 'repBridas.php', function (resp) {
+                    datos = resp
+                    $("#tabla2").jqGrid({
+                        datatype: 'local',
+                        regional: 'es', // this is default
+                        data: datos,
+                        colModel: [{
+                                name: "especialidad",
+                                label: "ESPECIALIDAD",
+                                width: 120,
+                                frozen: true
+                            },
+                            {
+                                name: "linea",
+                                label: "INGENIERÍA <br> / LÍNEA <br> / EQUIPO",
+                                width: 180,
+                                frozen: true
+                            },
+                            {
+                                name: "cant",
+                                label: "PLANEADAS",
+                                width: 80,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "eje",
+                                label: "EJEC",
+                                width: 80,
+                                align: "center",
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: "sum",
+                            },
+                            {
+                                name: "avance",
+                                label: "AVANCE",
+                                width: 80,
+                                align: "center",
+                                formatoptions: {
+                                suffix: " %",
+                                },
+                                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                                summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === "string") {
+                                    value = {
+                                    totalAmount: 0,
+                                    totalTax: 0,
+                                    };
+                                }
+                                // perform summary
+                                if (record["cant"]) {
+                                    value.totalAmount += parseFloat(record["cant"]);
+                                }
+                                if (record["eje"]) {
+                                    value.totalTax += parseFloat(record["eje"]);
+                                }
+                                return value;
+                                },
+                                formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({},
+                                    $.jgrid.getRegional(this, "formatter"),
+                                    opts
+                                );
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === "") {
+                                    if (cellval.totalAmount !== 0) {
+                                    var val =
+                                        (cellval.totalTax / cellval.totalAmount) * 100;
+                                    return $.fn.fmatter("number", val, opts, rwdat, act);
+                                    } else {
+                                    return "0";
+                                    }
+                                } else {
+                                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                                }
+                                },
+                            },
+
+
+                        ],
+                        loadonce: true,
+                        shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                        width: ventana_ancho,
+                        height: 150,
+                        rowNum: 1000,
+                        pager: "#jqGridPager",
+
+                        grouping: true,
+                        groupingView: {
+                        groupField: ["especialidad"],
+                        groupColumnShow: [true],
+                        groupText: ["<b>{0}</b>"],
+                        groupOrder: ["asc"],
+                        groupSummary: [true],
+                        groupSummaryPos: ["header"],
+                        groupCollapse: true,
+                        },
+                    });
+
+                    cargarGraficas()
+
+
+
+                })
+
+
+            });
+
+
+
+        }
+
+        function cargarGraficas() {
+
+            
+           
+            for (var i = 0; i < datos.length; i++) {
+                titulo.push(datos[i].linea);
+                prog.push(datos[i].cant)
+                ejec.push(datos[i].eje)
+                var pend = datos[i].cant - datos[i].eje
+                avance.push(pend)
+            }
+         
+            Highcharts.chart("fig1", {
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                    styledMode: true,
+                    height: 600
+                },
+                title: {
+                    text: "<b>AVANCE UNIONES BRIDADAS</b>",
+                },
+
+                xAxis: {
+                    categories: titulo,
+                    crosshair: true,
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                        name: "TOTALES",
+                        data: prog,
+                    },
+                    {
+                        name: "EJECUTADAS",
+                        data: ejec,
+                        stack: 'PRO'
+                    },
+                    {
+                        name: "PENDIENTES",
+                        data: avance,
+                        stack: 'PRO'
+                    },
+                ],
+            });
+        }
+
+    </script>
+</body>
+
+</html>

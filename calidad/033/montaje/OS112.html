@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.3.6.2 (Linux)" />
+	<meta name="author" content="c4326540" />
+	<meta name="created" content="2004-08-06T00:07:02" />
+	<meta name="changedby" content="01AC0479" />
+	<meta name="changed" content="2022-10-18T22:56:01" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+	<style type="text/css">
+		body,
+		div,
+		table,
+		thead,
+		tbody,
+		tfoot,
+		tr,
+		th,
+		td,
+		p {
+			font-family: "Calibri";
+			font-size: x-small
+		}
+
+		a.comment-indicator:hover+comment {
+			background: #ffd;
+			position: absolute;
+			display: block;
+			border: 1px solid black;
+			padding: 0.5em;
+		}
+
+		a.comment-indicator {
+			background: red;
+			display: inline-block;
+			border: 1px solid black;
+			width: 0.5em;
+			height: 0.5em;
+		}
+
+		comment {
+			display: none;
+		}
+	</style>
+
+	<style>
+		@media print {
+
+			.oculto-impresion,
+			.oculto-impresion * {
+				display: none !important;
+			}
+		}
+
+		.salto {
+			PAGE-BREAK-AFTER: always;
+		}
+
+		.mispan {
+			font-size: 16px;
+		}
+
+		textarea {
+			font-size: 18px;
+		}
+
+		input[type=text] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+
+		}
+
+		.lineabaja {
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+		}
+
+		input[type=date] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		input[type=time] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		input[type=radio] {
+			height: 20px;
+			width: 20px;
+		}
+
+		select {
+			background: transparent;
+			border: none;
+			font-size: 18px;
+			height: 30px;
+			padding: 5px;
+			width: 250px;
+		}
+
+		.oculto {
+			display: none;
+		}
+
+		.visible {
+			display: inline;
+		}
+
+		.cuerpo {
+			margin: 0 auto;
+		}
+	</style>
+
+</head>
+
+<body>
+	<table id="tblcuerpo" cellspacing="0" border="0" style="margin: 0 auto; margin-top: 10px; width: 95%;">
+		<colgroup width="101"></colgroup>
+		<colgroup width="126"></colgroup>
+		<colgroup width="121"></colgroup>
+		<colgroup width="74"></colgroup>
+		<colgroup width="56"></colgroup>
+		<colgroup width="67"></colgroup>
+		<colgroup width="105"></colgroup>
+		<colgroup width="115"></colgroup>
+		<colgroup width="144"></colgroup>
+		<colgroup width="135"></colgroup>
+		<colgroup width="91"></colgroup>
+		<colgroup width="110"></colgroup>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 rowspan=3 height="100" align="center"><b>
+					<font face="Arial Narrow" size=3 color="#000000"><img src="img/logo_m.png" width=255 hspace=35
+							vspace=16>
+					</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=6 rowspan=3 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4 color="#000000">REGISTRO CONTROL DE ACTIVIDADES CUSTODIA Y
+						<br>CALIBRACIÓN DE SWITCHES
+					</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3>FRM-BCA-19.370.3.OS112 </font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3>Fecha: 13/05/2021</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3>Versión: 1</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="33" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>INFORMACIÓN GENERAL</font>
+				</b></td>
+		</tr>
+
+
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="46" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>CONTRATO:</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="center">
+				<font face="Arial Narrow" size=4><span id="contrato"></span></font>
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>UNIDAD:</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" colspan=2 align="center"
+				valign=middle><b>
+					<font face="Arial Narrow" size=4><span id="unidad"></span></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>PLANTA: </font>
+				</b></td>
+			<td align="left">
+				<font face="Arial Narrow"><span id="planta"></span></font>
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				align="left" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>ORDEN DE SERVICIO: </font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4 color="#000000"><span id="ods"></span></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="4" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="49" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>FAMILIA DE EQUIPO:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				colspan=5 align="center" valign=middle>
+				<font face="Arial Narrow" size=4><span id="equipo"></span></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>TAG:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				align="left" valign=middle><b>
+					<font face="Arial Narrow" size=5><span id="tag"></span></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>SERIE:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center">
+				<input type="text" id="serie" onchange="actInfo()">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="3" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="76" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4> TIPO DE SWICTCHE:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=10 align="left" valign=middle><b>
+					<select id="tiposwictche" style="width: 250px;" class="ut" onchange="actInfo()">
+						<option value=""></option>
+						<option value="PRESION">PRESION</option>
+						<option value="NIVEL">NIVEL</option>
+						<option value="TEMPERATURA">TEMPERATURA</option>
+						<option value="FLUJO">FLUJO</option>
+					</select>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="13" align="center" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="35" align="right" valign=middle>
+				<font face="Arial Narrow" size=4>FECHA: </font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha" onchange="actInfo()">
+			</td>
+			<td align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="right" valign=middle>
+				<font face="Arial Narrow" size=4>MARCA:</font>
+			</td>
+			<td colspan=3 align="center" valign=middle>
+				<input type="text" id="marca" onchange="actInfo()">
+			</td>
+			<td align="right" valign=middle>
+				<font face="Arial Narrow" size=4>MODELO:</font>
+			</td>
+			<td align="left">
+				<input type="text" id="modelo" onchange="actInfo()">
+			</td>
+			<td align="right" valign=middle>
+				<font face="Arial Narrow" size=4>UND ING:</font>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=2 align="center" valign=middle>
+				<input type="text" id="unding" onchange="actInfo()">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="17" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="35" align="right" valign=middle>
+				<font face="Arial Narrow" size=4>SERVICIO: </font>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=11 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="servicio" onchange="actInfo()">
+			</td>
+		</tr>
+
+
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="10" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="34" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>1. DATOS DE CAMPO</font>
+				</b></td>
+		</tr>
+
+
+		<tr>
+			<td style="border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=12 height="12"
+				align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-top: 2px solid #000000; border-left: 2px solid #000000" colspan=2 align="center"
+				valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>DATOS</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-left: 2px solid #000000" colspan=3 align="center"
+				valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>ESTADO INICIAL</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-left: 2px solid #000000" colspan=2 align="center"
+				valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>ESTADO FINAL</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>OBERVACIONES</font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="49" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>LÍNEA SUMINISTRO ELÉCTRICO</font>
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial1" style="width: 70px;" class="ut" onchange="actItem('1')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal1" style="width: 70px;" class="ut" onchange="actItem('1')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs1" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="40" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>ESTADO DE LOS CONTACTOS</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial2" style="width: 70px;" class="ut" onchange="actItem('2')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal2" style="width: 70px;" class="ut" onchange="actItem('2')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs2" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="46" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>CONEXIÓN A PROCESO</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial3" style="width: 70px;" class="ut" onchange="actItem('3')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal3" style="width: 70px;" class="ut" onchange="actItem('3')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs3" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="44" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>COMPONENTES MECÁNICOS</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial4" style="width: 70px;" class="ut" onchange="actItem('4')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal4" style="width: 70px;" class="ut" onchange="actItem('4')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs4" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>FLEXICONDUIT</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial5" style="width: 70px;" class="ut" onchange="actItem('5')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal5" style="width: 70px;" class="ut" onchange="actItem('5')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs5" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="45" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>VÁLVULAS DE BLOQUE A PROCESO</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial6" style="width: 70px;" class="ut" onchange="actItem('6')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal6" style="width: 70px;" class="ut" onchange="actItem('6')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs6" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>PINTURA</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial7" style="width: 70px;" class="ut" onchange="actItem('7')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal7" style="width: 70px;" class="ut" onchange="actItem('7')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs7" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="left" valign=middle>
+				<font face="Arial Narrow" size=4>IDENTIFICACIÓN (TAG)</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<select id="einicial8" style="width: 70px;" class="ut" onchange="actItem('8')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<select id="efinal8" style="width: 70px;" class="ut" onchange="actItem('8')">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="MAL">MAL</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center">
+				<input type="text" id="obs8" onchange="actItem()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+
+
+		<tr>
+			<td style="border-left: 2px solid #000000" height="31" align="left">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3>Convenciones:</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000" colspan=2 align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3>OK: BUEN ESTADO</font>
+				</b></td>
+			<td align="justify" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td style="border-top: 2px solid #000000" colspan=2 align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3>MAL: MAL ESTADO</font>
+				</b></td>
+			<td colspan=3 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=12 height="1"
+				align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				height="123" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Hora</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Nombre supervisor UT ITALCO<br> </font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000"> Firma supervisor<br>UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Registro/CC</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Nombre gestor técnico<br> ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Firma gestor técnico<br> ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Registro/CC</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000"
+				height="51" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="date" id="fecha1" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="time" id="hora1" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre1" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar1"
+						onclick="abrirFirma('1')">Firmar</button>
+					<img src="" id="firma1" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro1" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="date" id="fecha2" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre2" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar2"
+						onclick="abrirFirma('2')">Firmar</button>
+					<img src="" id="firma2" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro2" class="ecp">
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="8" align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro2" class="ecp">
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="33" align="left" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>OBSERVACIONES</font>
+				</b> <button type="button" class="btn btn-info btn-sm oculto-impresion" id="btnagregarObs"
+					onclick="agregarObs()">Agregar Observación</button>
+				<button type="button" class="btn btn-info btn-sm m-1 oculto-impresion" onclick="adjuntar()">Adjuntar
+					archivo</button>
+				<button type="button" class="btn btn-warning btn-sm m-1 oculto-impresion" onclick="verArchivos()">Ver
+					archivos</button>
+			</td>
+		</tr>
+
+		<tr>
+
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=14 align="left" valign=middle>
+				<table id="tblobs" style="width: 100%;" class="oculto">
+					<tr>
+						<td colspan="4">
+							<textarea id="obs100" style="width: 100%;" rows="3" class="activo"
+								placeholder="Observaciones..."></textarea>
+						</td>
+					</tr>
+					<tr>
+
+						<td>
+							<input type="text" id="nombre100" placeholder="Nombre" class="activo">
+						</td>
+
+						<td style="width: 200px;">
+							<input type="text" id="registro100" placeholder="CC/REGISTRO" class="activo">
+						</td>
+						<td>
+							<button type="button" class="btn btn-info btn-block" id="btnFirmar21"
+								onclick="abrirFirma('100')">Firmar</button>
+							<img src="" id="firma100" width="130px" height="50px" class="oculto">
+						</td>
+						<td>
+
+						</td>
+					</tr>
+				</table>
+			</td>
+
+		</tr>
+		<tr>
+
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=14 height="42" align="left" valign=middle bgcolor="#FFFFFF" id="observaciones"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+
+
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="34" align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" color="#000000"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="32" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>2. DATOS DE CALIBRACIÓN</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="13" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="13" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" colspan=4 height="26" align="left" valign=middle><b>
+					<font face="Arial Narrow" size=4>CONEXIÓN COMÚN (CONTACTOS) C: Cumple NC: No cumple N: No</font>
+				</b></td>
+			<td colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<select id="conexion" style="width: 70px;" class="ut" onchange="actConexion()">
+						<option value=""></option>
+						<option value="C">C</option>
+						<option value="NC">NC</option>
+						<option value="N">N</option>
+					</select>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="13" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="13" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="3" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="37" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td rowspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=1><br></font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>PUNTO DE DISPARO</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>PUNTO DE REPOSICIÓN</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				rowspan=2 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>BANDA MUERTA</font>
+				</b></td>
+			<td colspan=2 rowspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>SUBIENDO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>BAJANDO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>SUBIENDO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>BAJANDO</font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="36" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="subiendoa1" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="bajandoa1" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="subiendob1" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bajandob1" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bandaM1" onchange="actDatos()">
+				</b></td>
+			<td colspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="36" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="subiendoa2" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="bajandoa2" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="subiendob2" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bajandob2" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bandaM2" onchange="actDatos()">
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="36" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="subiendoa3" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="bajandoa3" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="subiendob3" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bajandob3" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bandaM3" onchange="actDatos()">
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="36" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="subiendoa4" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="bajandoa4" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="subiendob4" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bajandob4" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bandaM4" onchange="actDatos()">
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="36" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="subiendoa5" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="bajandoa5" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="subiendob5" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bajandob5" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bandaM5" onchange="actDatos()">
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="36" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="subiendoa6" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="bajandoa6" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="subiendob6" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bajandob6" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle><b>
+					<input type="text" id="bandaM6" onchange="actDatos()">
+				</b></td>
+			<td colspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="15" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="34" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>3. ESTADO INICIAL </font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				height="46" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Hora</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Nombre supervisor<br> UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000"> Firma supervisor<br>UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Registro/CC</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Nombre operaciones<br> ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000"> Firma operaciones<br>ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Registro/CC</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				height="40" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="date" id="fecha3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="time" id="hora3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar3"
+						onclick="abrirFirma('3')">Firmar</button>
+					<img src="" id="firma3" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="date" id="fecha4" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre4" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar4"
+						onclick="abrirFirma('4')">Firmar</button>
+					<img src="" id="firma4" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro4" class="ecp">
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="8" align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro4" class="ecp">
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#000000"><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#000000"><br></font>
+				</b></td>
+			<td align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#000000"><br></font>
+				</b></td>
+			<td align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#000000"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#000000"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="34" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4>4. ESTADO FINAL</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				height="48" align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Hora</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Nombre supervisor<br> UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000"> Firma supervisor<br>UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Registro/CC</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Nombre operaciones<br> ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000"> Firma operaciones<br>ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#C0C0C0"><b>
+					<font face="Arial Narrow" size=4 color="#000000">Registro/CC</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000"
+				height="40" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="date" id="fecha5" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="time" id="hora5" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre5" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar5"
+						onclick="abrirFirma('5')">Firmar</button>
+					<img src="" id="firma5" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro5" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="date" id="fecha6" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre6" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar6"
+						onclick="abrirFirma('6')">Firmar</button>
+					<img src="" id="firma6" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="registro6" class="ecp">
+				</b></td>
+		</tr>
+		<tr>
+			<td colspan=12 height="17" align="center" valign=middle>
+				<font face="Arial Narrow" size=1>Documento emitido por el Servicio de Calidad de la Compañía. El
+					documento es propiedad de UT ITALCO. La empresa protegerá sus propios derechos en los tribunales
+					civiles y penales de acuerdo con la ley.</font>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=12 height="17" align="center" valign=middle><b>
+					<font face="Arial Narrow" size=1>** Fin del formato **</font>
+				</b></td>
+		</tr>
+	</table>
+
+	<!-- Modal -->
+	<div class="modal" id="modalFirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: 600px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Firmar Documento</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<center><canvas id="canvas" style="border: 1px solid black;" width="560" height="320"></canvas>
+						<br><input type="checkbox" id="poldatos" checked>
+						Acepto las <a href="javascript::void(0)" onclick="mostraraviso()">políticas de protección de
+							datos personales</a>
+					</center>
+
+				</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger" id="btnLimpiar">Limpiar</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="pasarFirma()">Pasar a
+						documento</button>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- ************************************************************************** -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script> -->
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+			</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+			</script>
+
+
+		<script src="os112.js"></script>
+</body>
+
+
+</html>
