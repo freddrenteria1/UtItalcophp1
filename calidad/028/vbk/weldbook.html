@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+        <script src="weldbook/jquery.min.js"></script>
+        <script src="weldbook/jquery-ui.min.js"></script>
+        <script src="weldbook/jquery.jqGrid.min.js"></script>
+        <script src="weldbook/grid.locale-en.js"></script>
+        <link rel="stylesheet" href="weldbook/jquery-ui.css">
+        <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+        <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+   
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    
+
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column { 
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1; 
+            
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>WELDBOOK ODS 028 VISCORREDUCTORA II</h4>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+                 
+                <div class="col-sm-10">
+                    Última modificación: <span id="fecha"> </span>
+                    
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success"  onclick="selOds()">Cargar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <div>
+
+                <table class="table table-striped table-bordered" id="grid1b"></table>
+                <div id="jqGridPager"></div>
+            </div>
+
+
+             
+        </div>
+    </div>
+  
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/028/vbk/weldbook/server/";
+        var datas = null
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+      
+
+        if (user == null) {
+            location = "index.html";
+        }
+
+         
+        datos = JSON.parse(sessionStorage.getItem('weldbook'))
+        console.log(datos)
+
+        if(datos==null){
+            $.post(url + "cargarDatosWeldbook.php", function (resp) {
+                datos = resp;
+                cargarDatos();
+            })
+        }else{
+            cargarDatos();
+        }
+
+        
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function selOds() {
+            Swal.fire({
+                title: 'Login',
+                html: `Digite usuario, contraseña y Planta <br><br>
+                    <div style="width: 50%; margin: auto;">
+                       
+                        usuario <br>
+                        <input type="text" class="form-control" id="usercali">
+                        <br>
+                        Clave de acceso <br>
+                        <input type="password" class="form-control" id="claveecp"> <br>
+
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    var usercali = $('#usercali').val()
+                    var claveecp = $('#claveecp').val()
+                    var odssel = '028'
+                    var planta = $('#planta').val()
+
+
+                    $.post(url + 'vingreso.php', {
+                            user: usercali,
+                            clave: claveecp
+                        },
+                        function (resp) {
+                            if (resp.msn == 'Ok') {
+                                sessionStorage.setItem('usercal', usercali)
+                                sessionStorage.setItem('tipouser', resp.tipo)
+                                localStorage.setItem('odsq', odssel)
+
+                                if(resp.tipo=='italco'){
+
+                                    location = 'weldbook/weldbook.html'
+                                }
+                                
+
+                            } else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Acceso denegado...!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+
+
+                }
+            })
+        }
+
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+            formData.append("user", user);
+
+            $.ajax({
+                url: url + "guardarExcelWeldbook.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            location.reload()
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+
+                ("use strict");
+                $("#grid1b").jqGrid({
+
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [
+                        {name: "item", label: "ID", width: 50,frozen:true}, 
+                        {name: "ods", label: "ODS", width: 80,frozen:true}, 
+                        {name: "planta", label: "PLANTA <br>/UNIDAD", width: 120,frozen:true}, 
+                        {name: "especialidad", label: "ESPECIALIDAD", width: 120, frozen:true},
+                        {name: "equipo", label: "INGENIERÍA <br> / LÍNEA <br> / EQUIPO", width: 220, frozen:true},
+                        {name: "descripcion", label: "DECRIPCIÓN", width: 250,},
+                        {name: "plano", label: "PLANO <br> /ISOMÉTRICO", width: 300,},
+                        {name: "sk", label: "SK UT  <br>ITALCO", width: 80, align:"center", frozen:true},
+                        {name: "rev", label: "REV.", width: 35, align:"center"},
+                        {name: "materialb1", label: "MATERIAL <br> BASE 1", width: 120, align:"center"},
+                        {name: "materialb2", label: "MATERIAL <br> BASE 2", width: 120, align:"center"},
+                        {name: "clasemetal", label: "CLASIFICACIÓN <br> METALURGÍA", width: 60, align:"center"},
+                        {name: "spool", label: "SPOOL", width: 50, align:"center"},
+                        {name: "descjunta1", label: "DESCRIPCIÓN DE <br> JUNTA 1", width: 120, align:"center"},
+                        {name: "descjunta2", label: "DESCRIPCIÓN DE <br> JUNTA 2", width: 120, align:"center"},
+                        {name: "numjunta", label: "# DE<br> JUNTA", width: 50, align:"center" },
+                        {name: "lugar", label: "TALLER (T) <br> CAMPO (C)", width: 80, align:"center"},
+                        {name: "pulgadas", label: "Φ inch", width: 80, align:"center"},
+                        {name: "schthk", label: "SCH/THK", width: 80, align:"center"},
+                        {name: "proceso", label: "PROCESO <br>SOLDADURA", width: 100, align:"center"},
+                        {name: "tipojunta", label: "TIPO JUNTA", width: 100, align:"center"},
+                        {name: "mataporte", label: "MAT. DE <br>APORTE", width: 120, align:"center"},
+                        {name: "wps", label: "WPS", width: 120, align:"center"},
+                        {name: "fecha", label: "FECHA EJECUTADA", width: 120, align:"center"},
+                        {name: "estw1", label: "W1", width: 60, align:"center"},
+                        {name: "estw2", label: "W2", width: 60, align:"center"},
+                        {name: "estw3", label: "W3", width: 60, align:"center"},
+                        {name: "estw4", label: "W4", width: 60, align:"center"},
+                        {name: "cantw1", label: "W1", width: 60, align:"center"},
+                        {name: "cantw2", label: "W2", width: 60, align:"center"},
+                        {name: "cantw3", label: "W3", width: 60, align:"center"},
+                        {name: "cantw4", label: "W4", width: 60, align:"center"},
+                        {name: "cantpw1", label: "W1", width: 80, align:"center"},
+                        {name: "cantpw2", label: "W2", width: 80, align:"center"},
+                        {name: "cantpw3", label: "W3", width: 80, align:"center"},
+                        {name: "cantpw4", label: "W4", width: 80, align:"center"},
+                        {name: "vt", label: "VT", width: 80, align: "center"},
+                        {name: "plpresultado", label: "RESUL-<br>TADO", width: 80, align: "center"},
+                        {name: "plpinforme", label: "N° INFORME", width: 80, align: "center"},
+                        {name: "rxpreresultado", label: "RESULTADO", width: 80, align: "center"},
+                        {name: "rxprefecha", label: "FECHA", width: 80, align: "center"},
+                        {name: "rxpreinforme", label: "N° INFORME", width: 80, align: "center"},
+                        {name: "utpreresultado", label: "RESULTADO", width: 80, align: "center"},
+                        {name: "utprefecha", label: "FECHA", width: 80, align: "center"},
+                        {name: "utpreinforme", label: "N° INFORME", width: 80, align: "center"},
+                        {name: "pwhtresultado", label: "RESULTADO", width: 80, align: "center"},
+                        {name: "pwhtfecha", label: "FECHA", width: 80, align: "center"},
+                        {name: "pwhtinforme", label: "N° INFORME", width: 80, align: "center"},
+                        {name: "durezaresultado", label: "RESULTADO", width: 80, align: "center"},
+                        {name: "durezafecha", label: "FECHA", width: 80, align: "center"},
+                        {name: "durezainforme", label: "N° INFORME", width: 80, align: "center"},
+                        {name: "rxpostresultado", label: "RESULTADO", width: 80, align: "center"},
+                        {name: "rxpostfecha", label: "FECHA", width: 80, align: "center"},
+                        {name: "rxpostinforme", label: "N° INFORME", width: 80, align: "center"},
+                        {name: "utpostresultado", label: "RESULTADO", width: 80, align: "center"},
+                        {name: "utpostfecha", label: "FECHA", width: 80, align: "center"},
+                        {name: "utpostinforme", label: "N° INFORME", width: 80, align: "center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 600,}                    
+                    ],
+                   
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                     
+                });
+
+                $("#grid1b").jqGrid('setGroupHeaders', {
+                useColSpanStyle: true, 
+                groupHeaders:[
+                    {startColumnName: 'estw1', numberOfColumns: 4, titleText: 
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>ESTAMPE SOLDADOR</center></td></tr>' +
+                    '</table>'},
+                    {startColumnName: 'cantw1', numberOfColumns: 4, titleText: 
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>CANTIDAD JUNTA SOLDADA X SOLDADOR</center></td></tr>' +
+                    '</table>'},
+                    {startColumnName: 'cantpw1', numberOfColumns: 4, titleText:     
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>CANTIDAD PULG. DIAM. X SOLDADOR</center></td></tr>' +
+                    '</table>'},
+                    {startColumnName: 'plpresultado', numberOfColumns: 2, titleText: 
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>PLP</center></td></tr>' +
+                    '</table>'},
+                    {startColumnName: 'rxpreresultado', numberOfColumns: 3, titleText: 
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>RX PRE PWHTX</center></td></tr>' +
+                    '</table>'
+                    },
+                    {startColumnName: 'utpreresultado', numberOfColumns: 3, titleText:
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>UT PRE PWHT</center></td></tr>' +
+                    '</table>'
+                    },
+                    {startColumnName: 'pwhtresultado', numberOfColumns: 3, titleText: 
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>PWHT</center></td></tr>' +
+                    '</table>'
+                    },
+                    {startColumnName: 'durezaresultado', numberOfColumns: 3, titleText: 
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>DUREZA</center></td></tr>' +
+                    '</table>'
+                    },
+                    {startColumnName: 'rxpostresultado', numberOfColumns: 3, titleText:
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>RX POST PWHT</center></td></tr>' +
+                    '</table>'
+                    },
+                    {startColumnName: 'utpostresultado', numberOfColumns: 3, titleText:
+                    '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                        '<tr><td id="h0" style="color: #000;"><center>UT POST PWHT</center></td></tr>' +
+                    '</table>'
+                    },
+
+                ]
+                });
+
+                
+
+                 $("#grid1b").jqGrid('filterToolbar',
+                {autoSearch: true, searchOnEnter: false,});
+
+                cargarBitacora()
+ 
+            
+             
+        }
+
+        function cargarBitacora(){
+
+            $.post(url + "cargarBitacoraWeldbook.php", function (resp) {
+                datos = resp;
+
+                Swal.close();
+
+                
+                $('#fecha').html(datos.fecha)
+                 
+
+            
+            });
+
+
+
+        }
+
+         
+    </script>
+</body>
+
+</html>

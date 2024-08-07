@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOLOS QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        tr {
+            cursor: pointer;
+        }
+
+        .hiddenRow {
+            padding: 0 !important;
+        }
+
+        body {
+            background-image: url('img/fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            margin-top: 330px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cajones {
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 200px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 22rem;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h2>INFORME FIRMAS PROTOCOLOS ODS <span id="ods"></span>
+                    <button type="button" class="btn btn-warning" onclick="volver()">Volver</button>
+                   
+                </h2>
+            </div>
+        </div>
+    </nav>
+    <div class="m-3">
+        <div class="m-3" style="padding: 15px;">
+
+            <div class="row">
+                <div class="col-sm-12" style="background-color:  #FFF; padding: 10px;">
+                    <button type="button" class="btn btn-danger" onclick="ocultar('fig1')">Ocultar Series</button>
+                    <button type="button" class="btn btn-success" onclick="mostrar('fig1')">Mostrar Series</button>
+                    <div id="fig1"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig2"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig3"></div>
+                </div>
+
+                <div class="col-sm-12 mt-3">
+                    <div id="fig4"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig5"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig6"></div>
+                </div>
+                <div class="col-sm-12 mt-3">
+                    <div id="fig7"></div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+     
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+
+
+
+    <script>
+         var series  = null
+        var odsq = null
+        var url = "https://utitalco.com/calidad/028/server/";
+
+        var arrayInter = []
+        var firmasInterPlan = []
+        var firmasInterEje = []
+        var arrayInterPorc = []
+
+        var arrayInterFechas = []
+
+        var arrayTorres = []
+        var firmasTorresPlan = []
+        var firmasTorresEje = []
+        var arrayTorresPorc = []
+
+        var arrayTambores = []
+        var firmasTamboresPlan = []
+        var firmasTamboresEje = []
+        var arrayTamboresPorc = []
+
+        var arrayEyectores = []
+        var firmasEyectoresPlan = []
+        var firmasEyectoresEje = []
+        var arrayEyectoresPorc = []
+
+        var arrayLgs = []
+        var firmasLgsPlan = []
+        var firmasLgsEje = []
+        var arrayLgsPorc = []
+        
+        var arrayValvulas = []
+        var firmasValvulasPlan = []
+        var firmasValvulasEje = []
+        var arrayValvulasPorc = []
+        
+        var arrayEstaticos = []
+        var firmasEstaticosPlan = []
+        var firmasEstaticosEje = []
+        var arrayEstaticosPorc = []
+        
+
+        odsq = '028';
+        $('#ods').html(odsq)
+
+        cargarListado(odsq)
+
+
+        function cargarListado() {
+            cargando()
+            $.post(url + 'sumasInter.php', {
+                    ods: odsq
+                },
+                function (resp) {
+                    arrayInter = resp
+
+                    for (var i = 0; i < arrayInter.length; i++) {
+                        
+                        arrayInterFechas.push(arrayInter[i].fecha)
+
+                        firmasInterPlan.push(parseInt(arrayInter[i].firmasPlan))
+                        firmasInterEje.push(parseInt(arrayInter[i].firmasEje))
+                        arrayInterPorc.push(parseInt(arrayInter[i].porc))
+
+                    }
+
+                    $.post(url + 'sumasTorres.php', {
+                    ods: odsq
+                    },
+                    function (resp) {
+                        arrayTorres = resp
+
+                        for (var i = 0; i < arrayTorres.length; i++) {
+                            
+                            firmasTorresPlan.push(parseInt(arrayTorres[i].firmasPlan))
+                            firmasTorresEje.push(parseInt(arrayTorres[i].firmasEje))
+                            arrayTorresPorc.push(parseInt(arrayTorres[i].porc))
+
+                        }
+
+                        $.post(url + 'sumasTambores.php', {
+                        ods: odsq
+                        },
+                        function (resp) {
+                            arrayTambores = resp
+
+                            for (var i = 0; i < arrayTambores.length; i++) {
+                                
+                                firmasTamboresPlan.push(parseInt(arrayTambores[i].firmasPlan))
+                                firmasTamboresEje.push(parseInt(arrayTambores[i].firmasEje))
+                                arrayTamboresPorc.push(parseInt(arrayTambores[i].porc))
+
+                            }
+
+                            $.post(url + 'sumasEyectores.php', {
+                            ods: odsq
+                            },
+                            function (resp) {
+                                arrayEyectores = resp
+
+                                for (var i = 0; i < arrayEyectores.length; i++) {
+                                    
+                                    firmasEyectoresPlan.push(parseInt(arrayEyectores[i].firmasPlan))
+                                    firmasEyectoresEje.push(parseInt(arrayEyectores[i].firmasEje))
+                                    arrayEyectoresPorc.push(parseInt(arrayEyectores[i].porc))
+
+                                }
+
+                                $.post(url + 'sumasLgs.php', {
+                                ods: odsq
+                                },
+                                function (resp) {
+                                    arrayLgs = resp
+
+                                    for (var i = 0; i < arrayLgs.length; i++) {
+                                        
+                                        firmasLgsPlan.push(parseInt(arrayLgs[i].firmasPlan))
+                                        firmasLgsEje.push(parseInt(arrayLgs[i].firmasEje))
+                                        arrayLgsPorc.push(parseInt(arrayLgs[i].porc))
+
+                                    }
+
+                                    $.post(url + 'sumasValvulas.php', {
+                                    ods: odsq
+                                    },
+                                    function (resp) {
+                                        arrayValvulas = resp
+
+                                        for (var i = 0; i < arrayValvulas.length; i++) {
+                                            
+                                            firmasValvulasPlan.push(parseInt(arrayValvulas[i].firmasPlan))
+                                            firmasValvulasEje.push(parseInt(arrayValvulas[i].firmasEje))
+                                            arrayValvulasPorc.push(parseInt(arrayValvulas[i].porc))
+
+                                        }
+
+                                         
+
+                                            $.post(url + 'sumasEstaticos.php', {
+                                            ods: odsq
+                                            },
+                                            function (resp) {
+                                                arrayEstaticos = resp
+
+                                                for (var i = 0; i < arrayEstaticos.length; i++) {
+                                                    
+                                                    firmasEstaticosPlan.push(parseInt(arrayEstaticos[i].firmasPlan))
+                                                    firmasEstaticosEje.push(parseInt(arrayEstaticos[i].firmasEje))
+                                                    arrayEstaticosPorc.push(parseInt(arrayEstaticos[i].porc))
+
+                                                }
+
+                                                        Swal.fire({
+                                                            position: 'top-end',
+                                                            icon: 'success',
+                                                            width: 150,
+                                                            showConfirmButton: false,
+                                                            timer: 1500
+                                                        }).then(() => {
+
+                                                            cargarGraficas()
+
+                                                        })
+
+                                             
+                                        }) 
+                                    })
+                                })
+                            })                        
+                        })
+                    })
+                })
+        }
+
+
+        function cargarGraficas() {
+
+            Highcharts.chart('fig1', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA ESTÁTICOS'
+                },
+                
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasEstaticosPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasEstaticosEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayEstaticosPorc
+                }
+            ]
+            });
+
+
+            Highcharts.chart('fig2', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA INTERCAMBIADORES'
+                },
+                
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasInterPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasInterEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayInterPorc
+                }
+            ]
+            });
+
+            Highcharts.chart('fig3', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA TORRES'
+                },
+                
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasTorresPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasTorresEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayTorresPorc
+                }
+            ]
+            });
+
+            Highcharts.chart('fig4', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA TAMBORES'
+                },
+                
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasTamboresPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasTamboresEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayTamboresPorc
+                }
+            ]
+            });
+
+
+             Highcharts.chart('fig5', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA EYECTORES'
+                },
+                
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasEyectoresPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasEyectoresEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayEyectoresPorc
+                }
+            ]
+            });
+
+
+            Highcharts.chart('fig6', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA LGS'
+                },
+                
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasLgsPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasLgsEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayLgsPorc
+                }
+            ]
+            });
+
+            Highcharts.chart('fig7', {
+                colors: [
+                    "#004236",
+                    "#00c901",
+                    "#F8F9F9 ",
+                    "#C51111",
+                    "#a4c639",
+                    "#180272",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: 'spline',
+                    height: 400,
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                title: {
+                    text: 'CURVA VÁLVULAS'
+                },
+                
+                xAxis: {
+                    categories: arrayInterFechas
+                },
+                yAxis: {
+                    title: {
+                        text: 'CANT'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Firmas Plan',
+                    data: firmasValvulasPlan
+                }, {
+                    name: 'Firmas Eje',
+                    data: firmasValvulasEje
+                }, {
+                    name: '% Firmas Eje',
+                    data: arrayValvulasPorc
+                }
+            ]
+            });
+
+
+           
+            
+        }
+
+        
+        function volver() {
+            location = 'menu.html'
+        }
+
+        function esp() {
+            location = 'informerca.html'
+        }
+
+        function curva() {
+            location = 'curvakpi.html'
+        }
+
+
+        $('.collapse').on('show.bs.collapse', function () {
+            $('.collapse.in').collapse('hide');
+        });
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando datos!',
+                html: 'Un momento por favor...',
+                timer: 15000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        function cargando2() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando datos!',
+                html: 'Un momento por favor...',
+                timer: 1000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        $('.collapse').on('show.bs.collapse', function () {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                width: 150,
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
+
+        function ocultar(e){
+            for(var i=0; i<20; i++){
+                series = $('#'+e).highcharts().series[i];
+                series.update({visible: false});
+            }
+        }
+
+        function mostrar(e){
+            for(var i=0; i<20; i++){
+                series = $('#'+e).highcharts().series[i];
+                series.update({visible: true});
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

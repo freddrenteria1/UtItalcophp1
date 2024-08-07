@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+        <script src="weldbook/jquery.min.js"></script>
+        <script src="weldbook/jquery-ui.min.js"></script>
+        <script src="weldbook/jquery.jqGrid.min.js"></script>
+        <script src="weldbook/grid.locale-en.js"></script>
+        <link rel="stylesheet" href="weldbook/jquery-ui.css">
+        <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+        <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+
+     
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+  <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+  <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+  <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+  <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+  <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+  <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
+
+    
+    <style>
+         
+        .ui-th-div {vertical-align:top !important}
+        .ui-jqgrid-title { vertical-align:top }
+         
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column { 
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1; 
+            
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h5>CUADRO DE CONTROL INTERCAMBIADORES ODS 028 DEMEX</h5>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+                
+                <div class="col-sm-12">
+                    Última modificación: <span id="fecha"> </span> |
+                    Archivo: <span id="doc"> </span> |
+                    Usuario: <span id="user"> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+                <table class="table table-striped" id="grid1b"></table>
+
+                <div class="mt-3">
+                    <table class="table table-striped" id="grid1b2"></table>
+                </div>
+
+                <div class="mt-3">
+                    <div id="fig1"></div>
+                </div>
+                         
+        </div>
+
+        
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var res = []
+        var url = "https://utitalco.com/calidad/028/demex/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        if(ventana_ancho > 1300){
+            ventana_alto = ventana_alto - 220;
+        }else{
+            ventana_alto = 330;
+        }
+
+        if (user == null) {
+            location = "index.html";
+        }
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+            formData.append("user", user);
+
+            $.ajax({
+                url: url + "guardarExcelCCInter.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            //location.reload()
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cargarDatosCCInterRes.php", function (resp) {
+                datos = resp.ccinter;
+                res = resp.res;
+
+                console.log(datos);
+                 
+                $("#grid1b").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [
+                    
+                        {name: "item", label: "ID <br><br>.", width: 50, frozen: true}, 
+                        {name: "zona", label: "ZONA EN <br> PLANTA <br>.", width: 80, frozen: true}, 
+                        {name: "tag", label: "TAG <br><br>.", width: 100, frozen: true},
+                        {name: "alcance", label: "ALCANCE", width: 250, align:"center", },
+                        {name: "tipo", label: "TIPO", width: 80, align:"center", },
+                        {name: "numtubos", label: "No. De <br>TUBOS", width: 80, align:"center", },
+                        {name: "descripcion", label: "DESCRIPCIÓN", width: 190,},
+                        {name: "phtubos", label: "PH <br> L TUBOS <br>(PSI)", width: 80, align:"center"},
+                        {name: "phcasco", label: "PH <br> L CASCO <br>(PSI)", width: 80, align:"center"},
+                        {name: "sastubos", label: "LADO <br>TUBOS", width: 80, align:"center"},
+                        {name: "sascasco", label: "LADO <br>CASCO", width: 80, align:"center"},
+                        {name: "hazubicacion", label: "UBICACIÓN", width: 80, align:"center"},
+                        {name: "hazretiro", label: "RETIRO", width: 80, align:"center"},
+                        {name: "hazlavado", label: "LAVADO", width: 80, align:"center"},
+                        {name: "hazeddy", label: "EDDY / IRIS", width: 80, align:"center"},
+                        {name: "hazinspvisual", label: "INSPECCIÓN <br>VISUAL", width: 80, align:"center"},
+                        {name: "hazrtpostinsp", label: "RT POST <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "hazejert", label: "EJECUCIÓN <br>RT", width: 80, align:"center"},
+                        {name: "hazcañuelas", label: "CAÑUELAS", width: 80, align:"center"},
+                        {name: "hazreentube", label: "REENTUBE", width: 80, align:"center"},
+                        {name: "hazliberado", label: "LIBERADO <br>PARA <br>INSTALAR", width: 80, align:"center"},
+
+                        {name: "canalbubicacion", label: "UBICACIÓN", width: 80, align:"center"},
+                        {name: "canalblavado", label: "LAVADO", width: 80, align:"center"},
+                        {name: "canalblimpieza", label: "LIMPIEZA <br>PARA <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "canalbinspvisual", label: "INSPECCIÓN <br>VISUAL", width: 80, align:"center"},
+                        {name: "canalbrtpostinsp", label: "RT POST <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "canalbejert", label: "EJECUCIÓN <br>RT", width: 80, align:"center"},
+                        {name: "canalbejealcance", label: "EJECUCIÓN <br>ALCANCE", width: 80, align:"center"},
+                        {name: "canalbliberado", label: "LIBERADO <br>PARA <br>INSTALAR", width: 80, align:"center"},
+
+                        {name: "tcanalubicacion", label: "UBICACIÓN", width: 80, align:"center"},
+                        {name: "tcanalretiro", label: "RETIRO", width: 80, align:"center"},
+                        {name: "tcanallavado", label: "LAVADO", width: 80, align:"center"},
+                        {name: "tcanallimpieza", label: "LIMPIEZA <br>PARA <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "tcanalinspvisual", label: "INSPECCIÓN <br>VISUAL", width: 80, align:"center"},
+                        {name: "tcanalrtpostinsp", label: "RT POST <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "tcanalejert", label: "EJECUCIÓN <br>RT", width: 80, align:"center"},
+                        {name: "tcanalejealcance", label: "EJECUCIÓN <br>ALCANCE", width: 80, align:"center"},
+                        {name: "tcanalliberado", label: "LIBERADO <br>PARA <br>INSTALAR", width: 80, align:"center"},
+
+                        {name: "tcabfubicacion", label: "UBICACIÓN", width: 80, align:"center"},
+                        {name: "tcabfretiro", label: "RETIRO", width: 80, align:"center"},
+                        {name: "tcabflavado", label: "LAVADO", width: 80, align:"center"},
+                        {name: "tcabflimpieza", label: "LIMPIEZA <br>PARA <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "tcabfinspvisual", label: "INSPECCIÓN <br>VISUAL", width: 80, align:"center"},
+                        {name: "tcabfrtpostinsp", label: "RT POST <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "tcabfejert", label: "EJECUCIÓN <br>RT", width: 80, align:"center"},
+                        {name: "tcabfejealcance", label: "EJECUCIÓN <br>ALCANCE", width: 80, align:"center"},
+                        {name: "tcabfliberado", label: "LIBERADO <br>PARA <br>INSTALAR", width: 80, align:"center"},
+
+                        {name: "amlubicacion", label: "UBICACIÓN", width: 80, align:"center"},
+                        {name: "amlretiro", label: "RETIRO", width: 80, align:"center"},
+                        {name: "amllavado", label: "LAVADO", width: 80, align:"center"},
+                        {name: "amlinspvisual", label: "INSPECCIÓN <br>VISUAL", width: 80, align:"center"},
+                        {name: "amlrtpostinsp", label: "RT POST <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "amlejert", label: "EJECUCIÓN <br>RT", width: 80, align:"center"},
+                        {name: "amlejealcance", label: "EJECUCIÓN <br>ALCANCE", width: 80, align:"center"},
+                        {name: "amlliberado", label: "LIBERADO <br>PARA <br>INSTALAR", width: 80, align:"center"},
+
+                        {name: "cclavado", label: "LAVADO", width: 80, align:"center"},
+                        {name: "cclimpieza", label: "LIMPIEZA <br>PARA <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "ccinspvisual", label: "INSPECCIÓN <br>VISUAL", width: 80, align:"center"},
+                        {name: "ccrtpostinsp", label: "RT POST <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "ccejert", label: "EJECUCIÓN <br>RT", width: 80, align:"center"},
+                        {name: "ccejealcance", label: "EJECUCIÓN <br>ALCANCE", width: 80, align:"center"},
+                        {name: "ccliberado", label: "LIBERADO <br>PARA <br>INSTALAR", width: 80, align:"center"},
+
+                        {name: "tccubicacion", label: "UBICACIÓN", width: 80, align:"center"},
+                        {name: "tccretiro", label: "RETIRO", width: 80, align:"center"},
+                        {name: "tcclavado", label: "LAVADO", width: 80, align:"center"},
+                        {name: "tcclimpieza", label: "LIMPIEZA <br>PARA <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "tccinspvisual", label: "INSPECCIÓN <br>VISUAL", width: 80, align:"center"},
+                        {name: "tccrtpostinsp", label: "RT POST <br>INSPECCIÓN", width: 80, align:"center"},
+                        {name: "tccejert", label: "EJECUCIÓN <br>RT", width: 80, align:"center"},
+                        {name: "tccejealcance", label: "EJECUCIÓN <br>ALCANCE", width: 80, align:"center"},
+                        {name: "tccliberado", label: "LIBERADO <br>PARA <br>INSTALAR", width: 80, align:"center"},
+
+                        {name: "armhaz", label: "HAZ DE TUBOS", width: 80, align:"center"},
+                        {name: "armcanal", label: "CANAL", width: 80, align:"center"},
+                        {name: "armtcanal", label: "TAPA CANAL", width: 80, align:"center"},
+                        {name: "armtcf", label: "TCF Y <br>ANILLOS/ <br>MEDIAS <br>LUNAS", width: 80, align:"center"},
+                        {name: "armtapacc", label: "TAPA CASCO", width: 80, align:"center"},
+
+                        {name: "phladotubos", label: "LADO TUBOS", width: 80, align:"center"},
+                        {name: "phladocasco", label: "LADO CASCO", width: 80, align:"center"},
+
+                        {name: "normsoldsello", label: "SOLDADURA <br>DE SELLOS", width: 80, align:"center"},
+                        {name: "normpintura", label: "PINTURA <br>EXTERIOR", width: 80, align:"center"},
+                        {name: "normaislamiento", label: "AISLAMIENTO", width: 80, align:"center"},
+                        {name: "normretciegos", label: "RETIRO DE <br>CIEGOS", width: 80, align:"center"},
+                        {name: "normrca", label: "RCA", width: 80, align:"center"},
+
+                                       
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+               
+
+                $("#grid1b").jqGrid('filterToolbar',
+                {autoSearch: true, searchOnEnter: false,});
+                                            
+
+                $("#grid1b").jqGrid('setGroupHeaders', {
+                    useColSpanStyle: true,
+                    groupHeaders: [
+                         
+                        {
+                            startColumnName: 'sastubos',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>SAS</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'hazubicacion',
+                            numberOfColumns: 10,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>HAZ DE TUBOS</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'canalbubicacion',
+                            numberOfColumns: 8,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>CANAL Ó BONETE</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'tcanalubicacion',
+                            numberOfColumns: 9,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TAPA CANAL</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'tcabfubicacion',
+                            numberOfColumns: 9,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TAPA CABEZAL FLOTANTE</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'amlubicacion',
+                            numberOfColumns: 8,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>ANILLO Y MEDIAS LUNAS</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'cclavado',
+                            numberOfColumns: 7,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>CASCO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'tccubicacion',
+                            numberOfColumns: 9,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TAPA CASCO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'armhaz',
+                            numberOfColumns: 5,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>ARMADO DE PARTES</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'phladotubos',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>PRUEBA HIDROSTÁTICA</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'normsoldsello',
+                            numberOfColumns: 5,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>NORMALIZACIÓN</center></td></tr>' +
+                                '</table>',
+                        },
+                        
+                         
+                    ]
+                });
+
+               
+
+                $("#grid1b").jqGrid('setFrozenColumns');
+
+                cargarBitacora()
+
+            
+            
+            });
+        }
+
+        function cargarBitacora(){
+
+            $.post(url + "cargarBitacoraCCRt.php", function (resp) {
+                datos = resp;
+
+                Swal.close();
+
+                
+                $('#fecha').html(datos.fecha)
+                $('#doc').html(datos.archivo)
+                $('#user').html(datos.user)
+
+                cargarResumen()
+
+            
+            });
+
+
+
+        }
+
+        function cargarResumen(){
+            $("#grid1b2").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: res,
+                    colModel: [
+                    
+                        {name: "actividad", label: "ACTIVIDAD", width: 250, frozen: true}, 
+                        {name: "haztotal", label: "TOTAL", width: 70, frozen: true, align:"center"}, 
+                        {name: "hazeje", label: "EJE", width: 70, frozen: true, align:"center"},
+                        {name: "canaltotal", label: "TOTAL", width: 70, frozen: true, align:"center"}, 
+                        {name: "canaleje", label: "EJE", width: 70, frozen: true, align:"center"},
+                        {name: "tpcanaltotal", label: "TOTAL", width: 70, frozen: true, align:"center"}, 
+                        {name: "tpcanaleje", label: "EJE", width: 70, frozen: true, align:"center"},
+                        {name: "tpftotal", label: "TOTAL", width: 70, frozen: true, align:"center"}, 
+                        {name: "tpfeje", label: "EJE", width: 70, frozen: true, align:"center"},
+                        {name: "anitotal", label: "TOTAL", width: 70, frozen: true, align:"center"}, 
+                        {name: "anieje", label: "EJE", width: 70, frozen: true, align:"center"},
+                        {name: "cascototal", label: "TOTAL", width: 70, frozen: true, align:"center"}, 
+                        {name: "cascoeje", label: "EJE", width: 70, frozen: true, align:"center"},
+                        {name: "tpcascototal", label: "TOTAL", width: 70, frozen: true, align:"center"}, 
+                        {name: "tpcascoeje", label: "EJE", width: 70, frozen: true, align:"center"},
+                                       
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+               
+
+                // $("#grid1b2").jqGrid('filterToolbar',
+                // {autoSearch: true, searchOnEnter: false,});
+                                            
+
+                $("#grid1b2").jqGrid('setGroupHeaders', {
+                    useColSpanStyle: true,
+                    groupHeaders: [
+                         
+                        {
+                            startColumnName: 'haztotal',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>HAZ DE TUBOS</center></td></tr>' +
+                                '</table>',
+                        },
+                        
+                        {
+                            startColumnName: 'canaltotal',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>CANAL Ó BONETE</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'tpcanaltotal',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TAPA CANAL</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'tpftotal',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TAPA CABEZAL FLOTANTE</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'anitotal',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>ANILLO Y MEDIAS LUNAS</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'cascototal',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>CASCO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'tpcascototal',
+                            numberOfColumns: 2,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TAPA CASCO</center></td></tr>' +
+                                '</table>',
+                        },
+                         
+                        
+                         
+                    ]
+                });
+
+               
+
+                $("#grid1b2").jqGrid('setFrozenColumns');
+
+                //cargarGraficas()
+        }
+
+        function cargarGraficas(){
+            Highcharts.chart("fig1", {
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                    
+                    // options3d: {
+                    //     enabled: true,
+                    //     alpha: 15,
+                    //     beta: 15,
+                    //     viewDistance: 25,
+                    //     depth: 40
+                    // }
+                },
+                title: {
+                    text: "<b>AVANCE MISCELANEOS</b>",
+                },
+
+                xAxis: {
+                    categories: ["HAZ DE TUBOS", "CANAL Ó BONETE", "TAPA CANAL", "TAPA CABEZAL FLOTANTE", "ANILLO Y MEDIAS LUNAS", "CASCO", "TAPA CASCO"
+                    ],
+                    crosshair: true,
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                        name: "TOTAL",
+                        data: [res.haztotal, res.canaltotal,res.tpcanaltotal,res.tpftotal,res.anitotal,res.cascototal,res.tpcascototal],
+                    },
+                    {
+                        name: "EJECUTADAS",
+                        data: [res.hazeje, res.canaleje,res.tpcanaleje,res.tpfeje,res.anieje,res.cascoeje,res.tpcascoeje],
+                    }
+                ],
+            });
+
+        }
+
+         
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet">
+
+        <style>
+            body {
+                background-image: url('img/fondo_b.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                height: 100hv;
+                font-family: 'Montserrat Alternates', sans-serif;
+                font-family: 'Roboto', sans-serif;
+                font-weight: normal;
+            }
+    
+            video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                z-index: -9999;
+            }
+    
+            .cab {
+                margin-top: 30px;
+                background-color: rgb(218, 255, 255);
+                padding: 20px;
+                border-radius: 15px;
+            }
+    
+            .titulop {
+                padding: 15px;
+                padding-top: 20px;
+                align-items: center;
+                vertical-align: middle;
+                text-align: center;
+            }
+    
+            .mnubotones {
+                position: relative;
+            }
+    
+            .cajones {
+                float: left;
+                margin: 10px;
+                 background-color: #138496;
+                 border-radius: 10px;
+            }
+    
+            .mbt {
+                height: 100px;
+                background-color: #138496;
+                border-radius: 10px;
+                height: 128px;
+            }
+    
+            .mimnu {
+                background: transparent;
+            }
+    
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 21rem;
+                height: 90px;
+                border-radius: 10px;
+            }
+    
+            .mitit {
+                color: #000;
+                /* text-shadow: 2px 2px 4px #000000; */
+            }
+    
+            .cuerpo {
+                margin-top: 20px;
+                border-radius: 10px;
+                background-color: rgb(243, 243, 243);
+                padding: 15px;
+            }
+    
+            .padre {
+                display: flex;
+                align-items: center;
+            }
+    
+            video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                z-index: -9999;
+            }
+    
+            .hijoc{
+                position: relative;
+                top: -65px;
+                left: 100px;
+                width: 110px;
+                height: 110px;
+                background-color: #fff;
+                border-radius: 100%;
+                border-style: solid;
+                border-width: 2px;
+                border-color: #138496;
+                box-shadow: 0px 4px 10px #3d3d3d;
+                overflow: hidden;
+                display: flex;
+                 justify-content: center;
+            }
+    
+            .hijom{
+                position: relative;
+                top: -50px;
+            }
+    
+            @media only screen and (max-width: 600px) {
+                .mnubotones {
+                    margin-top: 30px;
+                    display: block;
+                    justify-content: center;
+                    align-items: center;
+                }
+    
+                .card {
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                    width: 100%;
+                }
+            }
+        </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light mimnu">
+
+        <div class="container ">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <center>
+                    <h4 class="text-center mitit">
+                        REGISTRO HOJAS DE DATOS U-2800 VISCORREDUCTORA II
+                        <button type="button" class="btn btn-danger" onclick="salir()">Salir</button>
+                        <button type="button" class="btn btn-success" onclick="nota()">Agregar Notas</button>
+                    </h4>
+                </center>
+            </div>
+             
+        </div>
+    </nav>
+
+     
+
+    <div class="container">
+        <div class="mnubotones">
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('WELDBOOK')">
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="90px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                WELDBOOK
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('BRIDAS')">
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="90px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                MASTER DE BRIDAS
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCPUNTOS')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL PUNTOS DE INSPECCIÓN
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCLAZOS')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL LAZOS DE CORROSIÓN
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCMISC')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL MISCELANEOS
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCRT')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL RECOMENDACIONES TÉCNICAS
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCINTER')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL INTERCAMBIADORES
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCTAMBORES')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL TAMBORES
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCLGS')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL LGS
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCVALVULAS')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL VÁLVULAS DE SEGURIDAD
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('CCTORRES')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                CUADRO DE CONTROL TORRES
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('RESUMENINTER')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                RESUMEN INTERCAMBIADORES
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cajones">
+                <div class="card">
+                    <button type="button" class="btn btn-info mbt" onclick="abrir('INFDEF')">
+
+                        <div class="row padre">
+                            <div class="col-sm-4 hijo">
+                                <img src="img/protocolo_.png" width="80px" alt="">
+                            </div>
+                            <div class="col-sm-8 hijo">
+                                INFORMES JUNTAS RECHAZADAS END VOLUMÉTRICOS
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+             
+
+        </div>
+    </div>
+
+ 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+         
+
+        var odsq = null
+        var arrayEquipos = null
+        var especialidad = null
+        var url = "https://utitalco.com/calidad/028/vbk/server/";
+
+        var user = sessionStorage.getItem('usercal');
+        var tipouser = sessionStorage.getItem('tipouser');
+
+        if (user == null) {
+            location = 'index.html'
+        }
+
+         
+        
+        function abrir(e){
+            if(e=='WELDBOOK'){
+                location =  'weldbook.html'
+            }
+            if(e=='BRIDAS'){
+                location =  'bridas.html'
+            }
+            if(e=='CCPUNTOS'){
+                location =  'ccpuntos.html'
+            }
+            if(e=='CCLAZOS'){
+                location =  'cclazos.html'
+            }
+            if(e=='CCMISC'){
+                location =  'ccmisc.html'
+            }
+            if(e=='CCRT'){
+                location =  'ccrt.html'
+            }
+            if(e=='CCINTER'){
+                location =  'ccinter.html'
+            }
+            if(e=='CCVALVULAS'){
+                location =  'ccvalvulas.html'
+            }
+            if(e=='RESUMENINTER'){
+                location =  'resumeninter.html'
+            }
+            if(e=='CCTAMBORES'){
+                location =  'cctambores.html'
+            }
+            if(e=='CCLGS'){
+                location =  'cclgs.html'
+            }
+            if(e=='INFDEF'){
+                location =  'infdef.html'
+            }
+            if (e == 'CCTORRES') {
+                location = 'cctorres.html'
+            }
+             
+        }
+
+       
+
+        odsq = localStorage.getItem('odsq');
+
+        if (odsq == null || odsq == '') {
+            location = './'
+        } else {
+            $('#odsq').html(odsq)
+        }
+
+        function nota() {
+            Swal.fire({
+                title: 'Agregar Notas',
+                html: `
+                
+                <div class="row" style="width: 100%;">
+
+                  
+                    
+                    <div class="col-sm-7">
+                        Cuadro de Control
+                        <select class="form-control" id="ccontrol" onchange='verNotaC(this)'>
+                            <option value="">Seleccione</option>
+                            <option value="ccbridas">Master de bridas</option>
+                            <option value="ccpuntos">Puntos de inspección</option>
+                            <option value="cclazos">Lazos de corrosión</option>
+                            <option value="ccmisc">Misceláneos</option>
+                            <option value="ccrt">Recomendaciones técnicas</option>
+                            <option value="ccinter">Intercambiadores</option>
+                            <option value="cctambores">Tambores</option>
+                            <option value="cchornos">Hornos</option>
+                            <option value="cctorres">Torres</option>
+                            <option value="cclgs">Lgs</option>
+                            <option value="ccvalvulas">Válvulas de seguridad</option>
+                            <option value="general">Nota General</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-5">
+                        Fecha
+                        <input type="date" id="fecha" class="form-control" onchange="verNota(this)">
+                    </div>
+                    <div class="col-sm-12 mt-3">
+                        Nota:
+                        <textarea class="form-control" rows="5" id="nota"></textarea>
+                    </div>
+                </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Guardar',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+
+                    var ccontrol = $('#ccontrol').val()
+                    var fecha = $('#fecha').val()
+                    var nota = $('#nota').val()
+
+                    if (ccontrol != "" && fecha != "" && nota != "") {
+                        $.post(url + 'guardarNota.php', {
+                                ccontrol: ccontrol,
+                                fecha: fecha,
+                                nota: nota
+                            },
+                            function (resp) {
+                                if (resp.msn = 'Ok') {
+                                    Swal.fire('Notas!', 'Agregada correctamente...', 'success')
+                                } else {
+                                    Swal.fire('Notas!', 'Error al guardar nota...', 'info')
+                                }
+                            })
+                    }
+
+
+
+                }
+            })
+        }
+
+        function verNota(e) {
+            fecha = e.value
+
+            if (fecha != '' && ccontrol != '') {
+                $.post(url + 'verNota.php', {
+                        fecha: fecha,
+                        ccontrol: ccontrol
+                    },
+                    function (resp) {
+                        if (resp != null) {
+                            $('#nota').text(resp.nota)
+                        }else{
+                            $('#nota').text('')
+                        }
+                    })
+            }
+
+
+        }
+
+        function verNotaC(e) {
+            ccontrol = e.value
+
+            if (fecha != '' && ccontrol != '') {
+                $.post(url + 'verNota.php', {
+                        fecha: fecha,
+                        ccontrol: ccontrol
+                    },
+                    function (resp) {
+                        if (resp != null) {
+                            $('#nota').text(resp.nota)
+                        }else{
+                            $('#nota').text('')
+                        }
+                    })
+            }
+
+        }
+
+
+   
+ 
+
+        function salir() {
+            location = 'index.html'
+        }
+    </script>
+
+
+</body>
+
+</html>
