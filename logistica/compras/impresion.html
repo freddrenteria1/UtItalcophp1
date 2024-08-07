@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresión Orden de Compra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        .salto {
+            PAGE-BREAK-AFTER: always;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3">
+
+        <table class="table table-bordered table-sm">
+            <tr>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+                <td style="border-style: hidden;"></td>
+            </tr>
+
+            <tr>
+
+                <td colspan="3" rowspan="3">
+                    <img src="https://utitalco.com/hse/informes/img/logo_m.png" style="margin-top: 20px;" height="50px" alt="">
+                </td>
+                <td colspan="5" rowspan="3" style="width: 50%;">
+                    <center>
+                        <h4 style="margin-top: 30px;">ORDEN DE COMPRA</h4>
+                    </center>
+                </td>
+                <td colspan="2">UT-GC-F01</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="height: 10px;">Fecha: 28/01/2021</td>
+            </tr>
+            <tr>
+                <td colspan="2">Versión: 0</td>
+            </tr>
+            <tr style="font-size: 11px;">
+                <td colspan="4" style="width: 30%;">
+                    UNION TEMPORAL ITALCO <br> Nit 901.290.178-3
+                </td>
+                <td colspan="6">
+                    LE PEDIMOS QUE TOMEN DE LA ORDEN ESPECÍFICADA QUE ESTA REGULADA POR NUESTROS TERMINOS Y CONDICIONES ESTANDAR IMPRESOS EN LA PARTE POSTERIOR Y A CONTINUACION CONDICIONES QUE ACUERDA EL PROVEEDOR SIN NINGUNA EXCEPCION.
+                </td>
+            </tr>
+            <tr style="font-size: 11px;">
+                <td colspan="4">
+                    Oficina Principal Bogota. <br> Cll 93B #18–12 OFC 208-Tel. (031) 4672136-3136158796–3142745503
+                </td>
+                <td colspan="6">
+                    <br><br> FIRMA UT ITALCO &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; APROBACION DEL PROVEEDOR
+                </td>
+            </tr>
+
+            <tr style="font-size: 11px;">
+                <td colspan="4">
+                    Oficina Cartagena. <br> Zona Franca la Candelaria Acceso 1-Av Principal-Calle del Puerto-Lote N1-Tel. 3106576603 - 3136158796–3142745503 <br><br> Oficina Barrancabermeja <br> Carrera 3 # 48-40 Sector Comercial - Tel 3015785176 - 3136158796–3142745503
+
+                </td>
+                <td colspan="6">
+                    LAS FACTURAS Y LAS REMISIONES DEBEN INCLUIR NUESTRO NÚMERO DE ORDEN. LOS TÉRMINOS DE PAGO EMPEZARAN DESDE EL DIA DEL RECIBO DE LA FACTURA. UT ITALCO, NO SERÁ RESPONSABLE DE RETRASOS O ERRORES EN LOS PAGOS SI NO SE RESPETA ESTA SOLICITUD. NUESTRO SERVICIO
+                    DE CONTABILIDAD PARA PROVEEDORES ESTÁ A SU DISPOSICIÓN CADA DÍA. <br> NUESTRO BUZON PARA LA RECEPCION DE FACTURAS ELECTRONICAS ES: <br> facturacionelectronica@utitalco.com <br> LAS FACTURAS DEBEN RADICARSE JUNTO
+                    CON LOS SIGUIENTES SOPORTES: ORDEN DE COMPRA, REMISION O NOTA DE ENTREGA RECIBIDO POR ALMACEN DE ITALCO Y FACTURA COMERCIAL
+                </td>
+            </tr>
+            <tr style="font-weight: bold;">
+                <td colspan="4" style="padding-top: 15px; padding-bottom: 15px;">
+                    NUMERO DE ORDEN: <span id="num"></span><br><span id="fecha">0000-00-00</span>
+                </td>
+
+                <td colspan="10" style="padding-top: 15px; padding-bottom: 15px;">
+                    PROVEEDOR: <br> <span id="prov"></span>
+                </td>
+            </tr>
+
+            <tr style="font-weight: bold;">
+                <td colspan="4" style="padding-top: 15px; padding-bottom: 15px;">
+                    TERMINO Y LUGAR DE ENTREGA
+                </td>
+
+                <td colspan="10" style="padding-top: 15px; padding-bottom: 15px;">
+                    <span id="lugarentrega"></span>
+                </td>
+            </tr>
+
+            <tr style="font-weight: bold;">
+                <td colspan="4" style="padding-top: 15px; padding-bottom: 15px;">
+                    LUGAR DE OBRA: <br> <span id="lugarobra"></span>
+                </td>
+
+                <td colspan="10" style="padding-top: 15px; padding-bottom: 15px;">
+                    LOS TERMINOS DE ENTREGA DEBEN TOMARSE COMO OBLIGATORIOS, DESPUES DE ESA FECHA PODRA APLICARSE ESTA CLAUSULA CONTRACTUAL: <br> PRESERVAMOS NUESTRO DERECHO DE CANCELAR LA COMPRA.
+                </td>
+            </tr>
+
+            <tr style="font-weight: bold;">
+                <td colspan="4">
+                    DESTINO
+                </td>
+
+                <td colspan="10">
+                    <span id="destino"></span>
+                </td>
+            </tr>
+
+            <tr style="font-weight: bold;">
+                <td colspan="4">
+                    EMPAQUE Y TRANSPORTE
+                </td>
+
+                <td colspan="10">
+                    <span id="lugartransporte"></span>
+                </td>
+            </tr>
+            <tr style="font-weight: bold;">
+                <td colspan="4">
+                    TERMINOS DE PAGO:
+                </td>
+
+                <td colspan="10">
+                    <span id="terminospago"></span>
+                </td>
+            </tr>
+            <tr style="font-weight: bold;">
+
+
+                <td colspan="14">
+                    <span id="obs"></span>
+                </td>
+            </tr>
+
+
+        </table>
+
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>ITEM</th>
+                    <th>UM</th>
+                    <th class="text-center" colspan="2">DESCRIPCIÓN</th>
+                    <th class="text-center">CANT</th>
+                    <th class="text-center">VALOR UNITARIO</th>
+                    <th class="text-center">IVA 19%</th>
+                    <th class="text-center">VALOR TOTAL</th>
+                    <th class="text-center">CENTRO DE COSTOS</th>
+                    <th class="text-center">FECHA DE ENTREGA</th>
+                </tr>
+            </thead>
+            <tbody id="tablaDatos">
+
+            </tbody>
+        </table>
+        <div style="text-align: right;">
+            <b> Pág 1 de 2</b>
+        </div>
+        <div class="salto"></div>
+        <table class="table table-bordered table-sm">
+            <tr style="font-size: 11px;">
+                <td>
+                    <center> <b>TERMINOS Y CONDICIONES UNION TEMPORAL ITALCO</b> </center> <br> 1) Estos Términos aplican para el desarrollo de la orden de compra de conformidad con la propuesta presentada por el PROVEEDOR. <br> 2) Los Documentos del Proceso forman
+                    parte del presente contrato y definen igualmente las actividades, alcance y obligaciones del contrato <br> 3) EL CONTRATISTA/PROVEEDOR/CONSULTOR, de manera oportuna y diligente, en forma independiente, con personal propio, obrando
+                    con plena autonomía administrativa, técnica, directiva y financiera, y su calidad de experto deberá mantener indemne al CONTRATANTANTE <br> 4)Las partes dejan claro su entendimiento, y así lo acuerdan, que el presente contrato no genera
+                    exclusividad alguna en favor del CONTRATISTA/PROVEEDOR/CONSULTOR, por lo que el CONTRATANTE podrá contratar con terceros trabajos o servicio iguales o derivados de los entregables que son parte de este contrato, sin que esto se constituya
+                    en perjuicio alguno para el CONTRATISTA/PROVEEDOR/CONSULTOR. <br> 5) Si se determinare que cualquier disposición del Contrato es nula, ilegal o inejecutable en cualquier jurisdicción, la validez y efectividad de esa disposición en
+                    cualquier otra jurisdicción, y la validez y efectividad de las disposiciones restantes, no se verán afectadas, siempre y cuando (en el segundo caso) se pudiere determinar y llevar a cabo el propósito sustancial del Contrato. En ese
+                    caso, las Partes, mediante enmienda del Contrato, reemplazarán apropiadamente esa disposición por una nueva disposición razonable, procurando en la medida de lo legalmente posible aproximarse a lo que las Partes pretendían con la disposición
+                    original
+                </td>
+            </tr>
+            <tr style="font-size: 11px;">
+                <td>
+                    <center> <b>VALOR DE LA ORDEN DE COMPRA Y FORMA DE PAGO</b> </center> <br> El valor el Definido en la orden de compra. <br> La facturación deberá ser presentada con el lleno de los siguientes requisitos: <br> • Se recibirán facturas todos los
+                    días de 8:00 a 12:00 a.m. y de 2:00 a 4:30 pm entre el 1 y 24 de cada mes <br> • Según documento de terminos y condiciones de radicacion de facturas de UNION TEMPORAL ITALCO <br> • Se deberá presentar conforme lo establece la ley 1231
+                    de 2008. <br> • Cumplir con los requisitos de Ley y especialmente Estatuto Tributario. <br> • Se deberá informar el número de la orden de compra y anexar los documentos que en él se requieren para el pago de facturas, los cuales son:
+                    REMISION DE ENTREGA CON RECBIDO DE ALMACEN DE UNION TEMPORAL ITALCO, ORDEN DE COMPRA, FACTURA COMERCIAL <br> • Para efectos de consulta sobre facturación radicada, se deberá informar la fecha de recepción y el número de radicación
+                    asignado por UNION TEMPORAL ITALCO. <br> • La política de pago establecida por UNION TEMPORAL ITALCO, es de treinta (60) días hábiles, a partir de la fecha de radicación de la factura. Las partes igualmente acuerdan ampliar el plazo
+                    establecido en el art 86 de la Ley 1676 de 2013 que Modificó el inciso 3° del artículo 2° de la Ley 1231 de 2008, y en tal sentido el CONTRATISTA/CONTRATISTA/PROVEEDOR/CONSULTOR entiende y acepta que el CONTRATANTE contara con quince
+                    días (15) días hábiles siguientes a la recepción de la factura para objetarla y/o devolverla. <br> • LA EMPRESA podrá retener el pago de la totalidad o parte de cualquier factura de EL CONTRATISTA/PROVEEDOR/CONSULTOR cuando existieren
+                    dudas o disputas respecto a la exactitud de las sumas pactadas, pero en ningún caso las sumas retenidas podrán exceder de las cantidades en disputa. Para tal efecto, la EMPRESA emitirá una nota débito, la cual hará llegar al CONTRATISTA/PROVEEDOR/CONSULTOR
+                    , y cancelará el saldo adeudado al mismo, si lo hubiere. <br>
+                </td>
+            </tr>
+
+            <tr style="font-size: 11px;">
+                <td>
+                    <center> <b>DECLARACIONES DEL CONTRATISTA /PROVEEDOR/CONSULTOR</b> </center> <br> El CONTRATISTA/PROVEEDOR/CONSULTOR hace las siguientes declaraciones: <br> • Conoce y acepta los Documentos del Proceso. <br> • Tuvo la oportunidad de solicitar
+                    aclaraciones y modificaciones a los Documentos del Proceso y recibió del CONTRATANTE respuesta oportuna a cada una de las solicitudes. <br> • Se encuentra debidamente facultado para suscribir el presente Contrato. <br> • El CONTRATISTA/PROVEEDOR/CONSULTOR
+                    al momento de la celebración del presente Contrato no se encuentra en ninguna causal de inhabilidad, incompatibilidad o conflicto de intereses. <br> • El CONTRATISTA/PROVEEDOR/CONSULTOR está a paz y salvo con sus obligaciones laborales
+                    frente al sistema de seguridad social integral. <br> • El valor del Contrato incluye todos los gastos, costos, derechos, impuestos, tasas y demás contribuciones relacionados con el cumplimiento del objeto del presente contrato. <br>                    • El CONTRATISTA/PROVEEDOR/CONSULTOR durante la ejecución del presente Contrato realizará todas las actividades necesarias para la ejecución final de la consultoría, cumpliendo con el Cronograma establecido en el presente Contrato.
+                    <br> • El CONTRATISTAPROVEEDOR/CONSULTOR manifiesta que los recursos que componen su patrimonio no provienen de lavado de activos, financiación del terrorismo, narcotráfico, captación ilegal de dineros y en general de cualquier actividad
+                    ilícita; de igual manera manifiesta que los recursos recibidos en desarrollo de éste contrato, no serán destinados a ninguna de las actividades antes descritas. <br> • El CONTRATISTA/PROVEEDOR/CONSULTOR se compromete a no contratar
+                    menores de edad para el ejercicio del objeto contractual, así como a no permitir que se subcontrate a menores de edad para tales efectos, dando aplicación a la Resolución 1677 de 2008 del Ministerio de la Protección Social y los Pactos,
+                    Convenios y Convenciones Internacionales ratificados por Colombia, sobre los derechos de los niños. <br> • El Proveedor garantiza que todos los servicios suministrados en virtud del presente Contrato (i) cumplirán con las Especificaciones,
+                    (ii) son o serán idóneos y aptos para el un propósito, resultado, uso o desempeño específico o general, (iii) cumplirán con los requisitos de rendimiento previstos en el Contrato, (iv) estarán libres de defectos de errores en los planes,
+                    informaciones, materiales y fabricación, y (v) serán nuevos y no usados ni reparados o refaccionados.
+
+
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 80px; text-align: center;">
+                    <b> FIRMA REPRESENTANTE DEL PROVEEDOR</b>
+                </td>
+            </tr>
+
+        </table>
+        <div style="text-align: right;">
+            <b> Pág 2 de 2</b>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var server = 'https://utitalco.com/logistica/compras/server/';
+
+        var totiva = 0
+        var totpagar = 0
+
+        var arrayItems = []
+        var arrayDatos = []
+
+        var coditem = ''
+
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var idCompra = getParameterByName('id');
+
+        cargarDatos()
+
+        function cargarDatos() {
+            $.post(server + 'buscarCompra.php', {
+                    id: idCompra
+                },
+                function(resp) {
+                    arrayDatos = resp
+                    $('#num').html(idCompra)
+                    $('#fecha').html(arrayDatos.fecha)
+                    $('#prov').html(arrayDatos.proveedor)
+
+                    $('#lugarentrega').html(arrayDatos.lugarentrega)
+                    $('#lugarobra').html(arrayDatos.lugarobra)
+                    $('#destino').html(arrayDatos.destino)
+                    $('#lugartransporte').html(arrayDatos.lugartransporte)
+                    $('#terminospago').html(arrayDatos.terminospago)
+
+                    $('#obs').html(arrayDatos.observacion)
+
+
+                    arrayItems = JSON.parse(arrayDatos.items)
+
+                    cargarItems()
+
+
+                    if (arrayDatos.observacion != '') {
+                        $('#obs').html('<b>Observaciones: </b>' + arrayDatos.observacion)
+                    }
+
+
+                })
+
+
+        }
+
+
+        function cargarItems() {
+            var html = ''
+            for (var i = 0; i < arrayItems.length; i++) {
+                var item = i + 1;
+                totiva += arrayItems[i].iva
+                totpagar += arrayItems[i].total
+                html += `
+                    <tr>
+                        <td>${item}</td>
+                        <td>${arrayItems[i].unidad}</td>
+                        <td colspan="2">${arrayItems[i].item}</td>
+                        <td align="center">${arrayItems[i].cant}</td>
+                        <td align="right">$${arrayItems[i].valor}</td>
+                        <td align="right">$${arrayItems[i].iva}</td>
+                        <td align="right">$${arrayItems[i].total}</td>
+                        <td align="center">${arrayItems[i].ods}</td>
+                        <td align="center">${arrayItems[i].fechaitem}</td>
+                    </tr>
+                `
+            }
+            html += `
+                    <tr>
+                        <td colspan="6" align="right"><b>TOTALES </b></td>
+                        <td align="right"><b>$${totiva}</b></td>
+                        <td align="right"><b>$${totpagar}</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan = '12'><center>
+                            EL CREDITO QUE SURJA DE ESTE SUMINISTRO NO ES TRANSFERIBLE A TERCEROS                                                         
+                        </center
+                        </td>
+
+                    </tr>
+                    <tr style="font-weight: bold;" class="text-center">
+                        <td colspan = '2' style="padding-top: 60px;">
+                            RESPONSABLE COMPRAS
+                        </td>
+                        <td colspan = '2' style="padding-top: 80px;">
+                            VoBo DIRECCION OPERATIVA
+                        </td>
+                        <td colspan = '4' style="padding-top: 80px;">
+                            OFICINA ADMINISTRATIVA
+                        </td>
+                        <td colspan = '2'>
+                            COPIA A <br>
+                            SST/MA    QAQC    LOG 
+                            
+                        </td>
+                    </tr>
+                        `
+            $('#tablaDatos').html(html)
+        }
+    </script>
+</body>
+
+</html>

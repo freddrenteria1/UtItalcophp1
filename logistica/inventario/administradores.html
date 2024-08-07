@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario UT Italco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/42edaf6504.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <style>
+        body {
+            background-image: url('img/fondo_1.jpg');
+            background-size: cover;
+            background-position: fixed;
+            font-family: 'PT Sans', sans-serif;
+        }
+        
+        .cuerpo {
+            background-color: aliceblue;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 20px;
+            margin: 10px;
+        }
+        
+        .cabecera {
+            padding-top: 20px;
+            opacity: 1;
+        }
+        
+        .micard {
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            cursor: pointer;
+        }
+        
+        .micard:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        
+        .tit {
+            padding: 8px;
+            text-align: center;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <main>
+        <header>
+            <div class="px-3 py-2 bg-dark text-white">
+                <div class="container">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                            <img src="img/system_stock_n.png" width="200px" alt="">
+                            <h3 class="tit"></h3>
+                        </a>
+
+                        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <div class="container mt-3 mb-3">
+            <h3>Usuarios Administradores
+                <button type="button" class="btn btn-success" onclick="agregar()">Agregar</button>
+            </h3>
+            <hr>
+            <div class="cuerpo">
+                <table class="table" id="tblData">
+                    <thead>
+                        <th>#</th>
+                        <th>Fecha</th>
+                        <th>Nombres</th>
+                        <th>Clave</th>
+                        <th>Nivel</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="datosTabla">
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="mt-5">
+                <center>
+                    <img src="img/logo_p.png" class="milogo" alt="">
+                </center>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <script>
+        var url = 'https://utitalco.com/logistica/inventario/server/';
+
+        var arrayDatos = []
+        var arrayItems = []
+        var arrayItemSel = []
+        var arrayAlmacenes = []
+        var listaAlmacenes = null
+        var almacen = null
+        var ubicacion = null
+
+        var almsel = ''
+
+
+        function cargarAdmin() {
+            return new Promise(function(resolve, reject) {
+                $.post(url + 'cargarAdmin.php',
+                    function(resp) {
+                        arrayDatos = resp
+                        var html = ''
+                        for (var i = 0; i < arrayDatos.length; i++) {
+
+
+                            html += `
+                                <tr>
+                                    <td>${i+1}</td>
+                                    <td>${arrayDatos[i].fecha}</td>
+                                    <td>${arrayDatos[i].nombres}</td>
+                                    <td>${arrayDatos[i].clave}</td>
+                                    <td>${arrayDatos[i].nivel}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-small" onclick="borrar(${i})">E</button>
+                                    </td>
+                                </tr>
+                            `
+                        }
+                        $('#datosTabla').html(html)
+                        resolve()
+                    })
+            })
+        }
+
+
+        cargarAdmin().then(function() {
+
+        })
+
+        function borrar(i) {
+            var iduser = arrayDatos[i].id
+            Swal.fire({
+                title: 'Eliminar Usuario',
+                html: `
+                    ¿Dese borrar el usuario ${arrayDatos[i].nombres}?
+                `,
+                width: 600,
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+
+                    $.post(url + 'borrarUsuarioAdmin.php', {
+                            id: iduser
+                        },
+                        function(resp) {
+                            if (resp.msn == 'Ok') {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Eliminar...',
+                                    text: 'Usuario eliminado...!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(() => {
+                                    location.reload()
+                                })
+                            } else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: resp.msn,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+
+                }
+            })
+        }
+
+
+
+        function agregar() {
+            Swal.fire({
+                title: 'Agregar Usuario Administrador',
+                html: `
+
+                <div class="row" style="width: 100%;">
+                    <div class="col-sm-4" style="text-align: right;">
+                        Nombres
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="nombres" class="form-control" placholder="Nombres">
+                    </div>
+                        
+                    <div class="col-sm-4" style="text-align: right;">
+                        Clave
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="clave" class="form-control" placholder="Clave">
+                    </div>
+
+                    <div class="col-sm-4" style="text-align: right;">
+                        Nivel
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="nivel">
+                            <option value="2">2 - Visualizar Informes</option>
+                            <option value="1">1 - Acceso Total</option>
+                        </select>
+                    </div>
+
+                  
+                </div>
+                `,
+                width: 600,
+                showCancelButton: true,
+                confirmButtonText: 'Agregar'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+
+
+                    var nombres = $('#nombres').val()
+                    var clave = $('#clave').val()
+                    var nivel = $('#nivel').val()
+
+                    $.post(url + 'guardarUsuarioAdmin.php', {
+                            nombres: nombres,
+                            clave: clave,
+                            nivel: nivel
+                        },
+                        function(resp) {
+                            if (resp.msn == 'Ok') {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Guardar...',
+                                    text: 'Usuario Admin creado...!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(() => {
+                                    location.reload()
+                                })
+                            } else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: resp.msn,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

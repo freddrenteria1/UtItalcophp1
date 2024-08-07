@@ -1,0 +1,25 @@
+<?php
+header('Content-type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+include("conectar.php"); 
+$conexion=conectar();
+
+date_default_timezone_set("America/Bogota");
+$fecha=date("Y-m-d H:i:s");
+
+//buscar todas las entradas de herramientas por almacenes de refineria 
+$sql = "SELECT * FROM entradaherramientas WHERE remision = '' GROUP BY ubicacion";
+$eje = mysqli_query($conexion, $sql);
+
+while($obj = mysqli_fetch_object($eje)){
+    $datos[] = array(
+        'id'=>$obj->id,
+        'ods'=>$obj->ods,
+        'ubicacion'=>$obj->ubicacion,
+        'items'=>$obj->items,
+        'observaciones'=>$obj->observaciones
+    );
+}
+
+echo json_encode($datos);

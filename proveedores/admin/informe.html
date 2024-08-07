@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Proveedores UT Italco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <style>
+        body {
+            background-image: url('../img/refineria_f.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        #login {
+            margin: 0 auto;
+            margin-top: 40px;
+            height: auto;
+            width: 65%;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        
+        #registro {
+            margin: 0 auto;
+            margin-top: 40px;
+            height: auto;
+            width: 65%;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        
+        #cuerpo {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 95%;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        
+        .fondoazul {
+            background-color: aquamarine;
+        }
+        
+        .adv {
+            padding: 5px;
+            background-color: red;
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .sinpadding [class*="col-"] {
+            padding: 0;
+        }
+        
+        .tit {
+            background-color: rgb(219, 218, 216);
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cuerpo">
+        <h4 class="text-center"><img src="img/logo_m.png" style="padding: 10px;" height="70px" alt="">REGISTRO Y/O ACTUALIZACIÓN DE DATOS DE PROVEEDORES
+            <img src="img/prov.jpg" style="padding: 10px;" height="90px" alt=""> <br>
+            <h4 class="text-center" id="emp_login"></h4>
+        </h4>
+        <hr>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    I. IDENTIFICACIÓN DEL PROVEEDOR
+                  </button>
+                </h2>
+
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                    <div class="accordion-body">
+                        <div class="row">
+
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Razón Social</label>
+                                    <input type="text" class="form-control" id="empresa" placeholder="Razón Social">
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="mb-2">
+                                    <label class="form-label">Tipo Doc</label>
+                                    <select id="tipodoc" class="form-control">
+                                        <option value="">Seleccione</option>
+                                        <option value="Nit">Nit</option>
+                                        <option value="Cédula">Cédula</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="mb-2">
+                                    <label class="form-label"># Doc</label>
+                                    <input type="text" class="form-control" id="docemp" placeholder="#">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="mb-2">
+                                    <label class="form-label">Nombre del representante legal</label>
+                                    <input type="text" class="form-control" id="replegal" placeholder="Representante legal">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="mb-2">
+                                    <label class="form-label">Cédula</label>
+                                    <input type="number" class="form-control" id="cedreplegal" placeholder="#">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Dirección Oficina Principal</label>
+                                    <input type="text" class="form-control" id="dirofi" placeholder="Dirección">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Teléfonos</label>
+                                    <input type="text" class="form-control" id="tel" placeholder="Teléfonos">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Página Web</label>
+                                    <input type="text" class="form-control" id="web" placeholder="Página Web">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">País</label>
+                                    <input type="text" class="form-control" id="pais" placeholder="País">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Ciudad</label>
+                                    <input type="text" class="form-control" id="ciudad" placeholder="ciudad">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Nombre del contacto contabilidad</label>
+                                    <input type="text" class="form-control" id="nombcont" placeholder="Contacto">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="mb-2">
+                                    <label class="form-label">Cargo</label>
+                                    <input type="text" class="form-control" id="cargonombcont" placeholder="Cargo">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="emailnombcont" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="mb-2">
+                                    <label class="form-label">Teléfono móvil</label>
+                                    <input type="number" class="form-control" id="telnombcont" placeholder="#">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Nombre del contacto comercial</label>
+                                    <input type="text" class="form-control" id="nombcom" placeholder="Contacto">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="mb-2">
+                                    <label class="form-label">Cargo</label>
+                                    <input type="text" class="form-control" id="cargonombcom" placeholder="Cargo">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="emailnombcom" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="mb-2">
+                                    <label class="form-label">Teléfono móvil</label>
+                                    <input type="number" class="form-control" id="telnombcom" placeholder="#">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="mb-2">
+                                    <label class="form-label">Tipo Cuenta bancaria para el pago</label>
+                                    <select id="tipocta" class="form-control">
+                                        <option value="">Seleccione</option>
+                                        <option value="Ahorros">Ahorros</option>
+                                        <option value="Corriente">Corriente</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Código Swift</label>
+                                    <input type="text" class="form-control" id="codbanco" placeholder="Código">
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mb-2">
+                                    <label class="form-label">Nombre entidad bancaria</label>
+                                    <input type="text" class="form-control" id="entidad" placeholder="Entidad">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="mb-2">
+                                    <label class="form-label">Número de Cuenta</label>
+                                    <input type="text" class="form-control" id="numcuenta" placeholder="#">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="mb-2">
+                                    <label class="form-label">Titular / NIT</label>
+                                    <input type="text" class="form-control" id="titularcta" placeholder="Titular">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header " id="panelsStayOpen-headingTwo">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    II. INFORMACIÓN TRIBUTARIA
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div class="accordion-body">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+
+                                <b>Tipo de Actividad:</b>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tipoactividad" id="actcomercial">
+                                            <label class="form-check-label" for="actcomercial">
+                                              Comercial
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tipoactividad" id="actservicios">
+                                            <label class="form-check-label" for="actservicios">
+                                              Servicios
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tipoactividad" id="actindustrial">
+                                            <label class="form-check-label" for="actindustrial">
+                                              Industrial
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <b>Tipo de Persona:</b>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tipopersona" id="tiponatural">
+                                            <label class="form-check-label" for="tiponatural">
+                                              Natural
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tipopersona" id="tipojuridica">
+                                            <label class="form-check-label" for="tipojuridica">
+                                              Jurídica
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tipopersona" id="tiponatrespiva">
+                                            <label class="form-check-label" for="tiponatrespiva">
+                                              Natural responsable de IVA
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <b>Regimén a que pertenece:</b>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tiporegimen" id="regcomun">
+                                            <label class="form-check-label" for="regcomun">
+                                              Común
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="tiporegimen" id="regsimple">
+                                            <label class="form-check-label" for="regsimple">
+                                              Simplificado
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="mb-2">
+                                    <label class="form-label">Actividad económica principal</label>
+                                    <textarea id="actprincipal" class="form-control" rows="9"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr>
+                        <div class="text-center">
+                            <h5>Tipo de contribuyente</h5>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                Gran contribuyente
+                            </div>
+
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="grancontri" id="grancontrisi">
+                                    <label class="form-check-label" for="grancontrisi">
+                                      SI
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="grancontri" id="grancontrino">
+                                    <label class="form-check-label" for="grancontrino">
+                                      NO
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 text-end">
+                                Resolución #
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="resgrancontri" placeholder="Resolución">
+                            </div>
+                            <div class="col-sm-1 text-end">
+                                Fecha Res.
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="fecharesgrancontri">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                Es autorretenedor
+                            </div>
+
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="autoretenedor" id="autoretesi">
+                                    <label class="form-check-label" for="autoretesi">
+                                      SI
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="autoretenedor" id="autoreteno">
+                                    <label class="form-check-label" for="autoreteno">
+                                      NO
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 text-end">
+                                Resolución #
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="resautorete" placeholder="Resolución">
+                            </div>
+                            <div class="col-sm-1 text-end">
+                                Fecha Res.
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="fecharesautorete">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                Está excento de retención en la fuente
+                            </div>
+
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="excentorete" id="excentoretesi">
+                                    <label class="form-check-label" for="excentoretesi">
+                                      SI
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="excentorete" id="excentoreteno">
+                                    <label class="form-check-label" for="excentoreteno">
+                                      NO
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 text-end">
+                                Resolución #
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="resexcentorete" placeholder="Resolución">
+                            </div>
+                            <div class="col-sm-1 text-end">
+                                Fecha Res.
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="fecharesexcentorete">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                Está excento de retención de ICA
+                            </div>
+
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="excentoica" id="excentoicasi">
+                                    <label class="form-check-label" for="excentoicasi">
+                                      SI
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="excentoica" id="excentoicano">
+                                    <label class="form-check-label" for="excentoicano">
+                                      NO
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 text-end">
+                                Resolución #
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="resexcentoica" placeholder="Resolución">
+                            </div>
+                            <div class="col-sm-1 text-end">
+                                Fecha Res.
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="fecharesexcentoica">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-sm-2">
+                                CIIU Actividad Ppal.
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="ciiu" placeholder="CIUU">
+                            </div>
+                            <div class="col-sm-1 text-end">
+                                Fecha:
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="date" class="form-control" id="fechaciiu">
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-2">
+                                Tarifa por mil ICA
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="tarifaica" placeholder="Tarifa">
+                            </div>
+                            <div class="col-sm-1 text-end">
+                                Ciudad:
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="ciudadtarifaica" placeholder="Ciudad">
+                            </div>
+                            <div class="col-sm-2">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    III. INFORMACIÓN COMERCIAL
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-sm-8">
+
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-3">
+                                        <b>Forma de Pago</b>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="formapago" id="contraentrega">
+                                            <label class="form-check-label" for="contraentrega">
+                                              Contraengrega
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="formapago" id="anticipado">
+                                            <label class="form-check-label" for="anticipado">
+                                              Anticipado
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="formapago" id="credito">
+                                            <label class="form-check-label" for="credito">
+                                              Crédito
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 text-end">
+                                <label class="form-label">Días de plazo</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="number" class="form-control" id="diasplazo" placeholder="# días">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <h5>Principales Bienes y/o servicios que ofrece</h5>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="bien1" placeholder="1.">
+                            <input type="text" class="form-control" id="bien2" placeholder="2.">
+                            <input type="text" class="form-control" id="bien3" placeholder="3.">
+                        </div>
+
+                        <div>
+                            * Adjunte certificaciones o licencias
+                        </div>
+
+                        <div class="text-center m-3">
+                            <h5>Referencias comerciales</h5>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 text-center">
+                                Empresa
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                Bien / servicio prestado
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                Persona contacto
+                            </div>
+                            <div class="col-sm-3 text-center">
+                                Teléfono móvil
+                            </div>
+
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="refemp1" placeholder="Empresa">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="servemp1" placeholder="Bien / Servicio">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="contactoemp1" placeholder="Contacto">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="telemp1" placeholder="Teléfono">
+                            </div>
+
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="refemp2" placeholder="Empresa">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="servemp2" placeholder="Bien / Servicio">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="contactoemp2" placeholder="Contacto">
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="telemp2" placeholder="Teléfono">
+                            </div>
+                            <div class="col-sm-12">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="adv">Diligenciar en caso de ser proveedor de servicios especiales (Pintura, Aislamiento, Andamios, etc)</div>
+                <h2 class="accordion-header" id="panelsStayOpen-heading4">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse4" aria-expanded="false" aria-controls="panelsStayOpen-collapse4">
+                    IV. INFORMACIÓN FINANCIERA (Datos del último año fiscal)
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading4">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6  text-end">
+                                        Total Activos Corrientes
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totactcorr">
+                                    </div>
+                                    <div class="col-sm-6  text-end">
+                                        Total Activos No Corrientes
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totactnocorr">
+                                    </div>
+                                    <div class="col-sm-6  text-end">
+                                        Total Pasivo Corriente
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totpascorr">
+                                    </div>
+                                    <div class="col-sm-6  text-end">
+                                        Total Pasivo no Corriente
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totpasnocorr">
+                                    </div>
+                                    <div class="col-sm-6  text-end">
+                                        Total Patrimonio
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totpat">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6 text-end">
+                                        Total Ingresos
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="toting">
+                                    </div>
+                                    <div class="col-sm-6  text-end">
+                                        Total Gastos
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totgastos">
+                                    </div>
+                                    <div class="col-sm-6  text-end">
+                                        Total Costos
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totcostos">
+                                    </div>
+                                    <div class="col-sm-6  text-end">
+                                        Utilidad Neta
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="totutilneta">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+
+                            </div>
+
+                        </div>
+                        <p style="font-size: 11px;"> <br> * Adjunte copia de los Estados Financieros del último año fiscal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-heading5">
+                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse5" aria-expanded="false" aria-controls="panelsStayOpen-collapse5">
+                    V. EXPERIENCIA CONTRACTUAL (APLICA PARA EMPRESAS DE SERVICIO ESPECIALIZADO)
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading5">
+                    <div class="accordion-body">
+                        <div class="sinpadding">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    Cliente
+                                </div>
+                                <div class="col-sm-3">
+                                    Objeto y No. de Contrato
+                                </div>
+                                <div class="col-sm-1">
+                                    Plazo en días
+                                </div>
+                                <div class="col-sm-2">
+                                    Fecha de inicio
+                                </div>
+                                <div class="col-sm-2">
+                                    Fecha de fin
+                                </div>
+                                <div class="col-sm-1">
+                                    Valor
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin: 0px;">
+                                <div class="col-sm-3">
+                                    <input type="text" id="clienteexp1" class="form-control">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" id="objexp1" class="form-control">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="number" id="diasexp1" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="date" id="finicioexp1" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="date" id="ffinexp1" class="form-control">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="number" id="valorexp1" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin: 0px;">
+                                <div class="col-sm-3">
+                                    <input type="text" id="clienteexp2" class="form-control">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" id="objexp2" class="form-control">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="number" id="diasexp2" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="date" id="finicioexp2" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="date" id="ffinexp2" class="form-control">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="number" id="valorexp2" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin: 0px;">
+                                <div class="col-sm-3">
+                                    <input type="text" id="clienteexp3" class="form-control">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" id="objexp3" class="form-control">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="number" id="diasexp3" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="date" id="finicioexp3" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="date" id="ffinexp3" class="form-control">
+                                </div>
+                                <div class="col-sm-1">
+                                    <input type="number" id="valorexp3" class="form-control">
+                                </div>
+
+                                <div class="col-sm-12">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-heading6">
+                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse6" aria-expanded="false" aria-controls="panelsStayOpen-collapse6">
+                    DOCUMENTOS ADJUNTOS
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapse6" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading6">
+                    <div class="accordion-body">
+                        <div class="table">
+                            <table class="table table-striped">
+                                <thead>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1. Certificado de Existencia y Representacion Legal de la Cámara de Comercio no mayor a 90 días de expedición (si aplica)</td>
+                                        <td>
+
+                                            <span id="viewdoccam"></span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>2. Copia del RUT actualizado (2021)</td>
+                                        <td>
+
+                                            <span id="viewdocrut"></span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>3. Estados financieros ultimos 3 años.</td>
+                                        <td>
+
+                                            <span id="viewdocestados"></span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. Portafolio de servicio (Brochure)</td>
+                                        <td>
+                                            <span id="viewdocportafolio"></span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5. Certificación emitida por ARL del Sistema de Gestión de seguridad y salud en el trabajo SG SST <br> (Según resolución 0312/19 y Decreto 1072/15).</td>
+                                        <td>
+                                            <span id="viewdoccertarl"></span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>6. ISO 9001:2015, ISO 14001:2015, ISO 45001: 2018 (Opcional)</td>
+                                        <td>
+                                            <span id="viewdociso"></span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="col-sm-12">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-heading7">
+                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse7" aria-expanded="false" aria-controls="panelsStayOpen-collapse7">
+                    RECOPILACIÓN DE DATOS RENDIMIENTO DE SEGURIDAD - Anexo A
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapse7" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading7">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-12 tit">
+                                        Descripción
+                                    </div>
+                                    <div class="col-sm-12">
+                                        .
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value=" S1. Total de horas trabajadas: directas + indirectas" class="form-control ama" readonly>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value=" S2. Número total de accidentes / lesiones con pérdidas de horas de trabajo" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value=" S3. Número total de muertes" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value=" S4. Número total de días perdidos" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value=" S5. Número total de casos de trabajo con restricciones" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value="S6. Número total de incidentes cercanos" class="form-control" readonly>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <input type="text" value=" I1. Índice de frecuencia" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value=" I2. Índice de gravedad" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" value="I3. TRIR (ÍNDICE TOTAL DE ACCIDENTES GRABABLES)" class="form-control" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 sinpadding">
+                                <div class="row text-center">
+                                    <div class="col-sm-12 tit">
+                                        Año de Referencia
+                                    </div>
+                                    <div class="col-sm-2">
+                                        2020
+                                    </div>
+                                    <div class="col-sm-2">
+                                        2021
+                                    </div>
+                                    <div class="col-sm-2">
+                                        2022
+                                    </div>
+                                    <div class="col-sm-2">
+                                        2023
+                                    </div>
+                                    <div class="col-sm-2">
+                                        2024
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s12018" onchange="calFrec2018()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s12019" onchange="calFrec2019()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s12020" onchange="calFrec2020()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s12021" onchange="calFrec2021()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s12022" onchange="calFrec2022()">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s22018" onchange="calFrec2018()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s22019" onchange="calFrec2019()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s22020" onchange="calFrec2020()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s22021" onchange="calFrec2021()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s22022" onchange="calFrec2022()">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s32018" onchange="calTrir2018()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s32019" onchange="calTrir2019()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s32020" onchange="calTrir2020()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s32021" onchange="calTrir2021()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s32022" onchange="calTrir2022()">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s42018" onchange="calGrav2018()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s42019" onchange="calGrav2019()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s42020" onchange="calGrav2020()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s42021" onchange="calGrav2021()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s42022" onchange="calGrav2022()">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s52018" onchange="calTrir2018()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s52019" onchange="calTrir2019()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s52020" onchange="calTrir2020()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s52021" onchange="calTrir2021()">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s52022" onchange="calTrir2022()">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s62018">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s62019">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s62020">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s62021">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="s62022">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l12018" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l12019" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l12020" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l12021" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l12022" readonly>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l22018" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l22019" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l22020" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l22021" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l22022" readonly>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l32018" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l32019" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l32020" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l32021" readonly>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="number" class="form-control" id="l32022" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center m-2">
+
+
+                    <span id="viewdocacc"></span>
+                </div>
+                <div class="text-center mb-2 mt-2">
+
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-heading8">
+                    <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse8" aria-expanded="false" aria-controls="panelsStayOpen-collapse8">
+                        RECOLECCIÓN DE DATOS AMBIENTALES - Anexo B
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapse8" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading8">
+                    <div class="accordion-body">
+                        <div class="table">
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Descripción</th>
+                                    <th>SI</th>
+                                    <th>NO</th>
+                                    <th>NA</th>
+                                    <th>Observaciones</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>A.1 Procedimiento de protección del medio ambiente</td>
+                                        <td><input class="form-check-input" type="radio" name="a1" id="a1si"></td>
+                                        <td><input class="form-check-input" type="radio" name="a1" id="a1no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a1" id="a1na"></td>
+                                        <td><input type="text" id="obsea1" class="form-control"></td>
+                                        <td>
+
+                                            <span id="viewdoca1"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.2 Procedimiento de gestión de residuos</td>
+                                        <td><input class="form-check-input" type="radio" name="a2" id="a2si"></td>
+                                        <td> <input class="form-check-input" type="radio" name="a2" id="a2no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a2" id="a2na"></td>
+                                        <td> <input type="text" id="obsea2" class="form-control"></td>
+                                        <td>
+
+
+                                            <span id="viewdoca2"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.3 Procedimiento para sustancias peligrosas</td>
+                                        <td><input class="form-check-input" type="radio" name="a3" id="a3si"></td>
+                                        <td><input class="form-check-input" type="radio" name="a3" id="a3no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a3" id="a3na"></td>
+
+                                        <td><input type="text" id="obsea3" class="form-control"></td>
+                                        <td>
+
+                                            <span id="viewdoca3"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.4 Control de derrames y procedimiento de emergencia ambiental.</td>
+                                        <td> <input class="form-check-input" type="radio" name="a4" id="a4si"></td>
+                                        <td> <input class="form-check-input" type="radio" name="a4" id="a4no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a4" id="a4na"></td>
+
+                                        <td><input type="text" id="obsea4" class="form-control"></td>
+                                        <td>
+
+                                            <span id="viewdoca4"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.5 Capacitación sobre temas ambientales.</td>
+                                        <td> <input class="form-check-input" type="radio" name="a5" id="a5si"></td>
+                                        <td><input class="form-check-input" type="radio" name="a5" id="a5no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a5" id="a5na"></td>
+
+                                        <td> <input type="text" id="obsea5" class="form-control"></td>
+                                        <td>
+
+                                            <span id="viewdoca5"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.6 Autorización de emisiones a la atmósfera.</td>
+                                        <td><input class="form-check-input" type="radio" name="a6" id="a6si"></td>
+                                        <td><input class="form-check-input" type="radio" name="a6" id="a6no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a6" id="a6na"></td>
+
+                                        <td><input type="text" id="obsea6" class="form-control"></td>
+                                        <td>
+
+                                            <span id="viewdoca6"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.7 Registro de residuos</td>
+                                        <td> <input class="form-check-input" type="radio" name="a7" id="a7si"></td>
+                                        <td> <input class="form-check-input" type="radio" name="a7" id="a7no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a7" id="a7na"></td>
+
+                                        <td><input type="text" id="obsea7" class="form-control"></td>
+                                        <td>
+
+                                            <span id="viewdoca7"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>A.8 Lista de residuos generados</td>
+                                        <td><input class="form-check-input" type="radio" name="a8" id="a8si"></td>
+                                        <td><input class="form-check-input" type="radio" name="a8" id="a8no"></td>
+                                        <td><input class="form-check-input" type="radio" name="a8" id="a8na"></td>
+
+                                        <td><input type="text" id="obsea8" class="form-control"></td>
+                                        <td>
+
+                                            <span id="viewdoca8"></span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <div class="text-center mb-2 mt-2">
+
+                                <button type="button" class="btn btn-danger mt-4" onclick="salir()">Volver</button>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <p style="font-size: 12px; padding: 10px;"><input class="form-check-input" type="checkbox" checked> En cumplimiento con la Ley 1581 de protección de datos personales, se le informa que los datos suministrados serán incorporados a una base de datos cuya finalidad es el registro de proveedores,
+                y las actuaciones que se deriven de dicha gestión, cuyo responsable del tratamiento es UT ITALCO. Mediante el registro de sus datos personales a través de este formato usted autoriza a UT ITALCO, a tratar los datos con la finalidad descrita
+                arriba. Como Titular se le informa que podrá ejercer sus derechos de acceso y reclamos a través del correo de contacto pqrsbca@utitalco.com.
+            </p>
+
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="informe.js"></script>
+</body>
+
+</html>
