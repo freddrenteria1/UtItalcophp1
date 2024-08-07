@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+        <script src="jquery.min.js"></script>
+        <script src="jquery-ui.min.js"></script>
+        <script src="jquery.jqGrid.min.js"></script>
+        <script src="grid.locale-en.js"></script>
+        <link rel="stylesheet" href="jquery-ui.css">
+        <link rel="stylesheet" href="ui.jqgrid_4.min.css" />
+        <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+
+     
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column { 
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1; 
+            
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h5>REGISTRO CUADRO DE CONTROL LAZOS DE CORROSIÓN ODS 030 AROMÁTICOS</h5>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+                <div class="col-sm-6">
+                    Cargar hoja de datos formato .csv <br />
+                    <input type="file" id="excel" class="form-control" />
+                </div>
+                <div class="col-sm-2">
+                    <br />
+                    <button class="btn btn-success" onclick="cargar()">
+                        Cargar Archivo
+                    </button>
+                </div>
+                <div class="col-sm-4">
+                    Última modificación: <span id="fecha"> </span> <br>
+                    Archivo: <span id="doc"> </span> <br>
+                    Usuario: <span id="user"> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+             
+
+                <table class="table table-striped" id="grid1b"></table>
+             
+
+
+             
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/030/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        if(ventana_ancho > 1300){
+            ventana_alto = ventana_alto - 220;
+        }else{
+            ventana_alto = 330;
+        }
+
+        if (user == null) {
+            location = "index.html";
+        }
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+            formData.append("user", user);
+
+            $.ajax({
+                url: url + "guardarExcelCCLazos.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            location.reload()
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cargarDatosCCLazos.php", function (resp) {
+                datos = resp;
+
+                console.log(datos);
+
+              
+
+                 
+                $("#grid1b").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [
+                        {name: "iditem", label: "ID", width: 30, frozen: true}, 
+                        {name: "lazo", label: "LAZO CORROSIÓN", width: 120, frozen: true}, 
+                        {name: "sk", label: "SK", width: 60, frozen: true},
+                        {name: "isometrico", label: "ISOMETRICO", width: 80, frozen: true},
+                        {name: "item", label: "ITEM", width: 40, align:"center", frozen: true},
+                        {name: "alcance", label: "ALCANCE", width: 220, frozen: true},
+                        {name: "cml", label: "CML", width: 130, align:"center", frozen: true},
+                        {name: "clase", label: "CLASE", width: 120,},
+                        {name: "actividad", label: "ACTIVIDAD", width: 160, align:"center"},
+                        {name: "materiales", label: "MATERIALES <br> ENTREGADOS", width: 80, align:"center"},
+                        {name: "inspcie", label: "INSP CIE", width: 80, align:"center"},
+                        {name: "ejecucion", label: "EJECUCIÓN <br> ACTIVIDAD", width: 80, align:"center"},
+                        {name: "soporteria", label: "SOPORTERÍA", width: 80, align:"center"},
+                        {name: "plp", label: "PLP", width: 80, align:"center"},
+                        {name: "rx", label: "RX", width: 80, align:"center"},
+                        {name: "phwt", label: "PHWT", width: 80, align:"center"},
+                        {name: "durezas", label: "DUREZAS", width: 80, align:"center"},
+                        {name: "rxphwt", label: "RX-PHWT", width: 80, align:"center"},
+                        {name: "ph", label: "PH", width: 80, align:"center"},
+                        {name: "verificacion", label: "VERIFICACIÓN <br>QA-QC", width: 80, align:"center"},
+                        {name: "torque", label: "TORQUE", width: 80, align:"center"},
+                        {name: "pintura", label: "PINTURA", width: 80, align:"center"},
+                        {name: "aislamiento", label: "AISLAMIENTO", width: 80, align:"center"},
+                        {name: "vobo", label: "VoBo <br> GESTORÍA", width: 80, align:"center"},
+                        {name: "paquete", label: "PAQUETE <br>DE TRABAJO", width: 80, align:"center"},
+                        {name: "rca", label: "RCA", width: 80, align:"center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 300}                 
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                $("#grid1b").jqGrid('filterToolbar',
+                {autoSearch: true, searchOnEnter: false,});
+               
+
+                $("#grid1b").jqGrid('setGroupHeaders', {
+                    useColSpanStyle: true,
+                    groupHeaders: [{
+                            startColumnName: 'plp',
+                            numberOfColumns: 6,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>ENSAYOS</center></td></tr>' +
+                                '</table>',
+                        },
+                         
+                    ]
+                });
+
+                $("#grid1b").jqGrid('setFrozenColumns');
+
+               
+
+                cargarBitacora()
+
+            
+            
+            });
+        }
+
+        function cargarBitacora(){
+
+            $.post(url + "cargarBitacoraCCPuntos.php", function (resp) {
+                datos = resp;
+
+                Swal.close();
+
+                
+                $('#fecha').html(datos.fecha)
+                $('#doc').html(datos.archivo)
+                $('#user').html(datos.user)
+
+            
+            });
+
+
+
+        }
+
+         
+    </script>
+</body>
+
+</html>
