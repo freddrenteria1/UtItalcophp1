@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Soldadores - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+        span{
+            font-size: 13px;
+        }
+        .fondo {
+            background-image: url('img/bitacora-viaje.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: center;
+        }
+
+        .cab {
+            background-color: rgb(16, 129, 163);
+            color: rgb(17, 16, 16);
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        .visible {
+            display: contents;
+        }
+
+        .milabel {
+            background-color: rgb(16, 129, 163);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+    </style>
+    <style>
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Create a custom checkbox */
+
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+
+        .minput {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+
+        .container input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .fotos {
+            width: 300px;
+            float: left;
+            padding: 10px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -205px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .piefoto {
+            background-color: #0772ff;
+            color: white;
+            padding: 10px;
+            height: 70px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btnedit {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 25px;
+            background-color: rgb(255, 190, 13);
+            border-radius: 3px;
+            padding: 5px;
+            color: rgb(17, 17, 17);
+            cursor: pointer;
+        }
+
+        .piefotoods {
+            background-color: yellow;
+            color: black;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron cab ">
+            <center>
+                <img src="img/logo_p.png" width="250px" alt="">
+            </center>
+            
+
+        </div>
+         
+        <h4 class="text-center pt-3">REGISTRO PROGRAMACIÓN CALIFICACIÓN SOLDADORES </h4>
+         
+        <hr>
+
+        <div id="cuerpo">
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Nombres y apellidos
+                </label>
+                <input type="text" id="nombres" class="form-control" placeholder="Nombre Completo">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Documento
+                </label>
+                <input type="number" id="doc" class="form-control" placeholder="CC sin puntos">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Tipo de proceso 1
+                </label>
+                <select id="tipo1" class="form-control">
+                    <option value="">Seleccione un tipo de proceso</option>
+                    <option value="GTAW">GTAW</option>
+                    <option value="SMAW">SMAW</option>
+                    <option value="GMAW">GMAW</option>
+                    <option value="MIXTO">MIXTO (GTAW - SMAW)</option>
+                   
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Tipo de proceso 2 <span>(* Opcional si desea una segunda prueba con otro tipo de proceso)</span>
+                </label>
+                <select id="tipo2" class="form-control">
+                    <option value="">Seleccione un segundo tipo de proceso</option>
+                    <option value="GTAW">GTAW</option>
+                    <option value="SMAW">SMAW</option>
+                    <option value="GMAW">GMAW</option>
+                   
+                   
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                   Fecha para evaluación
+                </label>
+                <select id="fecha" class="form-control" onchange="buscarHoras(this)">
+                    <option value="">Seleccione una Fecha</option>
+                    <option value="2023-06-02">2023-06-02</option>
+                    <option value="2023-06-03">2023-06-03</option>                   
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Hora
+                </label>
+                <select id="hora" class="form-control">
+                    <option value="">Seleccione una hora</option>
+                     
+                </select>
+            </div>
+   
+                
+             
+
+            <div style="clear: both;"></div>
+
+
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-success" 
+                    onclick="guardar()">Guardar </button> <br><br>
+                <p style="font-size: 13px;">
+                    
+                </p>
+            </div>
+
+        </div>
+
+        <hr>
+        
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="js/soldadoresV2.js"></script>
+
+</body>
+
+</html>
