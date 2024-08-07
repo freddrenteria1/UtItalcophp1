@@ -1,0 +1,3716 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.3.6.2 (Linux)" />
+	<meta name="author" content="Vivi Alcoser" />
+	<meta name="created" content="2019-12-14T13:10:41" />
+	<meta name="changedby" content="01AC0479" />
+	<meta name="changed" content="2022-10-19T14:46:41" />
+	<meta name="AppVersion" content="16.0300" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+	<style type="text/css">
+		body,
+		div,
+		table,
+		thead,
+		tbody,
+		tfoot,
+		tr,
+		th,
+		td,
+		p {
+			font-family: "Calibri";
+			font-size: x-small
+		}
+
+		a.comment-indicator:hover+comment {
+			background: #ffd;
+			position: absolute;
+			display: block;
+			border: 1px solid black;
+			padding: 0.5em;
+		}
+
+		a.comment-indicator {
+			background: red;
+			display: inline-block;
+			border: 1px solid black;
+			width: 0.5em;
+			height: 0.5em;
+		}
+
+		comment {
+			display: none;
+		}
+	</style>
+
+	<style>
+		@media print {
+
+			.oculto-impresion,
+			.oculto-impresion * {
+				display: none !important;
+			}
+		}
+
+		.salto {
+			PAGE-BREAK-AFTER: always;
+		}
+
+		.mispan {
+			font-size: 16px;
+		}
+
+		textarea {
+			font-size: 18px;
+		}
+
+		input[type=text] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+
+		}
+
+		.lineabaja {
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+		}
+
+		input[type=date] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		input[type=time] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		input[type=radio] {
+			height: 20px;
+			width: 20px;
+		}
+
+		select {
+			background: transparent;
+			border: none;
+			font-size: 18px;
+			height: 30px;
+			padding: 5px;
+			width: 250px;
+		}
+
+		.oculto {
+			display: none;
+		}
+
+		.visible {
+			display: inline;
+		}
+
+		.cuerpo {
+			margin: 0 auto;
+		}
+	</style>
+
+</head>
+
+<body>
+	<table cellspacing="0" border="0" style="margin: 0 auto; margin-top: 10px; width: 90%;">
+		<colgroup width="103"></colgroup>
+		<colgroup width="13"></colgroup>
+		<colgroup width="113"></colgroup>
+		<colgroup width="125"></colgroup>
+		<colgroup width="43"></colgroup>
+		<colgroup width="75"></colgroup>
+		<colgroup width="67"></colgroup>
+		<colgroup width="41"></colgroup>
+		<colgroup width="122"></colgroup>
+		<colgroup width="124"></colgroup>
+		<colgroup width="120"></colgroup>
+		<colgroup width="55"></colgroup>
+		<colgroup width="86"></colgroup>
+		<colgroup width="56"></colgroup>
+		<colgroup width="94"></colgroup>
+		<colgroup width="44"></colgroup>
+		<colgroup width="51"></colgroup>
+		<colgroup width="77"></colgroup>
+		<colgroup width="58"></colgroup>
+		<colgroup width="72"></colgroup>
+		<colgroup span="2" width="27"></colgroup>
+		<colgroup width="50"></colgroup>
+		<colgroup span="2" width="27"></colgroup>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=4 rowspan=3 height="99" align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3 color="#000000"><img src="img\logo_m.png" width="250px">
+					</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=11 rowspan=3 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4 color="#000000">REGISTRO CONTROL DE ACTIVIDADES DE CALIBRACIÓN Y
+						PRUEBA DE LAZO TERMOCUPLAS</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=4 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3 color="#000000">FRM-BCA-19.370.3.OS98</font>
+				</b></td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=4 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3 color="#000000">Fecha: 12/09/2022</font>
+				</b></td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=4 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3 color="#000000">Versión: 2</font>
+				</b></td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 height="29" align="center" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>INFORMACIÓN GENERAL</font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="46" align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>CONTRATO:</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><span id="contrato"></span></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>UNIDAD:</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<font face="Arial Narrow" size=3><span id="unidad"></span></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>PLANTA: </font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<font face="Arial Narrow" size=3><span id="planta"></span></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="center" valign=middle
+				bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>ORDEN DE SERVICIO: </font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle
+				bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3><span id="ods"></span></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="center" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000"
+				height="4" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="37" align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>FAMILIA DE EQUIPO:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=5 align="center" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><span id="familia"></span></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>TAG:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=4 align="center" valign=middle>
+				<font face="Arial Narrow" size=6><span id="tag"></span></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>SERIE:</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=4 align="center" valign=bottom>
+				<input type="text" id="serie" onchange="actInfo()">
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 2px solid #000000" height="17" align="left"
+				valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td colspan=9 align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000" align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000" align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000" align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000" align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="38" align="right" valign=middle>
+				<font face="Arial Narrow" size=3>FECHA: </font>
+			</td>
+			<td colspan=4 align="center" valign=middle>
+				<input type="date" id="fecha" onchange="actInfo()">
+			</td>
+
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3>UNID ING: </font>
+			</td>
+			<td colspan=3 align="center" valign=bottom>
+				<input type="text" id="unding" onchange="actInfo()">
+			</td>
+			<td colspan=4 align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>TIPO DE SENSOR: </font>
+				</b></td>
+			<td align="right" valign=middle>
+				<select id="tiposensor" style="width: 150px;" class="ut" onchange="actInfo()">
+					<option value=""></option>
+					<option value="TERMOPAR">TERMOPAR</option>
+					<option value="RTD">RTD</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="center" valign=bottom>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="43" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td colspan=3 align="left" valign=middle>
+				<font face="Arial Narrow" size=3>RANGO DE CALIBRACIÓN:</font>
+			</td>
+			<td colspan=6 align="center" valign=bottom>
+				<input type="text" id="rangocal" onchange="actInfo()">
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="center" valign=bottom>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="40" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br> LONGITUD:</font>
+			</td>
+			<td colspan=7 align="left" valign=bottom><b>
+					<input type="text" id="longitud" onchange="actInfo()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="right" valign=middle>
+				<font face="Arial Narrow" size=3>SERVICIO: </font>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=18 align="center" valign=middle>
+				<input type="text" id="servicio" onchange="actInfo()">
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="42" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td colspan=2 align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 height="31" align="center" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>1. DATOS VERIFICACIÓN Y CALIBRACIÓN DE TERMOCUPLA</font>
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000" height="4" align="left"
+				valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-right: 2px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=4 color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="41" align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Hora</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=5 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>Funcionario autorizado<br>UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>Registro / CC</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>Hora</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3> Nombre supervisor<br>UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3> Firma supervisor<br>UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Registro/CC</font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="46" align="left" valign=middle><b>
+					<input type="date" id="fecha1" class="ut" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="time" id="hora1" class="ut" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=5 align="center" valign=middle><b>
+					<input type="text" id="nombre1" class="ut" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="registro1" class="ut" onchange="actDatos()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="date" id="fecha2" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="time" id="hora2" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<input type="text" id="nombre2" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar2"
+						onclick="abrirFirma('2')">Firmar</button>
+					<img src="" id="firma2" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="registro2" class="ut">
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="24" align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" rowspan=7 height="274" align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>INDICACIÓN<br>SALIDA</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>SEÑAL APLICADA (°F)</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>SALIDA (°F)<br>TERMOCUPLA</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3> ERROR (°F)</font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>INDICACIÓN<br>SALIDA</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>SEÑAL APLICADA (°F)</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>SALIDA (°F)<br>TERMOCUPLA</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>ERROR (°F)</font>
+				</b></td>
+			<td rowspan=7 align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br>
+				</font>
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>0%</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=bottom>
+				<input type="text" id="señal1" onchange="actItems()">
+			</td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0%"><b>
+					<input type="text" id="salida1" onchange="actItems()">
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom bgcolor="#FFFFFF"><b>
+					<input type="text" id="error1" onchange="actItems()">
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=4><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="1" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>100%</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="señal2" onchange="actItems()">
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="salida2" onchange="actItems()">
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="error2" onchange="actItems()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.25" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>25%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=bottom>
+				<input type="text" id="señal3" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0%"><b>
+					<input type="text" id="salida3" onchange="actItems()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom bgcolor="#FFFFFF"><b>
+					<input type="text" id="error3" onchange="actItems()">
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=4><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.75" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>75%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="señal4" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="salida4" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="error4" onchange="actItems()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.5" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>50%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=bottom>
+				<input type="text" id="señal5" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0%"><b>
+					<input type="text" id="salida5" onchange="actItems()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom bgcolor="#FFFFFF"><b>
+					<input type="text" id="error5" onchange="actItems()">
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=4><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.5" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>50%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="señal6" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="salida6" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="error6" onchange="actItems()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.75" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>75%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=bottom>
+				<input type="text" id="señal7" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0%"><b>
+					<input type="text" id="salida7" onchange="actItems()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom bgcolor="#FFFFFF"><b>
+					<input type="text" id="error7" onchange="actItems()">
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=4><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.25" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>25%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="señal8" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="salida8" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="error8" onchange="actItems()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="1" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>100%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=bottom>
+				<input type="text" id="señal9" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0%"><b>
+					<input type="text" id="salida9" onchange="actItems()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom bgcolor="#FFFFFF"><b>
+					<input type="text" id="error9" onchange="actItems()">
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=4><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=4>0%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="señal10" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="salida10" onchange="actItems()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=bottom>
+				<input type="text" id="error10" onchange="actItems()">
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 height="33" align="center" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>2. DATOS PRUEBAS DE LAZO TERMOCUPLA</font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="56" align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Hora</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Nombre supervisor <br> UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000"> Firma supervisor<br>UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Registro/CC</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Fecha</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Hora</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Nombre gestor técnico <br> ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Firma gestor técnico ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3 color="#000000">Registro/CC</font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="46" align="center" valign=middle><b>
+					<input type="date" id="fecha3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="time" id="hora3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="nombre3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar3"
+						onclick="abrirFirma('3')">Firmar</button>
+					<img src="" id="firma3" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="text" id="registro3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="date" id="fecha4" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle><b>
+					<input type="time" id="hora4" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<input type="text" id="nombre4" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle><b>
+					<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar4"
+						onclick="abrirFirma('4')">Firmar</button>
+					<img src="" id="firma4" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<input type="text" id="registro4" class="ecp">
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="19" align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="44" align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>% APLICADO</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3><br>SEÑAL APLICADA (°F)<br></font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>INDICACIÓN DCS (°F)</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=3>ERROR (°F)</font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=middle><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="40" align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=3>0%</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom>
+				<input type="text" id="señalP1" onchange="actItems2()">
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="indicacionP1" onchange="actItems2()">
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="errorP1" onchange="actItems2()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="40" align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.25" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=3>25%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom>
+				<input type="text" id="señalP2" onchange="actItems2()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="indicacionP2" onchange="actItems2()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="errorP2" onchange="actItems2()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="40" align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.5" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=3>50%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom>
+				<input type="text" id="señalP3" onchange="actItems2()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="indicacionP3" onchange="actItems2()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="errorP3" onchange="actItems2()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="40" align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="0.75" sdnum="1033;0;0%"><b>
+					<font face="Arial Narrow" size=3>75%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom>
+				<input type="text" id="señalP4" onchange="actItems2()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="indicacionP4" onchange="actItems2()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="errorP4" onchange="actItems2()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>2
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="40" align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=3>100'%</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom>
+				<input type="text" id="señalP5" onchange="actItems2()">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="indicacionP5" onchange="actItems2()">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="errorP5" onchange="actItems2()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="27" align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 height="30" align="center" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>3. EQUIPOS UTILIZADOS:</font>
+				</b></td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 2px solid #000000" height="30" align="center"
+				valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-right: 2px solid #000000" align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="center" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="28" align="right" valign=center><b>
+					<font face="Arial Narrow" size=3>MARCA: </font>
+				</b></td>
+			<td colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="marcaEU1" onchange="actEquipos()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>MODELO:</font>
+				</b></td>
+			<td colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="modeloEU1" onchange="actEquipos()">
+				</b></td>
+			<td align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>SERIE:</font>
+				</b></td>
+			<td colspan=3 align="center" valign=middle><b>
+					<input type="text" id="serieEU1" onchange="actEquipos()">
+				</b></td>
+			<td colspan=3 align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>FECHA DE CALIBRACIÓN:</font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="fechacalibracionEU1" onchange="actEquipos()">
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="28" align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="28" align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>MARCA: </font>
+				</b></td>
+			<td colspan=3 align="center" valign=middle><b>
+					<input type="text" id="marcaEU2" onchange="actEquipos()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>MODELO:</font>
+				</b></td>
+			<td colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="modeloEU2" onchange="actEquipos()">
+				</b></td>
+			<td align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>SERIE:</font>
+				</b></td>
+			<td colspan=3 align="center" valign=middle><b>
+					<input type="text" id="serieEU2" onchange="actEquipos()">
+				</b></td>
+			<td colspan=3 align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>FECHA DE CALIBRACIÓN:</font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="fechacalibracionEU2" onchange="actEquipos()">
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="21" align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="28" align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>MARCA: </font>
+				</b></td>
+			<td colspan=3 align="center" valign=middle><b>
+					<input type="text" id="marcaEU3" onchange="actEquipos()">
+				</b></td>
+			<td align="left" valign=bottom><b>
+					<font face="Arial Narrow" size=3><br></font>
+				</b></td>
+			<td align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>MODELO:</font>
+				</b></td>
+			<td colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="modeloEU3" onchange="actEquipos()">
+				</b></td>
+			<td align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>SERIE:</font>
+				</b></td>
+			<td colspan=3 align="center" valign=middle><b>
+					<input type="text" id="serieEU3" onchange="actEquipos()">
+				</b></td>
+			<td colspan=3 align="right" valign=middle><b>
+					<font face="Arial Narrow" size=3>FECHA DE CALIBRACIÓN:</font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" colspan=3 align="center" valign=bottom><b>
+					<input type="text" id="fechacalibracionEU3" onchange="actEquipos()">
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="21" align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td style="border-right: 2px solid #000000" align="center" valign=bottom><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 height="36" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>OBSERVACIONES:</font>
+				</b><button type="button" class="btn btn-info btn-sm oculto-impresion" id="btnagregarObs"
+					onclick="agregarObs()">Agregar Observación</button>
+				<button type="button" class="btn btn-info btn-sm m-1 oculto-impresion" onclick="adjuntar()">Adjuntar
+					archivo</button>
+				<button type="button" class="btn btn-warning btn-sm m-1 oculto-impresion" onclick="verArchivos()">Ver
+					archivos</button>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+		</tr>
+
+		<tr>
+
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 align="left" valign=middle>
+				<table id="tblobs" style="width: 100%;" class="oculto">
+					<tr>
+						<td colspan="4">
+							<textarea id="obs100" style="width: 100%;" rows="3" class="activo"
+								placeholder="Observaciones..."></textarea>
+						</td>
+					</tr>
+					<tr>
+
+						<td>
+							<input type="text" id="nombre100" placeholder="Nombre" class="activo">
+						</td>
+
+						<td style="width: 200px;">
+							<input type="text" id="registro100" placeholder="CC/REGISTRO" class="activo">
+						</td>
+						<td>
+							<button type="button" class="btn btn-info btn-block" id="btnFirmar21"
+								onclick="abrirFirma('100')">Firmar</button>
+							<img src="" id="firma100" width="130px" height="50px" class="oculto">
+						</td>
+						<td>
+
+						</td>
+					</tr>
+				</table>
+			</td>
+
+		</tr>
+		<tr>
+
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 height="42" align="left" valign=middle bgcolor="#FFFFFF" id="observaciones"><b>
+					<font face="Arial Narrow"><br></font>
+				</b></td>
+		</tr>
+
+
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=19 height="24" align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><br></font>
+				</b></td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=19 height="33" align="center" valign=middle>
+				<font face="Arial Narrow">Documento emitido por el Servicio de Calidad de la Compañía. El documento es
+					propiedad de UT ITALCO. La empresa protegerá sus propios derechos en los tribunales civiles y
+					penales de acuerdo con la ley.</font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=19 height="17" align="center" valign=middle>
+				<font face="Arial Narrow" size=1>** Fin del formato **</font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow" size=1><br></font>
+			</td>
+		</tr>
+	</table>
+	<!-- Modal -->
+	<div class="modal" id="modalFirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: 600px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Firmar Documento</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<center><canvas id="canvas" style="border: 1px solid black;" width="560" height="320"></canvas>
+						<br><input type="checkbox" id="poldatos" checked>
+						Acepto las <a href="javascript::void(0)" onclick="mostraraviso()">políticas de protección de
+							datos personales</a>
+					</center>
+
+				</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger" id="btnLimpiar">Limpiar</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="pasarFirma()">Pasar a
+						documento</button>
+
+				</div>
+			</div>
+		</div>
+		<!-- ************************************************************************** -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script> -->
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+			</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+			</script>
+
+
+		<script>
+
+
+
+			function agregarObs() {
+				$('#tblobs').removeClass("oculto")
+				$('#btnagregarObs').addClass("oculto")
+			}
+
+			var imagencargada = null
+			var idImagen = null
+
+			var user = sessionStorage.getItem('usercal')
+
+			var verifuser = sessionStorage.getItem('datosuserqaqc')
+
+			if (verifuser != null) {
+				var datosuserqaqc = JSON.parse(sessionStorage.getItem('datosuserqaqc'))
+			} else {
+				location = 'index.php'
+			}
+			var tipouser = sessionStorage.getItem('tipouser')
+
+			if (tipouser == 'ecopetrol') {
+				$("input, select,  textarea").prop('disabled', true);
+				$('.ecp').prop('disabled', false)
+				$('.ut').prop('disabled', true)
+				//$("#info input").prop("disabled", true);
+			}
+
+			if (tipouser == 'italco') {
+				// $("input, select,  textarea").prop('disabled', false);
+				$('.ecp').prop('disabled', true)
+				// $('.ut').prop('disabled', true)
+				//$("#info input").prop("disabled", true);
+			}
+
+			$('.activo').prop('disabled', false)
+
+			var items = []
+			// Set up the canvas
+			var canvas = document.querySelector("#canvas");
+			var ctx = canvas.getContext("2d");
+			ctx.strokeStyle = "#222222";
+			ctx.lineWidth = 2;
+
+
+			$btnDescargar = document.querySelector("#btnDescargar")
+			$btnLimpiar = document.querySelector("#btnLimpiar")
+			$btnGenerarDocumento = document.querySelector("#btnGenerarDocumento");
+
+
+
+			// Get a regular interval for drawing to the screen
+			window.requestAnimFrame = (function (callback) {
+				return window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					window.oRequestAnimationFrame ||
+					window.msRequestAnimaitonFrame ||
+					function (callback) {
+						window.setTimeout(callback, 1000 / 60);
+					};
+			})();
+
+
+			const limpiarCanvas = () => {
+				// Colocar color blanco en fondo de canvas
+				clearCanvas();
+			};
+			limpiarCanvas();
+			$btnLimpiar.onclick = limpiarCanvas;
+			// Escuchar clic del botón para descargar el canvas
+
+
+
+			window.obtenerImagen = () => {
+				return $canvas.toDataURL();
+			};
+
+
+			// Set up mouse events for drawing
+			var drawing = false;
+			var mousePos = {
+				x: 0,
+				y: 0
+			};
+			var lastPos = mousePos;
+			canvas.addEventListener("mousedown", function (e) {
+				drawing = true;
+				lastPos = getMousePos(canvas, e);
+			}, false);
+			canvas.addEventListener("mouseup", function (e) {
+				drawing = false;
+			}, false);
+			canvas.addEventListener("mousemove", function (e) {
+				mousePos = getMousePos(canvas, e);
+			}, false);
+
+			// Set up touch events for mobile, etc
+			canvas.addEventListener("touchstart", function (e) {
+				mousePos = getTouchPos(canvas, e);
+				var touch = e.touches[0];
+				var mouseEvent = new MouseEvent("mousedown", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+			canvas.addEventListener("touchend", function (e) {
+				var mouseEvent = new MouseEvent("mouseup", {});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+			canvas.addEventListener("touchmove", function (e) {
+				var touch = e.touches[0];
+				var mouseEvent = new MouseEvent("mousemove", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+
+
+			// Prevent scrolling when touching the canvas
+			document.body.addEventListener("touchstart", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, {
+				passive: false
+			});
+			document.body.addEventListener("touchend", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+			document.body.addEventListener("touchmove", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+
+			// Get the position of the mouse relative to the canvas
+			function getMousePos(canvasDom, mouseEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: mouseEvent.clientX - rect.left,
+					y: mouseEvent.clientY - rect.top
+				};
+			}
+
+			// Get the position of a touch relative to the canvas
+			function getTouchPos(canvasDom, touchEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: touchEvent.touches[0].clientX - rect.left,
+					y: touchEvent.touches[0].clientY - rect.top
+				};
+			}
+
+			// Draw to the canvas
+			function renderCanvas() {
+				if (drawing) {
+					ctx.moveTo(lastPos.x, lastPos.y);
+					ctx.lineTo(mousePos.x, mousePos.y);
+					ctx.lineWidth = 5;
+					ctx.stroke();
+					lastPos = mousePos;
+				}
+			}
+
+			// Clear the canvas
+			function clearCanvas() {
+				canvas.width = canvas.width;
+			}
+
+			// Allow for animation
+			(function drawLoop() {
+				requestAnimFrame(drawLoop);
+				renderCanvas();
+			})();
+
+
+			function abrirFirma(id) {
+
+				if (id == 100) {
+					if ($('#obs100').val() == '') {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'info',
+							title: 'Por favor registre primero la observación, nombre y registro...',
+							showConfirmButton: false,
+							timer: 2500
+						})
+					} else {
+						idImagen = id;
+						pasarFirma()
+					}
+				} else {
+
+					if ($('#fecha' + id).val() == "" || $('#hora' + id).val() == "") {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'info',
+							title: 'Por favor registre primero fecha y hora...',
+							showConfirmButton: false,
+							timer: 2500
+						})
+					} else {
+
+
+						idImagen = id;
+						pasarFirma()
+
+
+					}
+
+				}
+
+
+			}
+
+
+			function pasarFirma() {
+				if ($('#poldatos').prop('checked')) {
+					document.querySelector("#firma" + idImagen).src = datosuserqaqc.firma;
+
+					$('#firma' + idImagen).removeClass('oculto')
+					$('#btnFirmar' + idImagen).hide()
+
+					$('#nombre' + idImagen).val(datosuserqaqc.nombres)
+					$('#registro' + idImagen).val(datosuserqaqc.documento)
+
+					if (idImagen == 1 || idImagen == 2) {
+						actDatos()
+					}
+
+					if (idImagen == 3 || idImagen == 4) {
+						actDatosPrueba()
+					}
+
+
+
+					if (idImagen == 100) {
+						guardarObs()
+					}
+
+
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'info',
+						title: 'Debe aceptar las políticas de protección de datos perasonales',
+						showConfirmButton: false,
+						timer: 1500
+					})
+				}
+
+
+				//document.querySelector("#btnfirmar").style.display = 'none';
+
+			}
+
+			function getParameterByName(name) {
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+					results = regex.exec(location.search);
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}
+
+			var tag = getParameterByName('tag');
+			var arrayDatos = []
+			var firmasItems = []
+			var arrayInfo = []
+
+			odsq = localStorage.getItem('odsq');
+			equipos = sessionStorage.getItem('equipo')
+			alcance = sessionStorage.getItem('servicio')
+			esp = sessionStorage.getItem('esp')
+
+
+			var server = 'https://utitalco.com/calidad/033/alistamiento/server/';
+
+			$.post(server + 'cargarRca98.php', {
+				ods: odsq,
+				tag: tag
+			},
+				function (resp) {
+					arrayDatos = resp
+					cargarDatos()
+				})
+
+			function cargarDatos() {
+
+				$('#unidad').html(arrayDatos.unidad)
+				$('#planta').html(arrayDatos.planta)
+
+				$('#ods').html(arrayDatos.ods)
+				$('#familia').html(arrayDatos.familia)
+				$('#tag').html(arrayDatos.tag)
+
+				if (arrayDatos.info != "") {
+					arrayInfo = JSON.parse(arrayDatos.info)
+
+					$('#serie').val(arrayInfo[0].serie)
+					$('#fecha').val(arrayInfo[0].fecha)
+					$('#unding').val(arrayInfo[0].unding)
+					$('#tiposensor').val(arrayInfo[0].tiposensor)
+					$('#rangocal').val(arrayInfo[0].rangocal)
+					$('#longitud').val(arrayInfo[0].longitud)
+					$('#servicio').val(arrayInfo[0].servicio)
+
+
+				}
+
+
+
+				if (arrayDatos.items != "") {
+					arrayItems = JSON.parse(arrayDatos.items)
+					for (var i = 0; i <= 9; i++) {
+						b = i + 1;
+						$('#señal' + b).val(arrayItems[i].señal)
+						$('#salida' + b).val(arrayItems[i].salida)
+						$('#error' + b).val(arrayItems[i].error)
+					}
+				}
+
+				if (arrayDatos.verificacion != "") {
+					var arrayFirmasItems = JSON.parse(arrayDatos.verificacion)
+
+					//ecp
+
+					$('#fecha1').val(arrayFirmasItems[0].fechaut1)
+					$('#hora1').val(arrayFirmasItems[0].horaut1)
+					$('#nombre1').val(arrayFirmasItems[0].nombreut1)
+					$('#registro1').val(arrayFirmasItems[0].registrout1)
+
+					//ut
+
+					$('#fecha2').val(arrayFirmasItems[0].fechaut2)
+					$('#hora2').val(arrayFirmasItems[0].horaut2)
+					$('#nombre2').val(arrayFirmasItems[0].nombreut2)
+
+					if (arrayFirmasItems[0].fechaut2 != "") {
+						document.querySelector("#firma2").src = arrayFirmasItems[0].firmaut2;
+						$('#firma2').removeClass('oculto')
+						$('#btnFirmar2').hide()
+					}
+
+					$('#registro2').val(arrayFirmasItems[0].registrout2)
+
+
+				}
+
+
+
+				if (arrayDatos.prueba != "") {
+					var arrayFirmasItems = JSON.parse(arrayDatos.prueba)
+
+					//ecp
+
+					$('#fecha4').val(arrayFirmasItems[0].fechaec)
+					$('#hora4').val(arrayFirmasItems[0].horaec)
+					$('#nombre4').val(arrayFirmasItems[0].nombreec)
+
+					if (arrayFirmasItems[0].fechaec != "") {
+						document.querySelector("#firma4").src = arrayFirmasItems[0].firmaec;
+						$('#firma4').removeClass('oculto')
+						$('#btnFirmar4').hide()
+					}
+
+					$('#registro4').val(arrayFirmasItems[0].registroec)
+
+					//ut
+
+					$('#fecha3').val(arrayFirmasItems[0].fechaut)
+					$('#hora3').val(arrayFirmasItems[0].horaut)
+					$('#nombre3').val(arrayFirmasItems[0].nombreut)
+
+					if (arrayFirmasItems[0].fechaut != "") {
+						document.querySelector("#firma3").src = arrayFirmasItems[0].firmaut;
+						$('#firma3').removeClass('oculto')
+						$('#btnFirmar3').hide()
+					}
+
+					$('#registro3').val(arrayFirmasItems[0].registrout)
+
+
+				}
+
+
+				if (arrayDatos.itemsprueba != "") {
+					arrayItems = JSON.parse(arrayDatos.itemsprueba)
+					for (var i = 0; i <= 4; i++) {
+						b = i + 1;
+						$('#señalP' + b).val(arrayItems[i].señalP)
+						$('#indicacionP' + b).val(arrayItems[i].indicacionP)
+						$('#errorP' + b).val(arrayItems[i].errorP)
+					}
+				}
+
+				if (arrayDatos.equipos != "") {
+					arrayItems = JSON.parse(arrayDatos.equipos)
+					for (var i = 0; i <= 2; i++) {
+						b = i + 1;
+						$('#marcaEU' + b).val(arrayItems[i].marcaEU)
+						$('#modeloEU' + b).val(arrayItems[i].modeloEU)
+						$('#serieEU' + b).val(arrayItems[i].serieEU)
+						$('#fechacalibracionEU' + b).val(arrayItems[i].fechacalibracionEU)
+					}
+				}
+
+
+
+
+
+
+				//CARGUE DE OBSERVACIONES
+
+				if (arrayDatos.observaciones != "") {
+					var arrayObs = JSON.parse(arrayDatos.observaciones)
+					var html = ''
+					for (var i = 0; i < arrayObs.length; i++) {
+						html = `<b>Nota ${i + 1}: </b>
+                    ${arrayObs[i].obs} | ${arrayObs[i].nombre} | Registro: ${arrayObs[i].registro} | Fecha: ${arrayObs[i].fecha} | Firma: <span id="firm${i}" style="width: 60px;"></span> <br>--------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+                    `
+						$('#observaciones').append(html)
+						const imagef = document.createElement('img')
+						imagef.src = arrayObs[i].firma
+						imagef.height = "60"
+						document.querySelector('#firm' + i).appendChild(imagef)
+
+					}
+				}
+				if (arrayDatos.doc != "") {
+					listaArchivos = JSON.parse(arrayDatos.doc)
+
+				}
+
+
+				Swal.close()
+
+
+			}
+
+
+			//actualiza informacion
+
+			function actInfo() {
+				var serie = $('#serie').val()
+				var fecha = $('#fecha').val()
+				var unding = $('#unding').val()
+				var tiposensor = $('#tiposensor').val()
+				var rangocal = $('#rangocal').val()
+				var longitud = $('#longitud').val()
+				var servicio = $('#servicio').val()
+
+
+				var arrayInfo = []
+
+				arrayInfo.push({
+					"serie": serie,
+					"fecha": fecha,
+					"unding": unding,
+					"tiposensor": tiposensor,
+					"rangocal": rangocal,
+					"longitud": longitud,
+					"servicio": servicio
+				})
+
+				$.post(server + 'act898info.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayInfo)
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+
+
+			}
+
+
+			function actItems() {
+
+				var arrayItems = []
+
+				for (var i = 1; i <= 10; i++) {
+					var señal = $('#señal' + i).val()
+					var salida = $('#salida' + i).val()
+					var error = $('#error' + i).val()
+
+					arrayItems.push({
+						'señal': señal,
+						'salida': salida,
+						'error': error
+					})
+
+				}
+
+				$.post(server + 'act98Items.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayItems)
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+			}
+
+			function actDatos() {
+
+				var fechaut1 = $('#fecha1').val()
+				var horaut1 = $('#hora1').val()
+				var nombreut1 = $('#nombre1').val()
+				var registrout1 = $('#registro1').val()
+
+				var fechaut2 = $('#fecha2').val()
+				var horaut2 = $('#hora2').val()
+				var nombreut2 = $('#nombre2').val()
+
+				var img = document.getElementById("firma2");
+				var firmaut2 = img.src
+
+				if (fechaut2 == '') {
+					firmaut2 = ''
+				}
+
+				var registrout2 = $('#registro2').val()
+
+				var arrayFirmasItems = []
+
+				arrayFirmasItems.push({
+					'fechaut1': fechaut1,
+					'horaut1': horaut1,
+					'nombreut1': nombreut1,
+					'registrout1': registrout1,
+					'fechaut2': fechaut2,
+					'horaut2': horaut2,
+					'nombreut2': nombreut2,
+					'firmaut2': firmaut2,
+					'registrout2': registrout2
+				})
+
+				$.post(server + 'act98Datos.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayFirmasItems)
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+
+
+
+
+
+
+
+			}
+
+
+			function actDatosPrueba() {
+
+				var fechaut = $('#fecha3').val()
+				var horaut = $('#hora3').val()
+				var nombreut = $('#nombre3').val()
+
+				var img = document.getElementById("firma3");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro3').val()
+
+
+				var fechaec = $('#fecha4').val()
+				var horaec = $('#hora4').val()
+				var nombreec = $('#nombre4').val()
+
+				var img = document.getElementById("firma4");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+
+				var registroec = $('#registro4').val()
+
+				var arrayFirmasItems = []
+
+				arrayFirmasItems.push({
+					'fechaut': fechaut,
+					'horaut': horaut,
+					'nombreut': nombreut,
+					'firmaut': firmaut,
+					'registrout': registrout,
+					'fechaec': fechaec,
+					'horaec': horaec,
+					'nombreec': nombreec,
+					'firmaec': firmaec,
+					'registroec': registroec
+				})
+
+				$.post(server + 'act98DatosPrueba.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayFirmasItems)
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+
+
+
+
+
+
+
+			}
+
+
+			function actItems2() {
+
+				var arrayItems = []
+
+				for (var i = 1; i <= 5; i++) {
+					var señalP = $('#señalP' + i).val()
+					var indicacionP = $('#indicacionP' + i).val()
+					var errorP = $('#errorP' + i).val()
+
+					arrayItems.push({
+						'señalP': señalP,
+						'indicacionP': indicacionP,
+						'errorP': errorP
+					})
+
+				}
+
+				$.post(server + 'act98Items2.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayItems)
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+			}
+
+
+			function actEquipos() {
+
+				var arrayItems = []
+
+				for (var i = 1; i <= 3; i++) {
+					var marcaEU = $('#marcaEU' + i).val()
+					var modeloEU = $('#modeloEU' + i).val()
+					var serieEU = $('#serieEU' + i).val()
+					var fechacalibracionEU = $('#fechacalibracionEU' + i).val()
+
+					arrayItems.push({
+						'marcaEU': marcaEU,
+						'modeloEU': modeloEU,
+						'serieEU': serieEU,
+						'fechacalibracionEU': fechacalibracionEU
+					})
+
+				}
+
+				$.post(server + 'act98Equipos.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayItems)
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+			}
+
+
+
+
+
+
+			function mostraraviso() {
+				let timerInterval
+				Swal.fire({
+					title: 'Políticas de protección de datos personales',
+					text: 'En cumplimiento con la Ley 1581 de protección de datos personales, se le informa que los datos suministrados serán incorporados a una base de datos cuya finalidad es el registro de control de actividades RCA y las actuaciones que se deriven de dicha gestión, cuyo responsable del tratamiento es UT ITALCO. Mediante el registro de sus datos  a través de este formato usted autoriza a UT ITALCO, a tratar los datos con la finalidad descrita arriba.  Como Titular se le informa que podrá ejercer sus derechos de acceso y reclamos a través del correo de contacto pqrsbca@utitalco.com.',
+					timer: 20000,
+					timerProgressBar: true,
+					didOpen: () => {
+						Swal.showLoading()
+						const b = Swal.getHtmlContainer().querySelector('b')
+						timerInterval = setInterval(() => {
+							b.textContent = Swal.getTimerLeft()
+						}, 100)
+					},
+					willClose: () => {
+						clearInterval(timerInterval)
+					}
+				}).then((result) => {
+					/* Read more about handling dismissals below */
+					if (result.dismiss === Swal.DismissReason.timer) {
+						console.log('I was closed by the timer')
+					}
+				})
+			}
+
+			function cargando() {
+				let timerInterval
+				Swal.fire({
+					title: 'Cargando formato...!',
+					timer: 20000,
+					timerProgressBar: true,
+					didOpen: () => {
+						Swal.showLoading()
+						const b = Swal.getHtmlContainer().querySelector('b')
+						timerInterval = setInterval(() => {
+							// b.textContent = Swal.getTimerLeft()
+						}, 100)
+					},
+					willClose: () => {
+						clearInterval(timerInterval)
+					}
+				}).then((result) => {
+					/* Read more about handling dismissals below */
+					if (result.dismiss === Swal.DismissReason.timer) {
+						console.log('I was closed by the timer')
+					}
+				})
+			}
+
+			function verArchivos() {
+				var htmltexto = ''
+				for (var i = 0; i < listaArchivos.length; i++) {
+					htmltexto += `
+                    <a href='https://utitalco.com/calidad/033/alistamiento/server/archivos/${listaArchivos[i].archivo}' target='_blank'>${listaArchivos[i].archivo}</a> <br>
+                `
+				}
+
+				Swal.fire({
+					title: '<strong>Lista de adjuntos</strong>',
+					icon: 'info',
+					html: `
+                Pulse click sobre el archivo que desea descargar... <br>
+                ${htmltexto}
+                `
+
+				})
+			}
+
+			function adjuntar() {
+				Swal.fire({
+					title: 'Adjuntar archivo',
+					html: `
+                <input type="file" id="archivo" class="form-control" placeholder="Buscar..."> <br>
+				Según el tamaño del archivo puede tardar un tiempo... espere el aviso de archivo cagado.
+                `,
+					showCancelButton: true,
+					confirmButtonText: 'Adjuntar'
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+
+						var formData = new FormData();
+						var files = $('#archivo')[0].files[0];
+						formData.append('archivo', files);
+						formData.append('ods', odsq);
+						formData.append('tag', tag);
+						$.ajax({
+							url: server + 'guardarArchivo98.php',
+							type: 'post',
+							data: formData,
+							contentType: false,
+							processData: false,
+							success: function (response) {
+								console.log(response)
+
+								if (response.msn == "Ok") {
+									Swal.fire({
+										position: 'top-end',
+										icon: 'success',
+										title: 'Archivo cargado correctamente...',
+										showConfirmButton: false,
+										timer: 1500
+									}).then(() => {
+
+										location.reload();
+									})
+								} else {
+									Swal.fire({
+										icon: 'error',
+										title: 'Oops...',
+										text: 'Formato de archivo incorrecto...!',
+									})
+								}
+							}
+						});
+
+					}
+				})
+			}
+
+			function guardarObs() {
+				var observacion = $('#obs100').val()
+				observacion = observacion.replace(/(\r\n|\n|\r)/gm, " ")
+				observacion = observacion.replace(/["]/gm, "``")
+				observacion = observacion.replace(/[“]/gm, "``")
+				observacion = observacion.replace(/[”]/gm, "``")
+				observacion = observacion.replace(/[']/gm, "`")
+				var nombreobs = $('#nombre100').val()
+				var registroobs = $('#registro100').val()
+				var img = document.getElementById("firma100");
+
+				// crea un nuevo objeto `Date`
+				var today = new Date();
+
+				// obtener la fecha y la hora
+				var now = today.toLocaleString();
+				var firmaobs = img.src
+
+				if (arrayDatos.observaciones != "") {
+
+					var arrayLmp = JSON.parse(arrayDatos.observaciones)
+				} else {
+					var arrayLmp = []
+				}
+
+
+
+				arrayLmp.push({
+					"obs": observacion,
+					"nombre": nombreobs,
+					"registro": registroobs,
+					"firma": firmaobs,
+					"fecha": now
+				})
+
+
+				$.post(server + 'actOs98Obs.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLmp)
+				},
+					function (res) {
+						console.log(res)
+						location.reload()
+					})
+
+			}
+
+
+
+		</script>
+</body>
+
+</html>

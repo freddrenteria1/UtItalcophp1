@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="weldbook/jquery.min.js"></script>
+    <script src="weldbook/jquery-ui.min.js"></script>
+    <script src="weldbook/jquery.jqGrid.min.js"></script>
+    <script src="weldbook/grid.locale-en.js"></script>
+    <link rel="stylesheet" href="weldbook/jquery-ui.css">
+    <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+          <script src="https://code.highcharts.com/modules/export-data.js"></script>
+          <script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <link rel="stylesheet" href="https://code.highcharts.com/css/highcharts.css" />
+
+
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h5>INFORME JUNTAS RECHAZADAS END VOLUMÉTRICOS ODS 030 U-2100</h5>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+
+                <div class="col-sm-4">
+                    Última modificación: <span id="fecha"> </span> <br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <table class="table table-striped" id="grid1b"></table>
+
+            <div class="row mt-3">
+                <div class="col-sm-6">
+                    <table class="table table-sm table-striped table-bordered">
+                        <thead class="bg-info">
+                            <th>INDICACIÓN</th>
+                            <th>Abrev.</th>
+                            <th>Ind. Relev.</th>
+                            <th>%</th>
+                        </thead>
+                        <tbody id="tabla2">
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="col-sm-6">
+                    <div id="fig1">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 mt-3 mb-3">
+                    <center>
+                        <h3>ANÁLISIS DE DATOS</h3>
+                    </center>
+                </div>
+
+
+                <div class="col-sm-4">
+                    <table class="table table-striped table-bordered">
+
+                        <tbody id="tabla3">
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="col-sm-4">
+                    <div id="fig2">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div id="fig3">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/033/alistamiento/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        if (ventana_ancho > 1300) {
+            ventana_alto = ventana_alto - 220;
+        } else {
+            ventana_alto = 330;
+        }
+
+        if (user == null) {
+            location = "index.html";
+        }
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+            formData.append("user", user);
+
+            $.ajax({
+                url: url + "guardarExcelInfDef.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            location.reload()
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cargarDatosInfDef.php", function (resp) {
+                datos = resp;
+
+                console.log(datos);
+
+                $("#grid1b").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [{
+                            name: "iditem",
+                            label: "ID.",
+                            width: 50,
+                            frozen: true,
+                            align: "center"
+                        },
+                        {
+                            name: "end",
+                            label: "END",
+                            width: 50,
+                            frozen: true,
+                            align: "center"
+                        },
+                        {
+                            name: "empresa",
+                            label: "EMPRESA",
+                            width: 80,
+                            frozen: true,
+                            align: "center"
+                        },
+                        {
+                            name: "numinforme",
+                            label: "NUM <br> INFORME",
+                            width: 80,
+                            frozen: true,
+                            align: "center"
+                        },
+                        {
+                            name: "fecha",
+                            label: "FECHA",
+                            width: 100,
+                            align: "center",
+                            frozen: true
+                        },
+                        {
+                            name: "isometrico",
+                            label: "ISOMÉTRICO",
+                            width: 250,
+                            frozen: true,
+                            align: "center"
+                        },
+                        {
+                            name: "planta",
+                            label: "PLANTA",
+                            width: 100,
+                            align: "center",
+
+                        },
+                        {
+                            name: "material",
+                            label: "MATERIAL",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "tiposoldadura",
+                            label: "TIPO <br> SOLDADURA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "welder",
+                            label: "WELDER",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "numjunta",
+                            label: "NUM JUNTA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "tipojunta",
+                            label: "TIPO JUNTA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "pulgadas",
+                            label: "inch",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "ab",
+                            label: "AB",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "abnv1",
+                            label: "nv1",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "abnv2",
+                            label: "nv2",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "abnv3",
+                            label: "nv3",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "bc",
+                            label: "BC",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "bcnv1",
+                            label: "nv1",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "bcnv2",
+                            label: "nv2",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "bcnv3",
+                            label: "nv3",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "ca",
+                            label: "CA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "canv1",
+                            label: "nv1",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "canv2",
+                            label: "nv2",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "canv3",
+                            label: "nv3",
+                            width: 80,
+                            align: "center"
+                        }, {
+                            name: "da",
+                            label: "DA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "danv1",
+                            label: "nv1",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "danv2",
+                            label: "nv2",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "danv3",
+                            label: "nv3",
+                            width: 80,
+                            align: "center"
+                        }, {
+                            name: "ea",
+                            label: "EA",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "eanv1",
+                            label: "nv1",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "eanv2",
+                            label: "nv2",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "eanv3",
+                            label: "nv3",
+                            width: 80,
+                            align: "center"
+                        },
+                        {
+                            name: "juntasoldador",
+                            label: "JUNTA SOLDADOR",
+                            width: 300
+                        }
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                $("#grid1b").jqGrid('filterToolbar', {
+                    autoSearch: true,
+                    searchOnEnter: false,
+                });
+
+
+                $("#grid1b").jqGrid('setGroupHeaders', {
+                    useColSpanStyle: true,
+                    groupHeaders: [{
+                            startColumnName: 'ab',
+                            numberOfColumns: 4,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>Placa Novedades</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'bc',
+                            numberOfColumns: 4,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>Placa Novedades</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'ca',
+                            numberOfColumns: 4,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>Placa Novedades</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'da',
+                            numberOfColumns: 4,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>Placa Novedades</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'ea',
+                            numberOfColumns: 4,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>Placa Novedades</center></td></tr>' +
+                                '</table>',
+                        },
+
+                    ]
+                });
+
+                $("#grid1b").jqGrid('setFrozenColumns');
+
+
+
+                cargarBitacora()
+
+
+
+            });
+        }
+
+        function cargarBitacora() {
+
+            $.post(url + "cargarBitacoraInfDef.php", function (resp) {
+                datos = resp;
+
+                Swal.close();
+
+
+                $('#fecha').html(datos.fecha)
+
+                $.post(url + "repInfDef.php", function (resp) {
+                    datos = resp;
+                    datosind = datos.ind
+                    datosana = datos.ana
+
+                    var totind = datosind.totind;
+
+                    html = `
+                        <tr>
+                            <td>FUSIÓN INCOMPLETA EN LA RAÍZ</td>
+                            <td>FI</td>
+                            <td>${datosind.fi}</td>    
+                            <td>${ (datosind.fi/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>FALTA DE FUSIÓN ENTRE PASES</td>
+                            <td>FF</td>
+                            <td>${datosind.ff}</td>    
+                            <td>${ (datosind.ff/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>PENETRACIÓN INADECUADA</td>
+                            <td>PI</td>
+                            <td>${datosind.pi}</td>    
+                            <td>${ (datosind.pi/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>INDICACIÓN LINEAL</td>
+                            <td>IL</td>
+                            <td>${datosind.il}</td>    
+                            <td>${ (datosind.il/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>INDICACIÓN REDONDEADA</td>
+                            <td>IR</td>
+                            <td>${datosind.ir}</td>    
+                            <td>${ (datosind.ir/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>EXCESO DE PENETRACIÓN</td>
+                            <td>EXP</td>
+                            <td>${datosind.exp}</td>    
+                            <td>${ (datosind.exp/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>HI-LOW DESALINEAMIENTO</td>
+                            <td>HI</td>
+                            <td>${datosind.hi}</td>    
+                            <td>${ (datosind.hi/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>GRIETAS LONGITUDINALES</td>
+                            <td>GL</td>
+                            <td>${datosind.gl}</td>    
+                            <td>${ (datosind.gl/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>GRIETAS TRANSVERSALES </td>
+                            <td>GT</td>
+                            <td>${datosind.gt}</td>    
+                            <td>${ (datosind.gt/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>POROSIDAD AISADA</td>
+                            <td>PA</td>
+                            <td>${datosind.pa}</td>    
+                            <td>${ (datosind.pa/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>POROSIDAD AGRUPADA</td>
+                            <td>PAG</td>
+                            <td>${datosind.pag}</td>    
+                            <td>${ (datosind.pag/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>POROSIDAD TUBULAR (WORMHOLE)</td>
+                            <td>PT</td>
+                            <td>${datosind.pt}</td>    
+                            <td>${ (datosind.pt/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>POROSIDAD ALARGADA VERMICULAR</td>
+                            <td>PV</td>
+                            <td>${datosind.pv}</td>    
+                            <td>${ (datosind.pv/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>INCLUSIONES DE ESCORIA AISLADAS</td>
+                            <td>IEA</td>
+                            <td>${datosind.iea}</td>    
+                            <td>${ (datosind.iea/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>INCLUSIONES DE ESCORIAS ALARGADAS</td>
+                            <td>IEI</td>
+                            <td>${datosind.iei}</td>    
+                            <td>${ (datosind.iei/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>ACUMULACIÓN DE DISCONTINUIDADES</td>
+                            <td>A</td>
+                            <td>${datosind.a}</td>    
+                            <td>${ (datosind.a/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>CONCAVIDAD EXTERNA</td>
+                            <td>CE</td>
+                            <td>${datosind.ce}</td>    
+                            <td>${ (datosind.ce/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>CONCAVIDAD INTERNA</td>
+                            <td>CI</td>
+                            <td>${datosind.ci}</td>    
+                            <td>${ (datosind.ci/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>SOCAVADO EXTERNO</td>
+                            <td>SE</td>
+                            <td>${datosind.se}</td>    
+                            <td>${ (datosind.se/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>SOCAVADO INTERNO</td>
+                            <td>SI</td>
+                            <td>${datosind.si}</td>    
+                            <td>${ (datosind.si/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>QUEMONES O CRATERES (BURN-THROUGH)</td>
+                            <td>Q</td>
+                            <td>${datosind.q}</td>    
+                            <td>${ (datosind.q/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>INCLUSIÓN DE TUNGSTENO</td>
+                            <td>IT</td>
+                            <td>${datosind.it}</td>    
+                            <td>${ (datosind.it/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>CORDON IRREGULAR</td>
+                            <td>CIR</td>
+                            <td>${datosind.cir}</td>    
+                            <td>${ (datosind.cir/totind) * 100 }%</td>   
+                        </tr>
+                        <tr>
+                            <td>TOMAR PLACA DE NUEVO</td>
+                            <td>T</td>
+                            <td>${datosind.t}</td>    
+                            <td>${ (datosind.t/totind) * 100 }%</td>   
+                        </tr>
+                        <tr class="bg-warning">
+                            <td><b>TOTAL</b></td>
+                            <td></td>
+                            <td><b>${datosind.totind}</b></td>    
+                            <td><b>${ (datosind.totind/totind) * 100 }%</b></td>   
+                        </tr>
+
+
+                    `
+
+                    $('#tabla2').html(html)
+
+                    var html = `
+                        <tr>
+                            <td align="right">JUNTAS REALIZADAS</td>
+                            <td>${datosana.totjuntas}</td>    
+                        </tr>
+                        <tr>
+                            <td align="right">JUNTAS BW</td>
+                            <td>${datosana.totjuntasbw}</td>    
+                        </tr>
+                        <tr>
+                            <td align="right">JUNTAS BW RECHAZADAS RX/UT</td>
+                            <td>${datosana.totjuntasbwr}</td>    
+                        </tr>
+                        <tr>
+                            <td align="right">JUNTAS BW CON RX/UT</td>
+                            <td>${datosana.totjuntasbwp}</td>    
+                        </tr>
+                        <tr>
+                            <td align="right">JUNTAS SW</td>
+                            <td>${datosana.totjuntassw}</td>    
+                        </tr>
+                        <tr>
+                            <td align="right">JUNTAS SW RECHAZADAS RX</td>
+                            <td>${datosana.totjuntasswr}</td>    
+                        </tr>
+                        <tr>
+                            <td align="right">JUNTAS SW CON RX</td>
+                            <td>${datosana.totjuntasswp}</td>    
+                        </tr>
+                        <tr>
+                            <td align="right">JUNTAS TOTAL RECHAZADAS</td>
+                            <td>${datosana.totjuntasrechazadas}</td>    
+                        </tr>
+
+                        <tr class="bg-warning">
+                            <td align="right">% DEFECTOLOGÍA JUNTAS BW</td>
+                            <td>${datosana.pordefbw}%</td>    
+                        </tr>
+
+                        <tr class="bg-warning">
+                            <td align="right">% DEFECTOLOGÍA JUNTAS SW</td>
+                            <td>${datosana.pordefsw}%</td>    
+                        </tr>
+
+                        <tr class="bg-warning">
+                            <td align="right">% DEFECTOLOGÍA GENERAL</td>
+                            <td>${datosana.pordef}%</td>    
+                        </tr>
+                         
+
+                        `
+                    $('#tabla3').html(html)
+
+                    graficas()
+
+
+
+
+                })
+
+
+
+            });
+
+
+
+        }
+
+        function graficas() {
+
+            var totind = datosind.totind;
+
+            var cantjbw = datosana.totjuntasbwp;
+            var cantjbwr = datosana.totjuntasbwr;
+
+            var porcjbwr = (cantjbwr/cantjbw) * 100;
+            var porcjbw = 100 - porcjbwr;
+
+            var porcdef = (datosana.totjuntasrechazadas/datosana.totjuntas) * 100;
+            var porcjb = 100 - porcdef;
+
+            Highcharts.chart("fig1", {
+
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "bar",
+                    height: 800,
+                },
+                title: {
+                    text: "% DEFECTOLOGÍA",
+                },
+
+                xAxis: {
+                    categories: ["FI", "FF", "PI", "IL", "IR", "EXP", "HI", "GL", "GT", "PA", "PAG", "PT", "PV",
+                        "IEA", "IEI", "A", "CE", "CI", "SE", "SI", "Q", "IT", "CIR", "T"
+                    ],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "%",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}%</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+
+                plotOptions: {
+                    bar: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.1f}%'
+                        },
+                    },
+                },
+                series: [{
+                    name: "PORC",
+                    data: [(datosind.fi / totind) * 100, (datosind.ff / totind) * 100, (datosind.pi /
+                            totind) * 100, (datosind.il / totind) * 100, (datosind.ir / totind) *
+                        100, (datosind.exp / totind) * 100, (datosind.hi / totind) * 100, (datosind
+                            .gl / totind) * 100, (datosind.gt / totind) * 100, (datosind.pa /
+                            totind) * 100, (datosind.pag / totind) * 100, (datosind.pt / totind) *
+                        100, (datosind.pv / totind) * 100, (datosind.iea / totind) * 100, (datosind
+                            .iei / totind) * 100, (datosind.a / totind) * 100, (datosind.ce /
+                            totind) * 100, (datosind.ci / totind) * 100, (datosind.se / totind) *
+                        100, (datosind.si / totind) * 100, (datosind.q / totind) * 100, (datosind
+                            .it / totind) * 100, (datosind.cir / totind) * 100, (datosind.t /
+                            totind) * 100
+                    ]
+                }, ],
+            });
+
+            Highcharts.chart('fig2', {
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'DEFECTOLOGÍA JUNTAS BW CON RX/UT',
+
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: [
+                        {
+                            name: 'JUNTAS BW CON RX/UT',
+                            y: porcjbw,
+                            sliced: true,
+                            selected: true
+                        }, {
+                            name: 'JUNTAS BW RECHAZADAS RX/UT',
+                            y: porcjbwr
+                        }
+                    ]
+                }]
+            });
+        
+            Highcharts.chart('fig3', {
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'DEFECTOLOGÍA GENERAL',
+
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Brands',
+                    colorByPoint: true,
+                    data: [
+                        {
+                            name: 'JUNTAS REALIZADAS',
+                            y: porcjb,
+                            sliced: true,
+                            selected: true
+                        }, {
+                            name: 'JUNTAS RECHAZADAS',
+                            y: porcdef
+                        }
+                    ]
+                }]
+            });
+        
+        
+        
+        }
+    </script>
+</body>
+
+</html>

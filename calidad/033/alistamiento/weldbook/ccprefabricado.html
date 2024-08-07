@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+        <script src="jquery.min.js"></script>
+        <script src="jquery-ui.min.js"></script>
+        <script src="jquery.jqGrid.min.js"></script>
+        <script src="grid.locale-en.js"></script>
+        <link rel="stylesheet" href="jquery-ui.css">
+        <link rel="stylesheet" href="ui.jqgrid_4.min.css" />
+        <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+
+     
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column { 
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1; 
+            
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h5>REGISTRO CUADRO DE CONTROL PREFABRICADO COMPONENTES DE LA CALDERA 2405 ODS 033</h5>
+            </div>
+        </div>
+    </nav>
+    <div class="micontainer">
+        <div class="cuerpo">
+            <div class="row">
+                <div class="col-sm-4">
+                    Cargar archivo formato .csv <br />
+                    <input type="file" id="excel" class="form-control" />
+                </div>
+                <div class="col-sm-2">
+                    Fecha <br />
+                    <input type="date" id="fecha" class="form-control" />
+                </div>
+                <div class="col-sm-2">
+                    <br />
+                    <button class="btn btn-success" onclick="cargar()">
+                        Cargar Archivo
+                    </button>
+                </div>
+                <div class="col-sm-4">
+                    Última modificación: <span id="fechabit"> </span> <br>
+                    Archivo: <span id="doc"> </span> <br>
+                    Usuario: <span id="user"> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <div class="table-responsive">
+                <center>
+                    <h4>PAREDES LATERALES</h4>
+                </center>
+                <table class="table table-striped" id="grid1b"></table>
+            </div>
+            <hr>
+
+            <div class="table-responsive">
+                <center>
+                    <h4>PARED PISO</h4>
+                </center>
+                <table class="table table-striped" id="gridpiso"></table>
+            </div>
+            <hr>
+
+            <div class="table-responsive">
+                <center>
+                    <h4>PARED FRONTAL</h4>
+                </center>
+                <table class="table table-striped" id="gridfrontal"></table>
+            </div>
+            <hr>
+
+            <div class="table-responsive">
+                <center>
+                    <h4>PARED TECHO</h4>
+                </center>
+                <table class="table table-striped" id="gridtecho"></table>
+            </div>
+            <hr>
+
+            <div class="table-responsive">
+                <center>
+                    <h4>PARED PANTALLA</h4>
+                </center>
+                <table class="table table-striped" id="gridpantalla"></table>
+            </div>
+
+
+             
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var datosLaterales = []
+        var datosPiso = []
+        var datosFrontal = []
+        var datosTecho = []
+        var datosPantalla = []
+
+        var url = "https://utitalco.com/calidad/033/alistamiento/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        
+        if (user == null) {
+            location = "index.html";
+        }
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargar() {
+            cargando();
+            
+            var fecha = $('#fecha').val()
+
+            var formData = new FormData();
+            var files = $("#excel")[0].files[0];
+            formData.append("excel", files);
+            formData.append("fecha", fecha);
+            formData.append("user", user);
+
+            $.ajax({
+                url: url + "guardarExcelCCPre.php",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response);
+
+                    if (response.msn == "Realizado...") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Cargado...",
+                            text: "Excel cargado correctamente...!",
+                            showConfirmButton: false,
+                            timer: 3000,
+                        }).then(() => {
+                            location.reload()
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Formato de archivo incorrecto...!",
+                        });
+                    }
+                },
+            });
+        }
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cargarDatosCCPre.php", function (resp) {
+                datosLaterales = resp.laterales;
+                datosPiso = resp.piso;
+                datosFrontal = resp.frontal;
+                datosTecho = resp.techo;
+                datosPantalla = resp.pantalla;
+
+                 
+                $("#grid1b").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datosLaterales,
+                    colModel: [
+                        {name: "item", label: "ITEM", width: 50,}, 
+                        {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                        {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                        {name: "ejete", label: "EJE DIA", width: 90,},
+                        {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                        {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                        {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                        {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 320}                 
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: 200,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                
+                $("#grid1b").jqGrid('filterToolbar',
+                {autoSearch: false, searchOnEnter: false,});
+
+                //PISO
+
+                $("#gridpiso").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datosPiso,
+                    colModel: [
+                    {name: "item", label: "ITEM", width: 50,}, 
+                        {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                        {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                        {name: "ejete", label: "EJE DIA", width: 90,},
+                        {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                        {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                        {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                        {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 320}                
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: 200,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                
+                $("#gridpiso").jqGrid('filterToolbar',
+                {autoSearch: false, searchOnEnter: false,});
+
+                //FRONTAL
+
+                $("#gridfrontal").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datosFrontal,
+                    colModel: [
+                    {name: "item", label: "ITEM", width: 50,}, 
+                        {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                        {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                        {name: "ejete", label: "EJE DIA", width: 90,},
+                        {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                        {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                        {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                        {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 320}                 
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: 200,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                
+                $("#gridfrontal").jqGrid('filterToolbar',
+                {autoSearch: false, searchOnEnter: false,});
+
+                //TECHO
+
+                $("#gridtecho").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datosTecho,
+                    colModel: [
+                    {name: "item", label: "ITEM", width: 50,}, 
+                        {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                        {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                        {name: "ejete", label: "EJE DIA", width: 90,},
+                        {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                        {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                        {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                        {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 320}                  
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: 200,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                
+                $("#gridtecho").jqGrid('filterToolbar',
+                {autoSearch: false, searchOnEnter: false,});
+
+                //PANTALLA
+
+                $("#gridpantalla").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datosPantalla,
+                    colModel: [
+                    {name: "item", label: "ITEM", width: 50,}, 
+                        {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                        {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                        {name: "ejete", label: "EJE DIA", width: 90,},
+                        {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                        {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                        {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                        {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 320}               
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: 200,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                
+                $("#gridpantalla").jqGrid('filterToolbar',
+                {autoSearch: false, searchOnEnter: false,});
+
+
+
+
+                cargarBitacora()
+
+            
+            
+            });
+        }
+
+        function cargarBitacora(){
+
+            $.post(url + "cargarBitacoraCCPre.php", function (resp) {
+                datos = resp;
+
+                Swal.close();
+
+                
+                $('#fechabit').html(datos.fecha)
+                $('#doc').html(datos.archivo)
+                $('#user').html(datos.user)
+
+            
+            });
+
+
+
+        }
+
+         
+    </script>
+</body>
+
+</html>

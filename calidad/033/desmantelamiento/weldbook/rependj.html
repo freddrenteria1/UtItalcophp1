@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery.jqGrid.min.js"></script>
+    <script src="grid.locale-en.js"></script>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <link rel="stylesheet" href="ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        #list_jpt {
+            background-color: green;
+            color: white;
+        }
+
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+
+        }
+
+        .micontainertable {
+            position: relative;
+            width: 100%;
+
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+        }
+
+        th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>END POR EQUIPOS U-2100
+                    <!-- <button id="export" onclick="exportar()" class="btn btn-success">Exportar a Excel</button> -->
+                </h4>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <div class="micontainertable">
+
+                <label for="search_cells">
+                    Buscar:
+                </label>
+                <input id="search_cells" type="search" />
+
+                <table class="table table-striped table-bordered" id="grid1b"></table>
+                <div id="jqGridPager"></div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/033/alistamiento/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function Totaliza() {
+            var total_haber = 0,
+                total_debe = 0;
+            var rows = $("#grid1b").jqGrid('getRowData');
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                if (Number(row['plpprogt']) > 0) {
+                    total_haber += Number(row['plpprogt']);
+                }
+
+            }
+
+
+
+            return total_haber;
+        };
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cJuntasEquiposEnd.php", function (resp) {
+                datos = resp;
+
+
+
+                ("use strict");
+                $("#grid1b").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [{
+                            name: "especialidad",
+                            label: "ESPECIALIDAD",
+                            width: 150,
+                            frozen: true
+                        },
+                        {
+                            name: "equipo",
+                            label: "EQUIPO",
+                            width: 200,
+                            frozen: true
+                        },
+                        {
+                            name: "pulgadas",
+                            label: "DIAMETRO",
+                            width: 100,
+                            align: "center",
+                            frozen: true
+                        },
+
+                        {
+                            name: "plpprogt",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "plpejet",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "aplpt",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['plpprogt']) {
+                                    value.totalAmount += parseFloat(record['plpprogt']);
+                                }
+                                if (record['plpejet']) {
+                                    value.totalTax += parseFloat(record['plpejet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+
+                        },
+                        {
+                            name: "plpprogc",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "plpejec",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "aplpc",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['plpprogc']) {
+                                    value.totalAmount += parseFloat(record['plpprogc']);
+                                }
+                                if (record['plpejec']) {
+                                    value.totalTax += parseFloat(record['plpejec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "plpprogtot",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "plpejetot",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "aplptot",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['plpprogtot']) {
+                                    value.totalAmount += parseFloat(record['plpprogtot']);
+                                }
+                                if (record['plpejetot']) {
+                                    value.totalTax += parseFloat(record['plpejetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+
+                        {
+                            name: "rxpreprogt",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "rxpreejet",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "arxpret",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['rxpreprogt']) {
+                                    value.totalAmount += parseFloat(record['rxpreprogt']);
+                                }
+                                if (record['rxpreejet']) {
+                                    value.totalTax += parseFloat(record['rxpreejet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "rxpreprogc",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "rxpreejec",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "arxprec",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['rxpreprogc']) {
+                                    value.totalAmount += parseFloat(record['rxpreprogc']);
+                                }
+                                if (record['rxpreejec']) {
+                                    value.totalTax += parseFloat(record['rxpreejec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "rxpreprogtot",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "rxpreejetot",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "arxpretot",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['rxpreprogtot']) {
+                                    value.totalAmount += parseFloat(record['rxpreprogtot']);
+                                }
+                                if (record['rxpreejetot']) {
+                                    value.totalTax += parseFloat(record['rxpreejetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+
+                        {
+                            name: "utpreprogt",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "utpreejet",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "autpret",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['utpreprogt']) {
+                                    value.totalAmount += parseFloat(record['utpreprogt']);
+                                }
+                                if (record['utpreejet']) {
+                                    value.totalTax += parseFloat(record['utpreejet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "utpreprogc",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "utpreejec",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "autprec",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['utpreprogc']) {
+                                    value.totalAmount += parseFloat(record['utpreprogc']);
+                                }
+                                if (record['utpreejec']) {
+                                    value.totalTax += parseFloat(record['utpreejec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "utpreprogtot",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "utpreejetot",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "autpretot",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['utpreprogtot']) {
+                                    value.totalAmount += parseFloat(record['utpreprogtot']);
+                                }
+                                if (record['utpreejetot']) {
+                                    value.totalTax += parseFloat(record['utpreejetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+
+                        {
+                            name: "pwhtprogt",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "pwhtejet",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "apwhtt",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['pwhtprogt']) {
+                                    value.totalAmount += parseFloat(record['pwhtprogt']);
+                                }
+                                if (record['pwhtejet']) {
+                                    value.totalTax += parseFloat(record['pwhtejet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "pwhtprogc",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "pwhtejec",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "apwhtc",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['pwhtprogc']) {
+                                    value.totalAmount += parseFloat(record['pwhtprogc']);
+                                }
+                                if (record['pwhtejec']) {
+                                    value.totalTax += parseFloat(record['pwhtejec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "pwhtprogtot",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "pwhtejetot",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "apwhttot",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['pwhtprogtot']) {
+                                    value.totalAmount += parseFloat(record['pwhtprogtot']);
+                                }
+                                if (record['pwhtejetot']) {
+                                    value.totalTax += parseFloat(record['pwhtejetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+
+                        {
+                            name: "durezaprogt",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "durezaejet",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "adurezat",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['durezaprogt']) {
+                                    value.totalAmount += parseFloat(record['durezaprogt']);
+                                }
+                                if (record['durezaejet']) {
+                                    value.totalTax += parseFloat(record['durezaejet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "durezaprogc",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "durezaejec",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "adurezac",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['durezaprogc']) {
+                                    value.totalAmount += parseFloat(record['durezaprogc']);
+                                }
+                                if (record['durezaejec']) {
+                                    value.totalTax += parseFloat(record['durezaejec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "durezaprogtot",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "durezaejetot",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "adurezatot",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['durezaprogtot']) {
+                                    value.totalAmount += parseFloat(record['durezaprogtot']);
+                                }
+                                if (record['durezaejetot']) {
+                                    value.totalTax += parseFloat(record['durezaejetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+
+                        {
+                            name: "rxpostprogt",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "rxpostejet",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "arxpostt",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['rxpostprogt']) {
+                                    value.totalAmount += parseFloat(record['rxpostprogt']);
+                                }
+                                if (record['rxpostejet']) {
+                                    value.totalTax += parseFloat(record['rxpostejet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "rxpostprogc",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "rxpostejec",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "arxpostc",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['rxpostprogc']) {
+                                    value.totalAmount += parseFloat(record['rxpostprogc']);
+                                }
+                                if (record['rxpostejec']) {
+                                    value.totalTax += parseFloat(record['rxpostejec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "rxpostprogtot",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "rxpostejetot",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "arxposttot",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['rxpostprogtot']) {
+                                    value.totalAmount += parseFloat(record['rxpostprogtot']);
+                                }
+                                if (record['rxpostejetot']) {
+                                    value.totalTax += parseFloat(record['rxpostejetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+
+                        {
+                            name: "utpostprogt",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "utpostejet",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum"  
+                        },
+                        {
+                            name: "autpostt",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['utpostprogt']) {
+                                    value.totalAmount += parseFloat(record['utpostprogt']);
+                                }
+                                if (record['utpostejet']) {
+                                    value.totalTax += parseFloat(record['utpostejet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "utpostprogc",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "utpostejec",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "autpostc",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['utpostprogc']) {
+                                    value.totalAmount += parseFloat(record['utpostprogc']);
+                                }
+                                if (record['utpostejec']) {
+                                    value.totalTax += parseFloat(record['utpostejec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "utpostprogtot",
+                            label: "PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "utpostejetot",
+                            label: "EJEC",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: "sum" // set the formula to calculate the summary type
+                        },
+                        {
+                            name: "autposttot",
+                            label: "% AVAN",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['utpostprogtot']) {
+                                    value.totalAmount += parseFloat(record['utpostprogtot']);
+                                }
+                                if (record['utpostejetot']) {
+                                    value.totalTax += parseFloat(record['utpostejetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+
+
+                    ],
+
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager",
+
+                    // footerrow: true, // set a footer row
+				    // userDataOnFooter: true, // the calculated sums and/or strings from server are put at footer row.
+
+                    grouping: true,
+                    groupingView: {
+                        groupField: ["especialidad"],
+                        groupColumnShow: [true],
+                        groupText: ["<b>{0}</b>"],
+                        groupOrder: ["asc"],
+                        groupSummary: [true],
+                        groupSummaryPos: ['header'],
+                        groupCollapse: false
+                    },
+
+                });
+
+                $("#grid1b").jqGrid('setFrozenColumns');
+
+                $("#grid1b").jqGrid('setGroupHeaders', {
+                    useColSpanStyle: true,
+                    groupHeaders: [{
+                            startColumnName: 'plpprogt',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>PLP TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'plpprogc',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>PLP CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'plpprogtot',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>PLP TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+
+                        {
+                            startColumnName: 'rxpreprogt',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>RX PRE PWHT TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'rxpreprogc',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>RX PRE PWHT CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'rxpreprogtot',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>RX PRE PWHT TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+
+                        {
+                            startColumnName: 'utpreprogt',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>UT PRE PWHT TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'utpreprogc',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>UT PRE PWHT CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'utpreprogtot',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>UT PRE PWHT TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+
+                        {
+                            startColumnName: 'pwhtprogt',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>PWHT TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'pwhtprogc',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>PWHT CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'pwhtprogtot',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>PWHT TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+
+                        {
+                            startColumnName: 'durezaprogt',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>DUREZA TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'durezaprogc',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>DUREZA CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'durezaprogtot',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>DUREZA TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+
+                        {
+                            startColumnName: 'rxpostprogt',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>RX POST PWHT TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'rxpostprogc',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>RX POST PWHT CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'rxpostprogtot',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>RX POST PWHT TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+
+                        {
+                            startColumnName: 'utpostprogt',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>UT POST PWHT TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'utpostprogc',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>UT POST PWHT CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'utpostprogtot',
+                            numberOfColumns: 3,
+                            titleText: '<table style="width:100%;border-spacing:0px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>UT POST PWHT TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+                    ]
+                });
+
+                $("#grid1b").jqGrid("navGrid", "#jqGridPager", {
+                    add: false,
+                    edit: false,
+                    del: false
+                });
+
+               
+
+
+                Swal.close();
+
+            });
+        }
+
+        var timer;
+        $("#search_cells").on("keyup", function () {
+            var self = this;
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function () {
+                //timer = null;
+                $("#grid1b").jqGrid('filterInput', self.value, {
+                    searchAll: true
+                });
+            }, 0);
+        });
+
+        function exportar() {
+
+            $("#grid1b").jqGrid("exportToExcel", {
+                includeLabels: true,
+                includeGroupHeader: true,
+                includeFooter: true,
+                includeHeader: true,
+                fileName: "jqGridExport.xlsx",
+                mimetype: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                maxlength: 40,
+                onBeforeExport: null,
+                replaceStr: null,
+                customizeData: null,
+                loadIndicator: true,
+                visibleTreeNodes: false,
+                treeindent: ' '
+            })
+        }
+    </script>
+</body>
+
+</html>
