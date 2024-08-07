@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Covid-19 - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+    
+    <style>
+        .cab{
+            background-color: rgb(9, 85, 160);
+            color: white;
+        }
+        .oculto{
+			display: none;
+		}
+        .visible{
+            display:contents;
+        }
+        .milabel{
+            background-color: rgb(9, 85, 160);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+        .form-check{
+            padding: 5px;
+            padding-left: 40px;
+        }
+        .opc{
+            padding: 8px;
+            padding-left: 40px;
+        }
+         
+         
+    </style>
+    <style>
+        #preview {
+        border:1px solid #ddd;
+        padding:5px;
+        border-radius:2px;
+        background:#fff;
+        max-width:600px;
+        }
+        .mybody{
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        #preview img {width:100%;display:block;}
+    </style>
+</head>
+<body>
+
+    <div class="mybody">
+        <div class="jumbotron cab">
+            <center>
+                <img src="img/logo_p.png" width="300px" alt="">
+            </center>
+            <h4 class="text-center pt-3">Test COVID-19</h4>
+            
+        </div>
+
+        <div id="cuerpo">
+
+            <a href="oficina-listado.html" target="_blank"><button type="button" class="btn btn-info btn-sm">Ver listado Personal sin registro</button></a> <br><br>
+
+            <div class="table-responsive">
+                <table class="table" id="tblData">
+                    <thead>
+                        <th>Nombres</th>
+                        <th>Edad</th>
+                        <th>ODS</th>
+                        <th>Fecha Ult PCR</th>
+                        <th>Covid Reciente</th>
+                        <th>Fecha Covid Postivo</th>
+                        <th>Vacunado</th>
+                        <th>Dosis Vacuna</th>
+                        <th>Soporte Vacuna</th>
+                    </thead>
+                    <tbody id="datosTabla">
+
+                    </tbody>
+                </table>
+            </div>
+
+            
+
+
+        </div>
+
+
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+    <script>
+
+        var server = 'http://italco.tk/server/';
+        var arrayDatos = []
+        var arrayKpi = []
+
+        $.post(server+'cargarListadoPcrKpi.php', {},
+        function(resp){
+            arrayKpi = resp
+            arrayDatos = resp.datos
+            var html = ''
+            for(var i=0; i<arrayDatos.length; i++){
+                html += `
+                    <tr>
+                        <td>
+                            ${arrayDatos[i].nombres}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].doc}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].cel}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].edad}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].cargo}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].ods}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].tipo}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].fechapcr}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].vencida}
+                        </td>
+                        <td>
+                            ${arrayDatos[i].covidpos}
+                        </td>
+                        <td>`
+                            if(arrayDatos[i].covidpos == 'Sí'){
+                                html += arrayDatos[i].fechacovid
+                            }else{
+                                html += 'N/A'
+                            }
+                            html += `
+                        </td>
+                        <td>
+                            ${arrayDatos[i].vaccovid}
+                        </td>
+                        <td>`
+                            if(arrayDatos[i].vaccovid == 'Sí'){
+                                html += arrayDatos[i].dosisvac
+                            }else{
+                                html += 'N/A'
+                            }
+                            html += `
+                        </td>
+                        <td>`
+                            if(arrayDatos[i].fotocarnet != 'carnet-'){
+                                html += `<img src="http://italco.tk/server/carnet/${arrayDatos[i].fotocarnet}" width ="300px">`
+                            }else{
+                                html += ''
+                            }
+                            html += `
+                        </td>
+
+                    </tr>
+                `
+            }
+            $('#datosTabla').html(html)
+            $('#tblData').DataTable( {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ]
+            });
+
+            cargarGrafica()
+        })
+
+        function cargarGrafica(){
+            //GRAFICA 014
+            Highcharts.chart("figods14", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS 14"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOds14
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOds14
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOds14 + arrayKpi.sumVacNoOds14
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOds14
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA 017
+            Highcharts.chart("figods17", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS 17"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOds17
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOds17
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOds17 + arrayKpi.sumVacNoOds17
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOds17
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA 018
+            Highcharts.chart("figods18", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS 18"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOds18
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOds18
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOds18 + arrayKpi.sumVacNoOds18
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOds18
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA 019
+            Highcharts.chart("figods19", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS 19"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOds19
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOds19
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOds19 + arrayKpi.sumVacNoOds19
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOds19
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA 020
+            Highcharts.chart("figods20", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS 20"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOds20
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOds20
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOds20 + arrayKpi.sumVacNoOds20
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOds20
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA EQUPO MINIMO
+            Highcharts.chart("figOdsem", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS EQUIPO MINIMO"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOdsem
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOdsem
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOdsem + arrayKpi.sumVacNoOdsem
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOdsem
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA SOP TRANSVERSAL
+            Highcharts.chart("figOdssopt", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS SOP TRANSV"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOdssopt
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOdssopt
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOdssopt + arrayKpi.sumVacNoOdssopt
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOdssopt
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA SOP TRANSV- ADMON
+            Highcharts.chart("figOdssopta", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS SOP TRANSV- ADMON"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOdssopta
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOdssopta
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOdssopta + arrayKpi.sumVacNoOdssopta
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOdssopta
+                        ],
+                    }
+                    ],
+                });
+
+
+            //GRAFICA SOP TRANSV- G.O
+            Highcharts.chart("figOdssoptgo", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS SOP TRANSV- G.O"
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOdssoptgo
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOdssoptgo
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOdssoptgo + arrayKpi.sumVacNoOdssoptgo
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOdssoptgo
+                        ],
+                    }
+                    ],
+                });
+
+            //GRAFICA SOP TRANSV-S.G.
+            Highcharts.chart("figOdssoptsg", {
+                    colors: ["#01005e","#00c901","#efd520","#bfbfbf","#537b35","#a4c639","#537b35","#a4c639","#537b35",],
+                    credits: {
+                    enabled: false,
+                    },
+                    chart: {
+                    type: "column",
+                    height: "420",
+                    },
+                    title: {
+                    text: "INDICADORES ODS SOP TRANSV-S.G."
+                    },
+
+                    xAxis: {
+                    categories: [
+                        "CANT"
+                    ],
+                    crosshair: true,
+                    },
+                    yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                    },
+                    tooltip: {
+                    headerFormat:
+                        '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat:
+                        '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                    },
+                    plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                        enabled: true,
+                        },
+                    },
+                    },
+                    series: [
+                    {
+                        name: "VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacSiOdssoptsg
+                        ],
+                    },
+                    {
+                        name: "NO VACUNADOS",
+                        data: [
+                        arrayKpi.sumVacNoOdssoptsg
+                        ],
+                    },
+                    {
+                        name: "REGISTROS",
+                        data: [
+                        arrayKpi.sumVacSiOdssoptsg + arrayKpi.sumVacNoOdssoptsg
+                        ],
+                    },
+                    {
+                        name: "TOTAL PERSONAL",
+                        data: [
+                        arrayKpi.sumOdssoptsg
+                        ],
+                    }
+                    ],
+                });
+
+        }
+
+        
+       
+    </script>
+
+</body>
+</html>

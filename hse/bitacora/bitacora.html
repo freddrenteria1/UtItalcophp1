@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Bitacora HSE - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+        .fondo {
+            background-image: url('img/bitacora-viaje.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: center;
+        }
+
+        .cab {
+            background-color: rgb(4, 107, 13);
+            color: rgb(17, 16, 16);
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        .visible {
+            display: contents;
+        }
+
+        .milabel {
+            background-color: rgb(4, 107, 13);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+    </style>
+    <style>
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Create a custom checkbox */
+
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+
+        .minput {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+
+        /* On mouse-over, add a grey background color */
+
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+
+        .container input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .fotos {
+            width: 300px;
+            float: left;
+            padding: 10px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -205px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .piefoto {
+            background-color: #0772ff;
+            color: white;
+            padding: 10px;
+            height: 70px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btnedit {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 25px;
+            background-color: rgb(255, 190, 13);
+            border-radius: 3px;
+            padding: 5px;
+            color: rgb(17, 17, 17);
+            cursor: pointer;
+        }
+
+        .piefotoods {
+            background-color: yellow;
+            color: black;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron cab fondo">
+            <center>
+                <img src="img/logo_p.png" width="150px" alt="">
+            </center>
+            <hr><br><br>
+
+            <p id="bv">
+
+            </p>
+        </div>
+        <h4 class="text-center pt-3">BITACORA HSE </h4>
+        <center>
+            <button type="button" class="btn btn-info" style="background-color: rgb(4, 107, 13);"
+                onclick="registros()">Ver Registros</button>
+        </center>
+        <hr>
+
+        <div id="cuerpo">
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Nombres y apellidos
+                </label>
+                <input type="text" id="nombres" class="form-control" placeholder="Nombre Completo">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Documento
+                </label>
+                <input type="number" id="doc" class="form-control" placeholder="CC sin puntos">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    ODS
+                </label>
+                <input type="text" id="ods" class="form-control" placeholder="ODS">
+            </div>
+
+            
+
+
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Fecha del Turno
+                </label>
+                <input type="date" id="fecha" class="form-control" onchange="cargarDatos()">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Turno
+                </label>
+                <select id="turno" class="form-control">
+                    <option value=""></option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Personal
+                </label>
+                <div class="row">
+                    <div class="col-sm-2">
+                        Directo
+                        <input type="number" id="pdir" class="form-control" placeholder="Directo">
+                    </div>
+                    <div class="col-sm-2">
+                        Indirecto
+                        <input type="number" id="pindir" class="form-control" placeholder="Indirecto">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    # Permiso
+                </label>
+                <input type="number" id="permiso" class="form-control" placeholder="####">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Actividades HSE del turno
+                </label>
+                <textarea id="aspectos" name="editor1" cols="30" class="form-control" rows="5"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Novedades del turno
+                </label>
+                <textarea id="novedades" name="editor2" cols="30" class="form-control" rows="5"></textarea>
+            </div>
+
+
+            <div class="form-group" id="lsmotivo">
+                <label for="" class="milabel">
+                    Equipos a cargo
+                </label>
+                <label class="container">Radio
+                    <input type="checkbox" id="avantel" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Cámara
+                    <input type="checkbox" id="camara" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">PC
+                    <input type="checkbox" id="pc" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Monitor de Gas
+                    <input type="checkbox" id="monitorgas" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Equipo de rescate
+                    <input type="checkbox" id="equiporesc" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Equipo Autocontenido
+                    <input type="checkbox" id="equipoauto" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Extintor
+                    <input type="checkbox" id="extintor" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Línea de vida retractil
+                    <input type="checkbox" id="lineavida" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Línea de vida fija
+                    <input type="checkbox" id="lineavidafija" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Camilla Fel
+                    <input type="checkbox" id="camillafel" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Camilla Sked
+                    <input type="checkbox" id="camillasked" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="container">Botiquín
+                    <input type="checkbox" id="botiquin" class="minput">
+                    <span class="checkmark"></span>
+                </label>
+
+
+            </div>
+
+            <div class="form-group" id="lsmotivo">
+                <label for="" class="milabel">
+                    Registro fotográfico
+                </label>
+                <div class="card-block">
+
+                    <form enctype="multipart/form-data" id="formuploadajax" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Seleccione foto</label>
+                                    <input type="file" class="form-control" id="foto">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Sección</label>
+                                    <select class="form-control" id="seccion">
+                                        <option value="Medio Ambiente">Medio Ambiente</option>
+                                        <option value="Seguridad Industrial">Seguridad Industrial</option>
+                                        <option value="Salud Ocupacional">Salud Ocupacional</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-group">
+                                    <label>Descripción</label>
+                                    <input type="text" class="form-control" id="detalles">
+                                </div>
+                            </div>
+                            <div class="col-sm-2"> <br>
+                                <button type="button" id="unload" onclick="guardar()"
+                                    class="btn btn-success">Subir</button>
+                            </div>
+                        </div>
+
+                    </form>
+                    <hr>
+
+
+                    
+                </div>
+                <div id="galeria"></div>
+
+            </div>
+
+            <div style="clear: both;"></div>
+
+
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-info" style="background-color: rgb(4, 107, 13);"
+                    onclick="enviar()">Guardar Bitácora</button> <br><br>
+                <p style="font-size: 13px;">
+                    Una vez cargadas las fotos debe dar click en botón Guardar para que se registren los datos de la
+                    bitácora
+                </p>
+            </div>
+
+        </div>
+
+        <hr>
+        <center>
+            Realizado por Departamento de Innovacion y Desarrollo Tecnólogico UT Italco Barrancabermeja
+        </center>
+        <hr>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="js/bitacora_v5.js"></script>
+
+</body>
+
+</html>

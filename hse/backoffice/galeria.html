@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Dashboard Gestión HSE </title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="author" content="Codedthemes" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome-n.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <!-- scrollbar.css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        .btnborrar {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="loader-track">
+            <div class="preloader-wrapper">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <div>
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+
+            <div class="container">
+                <div class="wrapper">
+
+                    <div class="pcoded-content">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">REGISTRO FOTOGRÁFICO GESTIÓN HSE - <span id="fecha"></span></h5>
+                                            <p class="m-b-0" id="ods"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Dashboard</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page-body start -->
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <!-- Material statustic card start -->
+                                            <div class="col-xl-12 col-md-12">
+                                                <div class="card mat-stat-card">
+                                                    <div class="card-header">
+                                                        <h5>Galería Fotográfica</h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li>
+                                                                    <i class="fa fa fa-wrench open-card-option"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="fa fa-window-maximize full-card"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="fa fa-minus minimize-card"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="fa fa-refresh reload-card"></i>
+                                                                </li>
+                                                                <li>
+                                                                    <i class="fa fa-trash close-card"></i>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+
+                                                        <form enctype="multipart/form-data" id="formuploadajax" method="post">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label>Seleccione foto</label>
+                                                                        <input type="file" class="form-control" id="foto">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label>Sección</label>
+                                                                        <select class="form-control" id="seccion">
+                                                                            <option value="Actividades en el Turno">Actividades en el Turno</option>
+                                                                            <option value="Medio Ambiente">Medio Ambiente</option>
+                                                                            <option value="Seguridad Industrial">Seguridad Industrial</option>
+                                                                            <option value="Salud Ocupacional">Salud Ocupacional</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-10">
+                                                                    <div class="form-group">
+                                                                        <label>Descripción</label>
+                                                                        <input type="text" class="form-control" id="detalles">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-2"> <br>
+                                                                    <button type="button" id="unload" onclick="guardar()" class="btn btn-success">Subir</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </form>
+                                                        <hr>
+
+
+                                                        <div class="container" id="galeria">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <!-- Page-body end -->
+                                    </div>
+                                    <div id="styleSelector"> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Warning Section Ends -->
+
+        <!-- Required Jquery -->
+        <script type="text/javascript" src="assets/js/jquery/jquery.min.js "></script>
+        <script type="text/javascript" src="assets/js/jquery-ui/jquery-ui.min.js "></script>
+        <script type="text/javascript" src="assets/js/popper.js/popper.min.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap/js/bootstrap.min.js "></script>
+        <!-- waves js -->
+        <script src="assets/pages/waves/js/waves.min.js"></script>
+        <!-- jquery slimscroll js -->
+        <script type="text/javascript" src="assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+        <!-- slimscroll js -->
+        <script src="assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
+
+        <!-- menu js -->
+        <script src="assets/js/pcoded.min.js"></script>
+        <script src="assets/js/vertical/vertical-layout.min.js "></script>
+
+        <script type="text/javascript" src="assets/js/script.js "></script>
+
+        <script>
+            var server = 'https://utitalco.com/server/';
+            var user = sessionStorage.getItem('user');
+            var ods = localStorage.getItem('ods')
+            var numods = localStorage.getItem('numods')
+            var arrayDatos = []
+            var arrayResp = []
+            var html = ''
+
+
+            if (user == null) {
+                window.location = 'login.html'
+            } else {
+                $('#ods').html(ods)
+            }
+
+
+
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
+            var fecha = sessionStorage.getItem('fecha');
+
+            if (fecha == null) {
+                galeria()
+            } else {
+
+                $('#fecha').html(fecha)
+            }
+
+            function cargando() {
+                let timerInterval
+                Swal.fire({
+                    title: 'Subiendo fotografía!',
+                    html: 'Un momento por favor...',
+                    timer: 60000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            const content = Swal.getContent()
+                            if (content) {
+                                const b = content.querySelector('b')
+                            }
+                        }, 1000)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+
+                    }
+                })
+
+            }
+
+
+
+            cargarDatos()
+
+            function cargarDatos() {
+                //se guarda la información a la base de datos
+                //para luego ser procesada en el informe
+
+                $.post(server + 'buscarFotosRep.php', {
+                        fecha: fecha,
+                        ods: numods
+                    },
+                    function(resp) {
+
+                        arrayDatos = resp
+
+                        var html = '';
+
+                        for (var i = 0; i < arrayDatos.length; i++) {
+                            html += `
+                        <div class="fotos">
+                            <img src="${server + arrayDatos[i].foto}" width="100%" >
+                            <div class="piefoto">
+                                ${arrayDatos[i].detalles}
+                             </div>
+                            <div class="btnborrar" onclick="borrar(${arrayDatos[i].id})">X
+                            </div>
+                        </div>
+                    `
+                        }
+
+                        $('#galeria').html(html)
+
+
+                    })
+
+            }
+
+            function guardar() {
+
+                cargando()
+
+                var detalles = $('#detalles').val()
+                var seccion = $('#seccion').val()
+
+                var formData = new FormData();
+
+                var files = $('#foto')[0].files[0];
+                formData.append('foto', files);
+                formData.append('ods', numods);
+                formData.append('fecha', fecha);
+                formData.append('detalles', detalles);
+                formData.append('seccion', seccion);
+                $.ajax({
+                    url: server + 'guardarFotoRep.php',
+                    type: 'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        console.log(response)
+
+                        if (response.msn == "Realizado...") {
+
+                            location.reload()
+
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Formato de archivo incorrecto...!',
+                            })
+                        }
+                    }
+                });
+            }
+
+            function borrar(idfoto) {
+                console.log('Id foto ' + idfoto)
+                    //borrar foto
+                $.post(server + 'borrarfotorep.php', {
+                        id: idfoto
+                    },
+                    function(resp) {
+                        console.log(resp)
+                        window.location = 'galeria.html'
+                    })
+            }
+
+            function galeria() {
+                Swal.fire({
+                    title: 'Galería fotográfica',
+                    html: `
+                        
+                        <div class="row">
+                            <div class="col-sm-6 text-right pt-2">
+                                Fecha 
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <input type="date" id="fechainforme" class="form-control">
+                            </div>
+                            
+                        </div>
+                        
+                    `,
+                    showConfirmButton: true,
+                    confirmButtonText: 'Aceptar',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        var fecha = $('#fechainforme').val()
+
+
+                        if (fecha != '') {
+                            sessionStorage.setItem('fecha', fecha)
+                            window.location = 'galeria.html'
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Por favor seleccione una fecha para cargar las fotos...!',
+                            }).then(() => {
+                                location.reload()
+                            })
+                        }
+
+
+
+                    }
+                })
+            }
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+
+
+
+.cabeceratabla{
+    background-color: chartreuse;
+}
+
+@media print {
+    .cabeceratabla{
+        background-color: chartreuse;
+    }
+}
+
+
+
+
+.colpir{
+        text-align: center;
+        font-size: 10px;
+        width: 100px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #ffffff;
+    }
+    .filapir{
+        background-color: #004236;
+        color: white;
+    }
+    .filatit{
+        border-style: solid;
+        border-width: 1px;
+        border-color: #80af23;
+    }
+    .cabtit{
+        text-align: center;
+        font-size: 14px;
+        width: 100px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #004236;
+        background-color: white;
+    }
+    
+    .card-header{
+        background-color: #004236;
+        color: white;
+    }
+    
+    .oculto{
+        display: none;
+    }
+    .visible{
+        display:contents;
+    }
+    #galeria{
+        height: 400px;
+        width: 400px;
+        position: absolute;
+        top: 0px;
+        left: 20px;
+        z-index: 999;
+        overflow: hidden;
+    }
+    .imagen:hover {filter: opacity(.5);}
+
+    #grafpiramide{
+        width: 100%;
+        height: 400px;
+        background-image: url('img/piramide_2.png');
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    .fig1{
+        width: 131px;
+        height: 170px;
+        background-image: url('img/infogvr1.png');
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+        float:left;
+    }
+    #fig2{
+        width: 131px;
+        height: 170px;
+        background-image: url('img/infog2.png');
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+        float:left;
+    }
+    #fig3{
+        width: 131px;
+        height: 170px;
+        background-image: url('img/infog3.png');
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+        float:left;
+    }
+    #infoverde1{
+        width:200px;
+        height: 200px;
+        background-image: url('img/infogv1.png');
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    #infoverde2{
+        width:200px;
+        height: 200px;
+        background-image: url('img/infogv2.png');
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    #inforojo{
+        width: 200px;
+        height: 200px;
+        background-image: url('img/infog4.png');
+        background-size: cover;
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    .textopira{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .hijo{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .padre{
+        display: table;
+    }
+    .titinfovr{
+        width: 100%;
+        height: 29.41%;
+        font-size: 14px;
+        text-align: center;
+    }
+    .cifrainfovr{
+        width: 100%;
+        height: 70.59%;
+        font-size: 44px;
+        text-align: center;
+    }
+    #piso7{
+        width: 100%;
+        height: 21.4%;
+        display: table;
+    }
+    #piso6{
+        width: 100%;
+        height: 13%;
+        display: table;
+    }
+    #piso5{
+        width: 100%;
+        height: 13%;
+        display: table;
+    }
+    #piso4{
+        width: 100%;
+        height: 13%;
+        display: table;
+    }
+    #piso3{
+        width: 100%;
+        height: 13%;
+        display: table;
+    }
+    #piso2{
+        width: 100%;
+        height: 13%;
+        display: table;
+    }
+    #piso1{
+        width: 100%;
+        height: 13%;
+        display: table;
+    }
+
+    .tacomoda{
+        width: 13%;
+    }
+
+    #flotante{
+        height: 400px;
+        width: 500px;
+        position: absolute;
+        left: 20px;
+        top: 60px;
+        z-index: 999;
+    }
+
+    #flotantefoto{
+        height: 400px;
+        width: 400px;
+        position: absolute;
+        left: 20px;
+        top: 60px;
+        z-index: 999;
+    }
+
+    .manito{
+        cursor: pointer;
+    }
+    .titregfot{
+        width: 100%;
+        height: 50px;;
+        background-color: #004236;
+        color:white;
+        padding: 10px;
+        float: left;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+    .titflot{
+        background-color:rgb(255, 187, 0);
+        color:rgba(20, 19, 19, 0.9);
+        padding: 5px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 13px;
+    }
+
+    #regfotos{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        white-space: nowrap;
+
+        position: fixed;
+        top: 80px;
+        left: 0px;
+        height: 500px;
+        width: 100%;
+        padding-left: 130px;
+        padding-right: 130px;
+        padding-top: 10px;
+        
+    }
+    .foto{
+        width: 320px;
+        height: 300px;
+        padding: 10px;
+        float: left;
+    }
+    .piefoto{
+        background-color: #004236;
+        color: white;
+        padding: 10px;
+        height: 70px;
+        width: 100%;
+        text-align: center;
+        width:100%; 
+        max-width: 300px;
+        word-wrap:break-word;
+        font-size: 13px;
+    }
+    .titcatfotos{
+         
+         font-size: 16px;
+         width: 90%;
+         height: 40px;
+         padding: 8px;
+         margin-top: 20px;
+         background-color: #004236;
+         color: white;
+         float: left;
+     }
+
+    @media (max-width: 600px) {
+        .foto{
+            width: 90%;
+            height: 90%;
+        }
+        #grafpiramide{
+            width: 100%;
+            height: 400px;
+        }
+        .tacomoda{
+        width: 0%;
+    }
+    }

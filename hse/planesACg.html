@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFORME DIARIO DE GESTIÓN HSE - UT ITALCO </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/magic.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" 
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+	<!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    
+    <style>
+        
+
+        .fondopaginavbk{
+            background-image: url('img/vbk.jpg');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+
+        .fondopaginaetileno{
+            background-image: url('img/panoramica_.jpg');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+        }
+         
+        .cab{
+            background-color: #01005e;
+            width: 100%;
+            height: auto;
+            color: white;
+        }
+        .titfecha{
+            padding: 5px;
+            border-style: solid;
+            border-color: white;
+            border-width: 0.7px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .central{
+            height: auto;
+            width: 100%;
+            
+        }
+        .oculto{
+			display: none;
+		}
+        .diap{
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            height: 500px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+            display: table;
+        }
+        .diaprac{
+            overflow-y: scroll;
+            overflow-x: hidden;
+            position: absolute;
+            top: 150px;
+            left: 0px;
+            /* height: 550px; */
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+        }
+                
+        .anchomedio{
+            width: 600px;
+            left: 300px;
+            height: 400px;
+            margin: 0 auto;
+             
+        }
+        #inicio{
+            margin-top: 10px;
+            margin-left: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        #sig{
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        #atraspiramide{
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+
+        #atras{
+            margin-top: 10px;
+            right: 80px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+
+        .footer{
+            background-color: #00c901;
+            width: 100%;
+            padding: 5px;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+        
+        
+
+    </style>
+
+    <!-- Estilos del menu -->
+    <style>
+        #mnu{
+            width: 707px;
+            height: 500px;
+            background-image: url('img/mnu_1.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            z-index: 999;
+        }
+        .mnu1{
+            position: relative;
+            top: 50px;
+            left: 390px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .mnu2{
+            position: relative;
+            top: 103px;
+            left: 480px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .mnu3{
+            position: relative;
+            top: 158px;
+            left: 485px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .mnu4{
+            position: relative;
+            top: 213px;
+            left: 384px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Estilos graficas -->
+    <style>
+        .colpir{
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffffff;
+        }
+        .filapir{
+            background-color: #00c901;
+            color: white;
+        }
+        .filatit{
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+        .cabtit{
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #01005e;
+            background-color: white;
+        }
+        
+        .card-header{
+            background-color: #01005e;
+            color: white;
+        }
+        
+        .oculto{
+			display: none;
+		}
+        .visible{
+            display:contents;
+        }
+        #galeria{
+            height: 400px;
+			width: 400px;
+			position: absolute;
+			top: 0px;
+			left: 20px;
+			z-index: 999;
+            overflow: hidden;
+        }
+         
+
+        #grafpiramide{
+            width: 100%;
+            height: 500px;
+            background-image: url('img/piramide_n.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }
+        .fig1{
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infogvr1.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            float:left;
+        }
+        #fig2{
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog2.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            float:left;
+        }
+        #fig3{
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog3.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            float:left;
+        }
+        #infoverde1{
+            width:200px;
+            height: 200px;
+            background-image: url('img/infogv1.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }
+        #infoverde2{
+            width:200px;
+            height: 200px;
+            background-image: url('img/infogv2.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }
+        #inforojo{
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infog4.png');
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }
+        .textopira{
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .hijo{
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .padre{
+            display: table;
+        }
+        .titinfovr{
+            width: 100%;
+            height: 29.41%;
+            font-size: 14px;
+            text-align: center;
+        }
+        .cifrainfovr{
+            width: 100%;
+            height: 70.59%;
+            font-size: 44px;
+            text-align: center;
+        }
+        #piso7{
+            width: 100%;
+            height: 13.60%;
+            display: table;
+        }
+        #piso6{
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        #piso5{
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        #piso4{
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        #piso3{
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        #piso2{
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        #piso1{
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+
+        .tacomoda{
+            width: 13%;
+        }
+
+        #flotante{
+            height: 400px;
+			width: 500px;
+			position: absolute;
+			left: 20px;
+			top: 60px;
+			z-index: 999;
+        }
+
+        #flotantefoto{
+            height: 400px;
+			width: 400px;
+			position: absolute;
+			left: 20px;
+			top: 60px;
+			z-index: 999;
+        }
+
+        .manito{
+            cursor: pointer;
+        }
+        .titregfot{
+            width: 100%;
+            height: 50px;;
+            background-color: #01005e;
+            color:white;
+            padding: 10px;
+            float: left;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .titflot{
+            background-color:rgb(255, 187, 0);
+            color:rgba(20, 19, 19, 0.9);
+            padding: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 13px;
+            max-width: 1200px;
+        }
+
+        #regfotos{
+            overflow-y: scroll;
+            overflow-x: hidden;
+             
+            position: fixed;
+            top: 80px;
+            left: 0px;
+            height: 550px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+            
+        }
+        
+        .foto1{
+            width: 260px;
+            height: 250px;
+            padding: 10px;
+            float: left;
+        }
+        .foto{
+            width: 320px;
+            height: 300px;
+            padding: 10px;
+            float: left;
+        }
+        .piefoto{
+            background-color: #01005e;
+            color: white;
+            padding: 10px;
+            height: 70px;
+            width: 100%;
+            text-align: center;
+            width:100%; 
+             
+            word-wrap:break-word;
+            font-size: 13px;
+        }
+        .titcatfotos{
+             
+             font-size: 16px;
+             width: 100%;
+             height: 40px;
+             padding: 8px;
+             margin-top: 20px;
+             background-color: #01005e;
+             color: white;
+             float: left;
+         }
+
+         .mnulogo{
+            height:530px;
+         }
+         .mnuitem{
+             height: 80px;
+             cursor: pointer;
+         }
+         .imglogop{
+            width:200px;
+         }
+
+        @media (max-width: 600px) {
+            .foto{
+                width: 100%;
+                
+                height: 300px;
+                 
+            }
+             
+            .tacomoda{
+            width: 0%;
+            }
+            .mnulogo{
+            height:230px;
+             
+            }
+            .mnuitem{
+             height: 70px;
+         }
+
+         .anchomedio{
+            width: 100%;
+            left: 0px;
+            height: 400px;
+            margin: 0 auto;
+             
+        }
+         h4{
+             font-size: 15px;
+         }
+         h6{
+             font-size: 10px;
+         }
+         .imglogop{
+            width:120px;
+         }
+
+         .diap{
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 100px;
+        }
+        .diaprac{
+            overflow-y: scroll;
+            overflow-x: hidden;
+             
+            left: 0px;
+            height: auto;
+            width: 100%;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 100px;
+        }
+
+        #inicio{
+            margin-top: 0px;
+            margin-left: 10px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        #sig{
+            margin-top: 0px;
+            right: 10px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        #atraspiramide{
+            margin-top: 0px;
+            right: 10px;
+             
+        }
+
+        #atras{
+            margin-top: 0px;
+            right: 50px;
+             
+        }
+
+        .foto1{
+            width: 100%;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        #regfotos{
+            overflow-y: scroll;
+            overflow-x: hidden;
+
+            position: fixed;
+            top: 100px;
+            left: 0px;
+            height: 550px;
+            width: 100%;
+             
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 80px;
+            
+        }
+
+        .piefoto{
+            background-color: #01005e;
+            color: white;
+            padding: 10px;
+            height: 70px;
+            width: 100%;
+            text-align: center;
+             
+            font-size: 13px;
+        }
+
+        
+
+
+
+        }
+    </style>
+
+    <style>
+        thead tr th { 
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background-color: #ffffff;
+	text-align: center;
+}
+
+.table-responsive { 
+	height: 500px;
+	overflow:scroll;
+}
+
+.foto img {
+-webkit-transition:all .2s ease; /* Safari y Chrome */
+-moz-transition:all .2s ease; /* Firefox */
+-o-transition:all .2s ease; /* IE 9 */
+-ms-transition:all .2s ease; /* Opera */
+width:100%;
+}
+.foto:hover img {
+-webkit-transform:scale(1.8);
+-moz-transform:scale(1.8);
+-ms-transform:scale(1.8);
+-o-transform:scale(1.8);
+transform:scale(1.8);
+}
+    </style>
+
+    <!-- pdf -->
+    <style>
+        #pdf{
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+
+</head>
+<body id="mybody">
+    <div class="cuerpo">
+
+        <!-- INICIO CABECERA -->
+        <div class="cab text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 p-2">
+                        <img src="img/logo_m.png" class="imglogop"  width="200px" alt="">
+                    </div>
+                    <div class="col-sm-7 p-2">
+                        <h4>INFORME DIARIO DE GESTIÓN HSE</h4>
+                        <h6 id="titods"></h6>
+                    </div>
+                    <div class="col-sm-2 p-3">
+                        <h4 class="titfecha" id="fechainforme">2021-00-00</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN CABECERA -->
+
+        <!-- INICIO PARTE CENTRAL -->
+        <div class="central">
+
+            <div class="col-sm-12 mt-2" id="detacriesgo">
+
+            </div>
+            <div id="fotosacr">
+
+            </div>
+
+        </div>
+        <!-- FIN PARTE CENTRAL -->
+
+        <!-- FOOTER -->
+        <!-- <div class="footer">
+            <p>UT ITALCO - Sistema Informes de Gestión HSE v. 3.0 - Todos los derechos reservados 2021</p>
+        </div> -->
+        <!-- FOOOTER -->
+    
+    
+        
+    </div>
+
+   
+    
+	
+
+    <script>
+
+        
+    var server = 'http://italco.tk/server/';
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    var numods = getParameterByName('ods');
+    localStorage.setItem('numods', numods);
+
+    if(numods == '016'){
+        $('#evasas').html('99%')   
+        //$('#porcgestion').html('')
+
+        $('#mybody').addClass('fondopaginavbk')
+    }else{
+        
+        $('#mybody').addClass('fondopaginaetileno')
+    }
+
+    var odsant = '';
+    var fase = '';
+
+    var totacglobal = 0
+    var totconversatoriosglobal = 0 
+    var tothallazgosglobal = 0 
+
+    var totacitalco = 0
+    var totaccliente = 0
+
+    //se definen las variables array
+    var arrayHallazgos = []
+    var arrayDetallesHallazgos = []
+    var arrayDetallesACS = []
+    var arrayDetallesACR = []
+    var arrayDatos = []
+    var arrayKpiIG = []
+    var arrayKpiPersonal = []
+    var arrayDiasSemana = []
+    var arrayTDirectos = []
+    var arrayTIDirectos = []
+    var arrayTTotal = []
+    var arrayAuditorias = []
+
+    var arrayCronoAC = []
+    var arrayCateCronoAC = []
+    var arrayValPCronoAC = []
+    var arrayValECronoAC = []
+
+    var arrayHHAcum = []
+    var arrayHCap = []
+    var arrayPermisos = []
+    var arrayPermisosEsp = []
+
+    var arrayEspecialidadesPer = []
+    var arrayEspCantPer = []
+    var arrayGaleria = []
+
+    var arrayPareto = []
+    var arrayTitulosSI = []
+    var arrayTitulosSO = []
+    var arrayTitulosMA = []
+    var arrayTitulosPC = []
+
+    var arrayCons = []
+    var arrayConsACGTit =  []
+    var arrayConsACG = []
+    var arrayConsACGPlan = []
+    var arrayConsACGEje = []
+    var arrayConsACGCump = []
+
+    var arrayConsCamGTit = []
+    var arrayConsCamGPlan = []
+    var arrayConsCamGEje = []
+    var arrayConsCamG = []
+    var arrayConsCamGCump = []
+
+    var arrayConsRctGTit = []
+    var arrayConsRctGPlan = []
+    var arrayConsRctGEje = []
+    var arrayConsRctCump = []
+
+    var arrayConsAudiGTit = []
+    var arrayConsAudiGPlan = []
+    var arrayConsAudiGEje = []
+    var arrayConsAudiGEjeCump = []
+
+    var arrayConsInspGTit = []
+    var arrayConsInspGCant = []
+
+    var arrayConsLid = []
+    var arrayConsACGCant = []
+    var arrayConsRctGCant = []
+
+    var arrayPersonalTurnos = []
+    var arrayTurnos = []
+    var arrayDirectos = []
+    var arrayIndirectos = []
+    var arrayTotalPersonal = []
+    var arrayTotalHorasHombreDirectos = []
+    var arrayTotalHorasHombreIndirectos = []
+    var arrayTotalHorasHombre = []
+
+    
+    var totalHHDirectosD = 0
+    var totalHHIndirectosD = 0
+    var totalHHD = 0
+
+    var acumHHDirectos = 0
+    var acumHHIndirectos = 0
+    var acumHHTotal = 0
+
+    var totalHHDirectosA = 0
+    var totalHHIndirectosA = 0
+    var totalHHA = 0
+
+    var hhfase1=0
+    var hhfase2=0
+    var hhfase3=0
+    var hhconv=0
+    
+    var totalPerFe=0
+    var totalPerFr=0
+    var totalPerCe=0
+    var totalPerCr=0
+    var totalPerEe=0
+    var totalPerEr=0
+    var totalPerE=0
+    var totalPerR=0
+    var totalPerm=0
+    var totalPerh=0
+
+    var rbajoHallazgos = 0
+    var rmedioHallazgos = 0
+    var raltoHallazgos = 0
+    var maHallazgos = 0
+    var siHallazgos = 0
+    var soHallazgos = 0
+    var cantHallAbiertos = 0
+    var cantHallCerrados = 0
+    var porcHall = 0
+    
+    var cantacstipma = 0
+    var cantacstipsi = 0
+    var cantacstipso  = 0
+    var cantacrtipma = 0
+    var cantacrtipsi = 0
+    var cantacrtipso = 0
+    var cantacstippc = 0
+    var cantacrtippc = 0
+
+    var cantacrbajo=0
+    var cantacrmedio=0
+    var cantacralto=0
+
+    var totac = 0
+    var totauditorias = 0
+    var totcam = 0
+    var totconversatorios = 0
+    var tothallazgos = 0
+    var totinsp = 0
+    var totrct = 0
+
+    var totacant = 0
+    var totauditoriasant = 0
+    var totcamant = 0
+    var totconversatoriosant = 0
+    var tothallazgosant = 0
+    var totinspant = 0
+    var totrctant = 0
+
+    buscarOds()
+
+    function buscarOds(){
+        $.post(server+'buscarods.php', {ods:numods},
+        function(resp){
+            console.log(resp)
+            if(resp.msn=='OK'){
+
+                ods =  resp.ods
+                odsant = resp.odsant
+                fase = parseInt(resp.fase)
+
+                if(fase == 2){
+                    var html = `
+                        <div class="col">
+                            <div id="figindgestionodsant">
+
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div id="figindgestion">
+
+                            </div>
+                        </div>
+                        
+                    `
+                }else{
+                    var html = `
+                        <div class="col">
+                            <div id="figindgestion">
+
+                            </div>
+                        </div>
+                         
+                    ` 
+                }
+
+                $('#indigraf').html(html)
+
+                localStorage.setItem('numods', numods)
+                localStorage.setItem('ods', ods)
+                
+
+                $('#titods').html(ods)
+
+                detallesACRiesgo()
+
+                 
+
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No está registrada esta Orden de Servicio, por favor verifique el link suministrado...!'
+                }).then((result) => {
+                    window.location = 'index_404.html' 
+                })
+            }
+        })
+    }
+
+    
+    function cargando(){
+        let timerInterval
+        Swal.fire({
+        title: 'Cargando indicadores!',
+        html: 'Un momento por favor...',
+        timer: 25000,
+        timerProgressBar: true,
+        
+        didOpen: () => {
+            Swal.showLoading()
+            timerInterval = setInterval(() => {
+            const content = Swal.getContent()
+            if (content) {
+                const b = content.querySelector('b')
+            }
+            }, 1000)
+        },
+        willClose: () => {
+            clearInterval(timerInterval)
+        }
+        }).then((result) => {
+        /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                hhtotal = parseInt(hhfase1) + parseInt(hhfase2) + parseInt(hhfase3) + parseInt(hhconv)
+                cargarGraficas()
+            }
+        })
+
+    }
+
+    function detallesACRiesgo(){
+        cargando()
+        $.post(server+'planesAccionACg.php', {ods:numods},
+        function(resp){
+            console.log('Detalles AC Riesgo dia')
+            console.log(resp)
+            arrayDetallesACR = resp
+            var fotosacr = ''
+            if(arrayDetallesACR.length != null){
+                var html = `
+                <div class="table" style="background-color: white">
+                    <table class="table" style="background-color: white" id="tblData">
+                        <thead class="thead-dark">
+                            <th>Fecha Reporte</th>
+                            <th>Fecha Evento</th>
+                            <th>Nombre quien reporta</th>
+                            <th style="width: 300px;">Reporte</th>
+                            <th>Tipificación</th>
+                            <th>Criticidad</th>
+                            <th>Nivel 1</th>
+                            <th>Nivel 2</th>
+                            <th>Plan</th>
+                            <th>Fecha Cierre</th>
+                            <th>Registro Fotográfico</th>
+
+                        </thead>
+                        <tbody>
+                `
+
+                for(var i=0; i<arrayDetallesACR.length; i++){
+                    fotosacr = '';
+                    html += `
+                        <tr>
+                            <td>${arrayDetallesACR[i].fecharep}</td>
+                            <td>${arrayDetallesACR[i].fechaevento}</td>
+                            <td>${arrayDetallesACR[i].reporta}</td>
+                            <td width="400">${arrayDetallesACR[i].detalles}</td>
+                            <td>${arrayDetallesACR[i].tipificacion}</td>
+                            <td>${arrayDetallesACR[i].criticidad}</td>
+                            <td>${arrayDetallesACR[i].nivel1}</td>
+                            <td>${arrayDetallesACR[i].nivel2}</td>
+                            <td width="400">${arrayDetallesACR[i].plan}</td>
+                            <td>${arrayDetallesACR[i].fcierre}</td>`
+
+                            if(arrayDetallesACR[i].foto != null){
+
+                                for(var a=0; a<arrayDetallesACR[i].foto.length; a++){
+                                    fotosacr += `
+                                        <div class="foto">
+                                            <img src="http://italco.tk/server/${arrayDetallesACR[i].foto[a].foto}" class="imagen"  width="100%" height="220px" alt="" >
+                                        </div>
+                                    `
+                                }
+                                
+                            }
+                            
+
+
+
+                    html += `
+                            <td>${fotosacr}
+                            </td>
+                        </tr>
+                    `
+                    
+                }
+                html += `
+                        </tbody>
+                    </table>
+                </div>
+                `
+                $('#detacriesgo').html(html)
+                $('#tblData').DataTable( {
+                "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                    },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                        'csvHtml5',
+                        'pdfHtml5'
+                    ]
+                });
+                
+                
+               
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Realizado',
+                    text: 'Informe cargado...!'
+                })
+               
+            }
+                                        
+        })
+    }
+ 
+       
+
+    </script>
+
+</body>
+</html>

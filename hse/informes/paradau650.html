@@ -1,0 +1,4575 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Gestión HSE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+        #cab {
+            position: relative;
+            background: #000000;
+            overflow: hidden;
+            height: 300px;
+            border-radius: 0px;
+        }
+        
+        .centrado {
+            display: flex;
+            align-items: center;
+        }
+        
+        .imagen {
+            transition: transform .2s;
+        }
+        
+        .imagen:hover {
+            transform: scale(2);
+        }
+        
+        #cab:before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+            background-image: url('img/fondo.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .fazul {
+            background-color: rgb(20, 20, 82);
+        }
+        
+        #grafpiramide {
+            font-family: 'Oswald', sans-serif;
+            width: 50%;
+            height: 500px;
+            margin: 0 auto;
+            background-image: url('img/piramide_4.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .colpir {
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffffff;
+        }
+        
+        .filapir {
+            background-color: #00c901;
+            color: white;
+        }
+        
+        .filatit {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+        
+        .cabtit {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #074F15;
+            background-color: white;
+        }
+        
+        .btn-gre {
+            background-color: #172362;
+            color: white;
+        }
+        
+        .btn-grec {
+            background-color: #00c901;
+            color: white;
+        }
+        
+        body {
+            background-color: #242424;
+            background-image: url('img/refineria_f.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .fazul {
+            background-image: url('img/fdorado.jpg');
+            background-size: cover;
+            color: black;
+        }
+        
+        .mnu {
+            height: 100px;
+        }
+        
+        .btnmenu {
+            cursor: pointer;
+        }
+        
+        .mimenu {
+            padding: 5px;
+        }
+        
+        .derecho {
+            float: left;
+            width: 20%;
+            position: fixed;
+        }
+        
+        .negro {
+            color: black;
+        }
+        
+        #cuerpo {
+            min-height: 900px;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .cuadro {
+            float: left;
+            width: 630px;
+            margin: 10px;
+        }
+        
+        .cuadro-g {
+            float: left;
+            width: 1300px;
+            margin: 10px;
+        }
+        
+        .foto {
+            width: 320px;
+            height: 300px;
+            padding: 10px;
+            float: left;
+        }
+        
+        .piefoto {
+            background-color: #097896;
+            color: white;
+            padding: 5px;
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+        
+        @media (max-width: 600px) {
+            .colpir {
+                font-size: 8px;
+            }
+            .derecho {
+                float: left;
+                width: 100%;
+            }
+            .cuadro-g {
+                float: left;
+                width: 100%;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fazul" style="position: fixed; width: 100%; z-index: 9999;">
+        <a class="navbar-brand negro" href="#"><img src="img/logo_m.png" height="30px" alt=""><span style="color: black;">| <span style="font-weight: bold;"></span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="navbar-brand " href="#"><span style="color: black; font-weight: bold;" id="nombreods"> 027  </span></a>
+                    <button type="button" class="btn btn-danger" onclick="crearPDF()">PDF</button>
+
+                    <span class="btn btn-info" id="fechainformehse">0000-00-00</span>
+                    <a class="navbar-brand " href="#"><span style="color: black; font-weight: bold;">PARADA U650</span></a>
+                </li>
+
+            </ul>
+
+
+
+        </div>
+    </nav>
+
+    <div id="cuerpo" style="width: 100%; margin: auto; padding-top: 50px;">
+
+        <div class="row" style="width: 100%;">
+
+            <div class="col-sm-3">
+                <div class="derecho mt-5" id="menup">
+                    <center>
+
+                        <img alt="" onmouseout="this.src='img/menupiramide.png';" onmouseover="this.src='img/menupiramide_.png';" src="img/menupiramide.png" id="btnpir" class="btnmenu" height="70px" onclick="abrir('piramide')" /> <br> <br>
+
+                        <img alt="" onmouseout="this.src='img/menugestion.png';" onmouseover="this.src='img/menugestion_.png';" src="img/menugestion.png" id="btngestion" class="btnmenu" height="70px" onclick="abrir('indicadores')" /> <br><br>
+
+                        <img alt="" onmouseout="this.src='img/menurecursos.png';" onmouseover="this.src='img/menurecursos_.png';" src="img/menurecursos.png" class="btnmenu" height="70px" onclick="abrir('recursos')" /> <br><br>
+
+                        <img alt="" onmouseout="this.src='img/menufotos.png';" onmouseover="this.src='img/menufotos_.png';" src="img/menufotos.png" class="btnmenu" height="70px" onclick="abrir('registrofotografico')" /><br><br>
+
+                        <!-- <img alt="" onmouseout="this.src='img/menualturas.png';" onmouseover="this.src='img/menualturas_.png';" src="img/menualturas.png" class="btnmenu" height="70px" onclick="abrir('alturas')" /> -->
+
+                    </center>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="card p-2 mt-5 oculto cuadro-g animate__bounceIn" id="piramide">
+                    <div class="card-header fazul mb-3">
+                        <h4>Pirámide de seguridad
+                            <span class="float-right rojo" onClick="cerrar('piramide')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div id="grafpiramide">
+
+                        <div id="piso7">
+                            <div class="textopira text-center " style="padding-top: 35px;">
+                                <div style="margin-right: 0%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> <span style="font-size: 12px;">FATALIDAD</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso6">
+                            <div class="textopira text-center" style="padding-top: 10px;">
+                                <div style="margin-right: 0%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span><br> ACTP
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso5">
+                            <div class="textopira text-center" style="padding-top: 10px;">
+                                <div style="margin-right: 0%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> ASPTT
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso4">
+                            <div class="textopira text-center ">
+                                <div style="margin-right: 0%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> PRIMEROS AUXILIOS
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso3">
+                            <div class="textopira text-center" style="padding-top: 10px;">
+                                <div style="margin-right: 0%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger; line-height: 1pt;" id="cantincidentes">0</span> <br>
+                                    <span style="line-height: 1pt;">INCIDENTES</span> <br><span style="font-size: 9px; line-height: 1pt;">AMBIENTAL, VEHÍCULAR, SEGURIDAD DE
+                                        PROCESOS, POR OPERACIONES</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso2">
+                            <div class="textopira text-center">
+                                <div style="margin-right: 0%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> CASI ACCIDENTES
+                                    <br><span style="font-size: 11px; line-height: 1pt;">INCIDENTES SIN CONSECUENCIA
+                                        REAL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso1">
+                            <div class="textopira text-center " style="padding-top: 5px;">
+                                <div style="margin-right: 0%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger; line-height: 1pt;" id="canthallazgos">0</span> <br> <span style="cursor: pointer; line-height: 1pt;"> HALLAZGOS </span>
+                                    <br><span style="font-size: 11px; line-height: 1pt;">CONDICIONES INSEGURAS, NO
+                                        CONFORMIDADES</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 pt-1">
+                        <table class="table" style="width: 50%; margin: 0 auto; ">
+                            <tr class="filatit" style="background-color: white; text-align: center;">
+                                <td class="cabtit"><b style="font-size: 18px;" id="cantAC">0</b></td>
+                                <td class="cabtit"><b style="font-size: 18px;" id="cantCV">0</b></td>
+                                <td class="cabtit" data-toggle="tooltip" data-placement="top"><b style="font-size: 18px;" id="evasas"></b></td>
+                                <td class="cabtit"><b style="font-size: 18px;">100%</b></td>
+                                <td class="cabtit"><b style="font-size: 18px;" id="porcgestion"></b></td>
+                                <td class="cabtit"><b style="font-size: 18px;" id="cantaudi"></b></td>
+                            </tr>
+                            <tr class="filapir" style="color: black;">
+                                <td class="colpir manito" onclick="abrir2('rac')">
+                                    CONVERSACIONES HSE
+                                </td>
+                                <td class="colpir" style="cursor: pointer;" onclick="abrir2('conversatorios')">
+                                    CONVERSATORIOS VISIBLES
+                                </td>
+                                <td class="colpir">
+                                    EVALUACIÓN CONTROL DE TRABAJOS / SAS
+                                </td>
+                                <td class="colpir">
+                                    % GESTIÓN DE INCIDENTES
+                                </td>
+                                <td class="colpir">% GESTIÓN DE HALLAZGOS</td>
+                                <td class="colpir">
+                                    CANT AUDITORIAS
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto cuadro animate__bounceIn" id="acdia">
+                    <div class="card-header fazul mb-3">
+                        <h4>Total Aseguramientos Día
+                            <span class="float-right rojo" onClick="cerrar('acdia')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figasegdia">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto cuadro animate__bounceIn" id="actot">
+                    <div class="card-header fazul mb-3">
+                        <h4>Total Aseguramientos Acumulado
+                            <span class="float-right rojo" onClick="cerrar('actot')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figasegacum">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto cuadro-g animate__bounceIn" id="acpmdia">
+                    <div class="card-header fazul mb-3">
+                        <h4>Total Aseguramientos por Mejorar <a href="../planesAC.html?ods=027" target="_blank"><button type="button" class="btn btn-info">PLANES DE ACCIÓN</button></a>
+                            <span class="float-right rojo" onClick="cerrar('acpmdia')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figasegpmdia">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto cuadro-g animate__bounceIn" id="acpmdia2">
+                    <div class="card-header fazul mb-3">
+                        <h4>Aseguramientos por Mejorar por Origen de reporte</a>
+                            <span class="float-right rojo" onClick="cerrar('acpmdia2')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figasegpmdia2">
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="tipiac">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación de Aseguramientos de comportamientos
+                            <span class="float-right rojo" onClick="cerrar('tipiac')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figactipi">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrsi">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 1 Seguridad Industrial
+                            <span class="float-right rojo" onClick="cerrar('tipiacrsi')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrsi">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrsi2">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 2 Seguridad Industrial
+                            <span class="float-right rojo" onClick="cerrar('tipiacrsi2')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrsi2">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrso">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 1 Salud Ocupacional
+                            <span class="float-right rojo" onClick="cerrar('tipiacrso')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrso">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrso2">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 2 Salud Ocupacional
+                            <span class="float-right rojo" onClick="cerrar('tipiacrso2')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrso2">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrma">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 1 Medio Ambiente
+                            <span class="float-right rojo" onClick="cerrar('tipiacrma')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrma">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrma2">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 2 Medio Ambiente
+                            <span class="float-right rojo" onClick="cerrar('tipiacrma2')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrma2">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrpc">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 1 Principios Culturales
+                            <span class="float-right rojo" onClick="cerrar('tipiacrpc')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrpc">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro animate__bounceIn" id="tipiacrpc2">
+                    <div class="card-header fazul mb-3">
+                        <h4>Tipificación Nivel 2 Principios Culturales
+                            <span class="float-right rojo" onClick="cerrar('tipiacrpc2')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figtipacrpc2">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="kpihallazgos">
+                    <div class="card-header fazul mb-3">
+                        <h4>Hallazgos
+                            <span class="float-right rojo" onClick="cerrar('kpihallazgos')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mt-4" style="width: 100%">
+                            <div class="col-sm-4">
+                                <div id="figcriticidadhallazgos">
+                                    ...
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="figtipificacionhallazgos">
+                                    ...
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="fighallabiertos">
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="kpiincidentes">
+                    <div class="card-header fazul mb-3">
+                        <h4>Incidentes
+                            <span class="float-right rojo" onClick="cerrar('kpiincidentes')">
+                                <i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mt-4" style="width: 100%">
+                            <div class="col-sm-4">
+                                <div id="figcriticidadincidentes">
+                                    ...
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="figtipificacionincidentes">
+                                    ...
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="figincidentes">
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="acseguros">
+                    <div class="card-header fazul mb-3">
+                        <h4>Aseguramientos de comportamientos Seguros
+                            <button type="button" class="btn btn-info" onclick="abrirACSeguros()">Ver Todos</button>
+
+                            <span class="float-right m-2" onClick="cerrar('acseguros')">
+                                <i class="fas fa-window-close"></i>
+                            </span>
+
+                            <span class="float-right m-2" onClick="abrir('contacseguros')">
+                                <i class="fas fa-angle-double-down"></i>
+                            </span>
+
+                        </h4>
+                    </div>
+                    <div class="card-body oculto " id="contacseguros">
+                        <div class="table-responsive" id="tabladetseguros">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="acriesgo">
+                    <div class="card-header fazul mb-3">
+                        <h4>Aseguramientos de comportamientos por Mejorar
+
+
+                            <span class="float-right m-2" onClick="cerrar('acriesgo')">
+                                <i class="fas fa-window-close"></i>
+                            </span>
+
+                            <span class="float-right m-2" onClick="abrir('contacriesgo')">
+                                <i class="fas fa-angle-double-down"></i>
+                            </span>
+
+                        </h4>
+                    </div>
+                    <div class="card-body oculto" id="contacriesgo">
+                        <div class="table-responsive" id="tabladetriesgo">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="hallazgos">
+                    <div class="card-header fazul mb-3">
+                        <h4>Detalles Hallazgos <a href="../planesHallazgos.html?ods=027" target="_blank"><button type="button" class="btn btn-info">PLANES DE ACCIÓN</button></a>
+
+
+                            <span class="float-right m-2" onClick="cerrar('hallazgos')">
+                                <i class="fas fa-window-close"></i>
+                            </span>
+
+                            <span class="float-right m-2" onClick="abrir('conthallazgos')">
+                                <i class="fas fa-angle-double-down"></i>
+                            </span>
+
+                        </h4>
+                    </div>
+                    <div class="card-body oculto" id="conthallazgos">
+
+
+                        <div class="table-responsive mt-2" id="tablahallazgos">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="incidentes">
+                    <div class="card-header fazul mb-3">
+                        <h4>Incidentes
+
+                            <span class="float-right m-2" onClick="cerrar('incidentes')">
+                                <i class="fas fa-window-close"></i>
+                            </span>
+
+                            <span class="float-right m-2" onClick="abrir('conthincidentes')">
+                                <i class="fas fa-angle-double-down"></i>
+                            </span>
+
+                        </h4>
+                    </div>
+                    <div class="card-body oculto" id="conthincidentes">
+                        <div class="table-responsive" id="tablaincidentes">
+                            ...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- inicio indicadores de gestion -->
+
+                <div class="card p-2 mt-5 oculto  cuadro-g animate__bounceIn" id="permisos">
+                    <div class="card-header fazul mb-3">
+                        <h4>Indicadores de gestión
+                            <span class="float-right rojo" onClick="cerrar('indigestion')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+
+
+                            <div class="col-sm-12 ">
+                                <div class="figuras" id="figpertrabaesp2">
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-sm-12 ">
+                                <div class="figuras" id="figpermisos">
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-5 oculto  cuadro-g animate__bounceIn" id="horascap">
+                    <div class="card-header fazul mb-3">
+                        <h4>Indicadores de gestión Horas Capacitación
+                            <span class="float-right rojo" onClick="cerrar('horascap')"><i
+                                    class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="figuras" id="fighcap">
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-5 oculto  cuadro-g animate__bounceIn" id="indigestion">
+                    <div class="card-header fazul mb-3">
+                        <h4>Indicadores de gestión
+                            <span class="float-right rojo" onClick="cerrar('indigestion')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figindigestion">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="cronoac">
+                    <div class="card-header fazul mb-3">
+                        <h4>Consolidado Cronograma AC
+                            <span class="float-right rojo" onClick="cerrar('cronoac')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figcronoac">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="cronocaminata">
+                    <div class="card-header fazul mb-3">
+                        <h4>Consolidado Caminata Gerencial <a href="../planesCaminata.html?ods=027" target="_blank"><button type="button" class="btn btn-info">PLANES DE ACCIÓN</button></a>
+                            <span class="float-right rojo" onClick="cerrar('cronocaminata')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figconscaminata">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="cronorct">
+                    <div class="card-header fazul mb-3">
+                        <h4>Consolidado RCT <a href="../planesRct.html?ods=027" target="_blank"><button type="button" class="btn btn-info">PLANES DE ACCIÓN</button></a>
+                            <span class="float-right rojo" onClick="cerrar('cronorct')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figconsrct">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="consauditorias">
+                    <div class="card-header fazul mb-3">
+                        <h4>Consolidado Auditorias <a href="../planesAuditorias.html?ods=027" target="_blank"><button type="button" class="btn btn-info">PLANES DE ACCIÓN</button></a>
+                            <span class="float-right rojo" onClick="cerrar('consauditorias')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figconsaudi">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="coninspecciones">
+                    <div class="card-header fazul mb-3">
+                        <h4>Consolidado Inspecciones <a href="../planesInspecciones.html?ods=027" target="_blank"><button type="button" class="btn btn-info">PLANES DE ACCIÓN</button></a>
+                            <span class="float-right rojo" onClick="cerrar('coninspecciones')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figconsinsp">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-2 oculto  cuadro-g animate__bounceIn" id="conresiduos">
+                    <div class="card-header fazul mb-3">
+                        <h4>Consolidado Residuos Sólidos
+                            <span class="float-right rojo" onClick="cerrar('conresiduos')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figconsresi">
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- fin indicadores de gestion -->
+
+                <!-- INICIO CONSOLIDADO PERSONAL -->
+
+                <div class="card p-2 mt-5 oculto  cuadro-g animate__bounceIn" id="persturnos">
+                    <div class="card-header fazul mb-3">
+                        <h4>Personal por frentes
+                            <span class="float-right rojo" onClick="cerrar('persturnos')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figpersturnos">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-3 oculto  cuadro-g animate__bounceIn" id="perplanta">
+                    <div class="card-header fazul mb-3">
+                        <h4>Personal
+                            <span class="float-right rojo" onClick="cerrar('perplanta')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figpersplanta">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-3 oculto  cuadro-g animate__bounceIn" id="perhoras">
+                    <div class="card-header fazul mb-3">
+                        <h4>Personal HHT
+                            <span class="float-right rojo" onClick="cerrar('perhoras')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figpershht">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-3 oculto  cuadro-g animate__bounceIn" id="persacum">
+                    <div class="card-header fazul mb-3">
+                        <h4>Acumulado HHT
+                            <span class="float-right rojo" onClick="cerrar('persacum')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figacumhht">
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIN CONSOLIDADO PERSONAL -->
+
+                <!-- INICIO PYP -->
+
+                <div class="card p-2 mt-5 oculto  cuadro-g animate__bounceIn" id="pyp">
+                    <div class="card-header fazul mb-3">
+                        <h4>Gestión Promoción y Prevención
+                            <span class="float-right rojo" onClick="cerrar('pyp')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mt-4" style="width: 100%">
+                            <div class="col-sm-4">
+                                <div id="figdesinf"></div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="figrecargas"></div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div id="figact"></div>
+                            </div>
+
+                            <div class="col-sm-12 mt-2" id="actividadespyp">
+                                <div class="table-responsive" style="background-color: white">
+                                    <table class="table table-striped" style="background-color: white">
+                                        <thead class="thead-dark">
+                                            <th>Fecha</th>
+                                            <th>Turno</th>
+                                            <th>Responsable</th>
+                                            <th>Desinf. Baños</th>
+                                            <th>Desinf A. Planta</th>
+                                            <th>Desinf A. Loc</th>
+                                            <th>Desinf. Vehíclos</th>
+                                            <th>Apert. Puertas y Ventanas</th>
+                                            <th>Auditoria</th>
+                                            <th>Puntaje</th>
+                                            <th>Actividad</th>
+                                            <th>Cant Recargas</th>
+                                        </thead>
+                                        <tbody id="datosTablaPYP"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <hr>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIN PYP -->
+
+                <!-- INICIO REGISTRO FOTOGRAFICO -->
+
+                <div class="card p-2 mt-5 oculto  cuadro-g animate__bounceIn" id="registrofotografico">
+                    <div class="card-header fazul mb-3">
+                        <h4>Registro fotográgico
+                            <span class="float-right rojo" onClick="cerrar('registrofotografico')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <h4>Salud Ocupacional</h4>
+                        <hr>
+                        <div id="galeriafotosso"></div>
+                        <hr>
+                        <h4>Medio Ambiente</h4>
+                        <hr>
+                        <div id="galeriafotosma"></div>
+                        <h4>Seguridad Industrial</h4>
+                        <hr>
+                        <div id="galeriafotossi"></div>
+                    </div>
+                </div>
+
+                <div class="card p-2 mt-5 oculto  cuadro-g animate__bounceIn" id="alturas">
+                    <div class="card-header fazul mb-3">
+                        <h4>Certificados de alturas
+                            <span class="float-right rojo" onClick="cerrar('alturas')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+
+                        <div id="figalturas"></div>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Nombres</th>
+                                    <th>Documento</th>
+                                    <th>Cargo</th>
+                                    <th>Vence</th>
+                                    <th>Estado</th>
+                                </thead>
+                                <tbody id="tcerti">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script>
+        //alert("La resolución de tu pantalla es: " + screen.width + " x " + screen.height)
+
+        if (screen.width <= 1366) {
+            document.body.style.zoom = "75%";
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+
+
+        var fecha = getParameterByName('fecha');
+        $('#fechainformehse').html(fecha)
+
+        var numods = getParameterByName('ods');
+
+        if (numods == '') {
+            numods = '027'
+        }
+
+        
+
+        var totacglobal = 0
+        var totconversatoriosglobal = 0
+        var tothallazgosglobal = 0
+
+        var totacitalco = 0
+        var totacdremec = 0
+        var totaccliente = 0
+
+        var totacitalcodia = 0
+        var totacdremecdia = 0
+        var totacclientedia = 0
+
+        var tothallazgositalco = 0;
+        var tothallazgosdremec = 0;
+
+        var totacitalcobaja = 0;
+        var totacitalcomedia = 0;
+        var totacitalcoalta = 0;
+
+        var totacitalcobajarep = 0;
+        var totacitalcomediarep = 0;
+        var totacitalcoaltarep = 0;
+
+        var totacitalcobajarepec = 0;
+        var totacitalcomediarepec = 0;
+        var totacitalcoaltarepec = 0;
+
+        var totacitalcobajadia = 0;
+        var totacitalcomediadia = 0;
+        var totacitalcoaltadia = 0;
+
+        var totacdremecbaja = 0;
+        var totacdremecmedia = 0;
+        var totacdremecalta = 0;
+
+        var totacdremecbajadia = 0;
+        var totacdremecmediadia = 0;
+        var totacdremecaltadia = 0;
+
+
+
+        //se definen las variables array
+        var arrayHallazgos = []
+        var arrayDetallesHallazgos = []
+        var arrayDetallesACS = []
+        var arrayDetallesACR = []
+        var arrayDatos = []
+        var arrayKpiIG = []
+        var arrayKpiIGA = []
+        var arrayKpiPersonal = []
+        var arrayDiasSemana = []
+        var arrayTDirectos = []
+        var arrayTIDirectos = []
+        var arrayTTotal = []
+        var arrayCronoAC = []
+        var arrayCateCronoAC = []
+        var arrayValPCronoAC = []
+        var arrayValECronoAC = []
+        var arrayIndicadores = []
+
+        var arrayHHAcum = []
+        var arrayHCap = []
+        var arrayPermisos = []
+        var arrayPermisosEsp = []
+
+        var arrayEspecialidadesPer = []
+        var arrayEspCantPer = []
+        var arrayGaleria = []
+
+        var arrayPareto = []
+        var arrayTitulosSI = []
+        var arrayTitulosSO = []
+        var arrayTitulosMA = []
+        var arrayTitulosPC = []
+
+        var arrayTitulosSI2 = []
+        var arrayTitulosSO2 = []
+        var arrayTitulosMA2 = []
+        var arrayTitulosPC2 = []
+
+
+        var arrayRiesgo = []
+
+        var arrayPersonalTurnos = []
+        var arrayPersonalDremec = []
+
+        var dremecDirectos = 0
+        var dremecIndirectos = 0
+        var dremecTotal = 0;
+
+        var hdremecDirectos = 0;
+        var hdremecIndirectos = 0;
+        var hdremecTotal = 0
+
+        var totalPersonalDirectos = 0;
+        var totalPersonalIndirectos = 0;
+        var totalPersonalPlanta = 0;
+
+        var totalHorasDirectos = 0;
+        var totalHorasIndirectos = 0;
+        var totalHoras = 0;
+
+        var acumHDirectos = 0
+        var acumHIndirectos = 0
+        var acumHHTotal = 0
+
+        var arrayTurnos = []
+        var arrayDirectos = []
+        var arrayIndirectos = []
+        var arrayTotalPersonal = []
+        var arrayTotalHorasHombreDirectos = []
+        var arrayTotalHorasHombreIndirectos = []
+        var arrayTotalHorasHombre = []
+
+
+        var totalHHDirectosD = 0
+        var totalHHIndirectosD = 0
+        var totalHHD = 0
+
+        var totalHHDirectosA = 0
+        var totalHHIndirectosA = 0
+        var totalHHA = 0
+
+        var hhfase1 = 0
+        var hhfase2 = 0
+        var hhfase3 = 0
+        var hhconv = 0
+
+        var totalPerFe = 0
+        var totalPerFr = 0
+        var totalPerCe = 0
+        var totalPerCr = 0
+        var totalPerEe = 0
+        var totalPerEr = 0
+        var totalPerE = 0
+        var totalPerR = 0
+        var totalPerm = 0
+        var totalPerh = 0
+
+        var rbajoHallazgos = 0;
+        var rmedioHallazgos = 0;
+        var raltoHallazgos = 0;
+        var maHallazgos = 0;
+        var siHallazgos = 0;
+        var soHallazgos = 0;
+        var spHallazgos = 0;
+        var cantHallAbiertos = 0;
+        var cantHallCerrados = 0;
+        var porcHall = 0;
+
+        var cantacstipma = 0
+        var cantacstipsi = 0
+        var cantacstipso = 0
+        var cantacrtipma = 0
+        var cantacrtipsi = 0
+        var cantacrtipso = 0
+        var cantacstippc = 0
+        var cantacrtippc = 0
+
+        var cantacrbajo = 0
+        var cantacrmedio = 0
+        var cantacralto = 0
+
+        var totac = 0
+        var totacdia = 0
+        var totauditorias = 0
+        var totcam = 0
+        var totconversatorios = 0
+        var tothallazgos = 0
+        var totinsp = 0
+        var totrct = 0
+
+        var totacant = 0
+        var totauditoriasant = 0
+        var totcamant = 0
+        var totconversatoriosant = 0
+        var tothallazgosant = 0
+        var totinspant = 0
+        var totrctant = 0
+
+        var arrayAlturas = []
+
+        var arrayCons = [];
+        var arrayConsACGTit = [];
+        var arrayConsACG = [];
+        var arrayConsACGPlan = [];
+        var arrayConsACGEje = [];
+        var arrayConsACGCump = [];
+
+        var arrayConsCamGTit = [];
+        var arrayConsCamGPlan = [];
+        var arrayConsCamGEje = [];
+        var totCaminatas = 0;
+        var arrayConsCamG = [];
+        var arrayConsCamGCump = [];
+
+        var arrayConsRctGTit = [];
+        var arrayConsRctGPlan = [];
+        var arrayConsRctGEje = [];
+        var totSumaRct = 0;
+        var arrayConsRctCump = [];
+
+        var arrayConsAudiGTit = [];
+        var arrayConsAudiGPlan = [];
+        var arrayConsAudiGEje = [];
+        var tosSumAuditorias = 0;
+        var arrayConsAudiGEjeCump = []
+
+        var arrayConsACGCant = []
+        var arrayConsLid = []
+        var arrayConsRctGCant = []
+
+        var arrayPersonal = []
+
+        var arrayPlantas = []
+
+        var arrayPDirecto = []
+        var arrayPIndirecto = []
+        var arrayPtot = []
+
+        var arrayHDirecto = []
+        var arrayHIndirecto = []
+        var arrayHtot = []
+
+        var arrayResiduosTitulos = []
+        var arrayResiduosCant = []
+        var arrayResiduos = []
+
+        var arrayConsInspGTit = []
+        var arrayConsInspGCant = []
+
+        var arrayDetallesIncidentes = []
+
+
+
+        var arrayTurnos = []
+        var arrayPfrio = []
+        var arrayPcaliente = []
+        var arrayPelectrico = []
+        var arraytotalp = []
+        var arrayMramm = []
+        var arrayMramh = []
+        var arrayMramvh = []
+        var arraytotalmatriz = []
+
+        var arrayFrentesPermisos = []
+
+        var arrayCca1 = []
+        var arrayCca2 = []
+        var arrayCca3 = []
+        var arrayCca5 = []
+        var arrayCca6 = []
+        var arrayCca7 = []
+        var arraySsas = []
+        var arraySsaes = []
+        var arraytotalca = []
+
+        var arrayPpra = []
+        var arrayPprc = []
+        var arrayPprg = []
+        var arraytotalpr = []
+
+        var arrayPpnuevos = []
+        var arrayPprevalidados = []
+        var arrayPpcerrados = []
+
+        var arrayFrentesTit = []
+        var arrayFrentesDir = []
+        var arrayFrentesIndir = []
+        var arrayFrentesTot = []
+
+        var sumadirectos = null
+        var sumaindirectos = null
+        var sumtotal = null
+
+        var arrayFrentesTrab = []
+
+        var arrayFrentesTotales = []
+
+        var arrayFotos = []
+
+        $('#logohse').addClass('magictime vanishIn');
+        $('#menup').addClass('magictime vanishIn');
+
+        var server = 'https://utitalco.com/server/';
+
+        if (fecha == '') {
+            obtenerFecha()
+        } else {
+            cargarFecha()
+        }
+
+        if (numods == '022 PARADA TECNICA UOP I') {
+            $('#evasas').html('91%');
+        }
+        if (numods == '027') {
+            $('#evasas').html('95%');
+        }
+
+        function cerrarTodo() {
+
+            $('#piramide').addClass('oculto')
+            $('#acdia').addClass('oculto')
+            $('#actot').addClass('oculto')
+            $('#tipiac').addClass('oculto')
+            $('#alturas').addClass('oculto')
+            $('#tipiacrsi').addClass('oculto')
+            $('#tipiacrsi2').addClass('oculto')
+            $('#tipiacrso').addClass('oculto')
+            $('#tipiacrso2').addClass('oculto')
+            $('#tipiacrma').addClass('oculto')
+            $('#tipiacrma2').addClass('oculto')
+            $('#tipiacrpc').addClass('oculto')
+            $('#tipiacrpc2').addClass('oculto')
+            $('#acseguros').addClass('oculto')
+            $('#acriesgo').addClass('oculto')
+            $('#hallazgos').addClass('oculto')
+            $('#incidentes').addClass('oculto')
+            $('#horascap').addClass('oculto')
+            $('#indigestion').addClass('oculto')
+            $('#permisos').addClass('oculto')
+            $('#cronoac').addClass('oculto')
+            $('#cronocaminata').addClass('oculto')
+            $('#cronorct').addClass('oculto')
+            $('#persturnos').addClass('oculto')
+            $('#perplanta').addClass('oculto')
+            $('#perhoras').addClass('oculto')
+            $('#persacum').addClass('oculto')
+            $('#registrofotografico').addClass('oculto')
+            $('#acpmdia').addClass('oculto')
+            $('#acpmdia2').addClass('oculto')
+            $('#acpmtot').addClass('oculto')
+            $('#pyp').addClass('oculto')
+            $('#consauditorias').addClass('oculto')
+            $('#kpihallazgos').addClass('oculto')
+            $('#kpiincidentes').addClass('oculto')
+            $('#conresiduos').addClass('oculto')
+            $('#coninspecciones').addClass('oculto')
+
+
+        }
+
+        function abrir(id) {
+            if (id == 'piramide') {
+                cerrarTodo()
+                $('#piramide').removeClass('oculto')
+                $('#acdia').removeClass('oculto')
+                $('#actot').removeClass('oculto')
+                $('#tipiac').removeClass('oculto')
+                $('#tipiacrsi').removeClass('oculto')
+                $('#tipiacrsi2').removeClass('oculto')
+                $('#tipiacrso').removeClass('oculto')
+                $('#tipiacrso2').removeClass('oculto')
+                $('#tipiacrma').removeClass('oculto')
+                $('#tipiacrma2').removeClass('oculto')
+                $('#tipiacrpc').removeClass('oculto')
+                $('#tipiacrpc2').removeClass('oculto')
+                $('#acseguros').removeClass('oculto')
+                $('#acriesgo').removeClass('oculto')
+                $('#hallazgos').removeClass('oculto')
+                $('#incidentes').removeClass('oculto')
+                $('#acpmdia').removeClass('oculto')
+                $('#acpmdia2').removeClass('oculto')
+                $('#acpmtot').removeClass('oculto')
+                $('#kpihallazgos').removeClass('oculto')
+                $('#kpiincidentes').removeClass('oculto')
+            }
+
+            if (id == 'indicadores') {
+                cerrarTodo()
+                $('#indigestion').removeClass('oculto')
+                $('#horascap').removeClass('oculto')
+                $('#permisos').removeClass('oculto')
+                $('#cronoac').removeClass('oculto')
+                $('#cronocaminata').removeClass('oculto')
+                $('#cronorct').removeClass('oculto')
+                $('#consauditorias').removeClass('oculto')
+                $('#conresiduos').removeClass('oculto')
+                $('#coninspecciones').removeClass('oculto')
+            }
+
+            if (id == 'recursos') {
+                cerrarTodo()
+                $('#persturnos').removeClass('oculto')
+                $('#perplanta').removeClass('oculto')
+                $('#perhoras').removeClass('oculto')
+                $('#persacum').removeClass('oculto')
+            }
+
+            if (id == 'registrofotografico') {
+                cerrarTodo()
+                $('#registrofotografico').removeClass('oculto')
+            }
+
+            if (id == 'proyprev') {
+                cerrarTodo()
+                $('#pyp').removeClass('oculto')
+            }
+
+            if (id == 'alturas') {
+                cerrarTodo()
+                $('#alturas').removeClass('oculto')
+            }
+
+
+
+            if (id != 'piramide' && id != 'indicadores' && id != 'recursos' && id != 'registrofotografico' && id != 'proyprev' && id != 'consauditorias') {
+                $('#' + id).removeClass('oculto')
+            }
+        }
+
+        function cerrar(id) {
+            $('#' + id).addClass('oculto');
+        }
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando indicadores!',
+                html: 'Un momento por favor...',
+                timer: 15000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    cargarGraficas()
+                }
+            })
+
+        }
+
+
+
+        function cargarFecha() {
+            $('#fechainformehse').html(fecha)
+            cargando()
+
+
+            obtenerKpiTotales()
+            obtenerdatosAC()
+            obtenerKpiACRiesgoPareto()
+            detallesACSeguros()
+            detallesACRiesgo()
+            detallesHallazgos()
+            detallesIncidentes()
+            indicadoresGestion()
+            obtenerKpiCons()
+            bPersonal()
+            obtenerGestionPYP()
+            obtenerdatosHallazgos()
+            obtenerKpiResiduos()
+            cargarPermisos()
+            obtenerGaleria()
+            cargarAlturas()
+        }
+
+        function obtenerFecha() {
+            Swal.fire({
+                title: 'Fecha informe',
+                html: `
+                    <label>Seleccione la fecha</label>
+                    <input type="date" class="form-control" id='fechainforme'>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Buscar',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fecha = $('#fechainforme').val()
+                    $('#fechainformehse').html(fecha)
+                    cargando()
+
+
+                    obtenerKpiTotales()
+                    obtenerdatosAC()
+                    obtenerKpiACRiesgoPareto()
+                    detallesACSeguros()
+                    detallesACRiesgo()
+                    detallesHallazgos()
+                    detallesIncidentes()
+                    indicadoresGestion()
+                    obtenerKpiCons()
+                    bPersonal()
+                    obtenerGestionPYP()
+                    obtenerdatosHallazgos()
+                    obtenerKpiResiduos()
+                    cargarAlturas()
+                    cargarPermisos()
+                    obtenerGaleria()
+                }
+            })
+        }
+
+        function cargarPermisos() {
+            $.post(server + 'informePermisosParada.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+
+
+                    arrayDatos = resp
+                    console.log(resp.tabla)
+                    arrayTabla = resp.tabla
+
+                    for (var i = 0; i < arrayDatos.turnos.length; i++) {
+                        arrayFrentesPermisos.push(arrayDatos.turnos[i].turno)
+                    }
+                    arrayFrentesPermisos.push('TOTALES');
+
+                    var sumaPfrio = 0;
+                    var sumaPcaliente = 0;
+                    var sumaPelectrico = 0;
+                    var sumatotalp = 0;
+
+                    var sumaPnuevos = 0;
+                    var sumaPrevalidados = 0;
+                    var sumaPcerrados = 0;
+
+                    for (var i = 0; i < arrayDatos.datos.length; i++) {
+
+                        arrayPfrio.push(arrayDatos.datos[i].pfrio)
+                        sumaPfrio += parseInt(arrayDatos.datos[i].pfrio);
+
+                        arrayPcaliente.push(arrayDatos.datos[i].pcaliente)
+                        sumaPcaliente += arrayDatos.datos[i].pcaliente;
+
+                        arrayPelectrico.push(arrayDatos.datos[i].pelectrico)
+                        sumaPelectrico += arrayDatos.datos[i].pelectrico;
+
+                        arraytotalp.push(arrayDatos.datos[i].totalp)
+                        sumatotalp += arrayDatos.datos[i].totalp;
+
+                        arrayMramm.push(arrayDatos.datos[i].ramm)
+                        arrayMramh.push(arrayDatos.datos[i].ramh)
+                        arrayMramvh.push(arrayDatos.datos[i].ramvh)
+                        arraytotalmatriz.push(arrayDatos.datos[i].totalmatriz)
+
+                        arrayCca1.push(arrayDatos.datos[i].ca1)
+                        arrayCca2.push(arrayDatos.datos[i].ca2)
+                        arrayCca3.push(arrayDatos.datos[i].ca3)
+                        arrayCca5.push(arrayDatos.datos[i].ca5)
+                        arrayCca6.push(arrayDatos.datos[i].ca6)
+                        arrayCca7.push(arrayDatos.datos[i].ca7)
+                        arraySsas.push(arrayDatos.datos[i].sas)
+                        arraySsaes.push(arrayDatos.datos[i].saes)
+                        arraytotalca.push(arrayDatos.datos[i].totalca)
+
+                        arrayPpra.push(arrayDatos.datos[i].pra)
+                        arrayPprc.push(arrayDatos.datos[i].prc)
+                        arrayPprg.push(arrayDatos.datos[i].prg)
+                        arraytotalpr.push(arrayDatos.datos[i].totalpr)
+
+                        arrayPpnuevos.push(arrayDatos.datos[i].pnuevos)
+                        sumaPnuevos += arrayDatos.datos[i].pnuevos
+
+                        arrayPprevalidados.push(arrayDatos.datos[i].prevalidados)
+                        sumaPrevalidados += arrayDatos.datos[i].prevalidados
+
+                        arrayPpcerrados.push(arrayDatos.datos[i].pcerrados)
+                        sumaPcerrados += (arrayDatos.datos[i].pcerrados)
+
+                    }
+
+
+
+                    arrayPfrio.push(sumaPfrio);
+                    arrayPcaliente.push(sumaPcaliente);
+                    arrayPelectrico.push(sumaPelectrico);
+                    arraytotalp.push(sumatotalp);
+
+                    arrayPpnuevos.push(sumaPnuevos)
+                    arrayPprevalidados.push(sumaPrevalidados)
+                    arrayPpcerrados.push(sumaPcerrados)
+
+
+                })
+
+        }
+
+        function obtenerdatosHallazgos() {
+            //obtener hallazgos
+            $.post(
+                server + "buscarHallazgosKpi.php", {
+                    ods: numods,
+                    fecha: fecha,
+                },
+                function(resp) {
+                    console.log(fecha);
+                    console.log(resp);
+
+                    if (resp != null) {
+                        arrayHallazgos = resp;
+
+                        $("#cantHallazgos").html(arrayHallazgos.length);
+
+                        for (var i = 0; i < arrayHallazgos.length; i++) {
+                            if (arrayHallazgos[i].criticidad.trim().toUpperCase() == "BAJA") {
+                                rbajoHallazgos++;
+                            }
+                            if (arrayHallazgos[i].criticidad.trim().toUpperCase() == "MEDIA") {
+                                rmedioHallazgos++;
+                            }
+                            if (arrayHallazgos[i].criticidad.trim().toUpperCase() == "ALTA") {
+                                raltoHallazgos++;
+                            }
+                            if (arrayHallazgos[i].tipificacion.trim().toUpperCase() == "MEDIO AMBIENTE") {
+                                maHallazgos++;
+                            }
+                            if (
+                                arrayHallazgos[i].tipificacion.trim().toUpperCase() == "SALUD OCUPACIONAL"
+                            ) {
+                                soHallazgos++;
+                            }
+                            if (
+                                arrayHallazgos[i].tipificacion.trim().toUpperCase() == "SEGURIDAD INDUSTRIAL"
+                            ) {
+                                siHallazgos++;
+                            }
+                            if (
+                                arrayHallazgos[i].tipificacion.trim().toUpperCase() == "SEGURIDAD DE PROCESOS"
+                            ) {
+                                spHallazgos++;
+                            }
+
+                            if (arrayHallazgos[i].estado.trim().toUpperCase() == "CERRADO") {
+                                cantHallCerrados++;
+                            } else {
+                                cantHallAbiertos++;
+                            }
+                        }
+                        porcHall =
+                            (cantHallCerrados * 100) /
+                            (cantHallCerrados + cantHallAbiertos);
+
+                        canthallazgos = cantHallCerrados + cantHallAbiertos
+                        cantHallCerrados += tothallazgosant
+                        porcGestionHallazgos = (100 * cantHallCerrados) / canthallazgos
+
+                        $('#porcgestion').html(Math.round(porcGestionHallazgos) + '%')
+
+
+                    }
+                }
+            );
+        }
+
+        function cargarAlturas() {
+            $.post(server + 'cargarAlturas.php', {},
+                function(resp) {
+                    arrayAlturas = resp
+                    var arrayTAlturas = arrayAlturas.personal
+                    var html = ''
+                    for (var i = 0; i < arrayTAlturas.length; i++) {
+                        html += `
+                        <tr>
+                            <td> ${arrayTAlturas[i].nombres} </td>
+                            <td> ${arrayTAlturas[i].doc} </td>
+                            <td> ${arrayTAlturas[i].cargo} </td>
+                            <td> ${arrayTAlturas[i].fvence} </td>
+                            <td> ${arrayTAlturas[i].estado} </td>
+                        </tr>
+                    `
+                    }
+                    $('#tcerti').html(html)
+                })
+        }
+
+        function obtenerGestionPYP() {
+            //obtener conversatorios
+
+
+            $.post(
+                server + "cargarGestionPYP.php", {
+                    ods: numods,
+                    fecha: fecha,
+                },
+                function(resp) {
+                    arrayDatosPYP = resp;
+
+                    if (arrayDatosPYP.tabla != null) {
+                        var datosTabla = arrayDatosPYP.tabla;
+                        var html = "";
+                        for (var i = 0; i < datosTabla.length; i++) {
+                            html += `
+                        <tr>
+                            <td>${datosTabla[i].fecha}</td>
+                            <td>${datosTabla[i].turno}</td>
+                            <td>${datosTabla[i].responsable}</td>
+                            <td>${datosTabla[i].cantlimpb}</td>
+                            <td>${datosTabla[i].cantlimpp}</td>
+                            <td>${datosTabla[i].cantlimpl}</td>
+                            <td>${datosTabla[i].cantlimpv}</td>
+                            <td>${datosTabla[i].cantapertuv}</td>
+                            <td>${datosTabla[i].auditoria}</td>
+                            <td>${datosTabla[i].puntaje}</td>
+                            <td>${datosTabla[i].actividad}</td>
+                            <td>${datosTabla[i].recargas}</td>
+                        </tr>
+                    `;
+                        }
+
+                        $("#datosTablaPYP").html(html);
+                    }
+                }
+            );
+        }
+
+
+        function obtenerKpiTotales() {
+            $.post(server + 'bKpiTotalesP.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+                    console.log('total kpis:')
+                    console.log(resp)
+
+                    arrayKpiIG = resp
+
+                    totac = arrayKpiIG.totac
+                    totacdia = arrayKpiIG.totacdia
+
+                    totacitalco = arrayKpiIG.totacitalco
+                    totaccliente = arrayKpiIG.totaccliente
+
+                    totacitalcodia = arrayKpiIG.totacitalcodia
+                    totacclientedia = arrayKpiIG.totacclientedia
+
+                    totconversatorios = arrayKpiIG.totconversatorios;
+
+                    tothallazgositalco = arrayKpiIG.tothallazgositalco
+
+                    var totacglobal = totac
+
+                    $('#cantAC').html(totacglobal)
+                    $('#cantCV').html(totconversatorios)
+                    $('#canthallazgos').html(tothallazgositalco)
+
+                })
+        }
+
+        function obtenerdatosAC() {
+            $.post(server + 'bACtipiP.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+                    console.log('resultado kpi AC')
+                    console.log(resp)
+
+                    if (resp.datos != null) {
+                        arrayDatos = resp.datos
+                        arrayRiesgo = resp.acriesgo
+
+                        for (var i = 0; i < arrayDatos.length; i++) {
+                            if (arrayDatos[i].criticidad != 'N/A') {
+                                if (arrayDatos[i].tipificacion == 'Seguridad Industrial y de procesos') {
+                                    cantacrtipsi++
+                                }
+                                if (arrayDatos[i].tipificacion == 'Medio Ambiente') {
+                                    cantacrtipma++
+                                }
+                                if (arrayDatos[i].tipificacion == 'Salud Ocupacional') {
+                                    cantacrtipso++
+                                }
+                                if (arrayDatos[i].tipificacion == 'Principios culturales') {
+                                    cantacrtippc++
+                                }
+                                if (arrayDatos[i].criticidad == 'Baja') {
+                                    cantacrbajo++
+                                }
+                                if (arrayDatos[i].criticidad == 'Media') {
+                                    cantacrmedio++
+                                }
+                                if (arrayDatos[i].criticidad == 'Alta') {
+                                    cantacralto++
+                                }
+                            } else {
+                                if (arrayDatos[i].tipificacion == 'Seguridad Industrial y de procesos') {
+                                    cantacstipsi++
+                                }
+                                if (arrayDatos[i].tipificacion == 'Medio Ambiente') {
+                                    cantacstipma++
+                                }
+                                if (arrayDatos[i].tipificacion == 'Salud Ocupacional') {
+                                    cantacstipso++
+                                }
+                                if (arrayDatos[i].tipificacion == 'Principios culturales') {
+                                    cantacstippc++
+                                }
+
+                            }
+                        }
+
+                        totacitalcobaja = arrayRiesgo.totacitalcobaja
+                        totacitalcomedia = arrayRiesgo.totacitalcomedia
+                        totacitalcoalta = arrayRiesgo.totacitalcoalta
+
+                        totacitalcobajarep = arrayRiesgo.totacitalcobajarep
+                        totacitalcomediarep = arrayRiesgo.totacitalcomediarep
+                        totacitalcoaltarep = arrayRiesgo.totacitalcoaltarep
+
+                        totacitalcobajarepec = arrayRiesgo.totacitalcobajarepec
+                        totacitalcomediarepec = arrayRiesgo.totacitalcomediarepec
+                        totacitalcoaltarepec = arrayRiesgo.totacitalcoaltarepec
+
+                        totacitalcobajadia = arrayRiesgo.totacitalcobajadia
+                        totacitalcomediadia = arrayRiesgo.totacitalcomediadia
+                        totacitalcoaltadia = arrayRiesgo.totacitalcoaltadia
+
+
+
+                    }
+
+
+
+                })
+        }
+
+        function obtenerKpiACRiesgoPareto() {
+            $.post(server + 'bParetoP.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+                    console.log('Resultado kpi pareto')
+                    console.log(resp)
+                    arrayPareto = resp
+
+                    if (arrayPareto.arraySI != null) {
+                        for (var i = 0; i < arrayPareto.arraySI.length; i++) {
+                            arrayTitulosSI.push({
+                                name: arrayPareto.arraySI[i].nivel,
+                                data: [arrayPareto.arraySI[i].cant],
+                            });
+                        }
+                    }
+
+                    if (arrayPareto.arraySO != null) {
+                        for (var i = 0; i < arrayPareto.arraySO.length; i++) {
+                            arrayTitulosSO.push({
+                                name: arrayPareto.arraySO[i].nivel,
+                                data: [arrayPareto.arraySO[i].cant],
+                            });
+                        }
+                    }
+
+                    if (arrayPareto.arrayMA != null) {
+                        for (var i = 0; i < arrayPareto.arrayMA.length; i++) {
+                            arrayTitulosMA.push({
+                                name: arrayPareto.arrayMA[i].nivel,
+                                data: [arrayPareto.arrayMA[i].cant],
+                            });
+                        }
+                    }
+
+                    if (arrayPareto.arrayPC != null) {
+                        for (var i = 0; i < arrayPareto.arrayPC.length; i++) {
+                            arrayTitulosPC.push({
+                                name: arrayPareto.arrayPC[i].nivel,
+                                data: [arrayPareto.arrayPC[i].cant],
+                            });
+                        }
+                    }
+                    if (arrayTitulosPC.length == 0) {
+                        $('#figtipacrpc').addClass('oculto')
+                    }
+
+
+                    //NIVEL 2
+
+                    if (arrayPareto.arraySI2 != null) {
+                        for (var i = 0; i < arrayPareto.arraySI2.length; i++) {
+                            arrayTitulosSI2.push({
+                                name: arrayPareto.arraySI2[i].nivel,
+                                data: [arrayPareto.arraySI2[i].cant],
+                            });
+                        }
+                    }
+
+                    if (arrayPareto.arraySO2 != null) {
+                        for (var i = 0; i < arrayPareto.arraySO2.length; i++) {
+                            arrayTitulosSO2.push({
+                                name: arrayPareto.arraySO2[i].nivel,
+                                data: [arrayPareto.arraySO2[i].cant],
+                            });
+                        }
+                    }
+
+                    if (arrayPareto.arrayMA2 != null) {
+                        for (var i = 0; i < arrayPareto.arrayMA2.length; i++) {
+                            arrayTitulosMA2.push({
+                                name: arrayPareto.arrayMA2[i].nivel,
+                                data: [arrayPareto.arrayMA2[i].cant],
+                            });
+                        }
+                    }
+
+                    if (arrayPareto.arrayPC2 != null) {
+                        for (var i = 0; i < arrayPareto.arrayPC2.length; i++) {
+                            arrayTitulosPC2.push({
+                                name: arrayPareto.arrayPC2[i].nivel,
+                                data: [arrayPareto.arrayPC2[i].cant],
+                            });
+                        }
+                    }
+                    if (arrayTitulosPC2.length == 0) {
+                        $('#figtipacrpc2').addClass('oculto')
+                    }
+
+                    //FIN NIVEL 2
+                    if (arrayTitulosSI.length == 0) {
+                        $('#figtipacrsi').addClass('oculto')
+                    }
+                    if (arrayTitulosSO.length == 0) {
+                        $('#figtipacrso').addClass('oculto')
+                    }
+                    if (arrayTitulosMA.length == 0) {
+                        $('#figtipacrma').addClass('oculto')
+                    }
+                    if (arrayTitulosPC.length == 0) {
+                        $('#figtipacrpc').addClass('oculto')
+                    }
+
+                    if (arrayTitulosSI2.length == 0) {
+                        $('#figtipacrsi2').addClass('oculto')
+                    }
+                    if (arrayTitulosSO2.length == 0) {
+                        $('#figtipacrso2').addClass('oculto')
+                    }
+                    if (arrayTitulosMA2.length == 0) {
+                        $('#figtipacrma2').addClass('oculto')
+                    }
+                    if (arrayTitulosPC2.length == 0) {
+                        $('#figtipacrpc2').addClass('oculto')
+                    }
+
+
+                })
+
+        }
+
+        function detallesACSeguros() {
+            $.post(
+                server + "buscarACSegurosDia.php", {
+                    ods: numods,
+                    fecha: fecha,
+                },
+                function(resp) {
+                    console.log("Detalles AC SEguros dia");
+                    console.log(resp);
+                    arrayDetallesACS = resp;
+                    if (arrayDetallesACS != null) {
+                        var html = `
+                <div class="table-responsive" style="background-color: white">
+                    <table class="table" >
+                        <thead class="thead-dark">
+                            <th>Fecha Reporte</th>
+                            <th>Fecha Evento</th>
+                            <th>Nombre quien reporta</th>
+                            <th style="width: 300px;">Reporte</th>
+                            <th>Tipificación</th>
+                        </thead>
+                        <tbody>
+                `;
+
+                        for (var i = 0; i < arrayDetallesACS.length; i++) {
+                            html += `
+                        <tr>
+                            <td>${arrayDetallesACS[i].fecharep}</td>
+                            <td>${arrayDetallesACS[i].fechaevento}</td>
+                            <td>${arrayDetallesACS[i].reporta} - ${arrayDetallesACS[i].ods}</td>
+                            <td>${arrayDetallesACS[i].detalles}</td>
+                            <td>${arrayDetallesACS[i].tipificacion}</td>
+                        </tr>
+                    `;
+                        }
+                        html += `
+                        </tbody>
+                    </table>
+                </div>
+                `;
+                        $("#tabladetseguros").html(html);
+                    }
+                }
+            );
+        }
+
+        function detallesACRiesgo() {
+            $.post(
+                server + "buscarACRiesgoDia.php", {
+                    ods: numods,
+                    fecha: fecha,
+                },
+                function(resp) {
+                    console.log("Detalles AC Riesgo dia");
+                    console.log(resp);
+
+                    var fotosacr = "";
+                    if (resp != null) {
+                        arrayDetallesACR = resp;
+
+
+                        var html = `
+                        <div class="table-responsive" style="background-color: white">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <th>Fecha Reporte</th>
+                                    <th>Fecha Evento</th>
+                                    <th>Nombre quien reporta</th>
+                                    <th style="width: 300px;">Reporte</th>
+                                    <th>Tipificación</th>
+                                    <th>Criticidad</th>
+                                    <th>Nivel 1</th>
+                                    <th>Nivel 2</th>
+                                    <th>Plan</th>
+                                    <th>Fecha Cierre</th>
+                                    <th></th>
+
+                                </thead>
+                                <tbody>
+                        `;
+
+                        for (var i = 0; i < arrayDetallesACR.length; i++) {
+
+                            var htmlfotos = ''
+
+                            if (arrayDetallesACR[i].foto != '') {
+
+                                arrayFotos = JSON.parse(arrayDetallesACR[i].foto);
+
+                                if (arrayFotos.length != 0) {
+                                    for (var f = 0; f < arrayFotos.length; f++) {
+                                        htmlfotos += `
+                                            <a href="https://utitalco.com/hse/archivos/${arrayFotos[f].foto}" target="_blank">
+                                                <img src="https://utitalco.com/hse/img/iconoarchivo.jpg" width="80px" >
+                                            </a>
+                                        `
+                                    }
+                                }
+                            }
+
+
+                            html += `
+                                <tr>
+                                    <td>${arrayDetallesACR[i].fecharep}</td>
+                                    <td>${arrayDetallesACR[i].fechaevento}</td>
+                                    <td>${arrayDetallesACR[i].reporta}</td>
+                                    <td width="400">${arrayDetallesACR[i].detalles}</td>
+                                    <td>${arrayDetallesACR[i].tipificacion}</td>
+                                    <td>${arrayDetallesACR[i].criticidad}</td>
+                                    <td>${arrayDetallesACR[i].nivel1}</td>
+                                    <td>${arrayDetallesACR[i].nivel2}</td>
+                                    <td width="400">${arrayDetallesACR[i].plan}</td>
+                                    <td>${arrayDetallesACR[i].fcierre}</td>
+                                    <td>${htmlfotos}</td>
+                                </tr>
+                            `;
+                        }
+                        html += `
+                                </tbody>
+                            </table>
+                        </div>
+                        `;
+                        $("#tabladetriesgo").html(html);
+
+
+                    }
+                }
+            );
+        }
+
+        function detallesHallazgos() {
+            $.post(server + 'buscarHallazgosDiaP.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+
+                    var fotosacr = ''
+                    var arrayDetallesHallazgos = resp;
+
+                    if (resp != null) {
+
+                        var html = `
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <th>Fecha</th>
+                                <th>Item</th>
+                                <th style="width: 300px;">Reporte</th>
+                                <th>Nombre quien reporta</th>
+                                <th>Criticidad</th>
+                                <th>Tipificación</th>
+                                <th>Plan de acción</th>
+                                <th>Fecha de Cierre</th>
+                                <th>Estado</th>
+                            </thead>
+                            <tbody>
+                        `
+                        for (var i = 0; i < arrayDetallesHallazgos.length; i++) {
+                            html += `
+                                <tr>
+                                    <td>${arrayDetallesHallazgos[i].fecha}</td>
+                                    <td>${arrayDetallesHallazgos[i].item}</td>
+                                    <td>${arrayDetallesHallazgos[i].detalles}</td>
+                                    <td>${arrayDetallesHallazgos[i].reporta}</td>
+                                    <td>${arrayDetallesHallazgos[i].criticidad}</td>
+                                    <td>${arrayDetallesHallazgos[i].tipificacion}</td>
+                                    <td>${arrayDetallesHallazgos[i].plan}</td>
+                                    <td>${arrayDetallesHallazgos[i].fcierre}</td>
+                                    <td>${arrayDetallesHallazgos[i].estado}</td>
+                                </tr>
+                            `;
+                        }
+                        html += `
+                            </tbody>
+                        </table>`
+                        $('#tablahallazgos').html(html)
+                    }
+
+                })
+        }
+
+        function detallesIncidentes() {
+            $.post(server + 'buscarIncidentes.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+
+                    arrayDetallesIncidentes = resp;
+
+                    var html = `<div class="table-responsive">
+                    <table class="table-responsive table-striped">
+                        <thead class="thead-dark">
+                            <th>Fecha Reporte</th>
+                            <th>Fecha Evento</th>
+                            <th>Item</th>
+                            <th style="width: 300px;">Reporte</th>
+                            <th>Nombre quien reporta</th>
+                            <th>Criticidad</th>
+                            <th>Afectación</th>
+                            <th>Plan de acción</th>
+                            <th>Soporte</th>
+                            <th>Fecha de Cierre</th>
+                            <th>Estado</th>
+                            <th>Valoración RAM</th>
+                        </thead>
+                        <tbody>
+                    `
+                    if (arrayDetallesIncidentes != null) {
+
+                        for (var i = 0; i < arrayDetallesIncidentes.length; i++) {
+                            html += `
+                                <tr>
+                                    <td>${arrayDetallesIncidentes[i].fecha_rep}</td>
+                                    <td>${arrayDetallesIncidentes[i].fecha_evento}</td>
+                                    <td>${arrayDetallesIncidentes[i].item}</td>
+                                    <td>${arrayDetallesIncidentes[i].detalles}</td>
+                                    <td>${arrayDetallesIncidentes[i].reporta}</td>
+                                    <td>${arrayDetallesIncidentes[i].criticidad}</td>
+                                    <td>${arrayDetallesIncidentes[i].afectacion}</td>
+                                    <td>${arrayDetallesIncidentes[i].plan}</td>
+                                    <td><a href="${arrayDetallesIncidentes[i].soporte}" target="_blank"><img src="img/pdf.png" height="50px"></a> </td>
+                                    <td>${arrayDetallesIncidentes[i].fecha_cierre}</td>
+                                    <td>${arrayDetallesIncidentes[i].estado}</td>
+                                    <td>${arrayDetallesIncidentes[i].valoracion}</td>
+                                </tr>
+                            `;
+                        }
+                    }
+                    html += `
+                        </tbody>
+                    </table></div>`
+                    $('#tablaincidentes').html(html)
+                    var cantInci = arrayDetallesIncidentes.length;
+                    $('#cantincidentes').html(cantInci)
+                })
+        }
+
+        function indicadoresGestion() {
+            $.post(server + 'buscarIndicadores.php', {
+                ods: numods,
+                fecha: fecha
+            }, function(resp) {
+                arrayIndicadores = resp
+                $('#cantaudi').html(arrayIndicadores.totauditorias)
+            })
+
+        }
+
+        function obtenerKpiCons() {
+            $.post(
+                server + "buscarkpiConsGen.php", {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+                    console.log("Resultado kpi consolidado");
+                    console.log(resp);
+
+                    arrayCons = resp;
+
+                    if (arrayCons.arrayConsAC != null) {
+                        for (var i = 0; i < arrayCons.arrayConsAC.length; i++) {
+                            arrayConsACGTit.push(arrayCons.arrayConsAC[i].cargo);
+                        }
+                    }
+
+                    if (arrayCons.arrayConsAC != null) {
+                        for (var i = 0; i < arrayCons.arrayConsAC.length; i++) {
+                            arrayConsACGPlan.push(parseInt(arrayCons.arrayConsAC[i].plan));
+                            arrayConsACGEje.push(parseInt(arrayCons.arrayConsAC[i].eje));
+                            arrayConsACGCump.push(parseInt(arrayCons.arrayConsAC[i].cump));
+                        }
+                    }
+
+                    // if (arrayCons.arrayConsACLid != null) {
+
+                    //     for (var i = 0; i < arrayCons.arrayConsACLid.length - 2; i++) {
+                    //         arrayConsACGCant.push(parseInt(arrayCons.arrayConsACLid[i].eje));
+                    //     }
+                    // }
+
+                    if (arrayCons.arrayConsCaminata != null) {
+                        for (var i = 0; i < arrayCons.arrayConsCaminata.length; i++) {
+                            arrayConsCamGTit.push(arrayCons.arrayConsCaminata[i].cargo);
+                        }
+
+                    }
+                    if (arrayCons.arrayConsCaminata != null) {
+
+                        for (var i = 0; i < arrayCons.arrayConsCaminata.length; i++) {
+                            arrayConsCamGPlan.push(
+                                parseInt(arrayCons.arrayConsCaminata[i].plan)
+                            );
+                            arrayConsCamGEje.push(
+                                parseInt(arrayCons.arrayConsCaminata[i].eje)
+                            );
+
+                            totCaminatas += parseInt(arrayCons.arrayConsCaminata[i].eje);
+
+                            arrayConsCamGCump.push(
+                                parseInt(arrayCons.arrayConsCaminata[i].cump)
+                            );
+                        }
+                        for (var i = 0; i < arrayCons.arrayConsCaminata.length - 1; i++) {
+                            arrayConsCamG.push(parseInt(arrayCons.arrayConsCaminata[i].eje));
+                        }
+
+                        for (var i = 0; i < arrayCons.arrayConsRct.length; i++) {
+                            arrayConsRctGTit.push(arrayCons.arrayConsRct[i].cargo);
+                        }
+
+                        for (var i = 0; i < arrayCons.arrayConsCaminata.length - 1; i++) {
+                            arrayConsLid.push(arrayCons.arrayConsCaminata[i].cargo);
+                        }
+                    }
+
+                    if (arrayCons.arrayConsRct != null) {
+                        for (var i = 0; i < arrayCons.arrayConsRct.length; i++) {
+                            arrayConsRctGPlan.push(parseInt(arrayCons.arrayConsRct[i].plan));
+                            arrayConsRctGEje.push(parseInt(arrayCons.arrayConsRct[i].eje));
+                            arrayConsRctCump.push(parseInt(arrayCons.arrayConsRct[i].cump));
+
+                            totSumaRct += parseInt(arrayCons.arrayConsRct[i].eje);
+
+                        }
+
+                        for (var i = 0; i < arrayCons.arrayConsRct.length - 1; i++) {
+                            arrayConsRctGCant.push(parseInt(arrayCons.arrayConsRct[i].eje));
+                        }
+                    }
+
+                    if (arrayCons.arrayConsAudi != null) {
+
+                        for (var i = 0; i < arrayCons.arrayConsAudi.length; i++) {
+                            arrayConsAudiGTit.push(arrayCons.arrayConsAudi[i].auditoria);
+                        }
+
+                        for (var i = 0; i < arrayCons.arrayConsAudi.length; i++) {
+                            arrayConsAudiGPlan.push(
+                                parseInt(arrayCons.arrayConsAudi[i].plan)
+                            );
+                            arrayConsAudiGEje.push(parseInt(arrayCons.arrayConsAudi[i].eje));
+                            arrayConsAudiGEjeCump.push(
+                                parseInt(arrayCons.arrayConsAudi[i].cump)
+                            );
+                            tosSumAuditorias += parseInt(arrayCons.arrayConsAudi[i].eje)
+                        }
+
+                    }
+
+                    if (arrayCons.arrayConsInsp != null) {
+
+                        for (var i = 0; i < arrayCons.arrayConsInsp.length; i++) {
+                            arrayConsInspGTit.push(arrayCons.arrayConsInsp[i].inspeccion);
+                        }
+
+                        arrayConsInspGTit.push('TOTAL');
+
+                        for (var i = 0; i < arrayCons.arrayConsInsp.length; i++) {
+                            arrayConsInspGCant.push(
+                                parseInt(arrayCons.arrayConsInsp[i].cant)
+                            );
+                        }
+
+                        arrayConsInspGCant.push(arrayCons.totinsp)
+                    }
+
+                }
+            );
+        }
+
+        function bPersonal() {
+            $.post(server + 'bKpiPersonal.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+
+                    arrayPersonal = resp
+
+                    arrayPersonalTurnos = resp;
+
+                    arrayFrentesTrab = arrayPersonal.personalfrentes;
+
+                    arrayFrentesTotales = arrayPersonal.personalfrentes;
+
+                    if (arrayFrentesTrab != null) {
+                        for (var i = 0; i < arrayFrentesTrab.length; i++) {
+                            arrayFrentesTit.push(arrayFrentesTrab[i].frente);
+                        }
+                    }
+
+                    arrayFrentesTit.push('TOTALES');
+
+                    for (var i = 0; i < arrayFrentesTotales.length; i++) {
+
+                        arrayFrentesDir.push(
+                            arrayFrentesTotales[i].directos
+                        );
+                        arrayFrentesIndir.push(
+                            arrayFrentesTotales[i].indirectos
+                        );
+                        arrayFrentesTot.push(
+                            arrayFrentesTotales[i].total
+                        );
+
+                        sumadirectos += arrayFrentesTotales[i].directos
+                        sumaindirectos += arrayFrentesTotales[i].indirectos
+                        sumtotal += arrayFrentesTotales[i].total
+
+
+                    }
+
+                    arrayFrentesDir.push(
+                        sumadirectos
+                    );
+                    arrayFrentesIndir.push(
+                        sumaindirectos
+                    );
+                    arrayFrentesTot.push(
+                        sumtotal
+                    );
+
+
+
+
+                    if (arrayPersonalTurnos != null) {
+                        for (var i = 0; i < arrayPersonalTurnos.arrayTurnos.length; i++) {
+                            arrayTurnos.push(arrayPersonalTurnos.arrayTurnos[i].jornada);
+                        }
+
+                        for (
+                            var i = 0; i < arrayPersonalTurnos.arrayPersonalTurnos.length; i++
+                        ) {
+                            arrayDirectos.push(
+                                arrayPersonalTurnos.arrayPersonalTurnos[i].directo
+                            );
+                            arrayIndirectos.push(
+                                arrayPersonalTurnos.arrayPersonalTurnos[i].indirecto
+                            );
+                            arrayTotalPersonal.push(
+                                arrayPersonalTurnos.arrayPersonalTurnos[i].totalpersonal
+                            );
+                        }
+
+                        for (var i = 0; i < arrayPersonal.arrayPersonalPlanta.length; i++) {
+                            arrayPlantas.push(
+                                arrayPersonal.arrayPersonalPlanta[i].planta
+                            )
+                        }
+
+
+                        for (var i = 0; i < arrayPersonal.arrayPersonalPlanta.length; i++) {
+                            arrayPDirecto.push(
+                                arrayPersonal.arrayPersonalPlanta[i].directo
+                            )
+                            arrayPIndirecto.push(
+                                arrayPersonal.arrayPersonalPlanta[i].indirecto
+                            )
+                            arrayPtot.push(
+                                arrayPersonal.arrayPersonalPlanta[i].totalpersonal
+                            )
+                            arrayHDirecto.push(
+                                arrayPersonal.arrayPersonalPlanta[i].hdir
+                            )
+                            arrayHIndirecto.push(
+                                arrayPersonal.arrayPersonalPlanta[i].hindir
+                            )
+                            arrayHtot.push(
+                                arrayPersonal.arrayPersonalPlanta[i].toth
+                            )
+                        }
+                    }
+
+                    //crear el array de turnos
+
+
+
+
+
+                })
+        }
+
+        function obtenerGaleria() {
+            $.post(server + 'buscarGaleriaGen.php', {
+                    ods: numods,
+                    fecha: fecha
+                },
+                function(resp) {
+
+                    arrayGaleria = resp
+
+                    var htmlso = '<table style="width: 100%; margin-top: 20px;">'
+                    var htmlma = '<table style="width: 100%; margin-top: 20px;">'
+                    var htmlsi = '<table style="width: 100%; margin-top: 20px;">'
+
+                    if (arrayGaleria != null) {
+
+                        for (var i = 0; i < arrayGaleria.length; i++) {
+
+
+
+                            if (arrayGaleria[i].seccion == 'Salud Ocupacional') {
+
+
+                                htmlso += `
+                             
+                                <div style="width: 310px; float: left;">
+                                    <div class="foto" style="height: 370px;" >
+                                        <img src="https://utitalco.com/server/${arrayGaleria[i].foto}" class="imagen"  width="100%" height="220px" alt="" >
+                                    <div class="piefoto">
+                                        ${arrayGaleria[i].detalles}
+                                    </div>
+                                    </div>
+                                </div>
+                                
+    
+                        `
+
+
+                            }
+                            if (arrayGaleria[i].seccion == 'Medio Ambiente') {
+
+
+                                htmlma += `
+                                <div style="width: 310px; float: left;">
+                                    <div class="foto" style="height: 370px;" >
+                                        <img src="https://utitalco.com/server/${arrayGaleria[i].foto}" class="imagen"  width="100%" height="220px" alt="" >
+                                    <div class="piefoto">
+                                        ${arrayGaleria[i].detalles}
+                                    </div>
+                                    </div>
+                                </div>
+                        `
+
+                            }
+                            if (arrayGaleria[i].seccion == 'Seguridad Industrial') {
+
+                                htmlsi += `
+                                <div style="width: 310px; float: left;">
+                                    <div class="foto" style="height: 370px;" >
+                                        <img src="https://utitalco.com/server/${arrayGaleria[i].foto}" class="imagen"  width="100%" height="220px" alt="" >
+                                    <div class="piefoto">
+                                        ${arrayGaleria[i].detalles}
+                                    </div>
+                                    </div>
+                                </div>
+                        `
+
+                            }
+
+                        }
+                    }
+
+                    htmlso += '</table>'
+                    htmlma += '</table>'
+                    htmlsi += '</table>'
+
+                    //$('#galeriafotosao').html(htmlso)
+                    $('#galeriafotosma').html(htmlma)
+                    $('#galeriafotossi').html(htmlsi)
+
+                    $('#galeriafotosso').html(htmlso)
+
+                })
+        }
+
+        function obtenerKpiResiduos() {
+            $.post(
+                server + "obtenerKpiResiduos.php", {
+                    ods: numods
+                },
+                function(resp) {
+                    arrayResiduos = resp;
+
+                    if (arrayResiduos != null) {
+                        for (var i = 0; i < arrayResiduos.length; i++) {
+                            arrayResiduosTitulos.push(arrayResiduos[i].tipo)
+                        }
+                        for (var i = 0; i < arrayResiduos.length; i++) {
+                            arrayResiduosCant.push(parseInt(arrayResiduos[i].cant))
+                        }
+                    }
+
+
+                }
+            );
+        }
+
+
+        function cargarGraficas() {
+
+            Highcharts.chart('fighcap', {
+                colors: ['#01005e', '#00c901', '#537b35', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#a4c639',
+                    '#537b35'
+                ],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>HORAS CAPACITACIÓN</b>'
+                },
+
+                xAxis: {
+                    categories: ['CANT'],
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'FASE I',
+                    data: [arrayPersonal.fase1]
+                }, {
+                    name: 'FASE II',
+                    data: [arrayPersonal.fase2]
+                }, {
+                    name: 'FASE III',
+                    data: [arrayPersonal.fase3]
+                }, {
+                    name: 'INST. INICIO DE TURNO',
+                    data: [arrayPersonal.hcap]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayPersonal.hcap + arrayPersonal.fase3 + arrayPersonal.fase2 + arrayPersonal.fase1]
+                }]
+            });
+
+
+            //GRAFICA PERMISOS DE TRABAJOS ELABORADOS 
+            Highcharts.chart('figpertrabaesp2', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>PERMISOS REVALIDADOS POR CLASIFICACIÓN</b>'
+                },
+
+                xAxis: {
+                    categories: arrayFrentesPermisos,
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'P. FRÍO',
+                    data: arrayPfrio
+                }, {
+                    name: 'P. CALIENTE',
+                    data: arrayPcaliente
+                }, {
+                    name: 'P. ELÉCTRICO',
+                    data: arrayPelectrico
+                }, {
+                    name: 'TOTAL',
+                    data: arraytotalp
+                }]
+            });
+
+
+            Highcharts.chart('figpermisos', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>CONTROL DE PERMISOS DIARIOS</b>'
+                },
+
+                xAxis: {
+                    categories: arrayFrentesPermisos,
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'P. NUEVOS',
+                    data: arrayPpnuevos
+                }, {
+                    name: 'P. REVALIDADOS',
+                    data: arrayPprevalidados
+                }, {
+                    name: 'P. CERRADOS',
+                    data: arrayPpcerrados
+                }]
+            });
+
+
+            Highcharts.chart("figalturas", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: 'CONSOLIDADO DE CERTIFICADOS DE ALTURAS',
+                },
+
+                xAxis: {
+                    categories: ['PERSONAL'],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "VIGENTES",
+                    data: [arrayAlturas.cantvig],
+                }, {
+                    name: "VENCIDOS",
+                    data: [arrayAlturas.cantvencido],
+                }, {
+                    name: "POR VENCER",
+                    data: [arrayAlturas.cantxvencer],
+                }, {
+                    name: "NO APLICA",
+                    data: [arrayAlturas.cantna],
+                }],
+            });
+
+
+            Highcharts.chart("figconsaudi", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: "<b>CONSOLIDADO AUDITORIAS</b>",
+                },
+
+                xAxis: {
+                    categories: arrayConsAudiGTit,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+
+                series: [{
+                    name: "Planeado",
+                    data: arrayConsAudiGPlan,
+                }, {
+                    name: "Ejecutado",
+                    data: arrayConsAudiGEje,
+                }],
+            });
+
+            Highcharts.chart("figconsinsp", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: "<b>CONSOLIDADO INSPECCIONES</b>",
+                },
+
+                xAxis: {
+                    categories: arrayConsInspGTit,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+
+                series: [{
+                    name: "Cantidad",
+                    data: arrayConsInspGCant,
+                }],
+            });
+
+
+            //grafica totales ac cliente e italco
+            var chart1 = Highcharts.chart('figasegdia', {
+                colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '200'
+                },
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    categories: [
+                        'Totales'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'ITALCO',
+                    data: [totacitalcodia]
+
+                }, {
+                    name: 'CLIENTE',
+                    data: [totacclientedia]
+                }, {
+                    name: 'TOTAL',
+                    data: [totacdia]
+                }]
+            });
+
+            var chart2 = Highcharts.chart('figasegacum', {
+                colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '200'
+                },
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    categories: [
+                        'Totales'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'ITALCO',
+                    data: [totacitalco]
+
+                }, {
+                    name: 'CLIENTE',
+                    data: [totaccliente]
+                }, {
+                    name: 'TOTAL',
+                    data: [totac]
+                }]
+            });
+
+            //GRAFICA TIPIFICACION AC GENERAL
+            Highcharts.chart('figactipi', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '250'
+                },
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    categories: [
+                        'MEDIO AMBIENTE',
+                        'SEGURIDAD INDUSTRIAL',
+                        'SALUD OCUPACIONAL',
+                        'PRINCIPIOS CULTURALES'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'SEGUROS',
+                    data: [cantacstipma, cantacstipsi, cantacstipso, cantacstippc]
+
+                }, {
+                    name: 'EN RIESGO',
+                    data: [cantacrtipma, cantacrtipsi, cantacrtipso, cantacrtippc]
+                }]
+            });
+
+            //GRAFICA TIPIFICACIÓN NIVEL 1 SEGURIDAD INDUSTRIAL
+            Highcharts.chart('figtipacrsi', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosSI
+            });
+
+            //GRAFICA TIPIFICACIÓN NIVEL 2 SEGURIDAD INDUSTRIAL
+            var chart4 = Highcharts.chart('figtipacrsi2', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosSI2
+            });
+
+
+            //tipificacion ac en riesgo N1 Medio Ambiente
+            var chart5 = Highcharts.chart('figtipacrma', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>TIPIFICACIÓN NIVEL 1 MEDIO AMBIENTE </b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosMA
+            });
+
+            //tipificacion ac en riesgo N2 Medio Ambiente
+            var chart5 = Highcharts.chart('figtipacrma2', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>TIPIFICACIÓN NIVEL 2 MEDIO AMBIENTE </b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosMA2
+            });
+
+
+            //tipificacion ac en riesgo N1 Salud Ocupacional
+            var chart6 = Highcharts.chart('figtipacrso', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>TIPIFICACIÓN NIVEL 1 SALUD OCUPACIONAL </b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosSO
+            });
+
+            //tipificacion ac en riesgo N1 Salud Ocupacional
+            var chart6 = Highcharts.chart('figtipacrso2', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>TIPIFICACIÓN NIVEL 2 SALUD OCUPACIONAL </b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosSO2
+            });
+
+            //tipificacion ac en riesgo N1 Principios culturales
+            var chart7 = Highcharts.chart('figtipacrpc', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>TIPIFICACIÓN NIVEL 1 PRINCIPIOS CULTURALES </b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosPC
+            });
+
+            //tipificacion ac en riesgo N2 Principios culturales
+            var chart7 = Highcharts.chart('figtipacrpc2', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>TIPIFICACIÓN NIVEL 2 PRINCIPIOS CULTURALES </b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANT'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: arrayTitulosPC2
+            });
+
+
+
+            //grafica indicadores de gestión acumulado
+            var chart8 = Highcharts.chart('figindigestion', {
+                colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#F39C12', '#8E44AD', '#515A5A', '#2874A6', '#922B21'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    categories: [
+                        'Totales'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'AC',
+                    data: [arrayIndicadores.totac]
+
+                }, {
+                    name: 'CONVERSATORIOS',
+                    data: [arrayIndicadores.totconversatorios]
+                }, {
+                    name: 'HALLAZGOS',
+                    data: [arrayIndicadores.tothallazgos]
+                }, {
+                    name: 'AUDITORIAS',
+                    data: [arrayIndicadores.totauditorias]
+                }, {
+                    name: 'INSPECCIONES',
+                    data: [arrayIndicadores.totinsp]
+                }, {
+                    name: 'RCT',
+                    data: [arrayIndicadores.totrct]
+                }, {
+                    name: 'CAMINATA G.',
+                    data: [arrayIndicadores.totcam]
+                }]
+            });
+
+            //grafica consolidado cronograma ac
+            var chart9 = Highcharts.chart("figcronoac", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: null,
+                },
+
+                xAxis: {
+                    categories: arrayConsACGTit,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+
+                series: [{
+                    name: "PLANEADO",
+                    data: arrayConsACGPlan,
+                }, {
+                    name: "EJECUTADO",
+                    data: arrayConsACGEje,
+                }],
+            });
+
+            //GRAFICA CONSOLIDADO CAMINATA GERENCIAL
+            var chart10 = Highcharts.chart("figconscaminata", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: null
+                },
+
+                xAxis: {
+                    categories: arrayConsCamGTit,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+
+                series: [{
+                        name: "PLANEADO",
+                        data: arrayConsCamGPlan,
+                    }, {
+                        name: "EJECUTADO",
+                        data: arrayConsCamGEje,
+                    }
+
+                ],
+            });
+
+            //CONSOLIDADO RCT
+            var chart11 = Highcharts.chart("figconsrct", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: null,
+                },
+
+                xAxis: {
+                    categories: arrayConsRctGTit,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+
+                series: [{
+                        name: "PLANEADO",
+                        data: arrayConsRctGPlan,
+                    }, {
+                        name: "EJECUTADO",
+                        data: arrayConsRctGEje,
+                    }
+
+                ],
+            });
+
+
+
+            //PERSONAL POR TURNOS
+            Highcharts.chart("figpersturnos", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: "<b>PERSONAL POR FRENTES</b>",
+                },
+
+                xAxis: {
+                    categories: arrayFrentesTit,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+
+                series: [{
+                    name: "DIRECTOS",
+                    data: arrayFrentesDir,
+                }, {
+                    name: "INDIRECTOS",
+                    data: arrayFrentesIndir,
+                }, {
+                    name: "TOTAL",
+                    data: arrayFrentesTot,
+                }],
+            });
+
+            // var chart12 = Highcharts.chart("figpersturnos", {
+            //     colors: [
+            //         "#01005e",
+            //         "#00c901",
+            //         "#efd520",
+            //         "#bfbfbf",
+            //         "#537b35",
+            //         "#a4c639",
+            //         "#537b35",
+            //         "#a4c639",
+            //         "#537b35",
+            //     ],
+            //     credits: {
+            //         enabled: false,
+            //     },
+            //     chart: {
+            //         type: "column",
+            //     },
+            //     title: {
+            //         text: null,
+            //     },
+
+            //     xAxis: {
+            //         categories: arrayTurnos,
+            //         crosshair: true,
+            //     },
+            //     yAxis: {
+            //         min: 0,
+            //         title: {
+            //             text: "Cant ",
+            //         },
+            //     },
+            //     tooltip: {
+            //         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            //         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            //             '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+            //         footerFormat: "</table>",
+            //         shared: true,
+            //         useHTML: true,
+            //     },
+            //     plotOptions: {
+            //         column: {
+            //             pointPadding: 0.2,
+            //             borderWidth: 0,
+            //             dataLabels: {
+            //                 enabled: true,
+            //             },
+            //         },
+            //     },
+            //     series: [{
+            //         name: "DIRECTOS",
+            //         data: arrayDirectos,
+            //     }, {
+            //         name: "INDIRECTOS",
+            //         data: arrayIndirectos,
+            //     }, {
+            //         name: "TOTAL",
+            //         data: arrayTotalPersonal,
+            //     }, ],
+            // });
+
+            //PERSONAL POR PLATA
+
+            var chart13 = Highcharts.chart("figpersplanta", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: null,
+                },
+
+                xAxis: {
+                    categories: arrayPlantas,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "DIRECTOS",
+                    data: arrayPDirecto,
+                }, {
+                    name: "INDIRECTOS",
+                    data: arrayPIndirecto,
+                }, {
+                    name: "TOTAL",
+                    data: arrayPtot,
+                }, ],
+            });
+
+            //PERSONAL POR HHT
+            var chart14 = Highcharts.chart("figpershht", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: null,
+                },
+
+                xAxis: {
+                    categories: arrayPlantas,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "DIRECTOS",
+                    data: arrayHDirecto,
+                }, {
+                    name: "INDIRECTOS",
+                    data: arrayHIndirecto,
+                }, {
+                    name: "TOTAL",
+                    data: arrayHtot,
+                }, ],
+            });
+
+            //PERSONAL HHT ACUMNULADO
+            var chart15 = Highcharts.chart("figacumhht", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+
+                },
+                title: {
+                    text: null,
+                },
+
+                xAxis: {
+                    categories: ['TOTALES'],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                    stackLabels: {
+                        enabled: true,
+                        style: {
+                            fontFamily: 'Lucida Grande',
+                            fontWeight: 'bold',
+                            fontSize: '24px'
+                        }
+
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "DIRECTOS",
+                    data: [arrayPersonal.acumHDirectos],
+                }, {
+                    name: "INDIRECTOS",
+                    data: [arrayPersonal.acumHIndirectos],
+                }, {
+                    name: "TOTAL",
+                    data: [arrayPersonal.acumHHTotal],
+                }, ],
+            });
+
+            //AC POR MEJORAR DIA Y ACUMULUADO
+            var char16 = Highcharts.chart('figasegpmdia', {
+                colors: ['#00c901', '#01005e', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '300'
+                },
+                title: {
+                    text: '<b>AC EN RIESGO ITALCO</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'DÍA',
+                        'ACUMULADO'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'BAJA',
+                    data: [totacitalcobajadia, totacitalcobaja]
+
+                }, {
+                    name: 'MEDIA',
+                    data: [totacitalcomediadia, totacitalcomedia]
+
+                }, {
+                    name: 'ALTA',
+                    data: [totacitalcoaltadia, totacitalcoalta]
+
+                }]
+            });
+
+            var char16 = Highcharts.chart('figasegpmdia2', {
+                colors: ['#00c901', '#01005e', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '300'
+                },
+                title: {
+                    text: '<b>AC EN RIESGO</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'REP ITALCO',
+                        'REP ECOPETROL'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:14px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'BAJA',
+                    data: [totacitalcobajarep, totacitalcobajarepec]
+
+                }, {
+                    name: 'MEDIA',
+                    data: [totacitalcomediarep, totacitalcomediarepec]
+
+                }, {
+                    name: 'ALTA',
+                    data: [totacitalcoaltarep, totacitalcoaltarepec]
+
+                }]
+            });
+
+
+
+            Highcharts.chart("figcriticidadhallazgos", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: "Criticidad Hallazgos",
+                },
+
+                xAxis: {
+                    categories: ["BAJA", "MEDIA", "ALTA"],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "CRITICIDAD",
+                    data: [rbajoHallazgos, rmedioHallazgos, raltoHallazgos],
+                }],
+            });
+
+            Highcharts.chart("figtipificacionhallazgos", {
+                colors: [
+                    "#00c901",
+                    "#01005e",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: "Tipificación Hallazgos",
+                },
+
+                xAxis: {
+                    categories: [
+                        "MEDIO AMBIENTE",
+                        "SEGURIDAD INDUSTRIAL",
+                        "SALUD OCUPACIONAL",
+                        "SEGURIDAD DE PROCESOS"
+                    ],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "TIPIFICACIÓN",
+                    data: [maHallazgos, siHallazgos, soHallazgos, spHallazgos],
+                }, ],
+            });
+
+            Highcharts.chart("fighallabiertos", {
+                colors: [
+                    "#00c901",
+                    "#01005e",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: "Estado Hallazgos",
+                },
+
+                xAxis: {
+                    categories: ["ABIERTOS", "CERRADOS", "% GESTIÓN"],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "HALLAZGOS",
+                    data: [cantHallAbiertos, cantHallCerrados, porcHall],
+                }, ],
+            });
+
+            //GRAFICAS DE INCIDENTES
+            Highcharts.chart('figcriticidadincidentes', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Criticidad'
+                },
+
+                xAxis: {
+                    categories: [
+                        'BAJA',
+                        'MEDIA',
+                        'ALTA'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'CRITICIDAD',
+                    data: [0, 0, 0]
+
+                }]
+            });
+
+            Highcharts.chart('figtipificacionincidentes', {
+                colors: ['#00c901', '#01005e', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Tipificación'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CASI ACCIDENTES',
+                        'PERSONAS',
+                        'MEDIO AMBIENTE',
+                        'VEHÍCULOS',
+                        'SEGURIDAD DE PROCESOS',
+                        'OPERACIONES'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'TIPIFICACIÓN',
+                    data: [0, 0, 0, 0, 0, 0]
+
+                }]
+            });
+
+            Highcharts.chart('figincidentes', {
+                colors: ['#00c901', '#01005e', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Estado'
+                },
+
+                xAxis: {
+                    categories: [
+                        'REPORTE',
+                        'INVESTIGACIÓN',
+                        'SEGUIMIENTO',
+                        'CERRADO'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'ESTADO',
+                    data: [0, 0, 0, 0]
+
+                }]
+            });
+
+            Highcharts.chart("figconsresi", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: null,
+                },
+
+                xAxis: {
+                    categories: arrayResiduosTitulos,
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+
+                series: [{
+                    name: 'Cant',
+                    data: arrayResiduosCant
+                }]
+            });
+
+
+        }
+
+        function crearPDF() {
+            location = '../pdf_hseparadas650.html?ods=' + numods + '&fecha=' + fecha;
+        }
+
+        function cargarFrente(f) {
+            if (f == '022') {
+                location = 'indexp.html?ods=' + f + '&fecha=' + fecha;
+            } else {
+                location = 'frentep.html?ods=' + f + '&fecha=' + fecha;
+            }
+
+
+        }
+
+        function abrirACSeguros() {
+            window.open('../listaAC.html?ods=' + numods + '&fecha=' + fecha, '_blank');
+        }
+
+        function abrir2(pag) {
+            window.open('../conversatorios.html?ods=' + numods, '_blank');
+        }
+    </script>
+</body>
+
+</html>

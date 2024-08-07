@@ -1,0 +1,2897 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFORME DIARIO DE GESTIÓN HSE - UT ITALCO </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/amstockchart/3.13.0/exporting/canvg.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/stackblur-canvas@2.3.0/dist/stackblur.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/lib/rgbcolor.js"></script>
+
+    <style>
+        /* estilos de pagina */
+        
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+        #piramide {
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .cuerpo {
+            width: 90%;
+            height: 100%;
+            margin: 0 auto;
+        }
+        
+        .salto {
+            PAGE-BREAK-AFTER: always;
+        }
+        
+        .cab {
+            background-color: #01005e;
+            width: 100%;
+            height: 80px;
+            color: white;
+        }
+        
+        .titfecha {
+            padding: 5px;
+            border-style: solid;
+            border-color: white;
+            border-width: 0.7px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .central {
+            height: 507px;
+            width: 100%;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .diap {
+            position: fixed;
+            top: 80px;
+            left: 0px;
+            height: 500px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+            display: table;
+        }
+        
+        .anchomedio {
+            width: 600px;
+            left: 300px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        
+        #inicio {
+            margin-top: 10px;
+            margin-left: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        #sig {
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        #atraspiramide {
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        .footer {
+            background-color: #b9d204;
+            width: 100%;
+            padding: 5px;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+        
+        #divhidden {
+            display: none;
+        }
+        /* fin estilos de pagina */
+        /* estilos del menu */
+        
+        #mnu {
+            width: 707px;
+            height: 500px;
+            background-image: url('img/mnu_1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: 999;
+        }
+        
+        .mnu1 {
+            position: relative;
+            top: 50px;
+            left: 390px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu2 {
+            position: relative;
+            top: 103px;
+            left: 480px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu3 {
+            position: relative;
+            top: 158px;
+            left: 485px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu4 {
+            position: relative;
+            top: 213px;
+            left: 384px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        /* fin estilo de menu */
+        /* estilo de graficas */
+        
+        .colpir {
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #000000;
+        }
+        
+        .filapir {
+            background-color: #00c901;
+            color: white;
+        }
+        
+        .filatit {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+        
+        .cabtit {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #01005e;
+            background-color: white;
+        }
+        
+        .card-header {
+            background-color: #01005e;
+            color: white;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        #galeria {
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            z-index: 999;
+            overflow: hidden;
+        }
+        
+        .imagen:hover {
+            filter: opacity(.5);
+        }
+        
+        #grafpiramide {
+            width: 90%;
+            height: 500px;
+            margin: 0 auto;
+            background-image: url('img/piramide_4.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .fig1 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infogvr1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #fig2 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #fig3 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog3.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #infoverde1 {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infogv1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        #infoverde2 {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infogv2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        #inforojo {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infog4.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .textopira {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .hijo {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .padre {
+            display: table;
+        }
+        
+        .titinfovr {
+            width: 100%;
+            height: 29.41%;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .cifrainfovr {
+            width: 100%;
+            height: 70.59%;
+            font-size: 44px;
+            text-align: center;
+        }
+        
+        #piso7 {
+            width: 100%;
+            height: 13.60%;
+            display: table;
+        }
+        
+        #piso6 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso5 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso4 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso3 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        #piso2 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        #piso1 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        .tacomoda {
+            width: 5%;
+        }
+        
+        #flotante {
+            height: 400px;
+            width: 500px;
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            z-index: 999;
+        }
+        
+        #flotantefoto {
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            z-index: 999;
+        }
+        
+        .manito {
+            cursor: pointer;
+        }
+        
+        .titregfot {
+            width: 100%;
+            height: 50px;
+            ;
+            background-color: #01005e;
+            color: white;
+            padding: 10px;
+            float: left;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .titflot {
+            background-color: rgb(255, 187, 0);
+            color: rgba(20, 19, 19, 0.9);
+            padding: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 13px;
+        }
+        
+        #regfotos {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            white-space: nowrap;
+            position: fixed;
+            top: 80px;
+            left: 0px;
+            height: 500px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+        }
+        
+        .foto {
+            width: 320px;
+            height: 300px;
+            padding: 10px;
+            float: left;
+        }
+        
+        .fotogal {
+            width: 320px;
+            height: 300px;
+            padding: 10px;
+            float: left;
+        }
+        
+        .piefoto {
+            background-color: #01005e;
+            color: white;
+            padding: 5px;
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+        
+        .titcatfotos {
+            font-size: 16px;
+            width: 90%;
+            height: 40px;
+            padding: 8px;
+            margin-top: 20px;
+            background-color: #01005e;
+            color: white;
+            float: left;
+        }
+        
+        @media (max-width: 600px) {
+            .foto {
+                width: 90%;
+                height: 90%;
+            }
+            #grafpiramide {
+                width: 100%;
+                height: 400px;
+            }
+            .tacomoda {
+                width: 0%;
+            }
+        }
+        /* fin estilo de graficas */
+    </style>
+
+    <style>
+        .figuraspareto {
+            width: 50%;
+            float: left;
+            height: auto;
+        }
+        
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- INICIO CABECERA -->
+    <div class="cab">
+        <div class="container">
+            <table>
+                <tr>
+                    <td style="width: 20%; padding: 10px;">
+                        <img src="img/logo_m.png" width="200px" alt="">
+                    </td>
+                    <td style="width: 60%; padding: 10px;">
+                        <h4 style="color: white;">INFORME GERENCIAL DE GESTIÓN HSE</h4>
+                        <h6 style="color: white;" id="ods">ODS
+                        </h6>
+                    </td>
+                    <td style="width: 20%; padding: 10px;">
+                        <h6 class="titfecha" style="color: white;" id="fechainforme">2021-00-00 </h6>
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </div>
+    </div>
+    <!-- <button type="button" class="btn btn-primary btn-sm" onclick="imprimir()">IMP</button> -->
+    <!-- FIN CABECERA -->
+
+    <div class="cuerpo" id="contenido">
+
+
+
+        <!-- inicio piramide -->
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="mt-5">
+                    <table class="table table-bordered table-sm">
+                        <thead style="background-color: #00c901;">
+                            <tr>
+                                <th colspan="4" class="text-center">
+                                    HORAS HOMBRE
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>JORNADA</th>
+                                <th>DIRECTOS</th>
+                                <th>INDIRECTOS</th>
+                                <th>TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablahoras">
+
+                            <tr>
+                                <td>7:00 AM A 5:00 PM</td>
+                                <td class="text-center">87</td>
+                                <td>22</td>
+                                <td class="text-center">109</td>
+                            </tr>
+
+
+
+                            <tr>
+                                <th colspan="4" class="text-center" style="background-color: #00c901;">
+                                    HORAS HOMBRE
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>HHT DIRECTOS</th>
+                                <th>870</th>
+                                <th>HTT DIRECTOS ACUM</th>
+                                <th>2580</th>
+                            </tr>
+                            <tr>
+                                <th>HHT INDIRECTOS</th>
+                                <th>220</th>
+                                <th>HTT INDIRECTOS ACUM</th>
+                                <th>650</th>
+                            </tr>
+                            <tr style="background-color: #00c901;">
+                                <th>HHT TOTAL DIA</th>
+                                <th>1090</th>
+                                <th>HTT ACUM TOTAL</th>
+                                <th>3230</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-center" style="background-color: #00c901;">
+                                    PERMISOS DE TRABAJO
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>EN FRÍO</th>
+                                <th>0</th>
+                                <th>EN CALIENTE BANCO TUB. 18</th>
+                                <th>1</th>
+                            </tr>
+                            <tr>
+                                <th>ELÉCTRICOS</th>
+                                <th>0</th>
+                                <th>TOTAL</th>
+                                <th>0</th>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <th colspan="4" class="text-center" style="background-color: #00c901;">
+                                    HORAS CAP
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>INST. TURNO</th>
+                                <th>27</th>
+                                <th>TOTAL</th>
+                                <th>81</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div id="piramide">
+
+                    <div class="mt-3">
+
+                        <div id="grafpiramide" style="width: 90%;
+                        height: 500px;
+                        margin: 0 auto;
+                        background-image: url('img/piramide_4.png');
+                        background-size: cover;
+                        background-repeat:no-repeat;
+                        background-size: 100% 100%;">
+                            <div id="piso7">
+                                <div class="textopira text-center " style="padding-top: 35px;">
+                                    <div style="margin-right: 0%; color: white;">
+                                        <span style="font-weight: bold; font-size: larger;">0</span> <br> <span style="font-size: 12px;">FATALIDAD</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="piso6">
+                                <div class="textopira text-center" style="padding-top: 10px;">
+                                    <div style="margin-right: 0%; color: black;">
+                                        <span style="font-weight: bold; font-size: larger;">0</span><br> ACTP
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="piso5">
+                                <div class="textopira text-center" style="padding-top: 10px;">
+                                    <div style="margin-right: 0%; color: white;">
+                                        <span style="font-weight: bold; font-size: larger;">0</span> <br> ASPTT
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="piso4">
+                                <div class="textopira text-center ">
+                                    <div style="margin-right: 0%; color: black;">
+                                        <span style="font-weight: bold; font-size: larger;">0</span> <br> PRIMEROS AUXILIOS
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="piso3">
+                                <div class="textopira text-center" style="padding-top: 10px;">
+                                    <div style="margin-right: 0%; color: white;">
+                                        <span style="font-weight: bold; font-size: larger; line-height: 1pt;">0</span> <br>
+                                        <span style="line-height: 1pt;">INCIDENTES</span> <br><span style="font-size: 9px; line-height: 1pt;">AMBIENTAL, VEHÍCULAR, SEGURIDAD DE
+                                            PROCESOS, POR OPERACIONES</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="piso2">
+                                <div class="textopira text-center">
+                                    <div style="margin-right: 0%; color: black;">
+                                        <span style="font-weight: bold; font-size: larger;">0</span> <br> CASI ACCIDENTES
+                                        <br><span style="font-size: 11px; line-height: 1pt;">INCIDENTES SIN CONSECUENCIA
+                                            REAL</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="piso1">
+                                <div class="textopira text-center " style="padding-top: 5px;">
+                                    <div style="margin-right: 0%; color: white;">
+                                        <span style="font-weight: bold; font-size: larger; line-height: 1pt;" id="canthallazgos">0</span> <br> <span onclick="abrir2('hallazgos')" style="cursor: pointer; line-height: 1pt;"> HALLAZGOS </span>
+                                        <br><span style="font-size: 11px; line-height: 1pt;">CONDICIONES INSEGURAS, NO
+                                            CONFORMIDADES</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-12 pt-1" style="width: 90%; margin: 0 auto;">
+                            <table class="table" style="width: 100%;">
+                                <tr class="filatit">
+                                    <td class="cabtit"><b style="font-size: 18px;" id="cantAC">0</b></td>
+                                    <td class="cabtit"><b style="font-size: 18px;" id="cantCV">0</b></td>
+                                    <td class="cabtit" data-toggle="tooltip" data-placement="top"><b style="font-size: 18px;" id="evasas"></b></td>
+                                    <td class="cabtit"><b style="font-size: 18px;"></b></td>
+                                    <td class="cabtit"><b style="font-size: 18px;" id="porcgestion"></b></td>
+                                    <td class="cabtit"><b style="font-size: 18px;" id="poraudi">0</b></td>
+                                </tr>
+                                <tr class="filapir" style="background-color: #00c901;
+                                color: black;">
+                                    <td class="colpir" style="background-color: #00c901;
+                                    color: black;">
+                                        CONVERSACIONES HSE
+                                    </td>
+                                    <td class="colpir">
+                                        CONVERSATORIOS VISIBLES
+                                    </td>
+                                    <td class="colpir">
+                                        EVALUACIÓN CONTROL DE TRABAJOS / SAS
+                                    </td>
+                                    <td class="colpir">
+                                        % GESTIÓN DE INCIDENTES
+                                    </td>
+                                    <td class="colpir">% GESTIÓN DE HALLAZGOS</td>
+                                    <td class="colpir">
+                                        CANT AUDITORIAS
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header mb-2">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#acordACRev" aria-expanded="false" aria-controls="acordACRev">
+                <i class="fas fa-arrow-circle-down"></i>
+            </button> ASEGURAMIENTOS DE COMPORTAMIENTOS
+            <button type="button" class="btn btn-warning" onclick="segurosAC()">
+                AC Seguros
+            </button>
+        </div>
+
+        <div class="" id="acordACRev">
+            <div id="figactot">
+
+            </div>
+        </div>
+
+
+        <div class="card-header mb-2">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#acordACRiesgo" aria-expanded="false" aria-controls="acordACRiesgo">
+                <i class="fas fa-arrow-circle-down"></i>
+            </button> ASEGURAMIENTOS DE COMPORTAMIENTOS POR MEJORAR
+            <button type="button" class="btn btn-warning" onclick="planesAC()">
+                AC Por Mejorar
+            </button>
+        </div>
+        <div class="" id="acordACRiesgo">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="figacriesgoitalco">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="card-header mb-2">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#acordTipi" aria-expanded="false" aria-controls="acordTipi">
+                <i class="fas fa-arrow-circle-down"></i>
+            </button> TIPIFICACIÓN AC
+        </div>
+
+        <div class="" id="acordTipi">
+            <div class="card-body">
+                <div id="figactipi">
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <br><br>
+
+
+        <!-- AC RIESGO -->
+        <div id="acriesgos" style="padding-top: 30px; width: 100%;">
+
+        </div>
+        <!-- AC RIESGO -->
+
+
+
+        <div id="dethallazgos" style="padding-top: 30px; width: 100%;">
+
+        </div>
+
+        <!-- <div id="detIncidentes" style="padding-top: 30px; width: 100%;">
+            <div class="card-header mb-2">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseIncidentes" aria-expanded="false" aria-controls="collapseIncidentes">
+                    <i class="fas fa-arrow-circle-down"></i>
+                </button> INCIDENTES
+            </div>
+
+            <div class="collapse" id="collapseIncidentes">
+                <div class="card card-body">
+                    <div style="width: 100%; height: auto;">
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+        <!-- fin indicadores de gestion -->
+
+        <!-- histograma de recursos -->
+        <!-- <h1 class="salto"></h1> -->
+
+        <h5 class="titcatfotos" style="width: 100%;">NOVEDADES</h5>
+        <div id="novedades">
+
+        </div>
+
+
+        <br><br>
+
+        <h5 class="titcatfotos" style="width: 100%;">REGISTRO FOTOGRÁFICO</h5>
+
+        <div id="galeriafotosao"></div>
+
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
+            var fecha = getParameterByName('fecha');
+
+            console.log('Fechaaaaa ' + fecha)
+
+            function sumarDias(fechab, dias) {
+                fechab.setDate(fechab.getDate() + dias);
+                return fechab;
+            }
+
+            var hoy = new Date();
+            hoy = sumarDias(hoy, -1);
+
+            var dia = hoy.getDate();
+            if (dia < 10) {
+                dia = '0' + dia;
+            }
+
+            var fechahoy = hoy.getFullYear() + '-0' + (hoy.getMonth() + 1) + '-' + dia;
+            var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+            var fechaYHora = fechahoy + ' ' + hora;
+
+            var server = 'https://utitalco.com/server/';
+
+            var numods = '021';
+            if (fecha == '') {
+                fecha = fechahoy;
+            }
+
+            var odsant = '';
+            var fase = '';
+            var novedades = ''
+
+            var totacglobal = 0
+            var totconversatoriosglobal = 0
+            var tothallazgosglobal = 0
+
+            var totacitalco = 0
+            var totacdremec = 0
+            var totaccliente = 0
+
+            var totacitalcodia = 0
+            var totacdremecdia = 0
+            var totacclientedia = 0
+
+            var tothallazgositalco = 0;
+            var tothallazgosdremec = 0;
+
+            var totacitalcobaja = 0;
+            var totacitalcomedia = 0;
+            var totacitalcoalta = 0;
+
+            var totacitalcobajadia = 0;
+            var totacitalcomediadia = 0;
+            var totacitalcoaltadia = 0;
+
+            var totacdremecbaja = 0;
+            var totacdremecmedia = 0;
+            var totacdremecalta = 0;
+
+            var totacdremecbajadia = 0;
+            var totacdremecmediadia = 0;
+            var totacdremecaltadia = 0;
+
+
+
+            //se definen las variables array
+            var arrayHallazgos = []
+            var arrayDetallesHallazgos = []
+            var arrayDetallesACS = []
+            var arrayDetallesACR = []
+            var arrayDatos = []
+            var arrayKpiIG = []
+            var arrayKpiIGA = []
+            var arrayKpiPersonal = []
+            var arrayDiasSemana = []
+            var arrayTDirectos = []
+            var arrayTIDirectos = []
+            var arrayTTotal = []
+            var arrayCronoAC = []
+            var arrayCateCronoAC = []
+            var arrayValPCronoAC = []
+            var arrayValECronoAC = []
+
+            var arrayHHAcum = []
+            var arrayHCap = []
+            var arrayPermisos = []
+            var arrayPermisosEsp = []
+
+            var arrayEspecialidadesPer = []
+            var arrayEspCantPer = []
+            var arrayGaleria = []
+
+            var arrayPareto = []
+            var arrayTitulosSI = []
+            var arrayTitulosSO = []
+            var arrayTitulosMA = []
+            var arrayTitulosPC = []
+
+            var arrayRiesgo = []
+
+            var arrayPersonalTurnos = []
+            var arrayPersonalDremec = []
+
+            var dremecDirectos = 0
+            var dremecIndirectos = 0
+            var dremecTotal = 0;
+
+            var hdremecDirectos = 0;
+            var hdremecIndirectos = 0;
+            var hdremecTotal = 0
+
+            var totalPersonalDirectos = 0;
+            var totalPersonalIndirectos = 0;
+            var totalPersonalPlanta = 0;
+
+            var totalHorasDirectos = 0;
+            var totalHorasIndirectos = 0;
+            var totalHoras = 0;
+
+            var acumHDirectos = 0
+            var acumHIndirectos = 0
+            var acumHHTotal = 0
+
+            var arrayTurnos = []
+            var arrayDirectos = []
+            var arrayIndirectos = []
+            var arrayTotalPersonal = []
+            var arrayTotalHorasHombreDirectos = []
+            var arrayTotalHorasHombreIndirectos = []
+            var arrayTotalHorasHombre = []
+
+
+            var totalHHDirectosD = 0
+            var totalHHIndirectosD = 0
+            var totalHHD = 0
+
+            var totalHHDirectosA = 0
+            var totalHHIndirectosA = 0
+            var totalHHA = 0
+
+            var hhfase1 = 0
+            var hhfase2 = 0
+            var hhfase3 = 0
+            var hhconv = 0
+
+            var totalPerFe = 0
+            var totalPerFr = 0
+            var totalPerCe = 0
+            var totalPerCr = 0
+            var totalPerEe = 0
+            var totalPerEr = 0
+            var totalPerE = 0
+            var totalPerR = 0
+            var totalPerm = 0
+            var totalPerh = 0
+
+            var rbajoHallazgos = 0
+            var rmedioHallazgos = 0
+            var raltoHallazgos = 0
+            var maHallazgos = 0
+            var siHallazgos = 0
+            var soHallazgos = 0
+
+            var cantacstipma = 0
+            var cantacstipsi = 0
+            var cantacstipso = 0
+            var cantacrtipma = 0
+            var cantacrtipsi = 0
+            var cantacrtipso = 0
+            var cantacstippc = 0
+            var cantacrtippc = 0
+
+            var cantacrbajo = 0
+            var cantacrmedio = 0
+            var cantacralto = 0
+
+            var totac = 0
+            var totacdia = 0
+            var totauditorias = 0
+            var totcam = 0
+            var totconversatorios = 0
+            var tothallazgos = 0
+            var totinsp = 0
+            var totrct = 0
+
+            var totacant = 0
+            var totauditoriasant = 0
+            var totcamant = 0
+            var totconversatoriosant = 0
+            var tothallazgosant = 0
+            var totinspant = 0
+            var totrctant = 0
+
+            buscarOds()
+
+
+            function buscarOds() {
+                $.post(server + 'buscarods.php', {
+                        ods: numods
+                    },
+                    function(resp) {
+                        console.log(resp)
+                        if (resp.msn == 'OK') {
+                            ods = resp.ods
+
+                            ods = resp.ods
+                            odsant = resp.odsant
+                            fase = parseInt(resp.fase)
+
+
+
+                            $('#fechainforme').html(fecha)
+                            $('#ods').html(ods)
+
+                            pedirDatos()
+
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'No está registrada esta Orden de Servicio, por favor verifique el link suministrado...!'
+                            }).then((result) => {
+                                window.location = 'index_404.html'
+                            })
+                        }
+                    })
+            }
+
+            function pedirDatos() {
+                console.log('pedirdatos')
+                obtenerdatosAC()
+                cargando()
+                obtenerNovedades()
+                    //obtenerNovedadesPersonal()
+                obtenerdatosHallazgos()
+                obtenerKpiTotales()
+                    //obtenerKpiCronoAC()
+                    //obtenerdatosConversatorios()
+                    // detallesACSeguros()
+                    //obtenerAudi()
+                detallesACRiesgo()
+                    // obtenerKpiACRiesgoPareto()
+                obtenerKpiPersonal()
+                bPersonal()
+                    //obtenerKpiPersonalAcumulado()
+                obtenerKpiHorasCap()
+                obtenerKpiPermisos()
+                buscarHallazgos()
+                    //obtenerKpiPermisosEsp()
+                obtenerGaleria()
+            }
+
+            function bPersonal() {
+                $.post(server + 'bKpiPersonal.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+
+                        arrayPersonal = resp
+
+                        arrayPersonalTurnos = resp;
+
+                        //crear el array de turnos
+
+                        var html = '';
+                        var sumtotal = 0;
+
+                        for (var i = 0; i < arrayPersonalTurnos.arrayPersonalTurnos.length; i++) {
+                            html += `
+                            <tr>
+                                <td>
+                                    ${arrayPersonalTurnos.arrayPersonalTurnos[i].jornada}
+                                </td>
+                                <td class="text-center">
+                                    ${arrayPersonalTurnos.arrayPersonalTurnos[i].directo}
+                                </td>
+                                <td class="text-center">
+                                    ${arrayPersonalTurnos.arrayPersonalTurnos[i].indirecto}
+                                </td>
+                                <td class="text-center">
+                                    ${arrayPersonalTurnos.arrayPersonalTurnos[i].totalpersonal}
+                                </td>
+                            </tr>
+                        `
+                            sumtotal += arrayPersonalTurnos.arrayPersonalTurnos[i].totalpersonal
+                        }
+
+                        html += `
+                             <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right"><b>TOTAL</b></td>
+                                <td class="text-center"><b>${sumtotal}</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center" style="background-color: #00c901;">
+                                    <b>HH TRABAJADAS</b>
+                                </td>
+                            </tr>
+                    `
+
+                        for (var i = 0; i < arrayPersonalTurnos.arrayTurnos.length; i++) {
+                            arrayTurnos.push(arrayPersonalTurnos.arrayTurnos[i].jornada);
+                        }
+
+                        for (
+                            var i = 0; i < arrayPersonalTurnos.arrayPersonalTurnos.length; i++
+                        ) {
+                            arrayDirectos.push(
+                                arrayPersonalTurnos.arrayPersonalTurnos[i].directo
+                            );
+                            arrayIndirectos.push(
+                                arrayPersonalTurnos.arrayPersonalTurnos[i].indirecto
+                            );
+                            arrayTotalPersonal.push(
+                                arrayPersonalTurnos.arrayPersonalTurnos[i].totalpersonal
+                            );
+                        }
+
+                        var totpersonalglobal = arrayPersonal.arrayPersonalPlanta[0].totalpersonal
+                        var totpersonalpxq = arrayPersonal.arrayPersonalPlanta[1].totalpersonal
+
+                        var tothhtglobal = arrayPersonal.arrayPersonalPlanta[0].toth
+                        var tothhtpxq = arrayPersonal.arrayPersonalPlanta[1].toth
+
+                        var tothhtdir = arrayPersonal.arrayPersonalPlanta[0].hdir + arrayPersonal.arrayPersonalPlanta[1].hdir
+                        var tothhtindir = arrayPersonal.arrayPersonalPlanta[0].hindir + arrayPersonal.arrayPersonalPlanta[1].hindir
+
+                        var tothhtdia = tothhtdir + tothhtindir
+
+                        var tothhtacumdir = arrayPersonal.acumHDirectos
+                        var tothhtacumindir = arrayPersonal.acumHIndirectos
+                        var tothhtparada = arrayPersonal.acumHHTotal
+
+                        html += `
+                            <tr>
+                                <td>PERSONAL PXQ</td>
+                                <td class="text-center">${totpersonalpxq}</td>
+                                <td>PERSONAL GLOBAL</td>
+                                <td class="text-center">${totpersonalglobal}</td>
+                            </tr>
+                            <tr>
+                                <td>HHT PXQ</td>
+                                <td class="text-center">${tothhtpxq}</td>
+                                <td>HHT GLOBAL</td>
+                                <td class="text-center">${tothhtglobal}</td>
+                            </tr>
+                            <tr style="background-color: #b5f3b5;">
+                                <td>HHD</td>
+                                <td class="text-center">${tothhtdir}</td>
+                                <td>TOTAL HHD</td>
+                                <td class="text-center">${tothhtacumdir}</td>
+                            </tr>
+                            <tr style="background-color: #b5f3b5;">
+                                <td>HHTIND</td>
+                                <td class="text-center">${tothhtindir}</td>
+                                <td>TOTAL HHIND</td>
+                                <td class="text-center">${tothhtacumindir}</td>
+                            </tr>
+                            <tr style="background-color: #00c901;">
+                                <td>HHT TOTAL DIA</td>
+                                <td class="text-center">${tothhtdia}</td>
+                                <td>ACUMULADO</td>
+                                <td class="text-center">${tothhtparada}</td>
+                            </tr>
+                    `
+
+                        //$('#tablahoras').html(html)
+
+
+                    })
+            }
+
+
+            function obtenerAudi() {
+                //obtener conversatorios
+
+                $.post(server + 'obtenerAudi.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        var arrayAuditorias = resp
+                        if (arrayAuditorias.length != null) {
+                            var html = `
+                        <div class="table-responsive" style="background-color: white">
+                            <table class="table table-striped" style="background-color: white;">
+                                <thead class="thead-dark" >
+                                    <th>AUDITORIA</th>
+                                    <th>AUDITOR</th>
+                                    <th>RESPONSABLE</th>
+                                    <th>CAL</th>
+                                    <th>OPORTUNIDAD</th>
+                                    <th>PLAN DE ACCIÓN</th>
+                                </thead>
+                                <tbody>
+                        `
+
+                            for (var i = 0; i < arrayAuditorias.length; i++) {
+                                html += `
+                        <tr>
+                            <td>${arrayAuditorias[i].auditoria}</td>
+                            <td>${arrayAuditorias[i].auditor}</td>
+                            <td>${arrayAuditorias[i].responsable}</td>
+                            <td>${arrayAuditorias[i].cal}</td>
+                            <td>${arrayAuditorias[i].oportunidad}</td>
+                            <td>${arrayAuditorias[i].plan}</td>
+                        </tr>
+                    `
+                            }
+                            html += `
+                        </tbody>
+                    </table>
+                </div>`
+
+                            for (var a = 0; a < arrayAuditorias[0].fotos.length; a++) {
+                                html += `
+                    <div class="fotogal">
+                            <img src="http://italco.tk/server/${arrayAuditorias[0].fotos[a].foto}" class="imagen"  width="300px" height="220px" alt="" >
+                             
+                        </div>
+                    `
+                            }
+
+                            html += `
+
+                `
+                            $('#tablaaudi').html(html)
+                        }
+                    })
+
+            }
+
+            function obtenerGaleria() {
+                $.post(server + 'buscarGaleria.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+
+                        arrayGaleria = resp
+
+                        var htmlso = '<table style="width: 100%; margin-top: 20px;">'
+                        var htmlma = '<table style="width: 100%; margin-top: 20px;">'
+                        var htmlsi = '<table style="width: 100%; margin-top: 20px;">'
+
+
+                        for (var i = 0; i < arrayGaleria.length; i++) {
+
+
+                            htmlso += `
+                         
+                            <div style="width: 310px; float: left;">
+                                <div class="foto" style="height: 370px;" >
+                                    <img src="https://utitalco.com/server/${arrayGaleria[i].foto}" class="imagen"  width="100%" height="220px" alt="" >
+                                <div class="piefoto">
+                                    ${arrayGaleria[i].detalles}
+                                </div>
+                                </div>
+                            </div>
+                            
+
+                    `
+
+
+
+
+                        }
+
+                        htmlso += '</table>'
+
+
+                        $('#galeriafotosao').html(htmlso)
+
+
+
+                    })
+            }
+
+
+
+            function obtenerNovedades() {
+                $.post(server + 'obtenerNovedades.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log('Fecha novedades')
+                        novedades = resp
+                        console.log('Respuesta de novedades')
+                        console.log(resp)
+                        $('#novedades').html(resp.novedad)
+                    })
+            }
+
+            function obtenerNovedadesPersonal() {
+                $.post(server + 'obtenerNovedadesPersonal.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log('Respuesta de novedades')
+                        console.log(resp)
+                        var html = ''
+                        for (var i = 0; i < resp.length; i++) {
+                            html += `
+                    <tr>
+                        <td>${resp[i].nombre}</td>
+                        <td>${resp[i].cargo}</td>
+                        <td>${resp[i].novedad}</td>
+                    </tr>
+                `
+                        }
+                        $('#novedadpersonal').html(html)
+                    })
+            }
+
+            function obtenerKpiCronoAC() {
+                $.post(server + 'buscarKpiCronoAC.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        arrayCronoAC = resp
+                        for (var i = 0; i < arrayCronoAC.length; i++) {
+                            arrayCateCronoAC.push(arrayCronoAC[i].cargo)
+                            arrayValPCronoAC.push(parseInt(arrayCronoAC[i].plan))
+                            arrayValECronoAC.push(parseInt(arrayCronoAC[i].eje))
+                        }
+                    })
+
+            }
+
+            function cargando() {
+                let timerInterval
+                Swal.fire({
+                    title: 'Cargando indicadores!',
+                    html: 'Un momento por favor...',
+                    timer: 5000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            const content = Swal.getContent()
+                            if (content) {
+                                const b = content.querySelector('b')
+                            }
+                        }, 1000)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        hhtotal = parseInt(hhfase1) + parseInt(hhfase2) + parseInt(hhfase3) + parseInt(hhconv)
+                        cargarGraficas()
+                    }
+                })
+
+            }
+
+            function obtenerKpiACRiesgoPareto() {
+                $.post(server + 'buscarkpiACRiesgoPareto.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log('Resultado kpi pareto')
+                        console.log(resp)
+                        arrayPareto = resp
+
+                        if (arrayPareto.arraySI != null) {
+                            for (var i = 0; i < arrayPareto.arraySI.length; i++) {
+                                arrayTitulosSI.push({
+                                    name: arrayPareto.arraySI[i].nivel,
+                                    data: [arrayPareto.arraySI[i].cant],
+                                });
+                            }
+                        }
+
+                        if (arrayPareto.arraySO != null) {
+                            for (var i = 0; i < arrayPareto.arraySO.length; i++) {
+                                arrayTitulosSO.push({
+                                    name: arrayPareto.arraySO[i].nivel,
+                                    data: [arrayPareto.arraySO[i].cant],
+                                });
+                            }
+                        }
+
+                        if (arrayPareto.arrayMA != null) {
+                            for (var i = 0; i < arrayPareto.arrayMA.length; i++) {
+                                arrayTitulosMA.push({
+                                    name: arrayPareto.arrayMA[i].nivel,
+                                    data: [arrayPareto.arrayMA[i].cant],
+                                });
+                            }
+                        }
+
+                        if (arrayPareto.arrayPC != null) {
+                            for (var i = 0; i < arrayPareto.arrayPC.length; i++) {
+                                arrayTitulosPC.push({
+                                    name: arrayPareto.arrayPC[i].nivel,
+                                    data: [arrayPareto.arrayPC[i].cant],
+                                });
+                            }
+                        }
+
+                    })
+
+            }
+
+
+            function obtenerdatosHallazgos() {
+                //obtener hallazgos
+                $.post(server + 'buscarHallazgosKpi.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log(fecha)
+                        console.log(resp)
+                        arrayHallazgos = resp
+
+                        $('#cantHallazgos').html('42')
+
+                        if (arrayHallazgos != null) {
+
+                            for (var i = 0; i < arrayHallazgos.length; i++) {
+                                if (arrayHallazgos[i].criticidad.trim() == 'Baja') {
+                                    rbajoHallazgos++
+                                }
+                                if (arrayHallazgos[i].criticidad.trim() == 'Media') {
+                                    rmedioHallazgos++
+                                }
+                                if (arrayHallazgos[i].criticidad.trim() == 'Alta') {
+                                    raltoHallazgos++
+                                }
+                                if (arrayHallazgos[i].tipificacion.trim() == 'Medio Ambiente') {
+                                    maHallazgos++
+                                }
+                                if (arrayHallazgos[i].tipificacion.trim() == 'Salud Ocupacional') {
+                                    soHallazgos++
+                                }
+                                if (arrayHallazgos[i].tipificacion.trim() == 'Seguridad Industrial') {
+                                    siHallazgos++
+                                }
+                            }
+                            detallesHallazgos()
+                        }
+                    })
+            }
+
+            function obtenerKpiPersonal() {
+                $.post(server + 'buscarKpiPersonalU200.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+
+                        arrayKpiPersonal = resp
+
+                    })
+            }
+
+            function obtenerKpiTotales() {
+                $.post(server + 'buscarKpiTotales.php', {
+                        ods: numods,
+                        fecha: fecha,
+                        fase: fase
+                    },
+                    function(resp) {
+                        console.log('total kpis:')
+                        console.log(resp)
+
+                        arrayKpiIG = resp
+
+                        totac = arrayKpiIG.totac
+                        totacdia = arrayKpiIG.totacdia
+
+                        totacitalco = arrayKpiIG.totacitalco
+                        totaccliente = arrayKpiIG.totaccliente
+
+                        totacitalcodia = arrayKpiIG.totacitalcodia
+                        totacclientedia = arrayKpiIG.totacclientesdia
+
+                        totconversatorios = arrayKpiIG.totconversatorios;
+
+                        tothallazgositalco = arrayKpiIG.tothallazgositalco
+
+                        var totacglobal = totac
+
+                        var tothallazgosglobal = tothallazgositalco
+
+                        var totaudi = arrayKpiIG.totauditorias
+
+                        $('#cantAC').html(totacglobal)
+                            //$('#cantCV').html(totconversatoriosglobal)
+                        $('#cantCV').html('0')
+
+                        $('#canthallazgos').html('0')
+
+                        $('#poraudi').html(totaudi)
+
+
+                    })
+            }
+
+            function obtenerKpiHorasCap() {
+                $.post(server + 'buscarKpiHorasCap.php', {
+                        ods: numods
+                    },
+                    function(resp) {
+
+                        arrayHCap = resp
+
+                        if (arrayHCap != null) {
+
+                            for (var i = 0; i < arrayHCap.length; i++) {
+                                if (arrayHCap[i].fase == 'FASE I') {
+                                    hhfase1 = parseInt(arrayHCap[i].horas)
+                                }
+                                if (arrayHCap[i].fase == 'FASE II') {
+                                    hhfase2 = parseInt(arrayHCap[i].horas)
+                                }
+                                if (arrayHCap[i].fase == 'FASE III') {
+                                    hhfase3 = parseInt(arrayHCap[i].horas)
+                                }
+                            }
+
+                        }
+
+                    })
+            }
+
+            function obtenerKpiPermisos() {
+                $.post(server + 'buscarKpiPermisos.php', {
+                        ods: numods
+                    },
+                    function(resp) {
+
+                        arrayPermisos = resp
+
+                        totalPerFe = parseInt(arrayPermisos.frioe)
+                        totalPerFr = parseInt(arrayPermisos.frior)
+                        totalPerCe = parseInt(arrayPermisos.calientee)
+                        totalPerCr = parseInt(arrayPermisos.calienter)
+                        totalPerEe = parseInt(arrayPermisos.electricoe)
+                        totalPerEr = parseInt(arrayPermisos.electricor)
+                        totalPerE = parseInt(arrayPermisos.totale)
+                        totalPerR = parseInt(arrayPermisos.totalr)
+                        totalPerm = parseInt(arrayPermisos.totalm)
+                        totalPerh = parseInt(arrayPermisos.totalh)
+
+
+                    })
+            }
+
+            function obtenerKpiPermisosEsp() {
+                $.post(server + 'buscarKpiPermisosEsp.php', {
+                        ods: numods
+                    },
+                    function(resp) {
+
+                        arrayPermisosEsp = resp
+
+                        for (var i = 0; i < arrayPermisosEsp.length; i++) {
+                            arrayEspecialidadesPer.push(arrayPermisosEsp[i].especialidad)
+                            arrayEspCantPer.push(parseInt(arrayPermisosEsp[i].cantidad))
+                        }
+
+                    })
+            }
+
+            function obtenerKpiPersonalAcumulado() {
+                $.post(server + 'buscarKpiPersonalAcumuladoU200.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log('resp acumulado')
+                        console.log(resp)
+
+                        arrayPersonalTurnos = resp
+
+                        //crear el array de turnos
+
+                        for (var i = 0; i < arrayPersonalTurnos.arrayTurnos.length; i++) {
+                            arrayTurnos.push(arrayPersonalTurnos.arrayTurnos[i].jornada)
+                        }
+
+                        for (var i = 0; i < arrayPersonalTurnos.arrayPersonalTurnos.length; i++) {
+                            arrayDirectos.push(arrayPersonalTurnos.arrayPersonalTurnos[i].directo)
+                            arrayIndirectos.push(arrayPersonalTurnos.arrayPersonalTurnos[i].indirecto)
+                            arrayTotalPersonal.push(arrayPersonalTurnos.arrayPersonalTurnos[i].totalpersonal)
+                        }
+
+
+                        hhconv = parseInt(arrayPersonalTurnos.totConv)
+
+
+
+
+                    })
+            }
+
+            function obtenerdatosConversatorios() {
+                //obtener conversatorios
+                $.post(server + 'buscarConvesatorios.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        var arrayConversatorios = resp
+                        if (arrayConversatorios.length != null) {
+                            var html = `
+                <div class="table-responsive" style="background-color: white">
+                    <table class="table table-striped" style="background-color: white;">
+                        <thead class="thead-dark" >
+                            <th>FECHA</th>
+                            <th>TEMA</th>
+                            <th>RESPONSABLE</th>
+                        </thead>
+                        <tbody>
+                `
+
+                            for (var i = 0; i < arrayConversatorios.length; i++) {
+                                html += `
+                        <tr>
+                            <td>${arrayConversatorios[i].fecha}</td>
+                            <td>${arrayConversatorios[i].tema}</td>
+                            <td>${arrayConversatorios[i].resp}</td>
+                        </tr>
+                        
+                    `
+                            }
+                            html += `
+                        </tbody>
+                    </table>
+                </div>
+                `
+                            $('#detallesConversatorios').html(html)
+                        }
+                    })
+
+            }
+
+            function verTodosConversatorios() {
+                //obtener conversatorios
+                $.post(server + 'buscarConvesatoriosTodos.php', {
+                        ods: numods
+                    },
+                    function(resp) {
+                        var arrayConversatorios = resp
+                        if (arrayConversatorios.length != null) {
+                            var html = `
+                <div class="table-responsive" style="background-color: white">
+                    <table class="table table-striped" style="background-color: white;">
+                        <thead class="thead-dark" >
+                            <th>FECHA</th>
+                            <th>TEMA</th>
+                            <th>RESPONSABLE</th>
+                        </thead>
+                        <tbody>
+                `
+
+                            for (var i = 0; i < arrayConversatorios.length; i++) {
+                                html += `
+                        <tr>
+                            <td>${arrayConversatorios[i].fecha}</td>
+                            <td>${arrayConversatorios[i].tema}</td>
+                            <td>${arrayConversatorios[i].resp}</td>
+                        </tr>
+                        
+                    `
+                            }
+                            html += `
+                        </tbody>
+                    </table>
+                </div>
+                `
+                            $('#detallesConversatorios').html(html)
+                        }
+                    })
+
+            }
+
+            function obtenerdatosAC() {
+                $.post(server + 'buscarACKpiU200.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log('resultado kpi AC')
+                        console.log(resp)
+
+                        if (resp != null) {
+                            arrayDatos = resp.datos
+                            arrayRiesgo = resp.acriesgo
+
+
+
+                            for (var i = 0; i < arrayDatos.length; i++) {
+                                if (arrayDatos[i].criticidad != 'N/A') {
+                                    if (arrayDatos[i].tipificacion == 'Seguridad Industrial y de procesos') {
+                                        cantacrtipsi++
+                                    }
+                                    if (arrayDatos[i].tipificacion == 'Medio Ambiente') {
+                                        cantacrtipma++
+                                    }
+                                    if (arrayDatos[i].tipificacion == 'Salud Ocupacional') {
+                                        cantacrtipso++
+                                    }
+                                    if (arrayDatos[i].tipificacion == 'Principios culturales') {
+                                        cantacrtippc++
+                                    }
+                                    if (arrayDatos[i].criticidad == 'Baja') {
+                                        cantacrbajo++
+                                    }
+                                    if (arrayDatos[i].criticidad == 'Media') {
+                                        cantacrmedio++
+                                    }
+                                    if (arrayDatos[i].criticidad == 'Alta') {
+                                        cantacralto++
+                                    }
+                                } else {
+                                    if (arrayDatos[i].tipificacion == 'Seguridad Industrial y de procesos') {
+                                        cantacstipsi++
+                                    }
+                                    if (arrayDatos[i].tipificacion == 'Medio Ambiente') {
+                                        cantacstipma++
+                                    }
+                                    if (arrayDatos[i].tipificacion == 'Salud Ocupacional') {
+                                        cantacstipso++
+                                    }
+                                    if (arrayDatos[i].tipificacion == 'Principios culturales') {
+                                        cantacstippc++
+                                    }
+
+                                }
+                            }
+
+                            totacitalcobaja = arrayRiesgo.totacitalcobaja
+                            totacitalcomedia = arrayRiesgo.totacitalcomedia
+                            totacitalcoalta = arrayRiesgo.totacitalcoalta
+
+                            totacitalcobajadia = arrayRiesgo.totacitalcobajadia
+                            totacitalcomediadia = arrayRiesgo.totacitalcomediadia
+                            totacitalcoaltadia = arrayRiesgo.totacitalcoaltadia
+                        }
+
+
+
+                    })
+            }
+
+            function verTodosHallazgos() {
+                $.post(server + 'buscarHallazgosRes.php', {
+                        ods: numods
+                    },
+                    function(resp) {
+                        var arrayDetallesHallazgos = resp
+                        if (arrayDetallesHallazgos.length != null) {
+                            var html = `
+                <div class="table-responsive" style="background-color: white">
+                    <table class="table" style="width: 1200px;">
+                        <thead class="thead-dark">
+                            <th>Fecha</th>
+                            <th>Item</th>
+                            <th style="width: 300px;">Reporte</th>
+                            <th>Nombre quien reporta</th>
+                            <th>Criticidad</th>
+                            <th>Tipificación</th>
+                            <th>Plan de acción</th>
+                            <th>Fecha de Cierre</th>
+                            <th>Estado</th>
+                        </thead>
+                        <tbody>
+                `
+
+                            for (var i = 0; i < arrayDetallesHallazgos.length; i++) {
+                                html += `
+                        <tr>
+                            <td>${arrayDetallesHallazgos[i].fecha}</td>
+                            <td>${arrayDetallesHallazgos[i].item}</td>
+                            <td>${arrayDetallesHallazgos[i].detalles}</td>
+                            <td>${arrayDetallesHallazgos[i].reporta}</td>
+                            <td>${arrayDetallesHallazgos[i].criticidad}</td>
+                            <td>${arrayDetallesHallazgos[i].tipificacion}</td>
+                            <td>${arrayDetallesHallazgos[i].plan}</td>
+                            <td>${arrayDetallesHallazgos[i].fcierre}</td>
+                            <td>${arrayDetallesHallazgos[i].estado}</td>
+                        </tr>
+                    `
+                            }
+
+                            html += `
+                        </tbody>
+                    </table>
+                </div>
+                `
+                            $('#detallesHallazgostabla').html(html)
+
+                        }
+                    })
+            }
+
+            function detallesHallazgos() {
+                $.post(server + 'buscarHallazgos.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        arrayDetallesHallazgos = resp
+                        if (arrayDetallesHallazgos != null) {
+                            var html = `
+                <div class="table-responsive" style="background-color: white">
+                    <table class="table" style="width: 1200px;">
+                        <thead class="thead-dark">
+                            <th>Fecha</th>
+                            <th>Item</th>
+                            <th style="width: 300px;">Reporte</th>
+                            <th>Nombre quien reporta</th>
+                            <th>Criticidad</th>
+                            <th>Tipificación</th>
+                            <th>Plan de acción</th>
+                            <th>Fecha de Cierre</th>
+                            <th>Estado</th>
+                        </thead>
+                        <tbody>
+                `
+
+                            for (var i = 0; i < arrayDetallesHallazgos.length; i++) {
+                                html += `
+                        <tr>
+                            <td>${arrayDetallesHallazgos[i].fecha}</td>
+                            <td>${arrayDetallesHallazgos[i].item}</td>
+                            <td>${arrayDetallesHallazgos[i].detalles}</td>
+                            <td>${arrayDetallesHallazgos[i].reporta}</td>
+                            <td>${arrayDetallesHallazgos[i].criticidad}</td>
+                            <td>${arrayDetallesHallazgos[i].tipificacion}</td>
+                            <td>${arrayDetallesHallazgos[i].plan}</td>
+                            <td>${arrayDetallesHallazgos[i].fcierre}</td>
+                            <td>${arrayDetallesHallazgos[i].estado}</td>
+                        </tr>
+                    `
+                            }
+                            html += `
+                        </tbody>
+                    </table>
+                </div>
+                `
+                            $('#detallesHallazgostabla').html(html)
+
+
+                        }
+
+
+                    })
+            }
+
+            function buscarHallazgos() {
+                $.post(server + 'buscarHallazgos.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+
+                        var fotosacr = ''
+
+                        var arrayDetallesHallazgos = resp;
+
+                        if (arrayDetallesHallazgos != null) {
+
+                            var html = `
+                 
+                            <div class="card-header mb-2">
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseHallazgos" aria-expanded="false" aria-controls="collapseHallazgos">
+                                    <i class="fas fa-arrow-circle-down"></i>
+                                </button>
+                                HALLAZGOS
+                            </div>
+
+                            <div class="collapse" id="collapseHallazgos">
+                            <div class="card card-body">
+                                <div style="width: 100%; height: auto;">
+                                    <table class="table">
+                                    <thead class="thead-dark">
+                                        <th>Fecha</th>
+                                        <th>Item</th>
+                                        <th style="width: 300px;">Reporte</th>
+                                        <th>Nombre quien reporta</th>
+                                        <th>Criticidad</th>
+                                        <th>Tipificación</th>
+                                        <th>Plan de acción</th>
+                                        <th>Fecha de Cierre</th>
+                                        <th>Estado</th>
+                                    </thead>
+                                    <tbody>
+                        `
+
+                            for (var i = 0; i < arrayDetallesHallazgos.length; i++) {
+                                html += `
+                                    <tr>
+                                        <td>${arrayDetallesHallazgos[i].fecha}</td>
+                                        <td>${arrayDetallesHallazgos[i].item}</td>
+                                        <td>${arrayDetallesHallazgos[i].detalles}</td>
+                                        <td>${arrayDetallesHallazgos[i].reporta}</td>
+                                        <td>${arrayDetallesHallazgos[i].criticidad}</td>
+                                        <td>${arrayDetallesHallazgos[i].tipificacion}</td>
+                                        <td>${arrayDetallesHallazgos[i].plan}</td>
+                                        <td>${arrayDetallesHallazgos[i].fcierre}</td>
+                                        <td>${arrayDetallesHallazgos[i].estado}</td>
+                                    </tr>
+                                `;
+                            }
+
+                            html += `
+                        </tbody>
+                    </table>
+                    </div>
+                 </div></div>
+                `
+                            $('#dethallazgos').html(html)
+
+                        }
+
+                    })
+            }
+
+
+
+
+            function planesAC() {
+                window.open("planesAC.html?ods=" + numods, "_blank");
+            }
+
+            function segurosAC() {
+                window.open("segurossAC.html?ods=" + numods + '&fecha=' + fecha, "_blank");
+            }
+
+            function detallesACRiesgo() {
+                $.post(server + 'buscarACRiesgoDia.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log('Detalles AC Riesgo dia')
+                        console.log(resp)
+                        arrayDetallesACR = resp
+                        var fotosacr = ''
+                        if (arrayDetallesACR != null) {
+                            var html = `
+                <h1 class="salto"></h1>
+                <div class="card-header mb-2">
+                    
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseACRiesgo" aria-expanded="false" aria-controls="collapseACRiesgo">
+                        <i class="fas fa-arrow-circle-down"></i>
+                    </button>
+
+                    ASEGURAMIENTO DE COMPORTAMIENTOS EN RIESGO 
+                    <button type="button" class="btn btn-warning" onclick="planesAC()">
+                        Planes de acción AC
+                    </button>
+                    
+                </div>
+                
+                <div class="collapse" id="collapseACRiesgo">
+                <div class="card card-body">
+                <div style="width: 100%; height: auto;">
+                    <table class="table table-striped" style="background-color: white; width: 100%;">
+                        <tbody>
+                `
+
+                            for (var i = 0; i < arrayDetallesACR.length; i++) {
+                                if (arrayDetallesACR[i].fcierre != '') {
+                                    var colorcelda = '#33FF6B';
+                                    var colorcelda2 = '#FFF';
+                                } else {
+                                    var colorcelda = '#FFF';
+                                    var colorcelda2 = '#FF8585';
+                                }
+                                html += `
+
+                    <tr style="background-color: ${colorcelda2}">
+                        <th>FECHA REPORTE</th>
+                        <td>${arrayDetallesACR[i].fecharep}</td>
+
+                        <th>ODS</th>
+                        <td>${arrayDetallesACR[i].ods}</td>
+                    </tr>
+                    <tr>
+                        <th>FECHA EVENTO</th>
+                        <td>${arrayDetallesACR[i].fechaevento}</td>
+                    </tr>
+                    <tr>
+                        <th>REPORTADO POR</th>
+                        <td>${arrayDetallesACR[i].reporta}</td>
+                    </tr>
+                    <tr>
+                        <th>REPORTE</th>
+                         
+                        <td width="800">
+                            ${arrayDetallesACR[i].detalles}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>TIPIFICACIÓN</th>
+                        <td>${arrayDetallesACR[i].tipificacion}</td>
+                    </tr>
+                    <tr>
+                        <th>CRITICIDAD</th>
+                        <td>${arrayDetallesACR[i].criticidad}</td>
+                    </tr>
+                    
+                    <tr>
+                        <th>NIVEL 1</th>
+                        <td>${arrayDetallesACR[i].nivel1}</td>
+                    </tr>
+                    <tr>
+                        <th>NIVEL 2</th>
+                        <td>${arrayDetallesACR[i].nivel2}</td>
+                    </tr> 
+                    <tr>
+                        <th>PLAN</th>
+                        <td>${arrayDetallesACR[i].plan}</td>
+                    </tr> 
+                    <tr style="background-color: ${colorcelda}" >
+                        <th>FECHA CIERRE</th>
+                        <td>${arrayDetallesACR[i].fcierre}</td>
+                    </tr> 
+                    <tr>
+                        <td colspan="2"><hr></td>
+                    </tr>
+
+                    `
+                            }
+                            html += `
+                        </tbody>
+                    </table>
+                    
+                        </div>
+                    </div>
+                </div>
+                `
+                            $('#acriesgos').html(html)
+
+
+                        }
+
+                    })
+            }
+
+            function detallesTodosACRiesgos() {
+                $.post(server + 'buscarACRiesgoDiaTodos.php', {
+                        ods: numods,
+                        fecha: fecha
+                    },
+                    function(resp) {
+                        console.log('Detalles AC Riesgo dia')
+                        console.log(resp)
+                        arrayDetallesACR = resp
+                        if (arrayDetallesACR.length != null) {
+                            var html = `
+                <div class="table-responsive" style="background-color: white">
+                    <table class="table" style="width: 1200px;">
+                        <thead class="thead-dark">
+                            <th>Fecha Reporte</th>
+                            <th>Fecha Evento</th>
+                            <th>Nombre quien reporta</th>
+                            <th style="width: 300px;">Reporte</th>
+                            <th>Tipificación</th>
+                            <th>Criticidad</th>
+                            <th>Nivel 1</th>
+                            <th>Nivel 2</th>
+                            <th>Plan</th>
+                            <th>Fecha Cierre</th>
+
+                        </thead>
+                        <tbody>
+                `
+
+                            for (var i = 0; i < arrayDetallesACR.length; i++) {
+                                html += `
+                        <tr>
+                            <td>${arrayDetallesACR[i].fecharep}</td>
+                            <td>${arrayDetallesACR[i].fechaevento}</td>
+                            <td>${arrayDetallesACR[i].reporta}</td>
+                            <td>${arrayDetallesACR[i].detalles}</td>
+                            <td>${arrayDetallesACR[i].tipificacion}</td>
+                            <td>${arrayDetallesACR[i].criticidad}</td>
+                            <td>${arrayDetallesACR[i].nivel1}</td>
+                            <td>${arrayDetallesACR[i].nivel2}</td>
+                            <td>${arrayDetallesACR[i].plan}</td>
+                            <td>${arrayDetallesACR[i].fcierre}</td>
+                        </tr>
+                    `
+                            }
+                            html += `
+                        </tbody>
+                    </table>
+                </div>
+                `
+                            $('#detacriesgo').html(html)
+
+                        }
+
+                    })
+            }
+
+            function cargarGraficas() {
+
+
+                //grafica totales ac cliente e italco
+                var chart1 = Highcharts.chart('figactot', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '300'
+                    },
+                    title: {
+                        text: '<b>TOTALES AC </b>'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'Día', 'Acumulado'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant '
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'ITALCO',
+                        data: [totacitalcodia, totacitalco]
+
+                    }, {
+                        name: 'CLIENTE',
+                        data: [totacclientedia, totaccliente]
+                    }, {
+                        name: 'TOTAL',
+                        data: [totacdia, totac]
+                    }]
+                });
+
+                var chart3 = Highcharts.chart('figactipi', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '200'
+                    },
+                    title: {
+                        text: '<b>TIPIFICACIÓN AC</b>'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'MEDIO AMBIENTE',
+                            'SEGURIDAD INDUSTRIAL',
+                            'SALUD OCUPACIONAL',
+                            'PRINCIPIOS CULTURALES'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant '
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'SEGUROS',
+                        data: [cantacstipma, cantacstipsi, cantacstipso, cantacstippc]
+
+                    }, {
+                        name: 'EN RIESGO',
+                        data: [cantacrtipma, cantacrtipsi, cantacrtipso, cantacrtippc]
+                    }]
+                });
+
+                var chart2 = Highcharts.chart('figacriesgoitalco', {
+                    colors: ['#00c901', '#01005e', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '300'
+                    },
+                    title: {
+                        text: '<b>AC EN RIESGO ITALCO</b>'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'DÍA',
+                            'ACUMULADO'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant '
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'BAJA',
+                        data: [totacitalcobajadia, totacitalcobaja]
+
+                    }, {
+                        name: 'MEDIA',
+                        data: [totacitalcomediadia, totacitalcomedia]
+
+                    }, {
+                        name: 'ALTA',
+                        data: [totacitalcoaltadia, totacitalcoalta]
+
+                    }]
+                });
+
+
+                //grafica PERSONAL FUERA DE LA GRB
+                Highcharts.chart('figfgrb', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'PERSONAL PREFABRICADO'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'PERSONAL'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: "DIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[1].directo]
+                    }, {
+                        name: "INDIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[1].indirecto]
+                    }, {
+                        name: "TOTAL",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[1].totalpersonal]
+                    }]
+                });
+
+                //FIG TURBO
+                Highcharts.chart('figturbo', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'PERSONAL TURBO EXP'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'PERSONAL'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: "DIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[2].directo]
+                    }, {
+                        name: "INDIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[2].indirecto]
+                    }, {
+                        name: "TOTAL",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[2].totalpersonal]
+                    }]
+                });
+
+
+
+                //PERSONAL DREMEX
+                Highcharts.chart('figpersonaldremec', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'PERSONAL DREMEC'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'PERSONAL'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: 'DIRECTOS',
+                        data: [arrayPersonalDremec.directos]
+
+                    }, {
+                        name: 'INDIRECTOS',
+                        data: [arrayPersonalDremec.indirectos]
+                    }, {
+                        name: 'TOTAL',
+                        data: [arrayPersonalDremec.total]
+                    }]
+                });
+
+
+                //PERSONAL DREMEX
+                Highcharts.chart('figpersonaltotal', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'PERSONAL TOTAL EN PLANTA'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'PERSONAL'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: 'DIRECTOS',
+                        data: [totalPersonalDirectos]
+
+                    }, {
+                        name: 'INDIRECTOS',
+                        data: [totalPersonalIndirectos]
+                    }, {
+                        name: 'TOTAL',
+                        data: [totalPersonalPlanta]
+                    }]
+                });
+
+
+
+
+                //grafica Horas Hombre DENTRO DE LA GRB
+                Highcharts.chart('fighhdgrb', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'HORAS HOMBRE ETILENO'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'HORAS'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: "DIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[0].hdir]
+                    }, {
+                        name: "INDIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[0].hindir]
+                    }, {
+                        name: "TOTAL",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[0].toth]
+                    }]
+                });
+
+
+                //horas dremec
+                Highcharts.chart('fighhdremec', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'HORAS HOMBRE DREMEC'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'HORAS'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: 'DIRECTOS',
+                        data: [arrayPersonalDremec.hdirectos]
+
+                    }, {
+                        name: 'INDIRECTOS',
+                        data: [arrayPersonalDremec.hindirectos]
+                    }, {
+                        name: 'TOTAL',
+                        data: [arrayPersonalDremec.htotal]
+                    }]
+                });
+
+
+                //grafica Horas Hombre FUERA DE LA GRB
+                Highcharts.chart('fighhfgrb', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'HORAS HOMBRE TURBO EXP'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'HORAS'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: "DIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[2].hdir]
+                    }, {
+                        name: "INDIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[2].hindir]
+                    }, {
+                        name: "TOTAL",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[2].toth]
+                    }]
+                });
+
+                //grafia taller horas
+                Highcharts.chart('fighhtaller', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '350'
+                    },
+                    title: {
+                        text: 'HORAS HOMBRE TALLER PREFABRICADO'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'HORAS'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+
+                    series: [{
+                        name: "DIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[1].hdir]
+                    }, {
+                        name: "INDIRECTOS",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[1].hindir]
+                    }, {
+                        name: "TOTAL",
+                        data: [arrayPersonalTurnos.arrayPersonalPlanta[1].toth]
+                    }]
+                });
+
+                chart3.update({
+                    plotOptions: {
+                        series: {
+                            dataLabels: {
+                                style: {
+                                    fontSize: '16px'
+                                }
+                            }
+                        }
+                    }
+                })
+
+                chart2.update({
+                    plotOptions: {
+                        series: {
+                            dataLabels: {
+                                style: {
+                                    fontSize: '16px'
+                                }
+                            }
+                        }
+                    }
+                })
+
+                chart1.update({
+                    plotOptions: {
+                        series: {
+                            dataLabels: {
+                                style: {
+                                    fontSize: '16px'
+                                }
+                            }
+                        }
+                    }
+                })
+            }
+
+            function verRepRiesgo() {
+                $('#flotanteEnRiesgo').removeClass('oculto');
+                $('#flotanteEnRiesgo').removeClass('magictime spaceOutDown');
+            }
+
+            function verRepSeguro() {
+                $('#flotanteSeguros').removeClass('oculto');
+                $('#flotanteSeguros').removeClass('magictime spaceOutDown');
+            }
+
+
+
+
+            // cargarGraficas()
+            // imprimir()
+
+            var realizado = 0;
+            var printContent = ''
+            var printWindow = ''
+
+
+            function verAuditorias() {
+                window.open("planesAuditorias.html?ods=" + numods, "_blank");
+            }
+
+
+
+            function imprimirHoja() {
+                window.print();
+            }
+        </script>
+</body>
+
+</html>

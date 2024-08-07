@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Inducción Fase I - UT Italco</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <META HTTP-EQUIV="Refresh" CONTENT="0; URL=evaluacion.php">
+
+    <style>
+        .oculto{
+            display:none;
+        }
+        #flotante{
+        position: fixed;
+        z-index: 100; /*Crea una capa nueva por encima, si tenemos una con valor 2 estará a una altura o por encima de una con 
+                      valor 1*/
+        margin-left: 10px; /*Con este margen posicionamos el div donde queramos*/
+        margin-top: 10px;
+        background-color: aqua;
+        width: 150px;
+        height: 100px;
+      }
+        body {
+
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .cab {
+            margin: 0 auto;
+
+            background-color: rgb(17, 79, 138);
+            padding: 10px;
+            padding-left: 150px;
+            padding-right: 150px;
+            color: white;
+
+        }
+
+        .preg{
+            padding: 20px;
+            border-radius: 20px;
+            background: rgb(2,0,36);
+            background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgb(0, 140, 255) 100%);
+            margin: 10px;
+            margin-top: 10px;
+            color: #FFF;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 22px;
+        }
+
+        .resp{
+            padding: 10px;
+            border-radius: 5px;
+            
+            background: rgba(210,255,82,1);
+            background: -moz-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(210,255,82,1)), color-stop(100%, rgba(145,232,66,1)));
+            background: -webkit-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+            background: -o-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+            background: -ms-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+            background: linear-gradient(to bottom, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+
+            margin: 10px;
+            
+            color: #000;
+             
+            margin: 0 auto;
+            margin-top: 5px;
+            font-size: 18px;
+            cursor: pointer;
+
+             
+        }
+
+        .resp:hover{
+            background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(183,222,237,1)), color-stop(50%, rgba(113,206,239,1)), color-stop(51%, rgba(33,180,226,1)), color-stop(100%, rgba(13,65,84,1)));
+            background: -webkit-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(13,65,84,1) 100%);
+            background: -o-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(13,65,84,1) 100%);
+            background: -ms-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(13,65,84,1) 100%);
+            background: linear-gradient(to bottom, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(13,65,84,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#0d4154', GradientType=0 );
+            cursor: pointer;
+        }
+
+        .info {
+            background-color: rgb(8, 49, 87);
+
+            margin: 0 auto;
+
+            padding: 10px;
+            padding-left: 150px;
+            padding-right: 150px;
+            color: white;
+            text-align: right;
+        }
+
+        .seccion {
+            width: 70%;
+        }
+
+        @media (max-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+
+            .cab {
+                margin: 0 auto;
+
+                background-color: rgb(17, 79, 138);
+                padding: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                color: white;
+
+            }
+
+            .seccion {
+                width: 95%;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="cab">
+        <div class="container row">
+            <div class="col-sm-6 ">
+                <h3>INDUCCIÓN FASE I - UT ITALCO
+
+                </h3>
+            </div>
+            <div class="col-sm-6" style="text-align: right;">
+                <button id="pag">Pregunta: 1/10</button>
+                <button class="btn btn-danger" onclick="salir()">X</button>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+
+    <div class="container mt-2 seccion">
+
+        <div class="card">
+            <div class="card">
+                <div class="card-body m-3  preg">
+                    <span id="pregunta">Pregunta</span>
+                </div>
+                <div class="card-body" id="respuestas">
+    
+                </div>
+                <!-- <button class="btn btn-success" id="btnsig" onclick="sig()">Siguiente</button> -->
+    
+                
+            </div>
+    
+            <div class="progress mt-3" style="height: 23px;" id="prog">
+    
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var url = "https://utitalco.com/fase1/2024/server/";
+
+var userfase = sessionStorage.getItem("userfase");
+var nombres = sessionStorage.getItem("nombres");
+
+var numpag = 1;
+var arrayDatos = [];
+var arrayResp = [];
+var arr = []; // Arreglo para llenar
+var cont = 0;
+var respsel = null
+var puntaje = 0;
+
+var nump = null
+var preg = null
+
+var listaPreg = []
+
+
+
+if (localStorage.getItem('intentos')) {
+    var totint = parseInt(localStorage.getItem('intentos'))
+} else {
+    var totint = 1
+}
+
+if (totint >= 5) {
+    Swal.fire({
+        position: "top-end",
+        icon: "info",
+        text: "Ya realizó los 2 intentos diarios para superar la evaluación. Intente nuevamente en 24 horas...!",
+        showConfirmButton: false,
+        timer: 3500,
+    }).then(() => {
+         
+        location = 'fase1.html'
+    })
+}
+
+
+
+
+
+cargarPreguntas();
+
+function login() {
+    var doc = $("#doc").val();
+    var clave = $("#clave").val();
+
+    if (doc && clave != "") {
+        $.post(
+            url + "ingreso.php", {
+                doc: doc,
+                clave: clave,
+            },
+            function (resp) {
+                if (resp.msn == "Ok") {
+                    sessionStorage.setItem("userfase", doc);
+                    sessionStorage.setItem(
+                        "nombres",
+                        resp.nombres + " " + resp.apellidos
+                    );
+
+                    location = "home.html";
+                } else {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Acceso denegado...!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            }
+        );
+    } else {
+        Swal.fire({
+            position: "top-end",
+            icon: "info",
+            title: "Oops...",
+            text: "Ingrese su usuario y contraseña...!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+}
+
+function salir() {
+    location = "home.html";
+}
+
+function sumpag() {
+    numpag++;
+    if (numpag > 60) {
+        numpag = 60;
+    }
+    $("#pag").html("Página: " + numpag + "/60");
+}
+
+function restpag() {
+    numpag--;
+    if (numpag < 1) {
+        numpag = 1;
+    }
+    $("#pag").html("Página: " + numpag + "/60");
+}
+
+function evaluacion() {
+    location = "evaluacion.html";
+}
+
+function numaleatorios() {
+
+    var cantidadNumeros = 10; // Cantidad de números en el arreglo
+    var hasta = 36; // Máximo valor de los números en el arreglo
+
+    function llenarAleatorios(a) {
+        var v = Math.floor(Math.random() * hasta);
+        if (
+            !a.some(function (e) {
+                return e == v;
+            })
+        ) {
+            /**
+             * Si no se encuentra el valor aleatorio en el arreglo
+             * se pushea el valor.
+             */
+            a.push(v);
+        }
+    }
+    /**
+     * Bucle para llenar el arreglo con la cantidad que necesites
+     */
+    while (arr.length < cantidadNumeros && cantidadNumeros < hasta) {
+        llenarAleatorios(arr);
+    }
+}
+
+function cargarPreguntas() {
+    $.post(url + "preguntas.php", {}, function (resp) {
+        arrayDatos = resp;
+        numaleatorios()
+        cargarPregunta()
+
+        //console.log(arr[2])
+
+
+        // for (var i = 0; i < arrayDatos.length; i++) {
+        //     arrayResp = JSON.parse(arrayDatos[i].respuestas);
+        //     console.log(arrayResp);
+        // }
+    });
+}
+
+function cargarPregunta() {
+    nump = arr[cont]
+    preg = arrayDatos[nump].pregunta
+    $('#pregunta').html(preg)
+
+    arrayResp = JSON.parse(arrayDatos[nump].respuestas);
+    var html = ''
+    for (var i = 0; i < arrayResp.length; i++) {
+        html += `
+        <div class="resp">
+            <div class="form-check" onclick="selresp('${arrayResp[i].p}')">
+                    ${arrayResp[i].p}
+            </div>
+            </div>
+        `
+    }
+    $('#respuestas').html(html)
+
+}
+
+function selresp(a) {
+    respsel = a;
+    if (respsel == arrayDatos[nump].correcta) {
+        puntaje += 10;
+    }
+
+    html = `<div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${puntaje}%;" aria-valuenow="${puntaje}" aria-valuemin="0" aria-valuemax="100">PUNTAJE ${puntaje}</div>`
+    $('#prog').html(html)
+
+    setTimeout(function(){
+        sig()
+    }, 500);
+}
+
+function sig() {
+
+    listaPreg.push({
+        'pregunta': preg,
+        'respuesta': respsel
+    })
+
+
+    cont++;
+    var pag = cont + 1;
+    if (cont < 10) {
+        cargarPregunta()
+        $('#pag').html('Pregunta: ' + pag + '/10')
+
+    } else {
+        if (puntaje >= 80) {
+            localStorage.setItem('preguntas', JSON.stringify(listaPreg))
+            localStorage.setItem('puntaje', puntaje)
+
+            //detenerGrabacion()
+
+            $.post(url + 'guardarCertificado.php', {doc:userfase,nombres:nombres,resp:JSON.stringify(listaPreg),puntaje:puntaje},
+            function(resp){
+                localStorage.setItem('datosuser',JSON.stringify(resp))
+                if(puntaje>=80){
+                    sessionStorage.setItem('estado','SI')
+                }else{
+                    sessionStorage.setItem('estado','NO')
+                }
+                location = 'home.html';
+            })
+
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "info",
+                text: "Para superar la evaluación debe responder correctamente 8 preguntas.  Tiene 2 intentos al día para presentar la evaluación...!",
+                showConfirmButton: false,
+                timer: 3500,
+            }).then(() => {
+
+                if (localStorage.getItem('intentos')) {
+                    var totint = parseInt(localStorage.getItem('intentos')) + 1
+                } else {
+                    var totint = 1
+                }
+
+
+                localStorage.setItem('intentos', totint);
+                location = 'fase1.html'
+            })
+        }
+    }
+    if (cont > 8) {
+        $('#btnsig').html('Finalizar')
+    }
+}
+
+
+
+
+    </script>
+    
+
+</body>
+
+</html>

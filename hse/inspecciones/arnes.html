@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Inspecciones HSE - UT Italco</title>
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+    <script src="lib/chart-master/Chart.js"></script>
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <style>
+        .tit {
+            background-color: rgb(7, 7, 54);
+            padding: 10px;
+            color: white;
+        }
+        
+        body {
+            color: black;
+        }
+        
+        label {
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        
+        .black-bg {
+            background-color: rgb(7, 7, 54);
+        }
+        
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 200px;
+        }
+        
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Menú" style="background-color: white;"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.html" class="logo">INSPECCIONES  <img src="img/logo_m.png" height="30px" alt=""> </a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+
+
+
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Salir</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+
+
+                    <li class="mt">
+                        <a href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a class="active" href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Inspecciones</span>
+                        </a>
+                        <ul class="sub">
+                            <li class="active"><a href="arnes.html">Arnés</a></li>
+                            <li><a href="#">Eslingas</a></li>
+                            <li><a href="#">Conectores de anclaje</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Reportes</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="reparnes.html">Arnés</a></li>
+                            <li><a href="#">Eslingas</a></li>
+                            <li><a href="#">Conectores de anclaje</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i>
+                            <span>Salir </span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <h3><i class="fa fa-angle-right"></i> Inicio \ Nueva Inspección Arnés </h3>
+
+                <div class="content-panel" style="padding: 20px;">
+
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="">Evaluador</label>
+                            <select id="evaluador" class="form-control">
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <center>
+
+                        <h4 class="tit">DATOS DEL ARNÉS</h4>
+
+                    </center>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="">Elemento</label>
+                            <input type="text" class="form-control" id="elemento" value="ARNES DE CUERPO ENTERO" readonly>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="">Marca</label>
+                            <input type="text" class="form-control" id="marca" placeholder="Marca">
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="">Serial</label>
+                            <input type="text" class="form-control" id="serial" placeholder="Serial">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Fecha Inspección</label>
+                            <input type="date" class="form-control" id="fechainsp">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Fecha Fabricación</label>
+                            <input type="text" class="form-control" id="fechafab" placeholder="Fecha Fabricación">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for=""># Precinto Ant.</label>
+                            <input type="text" class="form-control" id="numprecant" placeholder="###">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for=""># Nuevo Precinto</label>
+                            <input type="text" class="form-control" id="numprecact" placeholder="###">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Color del Precinto</label>
+                            <input type="checkbox" id="colorprec" data-toggle="toggle" data-on="Azúl" data-off="Rojo" checked data-onstyle="primary" data-offstyle="danger">
+
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Estado del elemento</label>
+                            <input type="checkbox" id="estado" data-toggle="toggle" data-on="Aprobado" data-off="Rechazado" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Martenimiento / Lavado</label>
+                            <input type="checkbox" id="mantenimiento" data-toggle="toggle" data-on="SI" data-off="NO" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                    </div>
+
+                    <center>
+                        <h4 class="tit">COMPONENTES</h4>
+
+                    </center>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">Partes Metálicas</label>
+                            <input type="checkbox" id="partemetal" data-toggle="toggle" data-on="Conforme" data-off="No Conforme" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label for="">Partes en pasta</label>
+                            <input type="checkbox" id="partepasta" data-toggle="toggle" data-on="Conforme" data-off="No Conforme" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Partes Textil</label>
+                            <input type="checkbox" id="partetextil" data-toggle="toggle" data-on="Conforme" data-off="No Conforme" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Indicador es de impacto</label>
+                            <input type="checkbox" id="indicadoresimpacto" data-toggle="toggle" data-on="Conforme" data-off="No Conforme" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Costura</label>
+                            <input type="checkbox" id="costura" data-toggle="toggle" data-on="Conforme" data-off="No Conforme" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Estado Ficha Tec.</label>
+                            <input type="checkbox" id="estadofichatec" data-toggle="toggle" data-on="Conforme" data-off="No Conforme" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">Estado General</label>
+                            <input type="checkbox" id="estadogeneral" data-toggle="toggle" data-on="Conforme" data-off="No Conforme" checked data-onstyle="success" data-offstyle="danger">
+                        </div>
+                    </div>
+
+                    <center>
+
+                        <h4 class="tit">CRITERIOS DE RECHAZO</h4>
+
+                    </center>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <label for="">OXIDACIÓN EN METAL</label>
+                            <input type="checkbox" id="oxidometal" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">ARGOLLAS IMPACTADAS</label>
+                            <input type="checkbox" id="argollasimpactadas" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">RUPTURA DE PASTAS</label>
+                            <input type="checkbox" id="rupturapastas" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">CORROSIÓN EN METAL</label>
+                            <input type="checkbox" id="corrometal" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">RIATAS IMPACTADAS</label>
+                            <input type="checkbox" id="riatasimpactadas" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">HEBILLAS IMPACTADAS</label>
+                            <input type="checkbox" id="hebillasimpactadas" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">CONTACTO CON QUIMICOS</label>
+                            <input type="checkbox" id="contactoquimicos" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">QUEMADURAS</label><br>
+                            <input type="checkbox" id="quemaduras" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">INDICADOR IMPACTADO</label>
+                            <input type="checkbox" id="indicadorimpactado" data-toggle="toggle" data-on="SI" data-off="NO" data-onstyle="danger" data-offstyle="success">
+                        </div>
+                    </div>
+                    <center>
+
+                        <h4 class="tit">OBSERVACIONES</h4>
+
+                    </center>
+                    <textarea class="form-control" id="obs" rows="3" placeholder="Observaciones"></textarea>
+                    <center>
+
+                        <h4 class="tit">REGISTRO FOTOGRÁFICO</h4>
+
+                    </center>
+                    <div id="galeria">
+                        <div id="preview"></div>
+                    </div>
+
+                    <input type="file" id="file" class="form-control" placeholder="Subir foto">
+                    <hr>
+                    <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                </div>
+
+
+            </section>
+            <!-- /wrapper -->
+        </section>
+        <!-- /MAIN CONTENT -->
+        <!--main content end-->
+
+
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                <p>
+                    &copy; Copyrights <strong>UT Italco - HSE</strong>. All Rights Reserved
+                </p>
+
+                <a href="index.html#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery/jquery.min.js"></script>
+
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="lib/jquery.scrollTo.min.js"></script>
+    <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="lib/jquery.sparkline.js"></script>
+    <!--common script for all pages-->
+    <script src="lib/common-scripts.js"></script>
+    <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="lib/gritter-conf.js"></script>
+    <!--script for this page-->
+    <script src="lib/sparkline-chart.js"></script>
+    <script src="lib/zabuto_calendar.js"></script>
+
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="application/javascript">
+        var user = null
+        var server = 'https://utitalco.com/hse/inspecciones/server/';
+        var arrayDatos = []
+        var criterios = []
+        var componentes = []
+
+        user = sessionStorage.getItem('user')
+
+        if (user == null) {
+            location = 'login.html';
+        }
+
+        var datos = JSON.parse(sessionStorage.getItem('datos'));
+
+        cargarEvaluadores();
+
+        function cargarEvaluadores() {
+            $.post(server + 'cargarEvaluadores.php', {},
+                function(resp) {
+                    arrayDatos = resp
+                    var html = '';
+                    for (var i = 0; i < arrayDatos.length; i++) {
+                        html += `
+                        <option value="${arrayDatos[i].nombres}">${arrayDatos[i].nombres}</option>
+                        `
+                    }
+                    $('#evaluador').html(html)
+                })
+        }
+
+        function guardar() {
+
+            cargando()
+
+            var evaluador = $('#evaluador').val();
+            var elemento = $('#elemento').val();
+            var marca = $('#marca').val();
+            var serial = $('#serial').val();
+            var fechainsp = $('#fechainsp').val();
+            var fechafab = $('#fechafab').val();
+            var numprecant = $('#numprecant').val();
+            var numprecact = $('#numprecact').val();
+
+            if ($("#colorprec").prop("checked")) {
+                var colorprec = 'Azul'
+            } else {
+                var colorprec = 'Rojo'
+            }
+
+            if ($("#estado").prop("checked")) {
+                var estado = 'Aprobado'
+            } else {
+                var estado = 'Rechazado'
+            }
+
+            if ($("#mantenimiento").prop("checked")) {
+                var mantenimiento = 'SI'
+            } else {
+                var mantenimiento = 'NO'
+            }
+
+            //COMPONENTES
+
+            if ($("#partemetal").prop("checked")) {
+                var partemetal = 'Conforme'
+            } else {
+                var partemetal = 'No Conforme'
+            }
+
+            if ($("#partepasta").prop("checked")) {
+                var partepasta = 'Conforme'
+            } else {
+                var partepasta = 'No Conforme'
+            }
+
+            if ($("#partetextil").prop("checked")) {
+                var partetextil = 'Conforme'
+            } else {
+                var partetextil = 'No Conforme'
+            }
+
+            if ($("#indicadoresimpacto").prop("checked")) {
+                var indicadoresimpacto = 'Conforme'
+            } else {
+                var indicadoresimpacto = 'No Conforme'
+            }
+
+
+            if ($("#costura").prop("checked")) {
+                var costura = 'Conforme'
+            } else {
+                var costura = 'No Conforme'
+            }
+
+            if ($("#estadofichatec").prop("checked")) {
+                var estadofichatec = 'Conforme'
+            } else {
+                var estadofichatec = 'No Conforme'
+            }
+
+            if ($("#estadogeneral").prop("checked")) {
+                var estadogeneral = 'Conforme'
+            } else {
+                var estadogeneral = 'No Conforme'
+            }
+
+
+
+            componentes.push({
+                'partemetal': partemetal,
+                'partepasta': partepasta,
+                'partetextil': partetextil,
+                'indicadoresimpacto': indicadoresimpacto,
+                'costura': costura,
+                'estadofichatec': estadofichatec,
+                'estadogeneral': estadogeneral
+            });
+
+            //CRITERIOS DE RECHAZO
+
+            if ($("#oxidometal").prop("checked")) {
+                var oxidometal = 'SI'
+            } else {
+                var oxidometal = 'NO'
+            }
+
+            if ($("#argollasimpactadas").prop("checked")) {
+                var argollasimpactadas = 'SI'
+            } else {
+                var argollasimpactadas = 'NO'
+            }
+
+            if ($("#rupturapastas").prop("checked")) {
+                var rupturapastas = 'SI'
+            } else {
+                var rupturapastas = 'NO'
+            }
+
+            if ($("#corrometal").prop("checked")) {
+                var corrometal = 'SI'
+            } else {
+                var corrometal = 'NO'
+            }
+
+            if ($("#riatasimpactadas").prop("checked")) {
+                var riatasimpactadas = 'SI'
+            } else {
+                var riatasimpactadas = 'NO'
+            }
+
+            if ($("#hebillasimpactadas").prop("checked")) {
+                var hebillasimpactadas = 'SI'
+            } else {
+                var hebillasimpactadas = 'NO'
+            }
+
+            if ($("#contactoquimicos").prop("checked")) {
+                var contactoquimicos = 'SI'
+            } else {
+                var contactoquimicos = 'NO'
+            }
+
+            if ($("#quemaduras").prop("checked")) {
+                var quemaduras = 'SI'
+            } else {
+                var quemaduras = 'NO'
+            }
+
+            if ($("#indicadorimpactado").prop("checked")) {
+                var indicadorimpactado = 'SI'
+            } else {
+                var indicadorimpactado = 'NO'
+            }
+
+            criterios.push({
+                'oxidometal': oxidometal,
+                'argollasimpactadas': argollasimpactadas,
+                'rupturapastas': rupturapastas,
+                'corrometal': corrometal,
+                'riatasimpactadas': riatasimpactadas,
+                'hebillasimpactadas': hebillasimpactadas,
+                'contactoquimicos': contactoquimicos,
+                'quemaduras': quemaduras,
+                'indicadorimpactado': indicadorimpactado
+            });
+
+            var observaciones = $('#obs').val()
+
+            var formData = new FormData();
+
+            var file = $('#file')[0].files[0];
+
+            formData.append('foto', file);
+            formData.append('evaluador', evaluador);
+            formData.append('elemento', elemento);
+            formData.append('marca', marca);
+            formData.append('serial', serial);
+            formData.append('fechainsp', fechainsp);
+            formData.append('fechafab', fechafab);
+            formData.append('numprecant', numprecant);
+            formData.append('numprecact', numprecact);
+            formData.append('colorprec', colorprec);
+            formData.append('estado', estado);
+            formData.append('mantenimiento', mantenimiento);
+            formData.append('componentes', JSON.stringify(componentes));
+            formData.append('criterios', JSON.stringify(criterios));
+            formData.append('observaciones', observaciones);
+
+
+            $.ajax({
+                url: server + 'guardarInsp.php',
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.msn == 'Ok') {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Inspección registrada correctamente...',
+                            showConfirmButton: true
+                        }).then(() => {
+                            location = './'
+                        })
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'warning',
+                            title: 'Opss',
+                            text: response.msn,
+                            showConfirmButton: true
+                        }).then(() => {
+                            console.log(response.msn)
+                        })
+                    }
+                }
+            })
+        }
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Guardando Evaluación!',
+                html: 'Un momento por favor...',
+                timer: 25000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+        }
+
+
+
+        document.getElementById("file").onchange = function(e) {
+            // Creamos el objeto de la clase FileReader
+            let reader = new FileReader();
+
+            // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+            reader.readAsDataURL(e.target.files[0]);
+
+            // Le decimos que cuando este listo ejecute el código interno
+            reader.onload = function() {
+                let preview = document.getElementById('preview'),
+                    image = document.createElement('img');
+
+                image.src = reader.result;
+
+                preview.innerHTML = '';
+                preview.append(image);
+            };
+        }
+    </script>
+</body>
+
+</html>
