@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>INVENTARIO TIPOLOGICO MBTI - UT ITALCO</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
+
+    <style>
+        body {
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .cab {
+            margin: 0 auto;
+
+            background-color: rgb(17, 79, 138);
+            padding: 30px;
+            padding-left: 150px;
+            padding-right: 150px;
+            color: white;
+
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="cab">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>INVENTARIO TIPOLOGICO MBTI - UT ITALCO
+
+                </h3>
+            </div>
+            <div class="col-sm-6" style="text-align: right;">
+                <img src="img/logo_m.png" width="150px" alt="">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container mt-4" style="width: 70%;">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="mb-3">
+                    <img src="img/mbti.jpg" width="300px" alt="">
+                </div>
+
+                <h4>INSTRUCCIONES</h4>
+                <p style="text-align: justify;">
+                    Para estas preguntas no existen respuestas “buenas” o “malas”. Sus respuestas le ayudan a mostrar cómo usted prefiere ver las cosas y de qué manera prefiere tomar decisiones. El conocer sus preferencias y el aprender acerca de otras personas pueden ayudarle a usted a conocer dónde están sus principales fortalezas, qué tipo de trabajo podrá desempeñar y llevar a cabo con éxito y cómo personas con diferentes gustos pueden interactuar entre sí y ser valiosas para nuestra organización. <br> <br>
+
+Lea cada pregunta cuidadosamente,  tratando de no emplear mucho tiempo en decidir y marcar la respuesta que más se ajuste a su preferencia.. Si usted no puede decidirse con respecto a una pregunta, trata de identificar aquella que más se aproxime a su forma de pensar, sentir o actuar. <br> <br>
+
+Lea las instrucciones en cada una de las partes y complete todas las respuestas para poder pasar a la siguiente. Recuerde, debe elegir solo una opción de respuesta. <br><br>
+
+Deseamos éxitos y recuerde que de la sinceridad de tu respuesta, será el perfil real de tu personalidad.
+
+                </p>
+            </div>
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-header">
+                        Ingreso
+                    </div>
+                    <div class="card-body">
+                        Nombre
+                        <input type="text" id="nombre" class="form-control mb-2" placeholder="Nombre" >
+                        Fecha Nacimiento
+                        <input type="date" id="fechan" class="form-control mb-2" placeholder="Fecha Nacimiento">
+                        Edad
+                        <input type="number" id="edad" class="form-control mb-2" placeholder="Edad">
+                        Cédula
+                        <input type="text" id="doc" class="form-control mb-2" placeholder="Cédula" readonly>
+                        Cargo al que aspira
+                        <input type="text" id="cargo" class="form-control mb-2" placeholder="Cargo" >
+                        Fecha Aplicación
+                        <input type="date" id="fechaa" class="form-control mb-2" placeholder="Fecha Aplicación">
+
+                        <div class="row">
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-6" style="text-align: right;">
+                                <button class="btn btn-success" onclick="iniciar()">Iniciar prueba</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="index_v1.js"></script>
+    
+</body>
+
+</html>

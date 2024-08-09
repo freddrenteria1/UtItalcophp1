@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UT ITALCO</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+  <script src="weldbook/jquery.min.js"></script>
+  <script src="weldbook/jquery-ui.min.js"></script>
+  <script src="weldbook/jquery.jqGrid.min.js"></script>
+  <script src="weldbook/grid.locale-en.js"></script>
+  <link rel="stylesheet" href="weldbook/jquery-ui.css" />
+  <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+  <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+    rel="stylesheet" />
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+  
+
+    <style>
+        .highcharts-color-0 {
+            fill: #7cb5ec;
+            
+        }
+
+        .highcharts-color-2 {
+            fill: #9a9a9c;
+             
+        }
+
+        .highcharts-color-1 {
+            fill: #90ed7d;
+            
+        }
+
+        .highcharts-color-3 {
+            fill: #f7a35c;
+            
+        }
+
+        .highcharts-color-4 {
+            fill: #8085e9;
+             
+        }
+
+        .highcharts-color-5 {
+            fill: #f15c80;
+            
+        }
+
+        /* Series options */
+
+        #container {
+            height: 400px;
+        }
+
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 310px;
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
+
+  <style>
+    body {
+      background-image: url("img/fondo.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      height: 100hv;
+      font-family: "Montserrat Alternates", sans-serif;
+      font-family: "Roboto", sans-serif;
+      font-weight: normal;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: -9999;
+    }
+
+    .cab {
+      margin-top: 30px;
+      background-color: rgb(218, 255, 255);
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .titulop {
+      padding: 15px;
+      padding-top: 20px;
+      align-items: center;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .mnubotones {
+      position: relative;
+    }
+
+    .cajones {
+      float: left;
+      margin: 10px;
+    }
+
+    .mbt {
+      height: 100px;
+    }
+
+    .card {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      width: 21rem;
+    }
+
+    .cuerpo {
+      position: relative;
+      margin-top: 20px;
+      border-radius: 10px;
+      background-color: rgb(243, 243, 243);
+      padding: 15px;
+    }
+
+    .padre {
+      display: flex;
+      align-items: center;
+    }
+
+    .micontainer {
+      margin: 0 auto;
+      width: 97%;
+    }
+
+    table thead td {
+      vertical-align: middle;
+    }
+
+    th.ui-th-column {
+      border-width: 1px;
+      border-style: solid;
+      border-color: #b1b1b1;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .mnubotones {
+        margin-top: 30px;
+        display: block;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        width: 100%;
+      }
+    }
+  </style>
+
+   
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <h5>CUADRO DE CONTROL PUNTOS DE INSPECCIÓN ODS 032 U4360</h5>
+      </div>
+    </div>
+  </nav>
+  <div class="micontainer">
+    <div class="cuerpo">
+      <div class="row">
+        <div class="col-sm-12">
+          Última actualización: <span id="fecha"> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="micontainer">
+    <div class="cuerpo">
+      <div class="">
+        <table class="table table-striped" id="grid1b"></table>
+      </div>
+
+      <div class="mt-3">
+        <table class="table table-striped" id="grid1b2"></table>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-12">
+          <div id="fig1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js">
+  </script>
+
+  <script>
+    var odsq = null;
+    var datos = [];
+    var url = "https://utitalco.com/calidad/032/weldbook/server/";
+
+    var user = sessionStorage.getItem("usercal");
+    var tipouser = sessionStorage.getItem("tipouser");
+
+    var ventana_ancho = $(window).width();
+    var ventana_alto = $(window).height();
+
+    if (ventana_ancho < 1300) {
+      ventana_ancho = ventana_ancho - 70;
+    } else {
+      ventana_ancho = ventana_ancho - 100;
+    }
+    ventana_alto = ventana_alto - 220;
+
+    cargarDatos();
+
+    function cargando() {
+      let timerInterval;
+      Swal.fire({
+        title: "Cargando formato...!",
+        timer: 120000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+          const b = Swal.getHtmlContainer().querySelector("b");
+          timerInterval = setInterval(() => {
+            // b.textContent = Swal.getTimerLeft()
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        },
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("I was closed by the timer");
+        }
+      });
+    }
+
+    function cargandoPag() {
+      let timerInterval;
+      Swal.fire({
+        title: "Procesando datos...!",
+        timer: 120000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+          const b = Swal.getHtmlContainer().querySelector("b");
+          timerInterval = setInterval(() => {
+            // b.textContent = Swal.getTimerLeft()
+          }, 100);
+        },
+        willClose: () => {
+          clearInterval(timerInterval);
+        },
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("I was closed by the timer");
+        }
+      });
+    }
+
+    function cargar() {
+      cargando();
+
+      var formData = new FormData();
+      var files = $("#excel")[0].files[0];
+      formData.append("excel", files);
+      formData.append("user", user);
+
+      $.ajax({
+        url: url + "guardarExcelCCPuntos.php",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log(response);
+
+          if (response.msn == "Realizado...") {
+            Swal.fire({
+              icon: "success",
+              title: "Cargado...",
+              text: "Excel cargado correctamente...!",
+              showConfirmButton: false,
+              timer: 3000,
+            }).then(() => {
+              location.reload();
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Formato de archivo incorrecto...!",
+            });
+          }
+        },
+      });
+    }
+
+    function cargarDatos() {
+      cargandoPag();
+
+      $.post(url + "cargarDatosCCPuntos.php", function (resp) {
+        datos = resp;
+
+        console.log(datos);
+
+        $("#grid1b").jqGrid({
+          datatype: "local",
+          regional: "es", // this is default
+          data: datos,
+          colModel: [{
+              name: "lazo",
+              label: "LAZO CORROSIÓN",
+              width: 120,
+            },
+            {
+              name: "isometrico",
+              label: "ISOMETRICO",
+              width: 90,
+            },
+            {
+              name: "cml",
+              label: "CML",
+              width: 50,
+              align: "center",
+            },
+            {
+              name: "accesorio",
+              label: "Accesorio",
+              width: 120,
+            },
+            {
+              name: "armandamio",
+              label: "Armado de <br> Andamio",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "retaislamiento",
+              label: "Retiro de <br> aislamiento",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "limpieza",
+              label: "Limpieza",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "insputesp",
+              label: "Inspección UT <br> espesores",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "rtpostinsp",
+              label: "RT Post <br> Inspección",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "ejert",
+              label: "Ejecución <br>RT",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "vobocie",
+              label: "VoVo CIE",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "pintura",
+              label: "Pintura",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "aislamiento",
+              label: "Aislamiento",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "desarmandamio",
+              label: "Desarmado <br> Andamio",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "rx",
+              label: "RX",
+              width: 80,
+              align: "center",
+            },
+            {
+              name: "regcontrol",
+              label: "Registro de control <br> de actividad",
+              width: 80,
+              align: "center",
+            },
+            
+            {
+              name: "observaciones",
+              label: "OBSERVACIONES",
+              width: 300,
+            },
+          ],
+          loadonce: true,
+          shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+          width: ventana_ancho,
+          height: 300,
+          rowNum: 1000,
+          pager: "#jqGridPager",
+        });
+
+        $("#grid1b").jqGrid("filterToolbar", {
+          autoSearch: true,
+          searchOnEnter: false,
+        });
+
+        cargarBitacora();
+      });
+    }
+
+    function cargarBitacora() {
+      $.post(url + "cargarBitacoraCCPuntos.php", function (resp) {
+        datos = resp;
+
+        Swal.close();
+
+        $("#fecha").html(datos.fecha);
+
+        $.post(url + "repCCPuntos.php", function (resp) {
+          datos = resp;
+
+          $("#grid1b2").jqGrid({
+            datatype: "local",
+            regional: "es", // this is default
+            data: datos,
+            colModel: [{
+                name: "lazo",
+                label: "LAZO CORROSIÓN",
+                width: 120,
+              },
+              {
+                name: "isometrico",
+                label: "ISOMETRICO",
+                width: 90,
+              },
+              {
+                name: "cmls",
+                label: "CML'S",
+                width: 50,
+                align: "center",
+              },
+
+              // {
+              //   name: "armandamioprog",
+              //   label: "TOT",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+              // {
+              //   name: "armandamioeje",
+              //   label: "EJE",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+              // {
+              //   name: "aarmandamio",
+              //   label: "AVANCE",
+              //   width: 50,
+              //   align: "center",
+              //   formatoptions: {
+              //     suffix: " %",
+              //   },
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: function (value, name, record) {
+              //     // initialize the value object
+              //     if (typeof value === "string") {
+              //       value = {
+              //         totalAmount: 0,
+              //         totalTax: 0,
+              //       };
+              //     }
+              //     // perform summary
+              //     if (record["armandamioprog"]) {
+              //       value.totalAmount += parseFloat(record["armandamioprog"]);
+              //     }
+              //     if (record["armandamioeje"]) {
+              //       value.totalTax += parseFloat(record["armandamioeje"]);
+              //     }
+              //     return value;
+              //   },
+              //   formatter: function (cellval, opts, rwdat, act) {
+              //     // get the regional options and pass it to the custom formatter
+              //     opts = $.extend(
+              //       {},
+              //       $.jgrid.getRegional(this, "formatter"),
+              //       opts
+              //     );
+              //     // determine if we are in summary row to put the value
+              //     if (opts.rowId === "") {
+              //       if (cellval.totalAmount !== 0) {
+              //         var val =
+              //           (cellval.totalTax / cellval.totalAmount) * 100;
+              //         return $.fn.fmatter("number", val, opts, rwdat, act);
+              //       } else {
+              //         return "0";
+              //       }
+              //     } else {
+              //       return $.fn.fmatter("number", cellval, opts, rwdat, act);
+              //     }
+              //   },
+              // },
+
+              // {
+              //   name: "retaislamientoprog",
+              //   label: "TOT",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+              // {
+              //   name: "retaislamientoeje",
+              //   label: "EJE",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+
+              // {
+              //   name: "aretaislamiento",
+              //   label: "AVANCE",
+              //   width: 50,
+              //   align: "center",
+              //   formatoptions: {
+              //     suffix: " %",
+              //   },
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: function (value, name, record) {
+              //     // initialize the value object
+              //     if (typeof value === "string") {
+              //       value = {
+              //         totalAmount: 0,
+              //         totalTax: 0,
+              //       };
+              //     }
+              //     // perform summary
+              //     if (record["retaislamientoprog"]) {
+              //       value.totalAmount += parseFloat(
+              //         record["retaislamientoprog"]
+              //       );
+              //     }
+              //     if (record["retaislamientoeje"]) {
+              //       value.totalTax += parseFloat(record["retaislamientoeje"]);
+              //     }
+              //     return value;
+              //   },
+              //   formatter: function (cellval, opts, rwdat, act) {
+              //     // get the regional options and pass it to the custom formatter
+              //     opts = $.extend(
+              //       {},
+              //       $.jgrid.getRegional(this, "formatter"),
+              //       opts
+              //     );
+              //     // determine if we are in summary row to put the value
+              //     if (opts.rowId === "") {
+              //       if (cellval.totalAmount !== 0) {
+              //         var val =
+              //           (cellval.totalTax / cellval.totalAmount) * 100;
+              //         return $.fn.fmatter("number", val, opts, rwdat, act);
+              //       } else {
+              //         return "0";
+              //       }
+              //     } else {
+              //       return $.fn.fmatter("number", cellval, opts, rwdat, act);
+              //     }
+              //   },
+              // },
+
+              {
+                name: "limpiezaprog",
+                label: "TOT",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+              {
+                name: "limpiezaeje",
+                label: "EJE",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+
+              {
+                name: "alimpieza",
+                label: "AVANCE",
+                width: 50,
+                align: "center",
+                formatoptions: {
+                  suffix: " %",
+                },
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: function (value, name, record) {
+                  // initialize the value object
+                  if (typeof value === "string") {
+                    value = {
+                      totalAmount: 0,
+                      totalTax: 0,
+                    };
+                  }
+                  // perform summary
+                  if (record["limpiezaprog"]) {
+                    value.totalAmount += parseFloat(record["limpiezaprog"]);
+                  }
+                  if (record["limpiezaeje"]) {
+                    value.totalTax += parseFloat(record["limpiezaeje"]);
+                  }
+                  return value;
+                },
+                formatter: function (cellval, opts, rwdat, act) {
+                  // get the regional options and pass it to the custom formatter
+                  opts = $.extend({},
+                    $.jgrid.getRegional(this, "formatter"),
+                    opts
+                  );
+                  // determine if we are in summary row to put the value
+                  if (opts.rowId === "") {
+                    if (cellval.totalAmount !== 0) {
+                      var val =
+                        (cellval.totalTax / cellval.totalAmount) * 100;
+                      return $.fn.fmatter("number", val, opts, rwdat, act);
+                    } else {
+                      return "0";
+                    }
+                  } else {
+                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                  }
+                },
+              },
+
+              {
+                name: "insputespprog",
+                label: "TOT",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+              {
+                name: "insputespeje",
+                label: "EJE",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+
+              {
+                name: "ainsputesp",
+                label: "AVANCE",
+                width: 50,
+                align: "center",
+                formatoptions: {
+                  suffix: " %",
+                },
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: function (value, name, record) {
+                  // initialize the value object
+                  if (typeof value === "string") {
+                    value = {
+                      totalAmount: 0,
+                      totalTax: 0,
+                    };
+                  }
+                  // perform summary
+                  if (record["insputespprog"]) {
+                    value.totalAmount += parseFloat(record["insputespprog"]);
+                  }
+                  if (record["insputespeje"]) {
+                    value.totalTax += parseFloat(record["insputespeje"]);
+                  }
+                  return value;
+                },
+                formatter: function (cellval, opts, rwdat, act) {
+                  // get the regional options and pass it to the custom formatter
+                  opts = $.extend({},
+                    $.jgrid.getRegional(this, "formatter"),
+                    opts
+                  );
+                  // determine if we are in summary row to put the value
+                  if (opts.rowId === "") {
+                    if (cellval.totalAmount !== 0) {
+                      var val =
+                        (cellval.totalTax / cellval.totalAmount) * 100;
+                      return $.fn.fmatter("number", val, opts, rwdat, act);
+                    } else {
+                      return "0";
+                    }
+                  } else {
+                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                  }
+                },
+              },
+
+              {
+                name: "rtpostinspprog",
+                label: "TOT",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+              {
+                name: "rtpostinspeje",
+                label: "EJE",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+
+              {
+                name: "artpostinsp",
+                label: "AVANCE",
+                width: 50,
+                align: "center",
+                formatoptions: {
+                  suffix: " %",
+                },
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: function (value, name, record) {
+                  // initialize the value object
+                  if (typeof value === "string") {
+                    value = {
+                      totalAmount: 0,
+                      totalTax: 0,
+                    };
+                  }
+                  // perform summary
+                  if (record["rtpostinspprog"]) {
+                    value.totalAmount += parseFloat(record["rtpostinspprog"]);
+                  }
+                  if (record["rtpostinspeje"]) {
+                    value.totalTax += parseFloat(record["rtpostinspeje"]);
+                  }
+                  return value;
+                },
+                formatter: function (cellval, opts, rwdat, act) {
+                  // get the regional options and pass it to the custom formatter
+                  opts = $.extend({},
+                    $.jgrid.getRegional(this, "formatter"),
+                    opts
+                  );
+                  // determine if we are in summary row to put the value
+                  if (opts.rowId === "") {
+                    if (cellval.totalAmount !== 0) {
+                      var val =
+                        (cellval.totalTax / cellval.totalAmount) * 100;
+                      return $.fn.fmatter("number", val, opts, rwdat, act);
+                    } else {
+                      return "0";
+                    }
+                  } else {
+                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                  }
+                },
+              },
+
+              {
+                name: "ejertprog",
+                label: "TOT",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+              {
+                name: "ejerteje",
+                label: "EJE",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+
+              {
+                name: "aejert",
+                label: "AVANCE",
+                width: 50,
+                align: "center",
+                formatoptions: {
+                  suffix: " %",
+                },
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: function (value, name, record) {
+                  // initialize the value object
+                  if (typeof value === "string") {
+                    value = {
+                      totalAmount: 0,
+                      totalTax: 0,
+                    };
+                  }
+                  // perform summary
+                  if (record["ejertprog"]) {
+                    value.totalAmount += parseFloat(record["ejertprog"]);
+                  }
+                  if (record["ejerteje"]) {
+                    value.totalTax += parseFloat(record["ejerteje"]);
+                  }
+                  return value;
+                },
+                formatter: function (cellval, opts, rwdat, act) {
+                  // get the regional options and pass it to the custom formatter
+                  opts = $.extend({},
+                    $.jgrid.getRegional(this, "formatter"),
+                    opts
+                  );
+                  // determine if we are in summary row to put the value
+                  if (opts.rowId === "") {
+                    if (cellval.totalAmount !== 0) {
+                      var val =
+                        (cellval.totalTax / cellval.totalAmount) * 100;
+                      return $.fn.fmatter("number", val, opts, rwdat, act);
+                    } else {
+                      return "0";
+                    }
+                  } else {
+                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                  }
+                },
+              },
+
+              {
+                name: "vobocieprog",
+                label: "TOT",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+              {
+                name: "vobocieeje",
+                label: "EJE",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+
+              {
+                name: "avobocie",
+                label: "AVANCE",
+                width: 50,
+                align: "center",
+                formatoptions: {
+                  suffix: " %",
+                },
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: function (value, name, record) {
+                  // initialize the value object
+                  if (typeof value === "string") {
+                    value = {
+                      totalAmount: 0,
+                      totalTax: 0,
+                    };
+                  }
+                  // perform summary
+                  if (record["vobocieprog"]) {
+                    value.totalAmount += parseFloat(record["vobocieprog"]);
+                  }
+                  if (record["vobocieeje"]) {
+                    value.totalTax += parseFloat(record["vobocieeje"]);
+                  }
+                  return value;
+                },
+                formatter: function (cellval, opts, rwdat, act) {
+                  // get the regional options and pass it to the custom formatter
+                  opts = $.extend({},
+                    $.jgrid.getRegional(this, "formatter"),
+                    opts
+                  );
+                  // determine if we are in summary row to put the value
+                  if (opts.rowId === "") {
+                    if (cellval.totalAmount !== 0) {
+                      var val =
+                        (cellval.totalTax / cellval.totalAmount) * 100;
+                      return $.fn.fmatter("number", val, opts, rwdat, act);
+                    } else {
+                      return "0";
+                    }
+                  } else {
+                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                  }
+                },
+              },
+
+              {
+                name: "pinturaprog",
+                label: "TOT",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+              {
+                name: "pinturaeje",
+                label: "EJE",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+
+              {
+                name: "apintura",
+                label: "AVANCE",
+                width: 50,
+                align: "center",
+                formatoptions: {
+                  suffix: " %",
+                },
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: function (value, name, record) {
+                  // initialize the value object
+                  if (typeof value === "string") {
+                    value = {
+                      totalAmount: 0,
+                      totalTax: 0,
+                    };
+                  }
+                  // perform summary
+                  if (record["pinturaprog"]) {
+                    value.totalAmount += parseFloat(record["pinturaprog"]);
+                  }
+                  if (record["pinturaeje"]) {
+                    value.totalTax += parseFloat(record["pinturaeje"]);
+                  }
+                  return value;
+                },
+                formatter: function (cellval, opts, rwdat, act) {
+                  // get the regional options and pass it to the custom formatter
+                  opts = $.extend({},
+                    $.jgrid.getRegional(this, "formatter"),
+                    opts
+                  );
+                  // determine if we are in summary row to put the value
+                  if (opts.rowId === "") {
+                    if (cellval.totalAmount !== 0) {
+                      var val =
+                        (cellval.totalTax / cellval.totalAmount) * 100;
+                      return $.fn.fmatter("number", val, opts, rwdat, act);
+                    } else {
+                      return "0";
+                    }
+                  } else {
+                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                  }
+                },
+              },
+
+              {
+                name: "aislamientoprog",
+                label: "TOT",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+              {
+                name: "aislamientoeje",
+                label: "EJE",
+                width: 50,
+                align: "center",
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: "sum",
+              },
+
+              {
+                name: "aaislamiento",
+                label: "AVANCE",
+                width: 50,
+                align: "center",
+                formatoptions: {
+                  suffix: " %",
+                },
+                summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                summaryType: function (value, name, record) {
+                  // initialize the value object
+                  if (typeof value === "string") {
+                    value = {
+                      totalAmount: 0,
+                      totalTax: 0,
+                    };
+                  }
+                  // perform summary
+                  if (record["aislamientoprog"]) {
+                    value.totalAmount += parseFloat(
+                      record["aislamientoprog"]
+                    );
+                  }
+                  if (record["aislamientoeje"]) {
+                    value.totalTax += parseFloat(record["aislamientoeje"]);
+                  }
+                  return value;
+                },
+                formatter: function (cellval, opts, rwdat, act) {
+                  // get the regional options and pass it to the custom formatter
+                  opts = $.extend({},
+                    $.jgrid.getRegional(this, "formatter"),
+                    opts
+                  );
+                  // determine if we are in summary row to put the value
+                  if (opts.rowId === "") {
+                    if (cellval.totalAmount !== 0) {
+                      var val =
+                        (cellval.totalTax / cellval.totalAmount) * 100;
+                      return $.fn.fmatter("number", val, opts, rwdat, act);
+                    } else {
+                      return "0";
+                    }
+                  } else {
+                    return $.fn.fmatter("number", cellval, opts, rwdat, act);
+                  }
+                },
+              },
+
+              // {
+              //   name: "desarmandamioprog",
+              //   label: "TOT",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+              // {
+              //   name: "desarmandamioeje",
+              //   label: "EJE",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+
+              // {
+              //   name: "adesarmandamio",
+              //   label: "AVANCE",
+              //   width: 50,
+              //   align: "center",
+              //   formatoptions: {
+              //     suffix: " %",
+              //   },
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: function (value, name, record) {
+              //     // initialize the value object
+              //     if (typeof value === "string") {
+              //       value = {
+              //         totalAmount: 0,
+              //         totalTax: 0,
+              //       };
+              //     }
+              //     // perform summary
+              //     if (record["desarmandamioprog"]) {
+              //       value.totalAmount += parseFloat(
+              //         record["desarmandamioprog"]
+              //       );
+              //     }
+              //     if (record["desarmandamioeje"]) {
+              //       value.totalTax += parseFloat(record["desarmandamioeje"]);
+              //     }
+              //     return value;
+              //   },
+              //   formatter: function (cellval, opts, rwdat, act) {
+              //     // get the regional options and pass it to the custom formatter
+              //     opts = $.extend(
+              //       {},
+              //       $.jgrid.getRegional(this, "formatter"),
+              //       opts
+              //     );
+              //     // determine if we are in summary row to put the value
+              //     if (opts.rowId === "") {
+              //       if (cellval.totalAmount !== 0) {
+              //         var val =
+              //           (cellval.totalTax / cellval.totalAmount) * 100;
+              //         return $.fn.fmatter("number", val, opts, rwdat, act);
+              //       } else {
+              //         return "0";
+              //       }
+              //     } else {
+              //       return $.fn.fmatter("number", cellval, opts, rwdat, act);
+              //     }
+              //   },
+              // },
+
+              // {
+              //   name: "regcontrolprog",
+              //   label: "TOT",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+              // {
+              //   name: "regcontroleje",
+              //   label: "EJE",
+              //   width: 50,
+              //   align: "center",
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: "sum",
+              // },
+
+              // {
+              //   name: "aregcontrol",
+              //   label: "AVANCE",
+              //   width: 50,
+              //   align: "center",
+              //   formatoptions: {
+              //     suffix: " %",
+              //   },
+              //   summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+              //   summaryType: function (value, name, record) {
+              //     // initialize the value object
+              //     if (typeof value === "string") {
+              //       value = {
+              //         totalAmount: 0,
+              //         totalTax: 0,
+              //       };
+              //     }
+              //     // perform summary
+              //     if (record["regcontrolprog"]) {
+              //       value.totalAmount += parseFloat(record["regcontrolprog"]);
+              //     }
+              //     if (record["regcontroleje"]) {
+              //       value.totalTax += parseFloat(record["regcontroleje"]);
+              //     }
+              //     return value;
+              //   },
+              //   formatter: function (cellval, opts, rwdat, act) {
+              //     // get the regional options and pass it to the custom formatter
+              //     opts = $.extend(
+              //       {},
+              //       $.jgrid.getRegional(this, "formatter"),
+              //       opts
+              //     );
+              //     // determine if we are in summary row to put the value
+              //     if (opts.rowId === "") {
+              //       if (cellval.totalAmount !== 0) {
+              //         var val =
+              //           (cellval.totalTax / cellval.totalAmount) * 100;
+              //         return $.fn.fmatter("number", val, opts, rwdat, act);
+              //       } else {
+              //         return "0";
+              //       }
+              //     } else {
+              //       return $.fn.fmatter("number", cellval, opts, rwdat, act);
+              //     }
+              //   },
+              // },
+            ],
+            loadonce: true,
+            shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+            width: ventana_ancho,
+            height: 300,
+            rowNum: 1000,
+            pager: "#jqGridPager",
+
+            
+
+            grouping: true,
+            groupingView: {
+              groupField: ["lazo"],
+              groupColumnShow: [true],
+              groupText: ["<b>{0}</b>"],
+              groupOrder: ["asc"],
+              groupSummary: [true],
+              groupSummaryPos: ["header"],
+              groupCollapse: true,
+            },
+          });
+
+          $("#grid1b2").jqGrid("setGroupHeaders", {
+            useColSpanStyle: true,
+            groupHeaders: [
+              // {
+              //   startColumnName: "armandamioprog",
+              //   numberOfColumns: 3,
+              //   titleText: "ARMADO <br> ANDAMIOS",
+              // },
+              // {
+              //   startColumnName: "retaislamientoprog",
+              //   numberOfColumns: 3,
+              //   titleText: "RETIRO DE <br> AISLAMIENTO",
+              // },
+              {
+                startColumnName: "limpiezaprog",
+                numberOfColumns: 3,
+                titleText: "LIMPIEZA",
+              },
+              {
+                startColumnName: "insputespprog",
+                numberOfColumns: 3,
+                titleText: "INSPECCIÓN <br> CIE",
+              },
+              {
+                startColumnName: "rtpostinspprog",
+                numberOfColumns: 3,
+                titleText: "EMISIÓN RT <br> POST <br>INSPECCIÓN",
+              },
+              {
+                startColumnName: "ejertprog",
+                numberOfColumns: 3,
+                titleText: "EJECUCIÓN <br> RECOMENDA.",
+              },
+              {
+                startColumnName: "vobocieprog",
+                numberOfColumns: 3,
+                titleText: "VoBo CIE",
+              },
+              {
+                startColumnName: "pinturaprog",
+                numberOfColumns: 3,
+                titleText: "PINTURA",
+              },
+              {
+                startColumnName: "aislamientoprog",
+                numberOfColumns: 3,
+                titleText: "AISLAMIENTO",
+              },
+              // {
+              //   startColumnName: "desarmandamioprog",
+              //   numberOfColumns: 3,
+              //   titleText: "DESARMADO <br> ANDAMIOS",
+              // },
+              // {
+              //   startColumnName: "regcontrolprog",
+              //   numberOfColumns: 3,
+              //   titleText: "REG CONTROL <br> ACTIVIDAD",
+              // },
+            ],
+          });
+
+          // $("#grid1b2").jqGrid('filterToolbar',
+          // {autoSearch: true, searchOnEnter: false,});
+
+          cargarGraficas();
+        });
+      });
+    }
+
+    function cargarGraficas() {
+      armandamioprog = 0;
+      armandamioeje = 0;
+
+      retaislamientoprog = 0;
+      retaislamientoeje = 0;
+
+      limpiezaprog = 0;
+      limpiezaeje = 0;
+
+      insputespprog = 0;
+      insputespeje = 0;
+
+      rtpostinspprog = 0;
+      rtpostinspeje = 0;
+
+      ejertprog = 0;
+      ejerteje = 0;
+
+      vobocieprog = 0;
+      vobocieeje = 0;
+
+      pinturaprog = 0;
+      pinturaeje = 0;
+
+      aislamientoprog = 0;
+      aislamientoeje = 0;
+
+      desarmandamioprog = 0;
+      desarmandamioeje = 0;
+
+      regcontrolprog = 0;
+      regcontroleje = 0;
+
+      for (var i = 0; i < datos.length; i++) {
+        armandamioprog += datos[i].armandamioprog;
+        armandamioeje += datos[i].armandamioeje;
+
+        retaislamientoprog += datos[i].retaislamientoprog;
+        retaislamientoeje += datos[i].retaislamientoeje;
+
+        limpiezaprog += datos[i].limpiezaprog;
+        limpiezaeje += datos[i].limpiezaeje;
+
+        insputespprog += datos[i].insputespprog;
+        insputespeje += datos[i].insputespeje;
+
+        rtpostinspprog += datos[i].rtpostinspprog;
+        rtpostinspeje += datos[i].rtpostinspeje;
+
+        ejertprog += datos[i].ejertprog;
+        ejerteje += datos[i].ejerteje;
+
+        vobocieprog += datos[i].vobocieprog;
+        vobocieeje += datos[i].vobocieeje;
+
+        pinturaprog += datos[i].pinturaprog;
+        pinturaeje += datos[i].pinturaeje;
+
+        aislamientoprog += datos[i].aislamientoprog;
+        aislamientoeje += datos[i].aislamientoeje;
+
+        desarmandamioprog += datos[i].desarmandamioprog;
+        desarmandamioeje += datos[i].desarmandamioeje;
+
+        regcontrolprog += datos[i].regcontrolprog;
+        regcontroleje += datos[i].regcontroleje;
+      }
+
+      Highcharts.chart("fig1", {
+        credits: {
+          enabled: false,
+        },
+        chart: {
+          type: "column",
+          
+          // options3d: {
+          //     enabled: true,
+          //     alpha: 15,
+          //     beta: 15,
+          //     viewDistance: 25,
+          //     depth: 40
+          // }
+        },
+        title: {
+          text: "<b>AVANCE PUNTOS DE INSPECCIÓN</b>",
+        },
+
+        xAxis: {
+          categories: [
+            "LIMPIEZA",
+            "INSPECCIÓN CIE",
+            "EMISIÓN RT POST INSP.",
+            "EJECUCIÓN RECOMENDA.",
+            "VoBo CIE",
+            "PINTURA",
+            "AISLAMIENTO",
+          ],
+          crosshair: true,
+        },
+
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Cant",
+          },
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+            dataLabels: {
+              enabled: true,
+            },
+          },
+        },
+        series: [{
+            name: "TOTALES",
+            data: [
+              limpiezaprog,
+              insputespprog,
+              rtpostinspprog,
+              ejertprog,
+              vobocieprog,
+              pinturaprog,
+              aislamientoprog,
+            ],
+          },
+          {
+            name: "EJECUTADAS",
+            data: [
+              limpiezaeje,
+              insputespeje,
+              rtpostinspeje,
+              ejerteje,
+              vobocieeje,
+              pinturaeje,
+              aislamientoeje,
+            ],
+          },
+        ],
+      });
+
+      // Highcharts.chart("fig1", {
+      //   credits: {
+      //     enabled: false,
+      //   },
+      //   chart: {
+      //     type: "column",
+      //     
+      //     // options3d: {
+      //     //     enabled: true,
+      //     //     alpha: 15,
+      //     //     beta: 15,
+      //     //     viewDistance: 25,
+      //     //     depth: 40
+      //     // }
+      //   },
+      //   title: {
+      //     text: "<b>AVANCE PUNTOS DE INSPECCIÓN</b>",
+      //   },
+
+      //   xAxis: {
+      //     categories: ["ARMADO ANDAMIOS", "RETIRONO DE AISLAMIENTO", "LIMPIEZA", "INSPECCIÓN CIE", "EMISIÓN RT POST INSP.", "EJECUCIÓN RECOMENDA.", "VoBo CIE", "PINTURA", "AISLAMIENTO", "DESARMADO ANDAMIOS", "REG CONTROL ACTIVIDAD"],
+      //     crosshair: true,
+      //   },
+
+      //   yAxis: {
+      //     min: 0,
+      //     title: {
+      //       text: "Cant",
+      //     },
+      //   },
+      //   tooltip: {
+      //     headerFormat:
+      //       '<span style="font-size:10px">{point.key}</span><table>',
+      //     pointFormat:
+      //       '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+      //       '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+      //     footerFormat: "</table>",
+      //     shared: true,
+      //     useHTML: true,
+      //   },
+      //   plotOptions: {
+      //     column: {
+      //       pointPadding: 0.2,
+      //       borderWidth: 0,
+      //       dataLabels: {
+      //         enabled: true,
+      //       },
+      //     },
+      //   },
+      //   series: [
+      //     {
+      //       name: "TOTALES",
+      //       data: [armandamioprog, retaislamientoprog, limpiezaprog, insputespprog, rtpostinspprog, ejertprog, vobocieprog, pinturaprog, aislamientoprog, desarmandamioprog, regcontrolprog],
+      //     },
+      //     {
+      //       name: "EJECUTADAS",
+      //       data: [armandamioeje, retaislamientoeje, limpiezaeje, insputespeje, rtpostinspeje, ejerteje, vobocieeje, pinturaeje,  aislamientoeje, desarmandamioeje, regcontroleje],
+      //     }
+      //   ],
+      // });
+    }
+  </script>
+</body>
+
+</html>

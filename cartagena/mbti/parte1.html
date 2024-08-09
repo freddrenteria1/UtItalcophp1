@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>INVENTARIO TIPOLOGICO MBTI - UT ITALCO</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <style>
+        body {
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .cab {
+            margin: 0 auto;
+
+            background-color: rgb(17, 79, 138);
+            padding: 30px;
+            padding-left: 150px;
+            padding-right: 150px;
+            color: white;
+
+        }
+
+        .cab2 {
+            margin: 0 auto;
+
+            background-color: rgb(17, 79, 138);
+            padding: 30px;
+            padding-left: 250px;
+            padding-right: 250px;
+            color: white;
+
+        }
+
+        .video-wrap{
+            position: fixed;
+            top: 120px;
+            left: 20px;
+            width: 100px;
+        }
+
+         
+
+        @media (max-width: 468px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+
+            .cab2 {
+                margin: 0 auto;
+
+                background-color: rgb(17, 79, 138);
+                padding: 30px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: white;
+
+            }
+
+            .cab {
+            margin: 0 auto;
+
+                background-color: rgb(17, 79, 138);
+                padding: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                color: white;
+
+            }
+
+            .video-wrap{
+            position: fixed;
+            top: 10px;
+            left: 20px;
+            width: 100px;
+        }
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="cab">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>INVENTARIO TIPOLOGICO MBTI - UT ITALCO
+
+                </h4>
+            </div>
+            <div class="col-sm-6" style="text-align: right;">
+                <img src="img/logo_m.png" width="150px" alt="">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="video-wrap" style="width: 200px;">
+        <video id="video" playsinline autoplay style="width: 200px;"></video>
+    </div>
+
+    <div class="cab2">
+
+        <div class="row" style="width: 100%;">
+            <div class="col-sm-5">
+                <!-- Webcam video snapshot -->
+            <canvas id="canvas" width="300px" height="200px"></canvas>
+            <div class="controller">
+                <button id="snap">Capturar foto</button>
+            </div>
+    
+
+            </div>
+
+            <div class="col-sm-7">
+                <h4>PARTE I: Preguntas 1 - 26</h4>
+        <hr>
+        <p>
+            A continuación encontrará una serie de frases relacionadas con su forma de ser. Elige una
+            ALTERNATIVA que se aproxime más a cómo se siente o se comporta usted generalmente ante la frase
+            planteada. Es importante indicarte que debes elegir una, por tanto marca la que mayormente te
+            represente.
+
+        </p>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container mt-4" style="width: 70%;">
+        <div class="row">
+            
+
+            <div class="col-sm-4 mt-2">
+
+                <p>
+                    1. Cuando vas a algún lugar por el día, prefieres...
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="1" id="1-1" value="J">
+                    <label class="form-check-label" for="1-1">
+                        planear con anticipación que hacer y cuándo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="1" id="1-2" value="P">
+                    <label class="form-check-label" for="1-2">
+                        simplemente ir y luego ver que hacer
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+
+                <p>
+                    2. Te consideras a ti mismo como una persona…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="2" id="2-1" value="P">
+                    <label class="form-check-label" for="2-1">
+                        más del tipo espontánea
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="2" id="2-2" value="J">
+                    <label class="form-check-label" for="2-2">
+                        más del tipo organizada
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+
+                <p>
+                    3. Si fueras profesor, preferirías…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="3" id="3-1" value="S">
+                    <label class="form-check-label" for="3-1">
+                        realizar clases prácticas
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="3" id="3-2" value="N">
+                    <label class="form-check-label" for="3-2">
+                        realizar clases teóricas
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                    4. Usualmente eres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="4" id="4-1" value="E">
+                    <label class="form-check-label" for="4-1">
+                        el alma de la fiesta
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="4" id="4-2"  value="I">
+                    <label class="form-check-label" for="4-2">
+                        quieto y reservado
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                    5. Usualmente te llevas mejor con personas
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="5" id="5-1" value="N">
+                    <label class="form-check-label" for="5-1">
+                        imaginativas
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="5" id="5-2" value="S">
+                    <label class="form-check-label" for="5-2">
+                        realistas
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                    6. Prefieres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="6" id="6-1" value="F">
+                    <label class="form-check-label" for="6-1">
+                        que tu corazón domine tu cabeza
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="6" id="6-2" value="T">
+                    <label class="form-check-label" for="6-2">
+                        que tu cabeza domine tu corazón
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                    7. Prefieres hacer las cosas…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="7" id="7-1" value="F">
+                    <label class="form-check-label" for="7-1">
+                        dependiendo del impulso del momento
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="7" id="7-2" value="J">
+                    <label class="form-check-label" for="7-2">
+                        dependiendo de lo planificado
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                    8. Eres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="8" id="8-1" value="E">
+                    <label class="form-check-label" for="8-1">
+                        una persona fácil de conocer por terceros
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="8" id="8-2" value="I">
+                    <label class="form-check-label" for="8-2">
+                        una persona difÍcil de conocer por terceros
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                    9. Seguir lo agendado…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="9" id="9-1" value="J">
+                    <label class="form-check-label" for="9-1">
+                        te agrada?
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="9" id="9-2" value="P">
+                    <label class="form-check-label" for="9-2">
+                        te limita?
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   10.  Cuando tienes algo especial que hacer, prefieres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="10" id="10-1" value="J">
+                    <label class="form-check-label" for="10-1">
+                        organizarlo cuidadosamente antes de comenzar
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="10" id="10-2" value="P">
+                    <label class="form-check-label" for="10-2">
+                        descubrir qué es lo necesario a medida que vas avanzando
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   11. La mayoría de las veces prefieres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="11" id="11-1" value="P">
+                    <label class="form-check-label" for="11-1">
+                        seguir la corriente
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="11" id="11-2" value="J">
+                    <label class="form-check-label" for="11-2">
+                        seguir lo agendado
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   12.  La mayoría de las personas dirían que tu eres...
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="12" id="12-1" value="I">
+                    <label class="form-check-label" for="12-1">
+                        una persona reservada
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="12" id="12-2" value="E">
+                    <label class="form-check-label" for="12-2">
+                        una persona abierta
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   13. Prefieres ser considerado...
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="13" id="13-1" value="S">
+                    <label class="form-check-label" for="13-1">
+                        como una persona práctica
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="13" id="13-2" value="N">
+                    <label class="form-check-label" for="13-2">
+                        como una persona ingeniosa
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   14. Ante un grupo de personas prefieres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="14" id="14-1" value="E">
+                    <label class="form-check-label" for="14-1">
+                        presentar a los demás
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="14" id="14-2" value="I">
+                    <label class="form-check-label" for="14-2">
+                        ser presentado
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   15. Prefieres tener amigos que…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="15" id="15-1" value="N">
+                    <label class="form-check-label" for="15-1">
+                        siempre tengan nuevas ideas
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="15" id="15-2" value="S">
+                    <label class="form-check-label" for="15-2">
+                        siempre tengan ambos pies sobre la tierra
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   16.  Tiendes a…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="16" id="16-1" value="F">
+                    <label class="form-check-label" for="16-1">
+                        valorar los sentimientos más que lo lógica
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="16" id="16-2" value="T">
+                    <label class="form-check-label" for="16-2">
+                        valorar la lógica más que los sentimientos
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   17. Prefieres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="17" id="17-1" value="P">
+                    <label class="form-check-label" for="17-1">
+                        esperar a ver que pasa y luego hacer planes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="17" id="17-2" value="J">
+                    <label class="form-check-label" for="17-2">
+                        planificar las cosas a medida que van sucediendo
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   18.  Tiendes a gastar tu tiempo…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="18" id="18-1" value="I">
+                    <label class="form-check-label" for="18-1">
+                        en actividades solitarias
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="18" id="18-2" value="E">
+                    <label class="form-check-label" for="18-2">
+                        en actividades con otras personas
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                   19. Encuentras que estar rodeado de personas…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="19" id="19-1" value="E">
+                    <label class="form-check-label" for="19-1">
+                        te dá más energía
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="19" id="19-2" value="I">
+                    <label class="form-check-label" for="19-2">
+                        te absorve energía
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                  20. Prefieres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="20" id="20-1" value="J">
+                    <label class="form-check-label" for="20-1">
+                        organizar las fechas importantes, cumpleaños y fiestas por adelantado
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="20" id="20-2" value="P">
+                    <label class="form-check-label" for="20-2">
+                        ser libre de disponer de tu tiempo
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                  21. Cuando planeas un viaje, prefieres…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="21" id="21-1" value="P">
+                    <label class="form-check-label" for="21-1">
+                        la mayoría del tiempo hacer lo que te parezca en el momento
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="21" id="21-2" value="J">
+                    <label class="form-check-label" for="21-2">
+                        planificar actividades dependiendo de los días con que cuentas
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                  22. En una fiesta…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="22" id="22-1" value="I">
+                    <label class="form-check-label" for="22-1">
+                        a veces te aburres
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="22" id="22-2" value="E">
+                    <label class="form-check-label" for="22-2">
+                        siempre te diviertes
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                  23. Usualmente…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="23" id="23-1" value="E">
+                    <label class="form-check-label" for="23-1">
+                        tiendes a estar con otras personas
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="23" id="23-2" value="I">
+                    <label class="form-check-label" for="23-2">
+                        tiendes a estar solo
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                  24. Te atrae más
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="24" id="24-1" value="N">
+                    <label class="form-check-label" for="24-1">
+                        una persona con mente rápida e inteligente
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="24" id="24-2" value="S">
+                    <label class="form-check-label" for="24-2">
+                        una persona práctica con sentido común
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                  25. En tu rutina laboral…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="25" id="25-1" value="P">
+                    <label class="form-check-label" for="25-1">
+                        te gusta trabajar contra el tiempo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="25" id="25-2" value="J">
+                    <label class="form-check-label" for="25-2">
+                        usualmente planificas tu trabajo, por lo que no es necesario trabajar bajo presión
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+            <div class="col-sm-4 mt-2">
+                <p>
+                  26. Generalmente a otras personas…
+                </p>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="26" id="26-1" value="I">
+                    <label class="form-check-label" for="26-1">
+                        les lleva mucho tiempo conocerte
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="26" id="26-2" value="E">
+                    <label class="form-check-label" for="26-2">
+                        les lleva poco tiempo conocerte
+                    </label>
+                </div>
+                <hr>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="col-sm-12">
+                <center>
+                    <button type="button" class="btn btn-success" onclick="siguiente()">Siguiente</button>
+                </center>
+            </div>
+            <br><br>
+
+
+        </div>
+
+        <!-- Stream video via webcam -->
+        
+
+        <!-- Trigger canvas web API -->
+       
+        
+
+
+    </div>
+
+
+
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="parte1.js"></script>
+
+</body>
+
+</html>

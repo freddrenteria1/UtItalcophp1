@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kpi Consolidado Certificados de alturas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/amstockchart/3.13.0/exporting/canvg.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/stackblur-canvas@2.3.0/dist/stackblur.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/lib/rgbcolor.js"></script>
+
+    <style>
+        .red{
+             
+            color: RED;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="m-5 mt-5" >
+        <h3 class="text-center">CONSOLIDADO CERTIFICADOS DE ALTURA ODS 021</h3>
+        <br>
+        <div id="figalturas"></div>
+
+            <div class="table-responsive">
+
+                <table class="table">
+                    <thead>
+                        <th>Nombres</th>
+                        <th>Documento</th>
+                        <th>Cargo</th>
+                        <th>Vence</th>
+                        <th>Estado</th>
+                    </thead>
+                    <tbody id="tcerti">
+
+                    </tbody>
+                </table>
+
+            </div>
+    </div>
+    
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+        var server = 'https://utitalco.com/server/';
+        var arrayAlturas = []
+
+        cargarAlturas()
+
+        function cargarAlturas(){
+            $.post(server+'cargarAlturas.php',{},
+            function(resp){
+                arrayAlturas = resp
+                var arrayTAlturas = arrayAlturas.personal
+                var html = ''
+                for(var i=0; i<arrayTAlturas.length; i++){
+                    if(arrayTAlturas[i].estado != 'N.A'){
+
+                        if(arrayTAlturas[i].estado == 'VENCIDO'){
+                            var colorcelda = 'red';
+                        }else{
+                            var colorcelda = '';
+                        }
+                        html += `
+                            <tr class="${colorcelda}">
+                                <td> ${arrayTAlturas[i].nombres} </td>
+                                <td> ${arrayTAlturas[i].doc} </td>
+                                <td> ${arrayTAlturas[i].cargo} </td>
+                                <td> ${arrayTAlturas[i].fvence} </td>
+                                <td> ${arrayTAlturas[i].estado} </td>
+                            </tr>
+                        `
+                    }
+                }
+                cargarGraficas()
+                $('#tcerti').html(html)
+            })
+        }
+
+        function cargarGraficas(){
+            Highcharts.chart("figalturas", {
+                colors: [
+                    "#01005e",
+                    "#00c901",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+                credits: {
+                    enabled: false,
+                },
+                chart: {
+                    type: "column",
+                },
+                title: {
+                    text: null,
+                },
+
+                xAxis: {
+                    categories: ['PERSONAL'],
+                    crosshair: true,
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: "Cant ",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true,
+                        },
+                    },
+                },
+                series: [{
+                    name: "VIGENTES",
+                    data: [arrayAlturas.cantvig],
+                }, {
+                    name: "VENCIDOS",
+                    data: [arrayAlturas.cantvencido],
+                }, {
+                    name: "POR VENCER",
+                    data: [arrayAlturas.cantxvencer],
+                },
+                {
+                    name: "NO APLICA",
+                    data: [arrayAlturas.cantna],
+                } ],
+            });
+
+
+        }
+    </script>
+</body>
+</html>

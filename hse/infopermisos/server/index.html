@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLANEACIÓN PERMISOS PARADAS DE PLANTA U2100</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        /* estilos de pagina */
+        
+        .highcharts-axis-labels {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .salto {
+            PAGE-BREAK-AFTER: always;
+        }
+        
+        .cuerpo {
+            width: 2000px;
+            height: 100%;
+        }
+        
+        .cab {
+            background-color: #1f4e78;
+            width: 100%;
+            height: 80px;
+            color: white;
+        }
+        
+        .titfecha {
+            padding: 5px;
+            border-style: solid;
+            border-color: white;
+            border-width: 0.7px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .central {
+            height: 507px;
+            width: 100%;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .diap {
+            position: fixed;
+            top: 80px;
+            left: 0px;
+            height: 500px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+            display: table;
+        }
+        
+        .anchomedio {
+            width: 600px;
+            left: 300px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        
+        #inicio {
+            margin-top: 10px;
+            margin-left: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        #sig {
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        #atraspiramide {
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        .footer {
+            background-color: #b9d204;
+            width: 100%;
+            padding: 5px;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+        
+        #divhidden {
+            display: none;
+        }
+        /* fin estilos de pagina */
+        /* estilos del menu */
+        
+        #mnu {
+            width: 707px;
+            height: 500px;
+            background-image: url('img/mnu_1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: 999;
+        }
+        
+        .mnu1 {
+            position: relative;
+            top: 50px;
+            left: 390px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu2 {
+            position: relative;
+            top: 103px;
+            left: 480px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu3 {
+            position: relative;
+            top: 158px;
+            left: 485px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu4 {
+            position: relative;
+            top: 213px;
+            left: 384px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        /* fin estilo de menu */
+        /* estilo de graficas */
+        
+        .colpir {
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffffff;
+        }
+        
+        .filapir {
+            background-color: #00c901;
+            color: white;
+        }
+        
+        .filatit {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+        
+        .cabtit {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #1f4e78;
+            background-color: white;
+        }
+        
+        .card-header {
+            background-color: #1f4e78;
+            color: white;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        #galeria {
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            z-index: 999;
+            overflow: hidden;
+        }
+        
+        .imagen:hover {
+            filter: opacity(.5);
+        }
+        
+        #grafpiramide {
+            width: 100%;
+            height: 500px;
+            background-image: url('img/piramide_n.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .fig1 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infogvr1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #fig2 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #fig3 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog3.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #infoverde1 {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infogv1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        #infoverde2 {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infogv2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        #inforojo {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infog4.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .textopira {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .hijo {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .padre {
+            display: table;
+        }
+        
+        .titinfovr {
+            width: 100%;
+            height: 29.41%;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .cifrainfovr {
+            width: 100%;
+            height: 70.59%;
+            font-size: 44px;
+            text-align: center;
+        }
+        
+        #piso7 {
+            width: 100%;
+            height: 13.60%;
+            display: table;
+        }
+        
+        #piso6 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso5 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso4 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso3 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        #piso2 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        #piso1 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        .tacomoda {
+            width: 5%;
+        }
+        
+        #flotante {
+            height: 400px;
+            width: 500px;
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            z-index: 999;
+        }
+        
+        #flotantefoto {
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            z-index: 999;
+        }
+        
+        .manito {
+            cursor: pointer;
+        }
+        
+        .titregfot {
+            width: 100%;
+            height: 50px;
+            ;
+            background-color: #1f4e78;
+            color: white;
+            padding: 10px;
+            float: left;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .titflot {
+            background-color: rgb(255, 187, 0);
+            color: rgba(20, 19, 19, 0.9);
+            padding: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 13px;
+        }
+        
+        #regfotos {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            white-space: nowrap;
+            position: fixed;
+            top: 80px;
+            left: 0px;
+            height: 500px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+        }
+        
+        .foto {
+            width: 320px;
+            height: 300px;
+            padding: 10px;
+            float: left;
+        }
+        
+        .piefoto {
+            background-color: #1f4e78;
+            color: white;
+            padding: 5px;
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+        
+        .titcatfotos {
+            font-size: 16px;
+            width: 90%;
+            height: 40px;
+            padding: 8px;
+            margin-top: 20px;
+            background-color: #1f4e78;
+            color: white;
+            float: left;
+        }
+        
+        .verticalText {
+            writing-mode: vertical-lr;
+        }
+        
+        td {
+            Word-wrap: break-Word;
+        }
+        
+        @media (max-width: 600px) {
+            .foto {
+                width: 90%;
+                height: 90%;
+            }
+            #grafpiramide {
+                width: 100%;
+                height: 400px;
+            }
+            .tacomoda {
+                width: 0%;
+            }
+        }
+        /* fin estilo de graficas */
+    </style>
+</head>
+<body>
+
+    <div id="app" class="m-3">
+
+        <div class="mt-4">
+            <h4 class="text-center">BACKOFFICE PLANEACIÓN DE PERMISOS PARADAS DE PLANTA U2100
+                
+                 
+            </h4>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="file" id="excel" class="form-control" placeholder="csv">
+                    
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success m-2" @click="guardarFile">Agregar CSV</button>
+                </div>
+                <hr>
+            </div>
+
+            
+        </div>
+
+         <!-- Inicio Graficas -->
+        
+         <div class="card-header mb-2">
+            GRAFICAS KPI's PERMISOS DE TRABAJO ELABORADOS
+        </div>
+        <div id="graficas">
+            <hr>
+            <div class="row m-2">
+
+                 
+
+                <div class="col-sm-6 ">
+                    <div class="figuras" id="figpertrabaesp2">
+
+                    </div>
+                </div>
+                
+
+                <div class="col-sm-6 ">
+                    <div class="figuras" id="figmatrizram">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="figuras" id="figrescate">
+
+                    </div>
+                </div>
+
+                
+
+                <div class="col-sm-6 ">
+                    <div class="figuras" id="figcertificados">
+
+                    </div>
+                </div>
+
+                 
+
+                
+
+            </div>
+        </div>
+        <!-- Fin de Graficas -->
+
+
+        <div id="tablapermisos">
+            <table class="table-bordered">
+                <thead class="" style="background-color: #1f4e78; color: #fff;">
+                    <tr style="height: 150px;">
+                        <th>
+                            # PERMISO
+                        </th>
+                        <th style="background-color: #fbff00; color: rgb(0, 0, 0);">
+                            <span class="verticalText">FRIO</span>
+                        </th>
+                        <th  style="background-color: #ff0303; color: #fff;">
+                            <span class="verticalText">CALIENTE</span>
+                        </th>
+                        <th  style="background-color: #f88f06; color: #fff;">
+                            <span class="verticalText">ELECTRICO</span>
+                        </th>
+                        <th>
+                            ACTIVIDAD
+                        </th>
+                        <th>
+                            ESPECIALIDAD
+                        </th>
+                        <th>
+                            SUPERVISOR
+                        </th>
+                        <th>
+                            ÁREA
+                        </th>
+                        <th>
+                            EQUIPO
+                        </th>
+                        <th>
+                            PLANTA
+                        </th>
+                        
+                        <th  style="background-color: #04a70d; color: #fff;">
+                            <span class="verticalText">BAJO</span>
+                        </th>
+                        <th style="background-color: #f3e355; color: rgb(31, 30, 30);">
+                            <span class="verticalText">MEDIO</span>
+                        </th>
+                        <th style="background-color: #f19d00; color: rgb(24, 23, 23);">
+                            <span class="verticalText">ALTO</span>
+                        </th>
+                        <th style="background-color: #ff0303; color: #fff;">
+                            <span class="verticalText">MUY ALTO</span>
+                        </th>
+                        <th>
+                            AR
+                        </th>
+                        <th>
+                            <span class="verticalText">CERT. AP. 1</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">CERT. AP. 2</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">CERT. AP. 3</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">CERT. AP. 5</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">CERT. AP. 6</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">CERT. AP. 7</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">SAS</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">SAES</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">PROC. RESC. ALTURA</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">P.R. ESP. CONFINADO</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">P.R. GASES TOX.</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">CIERRE DE VIAS</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">PLAN DE IZAJE</span>
+                        </th>
+                        <th>
+                            <span class="verticalText">AGUA CONTRAINC. </span>
+                        </th>
+                        
+                    </tr>
+
+
+                </thead>
+                <tbody id="datostabla">
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <!-- Modal Nuevo -->
+        <div class="modal" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="row">
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Código
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="codigo" class="form-control" placeholder="Código">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Entregable
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="entregable" class="form-control" placeholder="Entregable">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Elabora
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="elabora" class="form-control" placeholder="Elabora">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Start
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="start" class="form-control" placeholder="Start">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Finish
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="finish" class="form-control" placeholder="Finish">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardar">Guardar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal Observaciones -->
+         <div class="modal" id="modalObs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar observación del Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <textarea v-model="observaciones" class="form-control" rows="10" style="width: 100%;"></textarea>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardarObs">Guardar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal Editar -->
+         <div class="modal" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="row">
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Código
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="codigo" class="form-control" placeholder="Código">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Entregable
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="entregable" class="form-control" placeholder="Entregable">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Elabora
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="elabora" class="form-control" placeholder="Elabora">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Start
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="start" class="form-control" placeholder="Start">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Finish
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="finish" class="form-control" placeholder="Finish">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Estado
+                            </div>
+                            <div class="col-sm-8">
+                                <select v-model="estado" class="form-control">
+                                    <option value="Programado">Programado</option>
+                                    <option value="Elaborado">Elaborado</option>
+                                    <option value="Revisado">Revisado</option>
+                                    <option value="Aprobado">Aprobado</option>
+                                </select>
+                                 
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="actualizar">Actualizar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal File -->
+        <div class="modal" id="modalFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Documento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <input type="file" id="file" v-model="archivo" placeholder="Cargar documento">
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="subirFile">Guardar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Archivos -->
+        <div class="modal" id="modalArchivos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Documentos del Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <!-- <div class="list-group">
+                            <div v-for="doc in docs" class="list-group-item list-group-item-action " aria-current="true" >
+                                <div class="d-flex w-100 justify-content-between" >
+                                    <h5 @click="abrirFile(doc.doc)" class="mb-1">{{doc.doc}}</h5>
+                                    <button class="btn badge bg-danger" @click.prevent="borrarFile(doc.doc)">X</button>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <ul v-for="doc in docs" class="list-group list-group-horizontal list-group-item-action">
+                            <li class="list-group-item" @click="abrirFile(doc.doc)" style="width: 90%; cursor: pointer;">{{doc.doc}}</li>
+                            <li class="list-group-item"><button class="btn badge bg-danger" data-bs-dismiss="modal" @click.prevent="borrarFile(doc.doc)">X</button></li>
+                        </ul>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/cylinder.js"></script>
+<script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+<script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <script src="js/mainv5.js"></script>
+    
+</body>
+</html>

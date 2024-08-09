@@ -1,0 +1,67 @@
+
+
+//variab
+
+var verifuser = sessionStorage.getItem('datosuserqaqc')
+
+if(verifuser != null){
+	var datosuserqaqc=JSON.parse(sessionStorage.getItem('datosuserqaqc'))
+}else{
+	location = 'index.php'
+}
+
+
+
+
+//pasarFirma
+
+document.querySelector("#firma" + idImagen).src = datosuserqaqc.firma;
+
+$('#firma' + idImagen).removeClass('oculto')
+$('#btnFirmar' + idImagen).hide()
+
+$('#nombre'+idImagen).val(datosuserqaqc.nombres)
+$('#registro'+idImagen).val(datosuserqaqc.documento)
+
+
+//funcin
+
+function abrirFirma(id) {
+
+	if (id == 100) {
+		if ($('#obs100').val() == '') {
+			Swal.fire({
+				position: 'top-end',
+				icon: 'info',
+				title: 'Por favor registre primero la observación, nombre y registro...',
+				showConfirmButton: false,
+				timer: 2500
+			})
+		} else {
+			idImagen = id;
+			pasarFirma()
+		}
+	} else {
+
+		if ($('#fecha' + id).val() == "" || $('#hora' + id).val() == "") {
+			Swal.fire({
+				position: 'top-end',
+				icon: 'info',
+				title: 'Por favor registre primero fecha y hora...',
+				showConfirmButton: false,
+				timer: 2500
+			})
+		} else {
+			idImagen = id;
+			pasarFirma()
+			
+		}
+
+	}
+
+
+}
+
+
+
+

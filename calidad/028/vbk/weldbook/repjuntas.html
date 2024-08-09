@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery.jqGrid.min.js"></script>
+    <script src="grid.locale-en.js"></script>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <link rel="stylesheet" href="ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqgrid/5.8.2/css/ui.jqgrid-bootstrap-ui.min.css" integrity="sha512-Le5SZRnS7S4ArmiYClxIKwWLrs9SoHPyh+oQG7zSBbvm0QQosIoKLW6w7etCry7JlH4Zg4Yr54rWcHf9tq741g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+    <style>
+        #list_jpt {
+            background-color: green;
+            color: white;
+        }
+
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+
+        }
+
+
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+        }
+
+        th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h5>JUNTAS SOLDADAS Y PULGADAS DIAMETRALES POR EQUIPOS U-2800 VISCORREDUCTORA II
+                    <!-- <button id="export" onclick="exportar()" class="btn btn-success">Exportar a Excel</button> -->
+                </h5>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <div class="micontainertable">
+
+                <label for="search_cells">
+                    Buscar:
+                </label>
+                <input id="search_cells" type="search" />
+
+                <table class="table table-striped table-bordered" id="grid1b"></table>
+                <div id="jqGridPager"></div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/028/vbk/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "cJuntasEquipos.php", function (resp) {
+                datos = resp;
+
+
+
+                ("use strict");
+                $("#grid1b").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [{
+                            name: "especialidad",
+                            label: "ESPECIALIDAD",
+                            width: 150,
+                            frozen: true
+                        },
+                        {
+                            name: "equipo",
+                            label: "EQUIPO",
+                            width: 200,
+                            frozen: true
+                        },
+                        {
+                            name: "pulgadas",
+                            label: "PULG",
+                            width: 70,
+                            align: "center",
+                            frozen: true
+                        },
+                        {
+                            name: "jpt",
+                            label: "JUNTAS <br> PROG",
+                            width: 70,
+                            align: "center",
+                            formatter: {
+                                integer: {
+                                    thousandsSeparator: " ",
+                                    defaultValue: '0'
+                                },
+                            },
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum"  
+                        },
+                        {
+                            name: "jet",
+                            label: "JUNTAS  <br> EJE",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "jpdt",
+                            label: "JUNTAS  <br> PDTES",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "ajt",
+                            label: "% AVANCE",
+                            width: 70,
+                            align: "center",
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['jpt']) {
+                                    value.totalAmount += parseFloat(record['jpt']);
+                                }
+                                if (record['jet']) {
+                                    value.totalTax += parseFloat(record['jet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "ppt",
+                            label: "PULG DIAM <br> PROG",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "pet",
+                            label: "PULG DIAM <br> EJE",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "ppdt",
+                            label: "PULG DIAM <br> PDTES",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "apt",
+                            label: "% AVANCE",
+                            width: 70,
+                            align: "center",
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['ppt']) {
+                                    value.totalAmount += parseFloat(record['ppt']);
+                                }
+                                if (record['pet']) {
+                                    value.totalTax += parseFloat(record['pet']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "jpc",
+                            label: "JUNTAS <br> PROG",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "jec",
+                            label: "JUNTAS <br> EJE",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "jpdc",
+                            label: "JUNTAS <br> PDTES",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "ajc",
+                            label: "% AVANCE",
+                            width: 70,
+                            align: "center",
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['jpc']) {
+                                    value.totalAmount += parseFloat(record['jpc']);
+                                }
+                                if (record['jec']) {
+                                    value.totalTax += parseFloat(record['jec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "ppc",
+                            label: "PULG DIAM <br> PROG",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "pec",
+                            label: "PULG DIAM <br> EJE",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "ppdc",
+                            label: "PULG DIAM <br> PDTES",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "apc",
+                            label: "% AVANCE",
+                            width: 70,
+                            align: "center",
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['ppc']) {
+                                    value.totalAmount += parseFloat(record['ppc']);
+                                }
+                                if (record['pec']) {
+                                    value.totalTax += parseFloat(record['pec']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "jptot",
+                            label: "JUNTAS <br> PROG",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "jetot",
+                            label: "JUNTAS <br> EJE",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "jtpdc",
+                            label: "JUNTAS <br> PDTES",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "ajtot",
+                            label: "% AVANCE",
+                            width: 70,
+                            align: "center",
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['jptot']) {
+                                    value.totalAmount += parseFloat(record['jptot']);
+                                }
+                                if (record['jetot']) {
+                                    value.totalTax += parseFloat(record['jetot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                        {
+                            name: "pptot",
+                            label: "PULG DIAM <br> PROG",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "petot",
+                            label: "PULG DIAM <br> EJE",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "ptpdc",
+                            label: "PULG DIAM <br> PDTES",
+                            width: 70,
+                            align: "center",
+                            summaryTpl: "<b>{0}</b>",  
+                            summaryType: "sum" 
+                        },
+                        {
+                            name: "aptot",
+                            label: "% AVANCE",
+                            width: 70,
+                            align: "center",
+                            formatoptions: {
+                                suffix: " %"
+                            },
+                            summaryTpl: "<b>{0}</b>", // set the summary template to show the group summary
+                            summaryType: function (value, name, record) {
+                                // initialize the value object
+                                if (typeof value === 'string') {
+                                    value = {
+                                        totalAmount: 0,
+                                        totalTax: 0
+                                    };
+                                }
+                                // perform summary
+                                if (record['pptot']) {
+                                    value.totalAmount += parseFloat(record['pptot']);
+                                }
+                                if (record['petot']) {
+                                    value.totalTax += parseFloat(record['petot']);
+                                }
+                                return value;
+                            },
+                            formatter: function (cellval, opts, rwdat, act) {
+                                // get the regional options and pass it to the custom formatter
+                                opts = $.extend({}, $.jgrid.getRegional(this, 'formatter'),
+                                    opts);
+                                // determine if we are in summary row to put the value
+                                if (opts.rowId === '') {
+                                    if (cellval.totalAmount !== 0) {
+                                        var val = (cellval.totalTax) / cellval.totalAmount *
+                                        100;
+                                        return $.fn.fmatter('number', val, opts, rwdat, act);
+                                    } else {
+                                        return '0';
+                                    }
+                                } else {
+                                    return $.fn.fmatter('number', cellval, opts, rwdat, act);
+                                }
+                            }
+                        },
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager",
+
+                    grouping: true,
+                    groupingView: {
+                        groupField: ["especialidad"],
+                        groupColumnShow: [true],
+                        groupText: ["<b>{0}</b>"],
+                        groupOrder: ["asc"],
+                        groupSummary: [true],
+                        groupSummaryPos: ['header'],
+                        groupCollapse: false
+                    }
+                });
+
+                $("#grid1b").jqGrid('setGroupHeaders', {
+                    useColSpanStyle: true,
+                    groupHeaders: [{
+                            startColumnName: 'jpt',
+                            numberOfColumns: 8,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(233, 252, 147); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TALLER</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'jpc',
+                            numberOfColumns: 8,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(135, 244, 252); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>CAMPO</center></td></tr>' +
+                                '</table>',
+                        },
+                        {
+                            startColumnName: 'jptot',
+                            numberOfColumns: 8,
+                            titleText: '<table style="width:100%;border-spacing:2px; border-width: 1px; background-color:rgb(153, 250, 169); border-style: solid; border-color: #b1b1b1 !important ">' +
+                                '<tr><td id="h0" style="color: #000;"><center>TOTAL</center></td></tr>' +
+                                '</table>',
+                        },
+                    ]
+                });
+
+                //$("#grid1b").jqGrid('filterToolbar', { stringResult: true, searchOnEnter: false, defaultSearch: "cn" });
+
+                //  $("#grid1b").jqGrid('filterToolbar',
+                //    {
+                //     autosearch: true,
+                //     stringResult: true,
+                //     searchOnEnter: true,
+                //     defaultSearch: "cn",
+                //     attr: { size:11, maxlength: 10, style: "width:60px;margin-top:1px;" }
+                // });
+
+                $("#grid1b").jqGrid('setFrozenColumns');
+
+                Swal.close();
+
+
+
+
+            });
+        }
+
+        var timer;
+        $("#search_cells").on("keyup", function () {
+            var self = this;
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function () {
+                //timer = null;
+                $("#grid1b").jqGrid('filterInput', self.value, {
+                    searchAll: true
+                });
+            }, 0);
+        });
+
+
+
+
+        function exportar() {
+
+
+            $("#grid1b").jqGrid("exportToExcel", {
+                includeLabels: true,
+                includeGroupHeader: true,
+                includeFooter: true,
+                includeHeader: true,
+                fileName: "jqGridExport.xlsx",
+                mimetype: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                maxlength: 40,
+                onBeforeExport: null,
+                replaceStr: null,
+                customizeData: null,
+                loadIndicator: true,
+                visibleTreeNodes: false,
+                treeindent: ' '
+            })
+        }
+    </script>
+</body>
+
+</html>

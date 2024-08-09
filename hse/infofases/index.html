@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Capacacitaciones UOP I</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!-- <link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+        #cab {
+            position: relative;
+            background: #000000;
+            overflow: hidden;
+            height: 300px;
+            border-radius: 0px;
+        }
+        
+        .centrado {
+            display: flex;
+            align-items: center;
+        }
+        
+        .imagen {
+            transition: transform .2s;
+        }
+        
+        .imagen:hover {
+            transform: scale(2);
+        }
+        
+        #cab:before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+            background-image: url('img/fondo.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .fazul {
+            background-color: rgb(20, 20, 82);
+        }
+        
+        #grafpiramide {
+            font-family: 'Oswald', sans-serif;
+            width: 65%;
+            height: 500px;
+            margin: 0 auto;
+            background-image: url('img/piramide_4.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .colpir {
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffffff;
+        }
+        
+        .filapir {
+            background-color: #00c901;
+            color: white;
+        }
+        
+        .filatit {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+        
+        .cabtit {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #074F15;
+            background-color: white;
+        }
+        
+        .btn-gre {
+            background-color: #172362;
+            color: white;
+        }
+        
+        .btn-grec {
+            background-color: #00c901;
+            color: white;
+        }
+        
+        body {
+            background-color: #242424;
+            background-image: url('img/mascarahse.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .fazul {
+            background-color: rgb(20, 20, 82);
+            color: white;
+        }
+        
+        .btdorado {
+            background-image: url('img/fdorado.jpg');
+            background-size: cover;
+            color: black;
+        }
+        
+        .mnu {
+            height: 100px;
+        }
+        
+        .btnmenu {
+            cursor: pointer;
+        }
+        
+        .mimenu {
+            padding: 5px;
+        }
+        
+        .derecho {
+            float: left;
+            width: 20%;
+            position: fixed;
+        }
+        
+        .negro {
+            color: black;
+        }
+        
+        #cuerpo {
+            min-height: 900px;
+        }
+        
+        .oculto {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .visible {
+            opacity: 1;
+        }
+        
+        .cuadro {
+            float: left;
+            width: 640px;
+            margin: 10px;
+        }
+        
+        .cuadro-g {
+            float: left;
+            width: 100%;
+            margin: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .foto {
+            width: 320px;
+            height: 300px;
+            padding: 10px;
+            float: left;
+        }
+        
+        .piefoto {
+            background-color: #097896;
+            color: white;
+            padding: 5px;
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+        
+        @media (max-width: 600px) {
+            .colpir {
+                font-size: 8px;
+            }
+            .derecho {
+                float: left;
+                width: 100%;
+            }
+            .cuadro-g {
+                float: left;
+                width: 100%;
+                margin: 10px;
+            }
+            #grafpiramide {
+                font-family: 'Oswald', sans-serif;
+                width: 95%;
+                height: 500px;
+                margin: 0 auto;
+                background-image: url('img/piramide_4.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fazul" style="position: fixed; width: 100%; z-index: 9999;">
+        <a class="navbar-brand " href="#"><img src="img/logo_m.png" height="30px" alt=""><span style="color: white;">| <span style="font-weight: bold;">Informe Consolidado Capacitaciones UOP I </span></span>
+        </a>
+        
+
+        
+    </nav>
+
+    <div id="cuerpo" style="width: 100%; margin: auto; padding-top: 50px;">
+
+        <div class="row" style="width: 100%;">
+
+            <div class="col-sm-4">
+                <div class="card p-2 mt-4  cuadro-g animate__bounceIn" id="indicadores">
+                    <div class="card-header btdorado mb-3">
+                        <h4>Fase I  <button type="button" class="btn btn-info ml-3" onclick="detalles('fase1')">Detalles</button>
+                            <span class="float-right rojo" onClick="cerrar('indicadores')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figfase1">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card p-2 mt-4  cuadro-g animate__bounceIn" id="indicadores">
+                    <div class="card-header btdorado mb-3">
+                        <h4>Fase II <button type="button" class="btn btn-info ml-3" onclick="detalles('fase2')">Detalles</button>
+                            <span class="float-right rojo" onClick="cerrar('indicadores')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figfase2">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="card p-2 mt-4  cuadro-g animate__bounceIn" id="actot">
+                    <div class="card-header btdorado mb-3">
+                        <h4>Fase III <button type="button" class="btn btn-info ml-3" onclick="detalles('fase3')">Detalles</button>
+                            <span class="float-right rojo" onClick="cerrar('actot')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="figfase3">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+           
+       
+
+            <div class="col-sm-12">
+                <div class="card p-2 mt-4  oculto cuadro-g animate__bounceIn" id="fotos">
+                    <div class="card-header btdorado mb-3">
+                        <h4>Consolidado de personal <span id="nombrefase"></span>
+                            <span class="float-right rojo" onClick="cerrar('fotos')"><i class="fas fa-window-close"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                        <table class="table table-striped" style="background-color: #ffffff;">
+                            <thead>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                 <th>Documento</th>
+                                <th>Nombres y apellidos</th>
+                                <th>Cargo</th>
+                                <th>Fase</th>
+                               
+                            </thead>
+                            <tbody id="datosTabla">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+        //alert("La resolución de tu pantalla es: " + screen.width + " x " + screen.height)
+        var arrayDatos = []
+        var html = ''
+        var fase1SI = 0;
+        var fase1NO = 0;
+        var fase2SI = 0;
+        var fase2NA = 0;
+        var fase2NO = 0;
+        var fase3SI = 0;
+        var fase3NO = 0;
+
+
+        if (screen.width <= 1366) {
+            document.body.style.zoom = "75%";
+        }
+
+        var server = 'https://utitalco.com/server/';
+
+        cargarDatos()
+
+        function cargarDatos() {
+           $.post(server+'buscarFases.php',{},
+           function(resp){
+                arrayDatos = resp
+                for(var i=0; i<arrayDatos.length;i++){
+                    if(arrayDatos[i].fase1 == 'SI'){
+                        fase1SI++;
+                    }
+                    if(arrayDatos[i].fase1 == 'NO'){
+                        fase1NO++;
+                    }
+                    if(arrayDatos[i].fase2 == 'SI'){
+                        fase2SI++;
+                    }
+                    if(arrayDatos[i].fase2 == 'N/A'){
+                        fase2NA++;
+                    }
+                    if(arrayDatos[i].fase2 == 'NO'){
+                        fase2NO++;
+                    }
+                    if(arrayDatos[i].fase3 == 'SI'){
+                        fase3SI++;
+                    }
+                    if(arrayDatos[i].fase3 == 'NO'){
+                        fase3NO++;
+                    }
+
+                   
+                }
+                //$('#datosTabla').html(html)
+                cargarKpi()
+           })
+
+
+        }
+
+        function detalles(fase){
+            $.post(server+'buscarFases.php',{},
+            function(resp){
+                var html= ''
+                arrayDatos = resp
+                for(var i=0; i<arrayDatos.length;i++){
+                    if(fase == 'fase1'){
+                        if(arrayDatos[i].fase1 == 'NO'){
+                                var color = '#FFDD33';
+                            }else{
+                                var color = '#fff';
+                            }
+                        html += `
+                            <tr style="background-color: ${color}">
+                                <td>${arrayDatos[i].fecha}</td>
+                                <td>${arrayDatos[i].hora}</td>
+                                
+                                <td>${arrayDatos[i].doc}</td>
+                                <td>${arrayDatos[i].nombres}</td>
+                                <td>${arrayDatos[i].cargo}</td>
+                                <td>${arrayDatos[i].fase1}</td>
+                                
+                            </tr>
+                        `
+                    }
+                    if(fase == 'fase2'){
+                        
+                        if(arrayDatos[i].fase2 == 'NO'){
+                                var color = '#FFDD33';
+                        }
+                        if(arrayDatos[i].fase2 == 'SI'){
+                            var color = '#fff';
+                        }
+
+                        if(arrayDatos[i].fase2 != 'N/A'){
+                            html += `
+                                <tr style="background-color: ${color}">
+                                    <td>${arrayDatos[i].fecha}</td>
+                                    <td>${arrayDatos[i].hora}</td>
+                                    
+                                    <td>${arrayDatos[i].doc}</td>
+                                    <td>${arrayDatos[i].nombres}</td>
+                                    <td>${arrayDatos[i].cargo}</td>
+                                    <td>${arrayDatos[i].fase2}</td>
+                                    
+                                </tr>
+                            `
+                        }
+                    }
+                    if(fase == 'fase3'){
+                        
+                        if(arrayDatos[i].fase3 == 'NO'){
+                                var color = '#FFDD33';
+                            }else{
+                                var color = '#fff';
+                            }
+                        html += `
+                            <tr style="background-color: ${color}">
+                                <td>${arrayDatos[i].fecha}</td>
+                                <td>${arrayDatos[i].hora}</td>
+                                
+                                <td>${arrayDatos[i].doc}</td>
+                                <td>${arrayDatos[i].nombres}</td>
+                                <td>${arrayDatos[i].cargo}</td>
+                                <td>${arrayDatos[i].fase3}</td>
+                                
+                            </tr>
+                        `
+                    }
+                }
+                $('#datosTabla').html(html)
+                $('#fotos').addClass('visible')
+
+                if(fase=='fase1'){
+                    $('#nombrefase').html('Fase I')
+                }
+                if(fase=='fase2'){
+                    $('#nombrefase').html('Fase II')
+                }
+                if(fase=='fase3'){
+                    $('#nombrefase').html('Fase III')
+                }
+
+            })
+        }
+
+
+        function abrir() {
+
+            $('#piramide').addClass('visible')
+            $('#indicadores').addClass('visible')
+            $('#actot').addClass('visible')
+            $('#acriesgo').addClass('visible')
+            $('#actipi').addClass('visible')
+            $('#tipifica').addClass('visible')
+            $('#hallazgos').addClass('visible')
+            $('#incidentest').addClass('visible')
+            $('#incidentesc').addClass('visible')
+            $('#personal').addClass('visible')
+            $('#fotos').addClass('visible')
+        }
+
+        function cerrarTodo() {
+            $('#piramide').removeClass('visible')
+            $('#indicadores').removeClass('visible')
+            $('#actot').removeClass('visible')
+            $('#acriesgo').removeClass('visible')
+            $('#actipi').removeClass('visible')
+            $('#tipifica').removeClass('visible')
+            $('#hallazgos').removeClass('visible')
+            $('#incidentest').removeClass('visible')
+            $('#incidentesc').removeClass('visible')
+            $('#personal').removeClass('visible')
+            $('#fotos').removeClass('visible')
+        }
+
+        function cerrar(id) {
+            $('#' + id).removeClass('visible');
+        }
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando indicadores!',
+                html: 'Un momento por favor...',
+                timer: 15000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    cargarGraficas()
+                }
+            })
+
+        }
+
+        function cargarKpi() {
+
+            Highcharts.chart('figfase1', {
+                colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '295'
+                },
+                title: {
+                    text: 'FASE I'
+                },
+
+                xAxis: {
+                    categories: [
+                        'Totales'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'SI',
+                    data: [fase1SI]
+
+                }, {
+                    name: 'NO',
+                    data: [fase1NO]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayDatos.length]
+                }]
+            });
+
+           
+            Highcharts.chart('figfase2', {
+                colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '295'
+                },
+                title: {
+                    text: 'FASE II'
+                },
+
+                xAxis: {
+                    categories: [
+                        'Totales'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'SI',
+                    data: [fase2SI]
+
+                }, {
+                    name: 'NO',
+                    data: [fase2NO]
+                }, {
+                    name: 'N/A',
+                    data: [fase2NA]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayDatos.length]
+                }]
+            });
+
+            Highcharts.chart('figfase3', {
+                colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column',
+                    height: '295'
+                },
+                title: {
+                    text: 'FASE III'
+                },
+
+                xAxis: {
+                    categories: [
+                        'Totales'
+                    ],
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant '
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'SI',
+                    data: [fase3SI]
+
+                }, {
+                    name: 'NO',
+                    data: [fase3NO]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayDatos.length]
+                }]
+            });
+
+
+            
+        }
+
+        function crearPDF() {
+            // location = '../pdf_hse.html?ods='+numods+'&fecha=' + fecha;
+        }
+
+        function cargarFrente(f) {
+            cargarDatos(f)
+            $('#numods').html('ODS ' + f)
+        }
+
+        function cargarConsolidado() {
+
+            $('#piramide').addClass('visible')
+            $('#actot').addClass('visible')
+        }
+    </script>
+</body>
+
+</html>

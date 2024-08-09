@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 15rem;
+        }
+
+        .cuerpo {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>PLATAFORMA INFORMES QAQC | ADMINISTRACIÓN U-2100
+                    <button class="btn btn-success" onclick="agregar()">Agregar</button>
+                </h4>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container cuerpo">
+
+        <div class="table-responsive">
+            <table  class="table table-striped">
+                <thead class="bg-info " style="color: #fff">
+                    <th>Empresa</th>
+                    <th>Nombres</th>
+                    <th>Email</th>
+                    <th>Contraseña</th>
+                    <th>tipo</th>
+                    <th>Estado</th>
+                    <th></th>
+                </thead>
+                <tbody id="tablaDatos">
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <script>
+        var odsq = null
+        var arrayEquipos = null
+        var especialidad = null
+
+        var datos = []
+
+        var url = "https://utitalco.com/calidad/033/alistamiento/server/";
+
+        selOds()
+
+        function selOds() {
+            Swal.fire({
+                title: 'Login',
+                html: `Digite email y contraseña <br><br>
+                  <div style="width: 50%; margin: auto;">
+
+                      Email <br>
+                      <input type="text" class="form-control" id="usercali">
+                      <br>
+                      Clave de acceso <br>
+                      <input type="password" class="form-control" id="claveecp"> <br>
+
+
+                  </div>
+              `,
+                allowOutsideClick: false,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    var usercali = $('#usercali').val()
+                    var claveecp = $('#claveecp').val()
+                    var odssel = '030'
+                    var planta = $('#planta').val()
+
+
+                    $.post(url + 'vingresoecp.php', {
+                            user: usercali,
+                            clave: claveecp
+                        },
+                        function (resp) {
+                            if (resp.msn == 'Ok' && resp.tipo == 'italco') {
+
+                                    cargarDatos()
+
+                            } else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Acceso denegado...!',
+                                    showConfirmButton: false,
+                                    timer: 2500
+                                }).then(() => {
+                                    location = 'index.html'
+                                })
+                            }
+                        })
+
+
+                } else {
+                    location = 'index.html'
+                }
+            })
+        }
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Cargando datos!',
+                html: 'Un momento por favor...',
+                timer: 15000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+
+        function cargarDatos() {
+            cargando()
+            $.post(url + 'datosUsuarios.php',
+
+                function (resp) {
+                    
+                    datos = resp
+                    var html = ''
+
+                    for(var i=0; i<datos.length; i++){
+                        html += `
+                        <tr>
+                            <td> ${datos[i].empresa} </td>
+                            <td> ${datos[i].nombres} </td>
+                            <td> ${datos[i].email} </td>
+                            <td> ${datos[i].clave} </td>
+                            <td> ${datos[i].tipo} </td>
+                            <td> ${datos[i].estado} </td>
+                            <td> <button class="btn btn-success" onclick="act(${i})">A</button>
+                                <button class="btn btn-danger" onclick="borrar(${i})">B</button>
+                            </td>
+                        </tr>
+                        `
+                    }
+
+                    $('#tablaDatos').html(html)
+                    Swal.close()
+
+                })
+
+        }
+
+
+        function act(i){
+
+            Swal.fire({
+                title: 'Actualizar Datos',
+                html: ` 
+                     <div style="width: 90%; margin: auto;">
+
+                        Empresa <br>
+                        <input type="text" class="form-control" id="empresa" value="${datos[i].empresa}">
+                        <br>
+
+                        Nombres <br>
+                        <input type="text" class="form-control" id="nombres" value="${datos[i].nombres}">
+                        <br>
+                       
+                        Email <br>
+                        <input type="text" class="form-control" id="email" value="${datos[i].email}">
+                        <br>
+                        Clave de acceso <br>
+                        <input type="text" class="form-control" id="clave"  value="${datos[i].clave}"> <br>
+
+                        Tipo <br>
+                        <select id="tipo" class="form-control">
+                            <option value="${datos[i].tipo}">${datos[i].tipo}</option> 
+                            <option value="italco">italco</option>   
+                            <option value="ecopetrol">ecopetrol</option>   
+                            <option value="auditor">auditor</option>   
+                        </select>
+                        
+
+                        Estado <br>
+                        <select id="estado" class="form-control">
+                            <option value="${datos[i].estado}">${datos[i].estado}</option> 
+                            <option value="Activo">Activo</option>   
+                            <option value="Inactivo">Inactivo</option>   
+                        </select>
+                         
+                        
+                         
+
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Actualizar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    var id = datos[i].id;
+
+                    var empresa = $('#empresa').val()
+                    var nombres = $('#nombres').val()
+                    var email = $('#email').val()
+                    var clave = $('#clave').val()
+
+                    var tipo = $('#tipo').val()
+                    var estado = $('#estado').val()
+                     
+                    cargando()
+
+                    $.post(url + 'actregistro.php', {
+                            empresa: empresa,
+                            nombres: nombres,
+                            user: email,
+                            clave: clave,
+                            tipo: tipo,
+                            estado: estado,
+                            id: id
+                        },
+                        function (resp) {
+                            if (resp == 'Ok') {
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'info',
+                                    title: 'Registro...',
+                                    text: 'Registro Actualizado...!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(()=>{
+                                    cargarDatos()
+                                })
+                                 
+
+                            }  
+                        })
+
+
+                }
+            })
+
+        }
+
+        function borrar(i){
+
+            Swal.fire({
+                title: 'Borrar Registro',
+                html: ` 
+                     <div style="width: 90%; margin: auto;">
+ 
+                        Borrar el registro de ${datos[i].nombres} ?  
+                        
+                         
+
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Borrar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    var id = datos[i].id;
+
+                    
+                    var nombres = $('#nombres').val()
+                    
+                     
+                    cargando()
+
+                    $.post(url + 'delregistro.php', {
+                            nombres: nombres,
+                            id: id
+                        },
+                        function (resp) {
+                            if (resp == 'Ok') {
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'info',
+                                    title: 'Registro...',
+                                    text: 'Registro Borrado...!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(()=>{
+                                    cargarDatos()
+                                })
+                                 
+
+                            }  
+                        })
+
+
+                }
+            })
+
+        }
+
+
+        function agregar(){
+
+            Swal.fire({
+                title: 'Agregar Usuario',
+                html: ` 
+                     <div style="width: 90%; margin: auto;">
+
+                        Empresa <br>
+                        <input type="text" class="form-control" id="empresaa" >
+                        <br>
+
+                        Nombres <br>
+                        <input type="text" class="form-control" id="nombresa" >
+                        <br>
+                       
+                        Email <br>
+                        <input type="text" class="form-control" id="emaila">
+                        <br>
+                        Clave de acceso <br>
+                        <input type="text" class="form-control" id="clavea" > <br>
+
+                        Tipo <br>
+                        <select id="tipoa" class="form-control">
+                            
+                            <option value="italco">italco</option>   
+                            <option value="ecopetrol">ecopetrol</option>   
+                            <option value="auditor">auditor</option>   
+                        </select>
+                         
+
+                        Estado <br>
+                        <select id="estadoa" class="form-control">
+                            <option value="Activo">Activo</option>   
+                            <option value="Inactivo">Inactivo</option>   
+                        </select>
+                        
+                         
+
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Agregar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    var empresa = $('#empresaa').val()
+                    var nombres = $('#nombresa').val()
+                    var email = $('#emaila').val()
+                    var clave = $('#clavea').val()
+
+                    var tipo = $('#tipoa').val()
+                    var estado = $('#estadoa').val()
+                     
+                    cargando()
+                    $.post(url + 'guardarregistro.php', {
+                            empresa: empresa,
+                            nombres: nombres,
+                            user: email,
+                            clave: clave,
+                            tipo: tipo,
+                            estado: estado
+                             
+                        },
+                        function (resp) {
+                            if (resp == 'Ok') {
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'info',
+                                    title: 'Registro...',
+                                    text: 'Registro Almacenado...!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(()=>{
+                                    cargarDatos()
+                                })
+                                 
+
+                            }  
+                        })
+
+
+                }
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>

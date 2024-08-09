@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WELDBOOK QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery.jqGrid.min.js"></script>
+    <script src="grid.locale-en.js"></script>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <link rel="stylesheet" href="ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        #list_jpt {
+            background-color: green;
+            color: white;
+        }
+
+        body {
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+
+        }
+
+        .micontainertable {
+            position: relative;
+            width: 100%;
+
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+        }
+
+        th {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h4>WELDER <span id="nombre"></span> - <span id="est"></span>
+                    <!-- <button id="export" onclick="exportar()" class="btn btn-success">Exportar a Excel</button> -->
+                </h4>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+            <div class="micontainertable">
+
+                
+
+                <table class="table table-striped table-bordered" id="tblData">
+                    <thead>
+                        <th>FECHA</th>
+                        <th>ESPECIALIDAD</th>
+                        <th>EQUIPO</th>
+                        <th>PULGADAS DIAMETRALES</th>
+                        <th>JUNTAS REALIZADAS</th>
+                    </thead>
+                    <tbody id="datostabla">
+
+                    </tbody>
+                </table>
+                <div id="jqGridPager"></div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+         <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+
+    <script>
+        var odsq = null;
+        var datos = [];
+        var url = "https://utitalco.com/calidad/028/demex/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var est = getParameterByName('est');
+
+
+        cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando formato...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function Totaliza() {
+            var total_haber = 0,
+                total_debe = 0;
+            var rows = $("#grid1b").jqGrid('getRowData');
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                if (Number(row['plpprogt']) > 0) {
+                    total_haber += Number(row['plpprogt']);
+                }
+
+            }
+
+
+
+            return total_haber;
+        };
+
+        function cargarDatos() {
+
+            cargandoPag();
+
+            $.post(url + "welderp.php", {est:est}, function (resp) {
+                datos = resp;
+
+                var html = ''
+                
+                $('#nombre').html(datos[0].nombre)
+                $('#est').html(datos[0].est)
+
+                for (var i = 0; i < datos.length; i++) {
+                    html += `
+                    <tr>
+                        <td style="text-align: center;">${datos[i].fecha}</td>
+                        <td style="text-align: center;">${datos[i].especialidad}</td>
+                        <td style="text-align: center;">${datos[i].equipo}</td>
+                        <td style="text-align: center;">${datos[i].pulg}</td>
+                        <td style="text-align: center;">${datos[i].jtas}</td>
+                        `
+
+                            
+                            
+                            
+                    
+                }
+
+                $('#datostabla').html(html)
+
+
+                $('#tblData').DataTable({
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                    },
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                        'csvHtml5',
+                        'pdfHtml5'
+                    ]
+                });
+
+
+
+                Swal.close();
+
+            });
+        }
+
+        var timer;
+        $("#search_cells").on("keyup", function () {
+            var self = this;
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function () {
+                //timer = null;
+                $("#grid1b").jqGrid('filterInput', self.value, {
+                    searchAll: true
+                });
+            }, 0);
+        });
+
+        function exportar() {
+
+            $("#grid1b").jqGrid("exportToExcel", {
+                includeLabels: true,
+                includeGroupHeader: true,
+                includeFooter: true,
+                includeHeader: true,
+                fileName: "jqGridExport.xlsx",
+                mimetype: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                maxlength: 40,
+                onBeforeExport: null,
+                replaceStr: null,
+                customizeData: null,
+                loadIndicator: true,
+                visibleTreeNodes: false,
+                treeindent: ' '
+            })
+        }
+
+        function abrirSold(est){
+            location = 'welderp.html?est='+est
+        }
+    </script>
+</body>
+
+</html>

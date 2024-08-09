@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de información perfil laboral UT Italco</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css"
+        integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.6/dist/vue-multiselect.min.css">
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        body {
+            background-color: #242424;
+            background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 98%;
+            max-width: 1330px;
+        }
+
+        .site-header {
+            background-color: rgba(0, 0, 0, .85);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .site-header a {
+            color: #8e8e8e;
+            transition: color .15s ease-in-out;
+            text-decoration: none;
+        }
+
+        .linkrecup a {
+            color: orange;
+            text-decoration: none;
+        }
+
+        .site-header a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .clogin {
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 350px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .5);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .registro {
+            margin: 0 auto;
+            width: 600px;
+        }
+
+        .info {
+            background-color: #ececec;
+            padding: 15px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #cccccc;
+        }
+
+        .datos {
+            padding: 15px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #cccccc;
+            background-color: #fff;
+        }
+
+        .titrojo {
+            color: darkblue
+        }
+
+        .titp {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header sticky-top py-1 bg-dark">
+        <nav class="container d-flex flex-column flex-md-row ">
+            <a class="py-2 -md-inline-block" href="#">
+                <img src="img/logo_m.png" width="200px" alt="">
+            </a>
+            <a class="py-2" href="#" aria-label="Product">
+                <h3>
+                    Sistema de Información Perfil Laboral Ut Italco
+                </h3>
+                Lo invitamos a actualizar su hoja de vida
+            </a>
+
+        </nav>
+    </header>
+
+    <main>
+        <div id="app" class="container">
+            <div class="mt-4">
+                Bienvenido(a) {{arrayDatos.nombres}} <button class="btn btn-outline-secondary btn-sm"
+                    @click="cerrar()">Cerrar Sesión</button>
+                    <button class="btn btn-danger btn-sm m-1" @click="ayuda()">Ayuda</button>
+                <h3 class="mt-2">Mi Hoja de Vida</h3>
+                <hr>
+            </div>
+            <div class="row" style="width: 100%;">
+                <div class="col-sm-3 info">
+                    <h4 class="mb-3">Bienvenido(a):</h4>
+                    <h6 class="mb-3">{{arrayDatos.nombres}}</h6>
+                    <span class="titrojo">Mi cuenta</span>
+
+                    <div class="m-3" id="porcentaje">
+
+                    </div>
+
+                    <div class="list-group mt-3">
+                        <a href="#" class="list-group-item list-group-item-action" @click="verHojaVida()">Ver mi hoja de
+                            vida</a>
+                        <a href="#" class="list-group-item list-group-item-action" @click="editarHV()">Editar mi hoja de
+                            vida</a>
+                        <a href="#" class="list-group-item list-group-item-action" @click="adjuntardoc()">Adjuntar
+                            Documentos y Certificados</a>
+                        <a href="#" class="list-group-item list-group-item-action" @click="adjuntarfoto()">Subir Foto
+                            Actualizada</a>
+
+                        <a href="#" class="list-group-item list-group-item-action" @click="descargarAnexos()">Descargar
+                            Formatos Anexos para Contratatación</a>
+
+                        <a href="#" class="list-group-item list-group-item-action" @click="descargarGab()">Descargar
+                            Formato Certificación cumplimiento de perfiles ECP - GAB-F-214</a>
+                    </div>
+                </div>
+                <div class="col-sm-9 datos">
+                    <h4>EDITAR MI HOJA DE VIDA</h4>
+                    <hr>
+
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">INFORMACIÓN BÁSICA</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-certi-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-certi" type="button" role="tab" aria-controls="pills-certi"
+                                aria-selected="false">CERTIFICADOS</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-educ-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-educ" type="button" role="tab" aria-controls="pills-educ"
+                                aria-selected="false">NIVEL EDUCATIVO</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-explabor-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-explabor" type="button" role="tab" aria-controls="pills-explabor"
+                                aria-selected="false">EXPERIENCIA LABORAL</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-eduinf-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-eduinf" type="button" role="tab" aria-controls="pills-eduinf"
+                                aria-selected="false">EDUCACIÓN INFORMAL</button>
+                        </li>
+
+
+
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+
+                        <!-- Datos personales -->
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab">
+
+                            <h5>Datos Personales</h5>
+                            <hr>
+
+                            <div class="row">
+
+                                 <div class="col-sm-12 mt-2">
+                                    <span class="titp">Nombres  y apellidos</span>
+                                    <input type="text" v-model="nombres" class="form-control">
+                                </div>
+                                
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Tipo de Documento</span>
+                                    <select v-model="tipodoc" class="form-control">
+                                        <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+                                        <option value="Cédula de Extranjería">Cédula de Extranjería</option>
+                                        <option value="Pasaporte">Pasaporte</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Número de Documento</span>
+                                    <input type="number" v-model="doc" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Departamento expedición del Documento</span>
+                                    <input type="text" v-model="depdoc" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Municipio expedición del Documento</span>
+                                    <input type="text" v-model="mundoc" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Fecha de expedición del Documento</span>
+                                    <input type="date" v-model="fdoc" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Fecha de nacimiento</span>
+                                    <input type="date" v-model="fnac" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Estado Civil</span>
+                                    <select v-model="estcivil" class="form-control">
+                                        <option value="Soltero(a)">Soltero(a)</option>
+                                        <option value="Casado(a)">Casado(a)</option>
+                                        <option value="Separado(a) o Divorciado(a)">Separado(a) o Divorciado(a)</option>
+                                        <option value="Viudo(a)">Viudo(a)</option>
+                                        <option value="Unión Libre">Unión Libre</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Genero </span>
+                                    <select v-model="sexo" class="form-control">
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-2 mt-2">
+                                    <span class="titp">Grupo sanguíneo </span>
+                                    <select v-model="gruposangre" class="form-control">
+                                        <option value="A+">A+</option>
+                                        <option value="O+">O+</option>
+                                        <option value="B+">B+</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="O-">O-</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB-">AB-</option>
+                                         
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">En caso de Emergencia comunicarse con:</span>
+                                    <input type="text" v-model="emergencia" class="form-control" placeholder="Nombre">
+                                </div>
+
+                                <div class="col-sm-4 mt-2">
+                                    <span class="titp">Número de contacto:</span>
+                                    <input type="number" v-model="numemergencia" class="form-control" placeholder="Número de teléfono">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Nacionalidad (País)</span>
+                                    <input type="text" v-model="nacionalidad" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Departamento de Nacimiento</span>
+                                    <input type="text" v-model="depnac" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Municipio de Nacimiento</span>
+                                    <input type="text" v-model="municipionac" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Número de Hijos</span>
+                                    <select v-model="numhijos" class="form-control">
+                                        <option value="Ninguno">Ninguno</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="Más de 5">Más de 5</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-12 mt-2">
+
+                                    <span class="titp">Rango de edad de los hijos (Puede elegir más de uno)</span>
+                                    <select v-model="rangohijos" class="form-control selectpicker" id="multiple-select"
+                                        multiple placeholder="Seleccione rango">
+                                        <option value="Primera Infancia (0-5 años)">Primera Infancia (0-5 años)</option>
+                                        <option value="Infancia (6 - 12 años)">Infancia (6 - 12 años)</option>
+                                        <option value="Adolescencia (13 - 20 años)">Adolescencia (13 - 20 años)</option>
+                                        <option value="Juventud (20 - 25 años)">Juventud (20 - 25 años)</option>
+                                        <option value="Mayores de 25 años">Mayores de 25 años</option>
+                                        <option value="No tengo hijos">No tengo hijos</option>
+                                    </select>
+
+                                    <span v-for="datoscert in maparango">
+                                        {{ datoscert }} -
+                                    </span>
+
+
+                                </div>
+
+
+
+                                <div class="col-sm-4 mt-2">
+                                    <span class="titp">Es usted madre o padre cabeza de familia</span>
+                                    <select v-model="cabfam" class="form-control">
+                                        <option value="Sí">Sí</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Seleccione si pertecene a alguna de las siguientes poblaciones
+                                        vulnerables</span>
+                                    <select v-model="pobvul" class="form-control">
+                                        <option value="Afrodescendiente">Afrodescendiente</option>
+                                        <option value="Indígena">Indígena</option>
+                                        <option value="Discapacidad">Discapacidad</option>
+                                        <option value="Mujeres mayores de 45 Años">Mujeres mayores de 45 Años</option>
+                                        <option value="Vícitma de conflicto armado">Vícitma de conflicto armado</option>
+                                        <option value="Desmovilizado o Ex-combatiente">Desmovilizado o Ex-combatiente</option>
+                                        <option value="Primer Empleo">Primer Empleo</option>
+                                        <option value="Adulto mayor">Adulto mayor</option>
+                                        <option value="Población LGBTIQ+">Población LGBTIQ+</option>
+                                        <option value="Ninguna">Ninguna</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Cargo al que aspira</span>
+                                    <select v-model="cargoasp" class="form-control">
+                                        <option value="AISLADOR TÉRMICO">AISLADOR TÉRMICO</option>
+                                        <option value="ALBAÑIL">ALBAÑIL</option>
+                                        <option value="ALMACENISTA C5">ALMACENISTA C5</option>
+                                        <option value="ANDAMIERO D7">ANDAMIERO D7</option>
+                                        <option value="APAREJADOR DE GRÚA / RIGGER DE 10 HASTA 275 TN">APAREJADOR DE
+                                            GRÚA / RIGGER DE 10 HASTA 275 TN</option>
+                                        <option value="AUXIILIAR ADMINISTRATIVO">AUXIILIAR ADMINISTRATIVO</option>
+                                        <option value="AUXILIAR DE BODEGA B3">AUXILIAR DE BODEGA B3</option>
+                                        <option value="AUXILIAR DE INGENIERÍA">AUXILIAR DE INGENIERÍA</option>
+                                        <option value="AUXILIAR DE LOGÍSTICA">AUXILIAR DE LOGÍSTICA</option>
+                                        <option value="AUXILIAR DE MATERIALES">AUXILIAR DE MATERIALES</option>
+                                        <option value="AUXILIAR DE PROGRAMACIÓN">AUXILIAR DE PROGRAMACIÓN</option>
+                                        <option value="AUXILIAR QA/QC I">AUXILIAR QA/QC I</option>
+                                        <option value="AUXILIAR QA/QC II">AUXILIAR QA/QC II</option>
+                                        <option value="AYUDANTE DE PINTURA">AYUDANTE DE PINTURA</option>
+                                        <option value="AYUDANTE TÉCNICO DE ELECTRICIDAD B4">AYUDANTE TÉCNICO DE
+                                            ELECTRICIDAD B4</option>
+                                        <option value="AYUDANTE TÉCNICO DE INSTRUMENTACIÓN B4">AYUDANTE TÉCNICO DE
+                                            INSTRUMENTACIÓN B4</option>
+                                        <option value="AYUDANTE TÉCNICO DE MECÁNICO B4">AYUDANTE TÉCNICO DE MECÁNICO B4
+                                        </option>
+                                        <option value="AYUDANTE TÉCNICO DE OBRA CIVIL">AYUDANTE TÉCNICO DE OBRA CIVIL
+                                        </option>
+                                        <option value="AYUDANTE TÉCNICO DE PAILERÍA B4">AYUDANTE TÉCNICO DE PAILERÍA B4
+                                        </option>
+                                        <option value="AYUDANTE TÉCNICO DE TUBERÍA B4">AYUDANTE TÉCNICO DE TUBERÍA B4
+                                        </option>
+                                        <option value="CERTIFICADOR DE ANDAMIOS">CERTIFICADOR DE ANDAMIOS</option>
+                                        <option value="CONDUCTOR DE VEHÍCULO LIVIANO A2">CONDUCTOR DE VEHÍCULO LIVIANO
+                                            A2</option>
+                                        <option value="CONTROLADOR VÍAL O PALETERO">CONTROLADOR VÍAL O PALETERO</option>
+                                        <option value="COORDINADOR DE ESPECIALIDAD">COORDINADOR DE ESPECIALIDAD</option>
+                                        <option value="COORDINADOR QA/QC">COORDINADOR QA/QC</option>
+                                        <option value="DIRECTOR DE ORDEN DE SERVICIO">DIRECTOR DE ORDEN DE SERVICIO
+                                        </option>
+                                        <option value="ELECTRICISTA 1">ELECTRICISTA 1</option>
+                                        <option value="ELECTRICISTA 1A E11">ELECTRICISTA 1A E11</option>
+                                        <option value="GESTOR ADMINISTRATIVO">GESTOR ADMINISTRATIVO</option>
+                                        <option value="GESTOR DE LOGÍSTICA">GESTOR DE LOGÍSTICA</option>
+                                        <option value="GESTOR DE MATERIALES">GESTOR DE MATERIALES</option>
+                                        <option value="GESTOR DE PERMISOS">GESTOR DE PERMISOS</option>
+                                        <option value="GESTOR DE TIEMPO">GESTOR DE TIEMPO</option>
+                                        <option value="GESTOR DOCUMENTAL">GESTOR DOCUMENTAL</option>
+                                        <option value="HSE OPERATIVO">HSE OPERATIVO</option>
+                                        <option value="INSTRUMENTISTA 1">INSTRUMENTISTA 1</option>
+                                        <option value="INSTRUMENTISTA 1A E11">INSTRUMENTISTA 1A E11</option>
+                                        <option value="MECÁNICO 1">MECÁNICO 1</option>
+                                        <option value="MECÁNICO 1A">MECÁNICO 1A</option>
+                                        <option value="OBRERO A1">OBRERO A1</option>
+                                        <option value="OBRERO A2">OBRERO A2</option>
+                                        <option value="OPERADOR DE EQUIPO DE LAVADO DE BAJA Y ALTA PRESIÓN">OPERADOR DE
+                                            EQUIPO DE LAVADO DE BAJA Y ALTA PRESIÓN</option>
+                                        <option value="OPERADOR DE EQUIPO PESADO/CAMA ALTA">OPERADOR DE EQUIPO
+                                            PESADO/CAMA ALTA</option>
+                                        <option value="OPERADOR DE GRÚA DE 10 HASTA 275 TN">OPERADOR DE GRÚA DE 10 HASTA
+                                            275 TN</option>
+                                        <option value="OPERADOR DE MONTACARGA">OPERADOR DE MONTACARGA</option>
+                                        <option value="OPERADOR DE TRACTO CAMIÓN CAMA BAJA-ALTA">OPERADOR DE TRACTO
+                                            CAMIÓN CAMA BAJA-ALTA</option>
+                                        <option value="PAILERO 1">PAILERO 1</option>
+                                        <option value="PAILERO 1A E11">PAILERO 1A E11</option>
+                                        <option value="PINTOR C5">PINTOR C5</option>
+                                        <option value="PLANEADOR">PLANEADOR</option>
+                                        <option value="PLANEADOR DE ESPECIALIDAD">PLANEADOR DE ESPECIALIDAD</option>
+                                        <option value="PROFESIONAL DE COSTOS I">PROFESIONAL DE COSTOS I</option>
+                                        <option value="PROFESIONAL DE COSTOS II">PROFESIONAL DE COSTOS II</option>
+                                        <option value="PROFESIONAL DE INGENIERÍA">PROFESIONAL DE INGENIERÍA</option>
+                                        <option value="PROFESIONAL EN ENTRENAMIENTO">PROFESIONAL EN ENTRENAMIENTO
+                                        </option>
+                                        <option value="PROFESIONAL QA/QC I">PROFESIONAL QA/QC I</option>
+                                        <option value="PROFESIONAL QA/QC II">PROFESIONAL QA/QC II</option>
+                                        <option value="PROGRAMADOR I">PROGRAMADOR I</option>
+                                        <option value="PROGRAMADOR II">PROGRAMADOR II</option>
+                                        <option value="PROYECTISTA">PROYECTISTA</option>
+                                        <option value="REFRACTARISTA">REFRACTARISTA</option>
+                                        <option value="REFRACTARISTA LANZADOR">REFRACTARISTA LANZADOR</option>
+                                        <option value="RESCATISTA B3">RESCATISTA B3</option>
+                                        <option value="SOLDADOR 1">SOLDADOR 1</option>
+                                        <option value="SOLDADOR ARGONERO 1A E11">SOLDADOR ARGONERO 1A E11</option>
+                                        <option value="PSICÓLOGO">PSICÓLOGO</option>
+                                        <option value="SUPERVISOR DE ESPECIALIDAD I / PLANEADOR I">SUPERVISOR DE
+                                            ESPECIALIDAD I / PLANEADOR I</option>
+                                        <option value="SUPERVISOR DE ESPECIALIDAD II / PLANEADOR II">SUPERVISOR DE
+                                            ESPECIALIDAD II / PLANEADOR II</option>
+                                        <option value="SUPERVISOR DE MANIOBRAS I">SUPERVISOR DE MANIOBRAS I</option>
+                                        <option value="SUPERVISOR DE MANIOBRAS II">SUPERVISOR DE MANIOBRAS II</option>
+                                        <option value="TUBERO 1">TUBERO 1</option>
+                                        <option value="TUBERO 1A E11">TUBERO 1A E11</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Se encuentra postulado en Serivicio público de empleo</span>
+                                    <select v-model="postulado" class="form-control">
+                                        <option value="Sí">Sí</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+
+
+
+                            </div>
+
+                            <h5 class="mt-5">Datos de Contacto</h5>
+                            <hr>
+
+                            <div class="row">
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Departamento de Residencia</span>
+                                    <input type="text" v-model="depresidencia" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Municipio de Residencia</span>
+                                    <input type="text" v-model="municipiores" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Barrio</span>
+                                    <input type="text" v-model="barrio" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Teléfono de contacto</span>
+                                    <input type="text" v-model="tel" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Otro teléfono</span>
+                                    <input type="text" v-model="otrotel" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Observaciones</span>
+                                    <input type="text" v-model="obscontacto" class="form-control">
+                                </div>
+
+
+                            </div>
+
+                            <h5 class="mt-5">Dirección</h5>
+                            <hr>
+
+                            <div class="row">
+
+                                <div class="col-sm-12 mt-2">
+                                    <span class="titp">Dirección de residencia (Calle/Carerra/# Casa)</span>
+                                    <input type="text" v-model="dir" class="form-control">
+                                </div>
+
+                            </div>
+
+                            <h5 class="mt-5">Datos de Perfil Laboral</h5>
+                            <hr>
+
+                            <div class="row">
+
+                                <div class="col-sm-12 mt-2">
+                                    <span class="titp">Perfil laboral</span>
+                                    <textarea v-model="perfil" id="cajaPerfil" style="width: 100%;"
+                                        rows="10"></textarea>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Situación Laboral Actual</span>
+                                    <select v-model="sitlabact" class="form-control">
+                                        <option value="Primer Empleo">Primer Empleo</option>
+                                        <option value="Desempleado">Desempleado</option>
+                                        <option value="Empleado">Empleado</option>
+                                        <option value="Independiente">Independiente</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Propiedad medio de transporte</span>
+                                    <select v-model="proptransp" class="form-control">
+                                        <option value="SI">SI</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <button class="btn btn-success mt-3" @click="actInfoBasica">Guardar</button>
+
+                        </div>
+
+                        <!-- Certificaciones -->
+                        <div class="tab-pane fade show" id="pills-certi" role="tabpanel"
+                            aria-labelledby="pills-certi-tab">
+
+                            <h5>Certificaciones y/o cursos requeridos para el desempeño del cargo</h5>
+                            A continuación encontrará una serie de preguntas relacionadas con Certificaciones y/o cursos
+                            requeridos para el Desempeño del cargo para el cual se encuentra en proceso. Si alguno de
+                            los cursos o certificaciones no Aplica para su cargo, favor abstenerse de responder.
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Indique el estado en el cual se encuentra su Certificado de
+                                        Territorialidad del Distrito de Barrancabermeja</span>
+                                    <select v-model="terr" class="form-control">
+                                        <option value="Nacido en Cartagena">Nacido en Cartagena</option>
+                                        <option value="Aprobado">Aprobado</option>
+                                        <option value="En trámite">En trámite</option>
+                                        <option value="Vencido">Vencido</option>
+                                        <option value="Negado">Negado</option>
+                                        <option value="Sin tramitar">Sin tramitar</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">El Curso de Alturas con el que cuenta actualmente fue realizado a
+                                        través de UT ITALCO</span>
+                                    <select v-model="alturas" class="form-control">
+                                        <option value="Sí">Sí</option>
+                                        <option value="No">No</option>
+                                        <option value="Vencido">Vencido</option>
+                                        <option value="No aplica para el cargo">No aplica para el cargo</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Si ha realizado el curso de alturas, favor indicar fecha de
+                                        vencimiento de su Certificado.
+                                    </span>
+                                    <input type="date" v-model="fvencealt" class="form-control">
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">El Curso de Espacios Confinados con el que cuenta actualmente fue
+                                        realizado a través de UT ITALCO</span>
+                                    <select v-model="espconf" class="form-control">
+                                        <option value="Sí">Sí</option>
+                                        <option value="No">No</option>
+                                        <option value="No aplica para el cargo">No aplica para el cargo</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Indicar Nivel del Curso con el que cuenta de Espacios
+                                        Confinados</span>
+                                    <select v-model="nivelespconf" class="form-control">
+                                        <option value="Entrante">Entrante</option>
+                                        <option value="Vigía">Vigía</option>
+                                        <option value="Supervisor">Supervisor</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="No aplica para el cargo">No aplica para el cargo</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Indicar Máximo Nivel de Curso NCCER con el que cuenta</span>
+                                    <select v-model="nivelnccer" class="form-control">
+                                        <option value="Currículo básico">Currículo básico</option>
+                                        <option value="Nivel 1">Nivel 1</option>
+                                        <option value="Nivel 2">Nivel 2</option>
+                                        <option value="nivel 3">nivel 3</option>
+                                        <option value="nivel 4">nivel 4</option>
+                                        <option value="No poseo Certificación NCCER">No poseo Certificación NCCER
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">Favor Indicar Especialidad Certificada NCCER</span>
+                                    <select v-model="espnccer" class="form-control">
+                                        <option value="Tubería">Tubería</option>
+                                        <option value="Pailería">Pailería</option>
+                                        <option value="Electricidad">Electricidad</option>
+                                        <option value="Instrumentación">Instrumentación</option>
+                                        <option value="Andamios">Andamios</option>
+                                        <option value="Calderas">Calderas</option>
+                                        <option value="Aislamiento">Aislamiento</option>
+                                        <option value="Mecánica">Mecánica</option>
+                                        <option value="Construcción">Construcción</option>
+                                        <option value="Soldadura">Soldadura</option>
+                                        <option value="Básico">Básico</option>
+                                        <option value="No poseo Certificación NCCER">No poseo Certificación NCCER
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 mt-2">
+                                    <span class="titp">La Certficación NCCER con la que cuenta fue realizada a través
+                                        de</span>
+                                    <select v-model="expnccer" class="form-control">
+                                        <option value="UT ITALCO">UT ITALCO</option>
+                                        <option value="Otras empresas">Otras empresas</option>
+                                        <option value="No poseo Certificación NCCER">No poseo Certificación NCCER
+                                        </option>
+                                    </select>
+                                </div>
+
+
+
+                            </div>
+
+                            <button class="btn btn-success mt-3" @click="guardarCert">Guardar</button>
+
+                        </div>
+
+                        <!-- Nivel educativo -->
+                        <div class="tab-pane fade" id="pills-educ" role="tabpanel" aria-labelledby="pills-educ-tab">
+                            <h5>Nivel Educativo</h5>
+                            <hr>
+
+                            <div class="card mt-4" v-for="datosnivel in arrayDatosNivelEdu">
+                                <div class="card-header">
+                                   <div class="row">
+                                        <div class="col-sm-8">
+                                            <h5 style="margin-top: 5px;">{{datosnivel.niveleduc}}</h5>
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: right;">
+                                            <button class="btn btn-warning m-1" @click="editar(datosnivel.titulo)">Editar</button>
+                                            <button class="btn btn-danger m-1" @click="borrar(datosnivel.titulo)">Borrar</button>
+                                        </div>
+                                   </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Nivel educativo: </span> {{datosnivel.niveleduc}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Ubicación: </span> {{datosnivel.paistit}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Título obtenido: </span> {{datosnivel.titulo}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Fecha de finalización: </span> {{datosnivel.fechafinal}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Institución: </span> {{datosnivel.institucion}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Estado: </span> {{datosnivel.estadotit}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Observaciones: </span> {{datosnivel.obstit}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    Agregar Nivel Educativo
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Nivel Educativo</span>
+                                            <select v-model="niveleduc" class="form-control">
+                                                <option value="Preescolar">Preescolar</option>
+                                                <option value="Básica Primaria(1-5)">Básica Primaria(1-5)</option>
+                                                <option value="Básica Secundaria(6-9)">Básica Secundaria(6-9)</option>
+                                                <option value="Media (10-12)">Media (10-12)</option>
+                                                <option value="Técnica Laboral">Técnica Laboral</option>
+                                                <option value="Técnica Profesional">Técnica Profesional</option>
+                                                <option value="Tecnología">Tecnología</option>
+                                                <option value="Universitaria">Universitaria</option>
+                                                <option value="Especialización">Especialización</option>
+                                                <option value="Maestría">Maestría</option>
+                                                <option value="Doctorado">Doctorado</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Título obtenido</span>
+                                            <input type="text" v-model="titulo" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">País Título</span>
+                                            <input type="text" v-model="paistit" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Institución</span>
+                                            <input type="text" v-model="institucion" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Estado</span>
+                                            <select v-model="estadotit" class="form-control">
+                                                <option value="En Curso">En Curso</option>
+                                                <option value="Incompleto">Incompleto</option>
+                                                <option value="Graduado">Graduado</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Fecha de finalización</span>
+                                            <input type="date" v-model="fechafinal" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Observaciones</span>
+                                            <input type="text" v-model="obstit" class="form-control">
+                                        </div>
+
+
+                                    </div>
+
+                                    <button class="btn btn-success mt-3" @click="guardarNivelEduc">Guardar</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experiencia laboral -->
+                        <div class="tab-pane fade" id="pills-explabor" role="tabpanel"
+                            aria-labelledby="pills-explabor-tab">
+                            <h5>Experiencia Laboral</h5>
+                            <hr>
+
+                            <div class="card mt-4" v-for="(datosexp, index) in arrayDatosExpLab">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <h5 style="margin-top: 5px;"> {{datosexp.cargo}}</h5>
+                                           
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: right;">
+                                            <button class="btn btn-warning m-1" @click="editarExp(index)">Editar</button>
+                                            <button class="btn btn-danger m-1" @click="borrarExp(index)">Borrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Tipo experiencia laboral: </span> {{datosexp.tipoexplab}}
+                                            <br><br>
+                                            <span class="titp">Nombre de la empresa: </span> {{datosexp.empresa}}
+                                            <br><br>
+                                            <span class="titp">Teléfono de la empresa: </span> {{datosexp.telemp}}
+                                            <br><br>
+                                            <span class="titp">Cargo: </span> {{datosexp.cargo}} <br><br>
+                                            <span class="titp">Ubicación: </span> {{datosexp.ubicaemp}} <br><br>
+                                            <span class="titp">Fecha de ingreso: </span> {{datosexp.fingreso}} <br><br>
+                                            <span class="titp">Fecha de retiro: </span> {{datosexp.fretiro}} <br><br>
+                                        </div>
+
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Funciones y Logros: </span> <br>
+                                            {{ datosexp.funciones.replace(/[æ]/gm, '\n') }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    Agregar Experiencia Laboral
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Tipo de experiencia laboral</span>
+                                            <select v-model="tipoexplab" class="form-control">
+                                                <option value="Asalariado">Asalariado</option>
+                                                <option value="Independiente">Independiente</option>
+                                                <option value="Pasantía o Práctica Laboral">Pasantía o Práctica Laboral
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Fecha de ingreso</span>
+                                            <input type="date" v-model="fingreso" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Nombre de la empresa</span>
+                                            <input type="text" v-model="empresa" class="form-control">
+                                        </div>
+
+
+
+
+
+                                        <div class="col-sm-6 mt-2">
+                                            <div class="form-check mt-2" style="font-size: 11px;">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="trabactual">
+                                                <label class="form-check-label" for="trabactual">
+                                                    <b>Trabajo aquí actualmente</b>
+                                                </label>
+                                            </div>
+
+                                            <span class="titp">Fecha de retiro</span>
+                                            <input type="date" v-model="fretiro" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-3 mt-2">
+                                            <span class="titp">País</span>
+                                            <input type="text" v-model="ubicaemp" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-3 mt-2">
+                                            <span class="titp">Teléfono</span>
+                                            <input type="text" v-model="telemp" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Cargo</span>
+                                            <input type="text" v-model="cargo" class="form-control">
+                                        </div>
+
+
+
+                                        <div class="col-sm-12 mt-2">
+                                            <span class="titp">Funciones y logros</span>
+                                            <textarea v-model="funciones" class="form-control" style="width: 100%;"
+                                                rows="5"></textarea>
+                                        </div>
+
+
+                                    </div>
+
+                                    <button class="btn btn-success mt-3" @click="guardarExpLab">Guardar</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Educación informal -->
+                        <div class="tab-pane fade" id="pills-eduinf" role="tabpanel" aria-labelledby="pills-eduinf-tab">
+                            <h5>Educación Informal</h5>
+                            <hr>
+
+                            <div class="card mt-4" v-for="(datoscap, index) in arrayDatosEduInformal">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <h5 style="margin-top: 5px;">{{datoscap.programacap}}</h5>
+                                        </div>
+                                        <div class="col-sm-4" style="text-align: right;">
+                                            <button class="btn btn-warning m-1" @click="editarEduInf(index)">Editar</button>
+                                            <button class="btn btn-danger m-1" @click="borrarEduInf(index)">Borrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Tipo Capacitación o Certificación: </span>
+                                            {{datoscap.tipocap}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Nombre del programa: </span> {{datoscap.programacap}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Institución: </span> {{datoscap.instcap}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Ubicación: </span> {{datoscap.ubicacap}}
+                                        </div>
+
+
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Estado: </span> {{datoscap.estadocap}}
+                                        </div>
+                                        <div class="col-sm-6 mt-4">
+                                            <span class="titp">Duración en horas: </span> {{datoscap.duracioncap}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    Agregar Capacitaciones y Certificaciones
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Tipo capacitación o certificacion</span>
+                                            <select v-model="tipocap" class="form-control">
+                                                <option value="Curso">Curso</option>
+                                                <option value="Taller">Taller</option>
+                                                <option value="Diplomado">Diplomado</option>
+                                                <option value="Seminario">Seminario</option>
+                                                <option value="Certificación de competencias">Certificación de
+                                                    competencias</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Nombre del programa</span>
+                                            <input type="text" v-model="programacap" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">País</span>
+                                            <input type="text" v-model="ubicacap" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Institución</span>
+                                            <input type="text" v-model="instcap" class="form-control">
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Estado</span>
+                                            <select v-model="estadocap" class="form-control">
+                                                <option value="Certificado">Certificado</option>
+                                                <option value="No Certificado">No Certificado</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6 mt-2">
+                                            <span class="titp">Duración en horas</span>
+                                            <input type="number" v-model="duracioncap" class="form-control">
+                                        </div>
+
+                                    </div>
+
+                                    <button class="btn btn-success mt-3" @click="guardarCap">Guardar</button>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <hr>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"
+        integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="css/picker.css">
+    <script type="text/javascript" src="js/picker.min.js"></script>
+
+
+    <script src="js/main-editarhv17.js"></script>
+
+
+
+</body>
+
+</html>

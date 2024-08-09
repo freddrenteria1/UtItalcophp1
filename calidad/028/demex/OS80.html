@@ -1,0 +1,3378 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.3.6.2 (Linux)" />
+	<meta name="author" content="Magred Tatiana Duran" />
+	<meta name="created" content="2017-10-19T22:02:46" />
+	<meta name="changed" content="2022-10-03T16:29:13" />
+	<meta name="AppVersion" content="15.0000" />
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- FORZAR A BORRAR CACHE -->
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<!-- FORZAR A BORRAR CACHE -->
+
+
+	<style type="text/css">
+		body,
+		div,
+		table,
+		thead,
+		tbody,
+		tfoot,
+		tr,
+		th,
+		td,
+		p {
+			font-family: "Calibri";
+			font-size: x-small
+		}
+
+		a.comment-indicator:hover+comment {
+			background: #ffd;
+			position: absolute;
+			display: block;
+			border: 1px solid black;
+			padding: 0.5em;
+		}
+
+		a.comment-indicator {
+			background: red;
+			display: inline-block;
+			border: 1px solid black;
+			width: 0.5em;
+			height: 0.5em;
+		}
+
+		comment {
+			display: none;
+		}
+	</style>
+
+	<style>
+		@media print {
+
+			.oculto-impresion,
+			.oculto-impresion * {
+				display: none !important;
+			}
+		}
+
+		.salto {
+			PAGE-BREAK-AFTER: always;
+		}
+
+		.mispan {
+			font-size: 16px;
+		}
+
+		textarea {
+			font-size: 18px;
+		}
+
+		input[type=text] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+
+		}
+
+		.lineabaja {
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+		}
+
+		input[type=date] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		input[type=time] {
+			width: 100%;
+			padding: 12px;
+			margin: 8px 0;
+			border: 0;
+			box-sizing: border-box;
+			font-size: 18px;
+		}
+
+		input[type=radio] {
+			height: 20px;
+			width: 20px;
+		}
+
+		select {
+			background: transparent;
+			border: none;
+			font-size: 18px;
+			height: 30px;
+			padding: 5px;
+			width: 250px;
+		}
+
+		.oculto {
+			display: none;
+		}
+
+		.visible {
+			display: inline;
+		}
+
+		.cuerpo {
+			margin: 0 auto;
+		}
+	</style>
+
+</head>
+
+<body>
+	<table id="tblcuerpo" cellspacing="0" border="0" style="margin: 0 auto; margin-top: 10px; width: 95%;">
+		<colgroup width="85"></colgroup>
+		<colgroup width="166"></colgroup>
+		<colgroup width="114"></colgroup>
+		<colgroup width="149"></colgroup>
+		<colgroup width="162"></colgroup>
+		<colgroup width="114"></colgroup>
+		<colgroup width="102"></colgroup>
+		<colgroup width="140"></colgroup>
+		<colgroup span="2" width="102"></colgroup>
+		<colgroup width="164"></colgroup>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 rowspan=3 height="99" align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0.00"><b>
+					<font face="Arial Narrow" size=4><br><img src="img/logo_m.png" width=169 hspace=41 vspace=24>
+					</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=7 rowspan=3 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0.00"><b>
+					<font face="Arial Narrow" size=4>REGISTRO CONTROL DE ACTIVIDADES DE MANTENIMIENTO DE TAMBORES</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0.00"><b>
+					<font face="Arial Narrow" size=3>FRM-BCA-19.370.3.OS80</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0.00"><b>
+					<font face="Arial Narrow" size=3>Fecha: 18/08/2022</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF" sdnum="1033;0;0.00"><b>
+					<font face="Arial Narrow" size=3>Versión: 1</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="42" align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=4>UNIDAD</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle>
+				<font face="Arial Narrow" size=4><span id="unidad"></span></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=4>TIPO</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=4><span id="tipo"></span> </font>
+				</b></td>
+			<td style="border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				rowspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=4>TAG</font>
+				</b></td>
+			<td style="border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=2 rowspan=2 align="center" valign=middle><b>
+					<font face="Arial Narrow" size=6><span id="tag"></span></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="42" align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=4>PLANTA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="2700" sdnum="1033;">
+				<font face="Arial Narrow" size=4><span id="planta"></span></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow" size=4>ODS</font>
+				</b></td>
+			<td style="border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle sdval="22" sdnum="1033;"><b>
+					<font face="Arial Narrow" size=4><span id="ods"></span></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="center" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>1. INFORMACIÓN GENERAL</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=2 height="40" align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">MATERIAL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=4 align="center" valign=middle>
+				<font face="Arial Narrow" size=3><input type="text" id="material" onchange="actinfo()"></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">SERVICIO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				colspan=3 align="center" valign=middle>
+				<font face="Arial Narrow"><input type="text" id="servicio" onchange="actinfo()"></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>2. PERMISO PARA INTERVENCIÓN DE EQUIPO </font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle>
+				<select id="rt_verplat" style="width: 70px;" class="ut" onchange="actPermiso()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=5 align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size="3">Verificación e instalación de platinas y/o bloqueos en los sitios
+					requeridos
+					para la realización del trabajo </font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<select id="rt_inpvis" style="width: 70px;" class="ut" onchange="actPermiso()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size="3">Inspección visual a condiciones de entrega del área a intervenir.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle>
+				<select id="rt_verval" style="width: 70px;" class="ut" onchange="actPermiso()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=5 align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size="3">Verificación a la posición requerida de las válvulas para realizar el
+					trabajo
+					para realizar el trabajo </font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<select id="rt_autact" style="width: 70px;" class="ut" onchange="actPermiso()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000" size="3">Autorización para inicio de actividades requeridas
+					para la
+					ejecución del trabajo.</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="9" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle>
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="28" align="left" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">REVISADO POR:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FECHA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">HORA </font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">NOMBRE</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FIRMA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="46" align="left" valign=middle>
+				<font face="Arial Narrow" size=3>OPERACIONES ECOPETROL S.A</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha1" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora1" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre1" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar1"
+					onclick="abrirFirma('1')">Firmar</button>
+				<img src="" id="firma1" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro1" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="46" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>SUPERVISOR EJECUTOR</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha2" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora2" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre2" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar2"
+					onclick="abrirFirma('2')">Firmar</button>
+				<img src="" id="firma2" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro2" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>3. LIMPIEZA GENERAL PARA INSPECCIÓN</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000" colspan=5 height="33"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow">COMPONENTE</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">FECHA EJECUCIÓN</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">HORA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">NOMBRE SUPERVISOR UT ITALCO</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">FIRMA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="64" align="center" valign=middle sdnum="1033;0;0%"><b>
+					<select id="limpitem1" style="width: 70px;" class="ut" onchange="actLimpPartes()">
+						<option value=""></option>
+						<option value="OK">OK</option>
+						<option value="NA">NA</option>
+					</select>
+				</b></td>
+			<td colspan=4 align="left" valign=middle sdnum="1033;0;0%">
+				<font face="Arial Narrow" size=3>Limpieza mecánica en casco, caps, bota y facilidades para inspeccion de
+					boquillas incluyendo areas de sello, retiro de tapones y limpieza de coupling de acuerdo al alcance
+					técnico ( Grado SSPC-SP-3)</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				rowspan=2 align="center" valign=middle sdnum="1033;0;0%">
+				<input type="date" id="fecha3" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				rowspan=2 align="center" valign=middle sdnum="1033;0;0%"><b>
+					<input type="time" id="hora3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 rowspan=2 align="center" valign=middle sdnum="1033;0;0%"><b>
+					<input type="text" id="nombre3" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				rowspan=2 align="center" valign=middle sdnum="1033;0;0%">
+				<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar3"
+					onclick="abrirFirma('3')">Firmar</button>
+				<img src="" id="firma3" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				rowspan=2 align="center" valign=middle sdnum="1033;0;0%">
+				<input type="text" id="registro3" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000" height="64" align="center"
+				valign=middle sdnum="1033;0;0.00"><b>
+					<select id="limpitem2" style="width: 70px;" class="ut" onchange="actLimpPartes()">
+						<option value=""></option>
+						<option value="OK">OK</option>
+						<option value="NA">NA</option>
+					</select>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000" colspan=4 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Limpieza mecánica interna/externa a soldaduras para END (UT-
+					Defectología, líquidos penetrantes, partículas magnéticas, dureza) de acuerdo al plan de inspección
+					del alcance</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>4. EJECUCIÓN PLAN DE INSPECCIÓN DE CASCO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000" colspan=5 height="33"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow">COMPONENTE</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">FECHA EJECUCIÓN</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">HORA</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">INSPECTOR AUTORIZADO POR ECOPETROL</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">FIRMA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 2px solid #000000" height="64" align="center"
+				valign=middle sdnum="1033;0;0.00"><b>
+					<select id="inspitem1" style="width: 70px;" class="lib" onchange="actInspPartes()">
+						<option value=""></option>
+						<option value="OK">OK</option>
+						<option value="NA">NA</option>
+					</select>
+				</b></td>
+			<td style="border-top: 1px solid #000000" align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Areas de sello, Boquillas</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="inspitem2" style="width: 70px;" class="lib" onchange="actInspPartes()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left"
+				valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Casco Interno / Externo, Caps</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				rowspan=2 align="center" valign=middle sdnum="1033;0;0.00">
+				<input type="date" id="fecha4" class="ecp">
+			</td>
+			<td align="left" valign="middle" rowspan=2 align="center" valign=middle sdnum="1033;0;0.00">
+				<input type="time" id="hora4" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 rowspan=2 align="center" valign=middle sdnum="1033;0;0.00">
+				<input type="text" id="nombre4" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				rowspan=2 align="center" valign=middle sdnum="1033;0;0.00">
+				<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar4"
+					onclick="abrirFirma('4')">Firmar</button>
+				<img src="" id="firma4" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				rowspan=2 align="center" valign=middle sdnum="1033;0;0.00">
+				<input type="text" id="registro4" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="64" align="center" valign=middle sdnum="1033;0;0.00"><b>
+					<select id="inspitem3" style="width: 70px;" class="lib" onchange="actInspPartes()">
+						<option value=""></option>
+						<option value="OK">OK</option>
+						<option value="NA">NA</option>
+					</select>
+				</b></td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Ejecucion de END</font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="inspitem4" style="width: 70px;" class="lib" onchange="actInspPartes()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-bottom: 2px solid #000000; border-right: 1px solid #000000" colspan=2 align="left"
+				valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Tuberia menores, LG´s, Bases estructurales</font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>5. LIBERACIÓN DE PARTES PARA ARMADO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle>
+				<select id="libintitem1" style="width: 70px;" class="lib" onchange="actLibInt()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=5 align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size="3">Ejecución de trabajos contractuales</font>
+			</td>
+			<td align="left" valign=middle bgcolor="#FFFFFF">
+				<select id="libintitem2" style="width: 70px;" class="lib" onchange="actLibInt()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size="3">Ejecución de Recomendaciones técnicas Post-inspección</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=4 height="35" align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow">COMPONENTE</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow">RESPONSABLES</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">FECHA EJECUCIÓN</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">HORA</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">NOMBRE</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow" color="#000000">FIRMA</font>
+				</b></td>
+			<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#D9D9D9"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" rowspan=2 height="106"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<select id="libintitem3" style="width: 70px;" class="lib" onchange="actLibInt()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=2 align="left"
+				valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3>Internos:<br>VoBo. A trabajos contractuales y ejecución de
+						recomendaciones técnicas.</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow">SUPERVISOR UT ITALCO</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha5" class="ut">
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora5" class="ut">
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre5" class="ut">
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar5"
+						onclick="abrirFirma('5')">Firmar</button>
+					<img src="" id="firma5" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro5" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow">QA/QC UT ITALCO<br>(verificación documental)</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha6" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora6" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre6" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar6"
+						onclick="abrirFirma('6')">Firmar</button>
+					<img src="" id="firma6" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro6" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" rowspan=2 height="106"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<select id="libintitem4" style="width: 70px;" class="lib" onchange="actLibInt()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" colspan=3 rowspan=2
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>VoBo Instalacion mallas</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow">INSPECTOR AUTORIZADO POR ECOPETROL (2)</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha7" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora7" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre7" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar7"
+						onclick="abrirFirma('7')">Firmar</button>
+					<img src="" id="firma7" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro7" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow">INGENIERO DE PROCESOS ECOPETROL (2)</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha8" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora8" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre8" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar8"
+						onclick="abrirFirma('8')">Firmar</button>
+					<img src="" id="firma8" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro8" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" rowspan=3 height="159" align="left" valign=middle
+				bgcolor="#FFFFFF">
+				<select id="libcascoitem1" style="width: 70px;" class="lib" onchange="actLibCasco()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=3 rowspan=3 align="left" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow" size=3>Casco, caps, boquillas<br>VoBo. A trabajos contractuales y
+						ejecución de recomendaciones técnicas.<br></font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow">SUPERVISOR UT ITALCO</font>
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha9" class="ut">
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora9" class="ut">
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre9" class="ut">
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar9"
+						onclick="abrirFirma('9')">Firmar</button>
+					<img src="" id="firma9" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro9" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow">QA/QC UT ITALCO<br>(verificación documental)</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha10" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora10" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre10" class="ut">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar10"
+						onclick="abrirFirma('10')">Firmar</button>
+					<img src="" id="firma10" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro10" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle
+				bgcolor="#FFFFFF"><b>
+					<font face="Arial Narrow">INSPECTOR AUTORIZADO POR ECOPETROL (2)</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha11" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora11" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF"><b>
+					<input type="text" id="nombre11" class="ecp">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar11"
+						onclick="abrirFirma('11')">Firmar</button>
+					<img src="" id="firma11" width="130px" height="50px" class="oculto">
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro11" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="27" align="left" valign=middle>
+				<font face="Arial Narrow">(1) La firma del gestor técnico no exime al ejecutor de la responsabilidad de
+					garantizar que los trabajos fueron realizados con la calidad requerida y la responsabilidad
+					contractual.</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>6. CIERRE MANHOLES </font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#DDDDDD"><b>
+					<font face="Arial Narrow" size=4>COMPONENTE</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000"
+				height="48" align="left" valign=middle bgcolor="#FFFFFF"><b>
+					<select id="cierreItem" style="width: 70px;" class="ut" onchange="actCierre()">
+						<option value=""></option>
+						<option value="OK">OK</option>
+						<option value="NA">NA</option>
+					</select>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=10 align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>VoBo Cierre Manhole </font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="48" align="left" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">REVISADO POR:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FECHA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">HORA </font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">NOMBRE</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FIRMA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="65" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>OPERACIONES ECOPETROL S.A</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha12" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora12" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre12" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar12"
+					onclick="abrirFirma('12')">Firmar</button>
+				<img src="" id="firma12" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro12" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="64" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>SUPERVISOR UT ITALCO</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha13" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora13" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre13" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar13"
+					onclick="abrirFirma('13')">Firmar</button>
+				<img src="" id="firma13" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro13" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>7. TERMINACIÓN MECÁNICA</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="right" valign=middle>
+				<select id="term1" style="width: 70px;" class="ut" onchange="actTMec()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=4 align="left" valign=middle>
+				<font face="Arial Narrow" size=3>Instalación y ajuste de tapones de couplings, bridas ciegas,
+					facilidades.</font>
+			</td>
+			<td align="right" valign=middle bgcolor="#FFFFFF">
+				<select id="term2" style="width: 70px;" class="ut" onchange="actTMec()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 2px solid #000000" colspan=5 align="left"
+				valign=middle>
+				<font face="Arial Narrow" size=3>Instalación y ajuste de instrumentos asociados</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="right" valign=middle>
+				<select id="term3" style="width: 70px;" class="ut" onchange="actTMec()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=4 align="left" valign=middle>
+				<font face="Arial Narrow" size=3>Instalación y ajuste drenajes y venteos.</font>
+			</td>
+			<td align="right" valign=middle bgcolor="#FFFFFF">
+				<select id="term4" style="width: 70px;" class="ut" onchange="actTMec()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=5 align="left" valign=middle>
+				<font face="Arial Narrow" size=3>Verificación sistema puesta a tierra.</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="right" valign=middle>
+				<select id="term5" style="width: 70px;" class="ut" onchange="actTMec()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=4 align="left" valign=middle>
+				<font face="Arial Narrow" size=3>Retiro de SAS</font>
+			</td>
+			<td align="right" valign=middle bgcolor="#FFFFFF">
+				<select id="term6" style="width: 70px;" class="ut" onchange="actTMec()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=5 align="left" valign=middle>
+				<font face="Arial Narrow" size=3>Verificación empaque adecuado y torque uniones bridadas posterior al
+					retiro S.A.S.</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="28" align="left" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">REVISADO POR:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FECHA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">HORA </font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">NOMBRE</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FIRMA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="46" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>SUPERVISOR UT ITALCO</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha14" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora14" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre14" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar14"
+					onclick="abrirFirma('14')">Firmar</button>
+				<img src="" id="firma14" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro14" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="46" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>GESTOR TÉCNICO ECOPETROL S.A (1)</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha15" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora15" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre15" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar15"
+					onclick="abrirFirma('15')">Firmar</button>
+				<img src="" id="firma15" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro15" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="22" align="left" valign=middle bgcolor="#F2F2F2">
+				<font face="Arial Narrow">(1) La firma del gestor técnico no exime al ejecutor de la responsabilidad de
+					garantizar que los trabajos fueron realizados con la calidad requerida y la responsabilidad
+					contractual.</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>9. PINTURA Y AISLAMIENTO TÉRMICO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="26" align="left" valign=middle bgcolor="#808080" sdnum="1033;0;0.00"><b>
+					<font face="Arial Narrow" size=3 color="#FFFFFF">LISTA DE CHEQUEO O VERIFICACIÓN</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura1" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=4 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Preparación de superficie Grado SSPC-SP
+					<input type="text" id="grado"
+						style="border-bottom-style: solid; border-bottom-width: 1px;  width: 190px;"
+						onchange="actPintura()">
+				</font>
+			</td>
+
+
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura2" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Instalación de aislamiento térmico</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura3" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=2 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Rugosidad superficial</font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura4" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Instalación de foil de aluminio</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura5" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=2 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Prueba de adherencia</font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura6" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Aplicación de sellante silicona en las juntas</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura7" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=4 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Medición espesor película seca
+					<input type="text" id="espesor"
+						style="border-bottom-style: solid; border-bottom-width: 1px;  width: 100px;"
+						onchange="actPintura()"> mils (anexo 3)
+				</font>
+			</td>
+
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura8" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-right: 2px solid #000000" colspan=4 align="left" valign=bottom sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Verificación de acabado final</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 2px solid #000000" height="33" align="left" valign=middle sdnum="1033;0;0.00">
+				<select id="pintura9" style="width: 70px;" class="ut" onchange="actPintura()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td colspan=2 align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3>Aplicación de recubrimiento</font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font face="Arial Narrow" color="#000000"><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+			<td style="border-right: 2px solid #000000" align="left" valign=middle sdnum="1033;0;0.00">
+				<font face="Arial Narrow" size=3><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="21" align="left" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">REVISADO POR:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FECHA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">HORA </font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">NOMBRE</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FIRMA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="46" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>SUPERVISOR UT ITALCO</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha16" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora16" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre16" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar16"
+					onclick="abrirFirma('16')">Firmar</button>
+				<img src="" id="firma16" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro16" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="46" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>GESTOR TÉCNICO ECOPETROL S.A (1)</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha17" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora17" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre17" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar17"
+					onclick="abrirFirma('17')">Firmar</button>
+				<img src="" id="firma17" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro17" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="22" align="left" valign=middle bgcolor="#F2F2F2">
+				<font face="Arial Narrow">(1) La firma del gestor técnico no exime al ejecutor de la responsabilidad de
+					garantizar que los trabajos fueron realizados con la calidad requerida y la responsabilidad
+					contractual.</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=4>10. ENTREGA DE EQUIPO A OPERACIONES</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000"
+				height="33" align="left" valign=middle bgcolor="#FFFFFF">
+				<select id="entrega1" style="width: 70px;" class="ut" onchange="actEntrega()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan=4 align="left"
+				valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size="3">Verificación retiro de S.A.S </font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=middle
+				bgcolor="#FFFFFF">
+				<select id="entrega2" style="width: 70px;" class="ut" onchange="actEntrega()">
+					<option value=""></option>
+					<option value="OK">OK</option>
+					<option value="NA">NA</option>
+				</select>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" colspan=5 align="left"
+				valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size="3"> Verificación instalación drenajes y venteos </font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="26" align="left" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">REVISADO POR:</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FECHA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">HORA </font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">NOMBRE</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">FIRMA</font>
+				</b></td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="center" valign=middle bgcolor="#F2F2F2"><b>
+					<font face="Arial Narrow">CC/REGISTRO</font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="47" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>OPERACIONES ECOPETROL S.A</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha18" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora18" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre18" class="ecp">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ecp oculto-impresion" id="btnFirmar18"
+					onclick="abrirFirma('18')">Firmar</button>
+				<img src="" id="firma18" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro18" class="ecp">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 1px solid #000000"
+				colspan=3 height="47" align="left" valign=middle bgcolor="#FFFFFF">
+				<font face="Arial Narrow" size=3>SUPERVISOR UT ITALCO</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="date" id="fecha19" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=middle bgcolor="#FFFFFF">
+				<input type="time" id="hora19" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="center" valign=middle bgcolor="#FFFFFF">
+				<input type="text" id="nombre19" class="ut">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=2 align="center" valign=middle bgcolor="#FFFFFF">
+				<button type="button" class="btn btn-info btn-block ut oculto-impresion" id="btnFirmar19"
+					onclick="abrirFirma('19')">Firmar</button>
+				<img src="" id="firma19" width="130px" height="50px" class="oculto">
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 2px solid #000000; border-left: 1px solid #000000; border-right: 2px solid #000000"
+				align="left" valign=middle>
+				<input type="text" id="registro19" class="ut">
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="23" align="left" valign=bottom><b>
+					<font face="Arial Narrow" color="#FFFFFF"><br></font>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-top: 2px solid #000000; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="40" align="left" valign=middle bgcolor="#BFBFBF"><b>
+					<font face="Arial Narrow" size=3>OBSERVACIONES:</font>
+					<button type="button" class="btn btn-info btn-sm m-1 oculto-impresion" onclick="adjuntar()">Adjuntar
+						archivo</button>
+					<button type="button" class="btn btn-warning btn-sm m-1 oculto-impresion"
+						onclick="verArchivos()">Ver
+						archivos</button>
+				</b></td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=11 height="33" align="left" valign=middle>
+				<font face="Arial Narrow">VER CHECK LIS ALCANCE CONTRACTUAL</font>
+				<button type="button" class="btn btn-info btn-sm oculto-impresion" id="btnagregarObs"
+					onclick="agregarObs()">Agregar</button>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000" colspan=11 height="33"
+				align="left" valign=middle>
+				<font face="Arial Narrow" size=3>Registrar las Recomendaciones técnicas post-inspección emitidas </font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000" colspan=11 height="33"
+				align="left" valign=middle>
+				<font face="Arial Narrow" size=3>Registrar los controles de cambio </font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="33" align="center" valign=bottom>
+
+
+				<table id="tblobs" style="width: 100%;" class="oculto">
+					<tr>
+						<td colspan="4">
+							<textarea id="obs100" style="width: 100%;" rows="3" class="activo"
+								placeholder="Observaciones..."></textarea>
+						</td>
+					</tr>
+					<tr>
+
+						<td>
+							<input type="text" id="nombre100" placeholder="Nombre" class="activo">
+						</td>
+
+						<td style="width: 200px;">
+							<input type="text" id="registro100" placeholder="CC/REGISTRO" class="activo">
+						</td>
+						<td>
+							<button type="button" class="btn btn-info btn-block" id="btnFirmar21"
+								onclick="abrirFirma('100')">Firmar</button>
+							<img src="" id="firma100" width="130px" height="50px" class="oculto">
+						</td>
+						<td>
+
+						</td>
+					</tr>
+				</table>
+
+
+
+			</td>
+		</tr>
+		<tr>
+			<td style="font-size: 16px; text-align: left; border-bottom: 1px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000"
+				colspan=12 height="33" align="center" valign=bottom id="observaciones">
+
+			</td>
+		</tr>
+
+
+		<tr>
+			<td style="border-top: 2px solid #000000" colspan=11 rowspan=2 height="41" align="center" valign=middle><i>
+					<font face="Arial Narrow" color="#000000">Documento emitido por el Servicio de Calidad de la
+						Compañía. El documento es propiedad de UT ITALCO. La empresa protegerá sus propios derechos en
+						los tribunales civiles y penales de acuerdo con la ley.</font>
+				</i></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td colspan=11 height="33" align="center" valign=bottom>
+				<font face="Arial Narrow" color="#000000">*Fin del Formato*</font>
+			</td>
+		</tr>
+	</table>
+	<!-- ************************************************************************** -->
+
+	<div class="modal" id="modalFirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: 600px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Firmar Documento</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<center><canvas id="canvas" style="border: 1px solid black;" width="560" height="320"></canvas>
+						<br><input type="checkbox" id="poldatos" checked>
+						Acepto las <a href="javascript::void(0)" onclick="mostraraviso()">políticas de protección de
+							datos personales</a>
+					</center>
+
+				</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger" id="btnLimpiar">Limpiar</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="pasarFirma()">Pasar a
+						documento</button>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- ************************************************************************** -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+			</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+			</script>
+
+		<script>
+			// var anchoTblCuerpo = $('#tblcuerpo').width();
+			// $('#tblpie').width(anchoTblCuerpo)
+			// $('#tblobs').width(anchoTblCuerpo)
+
+			// if (screen.width <= 1366) {
+			//     document.body.style.zoom = "80%";
+			// } else {
+			//     document.body.style.zoom = "100%";
+			// }
+
+
+			function agregarObs() {
+				$('#tblobs').removeClass("oculto")
+				$('#btnagregarObs').addClass("oculto")
+			}
+
+			var imagencargada = null
+			var idImagen = null
+
+			var user = sessionStorage.getItem('usercal')
+
+			var verifuser = sessionStorage.getItem('datosuserqaqc')
+
+			if (verifuser != null) {
+				var datosuserqaqc = JSON.parse(sessionStorage.getItem('datosuserqaqc'))
+			} else {
+				location = 'index.php'
+			}
+
+			var tipouser = sessionStorage.getItem('tipouser')
+
+			if (tipouser == 'ecopetrol') {
+				$("input, select,  textarea").prop('disabled', true);
+				$('.ecp').prop('disabled', false)
+				$('.ut').prop('disabled', true)
+				$('.lib').prop('disabled', false)
+				//$("#info input").prop("disabled", true);
+			}
+
+			if (tipouser == 'italco') {
+				// $("input, select,  textarea").prop('disabled', false);
+				$('.ecp').prop('disabled', true)
+				// $('.ut').prop('disabled', true)
+				//$("#info input").prop("disabled", true);
+			}
+
+			$('.activo').prop('disabled', false)
+
+			var items = []
+			var listaArchivos = []
+
+
+
+			// Set up the canvas
+			var canvas = document.querySelector("#canvas");
+			var ctx = canvas.getContext("2d");
+			ctx.strokeStyle = "#222222";
+			ctx.lineWidth = 2;
+
+
+			$btnDescargar = document.querySelector("#btnDescargar")
+			$btnLimpiar = document.querySelector("#btnLimpiar")
+			$btnGenerarDocumento = document.querySelector("#btnGenerarDocumento");
+
+
+
+			// Get a regular interval for drawing to the screen
+			window.requestAnimFrame = (function (callback) {
+				return window.requestAnimationFrame ||
+					window.webkitRequestAnimationFrame ||
+					window.mozRequestAnimationFrame ||
+					window.oRequestAnimationFrame ||
+					window.msRequestAnimaitonFrame ||
+					function (callback) {
+						window.setTimeout(callback, 1000 / 60);
+					};
+			})();
+
+
+			const limpiarCanvas = () => {
+				// Colocar color blanco en fondo de canvas
+				clearCanvas();
+			};
+			limpiarCanvas();
+			$btnLimpiar.onclick = limpiarCanvas;
+			// Escuchar clic del botón para descargar el canvas
+
+
+
+			window.obtenerImagen = () => {
+				return $canvas.toDataURL();
+			};
+
+
+			// Set up mouse events for drawing
+			var drawing = false;
+			var mousePos = {
+				x: 0,
+				y: 0
+			};
+			var lastPos = mousePos;
+			canvas.addEventListener("mousedown", function (e) {
+				drawing = true;
+				lastPos = getMousePos(canvas, e);
+			}, false);
+			canvas.addEventListener("mouseup", function (e) {
+				drawing = false;
+			}, false);
+			canvas.addEventListener("mousemove", function (e) {
+				mousePos = getMousePos(canvas, e);
+			}, false);
+
+			// Set up touch events for mobile, etc
+			canvas.addEventListener("touchstart", function (e) {
+				mousePos = getTouchPos(canvas, e);
+				var touch = e.touches[0];
+				var mouseEvent = new MouseEvent("mousedown", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+			canvas.addEventListener("touchend", function (e) {
+				var mouseEvent = new MouseEvent("mouseup", {});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+			canvas.addEventListener("touchmove", function (e) {
+				var touch = e.touches[0];
+				var mouseEvent = new MouseEvent("mousemove", {
+					clientX: touch.clientX,
+					clientY: touch.clientY
+				});
+				canvas.dispatchEvent(mouseEvent);
+			}, false);
+
+
+			// Prevent scrolling when touching the canvas
+			document.body.addEventListener("touchstart", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, {
+				passive: false
+			});
+			document.body.addEventListener("touchend", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+			document.body.addEventListener("touchmove", function (e) {
+				if (e.target == canvas) {
+					e.preventDefault();
+				}
+			}, false);
+
+			// Get the position of the mouse relative to the canvas
+			function getMousePos(canvasDom, mouseEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: mouseEvent.clientX - rect.left,
+					y: mouseEvent.clientY - rect.top
+				};
+			}
+
+			// Get the position of a touch relative to the canvas
+			function getTouchPos(canvasDom, touchEvent) {
+				var rect = canvasDom.getBoundingClientRect();
+				return {
+					x: touchEvent.touches[0].clientX - rect.left,
+					y: touchEvent.touches[0].clientY - rect.top
+				};
+			}
+
+			// Draw to the canvas
+			function renderCanvas() {
+				if (drawing) {
+					ctx.moveTo(lastPos.x, lastPos.y);
+					ctx.lineTo(mousePos.x, mousePos.y);
+					ctx.lineWidth = 5;
+					ctx.stroke();
+					lastPos = mousePos;
+				}
+			}
+
+			// Clear the canvas
+			function clearCanvas() {
+				canvas.width = canvas.width;
+			}
+
+			// Allow for animation
+			(function drawLoop() {
+				requestAnimFrame(drawLoop);
+				renderCanvas();
+			})();
+
+
+			function abrirFirma(id) {
+
+				if (id == 100) {
+					if ($('#obs100').val() == '' ) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'info',
+							title: 'Por favor registre primero la observación...',
+							showConfirmButton: false,
+							timer: 2500
+						})
+					} else {
+						idImagen = id;
+						pasarFirma()
+					}
+				} else {
+
+					if ($('#fecha' + id).val() == "" || $('#hora' + id).val() == "") {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'info',
+							title: 'Por favor registre primero fecha y hora...',
+							showConfirmButton: false,
+							timer: 2500
+						})
+					} else {
+
+
+						idImagen = id;
+						pasarFirma()
+
+
+					}
+
+				}
+
+
+			}
+
+
+
+			function pasarFirma() {
+				if ($('#poldatos').prop('checked')) {
+
+					document.querySelector("#firma" + idImagen).src = datosuserqaqc.firma;
+
+					$('#firma' + idImagen).removeClass('oculto')
+					$('#btnFirmar' + idImagen).hide()
+
+					$('#nombre' + idImagen).val(datosuserqaqc.nombres)
+					$('#registro' + idImagen).val(datosuserqaqc.documento)
+
+
+					//SE GUARADAN LOS DATOS DE LA FIRMA
+					if (idImagen == 1 || idImagen == 2) {
+						actPermiso()
+					}
+					if (idImagen == 3) {
+						actLimpPartes()
+					}
+
+
+					if (idImagen == 4) {
+						actInspPartes()
+					}
+
+
+
+					if (idImagen == 5 || idImagen == 6 || idImagen == 7 || idImagen == 8) {
+						actLibInt()
+					}
+
+					if (idImagen == 9 || idImagen == 10 || idImagen == 11) {
+						actLibCasco()
+					}
+
+					if (idImagen == 12 || idImagen == 13) {
+						actCierre()
+					}
+
+					if (idImagen == 14 || idImagen == 15) {
+						actTMec()
+					}
+
+					if (idImagen == 16 || idImagen == 17) {
+						actPintura()
+					}
+
+					if (idImagen == 18 || idImagen == 19) {
+						actEntrega()
+					}
+
+					if (idImagen == 100) {
+						guardarObs()
+					}
+
+
+				} else {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'info',
+						title: 'Debe aceptar las políticas de protección de datos perasonales',
+						showConfirmButton: false,
+						timer: 1500
+					})
+				}
+
+
+				//document.querySelector("#btnfirmar").style.display = 'none';
+
+			}
+
+			function getParameterByName(name) {
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+					results = regex.exec(location.search);
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}
+
+			var tag = getParameterByName('tag');
+			var arrayDatos = []
+			var firmasItems = []
+			var cmls = []
+
+			odsq = localStorage.getItem('odsq');
+			equipos = sessionStorage.getItem('equipo')
+			alcance = sessionStorage.getItem('servicio')
+			esp = sessionStorage.getItem('esp')
+
+			var server = 'https://utitalco.com/calidad/028/demex/server/';
+
+			cargando()
+			$.post(server + 'cargarRca80.php', {
+				ods: odsq,
+				tag: tag
+			},
+				function (resp) {
+					arrayDatos = resp
+					console.log(arrayDatos)
+
+					cargarDatos()
+
+
+				})
+
+
+
+			function cargarDatos() {
+				$('#unidad').html(arrayDatos.unidad)
+				$('#planta').html(arrayDatos.planta)
+
+				$('#ods').html(arrayDatos.ods)
+				$('#tipo').html(arrayDatos.tipo)
+				$('#tag').html(arrayDatos.tag)
+				$('#servicio').val(arrayDatos.servicio)
+				$('#material').val(arrayDatos.material)
+
+				if (arrayDatos.permiso != "") {
+
+					var arrayPermiso = JSON.parse(arrayDatos.permiso)
+
+					$('#rt_verplat').val(arrayPermiso[0].rt_verplat)
+					$('#rt_inpvis').val(arrayPermiso[0].rt_inpvis)
+					$('#rt_verval').val(arrayPermiso[0].rt_verval)
+					$('#rt_autact').val(arrayPermiso[0].rt_autact)
+
+					$('#fecha2').val(arrayPermiso[0].fechaut)
+					$('#hora2').val(arrayPermiso[0].horaut)
+					$('#nombre2').val(arrayPermiso[0].nombreut)
+
+					document.querySelector("#firma2").src = arrayPermiso[0].firmaut;
+
+					if (arrayPermiso[0].fechaut != "") {
+						$('#firma2').removeClass('oculto')
+						$('#btnFirmar2').hide()
+					}
+					$('#registro2').val(arrayPermiso[0].registrout)
+
+					$('#fecha1').val(arrayPermiso[0].fechaec)
+					$('#hora1').val(arrayPermiso[0].horaec)
+					$('#nombre1').val(arrayPermiso[0].nombreec)
+
+					document.querySelector("#firma1").src = arrayPermiso[0].firmaec;
+
+					$('#registro1').val(arrayPermiso[0].registroec)
+
+					if (arrayPermiso[0].fechaec != "") {
+						$('#firma1').removeClass('oculto')
+						$('#btnFirmar1').hide()
+					}
+				}
+
+				// //cargue de datos de limpieza de partes
+
+				if (arrayDatos.limpieza != "") {
+					var arrayLimpPartes = JSON.parse(arrayDatos.limpieza)
+
+					$('#limpitem1').val(arrayLimpPartes[0].limpitem1)
+					$('#limpitem2').val(arrayLimpPartes[0].limpitem2)
+
+
+					$('#fecha3').val(arrayLimpPartes[0].fechaut)
+					$('#hora3').val(arrayLimpPartes[0].horaut)
+					$('#nombre3').val(arrayLimpPartes[0].nombreut)
+
+					document.querySelector("#firma3").src = arrayLimpPartes[0].firmaut;
+					if (arrayLimpPartes[0].fechaut != "") {
+						$('#firma3').removeClass('oculto')
+						$('#btnFirmar3').hide()
+					}
+
+					$('#registro3').val(arrayLimpPartes[0].registrout)
+
+
+				}
+
+				// //cargue de datos de inspección de partes
+
+				if (arrayDatos.ejecucion != "") {
+					var arrayInspPartes = JSON.parse(arrayDatos.ejecucion)
+
+					$('#inspitem1').val(arrayInspPartes[0].inspitem1)
+					$('#inspitem2').val(arrayInspPartes[0].inspitem2)
+					$('#inspitem3').val(arrayInspPartes[0].inspitem3)
+					$('#inspitem4').val(arrayInspPartes[0].inspitem4)
+
+					$('#fecha4').val(arrayInspPartes[0].fechaec)
+					$('#hora4').val(arrayInspPartes[0].horaec)
+					$('#nombre4').val(arrayInspPartes[0].nombreec)
+
+					document.querySelector("#firma4").src = arrayInspPartes[0].firmaec;
+					if (arrayInspPartes[0].fechaec != "") {
+						$('#firma4').removeClass('oculto')
+						$('#btnFirmar4').hide()
+					}
+
+					$('#registro4').val(arrayInspPartes[0].registroec)
+
+				}
+
+
+				// //cargue de datos de liberación de partes  internos
+
+				if (arrayDatos.liberacion_int != "") {
+
+					var arrayLibPartes = JSON.parse(arrayDatos.liberacion_int)
+
+					$('#libintitem1').val(arrayLibPartes[0].libintitem1)
+					$('#libintitem2').val(arrayLibPartes[0].libintitem2)
+					$('#libintitem3').val(arrayLibPartes[0].libintitem3)
+					$('#libintitem4').val(arrayLibPartes[0].libintitem4)
+
+
+					$('#fecha5').val(arrayLibPartes[0].fechautsup)
+					$('#hora5').val(arrayLibPartes[0].horautsup)
+					$('#nombre5').val(arrayLibPartes[0].nombreutsup)
+
+					document.querySelector("#firma5").src = arrayLibPartes[0].firmautsup;
+
+					if (arrayLibPartes[0].fechautsup != "") {
+						$('#firma5').removeClass('oculto')
+						$('#btnFirmar5').hide()
+					}
+
+					$('#registro5').val(arrayLibPartes[0].registroutsup)
+
+					$('#fecha6').val(arrayLibPartes[0].fechautqaqc)
+					$('#hora6').val(arrayLibPartes[0].horautqaqc)
+					$('#nombre6').val(arrayLibPartes[0].nombreutqaqc)
+
+					document.querySelector("#firma6").src = arrayLibPartes[0].firmautqaqc;
+
+					if (arrayLibPartes[0].fechautqaqc != "") {
+						$('#firma6').removeClass('oculto')
+						$('#btnFirmar6').hide()
+					}
+
+					$('#registro6').val(arrayLibPartes[0].registroutqaqc)
+
+
+					$('#fecha7').val(arrayLibPartes[0].fechaec)
+					$('#hora7').val(arrayLibPartes[0].horaec)
+					$('#nombre7').val(arrayLibPartes[0].nombreec)
+
+					document.querySelector("#firma7").src = arrayLibPartes[0].firmaec;
+					if (arrayLibPartes[0].fechaec != "") {
+						$('#firma7').removeClass('oculto')
+						$('#btnFirmar7').hide()
+					}
+
+					$('#registro7').val(arrayLibPartes[0].registroec)
+
+					$('#fecha8').val(arrayLibPartes[0].fechaec2)
+					$('#hora8').val(arrayLibPartes[0].horaec2)
+					$('#nombre8').val(arrayLibPartes[0].nombreec2)
+
+					document.querySelector("#firma8").src = arrayLibPartes[0].firmaec2;
+					if (arrayLibPartes[0].fechaec2 != "") {
+						$('#firma8').removeClass('oculto')
+						$('#btnFirmar8').hide()
+					}
+
+					$('#registro8').val(arrayLibPartes[0].registroec2)
+
+				}
+
+				//cargue de datos de liberación de casco
+
+				if (arrayDatos.liberacion_casco != "") {
+
+					var arrayLibHazTubos = JSON.parse(arrayDatos.liberacion_casco)
+
+					$('#libcascoitem1').val(arrayLibHazTubos[0].libcascoitem1)
+
+
+					$('#fecha9').val(arrayLibHazTubos[0].fechautsup)
+					$('#hora9').val(arrayLibHazTubos[0].horautsup)
+					$('#nombre9').val(arrayLibHazTubos[0].nombreutsup)
+
+					document.querySelector("#firma9").src = arrayLibHazTubos[0].firmautsup;
+
+					if (arrayLibHazTubos[0].fechautsup != "") {
+						$('#firma9').removeClass('oculto')
+						$('#btnFirmar9').hide()
+					}
+
+					$('#registro9').val(arrayLibHazTubos[0].registroutsup)
+
+					$('#fecha10').val(arrayLibHazTubos[0].fechautqaqc)
+					$('#hora10').val(arrayLibHazTubos[0].horautqaqc)
+					$('#nombre10').val(arrayLibHazTubos[0].nombreutqaqc)
+
+					document.querySelector("#firma10").src = arrayLibHazTubos[0].firmautqaqc;
+
+					if (arrayLibHazTubos[0].fechautqaqc != "") {
+						$('#firma10').removeClass('oculto')
+						$('#btnFirmar10').hide()
+					}
+
+					$('#registro10').val(arrayLibHazTubos[0].registroutqaqc)
+
+
+					$('#fecha11').val(arrayLibHazTubos[0].fechaec)
+					$('#hora11').val(arrayLibHazTubos[0].horaec)
+					$('#nombre11').val(arrayLibHazTubos[0].nombreec)
+
+					document.querySelector("#firma11").src = arrayLibHazTubos[0].firmaec;
+					if (arrayLibHazTubos[0].fechaec != "") {
+						$('#firma11').removeClass('oculto')
+						$('#btnFirmar11').hide()
+					}
+
+					$('#registro11').val(arrayLibHazTubos[0].registroec)
+
+				}
+
+
+				//cargue de datos de cierre
+
+				if (arrayDatos.cierre != "") {
+
+					var arrayCierre = JSON.parse(arrayDatos.cierre)
+
+					$('#cierreItem').val(arrayCierre[0].cierreItem)
+
+
+					$('#fecha13').val(arrayCierre[0].fechaut)
+					$('#hora13').val(arrayCierre[0].horaut)
+					$('#nombre13').val(arrayCierre[0].nombreut)
+
+					document.querySelector("#firma13").src = arrayCierre[0].firmaut;
+
+					if (arrayCierre[0].fechaut != "") {
+						$('#firma13').removeClass('oculto')
+						$('#btnFirmar13').hide()
+					}
+
+					$('#registro13').val(arrayCierre[0].registrout)
+
+
+					$('#fecha12').val(arrayCierre[0].fechaec)
+					$('#hora12').val(arrayCierre[0].horaec)
+					$('#nombre12').val(arrayCierre[0].nombreec)
+
+					document.querySelector("#firma12").src = arrayCierre[0].firmaec;
+
+					if (arrayCierre[0].fechaec != "") {
+						$('#firma12').removeClass('oculto')
+						$('#btnFirmar12').hide()
+					}
+
+					$('#registro12').val(arrayCierre[0].registroec)
+
+
+				}
+
+
+
+				// //cargue de datos de terminación mecánica
+
+				if (arrayDatos.terminacion != "") {
+
+					var arrayTerminacion = JSON.parse(arrayDatos.terminacion)
+
+					$('#term1').val(arrayTerminacion[0].term1)
+					$('#term2').val(arrayTerminacion[0].term2)
+					$('#term3').val(arrayTerminacion[0].term3)
+					$('#term4').val(arrayTerminacion[0].term4)
+					$('#term5').val(arrayTerminacion[0].term5)
+					$('#term6').val(arrayTerminacion[0].term6)
+
+
+					$('#fecha14').val(arrayTerminacion[0].fechaut)
+					$('#hora14').val(arrayTerminacion[0].horaut)
+					$('#nombre14').val(arrayTerminacion[0].nombreut)
+
+					document.querySelector("#firma14").src = arrayTerminacion[0].firmaut;
+
+					if (arrayTerminacion[0].fechaut != "") {
+						$('#firma14').removeClass('oculto')
+						$('#btnFirmar14').hide()
+					}
+
+					$('#registro14').val(arrayTerminacion[0].registrout)
+
+
+					$('#fecha15').val(arrayTerminacion[0].fechaec)
+					$('#hora15').val(arrayTerminacion[0].horaec)
+					$('#nombre15').val(arrayTerminacion[0].nombreec)
+
+					document.querySelector("#firma15").src = arrayTerminacion[0].firmaec;
+
+					if (arrayTerminacion[0].fechaec != "") {
+						$('#firma15').removeClass('oculto')
+						$('#btnFirmar15').hide()
+					}
+
+					$('#registro15').val(arrayTerminacion[0].registroec)
+
+
+				}
+
+				// //cargue de datos de pintura
+
+				if (arrayDatos.pintura != "") {
+
+					var arrayPintura = JSON.parse(arrayDatos.pintura)
+
+					$('#pintura1').val(arrayPintura[0].pintura1)
+					$('#pintura2').val(arrayPintura[0].pintura2)
+					$('#pintura3').val(arrayPintura[0].pintura3)
+					$('#pintura4').val(arrayPintura[0].pintura4)
+					$('#pintura5').val(arrayPintura[0].pintura5)
+
+					$('#pintura6').val(arrayPintura[0].pintura6)
+					$('#pintura7').val(arrayPintura[0].pintura7)
+					$('#pintura8').val(arrayPintura[0].pintura8)
+					$('#pintura9').val(arrayPintura[0].pintura9)
+					$('#grado').val(arrayPintura[0].grado)
+					$('#espesor').val(arrayPintura[0].espesor)
+
+
+					$('#fecha16').val(arrayPintura[0].fechaut)
+					$('#hora16').val(arrayPintura[0].horaut)
+					$('#nombre16').val(arrayPintura[0].nombreut)
+
+					document.querySelector("#firma16").src = arrayPintura[0].firmaut;
+
+					if (arrayPintura[0].fechaut != "") {
+						$('#firma16').removeClass('oculto')
+						$('#btnFirmar16').hide()
+					}
+
+					$('#registro16').val(arrayPintura[0].registrout)
+
+
+					$('#fecha17').val(arrayPintura[0].fechaec)
+					$('#hora17').val(arrayPintura[0].horaec)
+					$('#nombre17').val(arrayPintura[0].nombreec)
+
+					document.querySelector("#firma17").src = arrayPintura[0].firmaec;
+
+					if (arrayPintura[0].fechaec != "") {
+						$('#firma17').removeClass('oculto')
+						$('#btnFirmar17').hide()
+					}
+
+					$('#registro17').val(arrayPintura[0].registroec)
+
+
+				}
+
+				// //cargue de datos de entrega
+
+				if (arrayDatos.entrega != "") {
+
+					var arrayEntrega = JSON.parse(arrayDatos.entrega)
+
+					$('#entrega1').val(arrayEntrega[0].entrega1)
+					$('#entrega2').val(arrayEntrega[0].entrega2)
+
+					$('#fecha18').val(arrayEntrega[0].fechaut)
+					$('#hora18').val(arrayEntrega[0].horaut)
+					$('#nombre18').val(arrayEntrega[0].nombreut)
+
+					document.querySelector("#firma18").src = arrayEntrega[0].firmaut;
+
+					if (arrayEntrega[0].fechaut != "") {
+						$('#firma18').removeClass('oculto')
+						$('#btnFirmar18').hide()
+					}
+
+					$('#registro18').val(arrayEntrega[0].registrout)
+
+
+					$('#fecha19').val(arrayEntrega[0].fechaec)
+					$('#hora19').val(arrayEntrega[0].horaec)
+					$('#nombre19').val(arrayEntrega[0].nombreec)
+
+					document.querySelector("#firma19").src = arrayEntrega[0].firmaec;
+
+					if (arrayEntrega[0].fechaec != "") {
+						$('#firma19').removeClass('oculto')
+						$('#btnFirmar19').hide()
+					}
+
+					$('#registro19').val(arrayEntrega[0].registroec)
+
+
+				}
+
+
+
+
+				// //CARGUE DE OBSERVACIONES
+
+				if (arrayDatos.observaciones != "") {
+					var arrayObs = JSON.parse(arrayDatos.observaciones)
+					var html = ''
+					for (var i = 0; i < arrayObs.length; i++) {
+						html = `<b>Nota ${i + 1}: </b>
+                    ${arrayObs[i].obs} | ${arrayObs[i].nombre} | Registro: ${arrayObs[i].registro} | Fecha: ${arrayObs[i].fecha} | Firma: <span id="firm${i}" style="width: 60px;"></span> <br>--------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+                    `
+						$('#observaciones').append(html)
+						const imagef = document.createElement('img')
+						imagef.src = arrayObs[i].firma
+						imagef.height = "60"
+						document.querySelector('#firm' + i).appendChild(imagef)
+
+					}
+				}
+				if (arrayDatos.doc != "") {
+					listaArchivos = JSON.parse(arrayDatos.doc)
+
+				}
+
+				Swal.close()
+
+
+			}
+
+			function actInfo() {
+
+				var servicio = $('#servicio').val()
+				var material = $('#material').val()
+
+				$.post(server + 'actOs80Info.php', {
+					ods: odsq,
+					tag: tag,
+					servicio: servicio,
+					material: material
+				},
+					function (res) {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+
+
+			}
+
+			function actPermiso() {
+
+				var arrayCmls = []
+
+
+				var rt_verplat = $('#rt_verplat').val()
+				var rt_inpvis = $('#rt_inpvis').val()
+				var rt_verval = $('#rt_verval').val()
+				var rt_autact = $('#rt_autact').val()
+
+				var fechapermut = $('#fecha2').val()
+				var horapermut = $('#hora2').val()
+				var nombrepermut = $('#nombre2').val()
+
+				var img = document.getElementById("firma2");
+				var firmapermut = img.src
+
+				if (fechapermut == '') {
+					firmapermut = ''
+				}
+
+				var registropermut = $('#registro2').val()
+
+				var fechapermec = $('#fecha1').val()
+				var horapermec = $('#hora1').val()
+				var nombrepermec = $('#nombre1').val()
+
+				var img = document.getElementById("firma1");
+				var firmapermec = img.src
+
+				if (fechapermec == '') {
+					firmapermec = ''
+				}
+				var registropermec = $('#registro1').val()
+
+				var arrayPerm = []
+
+				arrayPerm.push({
+					"rt_verplat": rt_verplat,
+					"rt_inpvis": rt_inpvis,
+					"rt_verval": rt_verval,
+					"rt_autact": rt_autact,
+					"fechaut": fechapermut,
+					"horaut": horapermut,
+					"nombreut": nombrepermut,
+					"firmaut": firmapermut,
+					"registrout": registropermut,
+					"fechaec": fechapermec,
+					"horaec": horapermec,
+					"nombreec": nombrepermec,
+					"firmaec": firmapermec,
+					"registroec": registropermec
+				})
+
+				console.log(arrayPerm)
+
+				$.post(server + 'actOs80Perm.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayPerm)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actLimpPartes() {
+
+				var limpitem1 = $('#limpitem1').val()
+				var limpitem2 = $('#limpitem2').val()
+
+				var fechaut = $('#fecha3').val()
+				var horaut = $('#hora3').val()
+				var nombreut = $('#nombre3').val()
+
+				var img = document.getElementById("firma3");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro3').val()
+
+				var arrayLimpPartes = []
+
+				arrayLimpPartes.push({
+					"limpitem1": limpitem1,
+					"limpitem2": limpitem2,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout
+				})
+
+				console.log(arrayLimpPartes)
+
+				$.post(server + 'actOs80LimpPartes.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLimpPartes)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+
+			function actInspPartes() {
+
+				var inspitem1 = $('#inspitem1').val()
+				var inspitem2 = $('#inspitem2').val()
+				var inspitem3 = $('#inspitem3').val()
+				var inspitem4 = $('#inspitem4').val()
+
+
+				var fechaec = $('#fecha4').val()
+				var horaec = $('#hora4').val()
+				var nombreec = $('#nombre4').val()
+
+				var img = document.getElementById("firma4");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+
+				var registroec = $('#registro4').val()
+
+
+				var arrayInspPartes = []
+
+				arrayInspPartes.push({
+					"inspitem1": inspitem1,
+					"inspitem2": inspitem2,
+					"inspitem3": inspitem3,
+					"inspitem4": inspitem4,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayInspPartes)
+
+				$.post(server + 'actOs80InspPartes.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayInspPartes)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actLibInt() {
+
+				var libintitem1 = $('#libintitem1').val()
+				var libintitem2 = $('#libintitem2').val()
+				var libintitem3 = $('#libintitem3').val()
+				var libintitem4 = $('#libintitem4').val()
+
+
+				//supervisor
+				var fechautsup = $('#fecha5').val()
+				var horautsup = $('#hora5').val()
+				var nombreutsup = $('#nombre5').val()
+
+				var img = document.getElementById("firma5");
+				var firmautsup = img.src
+
+				if (fechautsup == '') {
+					firmautsup = ''
+				}
+
+				var registroutsup = $('#registro5').val()
+
+				//qaqc
+				var fechautqaqc = $('#fecha6').val()
+				var horautqaqc = $('#hora6').val()
+				var nombreutqaqc = $('#nombre6').val()
+
+				var img = document.getElementById("firma6");
+				var firmautqaqc = img.src
+
+				if (fechautqaqc == '') {
+					firmautqaqc = ''
+				}
+
+				var registroqaqc = $('#registro6').val()
+
+				//ecopetrol
+				var fechaec = $('#fecha7').val()
+				var horaec = $('#hora7').val()
+				var nombreec = $('#nombre7').val()
+
+				var img = document.getElementById("firma7");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro7').val()
+
+				//ecopetrol procesos
+				var fechaec2 = $('#fecha8').val()
+				var horaec2 = $('#hora8').val()
+				var nombreec2 = $('#nombre8').val()
+
+				var img = document.getElementById("firma8");
+				var firmaec2 = img.src
+
+				if (fechaec2 == '') {
+					firmaec2 = ''
+				}
+				var registroec2 = $('#registro8').val()
+
+				var arrayLibPartesInt = []
+
+				arrayLibPartesInt.push({
+					"libintitem1": libintitem1,
+					"libintitem2": libintitem2,
+					"libintitem3": libintitem3,
+					"libintitem4": libintitem4,
+					"fechautsup": fechautsup,
+					"horautsup": horautsup,
+					"nombreutsup": nombreutsup,
+					"firmautsup": firmautsup,
+					"registroutsup": registroutsup,
+					"fechautqaqc": fechautqaqc,
+					"horautqaqc": horautqaqc,
+					"nombreutqaqc": nombreutqaqc,
+					"firmautqaqc": firmautqaqc,
+					"registroutqaqc": registroqaqc,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec,
+					"fechaec2": fechaec2,
+					"horaec2": horaec2,
+					"nombreec2": nombreec2,
+					"firmaec2": firmaec2,
+					"registroec2": registroec2
+				})
+
+				console.log(arrayLibPartesInt)
+
+				$.post(server + 'actOs80LibPartesInt.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLibPartesInt)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actLibCasco() {
+
+				var libcascoitem1 = $('#libcascoitem1').val()
+
+				//supervisor
+				var fechautsup = $('#fecha9').val()
+				var horautsup = $('#hora9').val()
+				var nombreutsup = $('#nombre9').val()
+
+				var img = document.getElementById("firma9");
+				var firmautsup = img.src
+
+				if (fechautsup == '') {
+					firmautsup = ''
+				}
+
+				var registroutsup = $('#registro9').val()
+
+				//qaqc
+				var fechautqaqc = $('#fecha10').val()
+				var horautqaqc = $('#hora10').val()
+				var nombreutqaqc = $('#nombre10').val()
+
+				var img = document.getElementById("firma10");
+				var firmautqaqc = img.src
+
+				if (fechautqaqc == '') {
+					firmautqaqc = ''
+				}
+
+				var registroqaqc = $('#registro10').val()
+
+				//ecopetrol
+				var fechaec = $('#fecha11').val()
+				var horaec = $('#hora11').val()
+				var nombreec = $('#nombre11').val()
+
+				var img = document.getElementById("firma11");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro11').val()
+
+				var arrayLibHazTubos = []
+
+				arrayLibHazTubos.push({
+					"libcascoitem1": libcascoitem1,
+					"fechautsup": fechautsup,
+					"horautsup": horautsup,
+					"nombreutsup": nombreutsup,
+					"firmautsup": firmautsup,
+					"registroutsup": registroutsup,
+					"fechautqaqc": fechautqaqc,
+					"horautqaqc": horautqaqc,
+					"nombreutqaqc": nombreutqaqc,
+					"firmautqaqc": firmautqaqc,
+					"registroutqaqc": registroqaqc,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayLibHazTubos)
+
+				$.post(server + 'actOs80LiberacionCasco.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLibHazTubos)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actCierre() {
+
+				var cierreItem = $('#cierreItem').val()
+
+				var fechaec = $('#fecha12').val()
+				var horaec = $('#hora12').val()
+				var nombreec = $('#nombre12').val()
+
+				var img = document.getElementById("firma12");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+
+				var registroec = $('#registro12').val()
+
+				var fechaut = $('#fecha13').val()
+				var horaut = $('#hora13').val()
+				var nombreut = $('#nombre13').val()
+
+				var img = document.getElementById("firma13");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro13').val()
+
+				var arrayPrueba = []
+
+				arrayPrueba.push({
+					"cierreItem": cierreItem,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout
+				})
+
+				console.log(arrayPrueba)
+
+				$.post(server + 'actOs80Cierre.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayPrueba)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actTMec() {
+
+				var term1 = $('#term1').val()
+				var term2 = $('#term2').val()
+				var term3 = $('#term3').val()
+				var term4 = $('#term4').val()
+				var term5 = $('#term5').val()
+				var term6 = $('#term6').val()
+
+				var fechaut = $('#fecha14').val()
+				var horaut = $('#hora14').val()
+				var nombreut = $('#nombre14').val()
+
+				var img = document.getElementById("firma14");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro14').val()
+
+				var fechaec = $('#fecha15').val()
+				var horaec = $('#hora15').val()
+				var nombreec = $('#nombre15').val()
+
+				var img = document.getElementById("firma15");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro15').val()
+
+				var arrayTerm = []
+
+				arrayTerm.push({
+					"term1": term1,
+					"term2": term2,
+					"term3": term3,
+					"term4": term4,
+					"term5": term5,
+					"term6": term6,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayTerm)
+
+				$.post(server + 'actOs80Terminacion.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayTerm)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+			function actPintura() {
+
+				var pintura1 = $('#pintura1').val()
+				var pintura2 = $('#pintura2').val()
+				var pintura3 = $('#pintura3').val()
+				var pintura4 = $('#pintura4').val()
+				var pintura5 = $('#pintura5').val()
+				var pintura6 = $('#pintura6').val()
+				var pintura7 = $('#pintura7').val()
+				var pintura8 = $('#pintura8').val()
+				var pintura9 = $('#pintura9').val()
+				var grado = $('#grado').val()
+				var espesor = $('#espesor').val()
+
+
+				var fechaut = $('#fecha16').val()
+				var horaut = $('#hora16').val()
+				var nombreut = $('#nombre16').val()
+
+				var img = document.getElementById("firma16");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro16').val()
+
+				var fechaec = $('#fecha17').val()
+				var horaec = $('#hora17').val()
+				var nombreec = $('#nombre17').val()
+
+				var img = document.getElementById("firma17");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro17').val()
+
+				var arrayPintura = []
+
+				arrayPintura.push({
+					"pintura1": pintura1,
+					"pintura2": pintura2,
+					"pintura3": pintura3,
+					"pintura4": pintura4,
+					"pintura5": pintura5,
+					"pintura6": pintura6,
+					"pintura7": pintura7,
+					"pintura8": pintura8,
+					"pintura9": pintura9,
+					"grado": grado,
+					"espesor": espesor,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayPintura)
+
+				$.post(server + 'actOs80Pintura.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayPintura)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+			function actEntrega() {
+
+				var entrega1 = $('#entrega1').val()
+				var entrega2 = $('#entrega2').val()
+
+				var fechaut = $('#fecha18').val()
+				var horaut = $('#hora18').val()
+				var nombreut = $('#nombre18').val()
+
+				var img = document.getElementById("firma18");
+				var firmaut = img.src
+
+				if (fechaut == '') {
+					firmaut = ''
+				}
+
+				var registrout = $('#registro18').val()
+
+				var fechaec = $('#fecha19').val()
+				var horaec = $('#hora19').val()
+				var nombreec = $('#nombre19').val()
+
+				var img = document.getElementById("firma19");
+				var firmaec = img.src
+
+				if (fechaec == '') {
+					firmaec = ''
+				}
+				var registroec = $('#registro19').val()
+
+				var arrayEntrega = []
+
+				arrayEntrega.push({
+					"entrega1": entrega1,
+					"entrega2": entrega2,
+					"fechaut": fechaut,
+					"horaut": horaut,
+					"nombreut": nombreut,
+					"firmaut": firmaut,
+					"registrout": registrout,
+					"fechaec": fechaec,
+					"horaec": horaec,
+					"nombreec": nombreec,
+					"firmaec": firmaec,
+					"registroec": registroec
+				})
+
+				console.log(arrayEntrega)
+
+				$.post(server + 'actOs80Entrega.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayEntrega)
+				},
+					function (res) {
+						console.log(res)
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							width: 100,
+							showConfirmButton: false,
+							timer: 1500
+						})
+					})
+
+			}
+
+
+
+			function guardarObs() {
+				var observacion = $('#obs100').val()
+				observacion = observacion.replace(/(\r\n|\n|\r)/gm, " ")
+				observacion = observacion.replace(/["]/gm, "``")
+				observacion = observacion.replace(/[“]/gm, "``")
+				observacion = observacion.replace(/[”]/gm, "``")
+				observacion = observacion.replace(/[']/gm, "`")
+				var nombreobs = $('#nombre100').val()
+				var registroobs = $('#registro100').val()
+				var img = document.getElementById("firma100");
+
+				// crea un nuevo objeto `Date`
+				var today = new Date();
+
+				// obtener la fecha y la hora
+				var now = today.toLocaleString();
+				var firmaobs = img.src
+
+				if (arrayDatos.observaciones != "") {
+
+					var arrayLmp = JSON.parse(arrayDatos.observaciones)
+				} else {
+					var arrayLmp = []
+				}
+
+
+
+				arrayLmp.push({
+					"obs": observacion,
+					"nombre": nombreobs,
+					"registro": registroobs,
+					"firma": firmaobs,
+					"fecha": now
+				})
+
+
+				$.post(server + 'actOs80Obs.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLmp)
+				},
+					function (res) {
+						console.log(res)
+						location.reload()
+					})
+
+			}
+
+
+			function mostraraviso() {
+				let timerInterval
+				Swal.fire({
+					title: 'Políticas de protección de datos personales',
+					text: 'En cumplimiento con la Ley 1581 de protección de datos personales, se le informa que los datos suministrados serán incorporados a una base de datos cuya finalidad es el registro de control de actividades RCA y las actuaciones que se deriven de dicha gestión, cuyo responsable del tratamiento es UT ITALCO. Mediante el registro de sus datos  a través de este formato usted autoriza a UT ITALCO, a tratar los datos con la finalidad descrita arriba.  Como Titular se le informa que podrá ejercer sus derechos de acceso y reclamos a través del correo de contacto pqrsbca@utitalco.com.',
+					timer: 20000,
+					timerProgressBar: true,
+					didOpen: () => {
+						Swal.showLoading()
+						const b = Swal.getHtmlContainer().querySelector('b')
+						timerInterval = setInterval(() => {
+							b.textContent = Swal.getTimerLeft()
+						}, 100)
+					},
+					willClose: () => {
+						clearInterval(timerInterval)
+					}
+				}).then((result) => {
+					/* Read more about handling dismissals below */
+					if (result.dismiss === Swal.DismissReason.timer) {
+						console.log('I was closed by the timer')
+					}
+				})
+			}
+
+			function cargando() {
+				let timerInterval
+				Swal.fire({
+					title: 'Cargando formato...!',
+					timer: 20000,
+					timerProgressBar: true,
+					didOpen: () => {
+						Swal.showLoading()
+						const b = Swal.getHtmlContainer().querySelector('b')
+						timerInterval = setInterval(() => {
+							// b.textContent = Swal.getTimerLeft()
+						}, 100)
+					},
+					willClose: () => {
+						clearInterval(timerInterval)
+					}
+				}).then((result) => {
+					/* Read more about handling dismissals below */
+					if (result.dismiss === Swal.DismissReason.timer) {
+						console.log('I was closed by the timer')
+					}
+				})
+			}
+
+
+			function verArchivos() {
+				var htmltexto = ''
+				for (var i = 0; i < listaArchivos.length; i++) {
+					htmltexto += `
+                    <a href='https://utitalco.com/calidad/028/demex/server/archivos/${listaArchivos[i].archivo}' target='_blank'>${listaArchivos[i].archivo}</a> <br>
+                `
+				}
+
+				Swal.fire({
+					title: '<strong>Lista de adjuntos</strong>',
+					icon: 'info',
+					html: `
+                Pulse click sobre el archivo que desea descargar... <br>
+                ${htmltexto}
+                `
+
+				})
+			}
+
+			function adjuntar() {
+				Swal.fire({
+					title: 'Adjuntar archivo',
+					html: `
+                <input type="file" id="archivo" class="form-control" placeholder="Buscar..."> <br>
+				Según el tamaño del archivo puede tardar un tiempo... espere el aviso de archivo cagado. 
+                `,
+					showCancelButton: true,
+					confirmButtonText: 'Adjuntar'
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+
+						var formData = new FormData();
+						var files = $('#archivo')[0].files[0];
+						formData.append('archivo', files);
+						formData.append('ods', odsq);
+						formData.append('tag', tag);
+						$.ajax({
+							url: server + 'guardarArchivo80.php',
+							type: 'post',
+							data: formData,
+							contentType: false,
+							processData: false,
+							success: function (response) {
+								console.log(response)
+
+								if (response.msn == "Ok") {
+									Swal.fire({
+										position: 'top-end',
+										icon: 'success',
+										title: 'Archivo cargado correctamente...',
+										showConfirmButton: false,
+										timer: 1500
+									}).then(() => {
+
+										location.reload();
+									})
+								} else {
+									Swal.fire({
+										icon: 'error',
+										title: 'Oops...',
+										text: 'Formato de archivo incorrecto...!',
+									})
+								}
+							}
+						});
+
+					}
+				})
+			}
+
+			function guardarObs() {
+				var observacion = $('#obs100').val()
+				observacion = observacion.replace(/(\r\n|\n|\r)/gm, " ")
+				observacion = observacion.replace(/["]/gm, "``")
+				observacion = observacion.replace(/[“]/gm, "``")
+				observacion = observacion.replace(/[”]/gm, "``")
+				observacion = observacion.replace(/[']/gm, "`")
+				var nombreobs = $('#nombre100').val()
+				var registroobs = $('#registro100').val()
+				var img = document.getElementById("firma100");
+
+				// crea un nuevo objeto `Date`
+				var today = new Date();
+
+				// obtener la fecha y la hora
+				var now = today.toLocaleString();
+				var firmaobs = img.src
+
+				if (arrayDatos.observaciones != "") {
+
+					var arrayLmp = JSON.parse(arrayDatos.observaciones)
+				} else {
+					var arrayLmp = []
+				}
+
+
+
+				arrayLmp.push({
+					"obs": observacion,
+					"nombre": nombreobs,
+					"registro": registroobs,
+					"firma": firmaobs,
+					"fecha": now
+				})
+
+
+				$.post(server + 'actOs80Obs.php', {
+					ods: odsq,
+					tag: tag,
+					datos: JSON.stringify(arrayLmp)
+				},
+					function (res) {
+						console.log(res)
+						location.reload()
+					})
+
+			}
+
+		</script>
+</body>
+
+</html>

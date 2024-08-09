@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Evaluaciones de desempeño y cumplimiento - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <style>
+        .cab {
+            background-color: rgb(9, 85, 160);
+            color: white;
+            max-height: 230px;
+            padding: 20px;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        .milabel {
+            background-color: rgb(9, 85, 160);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+        
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+        
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+        
+        .contmenu {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .menu {
+            float: left;
+            margin: 0 auto;
+            width: 300px;
+            height: 100px;
+            background-color: rgb(9, 85, 160);
+            color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        footer {
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+        }
+        
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+        
+        .mybody {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tcal {
+            font-size: 12px;
+        }
+        
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+        
+        .frojo {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+
+    <style media="print">
+        .frojo {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="mybody">
+
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <td>
+                        <img src="img/logo_m.png" height="80px" alt="">
+                    </td>
+                    <td class="pt-" align="center" valign="middle">
+                        <h6>EVALUACIÓN SATISFACCIÓN DEL SERVICIO O PRODUCTO</h6>
+                    </td>
+                    <td class="text-center p-2">
+                        UT-GT-F14 <br> Fecha: 10/05/2021 <br> Versión: 0
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <table class="table table-bordered">
+                    <tr>
+                        <td style="width:30%;">
+                            <h6 class="text-center"><b>DATOS DEL EVALUADO</b></h6>
+                            <hr>
+                            <b>Proveedor: </b> <span id="proveedor"></span>
+                            
+                            <hr>
+                            <b>ODS: </b> <span id="ods"></span>
+                            <hr>
+                            
+                        </td>
+
+                        <td>
+
+                            <div class="row ml-2 mr-2">
+                                <div class="col-sm-3 text-center p-2" style="background-color: red; color: #fff;">
+                                    Se encuentra generalmente por debajo de los parámetros establecidos. Requiere iniciar Plan de Seguimiento
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(237, 253, ); color: #000;">
+                                    En Algunas ocasiones no alcanza los parámetros establecidos . Requiere iniciar un Plan de Mejoramiento Inmediato
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(58, 255, 91); color: #000;">
+                                    Cumple dentro de los parámetros esperado los compromisos y las exigencias establecidas para el cargo
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(14, 146, 36); color: rgb(255, 255, 255);">
+                                    Tiene actuación destacada frente a los parámetros establecidos
+                                </div>
+                                <div class="col-sm-3 text-center p-2" style="background-color: rgb(14, 49, 146); color: rgb(255, 255, 255);">
+                                    Supera significativamente los parámetros establecidos. Su actuación permanente es aventajada y excepcional
+                                </div>
+                            </div>
+                            <div class="row ml-2 mr-2">
+                                <div class="col-sm-3 text-center p-2" style="background-color: red; color: #fff;">
+                                    <b>1</b>
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(237, 253, ); color: #000;">
+                                    <b>2</b>
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(58, 255, 91); color: #000;">
+                                    <b>3</b>
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(14, 146, 36); color: rgb(255, 255, 255);">
+                                    <b>4</b>
+                                </div>
+                                <div class="col-sm-3 text-center p-2" style="background-color: rgb(14, 49, 146); color: rgb(255, 255, 255);">
+                                    <b>5</b>
+                                </div>
+                            </div>
+
+
+
+                        </td>
+
+
+                    </tr>
+                </table>
+                <table class="table table-bordered tcal">
+                    <thead class="thead-dark">
+                        <th style="width: 25%;">ASPECTO</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>CALIFICACIÓN</th>
+                    </thead>
+                    <tbody>
+                        <!-- EJEC ACTIVIDADES -->
+                        <tr>
+                            <td rowspan="3" style="vertical-align:middle; text-align: center; font-weight: bold;">EJECUCIÓN DE ACTIVIDADES</td>
+                            <td>Cumplimiento de características del servicio o producto.</td>
+                            <td align="center" id="p1a"></td>
+                        </tr>
+                        <tr>
+                            <td>Tiempo de entrega/Ejecución</td>
+                            <td align="center">
+                                <span id="p1b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Conformidad en la ejecución de actividades</td>
+                            <td align="center">
+                                <span id="p1c"></span>
+                            </td>
+                        </tr>
+
+                        <!-- CALIDAD -->
+                        <tr>
+                            <td rowspan="5" style="vertical-align:middle; text-align: center; font-weight: bold;">CALIDAD</td>
+                            <td>Entrega oportuna de la información (Documentos). (Antes/Durante y fianlización de la ejecución).</td>
+                            <td align="center" id="p2a"></td>
+                        </tr>
+                        <tr>
+                            <td>Reprocesos/ No confomidades Identificados (¿Se han presentado Reprocesos/NC?)</td>
+                            <td align="center">
+                                <span id="p2b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gestión oportuna de Hallazgos</td>
+                            <td align="center">
+                                <span id="p2c"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Calidad y certificación de los materiales utilizados</td>
+                            <td align="center">
+                                <span id="p2d"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Recibido a Satisfaccción del cliente (Ecopetrol)</td>
+                            <td align="center">
+                                <span id="p2e"></span>
+                            </td>
+                        </tr>
+
+                         <!-- HSE -->
+                         <tr>
+                            <td rowspan="5" style="vertical-align:middle; text-align: center; font-weight: bold;">HSE</td>
+                            <td>Cumplimiento de aspectos HSE.</td>
+                            <td align="center" id="p3a"></td>
+                        </tr>
+                        <tr>
+                            <td>Compromiso y liderazgo visible por parte de la línea de mando</td>
+                            <td align="center">
+                                <span id="p3b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reporte de observación de comportamientos/Hallazgos (¿Han presentado reportes de OB y/o Hallazgos?)</td>
+                            <td align="center">
+                                <span id="p3c"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gestión oportuna de hallazgos</td>
+                            <td align="center">
+                                <span id="p3d"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Estrategias preventivas encaminadas a la prevención de riesgos laborales</td>
+                            <td align="center">
+                                <span id="p3e"></span>
+                            </td>
+                        </tr>
+
+                        <!-- ADMINISTRATIVOS Y LABORALES -->
+                        <tr>
+                            <td rowspan="3" style="vertical-align:middle; text-align: center; font-weight: bold;">ADMINISTRATIVOS Y LABORALES</td>
+                            <td>Cumplimiento aspectos administrativos (Cumplimiento perfil de cargos, Trámite y gestión solicitud tarjeta magnética, Entrega pruebas psicotécnicas).</td>
+                            <td align="center" id="p4a"></td>
+                        </tr>
+                        <tr>
+                            <td>Entrega oportuna de información correspondiente a facturación (Soporte de cantidades de ejecución).</td>
+                            <td align="center">
+                                <span id="p4b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Aspectos laborales (Pago oportuno de salarios/Liquidaciones/Transporte)</td>
+                            <td align="center">
+                                <span id="p4c"></span>
+                            </td>
+                        </tr>
+
+                        
+
+                        <tr>
+                            <td colspan="2" style="text-align:right;">
+                                <b style="font-size: 18px;">Calificación Promedio </b>
+                            </td>
+                            <td colspan="3">
+                                <span id="cal" style="font-size: 18px; font-weight: bold;">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <h5>OBSERVACIONES DE EVALUADORES </h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>EJECUCIÓN ACTIVIDADES: </b><span id="obsact">...</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>LÍDER QAQC: </b><span id="obscalidad">...</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="5"><b>HSE: </b><span id="obshse">...</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>ADMINISTRATIVOS Y LABORALES: </b><span id="obsadmin">...</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Evaluador Ejecución de actividades</b> <br>
+                                        <span id="evalact">...</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id=""></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechaact"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+ 
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Evaluador HSE</b> <br>
+                                        <span id="evalhse">...</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id=""></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechahse"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Evaluador Calidad</b> <br>
+                                        <span id="evalcalidad">...</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id=""></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechacalidad"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Evaluador Administrativo</b> <br>
+                                        <span id="evaladmin">...</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id=""></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechaadmin"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                      
+
+                    </tbody>
+                </table>
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+    <script>
+        var server = 'https://utitalco.com/evaluaciones/evalprov/';
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var id = getParameterByName('id');
+        var ods = getParameterByName('ods');
+
+        var arrayDatos = []
+
+        $.post(server + 'cargarEvalProv.php', {
+                id: id,
+                ods: ods
+            },
+            function(resp) {
+                console.log(resp)
+                arrayDatos = resp;
+
+                $('#proveedor').html(arrayDatos.proveedor)
+                $('#ods').html(arrayDatos.ods)
+
+
+                $('#p1a').html(arrayDatos.p1a)
+                $('#p1b').html(arrayDatos.p1b)
+                $('#p1c').html(arrayDatos.p1c)
+
+                $('#p2a').html(arrayDatos.p2a)
+                $('#p2b').html(arrayDatos.p2b)
+                $('#p2c').html(arrayDatos.p2c)
+                $('#p2d').html(arrayDatos.p2d)
+                $('#p2e').html(arrayDatos.p2e)
+
+                $('#p3a').html(arrayDatos.p3a)
+                $('#p3b').html(arrayDatos.p3b)
+                $('#p3c').html(arrayDatos.p3c)
+                $('#p3d').html(arrayDatos.p3d)
+                $('#p3e').html(arrayDatos.p3e)
+
+                $('#p4a').html(arrayDatos.p4a)
+                $('#p4b').html(arrayDatos.p4b)
+                $('#p4c').html(arrayDatos.p4c)
+                
+ 
+
+                var cali = arrayDatos.prom;
+                
+
+                $('#cal').html(cali)
+
+                $('#obsact').html(arrayDatos.obsact)
+                $('#obscalidad').html(arrayDatos.obscalidad)
+                $('#obshse').html(arrayDatos.obshse)
+                $('#obsadmin').html(arrayDatos.obsadmin)
+                 
+             
+                $('#evalact').html(arrayDatos.nomact)
+                $('#fechaact').html(arrayDatos.fechaact)
+
+                $('#evalcalidad').html(arrayDatos.nomcalidad)
+                $('#fechacalidad').html(arrayDatos.fechacalidad)
+
+                $('#evalhse').html(arrayDatos.nomhse)
+                $('#fechahse').html(arrayDatos.fechahse)
+
+                $('#evaladmin').html(arrayDatos.nomadmin)
+                $('#fechaadmin').html(arrayDatos.fechaadmin)
+
+                $('#proveedor').html(arrayDatos.proveedor)
+                $('#ods').html(arrayDatos.ods)
+            })
+    </script>
+
+</body>
+
+</html>

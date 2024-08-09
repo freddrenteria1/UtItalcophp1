@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HITOS PARADAS DE PLANTA U2100</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+
+    <div id="app" class="m-3">
+
+        <div class="mt-4">
+            <h4 class="text-center">BACKOFFICE HITOS PARADAS DE HORNO 4100B ODS 035
+                <button class="btn btn-success" @click="agregar">Agregar Hito</button>
+            </h4>
+            <hr>
+            <button class="btn btn-sm btn-info">Ver</button> Ver Documentos
+            <button class="btn btn-sm btn-warning">E</button> Editar  
+            <button class="btn btn-sm btn-danger">B</button> Borrar  
+            <button class="btn btn-sm btn-success">D</button> Cargar Documentos 
+            <button class="btn btn-sm btn-info">O</button> Observaciones
+        </div>
+
+
+        <div class="table-responsive mt-3">
+            <table class="table table-striped">
+                <thead class="bg-dark text-white">
+                    <th>Item</th>
+                    <th></th>
+                    <th>Entregable</th>
+                    <th>Elabora</th>
+                    <th>Estado</th>
+                    <th>Start</th>
+                    <th>Finish</th>
+                    <th>Observaciones</th>
+                    <th>Documentos</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr v-for="hito in arrayHitos">
+                        <td><button class="btn btn-primary" @click="cambiarItem(hito.id)">{{hito.item}}</button> </td>
+                        <td>{{hito.codigo}}</td>
+                        <td>{{hito.entregable}}</td>
+                        <td>{{hito.elabora}}</td>
+                        <td>{{hito.estado}}</td>
+                        <td>{{hito.start}}</td>
+                        <td>{{hito.finish}}</td>
+                        <td>{{hito.observaciones}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-info btn-sm" @click="verFiles(hito.id, hito.doc)">Ver</button>
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button class="btn btn-warning btn-sm" @click="editar(hito.id, hito.codigo, hito.entregable, hito.elabora, hito.estado, hito.start, hito.finish)" >E</button>
+                                <button class="btn btn-danger btn-sm" @click="borrar(hito.id, hito.entregable)">B</button>
+                                <button class="btn btn-success btn-sm" @click="agregarFile(hito.id)">D</button>
+                                <button class="btn btn-info btn-sm" @click="agregarObs(hito.id, hito.observaciones)">O</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal Nuevo -->
+        <div class="modal" id="modalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="row">
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Item
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="item" class="form-control" placeholder="Item">
+                            </div>
+
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Código
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="codigo" class="form-control" placeholder="Código">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Entregable
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="entregable" class="form-control" placeholder="Entregable">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Elabora
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="elabora" class="form-control" placeholder="Elabora">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Start
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="start" class="form-control" placeholder="Start">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Finish
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="finish" class="form-control" placeholder="Finish">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardar">Guardar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal Observaciones -->
+         <div class="modal" id="modalObs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar observación del Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <textarea v-model="observaciones" class="form-control" rows="10" style="width: 100%;"></textarea>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="guardarObs">Guardar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal Editar -->
+         <div class="modal" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="row">
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Item
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="item" class="form-control" placeholder="Item">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Código
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="codigo" class="form-control" placeholder="Código">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Entregable
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="entregable" class="form-control" placeholder="Entregable">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Elabora
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" v-model="elabora" class="form-control" placeholder="Elabora">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Start
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="start" class="form-control" placeholder="Start">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Finish
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" v-model="finish" class="form-control" placeholder="Finish">
+                            </div>
+                            <div class="col-sm-4 pt-1" style="text-align: right;">
+                                Estado
+                            </div>
+                            <div class="col-sm-8">
+                                <select v-model="estado" class="form-control">
+                                    <option value="Programado">Programado</option>
+                                    <option value="Elaborado">Elaborado</option>
+                                    <option value="Revisado">Revisado</option>
+                                    <option value="Aprobado">Aprobado</option>
+                                </select>
+                                 
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="actualizar">Actualizar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal File -->
+        <div class="modal" id="modalFile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Documento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <input type="file" id="file" v-model="archivo" placeholder="Cargar documento">
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="subirFile">Guardar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Archivos -->
+        <div class="modal" id="modalArchivos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Documentos del Hito</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <!-- <div class="list-group">
+                            <div v-for="doc in docs" class="list-group-item list-group-item-action " aria-current="true" >
+                                <div class="d-flex w-100 justify-content-between" >
+                                    <h5 @click="abrirFile(doc.doc)" class="mb-1">{{doc.doc}}</h5>
+                                    <button class="btn badge bg-danger" @click.prevent="borrarFile(doc.doc)">X</button>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <ul v-for="doc in docs" class="list-group list-group-horizontal list-group-item-action">
+                            <li class="list-group-item" @click="abrirFile(doc.doc)" style="width: 90%; cursor: pointer;">{{doc.doc}}</li>
+                            <li class="list-group-item"><button class="btn badge bg-danger" data-bs-dismiss="modal" @click.prevent="borrarFile(doc.doc)">X</button></li>
+                        </ul>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+    <script src="js/mainv7.js"></script>
+    
+</body>
+</html>

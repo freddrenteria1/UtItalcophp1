@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Bitacora Rescatistas - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+        .fondo {
+            background-image: url('img/bitacora-viaje.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-y: center;
+        }
+        
+        .cab {
+            background-color: rgb(4, 31, 107);
+            color: rgb(17, 16, 16);
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        .milabel {
+            background-color: rgb(4, 31, 107);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+        
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+        
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+    </style>
+    <style>
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+        
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+        /* Create a custom checkbox */
+        
+        .container {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* Hide the browser's default checkbox */
+        
+        .minput {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+        }
+        /* On mouse-over, add a grey background color */
+        
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+        /* When the checkbox is checked, add a blue background */
+        
+        .container input:checked~.checkmark {
+            background-color: #2196F3;
+        }
+        /* Create the checkmark/indicator (hidden when not checked) */
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        /* Show the checkmark when checked */
+        
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+        /* Style the checkmark/indicator */
+        
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .fotos {
+            width: 300px;
+            float: left;
+            padding: 10px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -205px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .piefoto {
+            background-color: #0772ff;
+            color: white;
+            padding: 10px;
+            height: 70px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+
+        .btnborrar {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btnedit {
+            position: absolute;
+            margin-top: -275px;
+            margin-left: 25px;
+            background-color: rgb(255, 190, 13);
+            border-radius: 3px;
+            padding: 5px;
+            color: rgb(17, 17, 17);
+            cursor: pointer;
+        }
+
+        .piefotoods {
+            background-color: yellow;
+            color: black;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron cab fondo">
+            <center>
+                <img src="img/logo_p.png" width="150px" alt="">
+            </center>
+            <hr><br><br>
+
+            <p id="bv">
+
+            </p>
+        </div>
+        <h4 class="text-center pt-3">BITACORA RESCATISTAS </h4>
+        <center>
+            <button type="button" class="btn btn-info" style="background-color: rgb(4, 31, 107);" onclick="registros()">Ver Registros</button>
+        </center>
+        <hr>
+
+        <div id="cuerpo">
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Nombres y apellidos
+                </label>
+                <input type="text" id="nombres" class="form-control" placeholder="Nombre Completo">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Documento
+                </label>
+                <input type="number" id="doc" class="form-control" placeholder="CC sin puntos">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Fecha 
+                </label>
+                <input type="date" id="fecha" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Turno 
+                </label>
+                <select id="turno" class="form-control">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Personal
+                </label>
+                <div class="row">
+                    <div class="col-sm-2">
+                        Directo
+                        <input type="number" id="pdir" class="form-control" placeholder="Directo">
+                    </div>
+                    <div class="col-sm-2">
+                        Indirecto
+                        <input type="number" id="pindir" class="form-control" placeholder="Indirecto">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Aspectos relevantes del turno 
+                </label>
+                <textarea id="aspectos" cols="30" class="form-control" rows="5"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Novedades del turno 
+                </label>
+                <textarea id="novedades" cols="30" class="form-control" rows="5"></textarea>
+            </div>
+
+
+            <div class="form-group" id="lsmotivo">
+                <label for="" class="milabel">
+                    Equipos de Rescate
+                </label>
+                <label class="container">Equipo 1
+                    <input type="checkbox" id="equipo1" class="minput" >
+                    <span class="checkmark"></span>
+                  </label>
+                <label class="container">Equipo 2
+                    <input type="checkbox" id="equipo2" class="minput" >
+                    <span class="checkmark"></span>
+                  </label>
+                <label class="container">Equipo 3
+                    <input type="checkbox" id="equipo3" class="minput" >
+                    <span class="checkmark"></span>
+                  </label>
+                <label class="container">Equipo 4
+                    <input type="checkbox" id="equipo4" class="minput" >
+                    <span class="checkmark"></span>
+                  </label>
+                <label class="container">Otro
+                   
+                  
+                <input type="text" class="form-control" id="otro" placeholder="Cuál?">
+            </label>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="milabel">
+                    Registro fotográfico 
+                </label>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Seleccione foto</label>
+                            <input type="file" class="form-control" id="foto">
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <input type="text" class="form-control" id="detalles">
+                        </div>
+                    </div>
+                    <div class="col-sm-2"> <br>
+                        <button type="button" id="unload" onclick="guardar()"
+                            class="btn btn-success">Subir</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="galeria"></div>
+
+            <div style="clear: both;"></div>
+
+
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-info" style="background-color: rgb(4, 31, 107);" onclick="enviar()">Enviar</button>
+            </div>
+
+        </div>
+
+        <hr>
+        <center>
+            Realizado por Departamento de Innovacion y Desarrollo Tecnólogico UT Italco Barrancabermeja
+        </center>
+        <hr>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        var server = 'https://utitalco.com/hse/rescatistas/server/';
+        var url = 'https://utitalco.com/server/';
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var arrayInfoFotos = []
+
+        var datos = JSON.parse(localStorage.getItem('datos'))
+
+        $('#nombres').val(datos[0].nombres)
+        $('#doc').val(datos[0].doc)
+
+        var ods = datos[0].ods
+
+        function cargando2() {
+            let timerInterval
+            Swal.fire({
+                title: 'Subiendo fotografía!',
+                html: 'Un momento por favor...',
+                timer: 60000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getContent()
+                        if (content) {
+                            const b = content.querySelector('b')
+                        }
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Guardando Bitacora!',
+                html: 'Un momento por favor...',
+                timer: 40000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        function registros() {
+            location = 'oficina.html'
+        }
+
+
+        function enviar() {
+
+            var nombres = $('#nombres').val()
+            var doc = $('#doc').val()
+            var equipos = ''
+
+            var fecha = $('#fecha').val()
+
+
+            if ($('#equipo1').prop('checked')) {
+                equipos += ' Equipo 1 - '
+
+            }
+            if ($('#equipo2').prop('checked')) {
+                equipos += ' Equipo 2 - '
+            }
+
+            if ($('#equipo3').prop('checked')) {
+                equipos += ' Equipo 3 - '
+            }
+            if ($('#equipo4').prop('checked')) {
+                equipos += ' Equipo 4 - '
+            }
+
+
+            equipos += $('#otro').val()
+
+
+
+            var turno = $('#turno').val()
+            var pdir = $('#pdir').val()
+            var pindir = $('#pindir').val()
+            var aspectos = $('#aspectos').val()
+            var novedades = $('#novedades').val()
+
+
+            if (nombres != '' && fecha != '') {
+                cargando()
+
+                var formData = new FormData();
+
+                formData.append('nombres', nombres);
+                formData.append('doc', doc);
+                formData.append('ods', ods);
+                formData.append('turno', turno);
+                formData.append('pdir', pdir);
+                formData.append('pindir', pindir);
+                formData.append('equipos', equipos);
+                formData.append('aspectos', aspectos);
+                formData.append('novedades', novedades);
+                formData.append('fotos', JSON.stringify(arrayInfoFotos));
+
+                
+                $.ajax({
+                    url: server + 'guardarBitacora.php',
+                    type: 'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'info',
+                            title: 'Correcto...',
+                            showConfirmButton: false,
+                            timer: 500
+                        })
+                        $('#bv').html('')
+                        $('#cuerpo').html('<center>Gracias por diligenciar el registro de la Bitacora, ya quedó guardado.</center>')
+                        location = 'oficina.html'
+                    }
+                })
+
+
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Por favor registre todos los datos',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+        }
+    
+        function guardar(){
+
+            cargando2()
+
+            var formData = new FormData();
+
+            var files = $('#foto')[0].files[0];
+
+            formData.append('foto', files);
+            formData.append('ods', ods);
+           
+            $.ajax({
+                url: url + 'guardarFotoRes.php',
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    console.log(response)
+
+                    if (response.msn == "Realizado...") {
+
+                        var detalles = $('#detalles').val()
+
+                        var fotocargada = response.foto
+
+                        arrayInfoFotos.push({
+                            'foto':fotocargada,
+                            'detalles':detalles                            
+                        })
+
+                        sessionStorage.setItem('arrayInfoFotos', JSON.stringify(arrayInfoFotos))
+
+                        Swal.fire({
+                            icon: 'info',
+                            text: 'Foto cargada...!',
+                        })
+
+                        $('#detalles').val('')
+                        $('#foto').val('')
+
+                        cargarDatos()
+                        //cargarBita()
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Formato de archivo incorrecto...!',
+                        })
+                    }
+                }
+            });
+        }
+
+        function cargarDatos(){
+
+
+            if (arrayInfoFotos != null) {
+
+                var html = ''
+
+                for (var i = 0; i < arrayInfoFotos.length; i++) {
+                    html += `
+                    <div class="fotos">
+                        <img src="${url + arrayInfoFotos[i].foto}" width="100%" >
+                        <div class="piefoto">
+                            ${arrayInfoFotos[i].detalles}
+                        </div>
+                        
+                        
+                        <div class="btnedit" onclick="borrar(${i})">B
+                        </div>
+                    </div>
+                `
+                }
+
+            }
+
+            $('#galeria').html(html)
+        }
+
+        function borrar(index){
+             
+
+             
+            arrayInfoFotos.splice(index, 1);
+                cargarDatos()
+             
+        }
+    
+    </script>
+
+</body>
+
+</html>

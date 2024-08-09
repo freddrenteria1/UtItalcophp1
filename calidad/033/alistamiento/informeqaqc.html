@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <script src="weldbook/jquery.min.js"></script>
+    <script src="weldbook/jquery-ui.min.js"></script>
+    <script src="weldbook/jquery.jqGrid.min.js"></script>
+    <script src="weldbook/grid.locale-en.js"></script>
+    <link rel="stylesheet" href="weldbook/jquery-ui.css" />
+    <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+    <!-- <link rel="stylesheet" href="ui.jqgrid.css"> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+        <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+        <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+        <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+    
+        
+
+    <style>
+        .ui-th-div {
+            vertical-align: top !important;
+        }
+
+        .ui-jqgrid-title {
+            vertical-align: top;
+        }
+
+        body {
+            /* background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; */
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt="" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h5>
+                    INFORME DIARIO DE AVANCE DE QA/QC ODS 033 ALISTAMIENTO CALDERA SB-2405
+                    <br />
+                    Fecha Informe: <span id="fecha"></span> | Fecha de Corte
+
+                    <input type="date"  id="fechac" placeholder="Fecha">
+                    <button id="export" onclick="cargarFecha()" class="btn btn-success">Cargar Datos</button>
+                </h5>
+            </div>
+        </div>
+    </nav>
+
+    <div class="micontainer">
+        <div class="cuerpo">
+
+
+            <div class="card-header bg-primary text-center mt-2" style="color: #fff">
+                <h5>AVANCE DIARIO SEGUIMIENTO Y CONTROL</h5>
+            </div>
+             
+
+            <div class="mt-2">
+              <center>
+                <h4>BANCO PRINCIPAL</h4>
+            </center>
+                <table class="table table-striped" id="tabla1"></table>
+            </div>
+
+            <div class="mt-2" id="fig1"></div>
+
+            <div class="mt-2" id="fotoLodos"></div>
+
+
+            <div class="card-header bg-primary text-center mt-2" style="color: #fff">
+                <h5>AVANCE DIARIO SEGUIMIENTO Y CONTROL PREFABRICADO DE COMPONENTES</h5>
+            </div>
+
+            <div class="">
+                <center>
+                    <h4>PAREDES LATERALES</h4>
+                </center>
+                <table class="table table-striped" id="gridLaterales"></table>
+              </div>
+               
+              <div class="row mt-3">
+                <div class="col-sm-12">
+                  <div id="figLaterales"></div>
+                </div>
+              </div>
+        
+              <div class="">
+                <center>
+                    <h4>PARED PISO</h4>
+                </center>
+                <table class="table table-striped" id="gridPiso"></table>
+              </div>
+               
+              <div class="row mt-3">
+                <div class="col-sm-12">
+                  <div id="figPiso"></div>
+                </div>
+              </div>
+        
+              <div class="">
+                <center>
+                    <h4>PARED FRONTAL</h4>
+                </center>
+                <table class="table table-striped" id="gridFrontal"></table>
+              </div>
+               
+              <div class="row mt-3">
+                <div class="col-sm-12">
+                  <div id="figFrontal"></div>
+                </div>
+              </div>
+        
+              <div class="">
+                <center>
+                    <h4>PARED TECHO</h4>
+                </center>
+                <table class="table table-striped" id="gridTecho"></table>
+              </div>
+               
+              <div class="row mt-3">
+                <div class="col-sm-12">
+                  <div id="figTecho"></div>
+                </div>
+              </div>
+        
+              <div class="">
+                <center>
+                    <h4>PARED PANTALLA</h4>
+                </center>
+                <table class="table table-striped" id="gridPantalla"></table>
+              </div>
+               
+              <div class="row mt-3">
+                <div class="col-sm-12">
+                  <div id="figPantalla"></div>
+                </div>
+              </div>
+              <hr>
+
+              <div class="">
+                <center>
+                    <h4>RECOMENDACIONES TÉCNICAS</h4>
+                </center>
+                <table class="table table-striped" id="gridRT"></table>
+              </div>
+            
+ 
+
+            
+            
+
+
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script>
+        var odsq = '030';
+        var datos = [];
+        var url = "https://utitalco.com/calidad/033/alistamiento/weldbook/server/";
+
+        var user = sessionStorage.getItem("usercal");
+        var tipouser = sessionStorage.getItem("tipouser");
+
+        var arrayFechas = []
+        var arrayProg = []
+        var arrayEje = []
+
+        var arrayAct = []
+        var arrayPlan = []
+        var arrayEje = []
+        var arrayPdte = []
+        var arrayAcumEje = []
+
+        
+
+        var datosLaterales = []
+        var datosPiso = []
+        var datosFrontal = []
+        var datosTecho = []
+        var datosPantalla = []
+
+        var arrayDatosLaterales = []
+        var arrayDatosPiso = []
+        var arrayDatosFrontal = []
+        var arrayDatosTecho = []
+        var arrayDatosPantalla = []
+
+        var arrayProgAcum = null
+        var arrayEjeAcum = null
+
+        var soldadores = []
+        var rendi = []
+
+        var arrayFotos = []
+
+        var ventana_ancho = $(window).width();
+        var ventana_alto = $(window).height();
+        ventana_ancho = ventana_ancho - 80;
+        ventana_alto = ventana_alto - 220;
+
+        if (ventana_ancho > 1300) {
+            ventana_alto = ventana_alto - 220;
+        } else {
+            ventana_alto = 330;
+        }
+
+        let date = new Date();
+        let output =
+            String(date.getDate()).padStart(2, "0") +
+            "-" +
+            String(date.getMonth() + 1).padStart(2, "0") +
+            "-" +
+            date.getFullYear();
+
+        let outputf =
+            date.getFullYear() +
+            "-" +
+            String(date.getMonth() + 1).padStart(2, "0") +
+            "-" +
+            String(date.getDate()).padStart(2, "0");
+             
+            
+           
+
+        $("#fecha").html(output);
+
+        var fechab = sessionStorage.getItem('fechab');
+        
+
+        if(fechab == null){
+            fechab = outputf;
+        }
+
+        var fechabuscar = fechab
+
+
+        $('#fechac').val(fechab)
+
+        //cargarDatos();
+
+        function cargando() {
+            let timerInterval;
+            Swal.fire({
+                title: "Cargando indicadores...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        function cargandoPag() {
+            let timerInterval;
+            Swal.fire({
+                title: "Procesando datos...!",
+                timer: 120000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector("b");
+                    timerInterval = setInterval(() => {
+                        // b.textContent = Swal.getTimerLeft()
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        }
+
+        //cargarInformePuntos();
+       
+        cargarAvanceDiario()
+        cargarRT()
+        
+
+        function cargarFecha(){
+            fechabuscar = $('#fechac').val()
+            sessionStorage.setItem('fechab', fechabuscar)
+            location.reload()
+        }
+
+       
+        function cargarAvanceDiario() {
+
+            $('#fechac').val(fechabuscar)
+
+            $.post(url + "cargarDatosCCBancoInf.php", {fecha:fechabuscar}, function (resp) {
+                datos = resp.banco;
+                arrayDatos = resp.banco
+                arrayFotos = resp.fotos
+
+                var html = ''
+
+                html += `
+                <img src='http://utitalco.com/calidad/033/alistamiento/weldbook/server/csv/${arrayFotos.imgLodos}' width="100%"> <br>
+                <img src='http://utitalco.com/calidad/033/alistamiento/weldbook/server/csv/${arrayFotos.imgVapor}' width="100%"> <br>
+                <img src='http://utitalco.com/calidad/033/alistamiento/weldbook/server/csv/${arrayFotos.imgOrificios}' width="100%">
+
+                `
+
+                $("#fotoLodos").html(html)
+
+                console.log(datos);
+
+                $("#tabla1").jqGrid({
+                datatype: "local",
+                regional: "es", // this is default
+                data: datos,
+                colModel: [
+                {name: "item", label: "ITEM", width: 50,}, 
+                        {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                        {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                       
+                        {name: "toteje", label: "EJE DIARIO", width: 90, align:"center"},
+                        {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                        {name: "avance", label: "% AVANCE", width: 90, align:"center"},
+                        {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                        {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                        {name: "observaciones", label: "OBSERVACIONES", width: 320}                 
+                            ],
+                loadonce: true,
+                shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                width: ventana_ancho,
+                height: 300,
+                rowNum: 1000,
+                pager: "#jqGridPager",
+                });
+
+                $("#tabla1").jqGrid("filterToolbar", {
+                autoSearch: true,
+                searchOnEnter: false,
+                });
+
+                cargarGraficas();
+            });
+       
+       
+       
+        }
+
+
+        function cargarGraficas() {
+     
+
+                for (var i = 0; i < arrayDatos.length; i++) {
+                
+                arrayAct.push(arrayDatos[i].actividad)
+                arrayPlan.push(parseInt(arrayDatos[i].totplan))
+                arrayEje.push(parseInt(arrayDatos[i].toteje))
+                arrayAcumEje.push(parseInt(arrayDatos[i].acumeje))
+                arrayPdte.push(parseInt(arrayDatos[i].pendiente))
+
+            
+                }
+
+                Highcharts.chart("fig1", {
+                credits: {
+                    enabled: false,
+                },
+                colors: [
+                            "#00c901",
+                            "#01005e",
+                            "#efd520",
+                            "#bfbfbf",
+                            "#537b35",
+                            "#a4c639",
+                            "#537b35",
+                            "#a4c639",
+                            "#537b35",
+                        ],
+                chart: {
+                    type: "column",
+                    
+                     
+                },
+                title: {
+                    text: "<b>AVANCE ACTIVIDADES DE SEGUIMIENTO Y CONTROL BANCO PRINCIPAL</b>",
+                },
+
+                xAxis: {
+                    categories: arrayAct,
+                    crosshair: true,
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                    text: "Cant",
+                    },
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: "</table>",
+                    shared: true,
+                    useHTML: true,
+                },
+                plotOptions: {
+                    column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true,
+                    },
+                    },
+                },
+                series: [{
+                    name: "PLANEADO",
+                    data: arrayPlan,
+                    },
+                    {
+                    name: "EJECUTADAS DIA",
+                    data: arrayEje,
+                    },
+                    {
+                    name: "ACUMULADO EJE",
+                    data: arrayAcumEje,
+                    },
+                    {
+                    name: "PENDIENTES",
+                    data: arrayPdte,
+                    },
+                ],
+                });
+
+                cargarAvanceDiarioPre()
+
+                
+            }
+
+
+        function cargarAvanceDiarioPre() {
+
+            
+
+            $.post(url + "cargarDatosCCPreInf.php", {fecha:fechab}, function (resp) {
+
+              console.log('respuesta de paredes')
+
+              console.log(resp)
+
+                datosLaterales = resp.laterales;
+                arrayDatosLaterales = resp.laterales;
+
+                datosPiso = resp.piso;
+                arrayDatosPiso = resp.piso;
+
+                datosFrontal = resp.frontal;
+                arrayDatosFrontal = resp.frontal;
+
+                datosTecho = resp.techo;
+                arrayDatosTecho = resp.techo;
+
+                datosPantalla = resp.pantalla;
+                arrayDatosPantalla = resp.pantalla;
+
+                //Laterales
+
+                if(datosLaterales != null){
+
+                  $("#gridLaterales").jqGrid({
+                  datatype: "local",
+                  regional: "es", // this is default
+                  data: datosLaterales,
+                  colModel: [
+                  {name: "item", label: "ITEM", width: 50,}, 
+                          {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                          {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                          {name: "ejete", label: "EJE DIA", width: 90,},
+                          {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                          {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                          {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                          {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                          {name: "observaciones", label: "OBSERVACIONES", width: 320}            
+                              ],
+                  loadonce: true,
+                  shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                  width: ventana_ancho,
+                  height: 200,
+                  rowNum: 1000,
+                  pager: "#jqGridPager",
+                  });
+  
+                  $("#gridLaterales").jqGrid("filterToolbar", {
+                  autoSearch: true,
+                  searchOnEnter: false,
+                  });
+  
+                  //Piso
+  
+                  $("#gridPiso").jqGrid({
+                  datatype: "local",
+                  regional: "es", // this is default
+                  data: datosPiso,
+                  colModel: [
+                  {name: "item", label: "ITEM", width: 50,}, 
+                          {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                          {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                          {name: "ejete", label: "EJE DIA", width: 90,},
+                          {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                          {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                          {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                          {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                          {name: "observaciones", label: "OBSERVACIONES", width: 320}                    
+                              ],
+                  loadonce: true,
+                  shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                  width: ventana_ancho,
+                  height: 200,
+                  rowNum: 1000,
+                  pager: "#jqGridPager",
+                  });
+  
+                  $("#gridPiso").jqGrid("filterToolbar", {
+                  autoSearch: true,
+                  searchOnEnter: false,
+                  });
+
+                }
+
+
+                //Frontal
+
+                if(datosFrontal != null){
+
+                  $("#gridFrontal").jqGrid({
+                  datatype: "local",
+                  regional: "es", // this is default
+                  data: datosFrontal,
+                  colModel: [
+                  {name: "item", label: "ITEM", width: 50,}, 
+                          {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                          {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                          {name: "ejete", label: "EJE DIA", width: 90,},
+                          {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                          {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                          {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                          {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                          {name: "observaciones", label: "OBSERVACIONES", width: 320}                   
+                              ],
+                  loadonce: true,
+                  shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                  width: ventana_ancho,
+                  height: 200,
+                  rowNum: 1000,
+                  pager: "#jqGridPager",
+                  });
+  
+                  $("#gridFrontal").jqGrid("filterToolbar", {
+                  autoSearch: true,
+                  searchOnEnter: false,
+                  });
+  
+                  //Techo
+  
+                  $("#gridTecho").jqGrid({
+                  datatype: "local",
+                  regional: "es", // this is default
+                  data: datosTecho,
+                  colModel: [
+                  {name: "item", label: "ITEM", width: 50,}, 
+                          {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                          {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                          {name: "ejete", label: "EJE DIA", width: 90,},
+                          {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                          {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                          {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                          {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                          {name: "observaciones", label: "OBSERVACIONES", width: 320}                 
+                              ],
+                  loadonce: true,
+                  shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                  width: ventana_ancho,
+                  height: 200,
+                  rowNum: 1000,
+                  pager: "#jqGridPager",
+                  });
+  
+                  $("#gridTecho").jqGrid("filterToolbar", {
+                  autoSearch: true,
+                  searchOnEnter: false,
+                  });
+                  
+                }
+
+
+                //Pantalla
+
+                if(datosPantalla != null){
+                  
+                  $("#gridPantalla").jqGrid({
+                  datatype: "local",
+                  regional: "es", // this is default
+                  data: datosPantalla,
+                  colModel: [
+                  {name: "item", label: "ITEM", width: 50,}, 
+                          {name: "actividad", label: "ACTIVIDAD", width: 350,},
+                          {name: "totplan", label: "TOTAL PLAN", width: 90, align:"center"},
+                          {name: "ejete", label: "EJE DIA", width: 90,},
+                          {name: "acumeje", label: "ACUM. EJE", width: 90, align:"center"},
+                          {name: "avance", label: "AVANCE", width: 90, align:"center"},
+                          {name: "fecha", label: "FECHA", width: 80, align:"center"},
+                          {name: "pendiente", label: "PENDIENTE", width: 80, align:"center"},
+                          {name: "observaciones", label: "OBSERVACIONES", width: 320}                   
+                              ],
+                  loadonce: true,
+                  shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                  width: ventana_ancho,
+                  height: 200,
+                  rowNum: 1000,
+                  pager: "#jqGridPager",
+                  });
+  
+                  $("#gridPantalla").jqGrid("filterToolbar", {
+                  autoSearch: true,
+                  searchOnEnter: false,
+                  });
+                  cargarGraficasPre()
+                }
+
+
+
+
+        
+            });
+    
+       
+       
+        }
+
+
+        function cargarGraficasPre() {
+
+        var arrayAct = []
+        var arrayPlan = []
+        var arrayEje = []
+        var arrayPdte = []
+        var arrayAcumEje = []
+
+        //Laterales
+
+      for (var i = 0; i < arrayDatosLaterales.length; i++) {
+        
+        arrayAct.push(arrayDatosLaterales[i].actividad)
+        arrayPlan.push(parseInt(arrayDatosLaterales[i].totplan))
+        arrayEje.push(parseInt(arrayDatosLaterales[i].ejete))
+        arrayAcumEje.push(parseInt(arrayDatosLaterales[i].acumeje))
+        arrayPdte.push(parseInt(arrayDatosLaterales[i].pendiente))
+    
+      }
+
+      Highcharts.chart("figLaterales", {
+        credits: {
+          enabled: false,
+        },
+        colors: [
+                    "#00c901",
+                    "#01005e",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+        chart: {
+          type: "column",
+          
+        },
+        title: {
+          text: "",
+        },
+
+        xAxis: {
+          categories: arrayAct,
+          crosshair: true,
+        },
+
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Cant",
+          },
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+            dataLabels: {
+              enabled: true,
+            },
+          },
+        },
+        series: [{
+            name: "PLANEADO",
+            data: arrayPlan,
+          },
+          {
+            name: "EJECUTADAS DIA",
+            data: arrayEje,
+          },
+          {
+            name: "ACUMULADO EJE",
+            data: arrayAcumEje,
+          },
+          {
+            name: "PENDIENTES",
+            data: arrayPdte,
+          },
+        ],
+      });
+
+
+        var arrayAct = []
+        var arrayPlan = []
+        var arrayEje = []
+        var arrayPdte = []
+        var arrayAcumEje = []
+
+      //Piso
+
+      for (var i = 0; i < arrayDatosPiso.length; i++) {
+        
+        arrayAct.push(arrayDatosPiso[i].actividad)
+        arrayPlan.push(parseInt(arrayDatosPiso[i].totplan))
+        arrayEje.push(parseInt(arrayDatosPiso[i].ejete))
+        arrayAcumEje.push(parseInt(arrayDatosPiso[i].acumeje))
+        arrayPdte.push(parseInt(arrayDatosPiso[i].pendiente))
+    
+      }
+
+      Highcharts.chart("figPiso", {
+        credits: {
+          enabled: false,
+        },
+        colors: [
+                    "#00c901",
+                    "#01005e",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+        chart: {
+          type: "column",
+          
+        },
+        title: {
+          text: "",
+        },
+
+        xAxis: {
+          categories: arrayAct,
+          crosshair: true,
+        },
+
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Cant",
+          },
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+            dataLabels: {
+              enabled: true,
+            },
+          },
+        },
+        series: [{
+            name: "PLANEADO",
+            data: arrayPlan,
+          },
+          {
+            name: "EJECUTADAS DIA",
+            data: arrayEje,
+          },
+          {
+            name: "ACUMULADO EJE",
+            data: arrayAcumEje,
+          },
+          {
+            name: "PENDIENTES",
+            data: arrayPdte,
+          },
+        ],
+      });
+
+
+      var arrayAct = []
+        var arrayPlan = []
+        var arrayEje = []
+        var arrayPdte = []
+        var arrayAcumEje = []
+
+      //Frontal
+
+      for (var i = 0; i < arrayDatosFrontal.length; i++) {
+        
+        arrayAct.push(arrayDatosFrontal[i].actividad)
+        arrayPlan.push(parseInt(arrayDatosFrontal[i].totplan))
+        arrayEje.push(parseInt(arrayDatosFrontal[i].ejete))
+        arrayAcumEje.push(parseInt(arrayDatosFrontal[i].acumeje))
+        arrayPdte.push(parseInt(arrayDatosFrontal[i].pendiente))
+    
+      }
+
+      Highcharts.chart("figFrontal", {
+        credits: {
+          enabled: false,
+        },
+        colors: [
+                    "#00c901",
+                    "#01005e",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+        chart: {
+          type: "column",
+          
+        },
+        title: {
+          text: "",
+        },
+
+        xAxis: {
+          categories: arrayAct,
+          crosshair: true,
+        },
+
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Cant",
+          },
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+            dataLabels: {
+              enabled: true,
+            },
+          },
+        },
+        series: [{
+            name: "PLANEADO",
+            data: arrayPlan,
+          },
+          {
+            name: "EJECUTADAS DIA",
+            data: arrayEje,
+          },
+          {
+            name: "ACUMULADO EJE",
+            data: arrayAcumEje,
+          },
+          {
+            name: "PENDIENTES",
+            data: arrayPdte,
+          },
+        ],
+      });
+
+
+      var arrayAct = []
+        var arrayPlan = []
+        var arrayEje = []
+        var arrayPdte = []
+        var arrayAcumEje = []
+
+      //Techo
+
+      for (var i = 0; i < arrayDatosTecho.length; i++) {
+        
+        arrayAct.push(arrayDatosTecho[i].actividad)
+        arrayPlan.push(parseInt(arrayDatosTecho[i].totplan))
+        arrayEje.push(parseInt(arrayDatosTecho[i].ejete))
+        arrayAcumEje.push(parseInt(arrayDatosTecho[i].acumeje))
+        arrayPdte.push(parseInt(arrayDatosTecho[i].pendiente))
+    
+      }
+
+      Highcharts.chart("figTecho", {
+        credits: {
+          enabled: false,
+        },
+        colors: [
+                    "#00c901",
+                    "#01005e",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+        chart: {
+          type: "column",
+          
+        },
+        title: {
+          text: "",
+        },
+
+        xAxis: {
+          categories: arrayAct,
+          crosshair: true,
+        },
+
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Cant",
+          },
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+            dataLabels: {
+              enabled: true,
+            },
+          },
+        },
+        series: [{
+            name: "PLANEADO",
+            data: arrayPlan,
+          },
+          {
+            name: "EJECUTADAS DIA",
+            data: arrayEje,
+          },
+          {
+            name: "ACUMULADO EJE",
+            data: arrayAcumEje,
+          },
+          {
+            name: "PENDIENTES",
+            data: arrayPdte,
+          },
+        ],
+      });
+
+
+      var arrayAct = []
+        var arrayPlan = []
+        var arrayEje = []
+        var arrayPdte = []
+        var arrayAcumEje = []
+      //Pantalla
+
+      for (var i = 0; i < arrayDatosPantalla.length; i++) {
+        
+        arrayAct.push(arrayDatosPantalla[i].actividad)
+        arrayPlan.push(parseInt(arrayDatosPantalla[i].totplan))
+        arrayEje.push(parseInt(arrayDatosPantalla[i].ejete))
+        arrayAcumEje.push(parseInt(arrayDatosPantalla[i].acumeje))
+        arrayPdte.push(parseInt(arrayDatosPantalla[i].pendiente))
+    
+      }
+
+      Highcharts.chart("figPantalla", {
+        credits: {
+          enabled: false,
+        },
+        colors: [
+                    "#00c901",
+                    "#01005e",
+                    "#efd520",
+                    "#bfbfbf",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                    "#a4c639",
+                    "#537b35",
+                ],
+        chart: {
+          type: "column",
+          
+        },
+        title: {
+          text: "",
+        },
+
+        xAxis: {
+          categories: arrayAct,
+          crosshair: true,
+        },
+
+        yAxis: {
+          min: 0,
+          title: {
+            text: "Cant",
+          },
+        },
+        tooltip: {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+          footerFormat: "</table>",
+          shared: true,
+          useHTML: true,
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0,
+            dataLabels: {
+              enabled: true,
+            },
+          },
+        },
+        series: [{
+            name: "PLANEADO",
+            data: arrayPlan,
+          },
+          {
+            name: "EJECUTADAS DIA",
+            data: arrayEje,
+          },
+          {
+            name: "ACUMULADO EJE",
+            data: arrayAcumEje,
+          },
+          {
+            name: "PENDIENTES",
+            data: arrayPdte,
+          },
+        ],
+      });
+
+
+      
+     
+    }
+  
+    function cargarRT(){
+      $.post(url + "cargarDatosCCRtAl.php", function (resp) {
+                datos = resp;
+
+                console.log(datos);
+                 
+                $("#gridRT").jqGrid({
+                    datatype: 'local',
+                    regional: 'es', // this is default
+                    data: datos,
+                    colModel: [
+                    {
+                            name: "cons",
+                            label: "CONS.",
+                            width: 50,
+                            frozen: true
+                        },
+                        {name: "num", label: "RT No.", width: 50, frozen: true}, 
+                        {name: "esp", label: "ESPECIALIDAD", width: 120, frozen: true},
+                        {name: "comp", label: "COMPONENTE", width: 200, align:"center", frozen: true},
+                        {name: "etapa", label: "ETAPA", width: 120,},
+                        {name: "detalle", label: "DESCRIPCIÓN", width: 160, align:"center"},
+                        {name: "estado", label: "ESTADO POR RT", width: 120, align:"center", frozen: true}, 
+                        {name: "obs", label: "OBSERVACIONES", width: 500}                 
+                    ],
+                    loadonce: true,
+                    shrinkToFit: false, // must be set with frozen columns, otherwise columns will be shrank to fit the grid width
+                    width: ventana_ancho,
+                    height: ventana_alto,
+                    rowNum: 1000,
+                    pager: "#jqGridPager"
+                });
+
+                $("#gridRT").jqGrid('filterToolbar',
+                {autoSearch: true, searchOnEnter: false,});
+               
+
+                
+
+                $("#gridRT").jqGrid('setFrozenColumns');
+
+               
+
+                 
+
+            
+            
+            });
+        
+    }
+  
+       
+    
+    </script>
+</body>
+
+</html>

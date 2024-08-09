@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gestión HSE UT Italco</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" 
+    integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <style>
+        .myprimary{
+        background-color:#0000de;
+      }
+        .menu{
+            height: 4rem;
+            cursor: pointer;
+        }
+        .menu:hover{
+            background-color:dodgerblue;
+        }
+        .jumbotron{
+            background-color: rgb(144, 199, 255);
+        }
+        .fotos{
+            width: 300px;
+            float: left;
+            padding: 10px;
+        }
+
+        .btnborrar{
+            position: absolute;
+            margin-top: -205px;
+            margin-left: 5px;
+            background-color: red;
+            border-radius: 3px;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        
+    </style>
+
+    <!-- estilos phone -->
+    <style>
+    @media (max-width: 600px) {
+        .menu{
+            margin: 5px;
+        }
+        .dropdown{
+            margin: 5px;
+            width: 100%;
+        }
+        
+    }
+    </style>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark myprimary myprimary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Dashboard HSE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="subirsemanas.html">Semanas</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pirámide</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                   
+                    <a class="dropdown-item" href="hallazgos.html">Hallazgos</a>
+                    <a class="dropdown-item" href="#">Casi incidentes</a>
+                    <a class="dropdown-item" href="#">Incidentes</a>
+                    <a class="dropdown-item" href="subiraseguramientos.html">Subir Excel AC</a>
+                    <a class="dropdown-item" href="asegseguros.html">Aseguramiento de Comportamentos Seguros</a>
+                    <a class="dropdown-item" href="asegriesgos.html">Aseguramiento de Comportamentos en Riesgo</a>
+                    <a class="dropdown-item" href="conversatorios.html">Conversatorios Visibles</a>
+                    <a class="dropdown-item" href="#">Evaluación control de trabajo / SAS</a>
+                    <!-- <a class="dropdown-item" href="#">% Gestión de incidentes</a>
+                    <a class="dropdown-item" href="#">% Gestión de hallazgos</a> -->
+                </div>
+              </li>
+    
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Indicadores de Gestión</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="auditorias.html">Auditorias</a>
+                      <a class="dropdown-item" href="inspecciones.html">Inspecciones    </a>
+                      <a class="dropdown-item" href="rct.html">RCT</a>
+                      <a class="dropdown-item" href="caminata.html">Caminata Gerencial</a>
+                </div>
+              </li>
+    
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Histograma de recursos</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="histopersonal.html">Histograma personal</a>
+                      <a class="dropdown-item" href="capacitacion.html">HH Capacitación</a>
+                      <a class="dropdown-item" href="permisos.html">Permisos de Trabajo Consolidado</a>
+                      <a class="dropdown-item" href="permisosesp.html">Permisos de Trabajo por Especialidad</a>
+                </div>
+              </li>
+             
+    
+              
+    
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Salir <span class="sr-only">(current)</span></a>
+              </li>
+    
+    
+          </ul>
+           
+        </div>
+        </div>
+      </nav>
+    
+    <div class="container mt-3" id="contenido">
+        <h3>EVIDENCIAS FOTOGRÁFICAS DEL PLAN DE ACCIÓN CAMINATA GERENCIAL</h3>
+        <h5><span id="ods"></span> 
+            
+        </h5> <hr>
+         
+
+    </div>
+
+    <div class="container">
+        <form enctype="multipart/form-data" id="formuploadajax" method="post">
+            <div class="form-group">
+                <label>Seleccione foto</label>
+                <input type="file" class="form-control" id="foto" >
+              </div>
+              <button type="button" id="unload" onclick="guardar()" class="btn btn-success">Subir</button>
+        </form> <hr>
+    </div>
+
+    <div class="container" id="galeria">
+        
+    </div>
+
+    <script>
+        var server = 'https://utitalco.com/server/';
+        var user = sessionStorage.getItem('user');
+        var ods = localStorage.getItem('ods')
+        var numods = localStorage.getItem('numods')
+        var arrayDatos = []
+        var arrayResp = []
+        var html = ''
+
+        
+        if(user == null){
+          window.location = 'login.html'
+        }else{
+          $('#ods').html(ods)
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var item = getParameterByName('item');
+
+        cargarDatos()
+
+        function cargarDatos(){
+            //se guarda la información a la base de datos
+            //para luego ser procesada en el informe
+
+            $.post(server+'buscarFotosCaminata.php', {item:item},
+            function(resp){
+                arrayDatos = resp
+
+                var html = '';
+
+                for (var i=0; i<arrayDatos.length; i++){
+                    html += `
+                        <div class="fotos">
+                            <img src="${server + arrayDatos[i].foto}" width="100%" height="210px" >
+                            <div class="btnborrar" onclick="borrar(${arrayDatos[i].id})">X
+                            </div>
+                        </div>
+                    `
+                }
+                $('#galeria').html(html)
+
+            })
+
+            
+
+        }
+
+        function guardar(){
+            var formData = new FormData();
+                var files = $('#foto')[0].files[0];
+                formData.append('foto',files);
+                formData.append('ods',numods);
+                formData.append('item',item);
+                $.ajax({
+                    url: server + 'guardarFotoCaminata.php',
+                    type: 'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        console.log(response)
+                        
+                        if (response.msn == "Realizado...") {
+                            location.reload();
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Formato de archivo incorrecto...!',
+                            })
+                        }
+                    }
+                });
+        }
+
+        function borrar(idfoto){
+            console.log('Id foto '+idfoto)
+            //borrar foto
+            $.post(server+'borrarfotocaminata.php', {id:idfoto},
+            function(resp){
+                console.log(resp)
+                location.reload();
+            })
+        }
+
+    </script>
+         
+</body>
+</html>

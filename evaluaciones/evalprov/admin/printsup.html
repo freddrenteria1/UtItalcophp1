@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Evaluaciones de desempeño y cumplimiento - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <!-- datatables -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <style>
+        .cab {
+            background-color: rgb(9, 85, 160);
+            color: white;
+            max-height: 230px;
+            padding: 20px;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        .milabel {
+            background-color: rgb(9, 85, 160);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+        
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+        
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+        
+        .contmenu {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .menu {
+            float: left;
+            margin: 0 auto;
+            width: 300px;
+            height: 100px;
+            background-color: rgb(9, 85, 160);
+            color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        footer {
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+        }
+        
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+        
+        .mybody {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tcal {
+            font-size: 12px;
+        }
+        
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+        
+        .frojo {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+
+    <style media="print">
+        .frojo {
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="mybody">
+
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <td>
+                        <img src="img/logo_m.png" height="80px" alt="">
+                    </td>
+                    <td class="pt-" align="center" valign="middle">
+                        <h6>EVALUACIÓN DEL DESEMPEÑO Y CUMPLIMIENTO DE OBJETIVOS COORDINADORES/SUPERVISORES</h6>
+                    </td>
+                    <td class="text-center p-2">
+                        UT-GT-F08 <br> Fecha: 27/10/2020 <br> Versión: 2
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <table class="table table-bordered">
+                    <tr>
+                        <td style="width:30%;">
+                            <h6 class="text-center"><b>DATOS DEL EVALUADO</b></h6>
+                            <hr>
+                            <b>Nombres y Apellidos: </b> <span id="nombre">Jesus Alberto Rojas</span>
+                            <hr>
+                            <b>Identificación: </b> <span id="doc">12345678</span>
+                            <hr>
+                            <b>Cargo: </b> <span id="cargo">Pailero</span>
+                            <hr>
+                            <b>Período evaluado: </b> <span id="periodo">12-08-2021 Al 30-08-2021</span>
+                        </td>
+
+                        <td>
+
+                            <div class="row ml-2 mr-2">
+                                <div class="col-sm-3 text-center p-2" style="background-color: red; color: #fff;">
+                                    Se encuentra generalmente por debajo de los parámetros establecidos. Requiere iniciar Plan de Seguimiento
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(237, 253, ); color: #000;">
+                                    En Algunas ocasiones no alcanza los parámetros establecidos . Requiere iniciar un Plan de Mejoramiento Inmediato
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(58, 255, 91); color: #000;">
+                                    Cumple dentro de los parámetros esperado los compromisos y las exigencias establecidas para el cargo
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(14, 146, 36); color: rgb(255, 255, 255);">
+                                    Tiene actuación destacada frente a los parámetros establecidos
+                                </div>
+                                <div class="col-sm-3 text-center p-2" style="background-color: rgb(14, 49, 146); color: rgb(255, 255, 255);">
+                                    Supera significativamente los parámetros establecidos. Su actuación permanente es aventajada y excepcional
+                                </div>
+                            </div>
+                            <div class="row ml-2 mr-2">
+                                <div class="col-sm-3 text-center p-2" style="background-color: red; color: #fff;">
+                                    <b>1</b>
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(237, 253, ); color: #000;">
+                                    <b>2</b>
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(58, 255, 91); color: #000;">
+                                    <b>3</b>
+                                </div>
+                                <div class="col-sm-2 text-center p-2" style="background-color: rgb(14, 146, 36); color: rgb(255, 255, 255);">
+                                    <b>4</b>
+                                </div>
+                                <div class="col-sm-3 text-center p-2" style="background-color: rgb(14, 49, 146); color: rgb(255, 255, 255);">
+                                    <b></b>
+                                </div>
+                            </div>
+
+
+
+                        </td>
+
+
+                    </tr>
+                </table>
+                <table class="table table-bordered tcal">
+                    <thead class="thead-dark">
+                        <th style="width: 5%;">EVALUADOR</th>
+                        <th style="width: 10%;">GRUPO</th>
+                        <th style="width: 15%;">FACTORES</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>CALIFICACIÓN</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="11" style="vertical-align:middle; text-align: center; font-weight: bold;">EVALUADO POR JEFE INMEDIATO</td>
+                            <td rowspan="4" style="vertical-align:middle;">TRABAJO</td>
+                            <td>1. FUNCIONES</td>
+                            <td>Cumplimiento y ejecución de las principales actividades y responsabilidades inherentes del cargo.</td>
+                            <td align="center" id="p1"></td>
+                        </tr>
+                        <tr>
+                            <td>2. CONOCIMIENTOS</td>
+                            <td>Comprensión y dominio de la información especifica que es requerida para el desempeño efectivo del cargo.</td>
+                            <td align="center" id="p2"></td>
+                        </tr>
+                        <tr>
+                            <td>3. RESPONSABILIDAD</td>
+                            <td>Cumplimiento de las políticas, normas, procedimientos y tareas, dando respuesta por las propias actuaciones y sus consecuencias.</td>
+                            <td align="center" id="p3"></td>
+                        </tr>
+                        <tr>
+                            <td>4. ORGANIZACIÓN</td>
+                            <td>Ejecución ordenada de los procedimientos y tareas asignadas, dentro de los tiempos establecidos.</td>
+                            <td align="center" id="p4"></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3" style="vertical-align:middle;">SERVICIO</td>
+                            <td>. COMPROMISO Y RELACIONES INTERPERSONALES</td>
+                            <td>Compromiso hacia la Compañía, hacia sus deberes. (tiene sentido de pertenencia) y Comportamiento cordial, receptivo y amable hacia sus Compañeros y Directivos.</td>
+                            <td align="center" id="p5"></td>
+                        </tr>
+                        <tr>
+                            <td>6. ACTITUD</td>
+                            <td>Disposición para desarrollar las labores asignadas. Tiene buen manejo y actitud hacia los cambios.</td>
+                            <td align="center" id="p6"></td>
+                        </tr>
+                        <tr>
+                            <td>7. COMUNICACIÓN ACTIVA</td>
+                            <td>Habilidad para comprender las necesidades expuestas y dar respuesta efectiva a los requerimientos.</td>
+                            <td align="center" id="p7"></td>
+                        </tr>
+
+
+                        <tr>
+                            <td rowspan="4" style="vertical-align:middle;">COMPETENCIAS INDIVIDUALES Y CUMPLIMIENTO DE OBJETIVOS</td>
+                            <td>8. TRABAJO EN EQUIPO Y COMUNICACIÓN</td>
+                            <td>Esfuerzo individual que contribuye al logro de los objetivos del grupo y de la Compañía.</td>
+                            <td align="center" id="p8"></td>
+                        </tr>
+                        <tr>
+                            <td>9. LOGRO DE RESULTADOS</td>
+                            <td>Actitud permanente de interés, esfuerzo y atención hacia el trabajo y el logro de los resultados de calidad.</td>
+                            <td align="center" id="p9"></td>
+                        </tr>
+                        <tr>
+                            <td>10. CUMPLIMIENTO DE OBJETIVOS</td>
+                            <td>Cumplimiento de las metas y objetivos propuestos dentro de la Compañía.</td>
+                            <td align="center" id="p10"></td>
+                        </tr>
+                        <tr>
+                            <td>11. COMPETENCIAS Y AUTODESARROLLO</td>
+                            <td>Diseño de nuevas iniciativas que permita el mejoramiento continuo. Desarrollo de habilidades profesionales, transferencia de conocimientos.</td>
+                            <td align="center" id="p11"></td>
+                        </tr>
+
+
+
+                        <!-- <tr>
+                            <td rowspan="10" style="vertical-align:middle; text-align: center; font-weight: bold;">EVALUADO POR LÍDER PLANEACIÓN/PLANEADOR DE ODS</td>
+                            <td rowspan="10" style="vertical-align:middle;">PLANEACIÓN / OPERACIÓN</td>
+                            <td rowspan="2" style="vertical-align:middle;">12. ALCANCE</td>
+                            <td>
+                                Comprensión, dominio de la información, alcance y especificaciones requeridas para el desempeño efectivo del cargo.
+                            </td>
+
+                            <td align="center">
+                                <span id="p12a"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Claridad del concepto de trabajo contingente y emergente.
+                            </td>
+                            <td align="center">
+                                <span id="p12b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3" style="vertical-align:middle;">13. REPORTES Y PROGRAMACION</td>
+                            <td>
+                                Cumplimiento de entrega de reportes de avance de obra.
+                            </td>
+
+
+                            <td align="center">
+                                <span id="p13a"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Entendimiento del plazo para entrega de los trabajos.
+                            </td>
+                            <td align="center">
+                                <span id="p13b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Reporte de situaciones o cambios en campo.
+                            </td>
+                            <td align="center">
+                                <span id="p13c"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="5" style="vertical-align:middle;">14. OPERACIÓN</td>
+                            <td>
+                                Administra y optimiza los recursos (Personal, Equipos, Herramientas).
+                            </td>
+                            <td align="center">
+                                <span id="p14a"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Compromiso, comunicación y liderazgo de los trabajos.
+                            </td>
+                            <td align="center">
+                                <span id="p14b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Cumplimiento a la programación de Actividades.
+                            </td>
+                            <td align="center">
+                                <span id="p14c"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Capacidad de planificación, alistamiento y organización de los trabajos.
+                            </td>
+                            <td align="center">
+                                <span id="p14d"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Orientación al cliente.
+                            </td>
+                            <td align="center">
+                                <span id="p14e"></span>
+                            </td>
+                        </tr>
+
+ -->
+
+                        <tr>
+                            <td rowspan="10" style="vertical-align:middle;  text-align: center; font-weight: bold;">EVALUADO POR LÍDER HSE </td>
+                            <td rowspan="10" style="vertical-align:middle;">SEGURIDAD Y SALUD EN EL TRABAJO Y AMBIENTE</td>
+                            <td rowspan="3" style="vertical-align:middle;">15. FUNCIONES HSE</td>
+                            <td>
+                                Cumple las funciones y responsabilidades en HSE establecidas e la guía GAB-F-207 y GAB-F-208.
+                            </td>
+                            <td align="center">
+                                <span id="p15a"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Demuestra liderazgo visible (Lidera, verifica, cumple con los reportes de aspectos HSE).
+                            </td>
+                            <td align="center">
+                                <span id="p15b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Asegura el cumplimiento de políticas, estándares, procedimientos, normas, nacionales y/o internacionales de acuerdo con las actividades a ejecutar y al Sistema Integrado de Gestión de UT ITALCO en alineación con las de ECOPETROL S.A.
+                            </td>
+                            <td align="center">
+                                <span id="p15c"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" style="vertical-align:middle;">16. SALUD EN EL TRABAJO</td>
+                            <td>
+                                Aplica en su trabajo la Política de SST
+                            </td>
+                            <td align="center">
+                                <span id="p16a"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Participa activamente en las charlas y cursos de Capacitación a los que ha sido Invitado.
+                            </td>
+                            <td align="center">
+                                <span id="p16b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3" style="vertical-align:middle;">17. SEGURIDAD EN EL TRABAJO</td>
+                            <td>Informa al Jefe Inmediato sobre las fallas o deterioro de los Sistemas de Seguridad, Equipos de Protección o cualquier condición Insegura o Peligrosa en el Trabajo.</td>
+                            <td align="center" id="p17a"></td>
+                        </tr>
+                        <tr>
+                            <td>Identifica los peligros, valora los riesgos e implementa los controles establecidos para las actividades a ejecutar.</td>
+                            <td align="center" id="p17b"></td>
+                        </tr>
+                        <tr>
+
+                            <td>Establece planes de acción para las desviaciones HSE identificadas.</td>
+                            <td align="center" id="p17c"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" style="vertical-align:middle;">18. AMBIENTE</td>
+                            <td>Conoce y aplica las sugerencias sobre ahorro de agua y energía, y separa adecuadamente los residuos generados.</td>
+                            <td align="center" id="p18a"></td>
+                        </tr>
+
+                        <tr>
+
+                            <td>Aplica las premisas de orden y aseo en su frente de trabajo, antes, durante y despues de su jornada laboral. </td>
+                            <td align="center" id="p18b"></td>
+                        </tr>
+
+
+                        <tr>
+                            <td rowspan="2" style="vertical-align:middle; text-align: center; font-weight: bold;">LOGÍSTICA <br> POR LÍDER <br> EVALUADO </td>
+                            <td rowspan="2" style="vertical-align:middle;">LOGÍSTICA</td>
+                            <td rowspan="2" style="vertical-align:middle;">19. GESTIÓN</td>
+                            <td>
+                                Gestiona oportunamente equipos, herramientas y materiales necesarios para la ejecución de sus labores.
+                            </td>
+                            <td align="center">
+                                <span id="p19a"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Reporta oportunamente fallas en equipos y herramientas
+                            </td>
+                            <td align="center">
+                                <span id="p19b"></span>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="6" style="vertical-align:middle; text-align: center; font-weight: bold;">EVALUADO POR LÍDER QAQC </td>
+                            <td rowspan="6" style="vertical-align:middle;">QAQC</td>
+                            <td rowspan="5" style="vertical-align:middle;">20. REPORTE</td>
+                            <td>
+                                Conoce y ejecuta el alcance técnico definido para la orden de servicio, identifica y reporta las actividades que requieren control de cambio.
+                            </td>
+                            <td align="center">
+                                <span id="p20a"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Reporta veraz y oportunamente la ejecución de las actividades, haciendo uso de los formatos establecidos para el aseguramiento del plan de calidad.
+                            </td>
+                            <td align="center">
+                                <span id="p20b"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Diligencia y gestiona a tiempo los registros control de actividades (Protocolos) establecidos para el seguimiento y control de los trabajos ejecutados.
+                            </td>
+                            <td align="center">
+                                <span id="p20c"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Informa, reporta y gestiona los reprocesos.
+                            </td>
+                            <td align="center">
+                                <span id="p20d"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Identifica, reporta condiciones subestándar que requieran inspección y/o validación por parte del área de calidad.
+                            </td>
+                            <td align="center">
+                                <span id="p20e"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align:middle;">21. VERIFICACIÓN</td>
+                            <td>
+                                Asegura que las herramientas y equipos de medición estén calibrados al momento de ser utilizados.
+                            </td>
+                            <td align="center">
+                                <span id="p21"></span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="2" style="text-align:right;">
+                                <b style="font-size: 18px;">Calificación Promedio </b>
+                            </td>
+                            <td colspan="3">
+                                <span id="cal" style="font-size: 18px; font-weight: bold;">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <h5>OBSERVACIONES DE EVALUADORES </h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>JEFE INMEDIATO: </b><span id="obsji">...</span></td>
+                        </tr>
+                        <!-- <tr>
+                            <td colspan="5"><b>LÍDER PLANEACIÓN: </b><span id="obspl">...</span></td>
+                        </tr> -->
+                        <tr>
+                            <td colspan="5"><b>LÍDER HSE: </b><span id="obslh">...</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>LÍDER LOGÍSTICA: </b><span id="obslog">...</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>LÍDER QAQC: </b><span id="obsq">...</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>COMPROMISOS: </b><span id="comp">...</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5"><b>PLANES: </b><span id="planes">...</span></td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Nombre de Jeje inmediato (Evaluador)</b> <br>
+                                        <span id="evaljefe">Juan Manuel</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id="firmajefe"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechajefe"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Nombre Líder de Planeación (Evaluador)</b> <br>
+                                        <span id="evallplan">Juan Manuel</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id="firmalplan"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechalplan"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr> -->
+
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Nombre Líder HSE (Evaluador)</b> <br>
+                                        <span id="evallhse">Juan Manuel</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id="firmalhse"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechalhse"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Nombre Líder Logística (Evaluador)</b> <br>
+                                        <span id="evalllog">Juan Manuel</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id="firmallog"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechallog"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <b>Nombre Líder QAQC (Evaluador)</b> <br>
+                                        <span id="evallq">Juan Manuel</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Firma:</b><br>
+                                        <span id="firmalq"></span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Fecha de evaluación:</b><br>
+                                        <span id="fechalq"></span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+    <script>
+        var server = 'https://utitalco.com/evaluaciones/';
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        var doc = getParameterByName('doc');
+        var ods = getParameterByName('ods');
+
+        var arrayDatos = []
+
+        $.post(server + 'cargarEvalSupervisores.php', {
+                doc: doc,
+                ods: ods
+            },
+            function(resp) {
+                console.log(resp)
+                arrayDatos = resp;
+
+                $('#nombre').html(arrayDatos.nombre)
+                $('#doc').html(arrayDatos.doc)
+                $('#cargo').html(arrayDatos.cargo)
+
+                var periodo = arrayDatos.pinicial + ' Al ' + arrayDatos.pfinal
+                $('#periodo').html(periodo)
+
+                $('#p1').html(arrayDatos.p1)
+                $('#p2').html(arrayDatos.p2)
+                $('#p3').html(arrayDatos.p3)
+                $('#p4').html(arrayDatos.p4)
+                $('#p5').html(arrayDatos.p5)
+                $('#p6').html(arrayDatos.p6)
+                $('#p7').html(arrayDatos.p7)
+                $('#p8').html(arrayDatos.p8)
+                $('#p9').html(arrayDatos.p9)
+                $('#p10').html(arrayDatos.p10)
+                $('#p11').html(arrayDatos.p11)
+
+                $('#p12a').html(arrayDatos.p12a)
+                $('#p12b').html(arrayDatos.p12b)
+                $('#p13a').html(arrayDatos.p13a)
+                $('#p13b').html(arrayDatos.p13b)
+                $('#p13c').html(arrayDatos.p13c)
+                $('#p14a').html(arrayDatos.p14a)
+                $('#p14b').html(arrayDatos.p14b)
+                $('#p14c').html(arrayDatos.p14c)
+                $('#p14d').html(arrayDatos.p14d)
+                $('#p14e').html(arrayDatos.p14e)
+
+                $('#p15a').html(arrayDatos.p15a)
+                $('#p15b').html(arrayDatos.p15b)
+                $('#p15c').html(arrayDatos.p15c)
+                $('#p16a').html(arrayDatos.p16a)
+                $('#p16b').html(arrayDatos.p16b)
+                $('#p17a').html(arrayDatos.p17a)
+                $('#p17b').html(arrayDatos.p17b)
+                $('#p17c').html(arrayDatos.p17c)
+                $('#p18a').html(arrayDatos.p18a)
+                $('#p18b').html(arrayDatos.p18b)
+
+                $('#p19a').html(arrayDatos.p19a)
+                $('#p19b').html(arrayDatos.p19b)
+                $('#p20a').html(arrayDatos.p20a)
+                $('#p20b').html(arrayDatos.p20b)
+                $('#p20c').html(arrayDatos.p20c)
+                $('#p20d').html(arrayDatos.p20d)
+                $('#p20e').html(arrayDatos.p20e)
+                $('#p21').html(arrayDatos.p21)
+
+                var cali = arrayDatos.cal;
+                var cali = cali.toFixed(2);
+
+                $('#cal').html(cali)
+
+                $('#obsji').html(arrayDatos.obsjefe)
+                $('#obspl').html(arrayDatos.obsplan)
+                $('#obslh').html(arrayDatos.obshse)
+                $('#obslog').html(arrayDatos.obslog)
+                $('#obsq').html(arrayDatos.obsq)
+
+                var compromisos = '';
+
+                if (arrayDatos.compjefe != null) {
+                    compromisos += arrayDatos.compjefe
+                }
+
+                if (arrayDatos.compplan != null) {
+                    compromisos += ' - ' + arrayDatos.compplan
+                }
+
+                if (arrayDatos.comphse != null) {
+                    compromisos += ' - ' + arrayDatos.comphse
+                }
+
+                if (arrayDatos.compq != null) {
+                    compromisos += ' - ' + arrayDatos.compq
+                }
+
+                if (arrayDatos.complog != null) {
+                    compromisos += ' - ' + arrayDatos.complog
+                }
+
+                //planes
+                var planes = ''
+                if (arrayDatos.planesjefe != null) {
+                    planes += ' - ' + arrayDatos.planesjefe
+                }
+
+                if (arrayDatos.planesplan != null) {
+                    planes += ' - ' + arrayDatos.planesplan
+                }
+
+                if (arrayDatos.planeshse != null) {
+                    planes += ' - ' + arrayDatos.planeshse
+                }
+
+                if (arrayDatos.planesq != null) {
+                    planes += ' - ' + arrayDatos.planesq
+                }
+
+                if (arrayDatos.planeslog != null) {
+                    planes += ' - ' + arrayDatos.planeslog
+                }
+
+                $('#comp').html(compromisos)
+                $('#planes').html(planes)
+
+                $('#evaljefe').html(arrayDatos.nomjefe)
+                $('#firmajefe').html('')
+                $('#fechajefe').html(arrayDatos.fechajefe)
+
+                $('#evallplan').html(arrayDatos.nomplan)
+                $('#firmalplan').html('')
+                $('#fechaplan').html(arrayDatos.fechaplan)
+
+                $('#evallhse').html(arrayDatos.nomhse)
+                $('#firmalhse').html('')
+                $('#fechalhse').html(arrayDatos.fechajefe)
+
+                $('#evalllog').html(arrayDatos.nomlog)
+                $('#firmallog').html('')
+                $('#fechallog').html(arrayDatos.fechalog)
+
+                $('#evallq').html(arrayDatos.nomq)
+                $('#firmalq').html('')
+                $('#fechalq').html(arrayDatos.fechaq)
+            })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFORME DIARIO GESTIÓN DE PERMISOS - UT ITALCO </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/amstockchart/3.13.0/exporting/canvg.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/stackblur-canvas@2.3.0/dist/stackblur.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highstock/6.0.3/lib/rgbcolor.js"></script>
+
+    <style>
+        /* estilos de pagina */
+        
+        body {
+            /* zoom: 65%; */
+        }
+        
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .salto {
+            PAGE-BREAK-AFTER: always;
+        }
+        
+        .cuerpo {
+            width: 2000px;
+            height: 100%;
+        }
+        
+        .cab {
+            background-color: #01005e;
+            width: 100%;
+            height: 80px;
+            color: white;
+        }
+        
+        .titfecha {
+            padding: 5px;
+            border-style: solid;
+            border-color: white;
+            border-width: 0.7px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .central {
+            height: 507px;
+            width: 100%;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .diap {
+            position: fixed;
+            top: 80px;
+            left: 0px;
+            height: 500px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+            display: table;
+        }
+        
+        .anchomedio {
+            width: 600px;
+            left: 300px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        
+        #inicio {
+            margin-top: 10px;
+            margin-left: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        #sig {
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        #atraspiramide {
+            margin-top: 10px;
+            right: 50px;
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+        }
+        
+        .footer {
+            background-color: #b9d204;
+            width: 100%;
+            padding: 5px;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+        
+        #divhidden {
+            display: none;
+        }
+        /* fin estilos de pagina */
+        /* estilos del menu */
+        
+        #mnu {
+            width: 707px;
+            height: 500px;
+            background-image: url('img/mnu_1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: 999;
+        }
+        
+        .mnu1 {
+            position: relative;
+            top: 50px;
+            left: 390px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu2 {
+            position: relative;
+            top: 103px;
+            left: 480px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu3 {
+            position: relative;
+            top: 158px;
+            left: 485px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .mnu4 {
+            position: relative;
+            top: 213px;
+            left: 384px;
+            width: 120px;
+            height: 65px;
+            padding: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        /* fin estilo de menu */
+        /* estilo de graficas */
+        
+        .colpir {
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffffff;
+        }
+        
+        .filapir {
+            background-color: #00c901;
+            color: white;
+        }
+        
+        .filatit {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+        
+        .cabtit {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #01005e;
+            background-color: white;
+        }
+        
+        .card-header {
+            background-color: #01005e;
+            color: white;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        #galeria {
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            z-index: 999;
+            overflow: hidden;
+        }
+        
+        .imagen:hover {
+            filter: opacity(.5);
+        }
+        
+        #grafpiramide {
+            width: 100%;
+            height: 500px;
+            background-image: url('img/piramide_n.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .fig1 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infogvr1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #fig2 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #fig3 {
+            width: 131px;
+            height: 170px;
+            background-image: url('img/infog3.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            float: left;
+        }
+        
+        #infoverde1 {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infogv1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        #infoverde2 {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infogv2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        #inforojo {
+            width: 200px;
+            height: 200px;
+            background-image: url('img/infog4.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .textopira {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .hijo {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .padre {
+            display: table;
+        }
+        
+        .titinfovr {
+            width: 100%;
+            height: 29.41%;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .cifrainfovr {
+            width: 100%;
+            height: 70.59%;
+            font-size: 44px;
+            text-align: center;
+        }
+        
+        #piso7 {
+            width: 100%;
+            height: 13.60%;
+            display: table;
+        }
+        
+        #piso6 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso5 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso4 {
+            width: 100%;
+            height: 10.39%;
+            display: table;
+        }
+        
+        #piso3 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        #piso2 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        #piso1 {
+            width: 100%;
+            height: 13.86%;
+            display: table;
+        }
+        
+        .tacomoda {
+            width: 5%;
+        }
+        
+        #flotante {
+            height: 400px;
+            width: 500px;
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            z-index: 999;
+        }
+        
+        #flotantefoto {
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            left: 20px;
+            top: 60px;
+            z-index: 999;
+        }
+        
+        .manito {
+            cursor: pointer;
+        }
+        
+        .titregfot {
+            width: 100%;
+            height: 50px;
+            ;
+            background-color: #01005e;
+            color: white;
+            padding: 10px;
+            float: left;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .titflot {
+            background-color: rgb(255, 187, 0);
+            color: rgba(20, 19, 19, 0.9);
+            padding: 5px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 13px;
+        }
+        
+        #regfotos {
+            overflow-y: scroll;
+            overflow-x: hidden;
+            white-space: nowrap;
+            position: fixed;
+            top: 80px;
+            left: 0px;
+            height: 500px;
+            width: 100%;
+            padding-left: 130px;
+            padding-right: 130px;
+            padding-top: 10px;
+        }
+        
+        .foto {
+            width: 320px;
+            height: 300px;
+            padding: 10px;
+            float: left;
+        }
+        
+        .piefoto {
+            background-color: #01005e;
+            color: white;
+            padding: 5px;
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            width: 100%;
+            word-wrap: break-word;
+            font-size: 13px;
+        }
+        
+        .titcatfotos {
+            font-size: 16px;
+            width: 90%;
+            height: 40px;
+            padding: 8px;
+            margin-top: 20px;
+            background-color: #01005e;
+            color: white;
+            float: left;
+        }
+        
+        .verticalText {
+            writing-mode: vertical-lr;
+        }
+        
+        td {
+            Word-wrap: break-Word;
+        }
+        
+        @media (max-width: 600px) {
+            .foto {
+                width: 90%;
+                height: 90%;
+            }
+            #grafpiramide {
+                width: 100%;
+                height: 400px;
+            }
+            .tacomoda {
+                width: 0%;
+            }
+        }
+        /* fin estilo de graficas */
+    </style>
+
+    <style>
+        .figuras {
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 10px;
+            border-color: #01005e;
+            margin: 10px;
+        }
+        
+        th {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cuerpo" id="contenido">
+
+        <!-- INICIO CABECERA -->
+        <div class="cab">
+
+            <table style="width: 100%;">
+                <tr>
+                    <td style="padding: 10px; width: 200px;">
+                        <img src="img/logo_m.png" width="200px" alt="">
+                    </td>
+                    <td style="padding: 10px; width: 900px;">
+                        <h4 style="color: white;">INFORME GESTIÓN DE PERMISOS</h4>
+                        <h6><span id="ods"></span> </h5>
+                    </td>
+                    <td style="padding: 10px; width: 200px;">
+                        <h5 class="titfecha" style="color: white;" id="fechainforme"></h5>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <!-- <button type="button" class="btn btn-primary btn-sm" onclick="imprimir()">IMP</button> -->
+        <!-- FIN CABECERA -->
+
+        <!-- inicio piramide -->
+
+
+        <table class="table">
+
+            <tr>
+
+                <th>
+                    Cliente:
+                </th>
+                <td>
+                    Ecopetrol S.A.
+                </td>
+                <th>
+
+                </th>
+                <td>
+
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+
+        </table>
+
+
+
+        <!-- fin piramide -->
+        <!-- indicadores de gestion -->
+
+        <div id="indicadoresgestion" style="margin-top: 10px;">
+
+
+            <div class="card-header mb-2">
+                PERMISOS DE TRABAJO UNIFICADO
+            </div>
+
+
+            <div>
+
+                <div id="tablapermisos">
+                    <table class="table-bordered">
+                        <thead class="" style="background-color: #01005e; color: #fff;">
+                            <tr style="height: 150px;">
+                                <th>
+                                    # PERMISO
+                                </th>
+                                <th>
+                                    <span class="verticalText">FRIO</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">CALIENTE</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">ELECTRICO</span>
+                                </th>
+                                <th>
+                                    ACTIVIDAD
+                                </th>
+                                <th>
+                                    ESPECIALIDAD
+                                </th>
+                                <th>
+                                    SUPERVISOR
+                                </th>
+                                <th>
+                                    ÁREA
+                                </th>
+                                <th>
+                                    EQUIPO
+                                </th>
+                                <th>
+                                    PLANTA
+                                </th>
+                                <th>
+                                    <span class="verticalText">V. RAM M</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">V. RAM H</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">V. RAM VH</span>
+                                </th>
+                                <th>
+                                    AR
+                                </th>
+                                <th>
+                                    <span class="verticalText">CERT. AP. 1</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">CERT. AP. 2</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">CERT. AP. 3</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">CERT. AP. 5</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">CERT. AP. 6</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">CERT. AP. 7</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">SAS</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">SAES</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">PROC. RESC. ALTURA</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">P.R. ESP. CONFINADO</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">P.R. GASES TOX.</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">CIERRE DE VIAS</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">PLAN DE IZAJE</span>
+                                </th>
+                                <th>
+                                    <span class="verticalText">AGUA CONTRAINC. </span>
+                                </th>
+
+
+
+                                </th>
+                            </tr>
+
+
+                        </thead>
+                        <tbody id="datostabla">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+            <div class="card p-3">
+                <h4>Observaciones</h4>
+                <div id="observaciones">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Inicio Graficas -->
+        <h1 class="salto"></h1>
+        <div class="card-header mb-2">
+            GRAFICAS KPI's PERMISOS DE TRABAJO REALIZADOS
+        </div>
+        <div id="graficas">
+            <hr>
+            <div class="row m-2">
+
+                <div class="col-sm-4 ">
+                    <div class="figuras" id="figpertrabaesp2">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4 ">
+                    <div class="figuras" id="figpertrabaesp3">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4 ">
+                    <div class="figuras" id="figmatrizram">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4 ">
+                    <div class="figuras" id="figrescate">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4 ">
+                    <div class="figuras" id="figcertificados">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-4 ">
+                    <div class="figuras" id="figpermisos">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Fin de Graficas -->
+
+    </div>
+
+
+    <script>
+        var server = 'https://utitalco.com/server/';
+        var user = sessionStorage.getItem('user');
+        var ods = localStorage.getItem('ods')
+        var numods = localStorage.getItem('numods')
+        var arrayDatos = []
+        var arrayTabla = []
+        var arrayResp = []
+        var html = ''
+
+        if (user == null) {
+            window.location = 'login.html'
+        } else {
+            $('#ods').html(ods)
+        }
+
+        var finicio = localStorage.getItem('finicio')
+
+
+        $('#fechainforme').html(finicio)
+
+        cargarDatos()
+
+        function cargarDatos() {
+
+            $.post(server + 'informePermisosConsolidado.php', {
+                    ods: numods,
+                    finicio: finicio
+                },
+                function(resp) {
+                    arrayDatos = resp
+                    console.log(resp.tabla)
+                    arrayTabla = resp.tabla
+
+                    $('#totpersonas').html(arrayDatos.personal)
+                        // $('#observaciones').html(arrayDatos.observaciones)
+
+                    html = ''
+                    for (var i = 0; i < arrayTabla.length; i++) {
+                        html += `
+                    <tr>
+                        <td style="width: 90px;">
+                            ${arrayTabla[i].num}
+                        </td>
+                        <td style="text-align: center;  width: 30px;">
+                            ${arrayTabla[i].pfrio == 0 ? "" : arrayTabla[i].pfrio}
+                        </td>
+                        <td  style="text-align: center;  width: 30px;">
+                            ${arrayTabla[i].pcaliente == 0 ? "" : arrayTabla[i].pcaliente} 
+                        </td>
+                        <td  style="text-align: center;  width: 30px;">
+                            ${arrayTabla[i].pelectrico == 0 ? "" : arrayTabla[i].pelectrico}
+                        </td>
+                        <td style="width: 400px;">
+                            ${arrayTabla[i].actividad}
+                        </td>
+                        <td style="width: 200px;">
+                            ${arrayTabla[i].especialidad}
+                        </td>
+                        <td style="width: 200px;">
+                            ${arrayTabla[i].supervisor}
+                        </td>
+                        <td style="width: 150px;">
+                            ${arrayTabla[i].area}
+                        </td>
+                        <td style="width: 150px;">
+                            ${arrayTabla[i].equipo}
+                        </td>
+                        <td style="width: 150px;">
+                            ${arrayTabla[i].planta}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ramm == 0 ? "" : arrayTabla[i].ramm}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ramh == 0 ? "" : arrayTabla[i].ramh}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ramvh == 0 ? "" : arrayTabla[i].ramvh}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            1
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ca1 == 0 ? "" : arrayTabla[i].ca1}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ca2 == 0 ? "" : arrayTabla[i].ca2}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ca3 == 0 ? "" : arrayTabla[i].ca3}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ca5 == 0 ? "" : arrayTabla[i].ca5}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ca6 == 0 ? "" : arrayTabla[i].ca6}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].ca7 == 0 ? "" : arrayTabla[i].ca7}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].sas == 0 ? "" : arrayTabla[i].sas}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].saes == 0 ? "" : arrayTabla[i].saes}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].pra == 0 ? "" : arrayTabla[i].pra}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].prc == 0 ? "" : arrayTabla[i].prc}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].prg == 0 ? "" : arrayTabla[i].prg}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].cvias == 0 ? "" : arrayTabla[i].cvias}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].pizaje == 0 ? "" : arrayTabla[i].pizaje}
+                        </td>
+                        <td style="text-align: center; width: 30px;">
+                            ${arrayTabla[i].agua == 0 ? "" : arrayTabla[i].agua}
+                        </td>
+                        
+                    </tr>
+                    `
+                    }
+                    $('#datostabla').html(html)
+                    cargarGraficas()
+                })
+        }
+
+        function cargarGraficas() {
+            //GRAFICA PERMISOS DE TRABAJOS ELABORADOS 
+            Highcharts.chart('figpertrabaesp2', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>PERMISOS DE TRABAJO POR CLASIFICACIÓN</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANTIDAD'
+                    ],
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'P. FRÍO',
+                    data: [arrayDatos.pfrio]
+                }, {
+                    name: 'P. CALIENTE',
+                    data: [arrayDatos.pcaliente]
+                }, {
+                    name: 'P. ELÉCTRICO',
+                    data: [arrayDatos.pelectrico]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayDatos.totalp]
+                }]
+            });
+
+            Highcharts.chart('figpertrabaesp3', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>PERMISOS DE TRABAJO CERRADOS EMITIDOS</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANTIDAD'
+                    ],
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'P. FRÍO',
+                    data: [1]
+                }, {
+                    name: 'P. CALIENTE',
+                    data: [72]
+                }, {
+                    name: 'P. ELÉCTRICO',
+                    data: [13]
+                }, {
+                    name: 'TOTAL',
+                    data: [86]
+                }]
+            });
+
+
+            Highcharts.chart('figmatrizram', {
+                colors: ['#00c901', '#01005e', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>MATRIZ RAM</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANTIDAD'
+                    ],
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'MATRIZ M',
+                    data: [arrayDatos.ramm]
+                }, {
+                    name: 'MATRIZ H',
+                    data: [arrayDatos.ramh]
+                }, {
+                    name: 'MATRIZ VH',
+                    data: [arrayDatos.ramvh]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayDatos.totalmatriz]
+                }]
+            });
+
+
+            Highcharts.chart('figcertificados', {
+                colors: ['#00c901', '#01005e', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>CERTIFICADOS DE APOYO EJECUTADOS</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANTIDAD'
+                    ],
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'CA 1',
+                    data: [arrayDatos.ca1]
+                }, {
+                    name: 'CA 2',
+                    data: [arrayDatos.ca2]
+                }, {
+                    name: 'CA 3',
+                    data: [arrayDatos.ca3]
+                }, {
+                    name: 'CA 5',
+                    data: [arrayDatos.ca5]
+                }, {
+                    name: 'CA 6',
+                    data: [arrayDatos.ca6]
+                }, {
+                    name: 'CA 7',
+                    data: [arrayDatos.ca7]
+                }, {
+                    name: 'SAS',
+                    data: [arrayDatos.sas]
+                }, {
+                    name: 'SAES',
+                    data: [arrayDatos.saes]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayDatos.totalca]
+                }]
+            });
+
+            Highcharts.chart('figrescate', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>PROCEDIMIENTOS DE RESCATE</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANTIDAD'
+                    ],
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                    name: 'ALTURAS',
+                    data: [arrayDatos.pra]
+                }, {
+                    name: 'ESP. CONFINADOS',
+                    data: [arrayDatos.prc]
+                }, {
+                    name: 'GASES TOXICOS',
+                    data: [arrayDatos.prg]
+                }, {
+                    name: 'TOTAL',
+                    data: [arrayDatos.totalpr]
+                }]
+            });
+
+
+
+            Highcharts.chart('figpermisos', {
+                colors: ['#01005e', '#00c901', '#efd520', '#bfbfbf', '#537b35', '#a4c639', '#537b35', '#a4c639', '#537b35'],
+                credits: {
+                    enabled: false
+                },
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '<b>CLASIFICACIÓN POR ESPECIALIDAD</b>'
+                },
+
+                xAxis: {
+                    categories: [
+                        'CANTIDAD'
+                    ],
+                    crosshair: true
+                },
+
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Cant'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0,
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                series: [{
+                        name: 'AUTOMOTOR',
+                        data: [arrayDatos.espauto]
+                    }, {
+                        name: 'LOGISTICA',
+                        data: [arrayDatos.esplog]
+                    }, {
+                        name: 'ANDAMIOS',
+                        data: [arrayDatos.espandamios]
+                    }, {
+                        name: 'ELÉCTRICO',
+                        data: [arrayDatos.espelec]
+                    }, {
+                        name: 'METALMECÁNICO',
+                        data: [arrayDatos.espmetal]
+                    }, {
+                        name: 'AISLAMIENTO',
+                        data: [arrayDatos.espaila]
+                    }, {
+                        name: 'INSTRUMENTACIÓN',
+                        data: [arrayDatos.espinst]
+                    }, {
+                        name: 'PINTURA',
+                        data: [arrayDatos.esppint]
+                    }
+
+                ]
+            });
+
+
+
+            Highcharts.setOptions({
+                colors: Highcharts.map(Highcharts.getOptions().colors, function(color) {
+                    return {
+                        radialGradient: {
+                            cx: 0.5,
+                            cy: 0.3,
+                            r: 0.7
+                        },
+                        stops: [
+                            [0, color],
+                            [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+                        ]
+                    };
+                })
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>

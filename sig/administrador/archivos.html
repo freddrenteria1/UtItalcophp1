@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG UT ITALCO - ADMINISTRADOR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        main{
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+        .milink{
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        
+            <div id="cab">
+                <img src="img/header_1.jpg" style="width: 100%;" alt="">
+            </div>
+        <div class="container mt-3">
+            
+
+            <div class="row">
+                <div class="col-sm-2 milink" onclick="inicio()">
+                    <center><img src="img/inicio.png" height="60px" alt=""> <span style="font-size: large;"> Inicio</span></center>
+                </div>
+                
+                <div class="col-sm-8 mt-2">
+                    <center><h2>PLATAFORMA ADMINISTRATIVA - ARCHIVOS </h2></center>
+                </div>
+
+                <div class="col-sm-2  mt-2">
+                   <center> <button type="button" class="btn btn-success" onclick="agregar()">Agregar Archivo</button></center>
+                </div>
+            </div> <hr>
+
+            <div class="row">
+                 
+                <div class="col-sm-4">
+                    Seleccione Proceso 
+                    <select id="categoria" class="form-control" onchange="cargarSub()" >
+
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    Seleccione Tipo Documental 
+                    <select id="subcategoria" class="form-control">
+
+                    </select>
+                </div>
+
+                <div class="col-sm-4">. <br>
+                    <button type="button" class="btn btn-info" onclick="ver()">Ver Archivos</button>
+                </div>
+                 
+            </div> <hr>
+
+            <div class="mt-3 p-2">
+                <table width="100%">
+                    <thead>
+                        <th></th>
+                        <th style="text-align:center;">Código</th>
+                        <th style="text-align:center;">Nombre</th>
+                        <th style="text-align:center;">Versión</th>
+                        <th style="text-align:center;">Descargas</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="tblCat">
+
+                    </tbody>
+                    
+
+                </table>
+            </div>
+              
+
+        </div>
+         
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        var url = 'https://utitalco.com/sig/server/';
+        var user = sessionStorage.getItem('usersigadmin');
+        var html = ''
+        var texto = ''
+        var arrayCat = []
+        var arraySubCat = []
+        var arrayArch = []
+        var idcatsel = null
+        var nombcat = null
+        var idsubcatsel = null
+        var nombsubcat = null
+
+        if(user == null){
+            location = 'login.html'
+        }
+
+        function inicio(){
+            location = 'index.html';
+        }
+
+        function buscar(){
+            location = 'busqueda.html';
+        }
+
+        function abrir(link){
+            location = link
+        }
+
+        cargarCategorias()
+
+        function cargarCategorias(){
+            $.post(url+'cargarCats.php',{},
+            function(resp){
+                arrayCat = resp
+                html = '<option value="">Seleccione proceso...</option>'
+                for(var i=0; i<arrayCat.length; i++){
+                    html += `
+                        <option value="${arrayCat[i].idcat}">${arrayCat[i].categoria}</option>
+                    `
+                }
+                $('#categoria').html(html)               
+
+            })
+        }
+
+        function cargarSub(){
+            idcatsel = $('#categoria').val()
+            nombcat = $('#categoria option:selected').text()
+
+            $.post(url+'cargarSubCat.php',{id:idcatsel},
+            function(resp){
+
+                arraySubCat = resp
+            
+                var html = ''
+
+                if(resp != null){
+
+                    html = '<option value="">Seleccione tipo documental...</option>'
+                    for(var i=0; i<arraySubCat.length; i++){
+                        html += `
+                            <option value="${arraySubCat[i].idsubcat}">${arraySubCat[i].subcategoria}</option>
+                        `
+                    }
+
+                }
+
+                $('#subcategoria').html(html)  
+
+            })
+        }
+
+        function ver(){
+            idsubcatsel = $('#subcategoria').val()
+            nombsubcat = $('#subcategoria option:selected').text()
+
+            $.post(url+'cargarArchivos.php',{id:idsubcatsel},
+            function(resp){
+                arrayArch = resp
+                texto = ''
+                
+                for(var i=0; i<arrayArch.length; i++){
+                    
+                    texto +=  `
+                    <tr valign="middle" border="0px">
+                        <td width="5%" style="padding:5px;">
+                            <a href='javascript:void(0)'>
+                                <img src="img/doc.png" align="top" width="48" height="48" border="0" alt="" /> 
+                            </a>
+                        </td>
+                        <td width="10%" style="padding:5px; text-align:center;"><b><a href='javascript:void(0)'>${arrayArch[i].prefijo}</a></b></td>
+                        <td width="40%" style="padding:5px;"><b><a href='javascript:void(0)'>${arrayArch[i].nombre}</a></b></td>
+                        <td width="15%" style="padding:5px; text-align:center">Versión: ${arrayArch[i].version}</td>
+                        <td width="10%" style="padding:5px; text-align:center"> ${arrayArch[i].descargas}</td>
+                        <td width="20%" style="padding:5px; text-align:center">
+                            <a href='javascript:void(0)' onclick="descargar('${arrayArch[i].archivo}','${arrayArch[i].id}')">
+                                <img src="img/descargar.png" align="top" height="38" border="0" alt="" /> 
+                            </a>
+                            <a href='javascript:void(0)' onclick="borrar('${arrayArch[i].nombre}','${arrayArch[i].id}')">
+                                <img src="img/delete.png" align="top" height="38" border="0" alt="" /> 
+                            </a>
+                        </td>
+                    </tr>
+                    <tr valign="top" border="0px" style="border-bottom: 1px solid #cccccc;">
+                      <td colspan="3" width="100%" style="padding:5px;"></td>
+                    </tr>
+                    `
+                }
+                 
+                $('#tblCat').html(texto)
+                 
+            })
+        }
+
+        function descargar(arch, id){
+        
+            $.post(url+'sumarDesc.php',{id:id},
+            function(resp){
+                var urls = 'https://utitalco.com/sig/archivos/'+arch
+                window.open(urls, '_blank');
+                cargar_subcat()
+            })
+
+        }
+
+        function borrar(arch, id){
+
+            Swal.fire({
+                    title: 'Borrar Archivo',
+                    html: `
+                        ¿Desea borrar el archivo ${arch} ?                     
+                    `,
+                  
+                    showCancelButton: true,
+                    confirmButtonText: 'Borrar'
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        $.post(url+'borrarArchivo.php',{id:id},
+                        function(resp){
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Realizado!!!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(()=>{
+                                ver()
+                            })
+                        })
+                    }   
+                })
+
+        
+            
+
+    }
+
+        function agregar(){
+
+            idcatsel = $('#categoria').val()
+            nombcat = $('#categoria option:selected').text()
+
+            idsubcatsel = $('#subcategoria').val()
+            nombsubcat = $('#subcategoria option:selected').text()
+
+            if(idcatsel != '' && idcatsel != null && idsubcatsel != '' && idsubcatsel != null){
+
+                Swal.fire({
+                    title: 'Agregar Archivo',
+                    html: `<hr>
+                        <h4>Categoría: ${nombcat} <br> Subcategoría: ${nombsubcat} </h4><hr>
+                        <div class="row" style="width: 100%;">
+
+                            <div class="col-sm-12">
+                                Nombre del archivo
+                                <input type="text" class="form-control" id="narchivo" placeholder="Nombre...">
+                            </div>
+                            <div class="col-sm-8">
+                                Prefijo
+                                <input type="text" class="form-control" id="prefijo" placeholder="Prefijo...">
+                            </div>
+                            <div class="col-sm-4">
+                                Versión
+                                <input type="text" class="form-control" id="version" placeholder="Versión...">
+                            </div>
+                            <div class="col-sm-12">
+                                Cargar archivo
+                                <input type="file" class="form-control" id="file" placeholder="Archivo...">
+                            </div>
+                            
+                        </div>
+                        
+                    `,
+                  
+                    showCancelButton: true,
+                    confirmButtonText: 'Guardar'
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+
+                        
+
+                        var narchivo = $('#narchivo').val()
+                        var prefijo = $('#prefijo').val()
+                        var version = $('#version').val()
+
+                        var fd = new FormData();
+                        var files = $('#file')[0].files[0];
+                        fd.append('file', files);
+                        fd.append('idcatsel', idcatsel);
+                        fd.append('nombcat', nombcat);
+                        fd.append('idsubcatsel', idsubcatsel);
+                        fd.append('nombsubcat', nombsubcat);
+                        fd.append('nombarchivo', narchivo);
+                        fd.append('prefijo', prefijo);
+                        fd.append('version', version);
+
+                        cargando()
+            
+                        $.ajax({
+                            url: url+'agregarArchivo.php',
+                            type: 'post',
+                            data: fd,
+                            contentType: false,
+                            processData: false,
+                            success: function(response){
+                                console.log(response)
+                                if(response != 0){
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Guardado!!!',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                                else{
+                                    
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'info',
+                                        title: 'Archivo no cargado!!!',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+                            },
+                        });
+
+
+                         
+                    }  
+                })
+
+            }else{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Por favor selecciones un proceso y tipo documental!!!',
+                    showConfirmButton: false,
+                    timer: 2500
+                })
+            }
+
+
+    }
+    
+    function cargando() {
+        let timerInterval;
+        Swal.fire({
+            title: "Cargando archivo!",
+            html: "Un momento por favor...",
+            timer: 60000,
+            timerProgressBar: true,
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+                timerInterval = setInterval(() => {}, 1000);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            },
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                cargarGraficas();
+            }
+        });
+    }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inforge Gestión HSE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+
+
+    <style>
+        #cab{
+            position: relative;
+            background: #000000;
+            overflow: hidden;
+            height: 300px;
+            border-radius: 0px;
+        }
+
+        #cab:before{
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+            background-image: url('img/fondo.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            
+        }
+        .fazul{
+            background-color: rgb(20, 20, 82);
+        }
+        body{
+            background-color: rgb(228, 228, 228);
+        }
+        #grafpiramide {
+
+            width: 90%;
+            height: 500px;
+            margin: 0 auto;
+            background-image: url('img/piramide_n.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+
+        }
+        .colpir {
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffffff;
+        }
+
+        .filapir {
+            background-color: #00c901;
+            color: white;
+        }
+
+        .filatit {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+
+        .cabtit {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #074F15;
+            background-color: white;
+        }
+
+        .btn-gre{
+            background-color: #172362;
+            color: white;
+        }
+
+        .btn-grec{
+            background-color: #00c901;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .colpir {
+                
+                font-size: 8px;
+                
+            }
+        }
+
+         
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fazul">
+        <a class="navbar-brand" href="#"><img src="img/logo_m.png" height="30px" alt=""> | Informe de Gestión HSE | </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="navbar-brand" href="#">ODS 020 PARADA DE PLANTA REFINACIÓN DE CRUDOS U-200</a>
+            </li>
+            
+            
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="2021-09-26" value="2021-09-26" style="text-align: center;">
+          </form>
+           
+        </div>
+    </nav>
+
+    <div id="cuerpo">
+        <div class="row m-2">
+            
+            <div class="col-sm-5">
+                <div class="card p-2">
+                    <div id="grafpiramide">
+                        <div id="piso7">
+                            <div class="textopira text-center " style="padding-top: 35px;">
+                                <div style="margin-right: 7%; color: white;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> <span
+                                        style="font-size: 12px;">FATALIDAD</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso6">
+                            <div class="textopira text-center" style="padding-top: 10px;">
+                                <div style="margin-right: 8%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span><br> ACTP
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso5">
+                            <div class="textopira text-center" style="padding-top: 10px;">
+                                <div style="margin-right: 8%; color: white;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> ASPTT
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso4">
+                            <div class="textopira text-center ">
+                                <div style="margin-right: 8%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> PRIMEROS AUXILIOS
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso3">
+                            <div class="textopira text-center" style="padding-top: 10px;">
+                                <div style="margin-right: 8%; color: white;">
+                                    <span style="font-weight: bold; font-size: larger; line-height: 1pt;">0</span> <br>
+                                    <span style="line-height: 1pt;">INCIDENTES</span> <br><span
+                                        style="font-size: 9px; line-height: 1pt;">AMBIENTAL, VEHÍCULAR, SEGURIDAD DE
+                                        PROCESOS, POR OPERACIONES</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso2">
+                            <div class="textopira text-center">
+                                <div style="margin-right: 8%; color: black;">
+                                    <span style="font-weight: bold; font-size: larger;">0</span> <br> CASI ACCIDENTES
+                                    <br><span style="font-size: 11px; line-height: 1pt;">INCIDENTES SIN CONSECUENCIA
+                                        REAL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="piso1">
+                            <div class="textopira text-center " style="padding-top: 5px;">
+                                <div style="margin-right: 8%; color: white;">
+                                    <span style="font-weight: bold; font-size: larger; line-height: 1pt;"
+                                        id="canthallazgos">0</span> <br> <span onclick="abrir2('hallazgos')"
+                                        style="cursor: pointer; line-height: 1pt;"> HALLAZGOS </span>
+                                    <br><span style="font-size: 11px; line-height: 1pt;">CONDICIONES INSEGURAS, NO
+                                        CONFORMIDADES</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="col-sm-12 pt-1" >
+                        <table class="table" style="width: 90%; margin-left: 10px;">
+                            <tr class="filatit" style="background-color: white; text-align: center;">
+                                <td class="cabtit"><b style="font-size: 18px;" id="cantAC">0</b></td>
+                                <td class="cabtit"><b style="font-size: 18px;" id="cantCV">11</b></td>
+                                <td class="cabtit" data-toggle="tooltip" data-placement="top"><b style="font-size: 18px;"
+                                        id="evasas"></b></td>
+                                <td class="cabtit"><b style="font-size: 18px;"></b></td>
+                                <td class="cabtit"><b style="font-size: 18px;" id="porcgestion"></b></td>
+                                <td class="cabtit"><b style="font-size: 18px;" id="porcgestion">10</b></td>
+                            </tr>
+                            <tr class="filapir">
+                                <td class="colpir manito" onclick="abrir2('rac')">
+                                    CONVERSACIONES HSE
+                                </td>
+                                <td class="colpir manito" onclick="abrir2('conversatorios')">
+                                    CONVERSATORIOS VISIBLES
+                                </td>
+                                <td class="colpir">
+                                    EVALUACIÓN CONTROL DE TRABAJOS / SAS
+                                </td>
+                                <td class="colpir">
+                                    % GESTIÓN DE INCIDENTES
+                                </td>
+                                <td class="colpir">% GESTIÓN DE HALLAZGOS</td>
+                                <td class="colpir">
+                                   CANT AUDITORIAS
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card p-2">
+                            <div id="figpersonal"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <div class="card p-2">
+                            <div id="figindgestion"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 ">
+                        <div class="card p-2 mt-2">
+                            <div id="figlideres"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 ">
+                        <div class="card p-2 mt-2">
+                            <div id="figpermisos"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-sm-12 mt-3 mb-3 text-center">
+                <div class="" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-gre">CONVERSACIONES HSE</button>
+                    <button type="button" class="btn btn-grec">CONVERSATORIOS</button>
+                    <button type="button" class="btn btn-gre">HALLAZGOS</button>
+                    <button type="button" class="btn btn-grec">HORAS HOMBRE</button>
+                    <button type="button" class="btn btn-gre">AUDITORIAS</button>
+                    <button type="button" class="btn btn-grec">INSPECCIONES</button>
+                    <button type="button" class="btn btn-gre">INDICADORES DE GESTIÓN</button>
+                    <button type="button" class="btn btn-grec">PROMOCIÓN Y PREVENCIÓN</button>
+                    <button type="button" class="btn btn-gre">REGISTRO FOTOGRÁFICO</button>
+                  </div>
+            </div>
+
+            
+            
+        </div>
+    </div>
+    
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script>
+        document.body.style.zoom="75%";
+
+        cargarGraficas()
+
+        function cargarGraficas(){
+
+            Highcharts.chart("figpersonal", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "column",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>HISTOGRAMA PERSONAL</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: "Cant ",
+                        },
+                    },
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "DIRECTOS",
+                            data: [90,100,105,100,102,100,20]
+                        },
+                        {
+                            name: "INDIRECTOS",
+                            data: [20,22,23,20,21,20,5]
+                        },
+                        {
+                            name: "TOTAL",
+                            data: [110,122,128,120,123,120,25],
+                        }
+                    ],
+                });
+                
+            Highcharts.chart("figindgestion", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "column",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>INDICADORES DE GESTIÓN</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['AC', 'AUDITORÍAS', 'CAMINATA G.', 'RCT'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: "Cant ",
+                        },
+                    },
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "PLANEADO",
+                            data: [200,50,10,10]
+                        },
+                        {
+                            name: "EJECUTADO",
+                            data: [150,30,5,5]
+                        },
+                        {
+                            name: "% GESTION",
+                            data: [75,80,50,50]
+                        }
+                    ],
+                });
+
+            Highcharts.chart("figlideres", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "bar",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>CONSOLIDADO LIDERAZGO Y COMPROMISO</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['GERENTE', 'DIRECTOR', 'LÍDER HSE', 'COORDINADOR TURNOS', 'SUPERVISOR ODS'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: null                       },
+                    },
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        bar: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "PLANEADO",
+                            data: [10,5,200,15,300]
+                        },
+                        {
+                            name: "EJECUTADO",
+                            data: [5,3,100,10,150]
+                        }
+                    ],
+                });
+            
+            Highcharts.chart("figpermisos", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "bar",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>PERMISOS DE TRABAJO</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['TOTAL'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: null
+                        },
+                    },
+                    
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        bar: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "FRÍOS",
+                            data: [100]
+                        },
+                        {
+                            name: "CALIENTES",
+                            data: [20]
+                        },
+                        {
+                            name: "ELÉCTRICOS",
+                            data: [40]
+                        },
+                        {
+                            name: "TOTAL",
+                            data: [160]
+                        }
+                    ],
+                });
+
+            
+            
+
+        }
+    </script>
+</body>
+</html>

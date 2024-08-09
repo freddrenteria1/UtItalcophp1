@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOLOS QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+
+        body {
+
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+        span{
+            font-size: small;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            margin-top: 300px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cajones {
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 22rem;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .contenedor2 {
+
+align-items: center;
+display: flex;
+justify-content: center;
+height: 100%;
+}
+
+.elemento {
+margin-top: 5%;
+padding: 20px;
+border-radius: 5px;
+background-color: rgba(247, 247, 247, 0.8);
+}
+
+
+        .btn {
+            cursor: pointer;
+            border: 1px solid #e7ebee;
+            background-color: transparent;
+             
+            width: 200px;
+            color: #d9dee2;
+            font-size: 1.5em;
+            box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .mitit{
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+
+            .elemento {
+                margin-top: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="">
+
+        <div class="contenedor2">
+            <div class="elemento">
+                <center>
+                    <img src="img/logoiguana.png" width="130px" alt="">
+                    <img src="img/logo_m.png" width="150px" alt="">
+                </center>
+
+                <h5 class="text-center mt-3 ">PLATAFORMA DIGITAL <br> GESTIÓN DE CALIDAD  ODS ODS 028 <br> VISCORREDUCTORA II - DEMEX <br><br>
+                    
+
+                    <div style="width: 100%; margin: auto;">
+                       
+                        Usuario <br>
+                        <input type="text" class="form-control" id="usercalidad" onkeypress="return check(event)">
+                        <br>
+                        Contraseña <br>
+                        <input type="password" class="form-control" id="clavecalidad"> <br>
+                        <center>
+                            <button class="p-1 btn-dark" onclick="ingresar()">Ingresar</button>
+                            <a href="registro.php"><button class="p-1 btn-info" >Registrase</button></a>
+                        </center>
+                    <hr>
+                    <span>
+                        <b>Nota: </b>El usuario es la parte inicial de tu correo antes del @
+                    </span>
+                    
+
+                        
+                    </div>
+                     
+                </h5>
+            </div>
+        </div>
+
+
+
+
+        <!-- <div id="graficas" class="mt-3 mb-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="fig1"></div>
+                </div>
+                <div class="col-sm-6  mt-3 ">
+                    <div id="fig2"></div>
+                </div>
+                <div class="col-sm-6  mt-3">
+                    <div id="fig3"></div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+    </div>
+     
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+
+    <script>
+        var odsq = null
+        var url = "https://utitalco.com/calidad/028/server/";
+
+        var usercal = sessionStorage.getItem('usercal');
+
+        function ingresar(){
+            var usercali = $('#usercalidad').val()
+            var claveecp = $('#clavecalidad').val()
+            var odssel = '028'
+
+            if(usercali.includes('@')){
+                Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Oops...',
+                            html: `El nombre de usuario no debe contener el @ <br> El usuario es la parte inicial de tu correo antes del @ `,
+                            showConfirmButton: false,
+                            timer: 5000
+                        })
+            }else{
+                cargando() 
+                $.post(url + 'vingresoitalco.php', {
+                    user: usercali,
+                    clave: claveecp
+                },
+                function (resp) {
+                    if (resp.msn == 'Ok') {
+
+                        sessionStorage.setItem('usercal', usercali)
+                        sessionStorage.setItem('tipouser', resp.info.tipo)
+                        sessionStorage.setItem('datosuserqaqc', JSON.stringify(resp.info))
+                        localStorage.setItem('odsq', odssel)
+
+                        location = 'seleccion.html'
+
+                        // if(resp.info.tipo == 'ecopetrol'){
+
+                        //     Swal.fire({
+                        //         position: 'top-end',
+                        //         icon: 'info',
+                        //         title: 'Acceso...',
+                        //         html: `Digite el código enviado a su correo electrónico: 
+                        //        <input type="text" class="form-control" id="codacceso" placeholder="Código de acceso"> 
+                        //         `,
+                        //         showConfirmButton: true,
+                        //         confirmButtonText:'Ingresar',
+                        //         allowOutsideClick: false,
+
+                        //     }).then((result) => {
+
+                        //         /* Read more about isConfirmed, isDenied below */
+                        //         if (result.isConfirmed) {
+
+                        //             var codacc = $('#codacceso').val()
+
+                        //             if(codacc == resp.info.codigo){
+
+                        //                 sessionStorage.setItem('usercal', usercali)
+                        //                 sessionStorage.setItem('tipouser', resp.info.tipo)
+                        //                 sessionStorage.setItem('datosuserqaqc', JSON.stringify(resp.info))
+                        //                 localStorage.setItem('odsq', odssel)
+
+                        //                 location = 'seleccion.html'
+
+                        //             }else{
+
+                        //                 Swal.fire({
+                        //                     position: 'top-end',
+                        //                     icon: 'error',
+                        //                     title: 'Oops...',
+                        //                     text: 'Acceso denegado...!  Código de acceso incorrecto.',
+                        //                     showConfirmButton: false,
+                        //                     timer: 1500
+                        //                 })
+
+                        //             }
+                        //         } 
+                        //     })
+                            
+                        // }else{
+
+                        //     sessionStorage.setItem('usercal', usercali)
+                        //     sessionStorage.setItem('tipouser', resp.info.tipo)
+                        //     sessionStorage.setItem('datosuserqaqc', JSON.stringify(resp.info))
+                        //     localStorage.setItem('odsq', odssel)
+
+                        //     location = 'seleccion.html'
+
+                        // }
+
+                        
+                            
+
+                        
+                    } else {
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Acceso denegado...!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
+                    }
+                })
+            }
+            
+            
+        }
+
+        //cargarListado()
+
+        // if(usercal == null){
+        //     location = 'login.html'
+        // }
+
+        function check(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+
+            //Tecla de retroceso para borrar, siempre la permite
+            if (tecla == 8) {
+                return true;
+            }
+
+            // Patrón de entrada, en este caso solo acepta numeros y letras
+            patron = /[A-Za-z0-9-_.]/;
+            tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+        }
+
+        function veriAdmin() {
+            Swal.fire({
+                title: 'Verificar Permisos',
+                html: `<input type="password" id="claveadmin" class="form-control" placeholder="Clave de acceso">
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                var claveadmin = $('#claveadmin').val()
+                $.post(url + 'verificarAdmin.php', {
+                        clave: claveadmin
+                    },
+                    function (resp) {
+                        if (resp.msn == 'Ok') {
+                            if (resp.nivel == '1') {
+                                sessionStorage.setItem('usercalidad', resp.user)
+                                location = 'admin.html';
+                            } else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Acceso denegado!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        } else {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Acceso denegado!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    })
+            })
+        }
+
+        function selOds() {
+            Swal.fire({
+                title: 'Login',
+                html: `Digite usuario, contraseña y Planta <br><br>
+                    <div style="width: 50%; margin: auto;">
+                       
+                        usuario <br>
+                        <input type="text" class="form-control" id="usercali">
+                        <br>
+                        Clave de acceso <br>
+                        <input type="password" class="form-control" id="claveecp"> <br>
+                    <hr>
+                    <center><a href="#" onclick="registro()" >Registrarse</a>
+
+                        
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    
+
+
+                }
+            })
+        }
+
+        function informe() {
+            location = 'informerca.html'
+        }
+
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Verificando credenciales!',
+                html: 'Un momento por favor...',
+                timer: 45000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+
+        }
+
+        function registro() {
+            Swal.fire({
+                title: 'Registro Usuario',
+                html: `Digite Email y contraseña <br><br>
+                    <div style="width: 50%; margin: auto;">
+                        Nombres y Apellidos <br>
+                        <input type="text" class="form-control" id="nombres">
+                        <br>
+                        Email <br>
+                        <input type="text" class="form-control" id="emailr">
+                        <br>
+                        Clave de acceso <br>
+                        <input type="password" class="form-control" id="claver"> <br>
+                        Empresa <br>
+                        <input type="text" class="form-control" id="empresa">
+                        <br>
+                        
+                         
+
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Aceptar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    var nombres = $('#nombres').val()
+                    var empresa = $('#empresa').val()
+                    var email = $('#emailr').val()
+                    var clave = $('#claver').val()
+                    var odssel = '030'
+                     
+                    cargando()
+
+                    $.post(url + 'gregistro.php', {
+                            nombres: nombres,
+                            empresa: empresa,
+                            user: email,
+                            clave: clave
+                        },
+                        function (resp) {
+
+                            
+
+                            if (resp == 'Ok') {
+
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'info',
+                                    title: 'Registro...',
+                                    text: 'Registro creado y en proceso de activación de usuario.  Por correo electrónico se le notificará una vez esté activo en la plataforma...!',
+                                    showConfirmButton: false,
+                                    timer: 3500
+                                })
+                                 
+
+                            }  
+                        })
+
+
+                }
+            })
+        }
+ 
+          
+    </script>
+
+
+</body>
+
+</html>

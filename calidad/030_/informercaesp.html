@@ -1,0 +1,3773 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOLOS QAQC - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        tr {
+            cursor: pointer;
+        }
+
+        .hiddenRow {
+            padding: 0 !important;
+        }
+
+        body {
+            background-image: url('img/fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100hv;
+            font-family: 'Montserrat Alternates', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+        }
+
+        thead tr th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #ffffff;
+        }
+
+        .cab {
+            margin-top: 30px;
+            background-color: rgb(218, 255, 255);
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            margin-top: 330px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cajones {
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 200px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 22rem;
+        }
+
+        .table-responsive {
+            height: 800px;
+            overflow: scroll;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo_m.png" width="100px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <h1>INFORME CONTROL DE FIRMAS ODS <span id="ods"></span>
+                    <button type="button" class="btn btn-warning" onclick="volver()">Volver</button>
+                </h1>
+            </div>
+        </div>
+    </nav>
+    <div class="m-3">
+
+        <div class="table-responsive mt-3 p-3" style="background-color: #fff;">
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <h2 class=" p-3" id="titabla">INFORME POR ESPECIALIDAD</h2>
+                    <hr>
+                </div>
+                <div class="col-sm-2 text-right">
+                    <h4>Seleccione especialidad
+                        <select id="esp" class="form-control" onchange="selEsp()">
+                            <option value="">Seleccionar...</option>
+                            <!-- <option value="ELÉCTRICO">ELÉCTRICO</option> -->
+                            <option value="ESTÁTICO">ESTÁTICO</option>
+                            <!-- <option value="INSTRUMENTACIÓN">INSTRUMENTACIÓN</option> -->
+                            <!-- <option value="ROTATIVO">ROTATIVO</option> -->
+                            <option value="TUBERÍA">TUBERÍA</option>
+                            <option value="CONVERTIDOR">CONVERTIDOR</option>
+                            <option value="GENERAL">GENERAL</option>
+                        </select>
+                    </h4>
+                </div>
+            </div>
+
+
+
+            <table class="table table-condensed table-striped table-bordered table-hover"
+                style="background-color: #fff; " id="">
+                <thead style="background-color: #A4DBFC; position: sticky;
+                top: 0;">
+                    <tr style="text-align: center;">
+                        <th colspan="3">INFORMACIÓN GENERAL</th>
+                        <th colspan="3" style="background-color: #61b2e4;">TOTAL FIRMAS UT ITALCO</th>
+                        <th colspan="3" style="background-color: #70e461;">TOTAL FIRMAS ECOPETROL</th>
+                        <th colspan="5" style="background-color: #fcf046;">RESUMEN</th>
+                    </tr>
+                    <tr style="text-align: center;">
+                        <th>VBKII- DEMEX</th>
+                        <th>CANT EQUIPOS</th>
+                        <th>CANT RCA</th>
+                        <th style="background-color: #61b2e4;">ITALCO PLAN</th>
+                        <th style="background-color: #61b2e4;"> ITALCO EJE</th>
+                        <th style="background-color: #61b2e4;">% FIRMAS ITALCO</th>
+                        <th style="background-color: #70e461;">ECOPETROL PLAN</th>
+                        <th style="background-color: #70e461;">ECOPETROL EJE</th>
+                        <th style="background-color: #70e461;">% FIRMAS ECOPETROL</th>
+                        <th style="background-color: #fcf046;"># TOTAL DE FIRMAS</th>
+                        <th style="background-color: #fcf046;"># FIRMAS EJECUTADAS</th>
+                        <th style="background-color: #fcf046;">% FIRMAS TOTAL EJECUTADAS</th>
+                        <th style="background-color: #fcf046;">FIRMAS FALTANTES</th>
+                    </tr>
+                </thead>
+                <tbody id="datosTabla">
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+            integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+        </script>
+
+        <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+        <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+        <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+        <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+        <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+
+
+
+        <script>
+            var odsq = null
+            var url = "https://utitalco.com/calidad/030/server/";
+            var arrayDatos = []
+
+            if (screen.width <= 1366) {
+                document.body.style.zoom = "80%";
+            } else {
+                document.body.style.zoom = "80%";
+            }
+
+            odsq = localStorage.getItem('odsq');
+            $('#ods').html(odsq)
+
+            cargarListado()
+            
+
+            function cargarListado() {
+                cargando()
+
+
+                $.post(url + 'consultaEstaticos1.php', {
+                        ods: odsq
+                    },
+                    function (resp) {
+
+                        arrayEstaticos = resp
+
+                        $.post(url + 'consultaTuberia1.php', {
+                                ods: odsq
+                            },
+                            function (resp) {
+
+                                arrayTuberia = resp
+
+                                $.post(url + 'consultaRotativo.php', {
+                                        ods: odsq
+                                    },
+                                    function (resp) {
+
+                                        arrayRotativo = resp
+
+                                        $.post(url + 'consultaInstrumentos.php', {
+                                                ods: odsq
+                                            },
+                                            function (resp) {
+
+                                                arrayInstrumentos = resp
+
+                                                $.post(url + 'consultaElectricos.php', {
+                                                        ods: odsq
+                                                    },
+                                                    function (resp) {
+
+                                                        arrayElectricos = resp
+
+                                                        
+
+                                                        //cargarEspecialidades()
+
+                                                    })
+
+
+                                            })
+
+
+
+
+                                    })
+
+                            })
+
+                            selEsp()
+
+                    })
+
+
+            }
+
+            function cargarEspecialidades() {
+                var html = ''
+
+                html += `
+
+                <tr  style="background-color: #61b2e4;">
+                    <td>
+                        ESTÁTICO
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalitalcoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalitalcoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.consolidado.totalitalcoeje * 100)/arrayEstaticos.consolidado.totalitalcoplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalecoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalecoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.consolidado.totalecoeje * 100)/arrayEstaticos.consolidado.totalecoplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.consolidado.totalfirmaseje * 100)/arrayEstaticos.consolidado.totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalfirmasplan - arrayEstaticos.consolidado.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        INTERCAMBIADORES
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.cantintercambiadores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.cantintercambiadores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalinterut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalinteruteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.intercambiadores.totalinteruteje * 100)/arrayEstaticos.intercambiadores.totalinterut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalinterecp}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalintereceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.intercambiadores.totalintereceje * 100)/arrayEstaticos.intercambiadores.totalinterecp).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.intercambiadores.totalfirmaseje * 100)/arrayEstaticos.intercambiadores.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalfirmas - arrayEstaticos.intercambiadores.totalfirmaseje}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TORRES
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.torres.canttorres}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.torres.canttorres}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.torres.totaltorresut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.torres.totaltorresuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.torres.totaltorresuteje * 100)/arrayEstaticos.torres.totaltorresut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.torres.totaltorresec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.torres.totaltorreseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.torres.totaltorreseceje * 100)/arrayEstaticos.torres.totaltorresec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.torres.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.torres.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.torres.totalfirmaseje * 100)/arrayEstaticos.torres.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.torres.totalfirmas - arrayEstaticos.torres.totalfirmaseje}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TAMBORES
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.canttambores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.canttambores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamborut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamboruteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.tambores.totaltamboruteje * 100)/arrayEstaticos.tambores.totaltamborut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamborec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamboreceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.tambores.totaltamboreceje * 100)/arrayEstaticos.tambores.totaltamborec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.tambores.totalfirmaseje * 100)/arrayEstaticos.tambores.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totalfirmas - arrayEstaticos.tambores.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        HORNOS
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.canthornos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.canthornos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornout}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornouteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.hornos.totalhornouteje * 100)/arrayEstaticos.hornos.totalhornout).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornoecp}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornoecpeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.hornos.totalhornoecpeje * 100)/arrayEstaticos.hornos.totalhornoecp).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.hornos.totalfirmaseje * 100)/arrayEstaticos.hornos.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalfirmas - arrayEstaticos.hornos.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        LG'S
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.cantlgs}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.cantlgs}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallgut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallguteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.lgs.totallguteje * 100)/arrayEstaticos.lgs.totallgut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallgec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallgeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.lgs.totallgeceje * 100)/arrayEstaticos.lgs.totallgec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.lgs.totalfirmaseje * 100)/arrayEstaticos.lgs.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totalfirmas - arrayEstaticos.lgs.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        VÁLVULAS
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.cantvalvulas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.cantvalvulas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvalut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvaluteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.valvulas.totalvaluteje * 100)/arrayEstaticos.valvulas.totalvalut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvalec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvaleceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.valvulas.totalvaleceje * 100)/arrayEstaticos.valvulas.totalvalec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.valvulas.totalfirmaseje * 100)/arrayEstaticos.valvulas.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalfirmas - arrayEstaticos.valvulas.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        EYECTORES
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.canteyectores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.canteyectores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.totaleyeut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.totaleyeuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.eyectores.totaleyeuteje * 100)/arrayEstaticos.eyectores.totaleyeut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.totaleyeec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.totaleyeeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.eyectores.totaleyeeceje * 100)/arrayEstaticos.eyectores.totaleyeec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.eyectores.totalfirmaseje * 100)/arrayEstaticos.eyectores.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.eyectores.totalfirmas - arrayEstaticos.eyectores.totalfirmaseje}
+                    </td>
+                </tr>
+                `
+
+                html += `
+
+                <tr  style="background-color: #61b2e4;">
+                    <td>
+                        TUBERÍA
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalitalcoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalitalcoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.consolidado.totalitalcoeje * 100)/arrayTuberia.consolidado.totalitalcoplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalecoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalecoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.consolidado.totalecoeje * 100)/arrayTuberia.consolidado.totalecoplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.consolidado.totalfirmaseje * 100)/arrayTuberia.consolidado.totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalfirmasplan - arrayTuberia.consolidado.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        PUNTOS DE INSP
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.cantpuntos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.cantpuntos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntosut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntosuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.puntos.totalpuntosuteje * 100)/arrayTuberia.puntos.totalpuntosut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntosec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntoseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.puntos.totalpuntoseceje * 100)/arrayTuberia.puntos.totalpuntosec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.puntos.totalfirmaseje * 100)/arrayTuberia.puntos.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalfirmas - arrayTuberia.puntos.totalfirmaseje}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        INGENIERÍAS
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.cantingenierias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.cantingenierias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalingut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalinguteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.ingenierias.totalinguteje * 100)/arrayTuberia.ingenierias.totalingut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalingec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalingeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.ingenierias.totalingeceje * 100)/arrayTuberia.ingenierias.totalingec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.ingenierias.totalfirmaseje * 100)/arrayTuberia.ingenierias.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalfirmas - arrayTuberia.ingenierias.totalfirmaseje}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        LAZOS DE CORR.
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.cantlazos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.cantlazos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazosut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazosuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.lazos.totallazosuteje * 100)/arrayTuberia.lazos.totallazosut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazosec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazoseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.lazos.totallazoseceje * 100)/arrayTuberia.lazos.totallazosec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.lazos.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.lazos.totalfirmaseje * 100)/arrayTuberia.lazos.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totalfirmas - arrayTuberia.lazos.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        MISCELANEOS TUB.
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.cantmiscelaneostuberias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.cantmiscelaneostuberias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneostub.totalmisctubuteje * 100)/arrayTuberia.miscelaneostub.totalmisctubut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneostub.totalmisctubeceje * 100)/arrayTuberia.miscelaneostub.totalmisctubec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneostub.totalfirmaseje * 100)/arrayTuberia.miscelaneostub.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalfirmas - arrayTuberia.miscelaneostub.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        MISCELANEOS INST.
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.cantmiscelaneosinstrumentacion}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.cantmiscelaneosinstrumentacion}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinstut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinstuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneosinst.totalmiscinstuteje * 100)/arrayTuberia.miscelaneosinst.totalmiscinstut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinstec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinsteceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneosinst.totalmiscinsteceje * 100)/arrayTuberia.miscelaneosinst.totalmiscinstec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneosinst.totalfirmaseje * 100)/arrayTuberia.miscelaneosinst.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalfirmas - arrayTuberia.miscelaneosinst.totalfirmaseje}
+                    </td>
+                </tr>
+               
+                `
+
+                html += `
+
+                <tr  style="background-color: #61b2e4;">
+                    <td>
+                        ROTATIVO
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalitalcoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalitalcoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.consolidado.totalitalcoeje * 100)/arrayRotativo.consolidado.totalitalcoplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalecoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalecoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.consolidado.totalecoeje * 100)/arrayRotativo.consolidado.totalecoplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.consolidado.totalfirmaseje * 100)/arrayRotativo.consolidado.totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.consolidado.totalfirmasplan - arrayRotativo.consolidado.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        OS97 Inicial
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os94.cantpuntos}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os94.cantpuntos}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os94.totalpuntosut}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os94.totalpuntosuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os94.totalpuntosuteje * 100)/arrayRotativo.os94.totalpuntosut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayRotativo.os94.totalpuntosec}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os94.totalpuntoseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os94.totalpuntoseceje * 100)/arrayRotativo.os94.totalpuntosec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayRotativo.os94.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os94.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os94.totalfirmaseje * 100)/arrayRotativo.os94.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os94.totalfirmas - arrayRotativo.os94.totalfirmaseje}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        OS95
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os95.cantingenierias}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os95.cantingenierias}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os95.totalingut}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os95.totalinguteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os95.totalinguteje * 100)/arrayRotativo.os95.totalingut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayRotativo.os95.totalingec}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os95.totalingeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os95.totalingeceje * 100)/arrayRotativo.os95.totalingec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayRotativo.os95.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os95.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os95.totalfirmaseje * 100)/arrayRotativo.os95.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os95.totalfirmas - arrayRotativo.os95.totalfirmaseje}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        OS96
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os96.cantlazos}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os96.cantlazos}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os96.totallazosut}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os96.totallazosuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os96.totallazosuteje * 100)/arrayRotativo.os96.totallazosut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayRotativo.os96.totallazosec}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os96.totallazoseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os96.totallazoseceje * 100)/arrayRotativo.os96.totallazosec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayRotativo.os96.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os96.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os96.totalfirmaseje * 100)/arrayRotativo.os96.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os96.totalfirmas - arrayRotativo.os96.totalfirmaseje}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        OS97 Final
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os97.cantmiscelaneostuberias}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os97.cantmiscelaneostuberias}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os97.totalmisctubut}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os97.totalmisctubuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os97.totalmisctubuteje * 100)/arrayRotativo.os97.totalmisctubut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayRotativo.os97.totalmisctubec}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os97.totalmisctubeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os97.totalmisctubeceje * 100)/arrayRotativo.os97.totalmisctubec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayRotativo.os97.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os97.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRotativo.os97.totalfirmaseje * 100)/arrayRotativo.os97.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayRotativo.os97.totalfirmas - arrayRotativo.os97.totalfirmaseje}
+                    </td>
+                </tr>
+
+                
+               
+                `
+
+
+
+                html += `
+
+                <tr  style="background-color: #61b2e4;">
+                    <td>
+                        INSTRUMENTACIÓN
+                    </td>
+                    <td align="center">
+                        ${arrayInstrumentos.totales.tottags}
+                    </td>
+                    <td align="center">
+                        ${arrayInstrumentos.totales.tottags}
+                    </td>
+                    <td align="center">
+                        ${arrayInstrumentos.totales.totalplanut}
+                    </td>
+                    <td align="center">
+                        ${arrayInstrumentos.totales.totejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayInstrumentos.totales.totejeut * 100)/arrayInstrumentos.totales.totalplanut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayInstrumentos.totales.totalplanec}
+                    </td>
+                    <td align="center">
+                        ${arrayInstrumentos.totales.totejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayInstrumentos.totales.totejeec * 100)/arrayInstrumentos.totales.totalplanec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayInstrumentos.totales.totalplanut+arrayInstrumentos.totales.totalplanec}
+                    </td>
+                    <td align="center">
+                        ${arrayInstrumentos.totales.totejeut+arrayInstrumentos.totales.totejeec}
+                    </td>
+                    <td align="center">
+                        ${(((arrayInstrumentos.totales.totejeut+arrayInstrumentos.totales.totejeec) * 100)/(arrayInstrumentos.totales.totalplanut+arrayInstrumentos.totales.totalplanec)).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${(arrayInstrumentos.totales.totalplanut+arrayInstrumentos.totales.totalplanec) - (arrayInstrumentos.totales.totejeut+arrayInstrumentos.totales.totejeec)}
+                    </td>
+                </tr>
+                                               
+                `
+                var arrayInst = arrayInstrumentos.tablas;
+
+                for (var i = 0; i < arrayInst.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayInst[i].familia} - ${arrayInst[i].tipo}
+                    </td>
+                    <td align="center">
+                        ${arrayInst[i].canttags}
+                    </td>
+                    <td align="center">
+                        ${arrayInst[i].canttags}
+                    </td>
+                    <td align="center">
+                        ${arrayInst[i].planut}
+                    </td>
+                    <td align="center">
+                        ${arrayInst[i].ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayInst[i].ejeut * 100)/arrayInst[i].planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayInst[i].planec}
+                    </td>
+                    <td align="center">
+                        ${arrayInst[i].ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayInst[i].ejeec * 100)/arrayInst[i].planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayInst[i].planut+arrayInst[i].planec}
+                    </td>
+                    <td align="center">
+                        ${arrayInst[i].ejeut+arrayInst[i].ejeec}
+                    </td>
+                    <td align="center">
+                        ${(((arrayInst[i].ejeut+arrayInst[i].ejeec) * 100)/(arrayInst[i].planut+arrayInst[i].planec)).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${(arrayInst[i].planut+arrayInst[i].planec)-(arrayInst[i].ejeut+arrayInst[i].ejeec)}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+
+                <tr  style="background-color: #61b2e4;">
+                    <td>
+                        ELÉCTRICOS
+                    </td>
+                    <td align="center">
+                        ${arrayElectricos.totales.tottags}
+                    </td>
+                    <td align="center">
+                        ${arrayElectricos.totales.tottags}
+                    </td>
+                    <td align="center">
+                        ${arrayElectricos.totales.totalplanut}
+                    </td>
+                    <td align="center">
+                        ${arrayElectricos.totales.totejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayElectricos.totales.totejeut * 100)/arrayElectricos.totales.totalplanut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayElectricos.totales.totalplanec}
+                    </td>
+                    <td align="center">
+                        ${arrayElectricos.totales.totejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayElectricos.totales.totejeec * 100)/arrayElectricos.totales.totalplanec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayElectricos.totales.totalplanut+arrayElectricos.totales.totalplanec}
+                    </td>
+                    <td align="center">
+                        ${arrayElectricos.totales.totejeut+arrayElectricos.totales.totejeec}
+                    </td>
+                    <td align="center">
+                        ${(((arrayElectricos.totales.totejeut+arrayElectricos.totales.totejeec) * 100)/(arrayElectricos.totales.totalplanut+arrayElectricos.totales.totalplanec)).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${(arrayElectricos.totales.totalplanut+arrayElectricos.totales.totalplanec) - (arrayElectricos.totales.totejeut+arrayElectricos.totales.totejeec)}
+                    </td>
+                </tr>
+                                               
+                `
+                var arrayElec = arrayElectricos.tablas;
+
+                for (var i = 0; i < arrayElec.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayElec[i].familia}  
+                    </td>
+                    <td align="center">
+                        ${arrayElec[i].canttags}
+                    </td>
+                    <td align="center">
+                        ${arrayElec[i].canttags}
+                    </td>
+                    <td align="center">
+                        ${arrayElec[i].planut}
+                    </td>
+                    <td align="center">
+                        ${arrayElec[i].ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayElec[i].ejeut * 100)/arrayElec[i].planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayElec[i].planec}
+                    </td>
+                    <td align="center">
+                        ${arrayElec[i].ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayElec[i].ejeec * 100)/arrayElec[i].planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayElec[i].planut+arrayElec[i].planec}
+                    </td>
+                    <td align="center">
+                        ${arrayElec[i].ejeut+arrayElec[i].ejeec}
+                    </td>
+                    <td align="center">
+                        ${(((arrayElec[i].ejeut+arrayElec[i].ejeec) * 100)/(arrayElec[i].planut+arrayElec[i].planec)).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${(arrayElec[i].planut+arrayElec[i].planec)-(arrayElec[i].ejeut+arrayElec[i].ejeec)}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+                $('#datosTabla').html(html)
+            }
+
+            function cargarEstatico() {
+
+                var html = `
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                    <td>
+                        ESTÁTICO
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalitalcoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalitalcoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.consolidado.totalitalcoeje * 100)/arrayEstaticos.consolidado.totalitalcoplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalecoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalecoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.consolidado.totalecoeje * 100)/arrayEstaticos.consolidado.totalecoplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.consolidado.totalfirmaseje * 100)/arrayEstaticos.consolidado.totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.consolidado.totalfirmasplan - arrayEstaticos.consolidado.totalfirmaseje}
+                    </td>
+                </tr>
+
+                    <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                    <td>
+                        INTERCAMBIADORES
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.cantintercambiadores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.cantintercambiadores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalinterut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalinteruteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.intercambiadores.totalinteruteje * 100)/arrayEstaticos.intercambiadores.totalinterut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalinterecp}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalintereceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.intercambiadores.totalintereceje * 100)/arrayEstaticos.intercambiadores.totalinterecp).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.intercambiadores.totalfirmaseje * 100)/arrayEstaticos.intercambiadores.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.intercambiadores.totalfirmas - arrayEstaticos.intercambiadores.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayIntercambiadores.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayIntercambiadores[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayIntercambiadores[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayIntercambiadores[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayIntercambiadores[i].totalfimasuteje * 100)/arrayIntercambiadores[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayIntercambiadores[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayIntercambiadores[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayIntercambiadores[i].totalfirmaseceje * 100)/arrayIntercambiadores[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayIntercambiadores[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayIntercambiadores[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayIntercambiadores[i].totalfirmaseje * 100)/arrayIntercambiadores[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayIntercambiadores[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+                // html += `
+                // <tr  style="background-color: #61b2e4;  position: sticky; top: 120px;">
+                //         <td  >
+                //             TORRES
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.canttorres}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.canttorres}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.totaltorresut}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.totaltorresuteje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEstaticos.torres.totaltorresuteje * 100)/arrayEstaticos.torres.totaltorresut).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.totaltorresec}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.totaltorreseceje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEstaticos.torres.totaltorreseceje * 100)/arrayEstaticos.torres.totaltorresec).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.totalfirmas}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.totalfirmaseje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEstaticos.torres.totalfirmaseje * 100)/arrayEstaticos.torres.totalfirmas).toFixed(2)}%
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.torres.totalfirmas - arrayEstaticos.torres.totalfirmaseje}
+                //         </td>
+                //     </tr>
+                // `
+
+                // for(var i=0; i<arrayTorres.length; i++){
+                //      html += `
+
+                //   <tr>
+                //         <td>
+                //             ${arrayTorres[i].tag}
+                //         </td>
+                //         <td align="center">
+                //            1
+                //         </td>
+                //         <td align="center">
+                //           1
+                //         </td>
+                //         <td align="center">
+                //             ${arrayTorres[i].totalfirmasutplan}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayTorres[i].totalfimasuteje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayTorres[i].totalfimasuteje * 100)/arrayTorres[i].totalfirmasutplan).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayTorres[i].totalfirmasecpplan}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayTorres[i].totalfirmaseceje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayTorres[i].totalfirmaseceje * 100)/arrayTorres[i].totalfirmasecpplan).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayTorres[i].totalfirmasplan}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayTorres[i].totalfirmaseje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayTorres[i].totalfirmaseje * 100)/arrayTorres[i].totalfirmasplan).toFixed(2)}%
+                //         </td>
+                //         <td align="center">
+                //             ${arrayTorres[i].firmasfaltantes}
+                //         </td>
+                //     </tr>
+
+                //     `
+                // }
+
+
+                html += `
+            <tr  style="background-color: #61b2e4;  position: sticky; top: 120px;">
+                    <td >
+                        TAMBORES
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.canttambores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.canttambores}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamborut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamboruteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.tambores.totaltamboruteje * 100)/arrayEstaticos.tambores.totaltamborut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamborec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totaltamboreceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.tambores.totaltamboreceje * 100)/arrayEstaticos.tambores.totaltamborec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.tambores.totalfirmaseje * 100)/arrayEstaticos.tambores.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.tambores.totalfirmas - arrayEstaticos.tambores.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayTambores.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayTambores[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayTambores[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTambores[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTambores[i].totalfimasuteje * 100)/arrayTambores[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTambores[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTambores[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTambores[i].totalfirmaseceje * 100)/arrayTambores[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTambores[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTambores[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTambores[i].totalfirmaseje * 100)/arrayTambores[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTambores[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+            <tr  style="background-color: #61b2e4;  position: sticky; top: 120px;">
+                    <td >
+                        HORNOS
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.canthornos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.canthornos}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornout}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornouteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.hornos.totalhornouteje * 100)/arrayEstaticos.hornos.totalhornout).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornoecp}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalhornoecpeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.hornos.totalhornoecpeje * 100)/arrayEstaticos.hornos.totalhornoecp).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.hornos.totalfirmaseje * 100)/arrayEstaticos.hornos.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.hornos.totalfirmas - arrayEstaticos.hornos.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayHornos.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayHornos[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayHornos[i].totalfimasuteje * 100)/arrayHornos[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayHornos[i].totalfirmaseceje * 100)/arrayHornos[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayHornos[i].totalfirmaseje * 100)/arrayHornos[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+
+
+
+
+                html += `
+            <tr  style="background-color: #61b2e4;  position: sticky; top: 120px;">
+                <td>
+                        LG'S
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.cantlgs}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.cantlgs}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallgut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallguteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.lgs.totallguteje * 100)/arrayEstaticos.lgs.totallgut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallgec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totallgeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.lgs.totallgeceje * 100)/arrayEstaticos.lgs.totallgec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.lgs.totalfirmaseje * 100)/arrayEstaticos.lgs.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.lgs.totalfirmas - arrayEstaticos.lgs.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayLgs.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayLgs[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayLgs[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLgs[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLgs[i].totalfimasuteje * 100)/arrayLgs[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayLgs[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLgs[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLgs[i].totalfirmaseceje * 100)/arrayLgs[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayLgs[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLgs[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLgs[i].totalfirmaseje * 100)/arrayLgs[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayLgs[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+            <tr  style="background-color: #61b2e4;  position: sticky; top: 120px;">
+                <td>
+                        VÁLVULAS
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.cantvalvulas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.cantvalvulas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvalut}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvaluteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.valvulas.totalvaluteje * 100)/arrayEstaticos.valvulas.totalvalut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvalec}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalvaleceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.valvulas.totalvaleceje * 100)/arrayEstaticos.valvulas.totalvalec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayEstaticos.valvulas.totalfirmaseje * 100)/arrayEstaticos.valvulas.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayEstaticos.valvulas.totalfirmas - arrayEstaticos.valvulas.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayValvulas.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayValvulas[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayValvulas[i].totalfimasuteje * 100)/arrayValvulas[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayValvulas[i].totalfirmaseceje * 100)/arrayValvulas[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayValvulas[i].totalfirmaseje * 100)/arrayValvulas[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                // html += `
+                // <tr  style="background-color: #61b2e4;  position: sticky; top: 120px;">
+                //     <td>
+                //             EYECTORES
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.canteyectores}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.canteyectores}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.totaleyeut}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.totaleyeuteje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEstaticos.eyectores.totaleyeuteje * 100)/arrayEstaticos.eyectores.totaleyeut).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.totaleyeec}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.totaleyeeceje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEstaticos.eyectores.totaleyeeceje * 100)/arrayEstaticos.eyectores.totaleyeec).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.totalfirmas}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.totalfirmaseje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEstaticos.eyectores.totalfirmaseje * 100)/arrayEstaticos.eyectores.totalfirmas).toFixed(2)}%
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEstaticos.eyectores.totalfirmas - arrayEstaticos.eyectores.totalfirmaseje}
+                //         </td>
+                //     </tr>
+                // `
+
+                // for(var i=0; i<arrayEyectores.length; i++){
+                //      html += `
+
+                //   <tr>
+                //         <td>
+                //             ${arrayEyectores[i].tag}
+                //         </td>
+                //         <td align="center">
+                //            1
+                //         </td>
+                //         <td align="center">
+                //           1
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEyectores[i].totalfirmasutplan}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEyectores[i].totalfimasuteje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEyectores[i].totalfimasuteje * 100)/arrayEyectores[i].totalfirmasutplan).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayEyectores[i].totalfirmasecpplan}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEyectores[i].totalfirmaseceje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEyectores[i].totalfirmaseceje * 100)/arrayEyectores[i].totalfirmasecpplan).toFixed(2)}%
+                //         </td>
+
+                //         <td align="center">
+                //             ${arrayEyectores[i].totalfirmasplan}
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEyectores[i].totalfirmaseje}
+                //         </td>
+                //         <td align="center">
+                //             ${((arrayEyectores[i].totalfirmaseje * 100)/arrayEyectores[i].totalfirmasplan).toFixed(2)}%
+                //         </td>
+                //         <td align="center">
+                //             ${arrayEyectores[i].firmasfaltantes}
+                //         </td>
+                //     </tr>
+
+                //     `
+                // }
+
+
+
+
+
+                $('#datosTabla').html(html)
+            }
+
+            function cargarTuberia() {
+
+                var html = `
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        TUBERÍA
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalitalcoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalitalcoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.consolidado.totalitalcoeje * 100)/arrayTuberia.consolidado.totalitalcoplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalecoplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalecoeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.consolidado.totalecoeje * 100)/arrayTuberia.consolidado.totalecoplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.consolidado.totalfirmaseje * 100)/arrayTuberia.consolidado.totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.consolidado.totalfirmasplan - arrayTuberia.consolidado.totalfirmaseje}
+                    </td>
+                </tr>
+
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        PUNTOS DE INSP
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.cantpuntos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.cantpuntos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntosut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntosuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.puntos.totalpuntosuteje * 100)/arrayTuberia.puntos.totalpuntosut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntosec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalpuntoseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.puntos.totalpuntoseceje * 100)/arrayTuberia.puntos.totalpuntosec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.puntos.totalfirmaseje * 100)/arrayTuberia.puntos.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.puntos.totalfirmas - arrayTuberia.puntos.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayPuntos.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayPuntos[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayPuntos[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayPuntos[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayPuntos[i].totalfimasuteje * 100)/arrayPuntos[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayPuntos[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayPuntos[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayPuntos[i].totalfirmaseceje * 100)/arrayPuntos[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayPuntos[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayPuntos[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayPuntos[i].totalfirmaseje * 100)/arrayPuntos[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayPuntos[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        INGENIERÍAS
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.cantingenierias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.cantingenierias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalingut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalinguteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.ingenierias.totalinguteje * 100)/arrayTuberia.ingenierias.totalingut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalingec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalingeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.ingenierias.totalingeceje * 100)/arrayTuberia.ingenierias.totalingec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.ingenierias.totalfirmaseje * 100)/arrayTuberia.ingenierias.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.ingenierias.totalfirmas - arrayTuberia.ingenierias.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayIngenierias.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayIngenierias[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayIngenierias[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayIngenierias[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayIngenierias[i].totalfimasuteje * 100)/arrayIngenierias[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayIngenierias[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayIngenierias[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayIngenierias[i].totalfirmaseceje * 100)/arrayIngenierias[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayIngenierias[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayIngenierias[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayIngenierias[i].totalfirmaseje * 100)/arrayIngenierias[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayIngenierias[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        LAZOS DE CORR.
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.cantlazos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.cantlazos}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazosut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazosuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.lazos.totallazosuteje * 100)/arrayTuberia.lazos.totallazosut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazosec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totallazoseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.lazos.totallazoseceje * 100)/arrayTuberia.lazos.totallazosec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.lazos.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.lazos.totalfirmaseje * 100)/arrayTuberia.lazos.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.lazos.totalfirmas - arrayTuberia.lazos.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayLazos.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayLazos[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayLazos[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLazos[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLazos[i].totalfimasuteje * 100)/arrayLazos[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayLazos[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLazos[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLazos[i].totalfirmaseceje * 100)/arrayLazos[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayLazos[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLazos[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLazos[i].totalfirmaseje * 100)/arrayLazos[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayLazos[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+                html += `
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        MISCELANEOS TUB.
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.cantmiscelaneostuberias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.cantmiscelaneostuberias}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneostub.totalmisctubuteje * 100)/arrayTuberia.miscelaneostub.totalmisctubut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalmisctubeceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneostub.totalmisctubeceje * 100)/arrayTuberia.miscelaneostub.totalmisctubec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneostub.totalfirmaseje * 100)/arrayTuberia.miscelaneostub.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneostub.totalfirmas - arrayTuberia.miscelaneostub.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayMiscelaneosTub.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayMiscelaneosTub[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosTub[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosTub[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayMiscelaneosTub[i].totalfimasuteje * 100)/arrayMiscelaneosTub[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayMiscelaneosTub[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosTub[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayMiscelaneosTub[i].totalfirmaseceje * 100)/arrayMiscelaneosTub[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayMiscelaneosTub[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosTub[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayMiscelaneosTub[i].totalfirmaseje * 100)/arrayMiscelaneosTub[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosTub[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        MISCELANEOS INST.
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.cantmiscelaneosinstrumentacion}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.cantmiscelaneosinstrumentacion}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinstut}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinstuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneosinst.totalmiscinstuteje * 100)/arrayTuberia.miscelaneosinst.totalmiscinstut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinstec}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalmiscinsteceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneosinst.totalmiscinsteceje * 100)/arrayTuberia.miscelaneosinst.totalmiscinstec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalfirmas}
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTuberia.miscelaneosinst.totalfirmaseje * 100)/arrayTuberia.miscelaneosinst.totalfirmas).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTuberia.miscelaneosinst.totalfirmas - arrayTuberia.miscelaneosinst.totalfirmaseje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayMiscelaneosInst.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayMiscelaneosInst[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosInst[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosInst[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayMiscelaneosInst[i].totalfimasuteje * 100)/arrayMiscelaneosInst[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayMiscelaneosInst[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosInst[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayMiscelaneosInst[i].totalfirmaseceje * 100)/arrayMiscelaneosInst[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayMiscelaneosInst[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosInst[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayMiscelaneosInst[i].totalfirmaseje * 100)/arrayMiscelaneosInst[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayMiscelaneosInst[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+
+
+
+                $('#datosTabla').html(html)
+            }
+
+            function cargarConvertidor() {
+
+                var html = `
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        CONVERTIDOR
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.consolidado.ejeut * 100)/arrayConvertidor.consolidado.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.consolidado.ejeec * 100)/arrayConvertidor.consolidado.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.consolidado.totfirmeje * 100)/arrayConvertidor.consolidado.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.consolidado.totfirm - arrayConvertidor.consolidado.totfirmeje}
+                    </td>
+                </tr>
+
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        CICLONES
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.ciclones.ejeut * 100)/arrayConvertidor.ciclones.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.ciclones.ejeec * 100)/arrayConvertidor.ciclones.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.ciclones.totfirmeje * 100)/arrayConvertidor.ciclones.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.ciclones.totfirm - arrayConvertidor.ciclones.totfirmeje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayCiclones.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayCiclones[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayCiclones[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayCiclones[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayCiclones[i].totalfimasuteje * 100)/arrayCiclones[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayCiclones[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayCiclones[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayCiclones[i].totalfirmaseceje * 100)/arrayCiclones[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayCiclones[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayCiclones[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayCiclones[i].totalfirmaseje * 100)/arrayCiclones[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayCiclones[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+        
+
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        HORNOS
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.hornos.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.hornos.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.hornos.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.hornos.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.hornos.ejeut * 100)/arrayConvertidor.hornos.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.hornos.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.hornos.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.hornos.ejeec * 100)/arrayConvertidor.hornos.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.hornos.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.hornos.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.hornos.totfirmeje * 100)/arrayConvertidor.hornos.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.hornos.totfirm - arrayConvertidor.hornos.totfirmeje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayHornos.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayHornos[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayHornos[i].totalfimasuteje * 100)/arrayHornos[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayHornos[i].totalfirmaseceje * 100)/arrayHornos[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayHornos[i].totalfirmaseje * 100)/arrayHornos[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayHornos[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+                html += `
+    
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        REACTOR
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.reactor.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.reactor.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.reactor.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.reactor.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.reactor.ejeut * 100)/arrayConvertidor.reactor.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.reactor.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.reactor.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.reactor.ejeec * 100)/arrayConvertidor.reactor.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.reactor.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.reactor.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.reactor.totfirmeje * 100)/arrayConvertidor.reactor.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.reactor.totfirm - arrayConvertidor.reactor.totfirmeje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayReactor.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayReactor[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayReactor[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayReactor[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayReactor[i].totalfimasuteje * 100)/arrayReactor[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayReactor[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayReactor[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayReactor[i].totalfirmaseceje * 100)/arrayReactor[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayReactor[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayReactor[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayReactor[i].totalfirmaseje * 100)/arrayReactor[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayReactor[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+                html += `
+    
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        REGENERADOR
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.regenerador.ejeut * 100)/arrayConvertidor.regenerador.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.regenerador.ejeec * 100)/arrayConvertidor.regenerador.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.regenerador.totfirmeje * 100)/arrayConvertidor.regenerador.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.regenerador.totfirm - arrayConvertidor.regenerador.totfirmeje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayRegenerador.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayRegenerador[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayRegenerador[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayRegenerador[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRegenerador[i].totalfimasuteje * 100)/arrayRegenerador[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayRegenerador[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayRegenerador[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRegenerador[i].totalfirmaseceje * 100)/arrayRegenerador[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayRegenerador[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayRegenerador[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayRegenerador[i].totalfirmaseje * 100)/arrayRegenerador[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayRegenerador[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+                html += `
+    
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        TORRES
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.torres.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.torres.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.torres.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.torres.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.torres.ejeut * 100)/arrayConvertidor.torres.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.torres.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.torres.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.torres.ejeec * 100)/arrayConvertidor.torres.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.torres.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.torres.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.torres.totfirmeje * 100)/arrayConvertidor.torres.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.torres.totfirm - arrayConvertidor.torres.totfirmeje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayTorre.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayTorre[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayTorre[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTorre[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTorre[i].totalfimasuteje * 100)/arrayTorre[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayTorre[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTorre[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTorre[i].totalfirmaseceje * 100)/arrayTorre[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayTorre[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayTorre[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayTorre[i].totalfirmaseje * 100)/arrayTorre[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayTorre[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+                html += `
+    
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        VÁLVULAS
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.valvulas.ejeut * 100)/arrayConvertidor.valvulas.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.valvulas.ejeec * 100)/arrayConvertidor.valvulas.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.valvulas.totfirmeje * 100)/arrayConvertidor.valvulas.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.valvulas.totfirm - arrayConvertidor.valvulas.totfirmeje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayValvulas.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayValvulas[i].tag}
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayValvulas[i].totalfimasuteje * 100)/arrayValvulas[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayValvulas[i].totalfirmaseceje * 100)/arrayValvulas[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayValvulas[i].totalfirmaseje * 100)/arrayValvulas[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayValvulas[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+                html += `
+    
+            <tr  style="background-color: #61b2e4; position: sticky; top: 120px;">
+                <td>
+                        LÍNEA DE TRANSF.
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.linea.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.linea.cantequipos}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.linea.planut}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.linea.ejeut}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.linea.ejeut * 100)/arrayConvertidor.linea.planut).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayConvertidor.linea.planec}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.linea.ejeec}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.linea.ejeec * 100)/arrayConvertidor.linea.planec).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayConvertidor.linea.totfirm}
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.linea.totfirmeje}
+                    </td>
+                    <td align="center">
+                        ${((arrayConvertidor.linea.totfirmeje * 100)/arrayConvertidor.linea.totfirm).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayConvertidor.linea.totfirm - arrayConvertidor.linea.totfirmeje}
+                    </td>
+                </tr>
+            `
+
+                for (var i = 0; i < arrayLinea.length; i++) {
+                    html += `
+
+              <tr>
+                    <td>
+                        ${arrayLinea[i].tag}
+                    </td>
+                    <td align="center">
+                       1
+                    </td>
+                    <td align="center">
+                      1
+                    </td>
+                    <td align="center">
+                        ${arrayLinea[i].totalfirmasutplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLinea[i].totalfimasuteje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLinea[i].totalfimasuteje * 100)/arrayLinea[i].totalfirmasutplan).toFixed(2)}%
+                    </td>
+                   
+                    <td align="center">
+                        ${arrayLinea[i].totalfirmasecpplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLinea[i].totalfirmaseceje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLinea[i].totalfirmaseceje * 100)/arrayLinea[i].totalfirmasecpplan).toFixed(2)}%
+                    </td>
+
+                    <td align="center">
+                        ${arrayLinea[i].totalfirmasplan}
+                    </td>
+                    <td align="center">
+                        ${arrayLinea[i].totalfirmaseje}
+                    </td>
+                    <td align="center">
+                        ${((arrayLinea[i].totalfirmaseje * 100)/arrayLinea[i].totalfirmasplan).toFixed(2)}%
+                    </td>
+                    <td align="center">
+                        ${arrayLinea[i].firmasfaltantes}
+                    </td>
+                </tr>
+
+                `
+                }
+
+
+
+
+
+
+
+                $('#datosTabla').html(html)
+            }
+
+
+
+
+
+
+            function config() {
+                Swal.fire({
+                    title: 'Seleccione ODS',
+                    html: `
+                    <select id="odsconfig" class="form-control">
+                        <option value="021">021</option>
+                        <option value="022">022</option>
+                        <option value="023">023</option>
+                        <option value="024">024</option>
+                        <option value="025">025</option>
+                        
+                    </select>
+                `,
+                    showCancelButton: true,
+                    confirmButtonText: 'Aceptar',
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var ods = $('#odsconfig').val()
+                        $('#ods').html(ods)
+                        cargarListado(ods)
+                    }
+                })
+            }
+
+            function selEsp() {
+                var esp = sessionStorage.getItem('espdetalles')
+                
+                
+                $('#titabla').html('INFORME POR ESPECIALIDAD ' + esp)
+                cargarListadoEsp(esp)
+                
+            }
+
+            function cargarListadoEsp(esp) {
+                //cargando()
+
+                if (esp == 'ESTÁTICO') {
+
+                    $.post(url + 'consultaEstaticos_1.php', {
+                            ods: odsq,
+                            esp: esp
+                        },
+                        function (resp) {
+                            arrayIntercambiadores = resp.intercambiadores
+                            arrayTorres = resp.torres
+                            arrayHornos = resp.hornos
+                            arrayTambores = resp.tambores
+                            arrayLgs = resp.lgs
+                            arrayValvulas = resp.valvulas
+                            arrayEyectores = resp.eyectores
+
+
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                width: 150,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+
+                            cargarEstatico()
+
+                        })
+                }
+
+                if (esp == 'TUBERÍA') {
+
+                    $.post(url + 'consultaTuberia_.php', {
+                            ods: odsq,
+                            esp: esp
+                        },
+                        function (resp) {
+                            arrayPuntos = resp.puntos
+                            arrayIngenierias = resp.ingenierias
+                            arrayLazos = resp.lazos
+                            arrayMiscelaneosTub = resp.miscelaneostub
+                            arrayMiscelaneosInst = resp.miscelaneosinst
+
+
+
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                width: 150,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+
+                            cargarTuberia()
+
+                        })
+                }
+
+                if (esp == 'CONVERTIDOR') {
+
+                    $.post(url + 'consultaConvertidor_1.php', {
+                            ods: odsq,
+                            esp: esp
+                        },
+                        function (resp) {
+                            arrayCiclones = resp.ciclones
+                            arrayHornos = resp.hornos
+                            arrayInter = resp.intercambiadores
+                            arrayReactor = resp.reactor
+                            arrayRegenerador = resp.regenerador
+                            arrayTorre = resp.torre
+                            arrayValvulas = resp.valvulas
+                            arrayLinea = resp.linea
+
+
+
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                width: 150,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+
+                            cargarConvertidor()
+
+                        })
+                }
+
+
+            }
+
+
+
+            function cargarGraficas() {
+                var chart1 = Highcharts.chart('fig1', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35',
+                        '#a4c639',
+                        '#537b35'
+                    ],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '400'
+                    },
+                    title: {
+                        text: 'TOTAL FIRMAS'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'Totales'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant '
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'EJECUTADAS',
+                        data: [arrayDatos.firmastotalesuteje + arrayDatos.firmastotalesecpeje]
+
+                    }, {
+                        name: 'FALTANTES',
+                        data: [arrayDatos.firmastotalesecpfalt + arrayDatos.firmastotalesutfalt]
+                    }, {
+                        name: 'TOTAL',
+                        data: [arrayDatos.firmastotales]
+                    }]
+                });
+
+                var chart1 = Highcharts.chart('fig2', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35',
+                        '#a4c639',
+                        '#537b35'
+                    ],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '400'
+                    },
+                    title: {
+                        text: 'FIRMAS ITALCO'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'Totales'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant '
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'EJECUTADAS',
+                        data: [arrayDatos.firmastotalesuteje]
+
+                    }, {
+                        name: 'FALTANTES',
+                        data: [arrayDatos.firmastotalesutfalt]
+                    }, {
+                        name: 'TOTAL',
+                        data: [arrayDatos.firmastotalesut]
+                    }]
+                });
+
+                var chart1 = Highcharts.chart('fig3', {
+                    colors: ['#01005e', '#00c901', '#efd520', '#537b35', '#537b35', '#a4c639', '#537b35',
+                        '#a4c639',
+                        '#537b35'
+                    ],
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        type: 'column',
+                        height: '400'
+                    },
+                    title: {
+                        text: 'FIRMAS ECOPETROL'
+                    },
+
+                    xAxis: {
+                        categories: [
+                            'Totales'
+                        ],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Cant '
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'EJECUTADAS',
+                        data: [arrayDatos.firmastotalesecpeje]
+
+                    }, {
+                        name: 'FALTANTES',
+                        data: [arrayDatos.firmastotalesecpfalt]
+                    }, {
+                        name: 'TOTAL',
+                        data: [arrayDatos.firmastotalesecp]
+                    }]
+                });
+
+
+            }
+
+            function volver() {
+                location = 'informercakpi.html'
+            }
+
+            $('.collapse').on('show.bs.collapse', function () {
+                $('.collapse.in').collapse('hide');
+            });
+
+            function cargando() {
+                let timerInterval
+                Swal.fire({
+                    title: 'Cargando datos!',
+                    html: 'Un momento por favor...',
+                    timer: 30000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+
+                        }, 1000)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+
+                    }
+                })
+
+            }
+
+            function cargando2() {
+                let timerInterval
+                Swal.fire({
+                    title: 'Cargando datos!',
+                    html: 'Un momento por favor...',
+                    timer: 1000,
+                    timerProgressBar: true,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+
+                        }, 1000)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+
+                    }
+                })
+
+            }
+
+            $('.collapse').on('show.bs.collapse', function () {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    width: 150,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+
+            function detalles() {
+                Swal.fire({
+                    title: 'Seleccione una especialidad',
+                    html: `
+                        <select id="esp2" class="form-control">
+                            <option value="">Seleccionar...</option>
+                            <option value="ELÉCTRICO">ELÉCTRICO</option>
+                            <option value="ESTÁTICO">ESTÁTICO</option>
+                            <option value="INSTRUMENTACIÓN">INSTRUMENTACIÓN</option>
+                            <option value="ROTATIVO">ROTATIVO</option>
+                            <option value="TUBERÍA">TUBERÍA</option>
+                        </select>
+                    `,
+                    showCancelButton: true,
+                    confirmButtonText: 'Abrir',
+
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        var esp = $('#esp2').val()
+                        sessionStorage.setItem('espdetalles', esp)
+                        location = 'informercaesp.html'
+                    } 
+                })
+            }
+        </script>
+
+
+</body>
+
+</html>

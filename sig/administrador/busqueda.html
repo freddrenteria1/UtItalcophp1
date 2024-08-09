@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG UT ITALCO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        main{
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+        .milink{
+            cursor: pointer;
+        }
+        .oculto{
+            visibility: hidden;
+        }
+        .visible{
+            visibility: visible;
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        
+            <div id="cab">
+                <img src="img/header_1.jpg" style="width: 100%;" alt="">
+            </div>
+        <div class="container mt-2">
+            <div class="row">
+                <div class="col-sm-2 milink" onclick="login()">
+                    <img src="img/inicio.png" height="60px" alt=""> <span style="font-size: large;"> Inicio</span>
+                </div>
+                <div class="col-sm-2 milink" onclick="buscar()">
+                    <img src="img/buscar.png"  height="60px" alt=""> <span style="font-size: large;"> Búsqueda</span>
+                </div>
+                <div class="col-sm-8 mt-2">
+                   
+                </div>
+            </div>
+
+             
+            <div class="container p-3" style="background-color: rgb(193, 212, 255);">
+                <b>Buscar Archivos</b>
+            </div>
+
+            
+            <div class="mt-3 p-2">
+                Por favor separe los términos buscados con blancos y no utilice puntuación. Serán buscados por cada uno como palabras clave.
+              
+                <hr>
+                <div class="row mt-3">
+                    <div class="col-sm-2" style="text-align: right;">
+                        Buscar por
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="text" id="busqueda" class="form-control" placeholder="Buscar..." >
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-success" onclick="buscarArchivos()">Buscar</button>
+                    </div>
+                </div><hr>
+            </div>
+            
+
+            <div class="mt-1 p-2 oculto" id="datos">
+                <table width="100%">
+                    <thead>
+                        <th></th>
+                        <th style="text-align:center;">Prefijo</th>
+                        <th style="text-align:center;">Nombre</th>
+                        <th style="text-align:center;">Versión</th>
+                        <th style="text-align:center;">Descargas</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="tblCat">
+
+                    </tbody>
+                    
+
+                </table>
+            </div>
+              
+
+        </div>
+         
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script>
+        var url = 'https://utitalco.com/sig/server/';
+        var user = sessionStorage.getItem('usersig');
+        var cat = sessionStorage.getItem('categorias');
+        var arrayCat = []
+        var html = ''
+        var texto = ''
+        var categoria = ''
+
+        if(user == null){
+            location = 'login.html'
+        }
+
+       
+       
+
+        function login(){
+            location = 'index.html';
+        }
+
+        function buscar(){
+            location = 'busqueda.html';
+        }
+
+        function buscarArchivos(){
+            var busqueda = $('#busqueda').val()
+            $.post(url+'buscarArchivo.php',{busqueda:busqueda, user:user},
+            function(resp){
+
+                arrayCat = resp
+                if(arrayCat != null){
+
+                    texto = ''
+                    
+                    for(var i=0; i<arrayCat.length; i++){
+                        
+                        texto +=  `
+                        <tr valign="middle" border="0px">
+                            <td width="5%" style="padding:5px;">
+                                <a href='javascript:void(0)'>
+                                    <img src="img/doc.png" align="top" width="48" height="48" border="0" alt="" /> 
+                                </a>
+                            </td>
+                            <td width="10%" style="padding:5px; text-align:center;"><b><a href='javascript:void(0)'>${arrayCat[i].prefijo}</a></b></td>
+                            <td width="50%" style="padding:5px;"><b><a href='javascript:void(0)'>${arrayCat[i].nombre}</a></b></td>
+                            <td width="15%" style="padding:5px; text-align:center">Versión: ${arrayCat[i].version}</td>
+                            <td width="10%" style="padding:5px; text-align:center"> ${arrayCat[i].descargas}</td>
+                            <td width="10%" style="padding:5px; text-align:center">
+                                <a href='javascript:void(0)' onclick="descargar('${arrayCat[i].archivo}','${arrayCat[i].id}')">
+                                    <img src="img/descargar.png" align="top" height="38" border="0" alt="" /> 
+                                </a>
+                            </td>
+                        </tr>
+                        <tr valign="top" border="0px" style="border-bottom: 1px solid #cccccc;">
+                          <td colspan="3" width="100%" style="padding:5px;"></td>
+                        </tr>
+                        `
+                    }
+                     
+                    $('#tblCat').html(texto)
+                    $('#datos').removeClass("oculto");
+                }else{
+                    $('#tblCat').html('')
+                }
+                 
+
+            })
+        }
+
+        function cargarSub(){
+            categoria = $('#categorias').val()
+            location = 'archivos.html?idsub='+categoria
+        }
+
+        function login(){
+            location = 'index.html';
+        }
+
+        function buscar(){
+            location = 'busqueda.html';
+        }
+
+        function descargar(arch, id){
+        
+            $.post(url+'sumarDesc.php',{id:id},
+            function(resp){
+                var urls = 'https://sig.utitalcobarranca.com/archivos/'+arch
+                window.open(urls, '_blank');
+                
+            })
+
+        }
+
+    </script>
+</body>
+</html>

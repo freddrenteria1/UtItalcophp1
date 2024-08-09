@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategias HSE Parada de Planta UOPI-ETILENO III</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="stylesheet" href="css/hover-min.css">
+    <style>
+        body{
+            background-color: #50007B;
+            background-image: url('img/mascarahse_.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+       
+        }
+        
+        #mnu1 { 
+          width: 200px; height: 100px; ; 
+          position: absolute ; left: 345px; bottom: 310px; 
+          cursor: pointer;
+        }
+        #mnu2 { 
+          width: 100px; height: 200px; ; 
+          position: absolute ; left: 240px; bottom: 160px; 
+          cursor: pointer;
+        }	
+        #mnu3 { 
+          width: 100px; height: 200px; ; 
+          position: absolute ; left: 550px; bottom: 160px; 
+          cursor: pointer;
+        }	
+        #mnu4 { 
+          width: 200px; height: 130px; ; 
+          position: absolute ; left: 445px; bottom: 10px; 
+          cursor: pointer;
+        }
+        #mnu5 { 
+          width: 200px; height: 130px; ; 
+          position: absolute ; left: 245px; bottom: 10px; 
+          cursor: pointer;
+        }
+
+        .est { width: 500px; height: 500px; ; 
+          position: static ; margin: 0 auto; }
+
+          .dorado{
+            background-image: url('img/fdorado.jpg');
+            background-size: cover;
+            color: black;
+          }
+
+          .mnuanim{
+            width: 500px;
+            margin-left: 180px;
+          }
+
+          @media only screen and (max-width: 600px) {
+            .mnuanim{
+              width: 300px;
+              margin-left: 0px;
+            }
+          }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-warning text-center dorado">
+          <center>
+            
+            
+              <h5 class="ml-5">
+                Estrategias HSE Parada de Planta UOPI-ETILENO III - Ciclo de identificación, monitoreo y eliminación del riesgo
+              </h5>
+
+
+           
+              
+          </center>
+           
+        </nav>
+      </header>
+
+      <div id="cuerpo">
+        <div class="row" style="width: 100%;">
+            <div class="col-sm-4 mt-5">
+                <center>
+                    <img src="img/logos.png" width="300px" alt="">
+                </center>
+            </div>
+            <div class="col-sm-8 mt-5 est animate__animated animate__zoomInDown" >
+                  <div class="mt-5 ">
+
+                    <img src="img/menu.png" class="mnuanim" >
+
+                    <div id="mnu1" onclick="menu('1')">
+                     
+                    </div>
+                    <div id="mnu2" onclick="menu('10')">
+                       
+                    </div>
+                    <div id="mnu3" onclick="menu('4')">
+                       
+                    </div>
+                    <div id="mnu4" onclick="menu('5')">
+                       
+                    </div>
+                    <div id="mnu5" onclick="menu('6')">
+                       
+                    </div>
+                  </div>
+                   
+                   
+                
+            </div>
+        </div>
+      </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <script>
+
+      var ancho = screen.width;
+
+
+      $(".mnuanim").css("width", ancho);
+
+
+      function menu(id){
+        location = 'p'+id+'.html';
+      }
+
+    </script>
+</body>
+</html>

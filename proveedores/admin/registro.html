@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Proveedores UT Italco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-image: url('../img/refineria_f.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        #login {
+            margin: 0 auto;
+            margin-top: 40px;
+            height: auto;
+            width: 65%;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        
+        #registro {
+            margin: 0 auto;
+            margin-top: 40px;
+            height: auto;
+            width: 95%;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        
+        #cuerpo {
+            margin: 0 auto;
+            margin-top: 20px;
+            height: auto;
+            width: 95%;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 10px;
+            box-shadow: rgb(0, 0, 0);
+            padding: 20px;
+        }
+        
+        .fondoazul {
+            background-color: aquamarine;
+        }
+        
+        .adv {
+            padding: 5px;
+            background-color: red;
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .sinpadding [class*="col-"] {
+            padding: 0;
+        }
+        
+        .tit {
+            background-color: rgb(219, 218, 216);
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+        
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="registro">
+        <div>
+            <center>
+                <img src="img/logo_m.png" style="padding: 10px;" height="80px" alt="">
+                <img src="img/prov.jpg" style="padding: 10px;" height="120px" alt="">
+            </center>
+
+            <center>
+                <h4>Registro cuenta de usuario</h4>
+                <hr>
+            </center>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="emailuser">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label class="form-label">Confirmación de Correo electrónico</label>
+                        <input type="email" class="form-control" id="emailuser2">
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="claveuser">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label class="form-label">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" id="claveuser2">
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre / Empresa</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label class="form-label">Tipo de persona o Empresa</label>
+                        <select id="tipoe" class="form-control">
+                            <option value="">Seleccione</option>
+                            <option value="NATURAL">NATURAL</option>
+                            <option value="JURÍDICA">JURÍDICA</option>
+                            <option value="CONSORCIO">CONSORCIO</option>
+                            <option value="UNIÓN TEMPORAL">UNIÓN TEMPORAL</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-success" onclick="registro()">Crear Cuenta</button>
+                <button type="button" class="btn btn-danger" onclick="salir()">Salir</button>
+            </div>
+            <hr>
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var url = 'https://utitalco.com/proveedores/server/'
+
+        function salir() {
+            location = 'login.html'
+        }
+
+        function registro() {
+            email = $('#emailuser').val()
+            email2 = $('#emailuser2').val()
+            claveuser = $('#claveuser').val()
+            claveuser2 = $('#claveuser2').val()
+            nombre = $('#nombre').val()
+            tipoe = $('#tipoe').val()
+
+            if (email != email2) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Correos electrónicos no concuerdan...',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else {
+                if (claveuser != claveuser2) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'info',
+                        title: 'Contraseñas no concuerdan...',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    if (nombre == "") {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'info',
+                            title: 'Por favor registre un nombre / empresa...',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    } else {
+                        if (tipoe == '') {
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Por favor seleccione un tipo de persona o empresa...',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        } else {
+                            $.post(url + 'guardarusuario.php', {
+                                    email: email,
+                                    clave: claveuser,
+                                    nombre: nombre,
+                                    tipoe: tipoe
+                                },
+                                function(resp) {
+                                    if (resp.msn == 'Ok') {
+                                        Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'success',
+                                            title: 'Registro exitoso...',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        }).then(() => {
+                                            location = 'login.html'
+                                        })
+                                    }
+                                })
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

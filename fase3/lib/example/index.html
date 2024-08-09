@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertir HTML a PDF</title>
+    <!-- El script de la librería-->
+    <script src="html2pdf.bundle.min.js"></script>
+    <!--Nuestro script, que se encarga de crear el PDF usando la librería-->
+    <script src="script.js"></script>
+    <!-- Algunos estilos -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { min-height: 100vh; }
+
+        .cuerpo {
+            background-image: url("../../img/certi.jpg");
+            /* The image used */
+            background-color: #cccccc;
+            /* Used if the image is unavailable */
+            height: 700px;
+            /* You must set a specified height */
+            background-position: center;
+            /* Center the image */
+            background-repeat: no-repeat;
+            /* Do not repeat the image */
+            background-size: cover;
+            /* Resize the background image to cover the entire container */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cuerpo">
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Escuchamos el click del botón
+            const $elementoParaConvertir = document
+                .body; // <-- Aquí puedes elegir cualquier elemento del DOM
+                html2pdf()
+                    .set({
+                        margin: 1,
+                        filename: 'documento.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 0.98
+                        },
+                        html2canvas: {
+                            scale: 3, // A mayor escala, mejores gráficos, pero más peso
+                            letterRendering: true,
+                        },
+                        jsPDF: {
+                            unit: "in",
+                            format: "a3",
+                            orientation: 'landscape' // landscape o portrait
+                        }
+                    })
+                    .from($elementoParaConvertir)
+                    .save()
+                    .catch(err => console.log(err));
+        });
+    </script>
+</body>
+
+</html>

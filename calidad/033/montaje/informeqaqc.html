@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QAQC - UT ITALCO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;500;700&family=Roboto:wght@100;300;400;500&display=swap"
+        rel="stylesheet" />
+
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+        <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+        <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+        <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <script src="weldbook/jquery.min.js"></script>
+        <script src="weldbook/jquery-ui.min.js"></script>
+        <script src="weldbook/jquery.jqGrid.min.js"></script>
+        <script src="weldbook/grid.locale-en.js"></script>
+        <link rel="stylesheet" href="weldbook/jquery-ui.css">
+        <link rel="stylesheet" href="weldbook/ui.jqgrid_4.min.css" />
+    
+        
+
+    <style>
+        .mimnu{
+            background-color: #fff;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            vertical-align: middle;
+            color: rgb(35, 34, 34);
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            float: right;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        .mimnuini{
+             
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            vertical-align: middle;
+            color: rgb(35, 34, 34);
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-size: larger;
+            font-weight: bold;
+            cursor: pointer;
+            float: right;
+            margin: 10px;
+            padding: 5px;
+        }
+        .ui-th-div {
+            vertical-align: top !important;
+        }
+
+        .ui-jqgrid-title {
+            vertical-align: top;
+        }
+
+        body {
+            /* background-image: url("img/fondo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; */
+            height: 100hv;
+            font-family: "Montserrat Alternates", sans-serif;
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+            background-color: #e0e0e0;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -9999;
+        }
+
+        .cab {
+            margin-top: 0px;
+            background-color: rgb(0, 28, 93);
+            height: 100px;
+            width: 100%;
+            padding: 20px;
+            color: #fff;
+            
+            
+        }
+        
+        .fechainf{
+          background-color: #fff;
+          padding: 10px;
+          color: black;
+          margin-top: 0px;
+          text-align: center;
+        }
+
+        .titulop {
+            padding: 15px;
+            padding-top: 20px;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .mnubotones {
+            position: relative;
+        }
+
+        .cajones {
+            float: left;
+            margin: 10px;
+        }
+
+        .mbt {
+            height: 100px;
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 21rem;
+        }
+
+        .cuerpo {
+            position: relative;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
+            padding: 15px;
+        }
+
+        .padre {
+            display: flex;
+            align-items: center;
+        }
+
+        .micontainer {
+            margin: 0 auto;
+            width: 97%;
+        }
+
+        table thead td {
+            vertical-align: middle;
+        }
+
+        th.ui-th-column {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #b1b1b1;
+        }
+
+        .cont{
+          padding: 10px;
+           
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .mnubotones {
+                margin-top: 30px;
+                display: block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card {
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                width: 100%;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+  <div class="cab">
+
+    <div class="">
+      <div class="row">
+        <div class="col-sm-2">
+          <img src="img/logo_m.png" height="60px" alt="">
+        </div>
+        <div class="col-sm-3">
+          INFORME MONTAJE  ODS 033  <br>
+          <div class="row">
+            <div class="col-sm-6">
+
+                <input type="date" class="form-control" id="fechabuscar" onchange="cargarFecha()">
+            </div>
+            <div class="col-sm-6">
+
+                <div id="fecha" class="fechainf" ></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+            
+         
+
+          
+
+          <div class="mimnu" onclick="ver('firmas')">
+            RESUMEN FIRMAS
+          </div>
+
+          <div class="mimnu" onclick="ver('resend')">
+            RESUMEN END
+          </div>
+
+          <div class="mimnu" onclick="ver('ccontrol')">
+            CUADROS DE CONTROL
+          </div>
+
+          <div class="mimnu" onclick="ver('soldadura')">
+            INFORME SOLDADURA
+          </div>
+
+          <div class="mimnuini" onclick="ver('inicio')">
+            <img src="img/inicio.webp" height="50px" alt="">
+           </div>
+
+          
+          
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cont">
+
+    <div class="row" id="weldbook">
+
+        <div class="col-sm-4 ">
+            <div id="figTotalJ">
+
+            </div>
+        </div>
+
+        <div class="col-sm-4 ">
+            <div id="figTotalP">
+
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div id="figsold">
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" id="ressoldadura" class="oculto">
+
+        <div class="col-sm-4 mt-3">
+            <div id="figTallerJ">
+
+            </div>
+        </div>
+
+        <div class="col-sm-4 mt-3" >
+            <div id="figTallerP">
+
+            </div>
+        </div>
+
+        <div class="col-sm-4 mt-3">
+            <div id="figCampoJ">
+
+            </div>
+        </div>
+
+        <div class="col-sm-4 mt-3">
+            <div id="figCampoP">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="ccontrol">
+
+        <div class="col-sm-3 mt-3">
+            <div id="figCCBanco">
+    
+            </div>
+          </div>
+    
+          <div class="col-sm-3 mt-3">
+            <div id="figCCPiso">
+    
+            </div>
+          </div>
+    
+          <div class="col-sm-3 mt-3">
+            <div id="figCCPantalla">
+    
+            </div>
+          </div>
+    
+          <div class="col-sm-3 mt-3">
+            <div id="figCCTecho">
+    
+            </div>
+          </div>
+    
+          
+
+    </div>
+
+    <div class="row" id="cccontrolres">
+        
+            
+    
+          <div class="col-sm-3 mt-3">
+            <div id="figCCCalentador">
+    
+            </div>
+          </div>
+    
+          <div class="col-sm-3 mt-3">
+            <div id="figCCRiser">
+    
+            </div>
+          </div>
+    </div>
+
+  </div>
+    <div id="cuadrosend">
+        <div class="micontainertable">
+            <h4>END POR EQUIPOS</h4>
+
+            <label for="search_cells">
+                Buscar:
+            </label>
+            <input id="search_cells" type="search" />
+
+            <table class="table table-striped table-bordered" id="grid1b"></table>
+            <div id="jqGridPager"></div>
+        </div>
+    </div>
+    
+
+    
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" language="javascript"
+        src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script src="informe_v5.js"></script>
+</body>
+
+</html>

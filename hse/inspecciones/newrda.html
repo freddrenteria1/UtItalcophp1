@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Compras -Logística - UT Italco</title>
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+    <script src="lib/chart-master/Chart.js"></script>
+
+    <!-- <link rel="stylesheet" href="css/chosen.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+
+</head>
+
+<body>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.html" class="logo">RDA <img src="img/logo_m.png" height="30px" alt=""> </a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+
+
+
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Salir</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+
+
+                    <li class="mt">
+                        <a href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+
+                    <li class="sub-menu">
+                        <a class="active" href="newrda.html">
+                            <i class="fa fa-book"></i>
+                            <span>Crear RDA</span>
+                        </a>
+
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="reprda.html">
+                            <i class="fa fa-book"></i>
+                            <span>Reporte RDA</span>
+                        </a>
+
+                    </li>
+
+
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i>
+                            <span>Salir </span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <h3><i class="fa fa-angle-right"></i> Inicio \ Crear RDA</h3>
+
+                <div class="content-panel" style="padding: 20px;">
+
+                    <div class="row">
+
+                        <div class="col-sm-2">
+                            <label for="">Fecha</label>
+                            <input type="text" id="fecha" class="form-control" readonly>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="">ODS</label>
+                            <select id="ods" class="form-control">
+                                <option value="019">019</option>
+                                <option value="020">020</option>
+                                <option value="021">021</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label for="">Tipo de RDA</label>
+                            <select id="tipo" class="form-control" onchange="cargarItems()">
+                                <option value="">Seleccione un tipo...</option>
+                                <option value="02">Consumo</option>
+                                <option value="04">Servicios</option>
+                                <option value="03">Herramientas y Equipos</option>
+                                <option value="01">Seguridad</option>
+                                <option value="05">Otros</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <hr>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <th style="width: 20%; text-align: center;">Cant</th>
+                                        <th>Item</th>
+
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control" id="cant" value="1">
+                                            </td>
+                                            <td>
+
+                                                <input id="item" class="form-control" placeholder="Buscar...">
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-success" onclick="agregar()">+</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                Detalles Item
+                                                <input type="text" class="form-control" id="det" placeholder="Detalles Item">
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <hr>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                        <th style="width: 50px;">
+                                            CANT
+                                        </th>
+                                        <th style="width: 50px;">
+                                            CÓDIGO
+                                        </th>
+                                        <th style="width: 50px;">
+                                            UNIDAD
+                                        </th>
+                                        <th>
+                                            DESCRIPCIÓN
+                                        </th>
+                                        <th>
+                                            DETALLES
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                    </thead>
+                                    <tbody id="tablaDatos">
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <hr>
+                            <b>Solicitado por:</b> <br>
+                            <span id="nombres"></span><br>
+                            <span id="cargo"></span> <br>
+                            <hr>
+                            <textarea id="observaciones" class="form-control" rows="3" placeholder="Observaciones:"></textarea>
+                            <hr>
+                            <span id="archivo"></span>
+                            <button type="button" class="btn btn-primary" onclick="adjuntar()">Adjuntar Archivo</button>
+                            <button type="button" class="btn btn-success" onclick="guardar()">Guardar RDA</button>
+                            <button type="button" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </section>
+            <!-- /wrapper -->
+        </section>
+        <!-- /MAIN CONTENT -->
+        <!--main content end-->
+
+
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                <p>
+                    &copy; Copyrights <strong>UT Italco - Logística</strong>. All Rights Reserved
+                </p>
+
+                <a href="index.html#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery/jquery.min.js"></script>
+
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="lib/jquery.scrollTo.min.js"></script>
+    <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="lib/jquery.sparkline.js"></script>
+    <!--common script for all pages-->
+    <script src="lib/common-scripts.js"></script>
+    <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="lib/gritter-conf.js"></script>
+    <!--script for this page-->
+    <script src="lib/sparkline-chart.js"></script>
+    <script src="lib/zabuto_calendar.js"></script>
+
+    <!-- <script src="js/chosen.jquery.js" type="text/javascript"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+    </script>
+    <script type="application/javascript">
+        var user = null
+        var server = 'https://utitalco.com/logistica/rda/server/';
+
+        var file = null
+        var tipo = null
+        var arrayItems = []
+        var arrayItem = []
+        var arrayItemSel = []
+
+        user = sessionStorage.getItem('user')
+
+        if (user == null) {
+            location = 'login.html'
+        }
+
+        var datos = JSON.parse(sessionStorage.getItem('datos'))
+
+        $('#nombres').html(datos.nombres)
+        $('#cargo').html(datos.cargo)
+
+
+
+        const hoy = new Date();
+
+        function formatoFecha(fecha, formato) {
+            const map = {
+                dd: fecha.getDate(),
+                mm: fecha.getMonth() + 1,
+                yy: fecha.getFullYear().toString().slice(-2),
+                yyyy: fecha.getFullYear()
+            }
+
+            return formato.replace(/dd|mm|yy|yyy/gi, matched => map[matched])
+        }
+
+        var fechahoy = formatoFecha(hoy, 'dd/mm/yy');
+
+        $('#fecha').val(fechahoy)
+
+        //cargarItems()
+
+        $(document).ready(function() {
+            $("#date-popover").popover({
+                html: true,
+                trigger: "manual"
+            });
+            $("#date-popover").hide();
+            $("#date-popover").click(function(e) {
+                $(this).hide();
+            });
+
+            $("#my-calendar").zabuto_calendar({
+                action: function() {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function() {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [{
+                    type: "text",
+                    label: "Special event",
+                    badge: "00"
+                }, {
+                    type: "block",
+                    label: "Regular event",
+                }]
+            });
+        });
+
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+
+
+        function abrir(p) {
+            location = p
+        }
+
+        function cargarItems() {
+
+            if (tipo == null) {
+                tipo = $('#tipo').val()
+                $.post(server + 'cargarItems.php', {
+                        tipo: tipo
+                    },
+                    function(resp) {
+                        arrayItems = resp
+
+                        for (var i = 0; i < arrayItems.length; i++) {
+                            arrayItem.push(arrayItems[i].codigo + '|' + arrayItems[i].unidad + '|' + arrayItems[i].item)
+                        }
+
+                        var availableTags = arrayItem;
+                        $("#item").autocomplete({
+                            source: availableTags
+                        });
+
+
+                    })
+
+            } else {
+                Swal.fire({
+                    title: 'Ya seleccionó un tipo de RDA',
+                    text: 'Desea reiniciar la RDA?',
+                    showCancelButton: true,
+                    confirmButtonText: 'Aceptar',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        location.reload()
+                    }
+                })
+
+
+            }
+        }
+
+        function agregar() {
+            var itemsel = $('#item').val()
+            var cant = $('#cant').val()
+            var det = $('#det').val()
+
+            var partes = itemsel.split('|');
+            var cod = partes[0]
+            var unid = partes[1]
+            var itemp = partes[2]
+
+            var index = null
+
+            for (var i = 0, len = arrayItemSel.length; i < len; i++) {
+                if (arrayItemSel[i].cod === cod) {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index != null) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Item ya está registrado...',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            } else {
+                if (partes.length == 1) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'info',
+                        title: 'Debe seleccionar un item del listado',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                } else {
+                    arrayItemSel.push({
+                        'cant': cant,
+                        'cod': cod,
+                        'unidad': unid,
+                        'item': itemp,
+                        'det': det,
+                        'orden': ''
+                    })
+                }
+
+
+
+                $('#cant').val('1')
+                $('#item').val('')
+                $('#det').val('')
+
+                cargarSeleccionados()
+            }
+
+
+        }
+
+        function cargarSeleccionados() {
+            var html = ''
+            for (var i = 0; i < arrayItemSel.length; i++) {
+                html += `
+                <tr>
+                    <td>${arrayItemSel[i].cant}</td>
+                    <td>${arrayItemSel[i].cod}</td>
+                    <td>${arrayItemSel[i].unidad}</td>
+                    <td>${arrayItemSel[i].item}</td>
+                    <td>${arrayItemSel[i].det}</td>
+                    <td><button type="button" class="btn btn-danger" onclick="borrarItem('${arrayItemSel[i].cod}')">X</button></td>
+                </tr>
+                `
+            }
+            $('#tablaDatos').html(html)
+        }
+
+        function borrarItem(coditem) {
+            for (var i = 0, len = arrayItemSel.length; i < len; i++) {
+                if (arrayItemSel[i].cod === coditem) {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index !== -1) {
+                arrayItemSel.splice(index, 1);
+            }
+            cargarSeleccionados()
+        }
+
+        function cancelar() {
+
+            Swal.fire({
+                title: 'Desea cancelar la RDA?',
+                text: 'No podrá recuperar la información',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, Cancelar',
+                cancelButtonText: 'No',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                allowOutsideClick: false
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    location = './'
+                }
+            })
+
+        }
+
+        function guardar() {
+
+            if (arrayItemSel.length == 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Debe agregar items a la RDA',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            } else {
+                if ($('#observaciones').val() != '') {
+                    Swal.fire({
+                        title: 'Desea guardar la RDA?',
+                        text: 'Quedará cargada a su código',
+                        showCancelButton: true,
+                        confirmButtonText: 'Sí, Guardar',
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        allowOutsideClick: false
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+
+                            cargando()
+
+                            var datossolicitante = JSON.stringify(datos)
+                            var itemsRda = JSON.stringify(arrayItemSel)
+                            var observaciones = $('#observaciones').val()
+
+
+                            var formData = new FormData();
+
+                            formData.append('adjunto', file);
+                            formData.append('datos', datossolicitante);
+                            formData.append('items', itemsRda);
+                            formData.append('observaciones', observaciones);
+                            formData.append('tipo', tipo);
+
+                            $.ajax({
+                                url: server + 'guardarRda.php',
+                                type: 'post',
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success: function(response) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'RDA registrada correctamente...',
+                                        showConfirmButton: true
+                                    }).then(() => {
+                                        location = './'
+                                    })
+                                }
+                            })
+
+
+                        }
+                    })
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'info',
+                        title: 'Debe agregar una observación...',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                }
+
+            }
+
+        }
+
+        function adjuntar() {
+            Swal.fire({
+                title: 'Adjuntar archivo',
+                html: `
+                    <input type="file" id="adjunto"  class="form-control" placeholder="Adjunto...">
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Adjuntar',
+                cancelButtonText: 'No',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                allowOutsideClick: false
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    file = $('#adjunto')[0].files[0];
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Archivo cargado correctamente...',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        $('#archivo').html('<h4>Archivo: ' + file.name + '</h4>')
+                    })
+                }
+            })
+        }
+
+        function cargando() {
+            let timerInterval
+            Swal.fire({
+                title: 'Guardando RDA!',
+                html: 'Un momento por favor...',
+                timer: 25000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+
+                    }, 1000)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+
+                }
+            })
+        }
+
+
+
+        $("#item").keyup(function() {
+            if (tipo == null || tipo == '') {
+
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Por favor primero seleccionar un tipo de RDA...',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    $('#item').val('')
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>

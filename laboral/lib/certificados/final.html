@@ -1,0 +1,162 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<meta charset="UTF-8">
+	
+</head>
+<body >
+
+	<div style="margin: 0 auto; width: 75%;" id="cuerpo">
+
+		 
+
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+
+	<script>
+		var doc = '91514108'
+		var url = "https://utitalco.com/laboral/server/";
+		var arrayDatos = []
+
+		function getParameterByName(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+
+		var fecha = getParameterByName('fecha');
+
+		
+		buscarDatos()
+
+		function buscarDatos(){
+			$.post(url+'buscarDatosTerm.php',{fecha:fecha},
+				function(resp){
+					console.log(resp)
+					arrayDatos = resp
+
+					
+
+					var html = ''
+
+					for(var i=0; i<arrayDatos.length; i++){
+						html += 
+                        
+                        `<div>
+                        <div title="header"> 
+			 
+            <table>
+            <tr>
+                <td>
+
+                    <img src="https://utitalco.com/laboral/lib/certificados/img/logo.png" name="Imagen 1" width="240" height="71"  border="0"/>
+                </td>
+                <td style="text-align: right; float: right;" class = "text-right">
+                    <h3> FINALIZACIÓN DE CONTRATO </h3>
+                </td>
+            </tr>
+            </table>
+				 
+	    </div>
+
+        <div> <br><br><br>
+
+            Barrancabermeja, ${fecha} <br><br><br>
+
+SEÑOR: <br>
+${arrayDatos[i].nombres} <br>
+${arrayDatos[i].cedula}  <br>
+Teléfono: ${arrayDatos[i].tel}  <br><br><br>
+	
+Asunto: FINALIZACIÓN CONTRATO POR OBRA O LABOR No. ${arrayDatos[i].contrato}  <br><br>
+
+Respetado colaborador. <br><br> 
+
+<p style="text-align: justify;">
+    Por medio del presente queremos agradecer su acompañamiento en desarrollo del contrato laboral suscrito. Así mismo le informamos que la promesa de al menos   10 % de avance para el cual fue contratado ya fue cumplida, según la certificación de nuestro registro interno de control de obra Primavera P6. Esperamos en próximas oportunidades contar con su participación. <br><br>
+
+En tal sentido, adjunto encontrara autorización para realizar examen de retiro, planillas de seguridad social anteriores APLICA____ NO APLICA__X__ y una vez se cancelen los días laborados en el mes que se está finalizando su contrato, se le enviara a su dirección de correo registrada. <br><br>
+
+Finalmente, el pago de su liquidación se dará conforme a los tiempos acordados en el contrato. <br><br>
+</p>
+
+Cordialmente, <br><br><br><br><br>
+
+_______________________________ <br>
+LOREDANA CARLA GAMBINI FUMAGALLI <br>
+Representante Legal <br><br><br>
+
+En señal de Recibido:  <br><br><br>
+Nombre:__________________________________ Firma:______________________ <br><br>
+Cedula:_________________________________ 
+
+        </div>
+        <div style="page-break-before:always;"></div>
+						`
+					}
+					$('#cuerpo').html(html)
+
+					creaWord()
+				}
+			)
+		}
+
+		function creaWord(){
+
+		var html = document.documentElement.outerHTML;
+		var blob = new Blob(['\ufeff', html], {
+		type: 'application/msword'
+		});
+		var href = URL.createObjectURL(blob);
+		var a = document.createElement('a');
+		a.href = href;
+		a.download = fecha+".doc";
+		document.body.appendChild(a);
+		if (navigator.msSaveOrOpenBlob) {
+		navigator.msSaveOrOpenBlob(blob, fecha+'.doc');
+		} else {
+		a.click();
+		}
+		document.body.removeChild(a);
+	}
+
+		
+
+		function cargarPDF(){
+
+			
+	
+			// // Escuchamos el click del botón
+			// const $elementoParaConvertir = document
+			// 	.body; // <-- Aquí puedes elegir cualquier elemento del DOM
+			// 	html2pdf()
+			// 		.set({
+			// 			margin: 20,
+			// 			filename: doc+'.pdf',
+			// 			image: {
+			// 				type: 'jpeg',
+			// 				quality: 0.98
+			// 			},
+			// 			html2canvas: {
+			// 				scale: 5, // A mayor escala, mejores gráficos, pero más peso
+			// 				letterRendering: true,
+			// 			},
+			// 			jsPDF: {
+			// 				unit: "mm",
+			// 				format: "letter",
+			// 				orientation: 'portrait' // landscape o portrait
+			// 			}
+			// 		})
+			// 		.from($elementoParaConvertir)
+			// 		.save()
+			// 		.catch(err => console.log(err));
+			
+		}
+
+	</script>
+</body>
+</html>

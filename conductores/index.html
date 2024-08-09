@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspección de vehíclulo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #cab{
+            padding: 20px;
+            text-align: center;
+        }
+        .logo_m{
+            width: 100%;
+        }
+
+        .oculto {
+			display: none;
+		}
+
+		.visible {
+			display: inline;
+		}
+
+
+        @media (max-width: 720px) {
+            .logo_m{
+                width: 80%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="cab">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img src="img/logo_m.png" class="logo_m" alt="">
+                </div>
+                <div class="col-sm-8">
+                    <h4>INSPECCIÓN VEHÍCULO AUTOMOTOR</h4>
+                </div>
+            </div> 
+        </div>
+        <hr>
+
+        <div>
+            <div class="row">
+                <div class="col-2 text-end">
+                    Placa:
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control" id="placab">
+                </div> 
+                <div class="col-2">
+                    <button class="btn btn-sm btn-success" onclick="buscarPlaca()">B</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item fw-bold">PLACA: <span id="placa">---</span> </li>
+                <li class="list-group-item fw-bold">TIPO: <span id="tipo">---</span> </li>
+                <li class="list-group-item fw-bold">MARCA: <span id="marca">---</span> </li>
+                <li class="list-group-item fw-bold">MODELO: <span id="modelo">---</span> </li>
+                <li class="list-group-item fw-bold">CAPACIDAD: <span id="capacidad">---</span> </li>
+                <li class="list-group-item fw-bold">ULT MANT: <span id="ultmant">---</span> </li>
+                <li class="list-group-item fw-bold">KILOMETRAJE: <span id="kmmant">---</span> </li>
+                <li class="list-group-item fw-bold">PROX MANT: <span id="proxmant">---</span> </li>
+                <li class="list-group-item fw-bold">SOAT EXP: <span id="soatexp">---</span> </li>
+                <li class="list-group-item fw-bold">SOAT VENCE: <span id="soatvence">---</span> </li>
+                <li class="list-group-item fw-bold">TECNO EXP: <span id="tecnoexp">---</span> </li>
+                <li class="list-group-item fw-bold">TECNO VENCE: <span id="tecnovence">---</span> </li>
+                 
+              </ul>
+        </div>
+        <hr>
+
+        <div>
+            <div class="row">
+                <div class="col-4">
+                    Fecha:
+                </div>
+                <div class="col-8">
+                    <input type="date" id="fecha" class="form-control">
+                </div>
+
+                <div class="col-4">
+                    Planta:
+                </div>
+                <div class="col-8">
+                    <input type="text" id="planta" class="form-control">
+                </div>
+
+                <div class="col-4">
+                    ODS:
+                </div>
+                <div class="col-8">
+                    <input type="text" id="ods" class="form-control">
+                </div>
+
+                <div class="col-4">
+                    Kilometraje Inicial:
+                </div>
+                <div class="col-8">
+                    <input type="number" id="kilo" class="form-control">
+                </div>
+
+            </div>
+        </div>
+        <hr>
+
+
+        <div>
+            <center><h4>INSPECCIÓN EXTERIOR</h4> </center>
+            <table class="table table-striped">
+                <thead>
+                    <th>ITEM</th>
+                    <th>ESTANDAR</th>
+                    <th>ESTADO</th>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Láminas / Puertas
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Sin golpes, rayones /abren o cierran por dentro y
+                                fuera.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item1"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Llantas / Rines / Pernos / Llanta de repuesto
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Sin golpes, deformación, desgaste excesivo / Pernos completos. Profundidad min 2 mm
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item2"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Llantas
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Presión de aire	
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item3"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Faros Delanteros / Traseros
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Sin agua, ni golpes o fisuras.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item4"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Vidrios / Ventanas / Limpiabrisas
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Sin rayones ni fisuras / Limpiabrisas funcional.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item5"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Espejos retrovisores
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Estables,sin rupturas ni fisuras.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item6"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Extintor / Válvula / Manómetro
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Carga con presión requerida y vigente.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item7"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Luces Frontales
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Funcionales
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item8"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Luces Direccionales delanteras de parqueo (Giro)
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Funcionales
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item9"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Luces Direccionales traseras de parqueo (Giro)
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Funcionales
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item10"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Luces de reversa
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Funcionales
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item11"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Luces De Stop y señal trasera
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Funcionales
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item12"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <b>APLICA PARA CAMIÓN TURBO</b>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Carpa
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Estado general
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item13"  class="form-control" >
+                                
+                                <option value="NA">N/A</option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Compuertas
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Estado general
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item14"  class="form-control" >
+                                <option value="NA">N/A</option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Varillas
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Estado general
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item15"  class="form-control" >
+                                <option value="NA">N/A</option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Piso carrocería
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Estado general
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item16"  class="form-control" >
+                                <option value="NA">N/A</option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <div>
+            <center><h4>INSPECCIÓN INTERIOR</h4> </center>
+            <table class="table table-striped">
+                <thead>
+                    <th>ITEM</th>
+                    <th>ESTANDAR</th>
+                    <th>ESTADO</th>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Tablero / Testigos
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Los testigos deben encender.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item17"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Mandos / Pedales
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Deben estar fijos y funcionales.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item18"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Barra de Cambio / 4x4
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Deben estar fijos y funcionales.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item19"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Freno de Parqueo
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Deben estar fijos y funcionales.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item20"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Cinturones de Seguridad / Hebillas / Candados
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Condiciones estandar:Un cinturón por silla, sin desgaste. Hebilla, candado y sistema retráctil
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item21"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Espejos central, retrovisores
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Estables, uno en el centro, sin rupturas ni fisuras.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item22"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Dirección
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Estable, funcional
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item23"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Bocina
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Debe sonar y escucharse a 50 m.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item24"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Pito de Reversa
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Debe sonar cuando se active el cambio de retroceso.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item25"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Pito de Reversa
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Debe sonar cuando se active el cambio de retroceso.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item26"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Documentación
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                C.C., Licencia conductor, Tarjeta de Propiedad, SOAT, Tecnicomecánica, Pólizas Contra/Extracontractual y Extracto de contrato.
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item27"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Asientos
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                En buenas condiciones con apoya cabezas
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item28"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <font face="Arial Narrow" size=3>
+                                Sistemas de monitoreo de conducción
+                            </font>
+                        </td>
+                        <td>
+                            <font face="Arial Narrow" size=3 color="#000000">
+                                Que opere en condiciones estándar, limites de velocidad, identificación conductor
+                            </font>
+                        </td>
+                        <td>
+                            <select id="item29"  class="form-control" >
+                                <option value=""></option>
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                                <option value="NA">N/A</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+
+            
+
+                <center><h4>INSPECCIÓN MOTOR</h4> </center>
+                <table class="table table-striped">
+                    <thead>
+                        <th>ITEM</th>
+                        <th>ESTANDAR</th>
+                        <th>ESTADO</th>
+                    </thead>
+                    <tbody>
+    
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Liquido de Frenos
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    A nivel del depósito.
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item30"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Aceite de Motor
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    A nivel de la aguja y sin impurezas
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item31"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Liquido de Embrague
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    A nivel establecido en el depósito.
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item32"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Refrigerante
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    A nivel establecido en el depósito.
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item33"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Liquido de dirección
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    En el nivel establecido en el depósito.
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item34"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Liquido limpiabrisas
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    En el nivel establecido en el depósito.
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item35"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Correas
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Estado estándar en ambas caras y tensión.
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item36"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Mangueras
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Sin rupturas ni desgaste, conectadas con abrazaderas.
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item37"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Cableado
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Sin desgaste y conectados
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item38"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Batería
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Con soporte, sin corrosión, bornes sin sulfatar y conectados
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item39"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+
+
+
+        </div>
+
+        <div>
+
+            <center><h4>INSPECCIÓN EQUIPO DE PREVENCIÓN, SEGURIDAD Y ATENCIÓN DE EMERGENCIAS</h4> </center>
+                <table class="table table-striped">
+                    <thead>
+                        <th>ITEM</th>
+                        <th>ESTANDAR</th>
+                        <th>ESTADO</th>
+                    </thead>
+                    <tbody>
+    
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Botiquín
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    4 Inmovilizadores maleables (para brazos y piernas), 6 Vendajes triangulares, 4 Compresas, 4 Paquetes de gasa, 3 Vendajes elásticos, 4 Pares de Guantes desechables (2 talla M y 2 talla L), 1 Mascarilla para RCCP (facial de bolsillo - para reanimación cerebrocardiopulmonar), 1 Esparadrapo (de tela rollo grande), 1 Tijeras, 1 Inmovilizador cervical multitalla (adulto).
+
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item40"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Kit de Carretera
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    1 Gato (con capacidad para elevar el vehículo), 1 Cruceta, 2 Señales de carretera (en forma de triángulo, en material reflectivo y provistas de soportes para ser colocadas en forma vertical o lámparas de señal de luz amarilla intermitentes o de destello, y conos reflectivos), 1 Botiquín de primeros auxilios, 1 Extintor de polvo químico seco (con la capacidad exigida para el vehículo debidamente cargado y vigente, según reglamentación legal), 2 Tacos para bloquear el vehículo (de acuerdo con el tamaño del vehículo).
+
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item41"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Caja de Herramientas
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Alicate, Juego de destornilladores (pala y estrella), Llave de expansión y juego de llaves fijas (de acuerdo con el Artículo 30 de la Ley 769 de 2002), 1 llanta de repuesto (inflada y en buen estado), 1 linterna (con pilas y que encienda), 1 chaleco reflectivo, 1 par de guantes.
+
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item42"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    Kit ambiental (Aplica para vehículos que transportan productos químicos)	
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Cuenta con kit de ambiental para contención de derrames	                                                                                                            
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item43"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3" align="middle" valign=middle>
+                                <font face="Arial Narrow" size=3>
+                                    Documentación (Aplica para vehículos que transportan productos químicos)	
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    El conductor cuenta con certificado para transporte de mercacías peligrosas                                                                                                          
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item44"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Ficha de seguridad FDS del producto químico                                                                                                       
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item45"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Tarjeta de emergencia del producto químico                                                                                                         
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item46"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2" align="middle" valign=middle>
+                                <font face="Arial Narrow" size=3>
+                                    Etiquetado y Rotulación (Aplica vehículos de transporte de mercancías peligrosas)	
+                                </font>
+                            </td>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Rombo NTC 1692                                                                                                      
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item47"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3 color="#000000">
+                                    Código UN                                                                                                      
+                                </font>
+                            </td>
+                            <td>
+                                <select id="item48"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                    <option value="NA">N/A</option>
+                                </select>
+                            </td>
+                        </tr>
+                        
+                    
+
+
+                    </tbody>
+                </table>
+
+        </div>
+
+
+        <div>
+
+            <center><h4>CONDUCTOR</h4> </center>
+                <table class="table table-striped">
+                    
+                    <tbody>
+    
+                        <tr>
+                            <td>
+                                <font face="Arial Narrow" size=3>
+                                    ¿Se encuentra en condiciones físicas y de descanso adecuadas para la actividad de conducción?
+                                </font>
+                            </td>
+                            
+                            <td>
+                                <select id="item49" style="width: 65px;"  class="form-control" >
+                                    <option value=""></option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-4">
+                    Nombres y apellidos
+                </div>
+                <div class="col-8">
+                    <input type="text" class="form-control" id="conductor">
+                </div>
+
+                <div class="col-4">
+                    Número Documento
+                </div>
+                <div class="col-8">
+                    <input type="number" class="form-control" id="documento" placeholder="Sin puntos(.)">
+                </div>
+
+                <div class="col-4 mt-2" align="middle" valign=middle>
+                    Vo.Bo.
+                </div>
+                <div class="col-8 ">
+                    <center>
+                        <button id="btnFirmar" class="btn btn-success" onclick="firmar()">Firmar</button>
+                        <img src="" id="firma" width="130px" height="70px" class="oculto">
+                    </center>
+                </div>
+                 
+            </div>
+        </div>
+
+        <hr>
+
+        <div>
+            <center>
+                <h3>REGISTRO FOTOGRÁFICO</h3>
+            </center> <hr>
+
+            <center>
+                <h4>PARTE DELANTERA <button class="btn btn-sm btn-success" onclick="agregarPD()">A</button> </h4>
+            </center><hr>
+
+            <div id="">
+                <img id="parteDelantera" src="#" width="100%"  />
+            </div> <hr>
+
+            <center>
+                <h4>PARTE POSTERIOR <button class="btn btn-sm btn-success" onclick="agregarPP()">A</button> </h4>
+            </center><hr>
+
+            <div id="">
+                <img id="partePosterior" src="#" width="100%"  />
+            </div> <hr>
+
+            <center>
+                <h4>LADO DERECHO <button class="btn btn-sm btn-success" onclick="agregarLD()">A</button> </h4>
+            </center><hr>
+
+            <div id="">
+                <img id="ladoDerecho" src="#" width="100%"  />
+            </div> <hr>
+
+            <center>
+                <h4>LADO IZQUIERDO <button class="btn btn-sm btn-success" onclick="agregarLI()">A</button> </h4>
+            </center><hr>
+
+            <div id="">
+                <img id="ladoIzquierdo" src="#" width="100%"  />
+            </div> <hr>
+
+
+        </div>
+
+        <div>
+            <center>
+                <h3>Observaciones</h3>
+            </center>
+
+            <textarea  id="observaciones" style="width: 100%;" class="form-control" rows="5"></textarea>
+        </div>
+
+        <div class="m-5">
+            <center>
+                <button class="btn btn-success btn-block" onclick="guardarTodo()">Guardar Inspección</button>
+            </center>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modalFirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 400px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Firmar Documento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center><canvas id="canvas" style="border: 1px solid black;" width="360" height="320"></canvas>
+                        <br><input type="checkbox" id="poldatos" checked>
+                        Acepto las <a href="javascript::void(0)" onclick="mostraraviso()">políticas de protección de
+                            datos personales</a>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="btnLimpiar">Limpiar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="pasarFirma()">Pasar a
+                        documento</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Foto 1 -->
+    <div class="modal" id="modalFoto1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 400px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Subir Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <input type="file" id="fotoPD">
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                     
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Foto 2 -->
+    <div class="modal" id="modalFoto2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 400px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Subir Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <input type="file" id="fotoPP">
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                     
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Foto 3 -->
+    <div class="modal" id="modalFoto3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 400px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Subir Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <input type="file" id="fotoLD">
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                     
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Foto 4 -->
+    <div class="modal" id="modalFoto4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 400px;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Subir Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <input type="file" id="fotoLI">
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                     
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+     <script src="index-v8.js"></script>
+</body>
+</html>

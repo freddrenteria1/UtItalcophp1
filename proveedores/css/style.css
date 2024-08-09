@@ -1,0 +1,73 @@
+body {
+    background-image: url('../img/refineria_f.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#login {
+    margin: 0 auto;
+    margin-top: 40px;
+    height: auto;
+    width: 65%;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    box-shadow: rgb(0, 0, 0);
+    padding: 20px;
+}
+
+#registro {
+    margin: 0 auto;
+    margin-top: 40px;
+    height: auto;
+    width: 65%;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    box-shadow: rgb(0, 0, 0);
+    padding: 20px;
+}
+
+#cuerpo {
+    margin: 0 auto;
+    margin-top: 20px;
+    height: auto;
+    width: 95%;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    box-shadow: rgb(0, 0, 0);
+    padding: 20px;
+}
+
+.fondoazul {
+    background-color: aquamarine;
+}
+
+.adv {
+    padding: 5px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.sinpadding [class*="col-"] {
+    padding: 0;
+}
+
+.tit {
+    background-color: rgb(219, 218, 216);
+    text-align: center;
+    font-weight: bold;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: chartreuse;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+       var arrayInspPartes = []
+
+       inspitem = "item";
+       fechaec = '2022';
+       horaec = '2pm';
+       nombreec = 'nombre'
+       firmaec = 'firma'
+       registroec = '001'
+
+       for(var i=0; i<9; i++){
+        var item = "item"+i;
+        var fecha = "fechaut"+i;
+        var hora = "horaut"+i;
+        var nombre = "nombreut"+i;
+        var firma = "firmatut"+i;
+        var registro = "registrout"+i;
+
+        arrayInspPartes.push({
+            'item': inspitem,
+            fecha: fechaec,
+            hora: horaec,
+            nombre: nombreec,
+            firma: firmaec,
+           registro: registroec
+        })
+       }
+
+        arrayInspPartes.push({
+            "inspitem10": inspitem,
+            "fechaec": fechaec,
+            "horaec": horaec,
+            "nombreec": nombreec,
+            "firmaec": firmaec,
+            "registroec": registroec
+        })
+
+        console.log(arrayInspPartes)
+
+    </script>
+</body>
+</html>

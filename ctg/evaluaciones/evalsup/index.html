@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación desempeño - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
+
+    <style>
+        .cab {
+            background-color: rgb(9, 85, 160);
+            color: white;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        .milabel {
+            background-color: rgb(9, 85, 160);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+        
+        .milabel2 {
+            background-color: rgb(255, 174, 0);
+            color: rgb(0, 0, 0);
+            width: 100%;
+            padding: 15px;
+        }
+        
+        .milabeltit {
+            background-color: rgb(227, 252, 8);
+            color: rgb(0, 0, 0);
+            width: 100%;
+            padding: 5px;
+            padding-left: 15px;
+        }
+        
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+        
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+        
+        th {
+            text-align: center;
+        }
+        
+        td {
+            text-align: center;
+        }
+        
+        .conv {
+            font-size: 10px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+    <style>
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+        
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron cab">
+            <center>
+                <img src="img/logo_p.png" width="300px" alt="">
+            </center>
+            <h5 class="text-center pt-3">EVALUACIÓN DEL DESEMPEÑO Y CUMPLIMIENTO DE OBJETIVOS DEL PERSONAL: COORDINADOR/SUPERVISOR
+            </h5>
+        </div>
+
+        <div id="cuerpo">
+
+            <label for="" class="milabel">
+                Datos del Evaluador
+            </label>
+
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" id="nombreeval" class="form-control" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="">Cargo</label>
+                <input type="text" id="cargoeval" class="form-control" readonly>
+            </div>
+
+            <label for="" class="milabel">
+                Datos del Evaluado
+            </label>
+
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" id="nombres" class="form-control" placeholder="Nombre Completo">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="">
+                    Documento
+                </label>
+                <input type="number" id="doc" class="form-control" placeholder="CC sin puntos">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="">
+                    Cargo
+                </label>
+                <input type="text" id="cargo" class="form-control" placeholder="Cargo">
+            </div>
+
+            <div class="form-group">
+                <label for="">ODS</label>
+                <select id="ods" class="form-control">
+                    
+                    <option value="">Seleccione una ODS</option>
+                    <option value="025">025</option>
+                    <option value="026">026</option>
+                    <option value="027">027</option>
+                    <option value="028">028</option>
+                    <option value="029">029</option>
+                    <option value="030">030</option>
+                    <option value="TRANSVERSAL">TRANSVERSAL</option>
+                    <option value="EQUIPO MINIMO">EQUIPO MINIMO</option>
+                </select>
+            </div>
+
+            <label for="" class="milabel">
+                Período Evaluado
+            </label>
+
+            <div class="row">
+                <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                        <label for="">Desde</label>
+                        <input type="date" id="desde" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-6">
+                    <div class="form-group">
+                        <label for="">Hasta</label>
+                        <input type="date" id="hasta" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+
+            <label for="" class="milabel">
+                Evaluación
+            </label>
+            <p>
+                Seleccione su calificación (Tenga en cuenta que la calificación es de 1 a 5, siendo 1 la más baja y 5 la más alta)
+            </p>
+
+
+            <table class="table table-responsive table-bordered" style="max-width: 100%;">
+                <thead class="table-dark">
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="conv" style="background-color: red; color: #fff;">
+                            Se encuentra generalmente por debajo de los parámetros establecidos. Requiere iniciar Plan de Seguimiento
+                        </td>
+                        <td class="conv" style="background-color: yellow; color: black;">
+                            En Algunas ocasiones no alcanza los parámetros establecidos . Requiere iniciar un Plan de Mejoramiento Inmediato
+                        </td>
+                        <td class="conv" style="background-color: rgb(77, 194, 82); color: black;">
+                            Cumple dentro de los parámetros esperado los compromisos y las exigencias establecidas para el cargo
+                        </td>
+                        <td class="conv" style="background-color: rgb(30, 128, 35); color: white;">
+                            Tiene actuación destacada frente a los parámetros establecidos
+                        </td>
+                        <td class="conv" style="background-color: rgb(32, 123, 226); color: white;">
+                            Supera significativamente los parámetros establecidos. Su actuación permanente es aventajada y excepcional
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+            <div class="accordion" id="accordionExample">
+                <div class="card" id="evaljefe">
+                    <div class="card-header milabel2" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                EVALUACIÓN JEFE INMEDIATO
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <label for="" class="milabel">
+                                Trabajo
+                            </label>
+
+                            <label for="" class="milabeltit">
+                                1. Funciones
+                            </label>
+
+                            <p>Cumplimiento y ejecución de las principales actividades y responsabilidades inherentes del cargo.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p1" id="p1c1" value="p-1-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1" id="p1c2" value="p-1-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1" id="p1c3" value="p-1-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1" id="p1c4" value="p-1-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1" id="p1c5" value="p-1-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                2. Conocimientos
+                            </label>
+
+                            <p>Comprensión y dominio de la información especifica que es requerida para el desempeño efectivo del cargo.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p2" id="p2c1" value="p-2-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2" id="p2c2" value="p-2-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2" id="p2c3" value="p-2-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2" id="p2c4" value="p-2-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2" id="p2c5" value="p-2-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                3. Responsabilidad
+                            </label>
+
+                            <p>Cumplimiento de las políticas, normas, procedimientos y tareas, dando respuesta por las propias actuaciones y sus consecuencias.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p3" id="p3c1" value="p-3c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3" id="p3c2" value="p-3c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3" id="p3c3" value="p-3-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3" id="p3c4" value="p-3-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3" id="p3c5" value="p-3-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                4. Organización
+                            </label>
+
+                            <p>Ejecución ordenada de los procedimientos y tareas asignadas, dentro de los tiempos establecidos.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p4" id="p4c1" value="p-4-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4" id="p4c2" value="p-4-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4" id="p4c3" value="p-4-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4" id="p4c4" value="p-4-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4" id="p4c5" value="p-4-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabel">
+                                Servicio
+                            </label>
+
+                            <label for="" class="milabeltit">
+                                5. Compromiso y relaciones interpersonales
+                            </label>
+
+                            <p>Compromiso hacia la Compañía, hacia sus deberes. (tiene sentido de pertenencia) y Comportamiento cordial, receptivo y amable hacia sus Compañeros y Directivos.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p5" id="p5c1" value="p-5-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p5" id="p5c2" value="p-5-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p5" id="p5c3" value="p-5-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p5" id="p5c4" value="p-5-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p5" id="p5c5" value="p-5-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                6. Actitud
+                            </label>
+
+                            <p>Disposición para desarrollar las labores asignadas. Tiene buen manejo y actitud hacia los cambios.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p6" id="p6c1" value="p-6-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p6" id="p6c2" value="p-6-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p6" id="p6c3" value="p-6-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p6" id="p6c4" value="p-6-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p6" id="p6c5" value="p-6-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                7. Comunicación activa
+                            </label>
+
+                            <p>Habilidad para comprender las necesidades expuestas y dar respuesta efectiva a los requerimientos.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p7" id="p7c1" value="p-7-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p7" id="p7c2" value="p-7-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p7" id="p7c3" value="p-7-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p7" id="p7c4" value="p-7-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p7" id="p7c5" value="p-7-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabel">
+                                Competencias individuales y cumplimiento de objetivos
+                            </label>
+
+                            <label for="" class="milabeltit">
+                                8. Trabajo en equipo y comunicación
+                            </label>
+
+                            <p>Esfuerzo individual que contribuye al logro de los objetivos del grupo y de la Compañía.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p8" id="p8c1" value="p-8-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p8" id="p8c2" value="p-8-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p8" id="p8c3" value="p-8-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p8" id="p8c4" value="p-8-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p8" id="p8c5" value="p-8-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                9. Logro de resultados
+                            </label>
+
+                            <p>Actitud permanente de interés, esfuerzo y atención hacia el trabajo y el logro de los resultados de calidad.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p9" id="p9c1" value="p-9-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p9" id="p9c2" value="p-9-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p9" id="p9c3" value="p-9-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p9" id="p9c4" value="p-9-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p9" id="p9c5" value="p-9-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                10. Cumplimiento de objetivos
+                            </label>
+
+                            <p>Cumplimiento de las metas y objetivos propuestos dentro de la Compañía.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p10" id="p10c1" value="p-10-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p10" id="p10c2" value="p-10-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p10" id="p10c3" value="p-10-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p10" id="p10c4" value="p-10-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p10" id="p10c5" value="p-10-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                11. Competencias y autodesarrollo
+                            </label>
+
+                            <p>Diseño de nuevas iniciativas que permita el mejoramiento continuo. Desarrollo de habilidades profesionales, transferencia de conocimientos.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p11" id="p11c1" value="p-11-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p11" id="p11c2" value="p-11-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p11" id="p11c3" value="p-11-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p11" id="p11c4" value="p-11-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p11" id="p11c5" value="p-11-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="evalliderplan">
+                    <div class="card-header milabel2" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                EVALUACIÓN LÍDER PLANEACIÓN
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <label for="" class="milabel">
+                                Planeación / Operación
+                            </label>
+
+                            <label for="" class="milabeltit">
+                                12. Alcance
+                            </label>
+
+                            <p>Comprensión, dominio de la información, alcance y especificaciones requeridas para el desempeño efectivo del cargo.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p12a" id="p1c1" value="p-12a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12a" id="p1c2" value="p-12a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12a" id="p1c3" value="p-12a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12a" id="p1c4" value="p-12a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12a" id="p1c5" value="p-12a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Claridad del concepto de trabajo contingente y emergente.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p12b" id="p1c1" value="p-12b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12b" id="p1c2" value="p-12b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12b" id="p1c3" value="p-12b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12b" id="p1c4" value="p-12b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p12b" id="p1c5" value="p-12b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                13. Reportes y Programación
+                            </label>
+
+                            <p>Cumplimiento de entrega de reportes de avance de obra.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p13a" id="p1c1" value="p-13a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13a" id="p1c2" value="p-13a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13a" id="p1c3" value="p-13a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13a" id="p1c4" value="p-13a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13a" id="p1c5" value="p-13a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Entendimiento del plazo para entrega de los trabajos.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p13b" id="p1c1" value="p-13b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="pp13b1" id="p1c2" value="p-13b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13b" id="p1c3" value="p-13b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13b" id="p1c4" value="p-13b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13b" id="p1c5" value="p-13b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Reporte de situaciones o cambios en campo.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p13c" id="p1c1" value="p-13c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13c" id="p1c2" value="p-13c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13c" id="p1c3" value="p-13c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13c" id="p1c4" value="p-13c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p13c" id="p1c5" value="p-13c-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                14. Operación
+                            </label>
+
+                            <p>Administra y optimiza los recursos (Personal, Equipos, Herramientas).</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p14a" id="p1c1" value="p-14a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14a" id="p1c2" value="p-14a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14a" id="p1c3" value="p-14a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14a" id="p1c4" value="p-14a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14a" id="p1c5" value="p-14a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Compromiso, comunicación y liderazgo de los trabajos.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p14b" id="p1c1" value="p-14b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14b" id="p1c2" value="p-14b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14b" id="p1c3" value="p-14b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14b" id="p1c4" value="p-14b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14b" id="p1c5" value="p-14b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Cumplimiento a la programación de Actividades.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p14c" id="p1c1" value="p-14c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14c" id="p1c2" value="p-14c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14c" id="p1c3" value="p-14c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14c" id="p1c4" value="p-14c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14c" id="p1c5" value="p-14c-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Capacidad de planificación, alistamiento y organización de los trabajos..</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p14d" id="p1c1" value="p-14d-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14d" id="p1c2" value="p-14d-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14d" id="p1c3" value="p-14d-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14d" id="p1c4" value="p-14d-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14d" id="p1c5" value="p-14d-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Orientación al cliente.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p14e" id="p1c1" value="p-14e-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14e" id="p1c2" value="p-14e-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14e" id="p1c3" value="p-14e-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14e" id="p1c4" value="p-14e-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p14e" id="p1c5" value="p-14e-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="evalliderhse">
+                    <div class="card-header milabel2" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                EVALUACIÓN LÍDER HSE
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <label for="" class="milabeltit">
+                                15. Funciones HSE
+                            </label>
+
+                            <p>Cumple las funciones y responsabilidades en HSE establecidas e la guía GAB-F-207 y GAB-F-208.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p15a" id="p1c1" value="p-15a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15a" id="p1c2" value="p-15a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15a" id="p1c3" value="p-15a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15a" id="p1c4" value="p-15a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15a" id="p1c5" value="p-15a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Demuestra liderazgo visible (Lidera, verifica, cumple con los reportes de aspectos HSE).
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p15b" id="p1c1" value="p-15b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15b" id="p1c2" value="p-15b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15b" id="p1c3" value="p-15b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15b" id="p1c4" value="p-15b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15b" id="p1c5" value="p-15b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Asegura el cumplimiento de políticas, estándares, procedimientos, normas, nacionales y/o internacionales de acuerdo con las actividades a ejecutar y al Sistema Integrado de Gestión de UT ITALCO en alineación con las de ECOPETROL
+                                S.A.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p15c" id="p1c1" value="p-15c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15c" id="p1c2" value="p-15c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15c" id="p1c3" value="p-15c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15c" id="p1c4" value="p-15c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p15c" id="p1c5" value="p-15c-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                16. Salud en el trabajo
+                            </label>
+
+                            <p>Aplica en su trabajo la Política de SST</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p16a" id="p1c1" value="p-16a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16a" id="p1c2" value="p-16a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16a" id="p1c3" value="p-16a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16a" id="p1c4" value="p-16a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16a" id="p1c5" value="p-16a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Participa activamente en las charlas y cursos de Capacitación a los que ha sido Invitado.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p16b" id="p1c1" value="p-16b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16b" id="p1c2" value="p-16b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16b" id="p1c3" value="p-16b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16b" id="p1c4" value="p-16b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p16b" id="p1c5" value="p-16b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                17. Seguridad en el trabajo
+                            </label>
+
+                            <p>Informa al Jefe Inmediato sobre las fallas o deterioro de los Sistemas de Seguridad, Equipos de Protección o cualquier condición Insegura o Peligrosa en el Trabajo.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p17a" id="p1c1" value="p-17a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17a" id="p1c2" value="p-17a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17a" id="p1c3" value="p-17a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17a" id="p1c4" value="p-17a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17a" id="p1c5" value="p-17a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Identifica los peligros, valora los riesgos e implementa los controles establecidos para las actividades a ejecutar.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p17b" id="p1c1" value="p-17b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17b" id="p1c2" value="p-17b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17b" id="p1c3" value="p-17b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17b" id="p1c4" value="p-17b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17b" id="p1c5" value="p-17b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Establece planes de acción para las desviaciones HSE identificadas.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p17c" id="p1c1" value="p-17c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17c" id="p1c2" value="p-17c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17c" id="p1c3" value="p-17c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17c" id="p1c4" value="p-17c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p17c" id="p1c5" value="p-17c-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                18. Ambiente
+                            </label>
+
+                            <p>Conoce y aplica las sugerencias sobre ahorro de agua y energía, y separa adecuadamente los residuos generados.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p18a" id="p1c1" value="p-18a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18a" id="p1c2" value="p-18a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18a" id="p1c3" value="p-18a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18a" id="p1c4" value="p-18a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18a" id="p1c5" value="p-18a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Aplica las premisas de orden y aseo en su frente de trabajo, antes, durante y después de su jornada laboral. </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p18b" id="p1c1" value="p-18b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18b" id="p1c2" value="p-18b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18b" id="p1c3" value="p-18b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18b" id="p1c4" value="p-18b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p18b" id="p1c5" value="p-18b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="evalliderlog">
+                    <div class="card-header milabel2" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#evallog" aria-expanded="false" aria-controls="collapseThree">
+                                EVALUACIÓN LÍDER LOGÍSTICA
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="evallog" class="" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <label for="" class="milabeltit">
+                                19. Gestión
+                            </label>
+
+                            <p>Gestiona oportunamente equipos, herramientas y materiales necesarios para la ejecución de sus labores.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p19a" id="p1c1" value="p-19a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19a" id="p1c2" value="p-19a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19a" id="p1c3" value="p-19a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19a" id="p1c4" value="p-19a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19a" id="p1c5" value="p-19a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Reporta oportunamente fallas en equipos y herramientas</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p19b" id="p1c1" value="p-19b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19b" id="p1c2" value="p-19b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19b" id="p1c3" value="p-19b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19b" id="p1c4" value="p-19b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p19b" id="p1c5" value="p-19b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="evalliderqaqc">
+                    <div class="card-header milabel2" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#evalqaqc" aria-expanded="false" aria-controls="collapseThree">
+                                EVALUACIÓN LÍDER QAQC
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="evalqaqc" class="" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <label for="" class="milabeltit">
+                                20. Reporte
+                            </label>
+
+                            <p>Conoce y ejecuta el alcance técnico definido para la orden de servicio, identifica y reporta las actividades que requieren control de cambio.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p20a" id="p1c1" value="p-20a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20a" id="p1c2" value="p-20a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20a" id="p1c3" value="p-20a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20a" id="p1c4" value="p-20a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20a" id="p1c5" value="p-20a-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Reporta veraz y oportunamente la ejecución de las actividades, haciendo uso de los formatos establecidos para el aseguramiento del plan de calidad.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p20b" id="p1c1" value="p-20b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20b" id="p1c2" value="p-20b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20b" id="p1c3" value="p-20b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20b" id="p1c4" value="p-20b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20b" id="p1c5" value="p-20b-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Diligencia y gestiona a tiempo los registros control de actividades (Protocolos) establecidos para el seguimiento y control de los trabajos ejecutados. </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p20c" id="p1c1" value="p-20c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20c" id="p1c2" value="p-20c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20c" id="p1c3" value="p-20c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20c" id="p1c4" value="p-20c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20c" id="p1c5" value="p-20c-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Informa, reporta y gestiona los reprocesos.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p20d" id="p1c1" value="p-20d-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20d" id="p1c2" value="p-20d-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20d" id="p1c3" value="p-20d-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20d" id="p1c4" value="p-20d-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20d" id="p1c5" value="p-20d-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Identifica, reporta condiciones subestándar que requieran inspección y/o validación por parte del área de calidad.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p20e" id="p1c1" value="p-20e-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20e" id="p1c2" value="p-20e-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20e" id="p1c3" value="p-20e-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20e" id="p1c4" value="p-20e-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p20e" id="p1c5" value="p-20e-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <label for="" class="milabeltit">
+                                21. Verificación
+                            </label>
+
+                            <p>Asegura que las herramientas y equipos de medición estén calibrados al momento de ser utilizados.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p21" id="p1c1" value="p-21-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p21" id="p1c2" value="p-21-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p21" id="p1c3" value="p-21-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p21" id="p1c4" value="p-21-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p21" id="p1c5" value="p-21-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label for="" class="milabel mt-4">
+                Observaciones del evaluador
+            </label>
+            <textarea id="observaciones" class="form-control" rows="4" placeholder="Observaciones"></textarea>
+
+            <label for="" class="milabel mt-2">
+                Compromisos
+            </label>
+            <textarea id="compromisos" class="form-control" rows="4" placeholder="Compromisos"></textarea>
+
+            <label for="" class="milabel mt-2">
+                Planes de Acción y/o Capacitación
+            </label>
+            <textarea id="planes" class="form-control" rows="4" placeholder="Planes de acción"></textarea>
+
+
+
+
+            <div class="form-group text-center mt-5">
+                <button type="button" class="btn btn-info" style="background-color: rgb(9, 85, 160);" onclick="enviar()">Enviar</button>
+            </div>
+
+
+        </div>
+
+
+        <hr>
+        <center>
+            Realizado por Departamento de Innovacion y Desarrollo Tecnólogico UT Italco Cartagena
+        </center>
+        <hr>
+
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+    <script>
+       var server = 'https://utitalco.com/ctg/evaluaciones/evalsup/'
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        const generarCodigo = (num) => {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result1 = '';
+            const charactersLength = characters.length;
+            for (let i = 0; i < num; i++) {
+                result1 += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+
+            return result1;
+        }
+
+        window.onload = function() {
+            var fecha = new Date(); //Fecha actual
+            var mes = fecha.getMonth() + 1; //obteniendo mes
+            var dia = fecha.getDate(); //obteniendo dia
+            var ano = fecha.getFullYear(); //obteniendo año
+            if (dia < 10)
+                dia = '0' + dia; //agrega cero si el menor de 10
+            if (mes < 10)
+                mes = '0' + mes //agrega cero si el menor de 10
+            document.getElementById('desde').value = ano + "-" + mes + "-" + dia;
+            document.getElementById('hasta').value = ano + "-" + mes + "-" + dia;
+        }
+
+        //se verifica el usuario
+        var nombres = ''
+        var cargo = ''
+
+        var evaluador = ''
+        var cargoeval = ''
+
+        var myArr = []
+        var valor = 0;
+
+        var codigo = ''
+
+        var p1 = 0;
+        var p2 = 0
+        var p3 = 0
+        var p4 = 0
+        var p5 = 0
+        var p6 = 0
+        var p7 = 0
+        var p8 = 0
+        var p9 = 0
+        var p10 = 0
+        var p11 = 0
+
+        var p12a = 0
+        var p12b = 0
+        var p13a = 0
+        var p13b = 0
+        var p13c = 0
+        var p14a = 0
+        var p14b = 0
+        var p14c = 0
+        var p14d = 0
+
+        var p15a = 0
+        var p15b = 0
+        var p15c = 0
+        var p16a = 0
+        var p16b = 0
+        var p17a = 0
+        var p17b = 0
+        var p17c = 0
+        var p18a = 0
+        var p18b = 0
+
+        var p19a = 0
+        var p19b = 0
+
+        var p20a = 0
+        var p20b = 0
+        var p20c = 0
+        var p20d = 0
+        var p20e = 0
+        var p21 = 0
+
+
+        var arrayPrg = []
+        var sum = 0
+        var prom = 0
+
+
+        //$('#collapseOne').collapse()
+
+        cargoeval = sessionStorage.getItem('cargo')
+
+        // if (cargoeval == 'LÍDER PLANEACIÓN') {
+        //     ocultarPaneles()
+        //     $('#evalliderplan').removeClass('oculto')
+        // }
+        if (cargoeval == 'LÍDER HSE') {
+            ocultarPaneles()
+            $('#evalliderhse').removeClass('oculto')
+        }
+        if (cargoeval == 'LÍDER LOGÍSTICA') {
+            ocultarPaneles()
+            $('#evalliderlog').removeClass('oculto')
+        }
+        if (cargoeval == 'LÍDER QAQC') {
+            ocultarPaneles()
+            $('#evalliderqaqc').removeClass('oculto')
+        }
+        if (cargoeval != 'LÍDER HSE' && cargoeval != 'LÍDER QAQC' && cargoeval != 'LÍDER LOGÍSTICA' && cargoeval != 'LÍDER PLANEACIÓN') {
+            ocultarPaneles()
+            $('#evaljefe').removeClass('oculto')
+        }
+
+        var user = sessionStorage.getItem('user');
+
+        if (user == null) {
+
+            location = 'login.html';
+
+        } else {
+
+            evaluador = sessionStorage.getItem('nombres')
+            cargoeval = sessionStorage.getItem('cargo')
+
+            $('#nombreeval').val(evaluador)
+            $('#cargoeval').val(cargoeval)
+        }
+
+        function removeItemFromArr(arr, item) {
+            var i = arr.indexOf(item);
+
+            if (i !== -1) {
+                arr.splice(i, 1);
+            }
+        }
+
+
+        $("input[type='radio']").change(function() {
+
+            valor = $(this).val()
+
+            removeItemFromArr(arrayPrg, valor);
+
+            myArr = valor.split("-");
+            sum += parseInt(myArr[3])
+            arrayPrg.push(valor)
+
+            var numpg = myArr[1];
+
+            if (numpg == "1") {
+                p1 = parseInt(myArr[3])
+            }
+            if (numpg == "2") {
+                p2 = parseInt(myArr[3])
+            }
+            if (numpg == "3") {
+                p3 = parseInt(myArr[3])
+            }
+            if (numpg == "4") {
+                p4 = parseInt(myArr[3])
+            }
+            if (numpg == "5") {
+                p5 = parseInt(myArr[3])
+            }
+            if (numpg == "6") {
+                p6 = parseInt(myArr[3])
+            }
+            if (numpg == "7") {
+                p7 = parseInt(myArr[3])
+            }
+            if (numpg == "8") {
+                p8 = parseInt(myArr[3])
+            }
+            if (numpg == "9") {
+                p9 = parseInt(myArr[3])
+            }
+            if (numpg == "10") {
+                p10 = parseInt(myArr[3])
+            }
+            if (numpg == "11") {
+                p11 = parseInt(myArr[3])
+            }
+            if (numpg == "12a") {
+                p12a = parseInt(myArr[3])
+            }
+            if (numpg == "12b") {
+                p12b = parseInt(myArr[3])
+            }
+            if (numpg == "13a") {
+                p13a = parseInt(myArr[3])
+            }
+            if (numpg == "13b") {
+                p13b = parseInt(myArr[3])
+            }
+            if (numpg == "13c") {
+                p13c = parseInt(myArr[3])
+            }
+            if (numpg == "14a") {
+                p14a = parseInt(myArr[3])
+            }
+            if (numpg == "14b") {
+                p14b = parseInt(myArr[3])
+            }
+            if (numpg == "14c") {
+                p14c = parseInt(myArr[3])
+            }
+            if (numpg == "14d") {
+                p14d = parseInt(myArr[3])
+            }
+
+            if (numpg == "15a") {
+                p15a = parseInt(myArr[3])
+            }
+            if (numpg == "15b") {
+                p15b = parseInt(myArr[3])
+            }
+            if (numpg == "15c") {
+                p15c = parseInt(myArr[3])
+            }
+            if (numpg == "16a") {
+                p16a = parseInt(myArr[3])
+            }
+            if (numpg == "16b") {
+                p16b = parseInt(myArr[3])
+            }
+            if (numpg == "17a") {
+                p17a = parseInt(myArr[3])
+            }
+            if (numpg == "17b") {
+                p17b = parseInt(myArr[3])
+            }
+            if (numpg == "17c") {
+                p17c = parseInt(myArr[3])
+            }
+            if (numpg == "18a") {
+                p18a = parseInt(myArr[3])
+            }
+            if (numpg == "18b") {
+                p18b = parseInt(myArr[3])
+            }
+
+            if (numpg == "19a") {
+                p19a = parseInt(myArr[3])
+            }
+
+            if (numpg == "19b") {
+                p19b = parseInt(myArr[3])
+            }
+
+            if (numpg == "20a") {
+                p20a = parseInt(myArr[3])
+            }
+            if (numpg == "20b") {
+                p20b = parseInt(myArr[3])
+            }
+            if (numpg == "20c") {
+                p20c = parseInt(myArr[3])
+            }
+            if (numpg == "20d") {
+                p20d = parseInt(myArr[3])
+            }
+            if (numpg == "20e") {
+                p20e = parseInt(myArr[3])
+            }
+            if (numpg == "21") {
+                p21 = parseInt(myArr[3])
+            }
+
+
+
+
+        });
+
+
+        function ocultarPaneles() {
+            $('#evaljefe').addClass('oculto')
+            $('#evalliderplan').addClass('oculto')
+            $('#evalliderhse').addClass('oculto')
+            $('#evalliderlog').addClass('oculto')
+            $('#evalliderqaqc').addClass('oculto')
+        }
+
+
+
+        function enviar() {
+
+            var nombres = $('#nombres').val()
+            var doc = $('#doc').val()
+            var cargo = $('#cargo').val()
+            var ods = $('#ods').val()
+            var pinicial = $('#desde').val()
+            var pfinal = $('#hasta').val()
+            var observaciones = $('#observaciones').val()
+            var planes = $('#planes').val()
+            var compromisos = $('#compromisos').val()
+
+            if (nombres != '' && doc != '' && cargo != '') {
+
+                codigo = generarCodigo(10)
+
+                sessionStorage.setItem('codigo', codigo)
+
+                if (cargoeval == 'LÍDER PLANEACIÓN') {
+
+                    $.post(server + 'guardarCalEvalSupPlan.php', {
+                            codigo: codigo,
+                            p12a: p12a,
+                            p12b: p12b,
+                            p13a: p13a,
+                            p13b: p13b,
+                            p13c: p13c,
+                            p14a: p14a,
+                            p14b: p14b,
+                            p14c: p14c,
+                            p14d: p14d
+                        },
+                        function(resp) {
+
+                            var vcant = 0;
+
+                            if (p12a != 0) {
+                                vcant++;
+                            }
+                            if (p12b != 0) {
+                                vcant++;
+                            }
+                            if (p13a != 0) {
+                                vcant++;
+                            }
+                            if (p13b != 0) {
+                                vcant++;
+                            }
+                            if (p13c != 0) {
+                                vcant++;
+                            }
+                            if (p14a != 0) {
+                                vcant++;
+                            }
+                            if (p14b != 0) {
+                                vcant++;
+                            }
+                            if (p14c != 0) {
+                                vcant++;
+                            }
+                            if (p14d != 0) {
+                                vcant++;
+                            }
+
+                            var promSeccion = (p12a + p12b + p13a + p13b + p13c + p14a + p14b + p14c + p14d) / vcant;
+                            promSeccion = Number(promSeccion.toFixed(2));
+
+                            prom = Number(resp.prom.toFixed(2));
+
+                            //se almacena la evaluación
+
+                            $.post(server + 'guardarEvalSup.php', {
+                                    codigo: codigo,
+                                    evaluador: evaluador,
+                                    cargoeval: cargoeval,
+                                    pinicial: pinicial,
+                                    pfinal: pfinal,
+                                    observaciones: observaciones,
+                                    planes: planes,
+                                    compromisos: compromisos,
+                                    nombres: nombres,
+                                    doc: doc,
+                                    cargo: cargo,
+                                    ods: ods,
+                                    prom: promSeccion
+                                },
+                                function(resp) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'info',
+                                        title: 'Correcto...',
+                                        showConfirmButton: false,
+                                        timer: 500
+                                    })
+                                    $('#bv').html('')
+                                    $('#cuerpo').html('<center>Evaluación registrada de forma correcta. <button typye="button" class="btn btn-success" onclick="reiniciar()">Realizar otra evaluación</button> </center>')
+                                })
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+
+                        })
+                }
+
+                if (cargoeval == 'LÍDER HSE') {
+
+                    $.post(server + 'guardarCalEvalSupHse.php', {
+                            codigo: codigo,
+                            p15a: p15a,
+                            p15b: p15b,
+                            p15c: p15c,
+                            p16a: p16a,
+                            p16b: p16b,
+                            p17a: p17a,
+                            p17b: p17b,
+                            p17c: p17c,
+                            p18a: p18a,
+                            p18b: p18b
+                        },
+                        function(resp) {
+
+                            var vcant = 0;
+
+                            if (p15a != 0) {
+                                vcant++;
+                            }
+                            if (p15b != 0) {
+                                vcant++;
+                            }
+                            if (p15c != 0) {
+                                vcant++;
+                            }
+                            if (p16a != 0) {
+                                vcant++;
+                            }
+                            if (p16b != 0) {
+                                vcant++;
+                            }
+                            if (p17a != 0) {
+                                vcant++;
+                            }
+                            if (p17b != 0) {
+                                vcant++;
+                            }
+                            if (p17c != 0) {
+                                vcant++;
+                            }
+                            if (p18a != 0) {
+                                vcant++;
+                            }
+                            if (p18b != 0) {
+                                vcant++;
+                            }
+
+
+                            var promSeccion = (p15a + p15b + p15c + p16a + p16b + p17a + p17b + p17c + p18a + p18b) / vcant;
+                            promSeccion = Number(promSeccion.toFixed(2));
+
+                            prom = Number(resp.prom.toFixed(2));
+
+                            //se almacena la evaluación
+
+                            $.post(server + 'guardarEvalSup.php', {
+                                    codigo: codigo,
+                                    evaluador: evaluador,
+                                    cargoeval: cargoeval,
+                                    pinicial: pinicial,
+                                    pfinal: pfinal,
+                                    observaciones: observaciones,
+                                    planes: planes,
+                                    compromisos: compromisos,
+                                    nombres: nombres,
+                                    doc: doc,
+                                    cargo: cargo,
+                                    ods: ods,
+                                    prom: promSeccion
+                                },
+                                function(resp) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'info',
+                                        title: 'Correcto...',
+                                        showConfirmButton: false,
+                                        timer: 500
+                                    })
+                                    $('#bv').html('')
+                                    $('#cuerpo').html('<center>Evaluación registrada de forma correcta. <button typye="button" class="btn btn-success" onclick="reiniciar()">Realizar otra evaluación</button> </center>')
+                                })
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+
+                        })
+                }
+
+                if (cargoeval == 'LÍDER LOGÍSTICA') {
+
+                    $.post(server + 'guardarCalEvalLog.php', {
+                            codigo: codigo,
+                            p19a: p19a,
+                            p19b: p19b
+                        },
+                        function(resp) {
+
+                            var vcant = 0;
+
+                            if (p19a != 0) {
+                                vcant++;
+                            }
+                            if (p19b != 0) {
+                                vcant++;
+                            }
+
+                            var promSeccion = (p19a + p19b) / vcant;
+                            promSeccion = Number(promSeccion.toFixed(2));
+
+                            prom = Number(resp.prom.toFixed(2));
+
+                            //se almacena la evaluación
+
+                            $.post(server + 'guardarEvalSup.php', {
+                                    codigo: codigo,
+                                    evaluador: evaluador,
+                                    cargoeval: cargoeval,
+                                    pinicial: pinicial,
+                                    pfinal: pfinal,
+                                    observaciones: observaciones,
+                                    planes: planes,
+                                    compromisos: compromisos,
+                                    nombres: nombres,
+                                    doc: doc,
+                                    cargo: cargo,
+                                    ods: ods,
+                                    prom: promSeccion
+                                },
+                                function(resp) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'info',
+                                        title: 'Correcto...',
+                                        showConfirmButton: false,
+                                        timer: 500
+                                    })
+                                    $('#bv').html('')
+                                    $('#cuerpo').html('<center>Evaluación registrada de forma correcta. <button typye="button" class="btn btn-success" onclick="reiniciar()">Realizar otra evaluación</button> </center>')
+                                })
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+
+                        })
+                }
+
+
+                if (cargoeval == 'LÍDER QAQC') {
+
+
+                    if(p20a != 0 && p20b != 0 && p20c != 0 && p20d != 0 && p20e != 0 && p21 != 0){
+
+                        $.post(server + 'guardarCalEvalSupQaqc.php', {
+
+                            codigo: codigo,
+                            p20a: p20a,
+                            p20b: p20b,
+                            p20c: p20c,
+                            p20d: p20d,
+                            p20e: p20e,
+                            p21: p21
+                        },
+                        function(resp) {
+
+                            var vcant = 0;
+
+                            if (p20a != 0) {
+                                vcant++;
+                            }
+                            if (p20b != 0) {
+                                vcant++;
+                            }
+                            if (p20c != 0) {
+                                vcant++;
+                            }
+                            if (p20d != 0) {
+                                vcant++;
+                            }
+                            if (p20e != 0) {
+                                vcant++;
+                            }
+                            if (p21 != 0) {
+                                vcant++;
+                            }
+
+
+                            var promSeccion = (p20a + p20b + p20c + p20d + p20e + p21) / vcant;
+                            promSeccion = Number(promSeccion.toFixed(2));
+
+                            prom = Number(resp.prom.toFixed(2));
+
+                            //se almacena la evaluación
+
+                            $.post(server + 'guardarEvalSup.php', {
+                                    codigo: codigo,
+                                    evaluador: evaluador,
+                                    cargoeval: cargoeval,
+                                    pinicial: pinicial,
+                                    pfinal: pfinal,
+                                    observaciones: observaciones,
+                                    planes: planes,
+                                    compromisos: compromisos,
+                                    nombres: nombres,
+                                    doc: doc,
+                                    cargo: cargo,
+                                    ods: ods,
+                                    prom: promSeccion
+                                },
+                                function(resp) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'info',
+                                        title: 'Correcto...',
+                                        showConfirmButton: false,
+                                        timer: 500
+                                    })
+                                    $('#bv').html('')
+                                    $('#cuerpo').html('<center>Evaluación registrada de forma correcta. <button typye="button" class="btn btn-success" onclick="reiniciar()">Realizar otra evaluación</button> </center>')
+                                })
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+
+                        })
+                
+
+                    }else{
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'info',
+                            title: 'Por favor registre todos los datos',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
+                    }
+                    
+                
+                }
+
+
+                if (cargoeval != 'LÍDER HSE' && cargoeval != 'LÍDER QAQC' && cargoeval != 'LÍDER LOGÍSTICA' && cargoeval != 'LÍDER PLANEACIÓN') {
+
+                    $.post(server + 'guardarCalEvalSup.php', {
+                            codigo: codigo,
+                            p1: p1,
+                            p2: p2,
+                            p3: p3,
+                            p4: p4,
+                            p5: p5,
+                            p6: p6,
+                            p7: p7,
+                            p8: p8,
+                            p9: p9,
+                            p10: p10,
+                            p11: p11
+                        },
+                        function(resp) {
+
+                            var vcant = 0;
+
+                            if (p1 != 0) {
+                                vcant++;
+                            }
+                            if (p2 != 0) {
+                                vcant++;
+                            }
+                            if (p3 != 0) {
+                                vcant++;
+                            }
+                            if (p4 != 0) {
+                                vcant++;
+                            }
+                            if (p5 != 0) {
+                                vcant++;
+                            }
+                            if (p6 != 0) {
+                                vcant++;
+                            }
+                            if (p7 != 0) {
+                                vcant++;
+                            }
+                            if (p8 != 0) {
+                                vcant++;
+                            }
+                            if (p9 != 0) {
+                                vcant++;
+                            }
+                            if (p10 != 0) {
+                                vcant++;
+                            }
+                            if (p11 != 0) {
+                                vcant++;
+                            }
+
+                            var promSeccion = (p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9 + p10 + p11) / vcant;
+                            promSeccion = Number(promSeccion.toFixed(2));
+
+                            prom = Number(resp.prom.toFixed(2));
+
+                            //se almacena la evaluación
+
+                            $.post(server + 'guardarEvalSup.php', {
+                                    codigo: codigo,
+                                    evaluador: evaluador,
+                                    cargoeval: cargoeval,
+                                    pinicial: pinicial,
+                                    pfinal: pfinal,
+                                    observaciones: observaciones,
+                                    planes: planes,
+                                    compromisos: compromisos,
+                                    nombres: nombres,
+                                    doc: doc,
+                                    cargo: cargo,
+                                    ods: ods,
+                                    prom: promSeccion
+                                },
+                                function(resp) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'info',
+                                        title: 'Correcto...',
+                                        showConfirmButton: false,
+                                        timer: 500
+                                    })
+                                    $('#bv').html('')
+                                    $('#cuerpo').html('<center>Evaluación registrada de forma correcta. <button typye="button" class="btn btn-success" onclick="reiniciar()">Realizar otra evaluación</button> </center>')
+                                })
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+
+                        })
+                }
+
+
+
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Por favor registre todos los datos',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+        }
+
+        function reiniciar() {
+            location.reload()
+        }
+    </script>
+
+</body>
+
+</html>

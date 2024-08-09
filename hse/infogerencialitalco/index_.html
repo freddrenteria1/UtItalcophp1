@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inforge Gestión HSE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <!--<link rel="stylesheet" href="https://code.highcharts.com/css/themes/dark-unica.css"> -->
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+    <script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <!-- <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+
+    <link rel="stylesheet" href="css/magic.css">
+
+
+    <style>
+        #cab{
+            position: relative;
+            background: #000000;
+            overflow: hidden;
+            height: 300px;
+            border-radius: 0px;
+        }
+
+        .centrado{
+            display: flex;
+            align-items: center;
+        }
+
+        #cab:before{
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+            background-image: url('img/fondo.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            
+        }
+        .fazul{
+            background-color: rgb(20, 20, 82);
+        }
+        
+        #grafpiramide {
+
+            width: 90%;
+            height: 500px;
+            margin: 0 auto;
+            background-image: url('img/piramide_n.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+
+        }
+        .colpir {
+            text-align: center;
+            font-size: 10px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #ffffff;
+        }
+
+        .filapir {
+            background-color: #00c901;
+            color: white;
+        }
+
+        .filatit {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #80af23;
+        }
+
+        .cabtit {
+            text-align: center;
+            font-size: 14px;
+            width: 100px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #074F15;
+            background-color: white;
+        }
+
+        .btn-gre{
+            background-color: #172362;
+            color: white;
+        }
+
+        .btn-grec{
+            background-color: #00c901;
+            color: white;
+        }
+
+        body{
+            background-color: #494747;
+            background-image: url('img/fu200-1.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .fazul{
+            background-color: #ffbc02;
+        }
+
+        .mnu{
+            height: 100px;
+             
+        }
+
+        .btnmenu{
+            cursor: pointer;
+        }
+
+        .mimenu{
+            padding: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .colpir {
+                
+                font-size: 8px;
+                
+            }
+        }
+
+         
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fazul">
+        <a class="navbar-brand" href="#"><img src="img/logo_m.png" height="30px" alt=""> | Informe de Gestión HSE | </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="navbar-brand" href="#">ODS 020 PARADA DE PLANTA REFINACIÓN DE CRUDOS U-200</a>
+            </li>
+            
+            
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="2021-09-26" value="2021-09-26" style="text-align: center;">
+          </form>
+           
+        </div>
+    </nav>
+
+    <div id="cuerpo" style="width: 95%; margin: auto;">
+        <div class="row centrado">
+            <div class="col-sm-2 p-5">
+                    <img src="img/logohse.png" height="200px" id="logohse" class="">
+            </div>
+            <div class="col-sm-10 mnu" id="menup">
+                <div class="row">
+                    <div class="col-sm-2" class="mimenu" >
+                        <img alt=""   onmouseout="this.src='img/menupiramide.png';" 
+                        onmouseover="this.src='img/menupiramide_.png';" 
+                        src="img/menupiramide.png" id="btnpir"  class="btnmenu" height="70px" />
+                    </div>
+                    <div class="col-sm-2" >
+                        <img alt=""   onmouseout="this.src='img/menugestion.png';" 
+                        onmouseover="this.src='img/menugestion_.png';" 
+                        src="img/menugestion.png" id="btngestion"  class="btnmenu"  height="70px"/>
+                    </div>
+                    <div class="col-sm-2" >
+                        <img alt=""   onmouseout="this.src='img/menurecursos.png';" 
+                        onmouseover="this.src='img/menurecursos_.png';" 
+                        src="img/menurecursos.png"  class="btnmenu"  height="70px"/>
+                    </div>
+                    <div class="col-sm-2" >
+                        <img alt=""   onmouseout="this.src='img/menufotos.png';" 
+                        onmouseover="this.src='img/menufotos_.png';" 
+                        src="img/menufotos.png"   class="btnmenu" height="70px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script>
+        document.body.style.zoom="75%";
+
+        $('#logohse').addClass('magictime vanishIn');
+        $('#menup').addClass('magictime vanishIn');
+
+        cargarGraficas()
+
+        function cargarGraficas(){
+
+            Highcharts.chart("figpersonal", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "column",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>HISTOGRAMA PERSONAL</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: "Cant ",
+                        },
+                    },
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "DIRECTOS",
+                            data: [90,100,105,100,102,100,20]
+                        },
+                        {
+                            name: "INDIRECTOS",
+                            data: [20,22,23,20,21,20,5]
+                        },
+                        {
+                            name: "TOTAL",
+                            data: [110,122,128,120,123,120,25],
+                        }
+                    ],
+                });
+                
+            Highcharts.chart("figindgestion", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "column",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>INDICADORES DE GESTIÓN</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['AC', 'AUDITORÍAS', 'CAMINATA G.', 'RCT'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: "Cant ",
+                        },
+                    },
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "PLANEADO",
+                            data: [200,50,10,10]
+                        },
+                        {
+                            name: "EJECUTADO",
+                            data: [150,30,5,5]
+                        },
+                        {
+                            name: "% GESTION",
+                            data: [75,80,50,50]
+                        }
+                    ],
+                });
+
+            Highcharts.chart("figlideres", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "bar",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>CONSOLIDADO LIDERAZGO Y COMPROMISO</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['GERENTE', 'DIRECTOR', 'LÍDER HSE', 'COORDINADOR TURNOS', 'SUPERVISOR ODS'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: null                       },
+                    },
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        bar: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "PLANEADO",
+                            data: [10,5,200,15,300]
+                        },
+                        {
+                            name: "EJECUTADO",
+                            data: [5,3,100,10,150]
+                        }
+                    ],
+                });
+            
+            Highcharts.chart("figpermisos", {
+                    colors: [
+                        "#074F15",
+                        "#00c901",
+                        "#172362",
+                        "#bfbfbf",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                        "#a4c639",
+                        "#537b35",
+                    ],
+                    credits: {
+                        enabled: false,
+                    },
+                    chart: {
+                        type: "bar",
+                        height: 310
+                    },
+                    title: {
+                        text: "<b>PERMISOS DE TRABAJO</b>",
+                    },
+
+                    xAxis: {
+                        categories: ['TOTAL'],
+                        crosshair: true,
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: null
+                        },
+                    },
+                    
+                    tooltip: {
+                        headerFormat:
+                            '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat:
+                            '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:f}</b></td></tr>',
+                        footerFormat: "</table>",
+                        shared: true,
+                        useHTML: true,
+                    },
+                    plotOptions: {
+                        bar: {
+                            pointPadding: 0.2,
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                            },
+                        },
+                    },
+
+                    series: [
+                        {
+                            name: "FRÍOS",
+                            data: [100]
+                        },
+                        {
+                            name: "CALIENTES",
+                            data: [20]
+                        },
+                        {
+                            name: "ELÉCTRICOS",
+                            data: [40]
+                        },
+                        {
+                            name: "TOTAL",
+                            data: [160]
+                        }
+                    ],
+                });
+
+            
+            
+
+        }
+    </script>
+</body>
+</html>

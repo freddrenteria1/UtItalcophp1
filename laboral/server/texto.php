@@ -1,0 +1,11 @@
+<?php
+
+$texto = 'HASTA ALCANZAR CUANDO MENOS UN 10% , DE AVANCE PARA LAS ACTIVIDADES  DE MANTENIMIENTO PREVENTIVO SB2955, ODS 031 ,DE LA GRB DE ECOP. S.A  AÑO 2023 - 2024 C.3023605, EN LA ESP. OPERADOR DE CONTRUCCION / OPERADOR DE CHORRO ALTA PRESION D9';
+
+$buscar = 'ACTIV';
+
+$pos = stripos($texto, $buscar);
+
+$objeto = substr($texto, $pos); 
+
+echo $objeto;

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG UT ITALCO - ADMINISTRADOR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        main{
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+        .milink{
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        
+            <div id="cab">
+                <img src="img/header_1.jpg" style="width: 100%;" alt="">
+            </div>
+        <div class="container mt-3">
+            
+
+            <div class="row">
+                <div class="col-sm-2 milink" onclick="inicio()">
+                    <img src="img/inicio.png" height="60px" alt=""> <span style="font-size: large;"> Inicio</span>
+                </div>
+                
+                <div class="col-sm-8 mt-2">
+                    <h2>PLATAFORMA DOCUMENTAL - EDITAR USUARIO </h2>
+                </div>
+
+                <div class="col-sm-2  mt-2">
+                    <button type="button" class="btn btn-success" onclick="agregar()">Agregar</button>
+                    <button type="button" class="btn btn-info" onclick="descargas()">Descargas</button>
+                </div>
+            </div>
+
+           <hr>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Categorías</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="tbldatos">
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+         
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        var url = 'https://utitalco.com/sig/server/';
+        var user = sessionStorage.getItem('usersigadmin');
+        var html = ''
+        var texto = ''
+        var arrayUsuarios = []
+
+        cargarUsuarios()
+
+        if(user == null){
+            location = 'login.html'
+        }
+
+        function inicio(){
+            location = 'index.html';
+        }
+
+        function buscar(){
+            location = 'busqueda.html';
+        }
+
+        function cargarUsuarios(){
+            $.post(url+'listarUsuarios.php',{},
+            function(resp){
+                arrayUsuarios = resp
+                var html = ''
+
+                for(var i=0; i<arrayUsuarios.length; i++){
+                    html += `
+                        <tr>
+                            <td>${arrayUsuarios[i].user}</td>
+                            <td>${arrayUsuarios[i].clave}</td>
+                            <td>${arrayUsuarios[i].categorias}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-danger btn-small" onclick="borrar('${i}')">B</button>
+                                    <button type="button" class="btn btn-warning btn-small" onclick="editar('${i}')">E</button>
+                                </div>    
+                            </td>
+                        </tr>
+                    `
+                }
+                $('#tbldatos').html(html)
+
+
+            })
+        }
+
+        function borrar(i) {
+            var iduser = arrayUsuarios[i].id
+            Swal.fire({
+                title: 'Eliminar usuario',
+                html: `
+                    ¿Dese borrar el usuario ${arrayUsuarios[i].user}?
+                `,
+                width: 600,
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar'
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+
+                    $.post(url + 'borrarUsuario.php', {
+                            id: iduser
+                        },
+                        function(resp) {
+                            if (resp.msn == 'Ok') {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Eliminar...',
+                                    text: 'Usuario eliminado...!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }).then(() => {
+                                    location.reload()
+                                })
+                            } else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: resp.msn,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+
+
+                }
+            })
+        }
+
+
+        function editar(i) {
+            var iduser = arrayUsuarios[i].id
+            location = 'edituser.html?id=' + iduser;
+        }
+
+        function agregar() {
+            location = 'agregaruser.html'
+        }
+
+        function descargas(){
+            location = 'descargas.html'
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación desempeño - UT ITALCO</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
+
+    <style>
+        .cab {
+            background-color: rgb(9, 85, 160);
+            color: white;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+        .visible {
+            display: contents;
+        }
+        
+        .milabel {
+            background-color: rgb(9, 85, 160);
+            color: white;
+            width: 100%;
+            padding: 15px;
+        }
+        
+        .milabel2 {
+            background-color: rgb(255, 174, 0);
+            color: rgb(0, 0, 0);
+            width: 100%;
+            padding: 15px;
+        }
+        
+        .milabeltit {
+            background-color: rgb(227, 252, 8);
+            color: rgb(0, 0, 0);
+            width: 100%;
+            padding: 5px;
+            padding-left: 15px;
+        }
+        
+        .form-check {
+            padding: 5px;
+            padding-left: 40px;
+        }
+        
+        .opc {
+            padding: 8px;
+            padding-left: 40px;
+        }
+        
+        th {
+            text-align: center;
+        }
+        
+        td {
+            text-align: center;
+        }
+        
+        .conv {
+            font-size: 10px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+    <style>
+        #preview {
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 2px;
+            background: #fff;
+            max-width: 600px;
+        }
+        
+        #preview img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron cab">
+            <center>
+                <img src="img/logo_p.png" width="300px" alt="">
+            </center>
+            <h5 class="text-center pt-3">SATISFACCIÓN DEL SERVICIO O PRODUCTO</h5>
+            <center>Contrato: 3023605 Mantenimiento con parada de planta y en operación de las unidades de la refinería de Barrancabermeja.</center>
+        </div>
+
+        <div id="cuerpo">
+
+            <label for="" class="milabel">
+                Datos Generales del Proveedor
+            </label>
+
+            <div class="form-group">
+                <label for="">Nombre o razón social</label>
+                <input type="text" id="proveedor" class="form-control" placeholder="Razón Social">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="">
+                    Dirección
+                </label>
+                <input type="text" id="domicilio" class="form-control" placeholder="Dirección">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="">
+                    Teléfono
+                </label>
+                <input type="number" id="tel" class="form-control" placeholder="Teléfono">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="">
+                    Nombre del encargado (Contacto)
+                </label>
+                <input type="text" id="contacto" class="form-control" placeholder="Contacto">
+            </div>
+
+            <div class="form-group">
+                <label for="" class="">
+                    Servicios o Productos Ofrecidos
+                </label>
+                <input type="text" id="servicios" class="form-control" placeholder="Servicios ofrecidos">
+            </div>
+
+
+
+            <label for="" class="milabel">
+                1. DESCRIPCIÓN DETALLADA DEL  PRODUCTO O SERVICIO
+            </label>
+
+            <textarea id="detalles" class="form-control" rows="3" placeholder="Descripción"></textarea>
+
+
+            <br>
+            <label for="" class="milabel">
+                2. SATISFACCIÓN
+            </label>
+            <p>
+                Seleccione su calificación (Tenga en cuenta que la calificación es de 1 a 5, siendo 1 la más baja y 5 la más alta)
+            </p>
+
+
+            <table class="table table-responsive table-bordered" style="max-width: 100%;">
+                <thead class="table-dark">
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="conv" style="background-color: red; color: #fff;">
+                            Se encuentra generalmente por debajo de los parámetros establecidos. Requiere iniciar Plan de Seguimiento
+                        </td>
+                        <td class="conv" style="background-color: yellow; color: black;">
+                            En Algunas ocasiones no alcanza los parámetros establecidos . Requiere iniciar un Plan de Mejoramiento Inmediato
+                        </td>
+                        <td class="conv" style="background-color: rgb(77, 194, 82); color: black;">
+                            Cumple dentro de los parámetros esperado los compromisos y las exigencias establecidas para el cargo
+                        </td>
+                        <td class="conv" style="background-color: rgb(30, 128, 35); color: white;">
+                            Tiene actuación destacada frente a los parámetros establecidos
+                        </td>
+                        <td class="conv" style="background-color: rgb(32, 123, 226); color: white;">
+                            Supera significativamente los parámetros establecidos. Su actuación permanente es aventajada y excepcional
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+            <div class="accordion" id="accordionExample">
+
+                <div class="card oculto" id="evalejeact">
+                    <div class="card-header milabel2" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                1. EJECUCIÓN DE ACTIVIDADES
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+
+
+
+                            <p>Cumplimiento de características del servicio o producto.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p1a" id="p1c1" value="p-1a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1a" id="p1c2" value="p-1a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1a" id="p1c3" value="p-1a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1a" id="p1c4" value="p-1a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1a" id="p1c5" value="p-1a-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp1a" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Tiempo de entrega/Ejecución.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p1b" id="p1c1" value="p-1b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1b" id="p1c2" value="p-1b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1b" id="p1c3" value="p-1b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1b" id="p1c4" value="p-1b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1b" id="p1c5" value="p-1b-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp1b" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Conformidad en la ejecución de actividades.</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p1c" id="p1c1" value="p-1c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1c" id="p1c2" value="p-1c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1c" id="p1c3" value="p-1c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1c" id="p1c4" value="p-1c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p1c" id="p1c5" value="p-1c-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp1c" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card oculto" id="evalcalidad">
+                    <div class="card-header milabel2" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                2. CALIDAD
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+
+
+
+                            <p>Entrega oportuna de la información (Documentos). (Antes/Durante y fianlización de la ejecución).
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p2a" id="p2c1" value="p-2a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2a" id="p2c2" value="p-2a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2a" id="p2c3" value="p-2a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2a" id="p2c4" value="p-2a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2a" id="p2c5" value="p-2a-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp2a" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Reprocesos/ No confomidades Identificados (¿Se han presentado Reprocesos/NC?)
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p2b" id="p2c1" value="p-2b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2b" id="p2c2" value="p-2b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2b" id="p2c3" value="p-2b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2b" id="p2c4" value="p-2b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2b" id="p2c5" value="p-2b-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp2b" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Gestión oportuna de Hallazgos.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p2c" id="p2c1" value="p-2c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2c" id="p2c2" value="p-2c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2c" id="p2c3" value="p-2c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2c" id="p2c4" value="p-2c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2c" id="p2c5" value="p-2c-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp2c" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Calidad y certificación de los materiales utilizados.
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p2d" id="p2c1" value="p-2d-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2d" id="p2c2" value="p-2d-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2d" id="p2c3" value="p-2d-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2d" id="p2c4" value="p-2d-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2d" id="p2c5" value="p-2d-c-5">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tr>
+                                    <td colspan="5">
+                                        <input class="form-control" type="text" id="obsp2d" placeholder="Observación">
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p>Recibido a Satisfaccción del cliente (Ecopetrol).
+                            </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p2e" id="p2c1" value="p-2e-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2e" id="p2c2" value="p-2e-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2e" id="p2c3" value="p-2e-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2e" id="p2c4" value="p-2e-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p2e" id="p2c5" value="p-2e-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp2e" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card oculto" id="evalhse">
+                    <div class="card-header milabel2" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                3. HSE
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <p>Cumplimiento de aspectos HSE</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p3a" id="p3c1" value="p-3a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3a" id="p3c2" value="p-3a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3a" id="p3c3" value="p-3a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3a" id="p3c4" value="p-3a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3a" id="p3c5" value="p-3a-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp3a" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Compromiso y liderazgo visible por parte de la línea de mando</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p3b" id="p3c1" value="p-3b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3b" id="p3c2" value="p-3b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3b" id="p3c3" value="p-3b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3b" id="p3c4" value="p-3b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3b" id="p3c5" value="p-3b-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp3b" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Reporte de observación de comportamientos/Hallazgos (¿Han presentado reportes de OB y/o Hallazgos?).</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p3c" id="p3c1" value="p-3c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3c" id="p3c2" value="p-3c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3c" id="p3c3" value="p-3c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3c" id="p3c4" value="p-3c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3c" id="p3c5" value="p-3c-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp3c" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Gestión oportuna de hallazgos </p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p3d" id="p3c1" value="p-3d-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3d" id="p3c2" value="p-3d-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3d" id="p3c3" value="p-3d-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3d" id="p3c4" value="p-3d-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3d" id="p3c5" value="p-3d-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp3d" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Estrategias preventivas encaminadas a la prevención de riesgos laborales</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p3e" id="p3c1" value="p-3e-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3e" id="p3c2" value="p-3e-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3e" id="p3c3" value="p-3e-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3e" id="p3c4" value="p-3e-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p3e" id="p3c5" value="p-3e-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp3e" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card oculto" id="evaladmin">
+                    <div class="card-header milabel2" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" style="color: #000;" type="button" data-toggle="collapse" data-target="#evallog" aria-expanded="false" aria-controls="collapseThree">
+                                4. ADMINISTRATIVOS Y LABORALES
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="evallog" class="" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <p>Cumplimiento aspectos administrativos (Cumplimiento perfil de cargos, Trámite y gestión solicitud tarjeta magnética, Entrega pruebas psicotécnicas).</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p4a" id="p4c1" value="p-4a-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4a" id="p4c2" value="p-4a-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4a" id="p4c3" value="p-4a-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4a" id="p4c4" value="p-4a-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4a" id="p4c5" value="p-4a-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp4a" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Entrega oportuna de información correspondiente a facturación (Soporte de cantidades de ejecución).</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p4b" id="p4c1" value="p-4b-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4b" id="p4c2" value="p-4b-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4b" id="p4c3" value="p-4b-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4b" id="p4c4" value="p-4b-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4b" id="p4c5" value="p-4b-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp4b" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p>Aspectos laborales (Pago oportuno de salarios/Liquidaciones/Transporte)</p>
+                            <table class="table table-bordered" style="max-width: 100%;">
+                                <thead class="table-dark">
+                                    <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input class="" type="radio" name="p4c" id="p4c1" value="p-4c-c-1">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4c" id="p4c2" value="p-4c-c-2">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4c" id="p4c3" value="p-4c-c-3">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4c" id="p4c4" value="p-4c-c-4">
+                                        </td>
+                                        <td>
+                                            <input class="" type="radio" name="p4c" id="p4c5" value="p-4c-c-5">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <input class="form-control" type="text" id="obsp4c" placeholder="Observación">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group text-center mt-5">
+                <button type="button" class="btn btn-info" style="background-color: rgb(9, 85, 160);" onclick="enviar()">Enviar</button>
+            </div>
+
+
+        </div>
+
+
+        <hr>
+        <center>
+            Realizado por Departamento de Innovacion y Desarrollo Tecnólogico UT Italco Barrancabermeja
+        </center>
+        <hr>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var server = 'https://utitalco.com/evaluaciones/evalprov/';
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        const generarCodigo = (num) => {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result1 = '';
+            const charactersLength = characters.length;
+            for (let i = 0; i < num; i++) {
+                result1 += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+
+            return result1;
+        }
+
+        // window.onload = function () {
+        //     var fecha = new Date(); //Fecha actual
+        //     var mes = fecha.getMonth() + 1; //obteniendo mes
+        //     var dia = fecha.getDate(); //obteniendo dia
+        //     var ano = fecha.getFullYear(); //obteniendo año
+        //     if (dia < 10)
+        //         dia = '0' + dia; //agrega cero si el menor de 10
+        //     if (mes < 10)
+        //         mes = '0' + mes //agrega cero si el menor de 10
+        //     document.getElementById('desde').value = ano + "-" + mes + "-" + dia;
+        //     document.getElementById('hasta').value = ano + "-" + mes + "-" + dia;
+        // }
+
+        //se verifica el usuario
+
+        var arrayProv = []
+        var idprov = parseInt(sessionStorage.getItem('idprov'))
+        var ods = sessionStorage.getItem('ods')
+        var evaluador = sessionStorage.getItem('nombres')
+
+        cargarProv()
+
+        function cargarProv() {
+            $.post(server + 'buscarProv.php', {
+                    id: idprov
+                },
+                function(resp) {
+                    arrayProv = resp
+                    $('#proveedor').val(arrayProv.empresa)
+                    $('#domicilio').val(arrayProv.domicilio)
+                    $('#tel').val(arrayProv.telefono)
+                    $('#contacto').val(arrayProv.contacto)
+                    $('#servicios').val(arrayProv.servicios)
+                    $('#detalles').val(arrayProv.detalles)
+                })
+        }
+
+
+
+        var nombres = ''
+        var cargo = ''
+
+        var evaluador = ''
+        var cargoeval = ''
+
+        var myArr = []
+        var valor = 0;
+
+        var codigo = ''
+
+        var p1a = 0;
+        var p1b = 0
+        var p1c = 0
+
+        var p2a = 0
+        var p2b = 0
+        var p2c = 0
+        var p2d = 0
+        var p2e = 0
+
+        var p3a = 0
+        var p3b = 0
+        var p3c = 0
+        var p3d = 0
+        var p3e = 0
+
+
+        var arrayPrg = []
+        var sum = 0
+        var prom = 0
+
+
+        //$('#collapseOne').collapse()
+
+        cargoeval = sessionStorage.getItem('cargo')
+
+        if (cargoeval == 'Ejecución de actividades') {
+            ocultarPaneles()
+            $('#evalejeact').removeClass('oculto')
+        }
+        if (cargoeval == 'Calidad') {
+            ocultarPaneles()
+            $('#evalcalidad').removeClass('oculto')
+        }
+        if (cargoeval == 'HSE') {
+            ocultarPaneles()
+            $('#evalhse').removeClass('oculto')
+        }
+        if (cargoeval == 'Administrativos y Laborales') {
+            ocultarPaneles()
+            $('#evaladmin').removeClass('oculto')
+        }
+
+        var user = sessionStorage.getItem('user');
+
+        if (user == null) {
+
+            location = 'login.html';
+
+        } else {
+
+            evaluador = sessionStorage.getItem('nombres')
+            cargoeval = sessionStorage.getItem('cargo')
+
+            $('#nombreeval').val(evaluador)
+            $('#cargoeval').val(cargoeval)
+        }
+
+        function removeItemFromArr(arr, item) {
+            var i = arr.indexOf(item);
+
+            if (i !== -1) {
+                arr.splice(i, 1);
+            }
+        }
+
+
+        $("input[type='radio']").change(function() {
+
+            valor = $(this).val()
+
+            removeItemFromArr(arrayPrg, valor);
+
+            myArr = valor.split("-");
+            sum += parseInt(myArr[3])
+            arrayPrg.push(valor)
+
+            var numpg = myArr[1];
+
+            if (numpg == "1a") {
+                p1a = parseInt(myArr[3])
+            }
+            if (numpg == "1b") {
+                p1b = parseInt(myArr[3])
+            }
+            if (numpg == "1c") {
+                p1c = parseInt(myArr[3])
+            }
+
+            if (numpg == "2a") {
+                p2a = parseInt(myArr[3])
+            }
+            if (numpg == "2b") {
+                p2b = parseInt(myArr[3])
+            }
+            if (numpg == "2c") {
+                p2c = parseInt(myArr[3])
+            }
+            if (numpg == "2d") {
+                p2d = parseInt(myArr[3])
+            }
+            if (numpg == "2e") {
+                p2e = parseInt(myArr[3])
+            }
+
+            if (numpg == "3a") {
+                p3a = parseInt(myArr[3])
+            }
+            if (numpg == "3b") {
+                p3b = parseInt(myArr[3])
+            }
+            if (numpg == "3c") {
+                p3c = parseInt(myArr[3])
+            }
+            if (numpg == "3d") {
+                p3d = parseInt(myArr[3])
+            }
+            if (numpg == "3e") {
+                p3e = parseInt(myArr[3])
+            }
+
+            if (numpg == "4a") {
+                p4a = parseInt(myArr[3])
+            }
+            if (numpg == "4b") {
+                p4b = parseInt(myArr[3])
+            }
+            if (numpg == "4c") {
+                p4c = parseInt(myArr[3])
+            }
+
+
+        });
+
+
+        function ocultarPaneles() {
+            $('#evalejeact').addClass('oculto')
+            $('#evalcalidad').addClass('oculto')
+            $('#evalhse').addClass('oculto')
+            $('#evaladmin').addClass('oculto')
+        }
+
+        function enviar() {
+
+            var proveedor = $('#proveedor').val()
+
+            if (proveedor != '' && domicilio != '' && tel != '') {
+
+
+                if (cargoeval == 'Ejecución de actividades') {
+                    var obp1a = $('#obsp1a').val()
+                    var obp1b = $('#obsp1b').val()
+                    var obp1c = $('#obsp1c').val()
+
+                    $.post(server + 'guardarCalEvalProvAct.php', {
+                            idprov: idprov,
+                            proveedor: proveedor,
+                            ods: ods,
+                            aspecto: cargoeval,
+                            obp1a: obp1a,
+                            obp1b: obp1b,
+                            obp1c: obp1c,
+                            p1a: p1a,
+                            p1b: p1b,
+                            p1c: p1c,
+                            evaluador: evaluador
+                        },
+                        function(resp) {
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+                            $('#bv').html('')
+                            $('#cuerpo').html(
+                                '<center>Evaluación registrada de forma correcta. </center>'
+                            )
+
+                        })
+                }
+
+                if (cargoeval == 'Calidad') {
+
+                    var obp2a = $('#obsp2a').val()
+                    var obp2b = $('#obsp2b').val()
+                    var obp2c = $('#obsp2c').val()
+                    var obp2d = $('#obsp2d').val()
+                    var obp2e = $('#obsp2e').val()
+
+                    $.post(server + 'guardarCalEvalProvCalidad.php', {
+                            idprov: idprov,
+                            proveedor: proveedor,
+                            ods: ods,
+                            aspecto: cargoeval,
+                            obp2a: obp2a,
+                            obp2b: obp2b,
+                            obp2c: obp2c,
+                            obp2d: obp2d,
+                            obp2e: obp2e,
+                            p2a: p2a,
+                            p2b: p2b,
+                            p2c: p2c,
+                            p2d: p2d,
+                            p2e: p2e,
+                            evaluador: evaluador
+                        },
+                        function(resp) {
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+                            $('#bv').html('')
+                            $('#cuerpo').html(
+                                '<center>Evaluación registrada de forma correcta. </center>'
+                            )
+
+                        })
+                }
+
+                if (cargoeval == 'HSE') {
+
+                    var obp3a = $('#obsp3a').val()
+                    var obp3b = $('#obsp3b').val()
+                    var obp3c = $('#obsp3c').val()
+                    var obp3d = $('#obsp3d').val()
+                    var obp3e = $('#obsp3e').val()
+
+                    $.post(server + 'guardarCalEvalProvHse.php', {
+                            idprov: idprov,
+                            proveedor: proveedor,
+                            ods: ods,
+                            aspecto: cargoeval,
+                            obp3a: obp3a,
+                            obp3b: obp3b,
+                            obp3c: obp3c,
+                            obp3d: obp3d,
+                            obp3e: obp3e,
+                            p3a: p3a,
+                            p3b: p3b,
+                            p3c: p3c,
+                            p3d: p3d,
+                            p3e: p3e,
+                            evaluador: evaluador
+                        },
+                        function(resp) {
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+                            $('#bv').html('')
+                            $('#cuerpo').html(
+                                '<center>Evaluación registrada de forma correcta. </center>'
+                            )
+
+
+                        })
+                }
+
+                if (cargoeval == 'Administrativos y Laborales') {
+
+                    var obp4a = $('#obsp4a').val()
+                    var obp4b = $('#obsp4b').val()
+                    var obp4c = $('#obsp4c').val()
+
+                    $.post(server + 'guardarCalEvalProvAdmon.php', {
+                            idprov: idprov,
+                            proveedor: proveedor,
+                            ods: ods,
+                            aspecto: cargoeval,
+                            obp4a: obp4a,
+                            obp4b: obp4b,
+                            obp4c: obp4c,
+                            p4a: p4a,
+                            p4b: p4b,
+                            p4c: p4c,
+                            evaluador: evaluador
+                        },
+                        function(resp) {
+
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'info',
+                                title: 'Correcto...',
+                                showConfirmButton: false,
+                                timer: 500
+                            })
+                            $('#bv').html('')
+                            $('#cuerpo').html(
+                                '<center>Evaluación registrada de forma correcta. </center>'
+                            )
+
+
+                        })
+
+                }
+
+            } else {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Por favor registre todos los datos',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+        }
+
+        function reiniciar() {
+            location.reload()
+        }
+    </script>
+
+</body>
+
+</html>

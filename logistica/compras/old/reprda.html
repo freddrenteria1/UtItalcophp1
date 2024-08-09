@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Compras -Logística - UT Italco</title>
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+    <script src="lib/chart-master/Chart.js"></script>
+
+</head>
+
+<body>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a href="index.html" class="logo">COMPRAS <img src="img/logo_m.png" height="30px" alt=""> </a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+
+
+
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="login.html">Salir</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+
+
+                    <li class="mt">
+                        <a href="index.html">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-cogs"></i>
+                            <span>Configuración</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="proveedores.html">Proveedores</a></li>
+                            <li><a href="items.html">Codificación Items</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>Orden de Compra</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="neworden.html">Nueva</a></li>
+                            <li><a href="reporteorden.html">Reportes</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a class="active" href="javascript:;">
+                            <i class="fa fa-book"></i>
+                            <span>RDA</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="newrda.html">Nueva</a></li>
+                            <li class="active"><a href="reprda.html">Reportes</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-sign-out"></i>
+                            <span>Salir </span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+
+
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <h3><i class="fa fa-angle-right"></i> Inicio \ Reporte RDA </h3>
+
+                <div class="content-panel" style="padding: 20px;">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="">Tipo de RDA</label>
+                            <select id="tipo" class="form-control" onchange="cargarItems()">
+                                <option value="">Seleccione un tipo...</option>
+                                <option value="02">Consumo</option>
+                                <option value="04">Servicios</option>
+                                <option value="03">Herramientas y Equipos</option>
+                                <option value="01">Seguridad</option>
+                                <option value="05">Otros</option>
+                                <option value="Todos">Todos</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="">Estado de la RDA</label>
+                            <select id="estado" class="form-control" onchange="cargarItems()">
+                                <option value="">Seleccione un estado...</option>
+                                <option value="Elaborado">Elaborado</option>
+                                <option value="Revisado">Revisado</option>
+                                <option value="Aprobado">Aprobado</option>
+                                <option value="Entregado">Entregado</option>
+                                <option value="Todos">Todos</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="">ODS</label>
+                            <select id="ods" class="form-control" onchange="cargarItems()">
+                                <option value="">Seleccione una ODS...</option>
+                                <option value="019">019</option>
+                                <option value="020">020</option>
+                                <option value="021">021</option>
+                                <option value="Todos">Todos</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <br>
+                            <button type="button" class="btn btn-primary" onclick="cargarRep()">Cargar Reporte</button>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="table-responsive" style="margin-top: 10px;">
+                        <table class="table table-striped">
+                            <thead>
+                                <th># RDA</th>
+                                <th>ODS</th>
+                                <th>Fecha</th>
+                                <th>Solicitada por</th>
+                                <th>Cargo</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </thead>
+                            <tbody id="tablaDatos">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </section>
+            <!-- /wrapper -->
+        </section>
+        <!-- /MAIN CONTENT -->
+        <!--main content end-->
+
+
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                <p>
+                    &copy; Copyrights <strong>UT Italco - Logística</strong>. All Rights Reserved
+                </p>
+
+                <a href="index.html#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery/jquery.min.js"></script>
+
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="lib/jquery.scrollTo.min.js"></script>
+    <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="lib/jquery.sparkline.js"></script>
+    <!--common script for all pages-->
+    <script src="lib/common-scripts.js"></script>
+    <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="lib/gritter-conf.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="application/javascript">
+        var user = null
+        var server = 'https://utitalco.com/logistica/compras/server/';
+
+        user = sessionStorage.getItem('user')
+
+        var datos = JSON.parse(sessionStorage.getItem('datos'))
+        var ced = datos.cedula;
+        var arrayDatos = []
+
+        if (user == null) {
+            location = 'login.html'
+        }
+
+
+        function abrir(p) {
+            location = p
+        }
+
+        function cargarRep() {
+            var ods = $('#ods').val()
+            var tipo = $('#tipo').val()
+            var estado = $('#estado').val()
+            var html = ''
+
+            $.post(server + 'cargarRda.php', {
+                    ods: ods,
+                    tipo: tipo,
+                    estado: estado
+                },
+                function(resp) {
+
+                    if (resp != null) {
+                        arrayDatos = resp
+                        for (var i = 0; i < arrayDatos.length; i++) {
+                            html += `
+                            <tr>
+                                <td>${arrayDatos[i].id}</td>
+                                <td>${arrayDatos[i].ods}</td>
+                                <td>${arrayDatos[i].fecha}</td>
+                                <td>${arrayDatos[i].solicitado}</td>
+                                <td>${arrayDatos[i].cargo}</td>
+                                <td>${arrayDatos[i].estado}</td>
+                                <td><button type="button" class="btn btn-success" onclick="ver(${arrayDatos[i].id})">Ver</button></td>
+                            </tr>
+                            `
+                            $('#tablaDatos').html(html)
+                        }
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'info',
+                            title: 'No hay registros',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        }
+
+        function ver(id) {
+            location = 'verrda.html?id=' + id
+        }
+    </script>
+</body>
+
+</html>

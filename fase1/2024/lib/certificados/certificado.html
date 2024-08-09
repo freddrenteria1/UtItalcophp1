@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado Fase I - UT ITALCO</title>
+    <!-- El script de la librería-->
+    <script src="html2pdf.bundle.min.js"></script>
+    <!--Nuestro script, que se encarga de crear el PDF usando la librería-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Shadows+Into+Light&family=Yellowtail&display=swap" rel="stylesheet">
+
+    <!-- Algunos estilos -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 95vh;
+            width: 1050px;
+
+        }
+
+        h1 {
+            font-family: "Yellowtail", cursive;
+            text-transform: capitalize;
+        }
+
+        .cap{
+            text-transform: capitalize;
+        }
+
+        .cuerpo {
+            
+            width: 100%;
+            
+        }
+        .diploma{
+            width: 1050px;
+            background: url('img/diploma5.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .linea {
+            margin: 0 auto;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cuerpo">
+        <div class="container text-center mt-3 diploma">
+            <img src="img/cab_1.png" width="100%" alt="">
+            <div class="mt-5">
+                 <br><br><br><br>
+                 <center>
+                    OTORGADO A:
+                 </center>
+            </div>
+            <div class="mt-5 text-center">
+                <h1 style="font-size: 52px; text-transform: capitalize;" class="cap" id="nombres">JAIRO ENRIQUE CRUZ FERIA</h1>
+                <div class="linea">
+                    <hr>
+                    CC <span id="ced">91514108</span>
+                </div>
+            </div>
+            <div class="mt-4 mb-5 text-center">
+                Ha completado el Ciclo de Aprendizaje
+                <h2>Inducción Fase 1 UT Italco 2024</h2>
+                Con un porcentaje de <span id="puntaje">100</span>%
+            </div>
+            <img src="img/pie_2.png" width="100%" alt="">
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        var datos = JSON.parse(localStorage.getItem('datosuser'));
+        var nombres = datos.nombres
+
+         
+
+
+        var doc = datos.cedula
+        var puntaje = datos.puntaje
+
+        var fecha = new Date(datos.fecha)
+        fecha = fecha.toLocaleDateString('es-CO', { timeZone: 'America/Bogota', dateStyle: 'full' })
+
+        
+
+        //$('#fecha').html(fecha)
+         
+
+        var OriginalString = nombres;
+        CapitalizedString = OriginalString.replace(/\b[a-z]/g, function(DemoStr) {
+            return DemoStr.toUpperCase();
+        });
+
+        //$("#output").text(CapitalizedString);
+
+
+        $('#nombres').html(CapitalizedString)
+        $('#ced').html(doc)
+        $('#puntaje').html(puntaje)
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+
+
+            // Escuchamos el click del botón
+            const $elementoParaConvertir = document
+                .body; // <-- Aquí puedes elegir cualquier elemento del DOM
+                html2pdf()
+                    .set({
+                        margin: 1,
+                        filename: doc+'.pdf',
+                        image: {
+                            type: 'jpeg',
+                            quality: 0.98
+                        },
+                        html2canvas: {
+                            scale: 5, // A mayor escala, mejores gráficos, pero más peso
+                            letterRendering: true,
+                        },
+                        jsPDF: {
+                            unit: "mm",
+                            format: "letter",
+                            orientation: 'landscape' // landscape o portrait
+                        }
+                    })
+                    .from($elementoParaConvertir)
+                    .save()
+                    .catch(err => console.log(err));
+        });
+    </script>
+</body>
+
+</html>
